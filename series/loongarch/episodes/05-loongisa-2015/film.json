@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "loongisa",
   "kind": "series-episode",
-  "title": "LoongISA：把兼容做进系统",
+  "title": "LoongISA：先融合，再自主",
   "series": {
     "id": "loongarch",
     "order": 5,
@@ -20,11 +20,32 @@
   "fps": 30,
   "prefix": "loongisa",
   "status": "draft",
-  "paper": null,
-  "claims": null,
-  "derive": [],
-  "derived": [],
-  "derivedNote": "无派生文件",
+  "paper": {
+    "title": "龙芯指令系统融合技术",
+    "authors": [
+      "胡伟武",
+      "靳国杰",
+      "汪文祥",
+      "张晓春",
+      "王焕东"
+    ],
+    "venue": "《中国科学：信息科学》2015, 45(4): 459–479",
+    "year": 2015,
+    "pdf": "data/paper.txt"
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/paper.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/flags_sim.py"
+    }
+  ],
+  "derived": [
+    "data/flags_sim.json"
+  ],
+  "derivedNote": "指令条数模型输出；不是芯片实测",
   "narration": null,
   "audio": {
     "music": null

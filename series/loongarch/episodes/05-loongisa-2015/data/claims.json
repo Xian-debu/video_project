@@ -1,0 +1,204 @@
+{
+  "claims": [
+    {
+      "id": "year",
+      "scene": "timeline",
+      "onScreen": "2015",
+      "value": 2015,
+      "quote": "2015",
+      "where": "刊头 2015 年"
+    },
+    {
+      "id": "flags-x86",
+      "scene": "eflags_problem",
+      "onScreen": "6 个标志",
+      "value": 6,
+      "quote": "6 位与运算结果有关的 EFLAGS 标志",
+      "where": "3.1 节第 (1) 条"
+    },
+    {
+      "id": "flags-arm",
+      "scene": "arm_cond",
+      "onScreen": "4 个标志",
+      "value": 4,
+      "quote": "符号位标志 N",
+      "where": "3.1 节第 (1) 条；N/Z/C/V 四个"
+    },
+    {
+      "id": "mips-flag-insns",
+      "scene": "eflags_problem",
+      "onScreen": "近 40 条",
+      "value": 40,
+      "quote": "需要近 40 条指令",
+      "where": "3.1 节，图 2(b)"
+    },
+    {
+      "id": "loongisa-flag-insns",
+      "scene": "eflags_solution",
+      "onScreen": "4 条",
+      "value": 4,
+      "quote": "SETFLAG",
+      "where": "图 2(c)：SUBU、SETFLAG、SUBU、X86JE"
+    },
+    {
+      "id": "top-bits",
+      "scene": "x87",
+      "onScreen": "3 位 TOP",
+      "value": 3,
+      "quote": "3 位的 TOP 寄存器",
+      "where": "3.1 节第 (3) 条"
+    },
+    {
+      "id": "x87-saved",
+      "scene": "x87",
+      "onScreen": "少十几条",
+      "value": 10,
+      "quote": "节省 10 多条计算源寄存器号的指令",
+      "where": "3.1 节第 (3) 条"
+    },
+    {
+      "id": "tag-bits",
+      "scene": "x87",
+      "onScreen": "16 位 Tag",
+      "value": 16,
+      "quote": "16 位的 Tag 寄存器",
+      "where": "3.1 节第 (3) 条"
+    },
+    {
+      "id": "fp80-software",
+      "scene": "x87",
+      "onScreen": "40 多条",
+      "value": 40,
+      "quote": "40 多条指令",
+      "where": "3.1 节第 (3) 条，80 位转换"
+    },
+    {
+      "id": "fp80-insns",
+      "scene": "x87",
+      "onScreen": "3 条",
+      "value": 3,
+      "quote": "两条把存储在一个 64 位寄存器中的浮点数转换为 80 位浮点数",
+      "where": "3.1 节：一条 80→64、两条 64→80"
+    },
+    {
+      "id": "cam-entries",
+      "scene": "other",
+      "onScreen": "64 项 CAM",
+      "value": 64,
+      "quote": "64 项的 CAM",
+      "where": "3.1 节第 (5) 条"
+    },
+    {
+      "id": "pc-read",
+      "scene": "other",
+      "onScreen": "读 PC 指令",
+      "value": 1,
+      "quote": "增加 PC 读取指令",
+      "where": "3.1 节第 (6) 条"
+    },
+    {
+      "id": "fp-regs",
+      "scene": "runtime_system",
+      "onScreen": "64 个",
+      "value": 64,
+      "quote": "64 个 256 位的浮点/向量混用寄存器",
+      "where": "3.2 节第 (3) 条"
+    },
+    {
+      "id": "guest-modes",
+      "scene": "runtime_system",
+      "onScreen": "3 种客态",
+      "value": 3,
+      "quote": "客操作模式",
+      "where": "3.3 节：客—核心、客—管理、客—用户"
+    },
+    {
+      "id": "tapeout-year",
+      "scene": "product",
+      "onScreen": "2014 年 9 月",
+      "value": 2014,
+      "quote": "2014 年 9 月流片",
+      "where": "5.1 节"
+    },
+    {
+      "id": "l3-mb",
+      "scene": "product",
+      "onScreen": "4MB 三级",
+      "value": 4,
+      "quote": "4 MB",
+      "where": "5.1 节，4 MB 共享三级 Cache"
+    },
+    {
+      "id": "stages",
+      "scene": "product",
+      "onScreen": "12 级流水",
+      "value": 12,
+      "quote": "12 级",
+      "where": "5.1 节，GS464E 流水"
+    },
+    {
+      "id": "roq",
+      "scene": "product",
+      "onScreen": "128 项",
+      "value": 128,
+      "quote": "128 项",
+      "where": "5.1 节，重定序队列"
+    },
+    {
+      "id": "boot-native",
+      "scene": "cost",
+      "onScreen": "2.49 亿",
+      "value": 249000000,
+      "quote": "2.49×108",
+      "where": "5.2 节表 1，Linux booting"
+    },
+    {
+      "id": "boot-qemu",
+      "scene": "cost",
+      "onScreen": "6.53 亿",
+      "value": 6530000000,
+      "quote": "6.53×109",
+      "where": "5.2 节表 1，X86-MIPS original"
+    },
+    {
+      "id": "boot-optimal",
+      "scene": "cost",
+      "onScreen": "3.12 亿",
+      "value": 312000000,
+      "quote": "3.12×108",
+      "where": "5.2 节表 1，X86-MIPS optimal"
+    },
+    {
+      "id": "native-share",
+      "scene": "cost",
+      "onScreen": "79.8%",
+      "value": 79.8,
+      "quote": "79.8%",
+      "where": "5.2 节正文"
+    },
+    {
+      "id": "qemu-speedup",
+      "scene": "cost",
+      "onScreen": "21 倍",
+      "value": 21,
+      "quote": "21 倍",
+      "where": "5.2 节正文，优化后是优化前的 21 倍"
+    },
+    {
+      "id": "clock-ghz",
+      "scene": "cost",
+      "onScreen": "1GHz",
+      "value": 1,
+      "quote": "1 GHz",
+      "where": "5.1 节，核心时钟折算为 1 GHz"
+    },
+    {
+      "id": "union-isas",
+      "scene": "thesis",
+      "onScreen": "3 套并集",
+      "value": 3,
+      "quote": "功能上是 MIPS, ARM, X86 的并集",
+      "where": "3 节开头"
+    }
+  ]
+}
