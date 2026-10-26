@@ -59,7 +59,7 @@ const ThesisScene: React.FC<{ c: Extract<SceneContent, { kind: "thesis" }>; f: n
 
 const TimelineScene: React.FC<{ c: Extract<SceneContent, { kind: "timeline" }>; f: number }> = ({ c, f }) => {
   const active = Math.max(0, Math.min(5, c.active));
-  const x0 = 150;
+  const x0 = 200;
   const x1 = 1290;
   const step = (x1 - x0) / 5;
   return (
