@@ -248,6 +248,49 @@ const Lineage: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, fra
   );
 };
 
+
+/** Cache 别名：两个虚地址索引到不同行，却映射同一个物理页。 */
+const Alias: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }) => {
+  const pulse = 0.5 + 0.5 * Math.sin(frame / 18);
+  const va = [
+    { x: 190, y: 150, name: "虚地址 A", bits: "索引位 (13..12) = 01", tint: TONE.cyan },
+    { x: 190, y: 300, name: "虚地址 B", bits: "索引位 (13..12) = 10", tint: TONE.amber },
+  ];
+  const lines = [
+    { x: 900, y: 150, name: "Cache 行 01", tint: TONE.cyan },
+    { x: 900, y: 300, name: "Cache 行 10", tint: TONE.amber },
+  ];
+  return (
+    <g>
+      <Label x={W / 2} y={64} size={23} fill={S.inkDim}>同一个物理页，被两个虚地址各缓存了一份</Label>
+      {va.map((v, i) => (
+        <g key={v.name}>
+          <rect x={v.x} y={v.y} width={330} height={96} rx={12} fill={S.panel} stroke={v.tint.fg} strokeWidth={2.5} />
+          <Label x={v.x + 165} y={v.y + 38} size={26} fill={S.ink} weight={600}>{v.name}</Label>
+          <Label x={v.x + 165} y={v.y + 72} size={19} fill={S.dim}>{v.bits}</Label>
+          <Arrow x1={v.x + 334} y1={v.y + 48} x2={lines[i].x - 8} y2={lines[i].y + 48} color={v.tint.fg} />
+        </g>
+      ))}
+      <rect x={540} y={198} width={300} height={150} rx={14} fill="rgba(94,234,212,0.05)" stroke={S.line} />
+      <Label x={690} y={248} size={24} fill={S.ink} weight={600}>同一物理页</Label>
+      <Label x={690} y={282} size={19} fill={S.dim}>物理地址低 14 位相同</Label>
+      <Label x={690} y={318} size={17} fill={S.faint}>硬件不维护一致性</Label>
+      <line x1={520} y1={246} x2={470} y2={246} stroke={S.line} strokeDasharray="6 6" />
+      <line x1={860} y1={300} x2={896} y2={300} stroke={S.line} strokeDasharray="6 6" />
+      {lines.map((l) => (
+        <g key={l.name}>
+          <rect x={l.x} y={l.y} width={340} height={96} rx={12} fill={TONE.coral.bg} stroke={l.tint.fg} strokeWidth={2.5} opacity={0.55 + 0.4 * pulse} />
+          <Label x={l.x + 170} y={l.y + 38} size={25} fill={S.ink} weight={600}>{l.name}</Label>
+          <Label x={l.x + 170} y={l.y + 72} size={19} fill={S.dim}>tag 相同，数据可能过期</Label>
+        </g>
+      ))}
+      <Label x={W / 2} y={466} size={22} fill={TONE.coral.fg}>两个副本各自更新，读到的可能是旧值</Label>
+      <Label x={W / 2} y={510} size={21} fill={S.faint}>页着色让两个虚地址的颜色位一致；大页则直接消掉索引位的差异</Label>
+      {items[0]?.note ? <Label x={W / 2} y={544} size={21} fill={S.amber}>{items[0].note}</Label> : null}
+    </g>
+  );
+};
+
 export const Diagram: React.FC<{ variant: string; items: DiagramItem[] }> = ({ variant, items }) => {
   const frame = useCurrentFrame();
   switch (variant) {
@@ -258,6 +301,7 @@ export const Diagram: React.FC<{ variant: string; items: DiagramItem[] }> = ({ v
     case "translation": return <Translation items={items} frame={frame} />;
     case "isa": return <Isa items={items} frame={frame} />;
     case "lineage": return <Lineage items={items} frame={frame} />;
+    case "alias": return <Alias items={items} frame={frame} />;
     default: return <Label x={W / 2} y={H / 2} size={24} fill={S.dim}>unknown diagram: {variant}</Label>;
   }
 };

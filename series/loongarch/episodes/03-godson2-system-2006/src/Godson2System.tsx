@@ -1,15 +1,19 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { Episode } from "../series/loongarch/scenes";
+import { CONTENT } from "./content";
+import { LINES, SCENES, TOTAL } from "./script";
 
-export const FPS = 30;
-export const TOTAL = 90;
+export { FPS, TOTAL } from "./script";
 
-export const Godson2System: React.FC<{ music?: string | null; narration?: string | null }> = () => {
-  const frame = useCurrentFrame();
-  return (
-    <AbsoluteFill style={{ background: "#0e1116", color: "#e8eef7", fontFamily: "sans-serif" }}>
-      <div style={{ margin: "auto", fontSize: 64 }}>龙芯2号系统优化：让整机跟上核</div>
-      <div style={{ position: "absolute", bottom: 40, right: 60, opacity: 0.5 }}>frame {frame}</div>
-    </AbsoluteFill>
-  );
+const META = {
+  seriesId: "loongarch",
+  seriesTitle: "龙芯：从跟跑到自主指令系统",
+  order: 3,
+  total: 7,
+  year: "2006",
+  label: "系统优化",
 };
+
+export const Godson2System: React.FC<{ music?: string | null; narration?: string | null }> = ({ music = null }) => (
+  <Episode meta={META} scenes={SCENES} lines={LINES} total={TOTAL} content={CONTENT} music={music} />
+);

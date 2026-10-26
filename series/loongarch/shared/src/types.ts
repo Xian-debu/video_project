@@ -43,7 +43,7 @@ export type SceneContent =
     }
   | {
       kind: "diagram";
-      variant: "pipeline" | "rename" | "cache" | "noc" | "translation" | "isa" | "lineage";
+      variant: "pipeline" | "rename" | "cache" | "noc" | "translation" | "isa" | "lineage" | "alias";
       title: string;
       items: DiagramItem[];
       caption: string;

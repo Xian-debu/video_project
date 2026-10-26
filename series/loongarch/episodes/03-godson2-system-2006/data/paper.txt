@@ -1,0 +1,444 @@
+ 计算机研究与发展                                                                                    ISS N 1000-1239
+                                                                                                           /CN 11
+                                                                                                                -1777
+                                                                                                                    /T P
+ Journal of Computer Research and Development                                                         43（6）：980～9862006
+
+
+
+
+龙芯2号处理器系统优化关键技术
+
+伍       鸣   张福新       林    伟     许先超        袁     楠    王     剑
+（中国科学院计算技术研究所计算机系统结构重点实验室                                    北京 100080）
+（中国科学院研究生院                北京 100049）
+（w uming＠ict∙ac∙cn）
+
+
+
+Critical Techniques of System Optimization for Godson-
+                                                     2Processor
+
+Wu MingZhang FuxinLin WeiXu XianchaoYuan Nanand Wang Jian
+（ Key L aboratory of Com p uter System and A rchitectureInstitute of Com p uting TechnologyChinese Academy of SciencesBeijing
+100080）
+（ G raduate U niv ersity of Chinese Academy of SciencesBeijing 100049）
+
+
+  Abstract      As the interface between applications and processorsystem softw are plays an important role in
+  maintaining the stabilization of processor and improving the performance of applications∙ In this paper
+  w ays to resolve cache synonyms in Godson-
+                                           2processor and methods to decrease performance loss resulting
+  from T LB misssuch as augmenting the page sizesoftw are T LB and FAST T LB REFILLare de-
+  scribed∙And a w ay of U ncache Accelerate for improving performance of video output is depicted∙ Experi-
+  mental results show that these kinds of methods in system softw are can benefit the stabilization and perfor-
+  mance of the computer system∙
+
+    Key words     Godson-
+                        2processor；cache synonyms；softw are T LB；U ncache Accelerate
+
+    摘   要   系统软件作为处理器和应用程序之间的接口对于充分利用处理器的特性来维护处理器与应用
+    程序的稳定性和提高应用程序的性能起着极其重要的作用∙描述了在 Linux 内核中解决龙芯2号处理
+    器的 Cache 别名问题的方法以及通过增加页的大小、软 T LB 和 FAST T LB REFILL 的方法减小 T LB
+    失效的性能损失还有 U ncache Accelerate 对媒体播放软件的加速∙实验结果表明在系统软件中增加
+    这些方法的支持对系统的稳定性和性能都有较大的好处∙
+    关键词            Cache 别名；软 T LB；U ncache Accelerate
+            龙芯2号处理器；
+    中图法分类号         T P316∙81
+
+
+                                                                  高性 能 通 用 处 理 器 （简 称 龙 芯 2 号） ［1］ 所 实 现 的
+1 引           言                                                   Cache 访问方式是用虚地址索引并用物理地址匹配
+                                                                  tag∙这意味着龙芯2号将遇到经典的 Cache 别名
+        操作系统与处理器体系结构紧密相关系统软                                      （synonyms）问题 ［23］∙该处理器为了减小硬件代价
+件对处理器的支持主要要解决两个问题：①使应用                                            并没有在硬件上维护这种 Cache 的一致性∙因此如
+程序能在处理器上稳定运行；②使应用程序能够充                                            何解决好虚地址 Cache 带来的这一问题将是系统
+分利用处理器的特性从而高效地运行∙龙芯2号                                            软件首要解决的∙
+
+
+      2005－07－11；修回日期：
+  收稿日期：              2005－12－02
+  基金项目：国家自然科学基金杰出青年基金项目（60325205）；国家“ 八六三” 高技术研究发展计划基金项目（2002AA110010）；中国科学院知
+            识创新工程重大项目（KGCX2－109）
+伍   鸣等：龙芯2号处理器系统优化关键技术                                              981
+
+
+    由于龙芯2号是与 MIPS 体系结构 ［4］ 兼容的      2∙2 Linux 中 Cache 别名的解决方法
+其 M MU 是由软件维护的因此当 T LB 失效发生            由于龙芯2号并不支持维护 Cache 一致性的硬
+时将由系统软件来实现虚实地址映射的重构工作∙              件解决方法所以对一致性的维护就必须由系统软
+在现实的应用中有很多程序访问的数据量很大而              件来完成∙在 Linux 内核 ［5］ 中有3种 Cache 别名的
+且局部性不强这些程序在运行中会产生大量的                解决方法：①改变内存页的大小使内存页的大小变
+T LB 失效∙由于 T LB 失效的处理是由系统软件来         为16KB；②改变地址映射机制使虚地址和其所映
+完成因此会带来较大的系统开销∙                     射物理地址的（13∙∙12）位（称为颜色位）总是相同
+    对于 I/O 密集型的应用程序而言除了 CPU 本       为了 方 便 起 见在 后 面 称 之 为 页 着 色 法；③ 检 测
+身影响性能外系统的 I/O 性能也是一个重要因素∙           Cache 别名可能出现的情况在必要时写回 Cache
+因此对于此类应用来说提高 I/O 的效率也是提高            并置无效从而动态地维护 Cache 的一致性后面称
+程序性能一个重要手段∙媒体播放软件就是这样的               之为动态检测法∙
+一个典型的应用∙在该软件中视频输出所占开销                  第1种方法将页的大小变为16KB这意味着虚
+的比重非常大∙在龙芯2号中我们实现了 uncache          地址和其所映射的物理地址的低14b 都是相同的
+accelerate（后面简称为 U A）的功能∙其基本思想是      因此当用虚地址的低14b 去索引 Cache 时相当于
+使对 I/O 设备上存储器中的数据访问能够成块地处            用物理地址的低14b 去索引所以不会产生 Cache
+理∙因此充分利用好处理器提供的这种 I/O 支持            别名∙使用这种方法的好处是由于增加了页的大
+对于提高媒体播放的性能将有很大的好处∙                   使得 T LB 所能覆盖的地址范围增加了于是提
+                                     小
+    本文描述在龙芯2号的研制中如何利用系统软             高了 T LB 的命中率∙
+件支持来解决上述问题∙                             实现页着色算法的内核在为用户进程分配物
+                                     理页时保证了映射到该物理页的虚地址与所映射
+                                     的物理地址的颜色位相同∙因此这样就使得虚地
+2 Cache 别名问题及 Linux 上的解决
+                                     址中用来索引 Cache 的低14b 与对应的物理地址的
+                                     低14b 是相同的于是避免了 Cache 别名的出现∙但
+2∙1 Cache 别名问题
+                                     是这种实现方法由于加强了地址映射的限制条件
+    在采用虚地址索引和物理地址做 tag 的 Cache
+                                     因而增加了内核中伙伴分配算法的复杂度并且还
+中存在 Cache 别名问题这主要是因为不同的虚地
+                                     会带来文件系统中页缓存的频繁的删除和创建从
+址在 Cache 中索引不同的 Cache 行但却可能映射
+                                     而降低了系统的性能∙
+到相同的物理地址这使得 Cache 中可能存在相同
+                                        实现了动态检测算法的内核需要在为用户进程
+物理地址所对应数据的两个或多个备份从而会产
+                                     建立和断开虚实地址映射时检测 Cache 别名可能出
+生 Cache 一致性问题∙然而并不是所有的虚地址
+                                     现的情况∙如果建立映射时虚实地址的颜色位不
+Cache 结构都会产生 Cache 别名的问题这和 Cache
+                                     同则在映射建立之前内核需要通过内核虚地址将
+的大小、索引和匹配机制、操作系统中页的大小都有
+                                     Cache 中的内容写回并置无效∙反之当断开映射
+密切的关系∙                               时
+                                      如果虚实地址的颜色位不同则在映射断开之
+    目前龙芯2号的 Cache 就采用上述的结构其         前内核需要通过用户进程的虚地址将 Cache 中的
+大小为64KB
+       4路组相联每一路 Cache 的大小为          内容写回并置无效∙由此可见在动态检测算法中
+16KB
+    所以需要用虚地址的低14b （13∙∙0） 去进行        Cache 的写回和置无效操作将成为主要的性能开
+Cache 行的索引∙然而在 Linux 等通用操作系统中       销并且由于频繁刷新 Cache 会增加 Cache 的失效
+内存页的大小被默认为4KB所以虚地址和物理              次数从而影响系统的性能∙
+地址的低12b（11∙∙0）是相同的∙若两个虚地址的
+（13∙∙12）位是不同的（假设为 V a V b ）它们将会索   3 减少 TLB 失效所带来的性能损失
+引到不同的 Cache 行但却可能映射到同一个物理
+地址∙如果 V a 将数据写入 Cache 中但是 V b 却无       减少 T LB 失效所带来的性能影响可以从两个
+法感知这一行为之后从 V b 中读出的数据将是过            方面去考虑一个方面是减少 T LB 失效的次数另
+期的错误数据∙                              一个方面是减少失效本身的开销∙
+ 982                                                                                    计算机研究与发展 200643（6）
+
+
+3∙1 增加页的大小以减少 TLB 失效次数                                         在龙芯2号上进行了测试∙处理器主频为90×4∙5
+   增加页的大小可以增大 T LB 所覆盖的内存范                                     （405） MHz内 存 大 小 为 512MBL1 缓 存 大 小 为
+围从而减少 T LB 失效次数∙但是操作系统对内存                                    64KB相联度为4路组相联L2缓存大小为8MB
+的管理是以页为单位的这就意味着采用大页的内                                         操作系统为64b Linux其版本号为2∙4∙22∙
+核中可能出现更多的内存碎片降低内存的利用率∙                                              （1） 不同页大小对 SPEC2000基准测试程序的
+在操作系统中当父进程创建子进程时父进程的内                                        影响
+存页可能会被拷贝到子进程相应的内存页中∙此时                                              图1 是 在 3 种 不 同 页 大 小 的 系 统 下 测 得 的
+如果该内存页中的碎片较多将会带来较多的额外开                                         SPEC2000定点程序和浮点程序的分值∙由该图可
+销∙另外在文件系统中内核对页缓存的管理也是                                        以看出大页系统对于 SPEC2000的50％左右的程
+以页为单位的∙如果文件数据的大小并不是页大小                                         序有较大的性能提高∙对于定点程序来说大页系
+的倍数则在页缓存中也将会出现碎片∙                                             统的效果更加明显∙在64KB 页的系统下定点程序
+   我们分别实现了4KB
+             16KB 和64KB 页大小的                                   的总分比16KB 页系统提高了5％左右而浮点程序
+                                         ［6
+                                           7］
+内核并用基准测试程序 SPEC2000                            和 dbench       的总分却只能提高不到1％∙
+
+
+
+
+               Fig∙1 Integer ratio and floating-point ratio of SPEC2000in systems with different page size∙
+                               图1 不同页大小系统中的 SEC2
+                                               000的定点分值和浮点分值
+
+   为了更加详细地分析 SPEC 程序在不同页大小                                     和 apsi∙与定点程序相比大部分的浮点程序 T LB
+系统中的行为我们利用龙芯 2 号提供的 Perfor-                                   重填例外的次数较少因此大页系统对于浮点程序
+mance Counter ［8］ 的功能在 SPEC2000下测得了一些                          的影响不大∙其中apsi 是个例外∙即使在64KB 页
+性能数据∙图2中列出了 SPEC2000中比较典型的                                     的系统中它的 T LB 失效次数也相当多这说明更
+几个程序在不同页大小系统中的 T LB 重填例外次                                      大页的系统对它仍然会有较大影响∙
+数的变化∙由于大页系统对应用程序所带来的直接                                              另外定 点 程 序 中 有 两 个 较 为 特 殊 的 程 序
+好处就是减少了 T LB 重填例外的次数因此T LB                                   crafty 和 twolf∙这两个程序的分值从4KB 页系统到
+重填例外次数较多的程序所受到的影响也就相对要                                        16KB 页系统有明显的提高但从16KB 页系统到
+大一些比较明显的是 vprmcf bzip2galgelammp
+
+
+
+
+       Fig∙2 Number of T LB refill in SPEC2000∙                 Fig∙3 dbench performance in systems with different page size∙
+         图2 SPEC2000的 T LB 重填例外次数                                       图3 不同页大小的系统对 dbench 的影响
+伍   鸣等：龙芯2号处理器系统优化关键技术                                                                     983
+
+
+64KB 页系统却变化非常小∙由图3可以看出当页                 T LB 不命中则处理程序需要从三级页表中将物理
+大小从4KB 变为16KB 时这两个程序的 T LB 重填            地址取回并更新软 T LB∙由此可见如果软 T LB 不
+例外的次数骤然下降∙这是因为当系统页大小变为                    命中则会带来更大的开销因此软 T LB 能否达到优
+16KB 时
+      T LB 的覆盖范围已经接近了这两个程序                化的目的主要在于软 T LB 的命中率而影响软 T LB
+访存行为的边界因此这两个程序在16KB 页大小                 命中率的主要参数就是软 T LB 的缓冲区的大小和
+ 就只有很少的 T LB 失效了于是
+时                 64KB 页的系               软 T LB 表项中的关联关系∙
+统也就不会对这两个程序带来太多的好处∙                           实验测试表明在软 T LB 项数相同的情况下
+    （2） 不同页大小对 dbench 测试程序的影响             软 T LB 的命中率大体上是全相联大于两路组相联
+    由于文件系统中页缓存是以页的大小为基本单                  而两路组相联又大于直接相联∙但是由于在 T LB 重
+位的所以磁盘 IO 经常一次传输一个页的数据∙如                 载入例外的处理函数中可用的寄存器只有 k0 和
+果对文件数据的访问是跳跃进行的并且每次只访                    k1所以如果没有硬件上的支持实现复杂的相联关
+问一个页中很少一部分的数据同时该数据又没有                    系需要增加很多指令来完成反而造成了一定的开
+在页缓存中命中则页的大小越大进行的冗余的 IO                  销∙由于软 T LB 的表项增加到1KB 以后各种相联
+传输越多因此如此行为的文件操作的性能就会                    关系的软 T LB 的命中率的差别不大几乎都达到
+降低∙                                       90％以 上所 以 最 终 我 们 采 用 的 是 直 接 映 射∙ 软
+    dbench 是开源社团提供的一个通用的、具有代              T LB 的命中率是随着表项的增多而提高的∙当软
+表性的测试文件系统性能的基准测试程序∙它模拟                    T LB 的 表 项 大 于 4KB 后其 命 中 率 就 可 以 达 到
+了 Samba 服务器在运行时所产生的文件 IO 操作∙              90％∙虽然继续增加软 T LB 的表项数目其命中率
+         4KB 系统与16KB 系统的带宽不
+    从图3可知                                将进一步上升但是意义已经不大并且随着表项的
+相上下而64KB 系统的带宽却有了明显的下降∙这                 增多会造成内核占用更多的内存资源增加了内存
+         64KB 页所带来的冗余 IO 的
+说明在实际的应用中                                压力使得系统性能下降所以我们选择4KB 的表
+影响已经非常明显∙而且随着并发进程数的增加                    项数作为软 T LB 的表项∙
+64KB 系统性能降低的比例越大这是由于多个进                      我们用4KB 表项直接映射的软 T LB 在龙芯2
+程共享系统中的页缓存从而产生竞争的结果∙                     号上运行 SPEC2
+                                                   000测试程序∙软 TLB 对 SPEC2
+                                                                       000
+3∙2 通过软 TLB 和 FAST TLB REFILL 减少 TLB      测试程序的分数提高如图4所示：
+    失效开销
+    由于龙芯2号是一个64b 的通用处理器兼容
+MIPS Ⅲ指令集因此我们在龙芯2号上使用64b
+的 Linux 操作系统（Linux/mips64）∙64b 的 MIPS 处
+理器 上 的 虚 地 址 空 间 达 到 了 40b所 以 Linux/
+mips64采用的是三级页表结构内核在对 T LB 重
+载入例外处理时必须依次查找三级页表来得到相
+应的页表项∙在这种页表结构中每一次 T LB 重载
+入（refill）例外处理时共需5次访存可能产生2～4
+                                           Fig∙4 Improving percentage of software T LB for SPEC2
+                                                                                               000
+                                                                                                 ∙
+次 Cache 失效从而使得 T LB 重载入异常的处理时
+                                                  图4 软 T LB 对 SPEC2000分数的提高率
+间大大加长∙
+    （1） 通过软 T LB 减少 T LB 失效开销                 （2） 通过FAST TLB REFILL 减少 TLB 失效开销
+    软 T LB   ［9
+               10］
+                     是在系统中建立一个全局的硬件           FAST T LB REFILL 方法通过缓存第三级页
+T LB 的缓冲区∙当发生 T LB 重载入例外时例外处             表指针在 T LB 重载入例外处理时可以从这个缓存
+理程序首先在软 T LB 中查找如果软 T LB 命中则            中直接得到第三级页表的指针从而跳过对前两级
+只需要3次访存而且由于软 T LB 的数据位于连续                页表的访问其原理如图5所示∙其中 global hash
+的地址内所以只会产生1次 Cache 失效；如果软                ptes 中存放的是指向当前进程第三级页表的指针∙
+ 984                                                                  计算机研究与发展 200643（6）
+
+
+                                                       程序性能得到1％～7％的提高面向对象的数据库
+                                                       程序255∙vortex 可以提高7∙17％如图6所示∙
+
+
+                                                       4 媒体播放的 UA 支持
+
+                                                          媒体播放是典型的 I/O 密集型应用其中视频
+                                                       输出所占的开销非常大∙在 MIPS 体系结构中由于
+                                                       显存映射在 U ncache 地址空间一条 U ncache 访存
+                                                       指令就必然带来一次系统总线事件导致系统总线
+                                                       负担重效率低并阻塞后续访存指令∙注意到各种
+                                                       应用中连续的 U ncache 访存操作往往是对连续地址
+                                                       访问龙芯2号的设计者在处理器访存接口处增加
+                                                       了一个32B 长度的 U ncache 缓冲区收集对连续地
+       Fig∙5 Principle of F AST T LB REFILL∙           址的32b 和64b 数据的 U ncache 写操作缓冲区数
+         图5 F AST T LB RET ILL 原理简图                    据满时以总线上一次突发写（burst w rite）事件将内
+    FAST T LB REFILL 方法中主要的开销在于                        容写回目标以节省带宽称为 U ncache Accelerate
+
+进程切换时对 global hash ptes 的维护∙因为 glob-                   （U A）技术∙一次普通的32b 或64b 数据的 U ncache
+
+al hash ptes 是一个全局的结构在每次进程切换                          写操作需要2个系统周期（地址数据各占1个系统
+                                                       周期）一次突发写操作需要5个系统周期（1个周
+时
+ 需要将新进程的第三级页表指针缓存到该结构
+中∙我们利用 Linux 进程在地址分布上的规律来减                                  4个周期传送数据）写回32B 数据不
+                                                       期给出地址
+小这种开销∙在 Linux 系统中程序在地址空间的                             考虑北桥与 CPU 访存接口间的流量控制使用 U A
+分布上具有一定的规律性：代码段一般映射到虚地                                 后对 连 续 地 址 的 U ncache 写 操 作 的 加 速 比 为
+址的起始部分而栈数据放在虚地址的最高部分另                                1∙6～3∙2∙
+外库文件也被映射到一个固定地址开始的空间∙因                                    对于映射的地址空间处理器依据 T LB 项中
+此
+ 在进程切换时并不用将所有的第三级页表指针                                  Cache Algorithm 域区分以何种 Cache 方式访问物理
+都拷贝到 global hash ptes 中而只需要拷贝从一些                      地址∙对于 U ncahce 访问我们既可以在 Cache Algo-
+固定地址开始的几个第三级页表指针这样 FAST                               rithm 域中指定为 Uncache 模式（访问数据时就不通过
+T LB REFILL 的开销就可以减小∙                                  Uncache 缓冲区）
+                                                                   也可以指定为 UA 模式∙
+    我们选择了 SPEC2000中 T LB 例外比较频繁                           Linux 通过 mmap 系统调用将进程的虚地址映
+的程序进行测试∙实验结果表明当程序的 T LB 重                             射到显存的物理地址以使进程可以通过访问虚存
+         FAST T LB REFILL 可以使
+载入例外比较频繁时                                             地址的方式来访问显存∙T LB 表项来源于操作系统
+                                                       维护的页表项进行优化的基本方法是在进程映射
+                                                       显存地址建立相应的页表项时修改这些页表项的
+                                                       Cache Algorithm 域为 U A 模式∙经过 U A 对视频输
+                                                       出的优化MPlayer 媒体播放器的性能得到很大的
+                                                       提高视频输出的时间提高了1～2倍∙
+
+
+                                                       5 结        论
+
+ Fig∙6 Improving percentage of F AST T LB REFILL for      本文从稳定性和性能的角度描述了龙芯2号
+        SPEC2000∙                                      处理器系统优化的关键技术∙ Cache 别名是任何采
+ 图6 F AST T LB REFILL 对 SPEC2000分数的提高率                 用虚地址 Cache 的体系结构所必须面临的问题∙在
+伍   鸣等：龙芯2号处理器系统优化关键技术                                                                                                         985
+
+
+4KB 页大小的内核上我们可以采用动态检测法或                                               10   ElphinstoneHeiser∙ Page tables for 64
+                                                                                                                 -bit computer systems：
+                                                                            ［Ph∙D∙ dissertation ］∙ New South Wales：School of Computer
+页着色法∙动态检测带来更多的 Cache 刷新操作增
+                                                                            Science ＆ EngineeringU niversity of New South Wales1999
+加了 Cache 失效次数而页着色限制了虚实地址的
+映射同时增大了页分配的伙伴算法的复杂度∙与                                                                   Wu Mingborn in 1978∙ Received his B∙
+
+4KB 页的系统相比
+          16KB 页的系统具有明显的性                                                                A’s degree in computer science from the U-
+                                                                                         niversity of Science and T echnology of Chi-
+能优势而且很自然地解决了 Cache 别名的问题因
+                                                                                         naHefeiChinain 2002∙ Since 2004he
+此是一种较优的解决方法∙然而它也带来了更多的
+                                                                                         has been a Ph∙ D∙candidate in the Institute
+内存碎片∙因此对于不同的应用采取何种页大                                                 of Computing T echnologythe Chinese Academy of Sciences
+ 应该予以不同的权衡∙由于龙芯2号处理器的
+小                                                                     BeijingChina∙ His current research interests include computer
+M MU 是由软件来维护的因此由 T LB 失效所引                                           architecture and operating system∙
+起的性能开销比较大∙64KB 页系统可以减少 T LB                                              1978年生博士研究生主要研究方向为计算机体系
+                                                                       伍鸣
+
+失效的次数软 T LB 和 FAST T LB REFILL 可以                                     结构、操作系统∙
+
+减少 T LB 失效本身的开销从而提高程序的性能∙                                                               Zhang Fuxinborn in1976∙Received his B∙
+通过 U A 对媒体播放软件的加速更加说明了系统                                                                S∙degree in Computer Science from the U-
+支持和处理器结构的密切关系∙随着龙芯处理器的                                                                   niversity of Science and T echnology of China
+不断改进龙芯的系统支持必将对龙芯处理器的应                                                                   in 2000 and his master degree in computer
+
+用起到更大的推动作用∙                                                                              science from the Institute of Computing
+                                                                       T echnologythe Chinese Academy of Sciences in2002respec-
+                                                                       tively∙ He is currently Ph∙ D∙ candidate in the Institute of
+                      参     考      文     献
+                                                                       Computing T echnology∙ His main research interests include
+                                                                       high performance computer architecture and operating system∙
+1   Hu Weiw uZhang Fuxinet al∙ Godson Processor Project Data∙
+                                                                          1976年生∙博士研究生主要研究方向为高性能计
+                                                                       张福新
+    Beijing：Institute of Computing T echnologyChinese Academy of
+                                                                       算机体系结构和操作系统（fxzhang＠ict∙ac∙cn）∙
+    Sciences2004（in Chinese）
+    （胡伟武张福新等∙ 龙芯项目资料∙ 北京：中国科学院计算
+                                                                                         Lin Weiborn in1980∙Received his B∙A’s
+    技术研究所2004）
+                                                                                         degree in computer science from the U niver-
+2   Michel CekleovMichel Dubois∙ Virtua-
+                                        l address caches∙ Part 1：
+                                                                                         sity of Science and T echnology of China
+    Problems and solutions in uniprocessors∙ IEEE Micro199717
+    （5）：64～71
+                                                                                         HefeiChinain 2002∙ Since 2002he has
+3   J∙ R∙ Goodman∙ Coherency for multiprocessor virtual address                          been M∙A∙degree candidate in the Institute
+    caches∙ T he 2nd Int’l Conf∙ Architectural Support for Program-    of Computing T echnologythe Chinese Academy of Sciences
+    ming Languages and Operating SystemsPalo AltoCA1987             BeijingChina∙ His current research interests include computer
+4   Dominic Sw eetman∙ See MIPS Run∙ San Francisco： Morgan             architecture and operating system∙
+    Kaufmann1999                                                        1980年生硕士研究生主要研究方向为计算机体系
+                                                                       林伟
+5   Linus T orvaldset al∙ Documentation for Linux kernelversion      结构、操作系统（wlin＠ict∙ac∙cn）∙
+    2
+    ∙4∙
+      22∙ http：
+              /
+              /www．kernel．org/pub/linux/kerne/
+                                             l v2．
+                                                 4/linux-
+                                                        2．4．
+                                                           22．
+    tar．
+       bz22003                                                                          Xu Xianchaoborn in1979∙Received his B∙
+6   T he Standard Performance Evaluation Corporation∙ http：
+                                                          //w w w ．                      A’s degree in computer science from the U-
+    spec．
+        org/cpu20002000                                                                 niversity of Science and T echnology of Chi-
+7   Gokul B∙KandirajuAnand Sivasubramaniam∙Charactering the d-
+                                                                                         naHefeiChinain 2002∙ Since 2002he
+    T LB behavior of SPEC CPU2000 benchmarks∙ USENIX Sympo-
+                                                                                         has been M∙A∙candidate in the Institute of
+    sium on Operating Systems Design and ImplementationBoston
+                                                                       Computing T echnologythe Chinese Academy of SciencesBei-
+    MA2002
+                                                                       jingChina∙ His current research interests include computer ar-
+8   Joe Heinrich∙ MIPS R10000 U ser’s Manual∙ Mountain View 
+                                                                       chitecture and operating system∙
+    California：MIPS T echnologiesInc∙1996
+9   Kavita Bala M∙ Frans Kaashoek William Weihl∙ Softw are              1979年生硕士研究生主要研究方向为计算机体
+                                                                       许先超
+    prefetching and caching for translation lookaside buffers∙USENIX   系结构、操作系统（xuxianchao＠ict∙ac∙cn）∙
+    Symposium on Operating Systems Design and Implementation
+    MontereyCA1994
+  986                                                                                          计算机研究与发展 200643（6）
+
+
+                  Yuan Nanborn in 1982∙ Received his B∙                               Wang Jianborn in 1971∙ Received his B∙
+                  A’s degree in computer science from Beijing U-                       S∙degree in computer science from the U ni-
+                  niversity of Posts and Telecommunications                           versity of Science and T echnology of China in
+                  BeijingChinain2004∙Since2004he has                                1994 and his M∙S∙degree in Computer Sci-
+                  been M∙ A∙ candidate in the Institute of                             ence from the Institute of Computing T ech-
+Computing T echnologythe Chinese Academy of SciencesBei-          nologythe Chinese Academy of Sciences in 1997respective-
+jingChina∙ His current research interests include computer ar-     ly∙ He is currently associate professor in the Institute of Com-
+chitecture and operating system∙                                    puting T echnology∙ His main research interests include high
+  1982年生硕士研究生主要研究方向为计算机体系
+袁楠                                                                 performance computer architecture and operating system∙
+结构、操作系统（yuannan＠ict∙ac∙cn）∙                                            1971年生硕士副研究员主要研究方向为高性能计
+                                                                     王剑
+                                                                     算机体系结构和操作系统（jw ＠ict∙ac∙cn）∙
+
+
+Research Background
+     Operating system has a great effect on the stabilization and the performance of applications and processor∙In this paperconcen-
+trating on Linux operating system and Godson-
+                                            2processorseveral methods that can improve the stabilization and the performance of
+applications are introduced∙ T hey include solutions to cache synonymsways to reduce the cost of T LB miss and U ncache Accelerate
+to improve the performance of video output∙ Our work is supported by the National Science Foundation of China （60325205）863
+H-
+ i T ech Research and Development Program of China （2002AA110010） and Knowledge Innovation Engineering Project of the Chi-
+nese Academy of Sciences （KGCX2－109）∙
+
+
+
+
+                          全国第九届 Java 技术及其应用学术交流会
+                                                          征文通知
+     为了总结与交流近年来 Java 的研究、开发与应用的经验进一步推动我国 Java 技术的发展为提高我国的信息科学技术
+的发展水平尽一份力量由中国计算机学会计算机应用委员会、中国自动化学会计算机应用委员会、中国电子学会计算机工
+程与应用委员会、中国信息产业商会微型机与应用分会自1998年起每年召开一次全国 Java 技术及应用学术交流会已成功
+举办了八届现决定于2006年三季度举办全国第八届 Java 技术及其应用学术交流会主题是“促进企业信息化进程”∙我们鼓
+励企业组织投稿和进行对成熟的产品演示……；欢迎广大信息技术专家、教授、工程师及产业界、企业界、教育界同仁踊跃投
+稿和参加∙
+     征文重点及范围
+     ①国内外 Java 技术及其应用发展综述及专题报告；②Java 技术产品（包括构件、模块及应用软件）开发及应用成果；③Java
+                   Jini 技术及其应用成果；④Java 计算、移动计算和分布式计算及其应用经验；⑤
+嵌入式技术及信息家电产品开发与应用成果
+Java 技术（J2EE）、开发工具在中间件、各种软件平台开发中的应用成果与经验；⑥Java 技术在电子商务、电子政务、网络通信、
+企业网络、MIS、
+        BRP．
+           SC M MCR M 中的应用；⑦Java 在各行业的应用成果、经验及典型实例；⑧基于 Java 技术的远程教学、远
+程诊断与医疗的求解方案；⑨Java 技术在人工智能领域的应用成果；⑩我国 Java 技术发展战略及政策措施建议∙
+     征文要求
+     论文用 B5纸打印并附软盘（Word 格式）版芯高220mm 、宽147mm 按5号宋体字排每页39行每行40字；标题3号黑
+                     4号楷体字论文摘要用6号宋体字排行宽左右各缩4字距分节标题用4
+体居中排作者姓名排在标题下占两行居中排
+号黑体居中排图和表格可随文排入但要在版芯尺寸内一般论文6000字含图不超过4页综述论文可8000字不超过
+6页∙
+     要求：①尚未正式发表的论文；②请另附纸注明作者姓名、电话、传真、Email 地址、通信地址、邮编等以便联系∙
+     会议将组织专家学者评选优秀论文给予适当奖励并向核心杂志推荐发表∙
+           2006年7月15日
+     论文截止日期：         8月30日将发出录用通知∙
+       2006年9月中旬
+     时间：
+     地点：北京（具体报到日期、地点另发通知）
+         100083 北京927信箱
+     来稿请寄：                                 贾志梅       梁钢     龚炳铮       收
+          jiazm ＠ncse．
+     或电子邮件：          com ．
+                         cn；gary＠teamsun．
+                                        com ．
+                                            cn；gongbz＠ncse．
+                                                          com ．
+                                                              cn
+     联系电话：（010）62327331
+                      -115
+                         /111                传真：（010）62311179
+                                                             62325267
+

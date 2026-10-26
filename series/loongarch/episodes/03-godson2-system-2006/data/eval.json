@@ -1,0 +1,30 @@
+{
+  "year": 2006,
+  "clockMHz": 405,
+  "memMB": 512,
+  "l1KB": 64,
+  "l1Ways": 4,
+  "l2MB": 8,
+  "linux": "2.4.22",
+  "pageKB": [
+    4,
+    16,
+    64
+  ],
+  "tlbEntries": 64,
+  "refillMemAccesses": 5,
+  "softTlbHitPct": 90,
+  "fastTlbGainPct": [
+    1,
+    7
+  ],
+  "vortexGainPct": 7.17,
+  "uaSpeedup": [
+    1.6,
+    3.2
+  ],
+  "specIntGain64vs16": 5,
+  "specFpGain64vs16": 1,
+  "dbenchNote": "64KB page bandwidth clearly drops",
+  "note": "hand-authored fact sheet from the paper; page_sim.json is a structural model, not a chip measurement"
+}

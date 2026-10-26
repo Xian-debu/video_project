@@ -1,0 +1,124 @@
+{
+  "claims": [
+    {
+      "id": "year",
+      "scene": "open",
+      "onScreen": "2006",
+      "value": 2006,
+      "quote": "2006",
+      "where": "标题与刊头"
+    },
+    {
+      "id": "clock",
+      "scene": "open",
+      "onScreen": "405MHz",
+      "value": 405,
+      "quote": "90×4∙5",
+      "where": "第1节，主频 90×4.5（405）MHz"
+    },
+    {
+      "id": "mem",
+      "scene": "pages",
+      "onScreen": "512MB",
+      "value": 512,
+      "quote": "512MB",
+      "where": "第1节 测试平台"
+    },
+    {
+      "id": "l1",
+      "scene": "pages",
+      "onScreen": "L1 64KB / 4 路",
+      "value": 64,
+      "quote": "L1 缓 存 大 小 为",
+      "where": "第1节；双栏抽取在“缓 存 大 小 为”处断行"
+    },
+    {
+      "id": "l2",
+      "scene": "pages",
+      "onScreen": "L2 8MB",
+      "value": 8,
+      "quote": "L2缓存大小为8MB",
+      "where": "第1节 测试平台"
+    },
+    {
+      "id": "linux",
+      "scene": "pages",
+      "onScreen": "Linux 2.4.22",
+      "value": "2.4.22",
+      "quote": "版本号为2∙4∙22",
+      "where": "第1节 测试平台"
+    },
+    {
+      "id": "page16",
+      "scene": "coloring",
+      "onScreen": "16KB 页",
+      "value": 16,
+      "quote": "低14b 都是相同的",
+      "where": "第2节 别名问题；16KB 页保证低 14 位相同"
+    },
+    {
+      "id": "refill",
+      "scene": "fastrefill",
+      "onScreen": "5 次访存",
+      "value": 5,
+      "quote": "共需5次访存",
+      "where": "第3节 三级页表缺页处理"
+    },
+    {
+      "id": "softtlb",
+      "scene": "softtlb",
+      "onScreen": "命中率 90%",
+      "value": 90,
+      "quote": "90％",
+      "where": "第4节 软 TLB 表项与命中率"
+    },
+    {
+      "id": "fastgain",
+      "scene": "fastrefill",
+      "onScreen": "1%–7%",
+      "value": 7,
+      "quote": "1％～7％",
+      "where": "第5节 FAST TLB REFILL 收益"
+    },
+    {
+      "id": "vortex",
+      "scene": "fastrefill",
+      "onScreen": "vortex 7.17%",
+      "value": 7.17,
+      "quote": "7∙17％",
+      "where": "第5节 表2"
+    },
+    {
+      "id": "ualow",
+      "scene": "ua",
+      "onScreen": "1.6×",
+      "value": 1.6,
+      "quote": "1∙6～3∙2",
+      "where": "第6节 Uncache Accelerate 加速比"
+    },
+    {
+      "id": "uahigh",
+      "scene": "ua",
+      "onScreen": "3.2×",
+      "value": 3.2,
+      "quote": "1∙6～3∙2",
+      "where": "第6节 Uncache Accelerate 加速比"
+    },
+    {
+      "id": "specint",
+      "scene": "result",
+      "onScreen": "+5%",
+      "value": 5,
+      "quote": "总分比16KB 页系统提高了5％左右",
+      "where": "第7节 图1；64KB 页 vs 16KB 页"
+    },
+    {
+      "id": "specfp",
+      "scene": "result",
+      "onScreen": "<1%",
+      "value": 1,
+      "quote": "只能提高不到1％",
+      "where": "第7节 图1；浮点与 dbench"
+    }
+  ]
+}
