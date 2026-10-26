@@ -246,4 +246,4 @@ export const SPEC: SceneSpec[] = [
   },
 ];
 
-export const { SCENES, LINES, TOTAL, FPS } = buildScript(SPEC, voice, 30);
+export const { SCENES, LINES, TOTAL_SEC, TOTAL, FPS, SCRIPT_PROBLEMS } = buildScript(SPEC, voice as Record<string, number>, 30);
