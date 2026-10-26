@@ -49,7 +49,7 @@
     "data/isa_sim.json"
   ],
   "derivedNote": "编码边界结构模型输出；不是芯片实测",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },
