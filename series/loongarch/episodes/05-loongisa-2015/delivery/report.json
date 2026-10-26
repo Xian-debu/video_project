@@ -1,0 +1,245 @@
+{
+  "generatedAt": "2026-10-26T14:38:11.506Z",
+  "composition": "LoongISA",
+  "film": {
+    "id": "loongisa",
+    "pack": "series/loongarch/episodes/05-loongisa-2015",
+    "series": "loongarch"
+  },
+  "out": "out/loongisa",
+  "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --film=loongisa",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "claims check",
+      "command": "node scripts/qa/claims_check.mjs --film=loongisa",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video-pipeline-blueprint/out/loongisa/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=LoongISA --script=src/loongisa/script.ts --out=/root/video-pipeline-blueprint/out/loongisa/scenes --output=/root/video-pipeline-blueprint/out/loongisa/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video-pipeline-blueprint/out/loongisa/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 1494",
+      "command": "npx remotion still LoongISA /root/video-pipeline-blueprint/out/loongisa/stills/frame_1494.png --frame=1494 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 6725",
+      "command": "npx remotion still LoongISA /root/video-pipeline-blueprint/out/loongisa/stills/frame_6725.png --frame=6725 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 11955",
+      "command": "npx remotion still LoongISA /root/video-pipeline-blueprint/out/loongisa/stills/frame_11955.png --frame=11955 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs --compositions=LoongISA --frames=1494,6725,11955",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mix",
+      "command": "node scripts/audio/mix.mjs --narration /root/video_project/series/loongarch/episodes/05-loongisa-2015/assets/audio/narration.wav --music /root/video-pipeline-blueprint/out/loongisa/score.wav --out /root/video-pipeline-blueprint/out/loongisa/mix.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (mix)",
+      "command": "python3 scripts/qa/music_gate.py --mix /root/video-pipeline-blueprint/out/loongisa/mix.wav --narration /root/video_project/series/loongarch/episodes/05-loongisa-2015/assets/audio/narration.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /root/video-pipeline-blueprint/out/loongisa/raw_video.mp4 -i /root/video-pipeline-blueprint/out/loongisa/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video-pipeline-blueprint/out/loongisa/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /root/video-pipeline-blueprint/out/loongisa/programme_unnorm.mp4 /root/video-pipeline-blueprint/out/loongisa/LoongISA.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /root/video-pipeline-blueprint/out/loongisa/LoongISA.mp4 --thresh 12 --region full",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=LoongISA --script=src/loongisa/script.ts --prefix=loongisa",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "835f7dce5214eaa3",
+    "seconds": 498.13,
+    "scoreReused": false,
+    "stem": {
+      "mode": "stem",
+      "path": "/root/video-pipeline-blueprint/out/loongisa/score.wav",
+      "full_median_db": -25.04,
+      "audible_median_db": -27.64,
+      "audible_share": 0.655,
+      "sub_share": 0.067,
+      "pass": true
+    },
+    "segments": {
+      "reused": 0,
+      "rendered": 18,
+      "scenes": 18,
+      "frames": 14944
+    },
+    "renderedSeconds": 498.133,
+    "mix": {
+      "out": "/root/video-pipeline-blueprint/out/loongisa/mix.wav",
+      "sampleRate": 48000,
+      "seconds": 499.32,
+      "narrationSeconds": 498.12,
+      "musicSeconds": 566,
+      "musicGainDb": 0,
+      "duckDb": 4.5,
+      "ducked": "63.3%",
+      "fadeIn": 1.5,
+      "fadeOut": 2.5,
+      "peakDbFS": -1.83,
+      "peakBeforeLimitDbFS": -1.83,
+      "rmsDbFS": -19.55,
+      "musicOnlyPeakDbFS": -9.59,
+      "preGain": 1
+    },
+    "mixGate": {
+      "mode": "mix",
+      "mix": "/root/video-pipeline-blueprint/out/loongisa/mix.wav",
+      "narration": "/root/video_project/series/loongarch/episodes/05-loongisa-2015/assets/audio/narration.wav",
+      "speech_db": -15.46,
+      "gap_full_db": -26.03,
+      "gap_audible_db": -28.83,
+      "bed_contribution_db": 41.2,
+      "pass": true
+    },
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0076,
+      "p99": 0.0723,
+      "max": 6.33,
+      "cutFrames": null
+    },
+    "exports": [
+      "loongisa.srt",
+      "loongisa.chapters.txt",
+      "loongisa.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "content": {
+      "id": "loongisa",
+      "pack": "series/loongarch/episodes/05-loongisa-2015",
+      "commit": "a239e06825c927b02275c0232e0935d374098951",
+      "dirty": 6
+    },
+    "inputs": {
+      "src": {
+        "files": 153,
+        "sha256": "e7d680b8b38ebfeb"
+      },
+      "data": {
+        "files": 116,
+        "sha256": "c3f81be1f6fe91bb"
+      },
+      "scripts": {
+        "files": 48,
+        "sha256": "1cf6f1bcacf6aedd"
+      }
+    }
+  },
+  "pass": true
+}

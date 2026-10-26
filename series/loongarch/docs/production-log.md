@@ -10,9 +10,9 @@
 | 02 | 02-godson2-2005 | 552.6s | ready | ready | ready | ready | ready | 待投稿 |
 | 03 | 03-godson2-system-2006 | 547.1s | ready | ready | ready | ready | ready | 待投稿 |
 | 04 | 04-godson3-2009 | 480.9s | ready | ready | ready | ready | ready | 待投稿 |
-| 05 | 05-loongisa-2015 | — | draft | — | — | — | — | — |
-| 06 | 06-loongarch-2023 | — | draft | — | — | — | — | — |
-| 07 | 07-overview | — | draft | — | — | — | — | — |
+| 05 | 05-loongisa-2015 | 498.1s | ready | ready | ready | ready | ready | 待投稿 |
+| 06 | 06-loongarch-2023 | 437.0s | ready | ready | ready | ready | ready | 待投稿 |
+| 07 | 07-overview | 210.1s | ready | ready | ready | 制作中 | — | — |
 
 ## 逐集记录
 
@@ -48,10 +48,35 @@
 - 渲染：make 全门禁通过，480.9s，-15 LUFS，TP -2 dBFS；抽帧 2/60/120/180/240/300/360/460s 审片通过。
 - 交付：Godson3.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
 
-### 05–07
+### 05 LoongISA（2015）
 
-- 05 已写内容与实验（build/flags_sim.py，25 条 claims），待配音；06、07 尚未开始。按 05 → 06 → 07 顺序逐集生产；每集先写内容与实验，再配音、配乐、渲染、审片、交付。
-- 为控制单核算力，02–07 复用同一张 566s 系列配乐床（make --score）；后续各集按 ≤566s 设计，若某集超长，先补长床再渲染。
+- 内容提交：dda5c00（draft）、6802253（narration），18 场景 / 82 行，claims 25 条，A 级实验 build/flags_sim.py。
+- 配音：82 段，498.1s，0 超时；narration.wav 46M。
+- 配乐：复用系列床 series-566.wav（498.1s < 566s）。
+- 渲染：make 全门禁通过，498.1s，-15 LUFS，TP -2 dBFS；修掉 thesis 统计卡换行后重渲，110s 复验通过；抽帧 2/60/120/180/240/300/360/420/480/495s 审片通过。
+- 交付：LoongISA.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
+
+### 06 LoongArch（2023）
+
+- 内容提交：409e01d（draft）、101c0e0（narration），18 场景 / 72 行，claims 22 条，A 级实验 build/isa_sim.py。
+- 配音：72 段，437.0s，0 超时；narration.wav 41M。
+- 配乐：复用系列床 series-566.wav（437.0s < 566s）。
+- 渲染：make 全门禁通过，437.0s，-15 LUFS，TP -2 dBFS；抽帧 2/60/120/180/240/300/360/420s 审片通过；handoff 标签由 Overview 改为“总览”。
+- 交付：LoongArch.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
+
+### 07 总览（2003–2023）
+
+- 内容提交：4e913b9（draft）、a239e06（narration），12 场景 / 34 行，无 claims（总览集）。
+- A 级实验：build/verify_claims.py 回查前六集 claims 台账，109/109 条引文命中各自 paper.txt；只验证引文存在，不验证解释。
+- 配音：34 段，210.1s，0 超时。
+- 配乐：复用系列床 series-566.wav（210.1s < 566s）。
+- 视觉预检：修正 open 标题换行、timeline 标题复用别集文案、thesis 大字与统计卡相撞、lineage 文案重复；共享层 timeline 增加可选 title，lineage 高亮步长 150→90 帧。
+
+## 系列级约定
+
+- 为控制单核算力，02–07 复用同一张 566s 系列配乐床（make --score）；各集按 ≤566s 设计，若某集超长，先补长床再渲染。
+- 每集渲染前必须 content 仓干净（make 的 contentRevision 检查），提交后再 render。
+- 07 是总览集，不要求单篇论文与 claims；它的“证据”是前六集的 claims 回查。
 
 ## 阻塞与决定
 
