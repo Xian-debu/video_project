@@ -14,17 +14,29 @@ export const CONTENT: EpisodeContent = {
     active: 0,
     note: "2003 年 4 月，龙芯1号发布。它是六篇论文的起点，也是整个系列的时间原点。",
   },
+  background: {
+    kind: "problem",
+    left: {
+      head: "自己做",
+      items: ["核心 CPU 依赖进口，产业受制于人", "通用 CPU 是集成电路的龙头", "没有自主产品，就没有议价权"],
+    },
+    right: {
+      head: "买现成",
+      items: ["成熟产品唾手可得", "软件生态现成", "但核心能力永远在别人手里"],
+    },
+    bottom: "路线争论的焦点不是要不要做，而是先做什么、怎么活下来。",
+  },
   route: {
     kind: "problem",
     left: {
-      head: "现实约束",
-      items: ["工艺与主频落后", "生态几乎从零开始", "经费和团队规模有限"],
+      head: "不做的事",
+      items: ["不从嵌入式低端往上爬", "不为了自主而放弃兼容", "不跳过验证直接流片"],
     },
     right: {
-      head: "路线选择",
-      items: ["高起点：直接做通用 CPU", "兼容主流：先借指令系统", "分阶段：模拟器→FPGA→流片"],
+      head: "做的事",
+      items: ["直接攻高性能通用 CPU", "兼容 MIPS，先借生态", "C 模拟器 → FPGA → 流片"],
     },
-    bottom: "路线不是口号，它决定了资源怎么花、风险怎么分。",
+    bottom: "高起点、兼容性、分阶段验证：三句话决定了资源怎么花。",
   },
   thesis: {
     kind: "thesis",
@@ -76,6 +88,20 @@ export const CONTENT: EpisodeContent = {
     source: "《龙芯1号处理器结构设计》第 1 节",
     note: "精确例外与低面积，在同一个结构选择里同时成立。",
   },
+  experiment: {
+    kind: "metrics",
+    title: "一次 20 拍的缺失，能藏住多少工作",
+    unit: " 拍",
+    bars: [
+      { label: "顺序执行", value: 42, note: "load 挡住后面全部" },
+      { label: "窗口 2", value: 34, note: "1.24×" },
+      { label: "窗口 4", value: 30, note: "1.40×" },
+      { label: "窗口 8", value: 28, note: "1.50×" },
+      { label: "窗口 16", value: 27, note: "1.56×" },
+    ],
+    max: 45,
+    caveat: "A 级实验：build/queue_sim.py 周期级模型；load 20 拍、ALU 1 拍、按序提交；不是龙芯1号实测。",
+  },
   scorecard: {
     kind: "problem",
     left: {
@@ -93,8 +119,8 @@ export const CONTENT: EpisodeContent = {
     title: "SPEC CPU2000（200MHz 样机，ref 规模）",
     unit: "",
     bars: [
-      { label: "SPECint-base2000", value: 18.5, note: "12 个定点程序" },
-      { label: "SPECfp-base2000", value: 24.8, note: "10 个浮点程序" },
+      { label: "SPECint-base2000", value: 18.5, note: "ref 规模" },
+      { label: "SPECfp-base2000", value: 24.8, note: "ref 规模" },
     ],
     max: 30,
     caveat: "跨平台、跨年代的分数不可直接比较；这里只记录 2003 年的绝对值。",
@@ -105,9 +131,21 @@ export const CONTENT: EpisodeContent = {
     title: "存储层次：容量与拐点",
     items: [
       { label: "龙芯1号 L1 指令 Cache", value: "8KB / 2 路", note: "随机替换" },
-      { label: "参考机 O2 的 Cache", value: "32KB", note: "带宽拐点更晚" },
+      { label: "参考机 O2 的带宽拐点", value: "32KB", note: "拐点" },
     ],
     caption: "块大小超过 8KB 后，龙芯1号的访存带宽急剧下降；这不是工艺问题，是结构问题。",
+  },
+  security: {
+    kind: "problem",
+    left: {
+      head: "通用做法",
+      items: ["操作系统划分保护区", "硬件检查读 / 写权限", "堆栈可执行，攻击面仍在"],
+    },
+    right: {
+      head: "龙芯1号",
+      items: ["TLB 增加可执行位", "限制从堆栈段取指", "取指时做权限检查"],
+    },
+    bottom: "论文报告：针对缓冲区溢出的安全机制测试有效。这不是性能优化，而是把安全放进了流水线。",
   },
   honest: {
     kind: "quote",
@@ -115,11 +153,23 @@ export const CONTENT: EpisodeContent = {
     source: "《龙芯1号处理器结构设计》摘要",
     note: "作者把短板写进了论文，也写进了下一代的设计目标。",
   },
+  product: {
+    kind: "problem",
+    left: {
+      head: "论文能证明",
+      items: ["一次流片成功", "Linux 2.4、gcc、浏览器跑通", "安全机制测试有效"],
+    },
+    right: {
+      head: "论文不能证明",
+      items: ["量产成绩与整机体验", "第三方独立评测", "生态与编译器成熟度"],
+    },
+    bottom: "公开、可复现的第三方评测很少；这是事实，不是结论。",
+  },
   verdict: {
     kind: "verdict",
     good: ["一次流片成功，验证了完整链路", "动态流水线效率高于同频静态流水线", "安全设计能防范缓冲区溢出攻击"],
     cost: ["单发射限制了指令级并行", "8KB Cache 让访存带宽过早见顶", "编译器与生态尚未跟上"],
-    echo: ["2005 年 Godson-2 升级到四发射", "指令与数据 Cache 提升到 32KB 以上", "转移猜测、非阻塞访存被列入下一代"],
+    echo: ["2005 年 Godson-2 升级到四发射", "Cache 容量与相联度同步提升", "转移猜测、非阻塞访存被列入下一代"],
     line: "第一块芯片的价值，不是分数，而是把从设计到流片的整条路走通了。",
   },
   handoff: {

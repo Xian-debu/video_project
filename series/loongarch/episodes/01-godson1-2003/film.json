@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "godson1",
   "kind": "series-episode",
-  "title": "龙芯1号：第一块芯片的野心与妥协",
+  "title": "龙芯1号：先证明能跑",
   "series": {
     "id": "loongarch",
     "order": 1,
@@ -20,12 +20,30 @@
   "fps": 30,
   "prefix": "godson1",
   "status": "draft",
-  "paper": null,
-  "claims": null,
-  "derive": [],
-  "derived": [],
-  "derivedNote": "无派生文件",
-  "narration": null,
+  "paper": {
+    "title": "龙芯1号处理器结构设计",
+    "authors": [
+      "胡伟武",
+      "等"
+    ],
+    "venue": "计算机学报 2003, 26(4)",
+    "year": 2003,
+    "pdf": "data/paper.txt"
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/paper.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/queue_sim.py"
+    }
+  ],
+  "derived": [
+    "data/queue_sim.json"
+  ],
+  "derivedNote": "周期级模型输出；不是芯片实测",
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },

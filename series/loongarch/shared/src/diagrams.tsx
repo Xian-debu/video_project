@@ -110,9 +110,9 @@ const Cache: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame
         return (
           <g key={it.label}>
             <rect x={x} y={y} width={w} height={rowH - 18} rx={12} fill={active ? TONE.cyan.bg : S.panel} stroke={active ? S.cyan : S.line} strokeWidth={active ? 3 : 2} />
-            <Label x={x + 28} y={y + 36} size={28} fill={S.ink} anchor="start" weight={600}>{it.label}</Label>
-            <Label x={x + w - 28} y={y + 36} size={23} fill={S.dim} anchor="end">{it.value ?? ""}</Label>
-            {it.note ? <Label x={x + w - 28} y={y + 62} size={18} fill={S.faint} anchor="end">{it.note}</Label> : null}
+            <Label x={x + 28} y={y + 33} size={24} fill={S.ink} anchor="start" weight={600}>{it.label}</Label>
+            <Label x={x + 28} y={y + 60} size={19} fill={S.dim} anchor="start">{it.value ?? ""}</Label>
+            {it.note ? <Label x={x + w - 28} y={y + 60} size={18} fill={S.faint} anchor="end">{it.note}</Label> : null}
           </g>
         );
       })}

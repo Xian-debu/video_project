@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "paper": "龙芯1号处理器结构设计，计算机学报 2003, 26(4)",
+    "source": "data/paper.txt (pdftotext -layout)",
+    "note": "屏幕上出现的数字与论文原文的对应关系；实验数字来自 build/queue_sim.py 的输出。"
+  },
+  "facts": {
+    "year": 2003,
+    "clockBootMHz": 200,
+    "clockMaxMHz": 266,
+    "yieldPct": 80,
+    "powerW": [
+      0.4,
+      0.5
+    ],
+    "icacheKB": 8,
+    "icacheWays": 2,
+    "specIntBase2000": 18.5,
+    "specFpBase2000": 24.8,
+    "pipelineStages": 7
+  },
+  "experiment": {
+    "model": "inorder-vs-ooo-window",
+    "loadLatency": 20,
+    "inorderCycles": 42,
+    "windows": [
+      {
+        "window": 2,
+        "cycles": 34,
+        "speedup": 1.24
+      },
+      {
+        "window": 4,
+        "cycles": 30,
+        "speedup": 1.4
+      },
+      {
+        "window": 8,
+        "cycles": 28,
+        "speedup": 1.5
+      },
+      {
+        "window": 16,
+        "cycles": 27,
+        "speedup": 1.56
+      }
+    ]
+  }
+}

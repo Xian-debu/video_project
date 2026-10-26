@@ -7,7 +7,7 @@ export { FPS, TOTAL } from "./script";
 
 const META = {
   seriesId: "loongarch",
-  seriesTitle: "龙芯 · 一条主线上的六次选择",
+  seriesTitle: "龙芯：从跟跑到自主指令系统",
   order: 1,
   total: 7,
   year: "2003",

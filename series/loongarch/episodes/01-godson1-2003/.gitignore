@@ -8,3 +8,4 @@ __pycache__/
 /assets/audio/clips/
 /data/lines.json
 /data/clips.local.json
+/data/queue_sim.json
