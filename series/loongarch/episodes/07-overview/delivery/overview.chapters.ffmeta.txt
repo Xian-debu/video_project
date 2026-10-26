@@ -1,0 +1,61 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=0
+END=15370
+title=总览 · 二十年，一条被约束推出来的主线
+[CHAPTER]
+TIMEBASE=1/1000
+START=15370
+END=37580
+title=时间线 · 六篇论文，一条主线
+[CHAPTER]
+TIMEBASE=1/1000
+START=37580
+END=55610
+title=两种读法 · 如果只看结果，会以为这是一条规划好的路
+[CHAPTER]
+TIMEBASE=1/1000
+START=55610
+END=67780
+title=判断 · 主线不是规划出来的，是被约束推出来的
+[CHAPTER]
+TIMEBASE=1/1000
+START=67780
+END=87160
+title=五条线 · 五个方向，在同一张时间线上反复出现
+[CHAPTER]
+TIMEBASE=1/1000
+START=87160
+END=107450
+title=回查 · 把六篇论文的引文全部回查一遍
+[CHAPTER]
+TIMEBASE=1/1000
+START=107450
+END=122850
+title=回查结果 · 六集共 109 条引文，全部能在原文中找到
+[CHAPTER]
+TIMEBASE=1/1000
+START=122850
+END=140850
+title=可比性 · 这些数字不能连成一条性能曲线
+[CHAPTER]
+TIMEBASE=1/1000
+START=140850
+END=160000
+title=生态 · 硬件之外，还有一笔更长的账
+[CHAPTER]
+TIMEBASE=1/1000
+START=160000
+END=179530
+title=边界 · 哪些话，这个系列不能说
+[CHAPTER]
+TIMEBASE=1/1000
+START=179530
+END=197430
+title=结论 · 它证明了：路可以自己走，但每一步都要付账
+[CHAPTER]
+TIMEBASE=1/1000
+START=197430
+END=210080
+title=回到开头 · 一条还在走的路

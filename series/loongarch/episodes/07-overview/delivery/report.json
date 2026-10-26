@@ -1,0 +1,239 @@
+{
+  "generatedAt": "2026-10-26T14:44:55.749Z",
+  "composition": "LoongArchOverview",
+  "film": {
+    "id": "overview",
+    "pack": "series/loongarch/episodes/07-overview",
+    "series": "loongarch"
+  },
+  "out": "out/overview",
+  "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --film=overview",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video-pipeline-blueprint/out/overview/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=LoongArchOverview --script=src/overview/script.ts --out=/root/video-pipeline-blueprint/out/overview/scenes --output=/root/video-pipeline-blueprint/out/overview/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video-pipeline-blueprint/out/overview/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 630",
+      "command": "npx remotion still LoongArchOverview /root/video-pipeline-blueprint/out/overview/stills/frame_630.png --frame=630 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 2836",
+      "command": "npx remotion still LoongArchOverview /root/video-pipeline-blueprint/out/overview/stills/frame_2836.png --frame=2836 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 5042",
+      "command": "npx remotion still LoongArchOverview /root/video-pipeline-blueprint/out/overview/stills/frame_5042.png --frame=5042 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs --compositions=LoongArchOverview --frames=630,2836,5042",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mix",
+      "command": "node scripts/audio/mix.mjs --narration /root/video_project/series/loongarch/episodes/07-overview/assets/audio/narration.wav --music /root/video-pipeline-blueprint/out/overview/score.wav --out /root/video-pipeline-blueprint/out/overview/mix.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (mix)",
+      "command": "python3 scripts/qa/music_gate.py --mix /root/video-pipeline-blueprint/out/overview/mix.wav --narration /root/video_project/series/loongarch/episodes/07-overview/assets/audio/narration.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /root/video-pipeline-blueprint/out/overview/raw_video.mp4 -i /root/video-pipeline-blueprint/out/overview/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video-pipeline-blueprint/out/overview/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /root/video-pipeline-blueprint/out/overview/programme_unnorm.mp4 /root/video-pipeline-blueprint/out/overview/LoongArchOverview.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /root/video-pipeline-blueprint/out/overview/LoongArchOverview.mp4 --thresh 12 --region full",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=LoongArchOverview --script=src/overview/script.ts --prefix=overview",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "3526f962d93b3a73",
+    "seconds": 210.07,
+    "scoreReused": false,
+    "stem": {
+      "mode": "stem",
+      "path": "/root/video-pipeline-blueprint/out/overview/score.wav",
+      "full_median_db": -25.04,
+      "audible_median_db": -27.64,
+      "audible_share": 0.655,
+      "sub_share": 0.067,
+      "pass": true
+    },
+    "segments": {
+      "reused": 0,
+      "rendered": 12,
+      "scenes": 12,
+      "frames": 6302
+    },
+    "renderedSeconds": 210.067,
+    "mix": {
+      "out": "/root/video-pipeline-blueprint/out/overview/mix.wav",
+      "sampleRate": 48000,
+      "seconds": 211.28,
+      "narrationSeconds": 210.08,
+      "musicSeconds": 566,
+      "musicGainDb": 0,
+      "duckDb": 4.5,
+      "ducked": "57.7%",
+      "fadeIn": 1.5,
+      "fadeOut": 2.5,
+      "peakDbFS": -2.06,
+      "peakBeforeLimitDbFS": -2.06,
+      "rmsDbFS": -19.76,
+      "musicOnlyPeakDbFS": -9.67,
+      "preGain": 1
+    },
+    "mixGate": {
+      "mode": "mix",
+      "mix": "/root/video-pipeline-blueprint/out/overview/mix.wav",
+      "narration": "/root/video_project/series/loongarch/episodes/07-overview/assets/audio/narration.wav",
+      "speech_db": -15.32,
+      "gap_full_db": -25.22,
+      "gap_audible_db": -27.99,
+      "bed_contribution_db": 42,
+      "pass": true
+    },
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0091,
+      "p99": 0.0683,
+      "max": 5.63,
+      "cutFrames": null
+    },
+    "exports": [
+      "overview.srt",
+      "overview.chapters.txt",
+      "overview.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "content": {
+      "id": "overview",
+      "pack": "series/loongarch/episodes/07-overview",
+      "commit": "f8368b1d2929e760a89c2f90333defa1717c76ab",
+      "dirty": 0
+    },
+    "inputs": {
+      "src": {
+        "files": 153,
+        "sha256": "17f9c23166713a95"
+      },
+      "data": {
+        "files": 116,
+        "sha256": "c3f81be1f6fe91bb"
+      },
+      "scripts": {
+        "files": 48,
+        "sha256": "1cf6f1bcacf6aedd"
+      }
+    }
+  },
+  "pass": true
+}

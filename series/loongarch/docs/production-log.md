@@ -12,7 +12,7 @@
 | 04 | 04-godson3-2009 | 480.9s | ready | ready | ready | ready | ready | 待投稿 |
 | 05 | 05-loongisa-2015 | 498.1s | ready | ready | ready | ready | ready | 待投稿 |
 | 06 | 06-loongarch-2023 | 437.0s | ready | ready | ready | ready | ready | 待投稿 |
-| 07 | 07-overview | 210.1s | ready | ready | ready | 制作中 | — | — |
+| 07 | 07-overview | 210.1s | ready | ready | ready | ready | ready | 待投稿 |
 
 ## 逐集记录
 
@@ -71,6 +71,8 @@
 - 配音：34 段，210.1s，0 超时。
 - 配乐：复用系列床 series-566.wav（210.1s < 566s）。
 - 视觉预检：修正 open 标题换行、timeline 标题复用别集文案、thesis 大字与统计卡相撞、lineage 文案重复；共享层 timeline 增加可选 title，lineage 高亮步长 150→90 帧。
+- 渲染：make 全门禁通过，210.07s，-15 LUFS，TP -2 dBFS，34 条字幕，12 章，封面第 180 帧；flicker mean|d|=0.0091；抽帧 2/60/120/180/240/300/360/420s 审片通过。
+- 交付：LoongArchOverview.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
 
 ## 系列级约定
 
