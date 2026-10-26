@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { S, TONE } from "./theme";
 import { TIMELINE } from "./data/timeline";
 import type { EpisodeContent, EpisodeMeta, Line, Scene, SceneContent } from "./types";
@@ -251,14 +251,9 @@ const TopBar: React.FC<{ meta: EpisodeMeta; progress: number }> = ({ meta, progr
   </>
 );
 
-const SceneFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const f = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
-  const fade = 12;
-  const inO = interpolate(f, [0, fade], [0, 1], clamp);
-  const outO = interpolate(f, [durationInFrames - fade, durationInFrames], [1, 0], clamp);
-  return <AbsoluteFill style={{ opacity: Math.min(inO, outO) }}>{children}</AbsoluteFill>;
-};
+// Hard cut between scenes. A cross-fade of even 0.4 s reads as a dip in the
+// luma gate and, at this pace, as a flicker: the series cuts, it does not dissolve.
+const SceneFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => <AbsoluteFill>{children}</AbsoluteFill>;
 
 export const Episode: React.FC<{
   meta: EpisodeMeta;
