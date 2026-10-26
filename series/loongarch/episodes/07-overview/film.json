@@ -22,9 +22,15 @@
   "status": "draft",
   "paper": null,
   "claims": null,
-  "derive": [],
-  "derived": [],
-  "derivedNote": "无派生文件",
+  "derive": [
+    {
+      "command": "python3 build/verify_claims.py"
+    }
+  ],
+  "derived": [
+    "data/evidence.json"
+  ],
+  "derivedNote": "六集 claims 文本回查；不是芯片实测",
   "narration": null,
   "audio": {
     "music": null
