@@ -1,8 +1,19 @@
 {
-  "generatedAt": "2026-10-20T15:28:12.138Z",
+  "generatedAt": "2026-10-26T17:24:19.657Z",
   "composition": "Hawk",
-  "out": "out/hawk-package",
+  "film": {
+    "id": "hawk",
+    "pack": "singles/hawk",
+    "series": null
+  },
+  "out": "out/hawk",
   "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
     {
       "name": "film coverage",
       "command": "node scripts/qa/film_coverage.mjs",
@@ -11,7 +22,13 @@
     },
     {
       "name": "derive data",
-      "command": "node scripts/qa/derive_data.mjs --composition=Hawk",
+      "command": "node scripts/qa/derive_data.mjs --film=hawk",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
       "exitCode": 0,
       "ok": true
     },
@@ -47,7 +64,13 @@
     },
     {
       "name": "claims check",
-      "command": "node scripts/qa/claims_check.mjs",
+      "command": "node scripts/qa/claims_check.mjs --film=hawk",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
       "exitCode": 0,
       "ok": true
     },
@@ -59,73 +82,73 @@
     },
     {
       "name": "music gate (stem)",
-      "command": "python3 scripts/qa/music_gate.py --music /tmp/bp/out/hawk-package/score.wav",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video-pipeline-blueprint/out/hawk/score.wav",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "render (picture only, scene segments)",
-      "command": "node scripts/render_scenes.mjs --composition=Hawk --script=src/hawk/script.ts --out=/tmp/bp/out/hawk-package/scenes --output=/tmp/bp/out/hawk-package/raw_video.mp4",
+      "command": "node scripts/render_scenes.mjs --composition=Hawk --script=src/hawk/script.ts --out=/root/video-pipeline-blueprint/out/hawk/scenes --output=/root/video-pipeline-blueprint/out/hawk/raw_video.mp4",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "probe duration",
-      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /tmp/bp/out/hawk-package/raw_video.mp4",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video-pipeline-blueprint/out/hawk/raw_video.mp4",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "still frame 2272",
-      "command": "npx remotion still Hawk /tmp/bp/out/hawk-package/stills/frame_2272.png --frame=2272 --props={\"music\":null,\"narration\":null} --log=error",
+      "command": "npx remotion still Hawk /root/video-pipeline-blueprint/out/hawk/stills/frame_2272.png --frame=2272 --props={\"music\":null,\"narration\":null} --log=error",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "still frame 10224",
-      "command": "npx remotion still Hawk /tmp/bp/out/hawk-package/stills/frame_10224.png --frame=10224 --props={\"music\":null,\"narration\":null} --log=error",
+      "command": "npx remotion still Hawk /root/video-pipeline-blueprint/out/hawk/stills/frame_10224.png --frame=10224 --props={\"music\":null,\"narration\":null} --log=error",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "still frame 18177",
-      "command": "npx remotion still Hawk /tmp/bp/out/hawk-package/stills/frame_18177.png --frame=18177 --props={\"music\":null,\"narration\":null} --log=error",
+      "command": "npx remotion still Hawk /root/video-pipeline-blueprint/out/hawk/stills/frame_18177.png --frame=18177 --props={\"music\":null,\"narration\":null} --log=error",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "still lint",
-      "command": "node scripts/qa/still_lint.mjs",
+      "command": "node scripts/qa/still_lint.mjs --compositions=Hawk --frames=2272,10224,18177",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "mix",
-      "command": "node scripts/audio/mix.mjs --narration public/voice/hawk_narration.wav --music /tmp/bp/out/hawk-package/score.wav --out /tmp/bp/out/hawk-package/mix.wav",
+      "command": "node scripts/audio/mix.mjs --narration /root/video_project/singles/hawk/assets/audio/narration.wav --music /root/video-pipeline-blueprint/out/hawk/score.wav --out /root/video-pipeline-blueprint/out/hawk/mix.wav",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "music gate (mix)",
-      "command": "python3 scripts/qa/music_gate.py --mix /tmp/bp/out/hawk-package/mix.wav --narration public/voice/hawk_narration.wav",
+      "command": "python3 scripts/qa/music_gate.py --mix /root/video-pipeline-blueprint/out/hawk/mix.wav --narration /root/video_project/singles/hawk/assets/audio/narration.wav",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "mux",
-      "command": "ffmpeg -y -v error -i /tmp/bp/out/hawk-package/raw_video.mp4 -i /tmp/bp/out/hawk-package/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /tmp/bp/out/hawk-package/programme_unnorm.mp4",
+      "command": "ffmpeg -y -v error -i /root/video-pipeline-blueprint/out/hawk/raw_video.mp4 -i /root/video-pipeline-blueprint/out/hawk/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video-pipeline-blueprint/out/hawk/programme_unnorm.mp4",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "loudnorm",
-      "command": "bash scripts/audio/loudnorm.sh /tmp/bp/out/hawk-package/programme_unnorm.mp4 /tmp/bp/out/hawk-package/Hawk.mp4",
+      "command": "bash scripts/audio/loudnorm.sh /root/video-pipeline-blueprint/out/hawk/programme_unnorm.mp4 /root/video-pipeline-blueprint/out/hawk/Hawk.mp4",
       "exitCode": 0,
       "ok": true
     },
     {
       "name": "flicker gate",
-      "command": "python3 scripts/qa/luma_blink.py /tmp/bp/out/hawk-package/Hawk.mp4 --thresh 12 --region full --cut-frames 1258,3046,4746,6441,9392,12140,14556,16628,18719,19952,21946",
+      "command": "python3 scripts/qa/luma_blink.py /root/video-pipeline-blueprint/out/hawk/Hawk.mp4 --thresh 12 --region full --cut-frames 1259,3047,4746,6441,9392,12140,14556,16628,18719,19952,21946",
       "exitCode": 0,
       "ok": true
     },
@@ -137,12 +160,12 @@
     }
   ],
   "numbers": {
-    "tree": "a5cb188879654890",
+    "tree": "08328fc7f3ee0921",
     "seconds": 757.37,
     "scoreReused": false,
     "stem": {
       "mode": "stem",
-      "path": "/tmp/bp/out/hawk-package/score.wav",
+      "path": "/root/video-pipeline-blueprint/out/hawk/score.wav",
       "full_median_db": -25.09,
       "audible_median_db": -27.85,
       "audible_share": 0.631,
@@ -150,14 +173,14 @@
       "pass": true
     },
     "segments": {
-      "reused": 0,
-      "rendered": 12,
+      "reused": 12,
+      "rendered": 0,
       "scenes": 12,
       "frames": 22721
     },
     "renderedSeconds": 757.367,
     "mix": {
-      "out": "/tmp/bp/out/hawk-package/mix.wav",
+      "out": "/root/video-pipeline-blueprint/out/hawk/mix.wav",
       "sampleRate": 48000,
       "seconds": 758.56,
       "narrationSeconds": 757.36,
@@ -175,8 +198,8 @@
     },
     "mixGate": {
       "mode": "mix",
-      "mix": "/tmp/bp/out/hawk-package/mix.wav",
-      "narration": "public/voice/hawk_narration.wav",
+      "mix": "/root/video-pipeline-blueprint/out/hawk/mix.wav",
+      "narration": "/root/video_project/singles/hawk/assets/audio/narration.wav",
       "speech_db": -15.42,
       "gap_full_db": -25.2,
       "gap_audible_db": -28.19,
@@ -190,8 +213,8 @@
       "p99": 0.1385,
       "max": 25.99,
       "cutFrames": [
-        1258,
-        3046,
+        1259,
+        3047,
         4746,
         6441,
         9392,
@@ -209,18 +232,24 @@
       "hawk.chapters.ffmeta.txt",
       "cover.png"
     ],
+    "content": {
+      "id": "hawk",
+      "pack": "singles/hawk",
+      "commit": "b7f6ced8ccdf121e37b84c6a920f3626091a6d53",
+      "dirty": 0
+    },
     "inputs": {
       "src": {
-        "files": 69,
-        "sha256": "1f56e28906fb5b9e"
+        "files": 153,
+        "sha256": "feab220926184123"
       },
       "data": {
-        "files": 31,
-        "sha256": "e050234cb188369a"
+        "files": 116,
+        "sha256": "c3f81be1f6fe91bb"
       },
       "scripts": {
-        "files": 50,
-        "sha256": "c267f386a4c4e2d2"
+        "files": 47,
+        "sha256": "5b6cbb7cfadabae7"
       }
     }
   },

@@ -1,0 +1,219 @@
+{
+  "generatedAt": "2026-10-26T17:26:11.518Z",
+  "composition": "Quickselect",
+  "film": {
+    "id": "quickselect",
+    "pack": "singles/quickselect",
+    "series": null
+  },
+  "out": "out/quickselect",
+  "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --film=quickselect",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "score",
+      "command": "node scripts/audio/render_music.mjs --out=/root/video-pipeline-blueprint/out/quickselect/score.wav --duration=641 --seed=11 --energy=0.8 --bpm=84 --prog=minor",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video-pipeline-blueprint/out/quickselect/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=Quickselect --script=src/quickselect/script.ts --out=/root/video-pipeline-blueprint/out/quickselect/scenes --output=/root/video-pipeline-blueprint/out/quickselect/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video-pipeline-blueprint/out/quickselect/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 1921",
+      "command": "npx remotion still Quickselect /root/video-pipeline-blueprint/out/quickselect/stills/frame_1921.png --frame=1921 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 8646",
+      "command": "npx remotion still Quickselect /root/video-pipeline-blueprint/out/quickselect/stills/frame_8646.png --frame=8646 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 15371",
+      "command": "npx remotion still Quickselect /root/video-pipeline-blueprint/out/quickselect/stills/frame_15371.png --frame=15371 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs --compositions=Quickselect --frames=1921,8646,15371",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /root/video-pipeline-blueprint/out/quickselect/raw_video.mp4 -i /root/video-pipeline-blueprint/out/quickselect/score.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video-pipeline-blueprint/out/quickselect/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /root/video-pipeline-blueprint/out/quickselect/programme_unnorm.mp4 /root/video-pipeline-blueprint/out/quickselect/Quickselect.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /root/video-pipeline-blueprint/out/quickselect/Quickselect.mp4 --thresh 12 --region full --cut-frames 1269,2836,4310,6009,7597,9507,11185,12800,14646,16336,18073",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=Quickselect --script=src/quickselect/script.ts --prefix=quickselect",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "08328fc7f3ee0921",
+    "seconds": 640.47,
+    "scoreReused": false,
+    "stem": {
+      "mode": "stem",
+      "path": "/root/video-pipeline-blueprint/out/quickselect/score.wav",
+      "full_median_db": -25.08,
+      "audible_median_db": -27.86,
+      "audible_share": 0.631,
+      "sub_share": 0.068,
+      "pass": true
+    },
+    "segments": {
+      "reused": 0,
+      "rendered": 12,
+      "scenes": 12,
+      "frames": 19214
+    },
+    "renderedSeconds": 640.467,
+    "narration": "absent (film declares none)",
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0159,
+      "p99": 0.159,
+      "max": 6.85,
+      "cutFrames": [
+        1269,
+        2836,
+        4310,
+        6009,
+        7597,
+        9507,
+        11185,
+        12800,
+        14646,
+        16336,
+        18073
+      ]
+    },
+    "exports": [
+      "quickselect.srt",
+      "quickselect.chapters.txt",
+      "quickselect.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "content": {
+      "id": "quickselect",
+      "pack": "singles/quickselect",
+      "commit": "b7f6ced8ccdf121e37b84c6a920f3626091a6d53",
+      "dirty": 1
+    },
+    "inputs": {
+      "src": {
+        "files": 153,
+        "sha256": "feab220926184123"
+      },
+      "data": {
+        "files": 116,
+        "sha256": "5682ba284b9e6752"
+      },
+      "scripts": {
+        "files": 47,
+        "sha256": "5b6cbb7cfadabae7"
+      }
+    }
+  },
+  "pass": true
+}
