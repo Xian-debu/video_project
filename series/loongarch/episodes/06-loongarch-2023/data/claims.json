@@ -1,0 +1,180 @@
+{
+ "claims": [
+  {
+   "id": "year",
+   "scene": "timeline",
+   "onScreen": "2023",
+   "value": 2023,
+   "quote": "2023",
+   "where": "刊头 2023 年"
+  },
+  {
+   "id": "insn-count",
+   "scene": "paper",
+   "onScreen": "≈2000 条",
+   "value": 2000,
+   "quote": "共计近 2 000 条指令",
+   "where": "引言，基础集加四个扩展"
+  },
+  {
+   "id": "encoding-formats",
+   "scene": "encoding",
+   "onScreen": "9 种格式",
+   "value": 9,
+   "quote": "9 种典型的指令编码格式",
+   "where": "1.1 节"
+  },
+  {
+   "id": "fixed-length",
+   "scene": "encoding",
+   "onScreen": "32 位定长",
+   "value": 32,
+   "quote": "所 有 指 令 长 度 均 为 32 位",
+   "where": "1.1 节"
+  },
+  {
+   "id": "process",
+   "scene": "paper",
+   "onScreen": "12nm",
+   "value": 12,
+   "quote": "12 nm",
+   "where": "2.1 节，3A5000 工艺"
+  },
+  {
+   "id": "clock",
+   "scene": "paper",
+   "onScreen": "2.3–2.5GHz",
+   "value": 2.5,
+   "quote": "主频为 2.5 GHz",
+   "where": "4.1 节"
+  },
+  {
+   "id": "l3",
+   "scene": "paper",
+   "onScreen": "16MB L3",
+   "value": 16,
+   "quote": "三级缓存容量为 16 MB",
+   "where": "4.1 节"
+  },
+  {
+   "id": "roq",
+   "scene": "paper",
+   "onScreen": "128 项 ROQ",
+   "value": 128,
+   "quote": "重排序缓存为 128 项",
+   "where": "2.1 节，LA464"
+  },
+  {
+   "id": "prf",
+   "scene": "paper",
+   "onScreen": "128 项 PRF",
+   "value": 128,
+   "quote": "物理寄存器堆各 128 项",
+   "where": "2.1 节，定点与浮点各一"
+  },
+  {
+   "id": "lbt-sub",
+   "scene": "lbt",
+   "onScreen": "近 30 条 → 4 条",
+   "value": 30,
+   "quote": "近 30 条",
+   "where": "2.2 节，纯软件模拟 SUB 加四个标志"
+  },
+  {
+   "id": "latm-native",
+   "scene": "latm",
+   "onScreen": "原生 91%",
+   "value": 91,
+   "quote": "的 91%",
+   "where": "4.4.1 节，LATM 平均速度"
+  },
+  {
+   "id": "latx-int",
+   "scene": "latx",
+   "onScreen": "定点 65.5%",
+   "value": 65.5,
+   "quote": "65.5% 和 70.3%",
+   "where": "4.4.2 节，LATX 相对原生"
+  },
+  {
+   "id": "latx-fp",
+   "scene": "latx",
+   "onScreen": "浮点 70.3%",
+   "value": 70.3,
+   "quote": "65.5% 和 70.3%",
+   "where": "4.4.2 节，LATX 相对原生"
+  },
+  {
+   "id": "latx-qemu-int",
+   "scene": "latx",
+   "onScreen": "QEMU 的 3.6×",
+   "value": 3.6,
+   "quote": "3.6 倍",
+   "where": "4.4.2 节，LATX 定点相对 QEMU"
+  },
+  {
+   "id": "latx-qemu-fp",
+   "scene": "latx",
+   "onScreen": "QEMU 的 40.7×",
+   "value": 40.7,
+   "quote": "40.7 倍",
+   "where": "4.4.2 节，LATX 浮点相对 QEMU"
+  },
+  {
+   "id": "spec-int",
+   "scene": "performance",
+   "onScreen": "SPECint +74.8%",
+   "value": 74.8,
+   "quote": "74.8",
+   "where": "表 3，单核定点几何平均"
+  },
+  {
+   "id": "spec-fp",
+   "scene": "performance",
+   "onScreen": "SPECfp +68.7%",
+   "value": 68.7,
+   "quote": "68.7",
+   "where": "表 3，单核浮点几何平均"
+  },
+  {
+   "id": "unixbench",
+   "scene": "performance",
+   "onScreen": "UnixBench +113.6%",
+   "value": 113.6,
+   "quote": "113.6",
+   "where": "表 5，单线程几何平均"
+  },
+  {
+   "id": "fpga-isa-gain",
+   "scene": "performance",
+   "onScreen": "同微结构 +7%",
+   "value": 7,
+   "quote": "平均提升超过 7%",
+   "where": "摘要与 4.2 节，20MHz FPGA"
+  },
+  {
+   "id": "source-packages",
+   "scene": "ecosystem",
+   "onScreen": "24,300+ 源码包",
+   "value": 24300,
+   "quote": "24 300 多个",
+   "where": "3.3 节，Loongnix 构建"
+  },
+  {
+   "id": "binary-packages",
+   "scene": "ecosystem",
+   "onScreen": "58,100+ 二进制包",
+   "value": 58100,
+   "quote": "58 100 多个",
+   "where": "3.3 节，Loongnix 构建"
+  },
+  {
+   "id": "adapted-lines",
+   "scene": "ecosystem",
+   "onScreen": "40 万行适配",
+   "value": 400000,
+   "quote": "40 万行",
+   "where": "3.3 节，架构相关适配源码量"
+  }
+ ]
+}
