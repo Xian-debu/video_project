@@ -31,7 +31,7 @@
     "data/evidence.json"
   ],
   "derivedNote": "六集 claims 文本回查；不是芯片实测",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },
