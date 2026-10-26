@@ -122,41 +122,43 @@ const Cache: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame
   );
 };
 
-/** 多核 NoC：核、路由器、目录。 */
+/** 多核 NoC：2×2 节点网格，每个节点 4 核 + 4 个 L2 bank。 */
 const Noc: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }) => {
-  const cols = 4;
-  const rows = 3;
-  const x0 = 300;
-  const y0 = 150;
-  const dx = 220;
-  const dy = 120;
-  const t = (frame % 160) / 160;
+  const cols = 2;
+  const rows = 2;
+  const x0 = 620;
+  const y0 = 210;
+  const dx = 520;
+  const dy = 190;
+  const t = (frame % 200) / 200;
+  const nodes = [
+    { x: x0, y: y0 },
+    { x: x0 + dx, y: y0 },
+    { x: x0, y: y0 + dy },
+    { x: x0 + dx, y: y0 + dy },
+  ];
   return (
     <g>
-      <Label x={W / 2} y={76} size={24} fill={S.inkDim}>4×3 网格：每个节点既是核，也是路由器</Label>
-      {Array.from({ length: cols * rows }).map((_, i) => {
-        const c = i % cols;
-        const r = Math.floor(i / cols);
-        const x = x0 + c * dx;
-        const y = y0 + r * dy;
-        const hot = Math.floor(t * 12) === i;
+      <Label x={W / 2} y={72} size={24} fill={S.inkDim}>2×2 网格：四个节点，十六颗核</Label>
+      {nodes.map((n, i) => {
+        const hot = Math.floor(t * 8) % 4 === i;
         return (
           <g key={i}>
-            {c < cols - 1 ? <line x1={x + 44} y1={y} x2={x + dx - 44} y2={y} stroke={S.line} strokeWidth={2} /> : null}
-            {r < rows - 1 ? <line x1={x} y1={y + 34} x2={x} y2={y + dy - 34} stroke={S.line} strokeWidth={2} /> : null}
-            <rect x={x - 36} y={y - 30} width={72} height={60} rx={8} fill={hot ? TONE.cyan.bg : S.panel} stroke={hot ? S.cyan : S.line} strokeWidth={hot ? 3 : 2} />
-            <Label x={x} y={y + 8} size={20} fill={S.ink}>{i < 4 ? "C" + i : "c" + i}</Label>
+            <rect x={n.x - 180} y={n.y - 78} width={360} height={156} rx={14} fill={hot ? TONE.cyan.bg : S.panel} stroke={hot ? S.cyan : S.line} strokeWidth={hot ? 3 : 2} />
+            <Label x={n.x} y={n.y - 34} size={26} fill={S.ink}>节点 {i}</Label>
+            <Label x={n.x} y={n.y + 6} size={21} fill={S.inkDim}>4 × GS464 + 4 × L2</Label>
+            <Label x={n.x} y={n.y + 38} size={18} fill={S.dim}>8×8 crossbar · 4 拍</Label>
           </g>
         );
       })}
-      <circle cx={x0} cy={y0} r={7} fill={S.amber} />
-      <Label x={x0 + 1.5 * dx} y={y0 + 2 * dy + 78} size={23} fill={S.faint}>包沿链路逐跳前进；目录负责记录哪块数据在哪个核的缓存里</Label>
-      <rect x={70} y={170} width={170} height={150} rx={12} fill={S.panel} stroke={S.line} />
-      <Label x={155} y={210} size={22} fill={S.amber}>目录</Label>
-      <Label x={155} y={248} size={18} fill={S.dim}>directory</Label>
-      <Label x={155} y={278} size={18} fill={S.dim}>一致性</Label>
-      <line x1={240} y1={240} x2={x0 - 40} y2={y0} stroke={S.line} strokeDasharray="6 6" />
-      {items[0]?.note ? <Label x={W / 2} y={520} size={23} fill={S.amber}>{items[0].note}</Label> : null}
+      <line x1={x0 + 184} y1={y0} x2={x0 + dx - 184} y2={y0} stroke={S.line} strokeWidth={3} />
+      <line x1={x0 + 184} y1={y0 + dy} x2={x0 + dx - 184} y2={y0 + dy} stroke={S.line} strokeWidth={3} />
+      <line x1={x0} y1={y0 + 82} x2={x0} y2={y0 + dy - 80} stroke={S.line} strokeWidth={3} />
+      <line x1={x0 + dx} y1={y0 + 82} x2={x0 + dx} y2={y0 + dy - 80} stroke={S.line} strokeWidth={3} />
+      <circle cx={x0 + dx / 2} cy={y0} r={7} fill={S.amber} />
+      <circle cx={x0} cy={y0 + dy / 2} r={7} fill={S.amber} />
+      <Label x={W / 2} y={510} size={23} fill={S.faint}>节点内 crossbar，节点间走四条方向；4×4 网格可扩到 64 核</Label>
+      <Label x={W / 2} y={545} size={22} fill={S.amber}>四核版 = 1 个节点；八核 = 2；十六核 = 4</Label>
     </g>
   );
 };
@@ -164,6 +166,7 @@ const Noc: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }
 /** 二进制翻译：guest → 翻译层 → host；硬件只补最贵的语义缺口。 */
 const Translation: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }) => {
   const t = (frame % 120) / 120;
+  const host = items[0]?.host ?? "host 指令";
   return (
     <g>
       <Label x={W / 2} y={74} size={24} fill={S.inkDim}>同一份 guest 二进制，经过翻译层落到 host 指令</Label>
@@ -178,12 +181,12 @@ const Translation: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items,
             <Label x={210} y={y + 58} size={17} fill={S.dim}>{it.note ?? ""}</Label>
             <Arrow x1={348} y1={y + 36} x2={508} y2={y + 36} color={active ? col : S.line} />
             <rect x={516} y={y} width={430} height={72} rx={12} fill={active ? TONE.violet.bg : S.panel} stroke={active ? S.violet : S.line} strokeWidth={active ? 3 : 2} />
-            <Label x={731} y={y + 30} size={24} fill={S.ink}>{it.value ?? "翻译 / 动态二进制翻译"}</Label>
-            <Label x={731} y={y + 58} size={17} fill={S.dim}>翻译块缓存 · 语义等价 · 热点提炼</Label>
+            <Label x={731} y={y + 32} size={24} fill={S.ink}>{it.value ?? "翻译 / 动态二进制翻译"}</Label>
+            <Label x={731} y={y + 58} size={17} fill={S.dim}>语义等价 · 热点提炼 · 翻译块缓存</Label>
             <Arrow x1={954} y1={y + 36} x2={1114} y2={y + 36} color={active ? col : S.line} />
-            <rect x={1122} y={y} width={240} height={72} rx={12} fill={S.panel} stroke={S.line} />
-            <Label x={1242} y={y + 32} size={23} fill={S.ink}>host 指令</Label>
-            <Label x={1242} y={y + 58} size={17} fill={S.dim}>LoongArch</Label>
+            <rect x={1122} y={y} width={260} height={72} rx={12} fill={S.panel} stroke={S.line} />
+            <Label x={1252} y={y + 32} size={23} fill={S.ink}>{host}</Label>
+            <Label x={1252} y={y + 58} size={17} fill={S.dim}>host 指令</Label>
           </g>
         );
       })}
@@ -193,7 +196,6 @@ const Translation: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items,
   );
 };
 
-/** 指令系统契约：应用/编译器/OS/ISA/硬件，契约边界画清楚。 */
 const Isa: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }) => {
   const t = (frame % 140) / 140;
   const layers = items.length ? items : [];
@@ -247,6 +249,7 @@ const Lineage: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, fra
     </g>
   );
 };
+
 
 
 /** Cache 别名：两个虚地址索引到不同行，却映射同一个物理页。 */

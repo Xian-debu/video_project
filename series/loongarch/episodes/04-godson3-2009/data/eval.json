@@ -1,0 +1,32 @@
+{
+ "year": 2009,
+ "cores": 4,
+ "process": 65,
+ "metal": 7,
+ "transistors": 425,
+ "die": 14240,
+ "dieWidth": 12205,
+ "clock": 1,
+ "crossbar": 8,
+ "hop": 4,
+ "nodes4": 1,
+ "nodes8": 2,
+ "nodes16": 4,
+ "mesh16": 16,
+ "mesh64": 64,
+ "x86SubInsns": 40,
+ "fp80Insns": 40,
+ "topSavedInsns": 10,
+ "emuPct": 70,
+ "process2f8": 90,
+ "transistors2f8": 51,
+ "die2f8": 42,
+ "power2f8": [
+  3,
+  5
+ ],
+ "spec2f8": 500,
+ "l2_2f8": 512,
+ "fpgaMHz": 50,
+ "reconfigWindows": 8
+}

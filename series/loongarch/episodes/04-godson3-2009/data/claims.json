@@ -1,0 +1,180 @@
+{
+ "claims": [
+  {
+   "id": "year",
+   "scene": "timeline",
+   "onScreen": "2009",
+   "value": 2009,
+   "quote": "2009",
+   "where": "刊头 IEEE Micro 2009"
+  },
+  {
+   "id": "cores",
+   "scene": "open",
+   "onScreen": "四核",
+   "value": 4,
+   "quote": "four-core Godson-3",
+   "where": "摘要与第 1 节"
+  },
+  {
+   "id": "process",
+   "scene": "limits",
+   "onScreen": "65 纳米",
+   "value": 65,
+   "quote": "seven-metal 65-nm",
+   "where": "第 2 节工艺段"
+  },
+  {
+   "id": "transistors",
+   "scene": "limits",
+   "onScreen": "425M",
+   "value": 425,
+   "quote": "425 mil-",
+   "where": "第 2 节；OCR 把 million 断成 mil- / lion"
+  },
+  {
+   "id": "die",
+   "scene": "limits",
+   "onScreen": "14.24×12.205 毫米",
+   "value": 14240,
+   "quote": "14,240 micrometers by 12,205",
+   "where": "第 2 节"
+  },
+  {
+   "id": "clock",
+   "scene": "thesis",
+   "onScreen": "1GHz",
+   "value": 1,
+   "quote": "1.0 GHz",
+   "where": "第 2 节"
+  },
+  {
+   "id": "crossbar",
+   "scene": "node",
+   "onScreen": "8×8 crossbar",
+   "value": 8,
+   "quote": "crossbar connecting four processor",
+   "where": "第 3 节；原文 an 8×8 crossbar"
+  },
+  {
+   "id": "hop",
+   "scene": "node",
+   "onScreen": "4 拍",
+   "value": 4,
+   "quote": "four hops",
+   "where": "第 3 节"
+  },
+  {
+   "id": "nodes4",
+   "scene": "node",
+   "onScreen": "四核=1 节点",
+   "value": 1,
+   "quote": "The four-core, eight-core, and 16-core",
+   "where": "第 3 节"
+  },
+  {
+   "id": "nodes16",
+   "scene": "mesh",
+   "onScreen": "16 核=2×2",
+   "value": 16,
+   "quote": "eight-, and 16-core product chips",
+   "where": "第 1 节"
+  },
+  {
+   "id": "mesh64",
+   "scene": "mesh",
+   "onScreen": "64 核",
+   "value": 64,
+   "quote": "mesh network can support a 64-core",
+   "where": "第 1 节；原文 a 4×4 mesh"
+  },
+  {
+   "id": "x86sub",
+   "scene": "xlate_problem",
+   "onScreen": "约 40 条",
+   "value": 40,
+   "quote": "40 MIPS instructions",
+   "where": "第 4 节 x86 SUB 例子"
+  },
+  {
+   "id": "fp80",
+   "scene": "xlate_problem",
+   "onScreen": "超过 40 条",
+   "value": 40,
+   "quote": "more than 40 integer",
+   "where": "第 4 节 80 位浮点转换"
+  },
+  {
+   "id": "top",
+   "scene": "xlate_hw",
+   "onScreen": "少翻十几条",
+   "value": 10,
+   "quote": "more than 10 instructions",
+   "where": "第 4 节 x87 TOP 指针"
+  },
+  {
+   "id": "emu",
+   "scene": "xlate_hw",
+   "onScreen": "70%",
+   "value": 70,
+   "quote": "nearly 70 percent",
+   "where": "第 4 节；作者注明 preliminary"
+  },
+  {
+   "id": "fpga",
+   "scene": "reconfig",
+   "onScreen": "50MHz FPGA",
+   "value": 50,
+   "quote": "50 MHz",
+   "where": "第 5 节可重构原型"
+  },
+  {
+   "id": "proc2f8",
+   "scene": "product",
+   "onScreen": "90 纳米",
+   "value": 90,
+   "quote": "based on 90-nm",
+   "where": "第 2 节单核 2F8 段"
+  },
+  {
+   "id": "tr2f8",
+   "scene": "product",
+   "onScreen": "51M",
+   "value": 51,
+   "quote": "51 mil-",
+   "where": "第 2 节单核 2F8 段"
+  },
+  {
+   "id": "die2f8",
+   "scene": "product",
+   "onScreen": "42mm²",
+   "value": 42,
+   "quote": "42 square",
+   "where": "第 2 节单核 2F8 段"
+  },
+  {
+   "id": "power2f8",
+   "scene": "product",
+   "onScreen": "3–5W",
+   "value": 3,
+   "quote": "3 to 5 watts",
+   "where": "第 2 节单核 2F8 段"
+  },
+  {
+   "id": "spec2f8",
+   "scene": "product",
+   "onScreen": "超过 500",
+   "value": 500,
+   "quote": "more than 500",
+   "where": "第 2 节单核 2F8 段"
+  },
+  {
+   "id": "l2_2f8",
+   "scene": "product",
+   "onScreen": "512KB L2",
+   "value": 512,
+   "quote": "512-Kbyte L2",
+   "where": "第 2 节单核 2F8 段"
+  }
+ ]
+}

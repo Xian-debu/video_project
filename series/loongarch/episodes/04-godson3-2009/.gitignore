@@ -6,3 +6,6 @@ __pycache__/
 /delivery/*.work
 /out/
 /assets/audio/clips/
+/data/lines.json
+/data/clips.local.json
+/data/noc_sim.json

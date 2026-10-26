@@ -1,43 +1,63 @@
 {
-  "schemaVersion": 1,
-  "id": "godson3",
-  "kind": "series-episode",
-  "title": "Godson-3：多核、NoC 与 x86 翻译",
-  "series": {
-    "id": "loongarch",
-    "order": 4,
-    "dir": "04-godson3-2009"
-  },
-  "composition": "Godson3",
-  "entry": "src/Godson3.tsx",
-  "exports": {
-    "component": "Godson3",
-    "total": "TOTAL",
-    "fps": "FPS"
-  },
-  "width": 1920,
-  "height": 1080,
-  "fps": 30,
-  "prefix": "godson3",
-  "status": "draft",
-  "paper": null,
-  "claims": null,
-  "derive": [],
-  "derived": [],
-  "derivedNote": "无派生文件",
-  "narration": null,
-  "audio": {
-    "music": null
-  },
-  "delivery": "delivery",
-  "docs": [
-    "docs/plan.md"
+ "schemaVersion": 1,
+ "id": "godson3",
+ "kind": "series-episode",
+ "title": "Godson-3：把四颗核连成一台机器",
+ "series": {
+  "id": "loongarch",
+  "order": 4,
+  "dir": "04-godson3-2009"
+ },
+ "composition": "Godson3",
+ "entry": "src/Godson3.tsx",
+ "exports": {
+  "component": "Godson3",
+  "total": "TOTAL",
+  "fps": "FPS"
+ },
+ "width": 1920,
+ "height": 1080,
+ "fps": 30,
+ "prefix": "godson3",
+ "status": "draft",
+ "paper": {
+  "title": "Godson-3: A Scalable Multicore RISC Processor with x86 Emulation",
+  "authors": [
+   "Weiwu Hu",
+   "Rui Wang",
+   "Yunji Chen",
+   "et al."
   ],
-  "bili": null,
-  "assetsStatus": "complete",
-  "paths": {
-    "src": "src",
-    "data": "data",
-    "public": "assets/public"
+  "venue": "IEEE Micro, 2009, 29(2)",
+  "year": 2009,
+  "pdf": "data/paper.txt"
+ },
+ "claims": {
+  "ledger": "data/claims.json",
+  "paper": "data/paper.txt"
+ },
+ "derive": [
+  {
+   "command": "python3 build/noc_sim.py"
   }
+ ],
+ "derived": [
+  "data/noc_sim.json"
+ ],
+ "derivedNote": "结构模型输出；不是芯片实测",
+ "narration": "assets/audio/narration.wav",
+ "audio": {
+  "music": null
+ },
+ "delivery": "delivery",
+ "docs": [
+  "docs/plan.md"
+ ],
+ "bili": null,
+ "assetsStatus": "complete",
+ "paths": {
+  "src": "src",
+  "data": "data",
+  "public": "assets/public"
+ }
 }

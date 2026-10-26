@@ -23,6 +23,8 @@ export type DiagramItem = {
   value?: string;
   note?: string;
   tone?: "cyan" | "amber" | "violet" | "dim";
+  /** translation 图专用：右侧 host 指令系统名称。 */
+  host?: string;
 };
 
 export type SceneContent =

@@ -1,0 +1,1060 @@
+    ...................................................................................................................................................................................................................
+
+
+
+                          GODSON-3: A SCALABLE MULTICORE
+                             RISC PROCESSOR WITH X86
+                                    EMULATION
+........................................................................................................................................................................................................................
+                                                                         THE GODSON-3 MICROPROCESSOR AIMS AT HIGH-THROUGHPUT SERVER APPLICATIONS,
+
+                                                                         HIGH-PERFORMANCE SCIENTIFIC COMPUTING, AND HIGH-END EMBEDDED APPLICATIONS.
+
+                                                                         IT OFFERS A SCALABLE NETWORK ON CHIP, HARDWARE SUPPORT FOR X86 EMULATION,
+
+                                                                         AND A RECONFIGURABLE ARCHITECTURE. THE FOUR-CORE GODSON-3 CHIP IS FABRICATED
+
+                                                                         WITH 65-NM CMOS TECHNOLOGY. EIGHT- AND 16-CORE GODSON-3 CHIPS ARE IN
+
+                                                                         DEVELOPMENT.
+
+
+                                                                         ......      Godson-3 is the third generation
+                                                                         of the Godson microprocessor series, a proj-
+                                                                                                                                                   a 4  4 mesh network can support a 64-core
+                                                                                                                                                   processor. We’ve already defined the four-,
+                                                                         ect of the Institute of Computing Technol-                                eight-, and 16-core product chips, and
+                                                                         ogy at the Chinese Academy of Sciences.                                   we’ve designed and fabricated four-core
+                                      Weiwu Hu                           As a multicore processor, Godson-3 targets                                Godson-3 based on 65-nm CMOS technol-
+                                                                         high-throughput server applications, high-                                ogy. The eight- and 16-core Godson-3 chips
+                                      Jian Wang                          performance scientific computing, and                                     are still in physical implementation.
+                                                                         high-end embedded applications.
+                                       Xiang Gao                            Godson-3’s scalable and distributed on-                                CPU core features
+                                                                         chip network connects processor cores and                                     The GS464 is a general-purpose processor
+                                      Yunji Chen                         globally addressed level-two (L2) cache mod-                              core, upgraded from the Godson-2 micro-
+                                                                         ules. A directory-based cache-coherence pro-                              processor. The GS464’s four-way superscalar
+                                           Qi Liu                        tocol maintains multiple level-one (L1)                                   execution mechanism has extremely high
+                                                                         copies of the same L2 block. Godson-3’s                                   requirements for resolving interinstruction de-
+                                         Guojie Li                       MIPS64-compatible superscalar reduced-                                    pendency and providing instructions and data.
+                                                                         instruction-set-computing (RISC) processor                                It therefore uses out-of-order execution and ag-
+                            Institute of Computing                       core is designed for high performance and                                 gressive cache design to improve pipeline effi-
+                                                                         low power dissipation. It also supports effi-                             ciency, as other modern microprocessors do.1-6
+                              Technology, Chinese                        cient x86 to MIPS binary translation through                                  The GS464 out-of-order execution scheme
+                                                                         dedicated hardware support.                                               combines register renaming, dynamic sched-
+                             Academy of Sciences                            Godson-3 adopts the scalable mesh of                                   uling,7 and branch prediction. GS464 has
+                                                                         crossbar (SMOC) on-chip network topology.                                 a 64-entry physical register file for fixed-
+                                                                         Using the SMOC architecture, a 2  2 mesh                                 point and floating-point register mapping.
+                                                                         network can support a 16-core processor, and                              In GS464, the 16-entry fixed-point reservation
+                                                                                                                                                                              ...................................................................
+
+                                                    
+                        0272-1732/09/$25.00 c 2009 IEEE                                           Published by the IEEE Computer Society                                                                           17
+
+  Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                        ...............................................................................................................................................................................................
+                        HOT CHIPS 20
+
+
+
+                                                                        station and the 16-entry floating-point reser-                            cache, a 333-MHz DDR2 controller, and a
+                                                                        vation station issue instructions out of order,                           PCI/PCIX controller—is based on 90-nm
+                                                                        whereas the 64-entry reorder queue commits                                CMOS technology. It achieves 1 GHz with
+                                                                        out-of-order executed instructions in pro-                                both SPECint2000 and SPECfp2000 scores
+                                                                        gram order. GS464 also implements a 16-                                   of more than 500. The chip includes 51 mil-
+                                                                        entry branch target buffer, an 8-Kbyte entry                              lion transistors and has a die size of 42 square
+                                                                        branch history table, a 9-bit global history                              millimeters. It consumes from 3 to 5 watts
+                                                                        register, and a 4-entry return address stack                              depending on the application.
+                                                                        for branch prediction.
+                                                                            GS464 has two fixed-point functional                                  Hardware support for x86 to MIPS binary
+                                                                        units and two floating-point functional units.                            translation
+                                                                        Both fixed-point units execute addition,                                      To support x86 emulation, Godson-3 pro-
+                                                                        subtraction, logical, shift, and compar-                                  vides hardware support for binary translation
+                                                                        ison instructions. In addition, the first                                 from x86 to MIPS in its GS464 core. Al-
+                                                                        fixed-point arithmetic logic unit (ALU1)                                  though the Crusoe processor supports transla-
+                                                                        executes trap, conditional move, and branch                               tion from x86 to VLIW,9 no commercial
+                                                                        instructions; the second (ALU2) executes                                  RISC processor provides dedicated support
+                                                                        multiplication and division instructions.                                 for x86 emulation because of the difference
+                                                                        The first floating-point unit (FALU1) can                                 between x86 and RISC.1-5 Because some
+                                                                        execute all floating-point instructions; the                              x86-related features aren’t present in MIPS
+                                                                        second floating-point unit (FALU2) can exe-                               (EFlags, the floating-point register stack,
+                                                                        cute floating-point addition, subtraction, and                            segment addressing mode, and so on),
+                                                                        multiplication instructions.                                              software-based translation from x86 binary to
+                                                                            The GS464 memory system supports 64-                                  MIPS binary is inefficient.10,11 In many
+                                                                        bit virtual addresses and 48-bit physical                                 cases, translating an x86 instruction requires
+                                                                        addresses, and can access a 128-bit quad                                  tens of MIPS instructions because of the dif-
+                                                                        word in one cycle. GS464 has a 64-Kbyte                                   ference between the x86 and MIPS ISAs.
+                                                                        L1 instruction cache and a 64-Kbyte L1                                    Godson-3’s x86 binary translator smoothes
+                                                                        data cache; both are four-way set associative.                            translation from x86 binary to MIPS binary
+                                                                        GS464’s fully associative translation look-                               with minimal hardware support. To achieve
+                                                                        aside buffer (TLB) has 64 entries, each of                                this, GS464 defines new instructions and
+                                                                        which maps an odd page and an even page.                                  runtime environments through the MIPS64
+                                                                        The 24-entry memory-access queue, which                                   user-defined interface (UDI) to bridge the
+                                                                        contains a content-addressable memory for                                 gap between the x86 and MIPS64 ISAs. It
+                                                                        dynamic memory disambiguation, supports                                   defines and implements new instructions in
+                                                                        out-of-order memory access, nonblocking                                   MIPS format for functions that are in x86
+                                                                        cache, and load speculation. GS464’s                                      ISA but not in MIPS64 ISA.
+                                                                        memory-access pipeline includes four cycles:                                  The Godson-3 virtual machine will be
+                                                                        address calculation, TLB and cache reading,                               compatible with x86 at both the ISA level
+                                                                        tag comparison, and write back.                                           and Linux application binary interface
+                                                                            GS464 implements the Enhanced JTAG                                    (ABI) level. We’ll build the system- and
+                                                                        (EJTAG) standard for debugging and perfor-                                process-level virtual machines accordingly.
+                                                                        mance tuning. We implemented error-                                       The ISA-level compatibility is for low-cost
+                                                                        correcting code for the data cache and parity                             PC applications, where Microsoft Windows
+                                                                        check for the instruction cache. We optimized                             is most popular; the Linux ABI-level com-
+                                                                        the CPU core for low power dissipation in the                             patibility is for server applications, where
+                                                                        architectural, logical, and physical design stages.                       Linux servers with x86 processors are most
+                                                                            Figure 1 shows the architecture of the                                popular. Figure 2 shows the Godson-3 bi-
+                                                                        GS464 CPU core.                                                           nary translation system’s software architec-
+                                                                            We designed several CPU chips with differ-                            ture. The process- and system-level virtual
+                                                                        ent process technologies based on the GS464                               machine monitors (VMMs) are imple-
+                                                                        architecture. The Godson-2F8—which inte-                                  mented on Linux, which is improved to pro-
+                                                                        grates the GS464 core, a 512-Kbyte L2                                     vide x86-compatible system calls.
+..................................................................
+
+                        18                      IEEE MICRO
+
+
+
+ Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                                                                                                                                                  Commit bus
+                                                                                                         Reorder queue
+                                             Branch bus
+                                                                                                       BRQ             ROQ                            Write-back bus
+                                                  Decode bus
+                                                                                                   Map bus
+
+                                           BTB                                                                                       ALU1
+                                                                                                                    Integer                             Data
+                        PC+16
+
+
+
+
+                                                                                                       Fix
+                                                                                                      queue         register         ALU2              cache
+
+
+
+                                                                               Register mapper
+                                                                                                                      file
+
+
+
+
+                                                                                                                                                                      Tag compare
+                                           BHT
+                                                     Predecoder
+
+
+                                                                  Decoder
+
+                                                                                                                                      AGU                                           CPU0
+                                PC
+
+
+
+
+                                                                                                                                                                                    queue
+                                          ITLB                                                                     Floating-
+                                                                                                                                     FPU1
+                                                                                                       Float         point
+                                                                                                      queue        register                           DTLB
+                                      Instruction                                                                     file
+                                        cache                                                                                        FPU2
+
+                                                                    Refill bus
+                                                                  imemread                                                                           dmemwrite
+                                                                                                               Processor interface
+                                                                                                                                                     dmemread, duncache
+                                Test controller        EJTAG TAP controller                            ucqueue wtbkqueue missqueue
+
+
+                                         Test interface                       JTAG interface                            AXI interface                        Clock, reset, int, …
+
+
+                                                                  AGU: Address generation unit                    EJTAG: Enhanced JTAG
+                                                                  ALU: Arithmetic logic unit                      FPU: Floating-point unit
+                                                                  BTB: Branch target buffer                       GHR: Global history register
+                                                                  BHT: Branch history table                       ITLB: Instruction translation
+                                                                  BRQ: Bandwidth request                                look-aside buffer
+                                                                  DTLB: Data translation                          RAS: Return address stack
+                                                                        look-aside buffer                         TAP: Test access port
+
+
+                 Figure 1. GS464 microarchitecture. GS464 adopts a nine-stage dynamical pipeline.
+
+
+
+
+                        Microsoft Windows                     Linux applications on x86
+                                                                                                               Linux applications on MIPS
+                         System-level x86                         Process-level x86
+                         virtual machine                           virtual machine
+
+                                                                            Linux on MIPS
+
+                                                                  Enhanced MIPS core
+
+
+
+                 Figure 2. The GS464 virtual machine’s software architecture. The x86 operating systems
+                 and applications are built on MIPS Linux system through virtual machine monitor.
+
+
+
+                Hardware support for EFlag of x86                                                arithmetic calculation, and the branch direc-
+                   A major difference between the x86 and                                        tions of branch instructions are determined
+                MIPS ISAs is that the x86 ISA uses EFlags.                                       according to the EFlag values. MIPS fixed-
+                Most x86 fixed-point arithmetic instructions                                     point arithmetic instructions don’t generate
+                generate 6-bit EFlags as by-products of the                                      EFlags, and MIPS branch instructions decide
+                                                                                                                                                        ....................................................................
+
+                                                                                                                                                   MARCH/APRIL 2009                          19
+
+Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                        ...............................................................................................................................................................................................
+                        HOT CHIPS 20
+
+
+
+
+                              Number of
+                              instructions                                                              Instruction                                                         Comment
+                              0                            SUB                         ECX                         EDX
+                              1                            JE                          X86_target
+
+                               (a)
+
+                              0.00                         SUBU                        Result                      Recx                             Redx
+                              0.01                         SRL                         Rsf                         Result                           31                      /*SF=Result[31]*/
+                              0.02                         BEQ                         Result                      R0                               L1
+                              0.03                         ADD                         Rzf                         R0                               R0                      /*ZF=0*/
+                              0.04                         B                           L2
+                              0.05                         NOP
+                              0.06               L1:       ADDI                        Rzf                         R0                               1                       /*ZF=1*/
+                               .                 .         .                           .                           .                                .                       .
+                               .                 .         .                           .                           .                                .                       .
+                               .                 .         .                           .                           .                                .                       .
+                              0.35                         B                           L8
+                              0.36                         NOP
+                              0.37               L7:       ADDI                        Rcf                         R0                               1                       /*CF=1*/
+                              0.38               L8:       ADD                         Recx                        Result                           R0
+                              1.00                         BNE                         Rzf                         R0                               MIPS_target
+                              1.01                         NOP
+
+                               (b)
+
+                              0.0                          SUBU                        Result                      Recx                             Redx                    /*Generating Sub result*/
+                              0.1                          SETFLAG
+                              0.2                          SUBU                        Reflag                      Recx                             Redx                    /*Generating EFLAGS*/
+                              1.0                          X86JE                       Reflag                      MIPS_target                                              /*Branch on EFLAGS*/
+
+                               (c)
+
+                              0.0                          SUB                         Result                      Recx                             Redx                    /*Generating Sub result*/
+                              0.1                          X86SUB                      Reflag                      Recx                             Redx                    /*Generating EFLAGS*/
+                              1.0                          X86JE                       Reflag                      MIPS_target                                              /*Branch on EFLAGS*/
+
+                               (d)
+
+
+                         Figure 3. Example of EFlag translation: Original x86 program (a); the program translated with standard MIPS code
+                         (b). We can reduce the number of instructions by adding a SetFlag prefix, which turns the SUB instruction into its EFlag
+                         counterpart (c), or by adding a new instruction to define new EFlag counterpart instructions (d). The instructions in boldface
+                         type are new instructions for x86 emulation.
+
+
+
+
+                                                                        branch directions according to the general-                               provides an EFlag counterpart instruction
+                                                                        purpose registers’ values.                                                for each fixed-point arithmetic instruction—
+                                                                           Software simulation of the 6-bit EFlags                                either by adding a SetFlag prefix to the orig-
+                                                                        with MIPS instructions requires tens of                                   inal instruction, or, for frequently used
+                                                                        MIPS instructions. As the x86 program                                     instructions, by defining the EFlag counter-
+                                                                        segment in Figure 3a shows, we need about                                 part instruction. Using new instructions can
+                                                                        40 MIPS instructions to simulate the ‘‘SUB                                significantly reduce the number of translated
+                                                                        ecx, edx’’ instruction to produce the subtrac-                            instructions. For example, adding a SetFlag
+                                                                        tion result and the four most commonly used                               prefix to the SUB R1, R2, R3 instruction
+                                                                        bits of EFlag (SF, ZF, OF, and CF), shown                                 turns the SUB instruction into its EFlag
+                                                                        in Figure 3b.                                                             counterpart, which performs the same calcu-
+                                                                           To reduce the cost of generating the x86                               lation as the original SUB instruction but
+                                                                        EFlags with MIPS instructions, GS464                                      generates x86 EFlags instead of the difference
+..................................................................
+
+                        20                      IEEE MICRO
+
+
+
+ Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                of R2 and R3 (as Figure 3c shows). We can           64-bit floating-point numbers. Transferring
+                also define the new instruction x86SUB              between 80-bit and 64-bit floating-point
+                for generating EFlagS of the subtraction, as        numbers requires more than 40 integer
+                Figure 3d shows.                                    instructions. GS464 defines one instruction
+                   An instruction’s EFlag counterpart can           to transfer an 80-bit floating-point number
+                reuse most of the original instruction’s data       stored in two 64-bit registers to a 64-bit
+                paths, such as register renaming logic, reor-       number kept in one register, and two instruc-
+                der logic, issue logic, and write-back logic.       tions to transfer a 64-bit floating-point num-
+                We only need to slightly adjust the decode          ber to an 80-bit floating-point number that
+                logic and execution unit.                           occupies two registers. Figure 4 shows an
+                   GS464 also defines a set of branch               example of floating-point format translation.
+                instructions corresponding to x86 EFlag-            Without any hardware support, about
+                based branch instructions, such as x86JE.           40 MIPS instructions in Figure 4b are
+                                                                    needed to simulate the three x86 instructions
+                Hardware support for the floating-point format      in Figure 4a, which GS464 can emulate with
+                and register                                        four instructions.
+                    The x87 FPU differs from the FPU of                 The x87 FPU has a 16-bit tag word to in-
+                RISC processors in that it is accessed in a         dicate the contents of each of the eight regis-
+                stack-based way and supports 80-bit floating-       ters in the x87 FPU data-register stack (one
+                point numbers.                                      2-bit tag per register). The tag codes indicate
+                    The x87 FPU instructions (math-related          whether a register contains a valid number,
+                instructions for the x86 architecture) treat        zero, a special floating-point number, or is
+                the eight x87 FPU data registers as the reg-        empty. The x87 FPU uses the tag values to
+                ister stack. It addresses the data registers rel-   detect stack overflow and underflow. GS464
+                ative to the register on the top of the stack,      provides dedicated instructions to simulate
+                and it stores the current top-of-stack reg-         the x87 tag with general-purpose registers
+                ister’s number in the 3-bit TOP field in            and defines a new exception to reflect stack
+                the x87 FPU status word. Maintaining the            overflow or underflow exceptions in tag sim-
+                TOP pointer and calculating the absolute            ulation. Except when turned on explicitly, the
+                register number from the relative register          binary translator can ignore the tag simula-
+                number through software at runtime is               tion because correct programs never raise
+                costly. To solve this problem, GS464 main-          the stack overflow or underflow exception.
+                tains a TOP pointer dynamically. GS464
+                adds the TOP value to the floating-point            Hardware support for x86 multimedia instructions
+                register number in the decode stage. It                 The x86 ISA defines powerful multimedia
+                uses the new register number as a logical reg-      instruction sets such as MMX, streaming
+                ister number to look up the physical register       SIMD extensions (SSE), and SSE2, which dif-
+                number in the register renaming stage. We           fer from the MIPS digital media extension
+                define some instructions to modify the              (MDMX) in application-specific extensions of
+                TOP pointer. GS464 uses a hardware flag             MIPS. GS464 emulates x86 multimedia
+                in the MIPS floating-point control register         instructions using its own multimedia instruc-
+                to indicate whether a register number for           tions with little additional hardware cost.
+                floating-point instructions is relative to              In GS464, multimedia instructions have
+                TOP. The TOP pointer only affects MIPS              similar functions to those in x86 SSE2.
+                instructions translated from x86 instructions.      GS464 defines and implements its multi-
+                With the support of the GS464 floating-             media instructions by extending the fmt
+                point register, the TOP pointer reduces             field in the floating-point operations.
+                more than 10 instructions in each x86               Like MIPS floating-point instructions,
+                floating-point instruction translation. It also     GS464 internal floating-point operations
+                reduces the number of switches between              use a 5-bit fmt field to specify data types.
+                the translator and the generated code.              The fmt values of 16, 17, 20, 21, and 22
+                    The x87 FPU supports 80-bit floating-           represent single-precision floating point,
+                point numbers, whereas MIPS supports                double-precision floating point, fixed-point
+                                                                                                                         ....................................................................
+
+                                                                                                                   MARCH/APRIL 2009                           21
+
+Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                        ...............................................................................................................................................................................................
+                        HOT CHIPS 20
+
+
+
+
+                              Number of
+                              instructions                                                    Instruction                                                            Comment
+                              0                           FLD                           *%R10
+                              1                           FMUL                          *16(%R10)
+                              2                           FSTP                          *%R10
+
+                               (a)
+
+                              0.00                        LD                            Rtmp1                      12(R8)                                            /*convert 1st operand*/
+                              0.01                        LD                            Rtmp2                      4(R8)
+                              0.02                        ANDI                          Rsign                      Rtmp1                                             /*get sign bit and sign bit of
+                                                                                                                                                                     exp*/
+                              0.03                        DSLL32                        Rsign                      Rsign                     16                      /*get biased exponent
+                              .                           .                             .                         .                          .                        .
+                              .                           .                             .                         .                          .                        .
+                              .                           .                             .                         .                          .                        .
+                              0.23                        DMTC1                         F8                         Rfp2
+                              1.00                        MUL.d                         F9                         F7                        F8                      /*64-bit multiply*/
+                              2.00                        DMFC1                         Rres                       F9
+                              2.01                        DSRL32                        Rsign                      Rres                      31                      /*get sign bit*/
+                              .                           .                             .                         .                          .                        .
+                              .                           .                             .                         .                          .                        .
+                              .                           .                             .                         .                          .                        .
+                              2.12                        SD                            Rres1                      12(R8)                                            /*write back result*/
+                              2.13                        SD                            Rres2                      4(R8)
+
+                               (b)
+
+                              0.0                         GSLQC1                         F4                        4(R8)                                              /*128-bit load to F4 and F5*/
+                              0.1                         CVT.d.ld                       F7                        F4                        F5                       /*80-bit to 64-bit convert*/
+                              0.2                         GSLQC1                         F2                        20(R8)                                             /*128-bit load to F2 and F3*/
+                              0.3                         CVT.d.ld                       F8                        F2                        F3                       /*80-bit to 64-bit convert*/
+                              1.0                         MUL.d                          F9                        F7                        F8                       /*64-bit multiplication*/
+                              2.0                         CVT.ud.d                       F7                        F9                                                 /*64-bit to high part of 80-
+                                                                                                                                                                      bit*/
+                              2.1                         CVT.ld.d                       F8                        F9                                                 /*64-bit to low part of 80-bit*/
+                              2.2                         GSSQC1                         F7                        4(R8)                                              /*128-bit store*/
+                               (c)
+
+
+                          Figure 4. Example of 80-bit floating-point operation translation. The original x86 program (a), translated with standard
+                          MIPS code (b), and translated with GS464 floating-point conversion instructions (c). The instructions in boldface are new
+                          instructions for x86 emulation.
+
+
+
+
+                                                                        word, fixed-point long, and paired single-                                MIPS-style unaligned memory-access instruc-
+                                                                        precision floating point, respectively.                                   tions to floating-point registers.
+                                                                        GS464 SIMD multimedia operations extend
+                                                                        the fmt fields in floating-point operations to                            Other hardware support for x86 binary translation
+                                                                        define eight 8-bit or four 16-bit fixed-point                                In addition to support for x86 EFlags,
+                                                                        data units in the 64-bit floating-point data                              floating-point instructions, and multimedia
+                                                                        path. For example, the ADD.fmt operation                                  instructions, GS464 adopts many other tech-
+                                                                        represents ADD.single, ADD.double, or                                     niques to further facilitate x86 emulation.
+                                                                        ADD.PS in MIPS. GS464 extends the oper-
+                                                                        ation to represent ADD.8  8 and ADD.4                                   New addressing mode. The x86 ISA has more
+                                                                        16. To further facilitate emulating x86                                   flexible addressing modes than MIPS. It sup-
+                                                                        multimedia instructions, GS464 extends                                    ports the SIB addressing mode in the form
+..................................................................
+
+                        22                      IEEE MICRO
+
+
+
+ Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                of ‘‘(base) þ (index)  scale þ disp,’’ whereas     data results of the binary translator. Because
+                MIPS only supports the ‘‘(base) þ disp’’            the binary translator stores these codes in the
+                for both fixed-point and floating-point load        data cache, executing them requires flushing
+                and store instructions, and the ‘‘(base) þ          them from the data cache and loading them
+                (index)’’ addressing mode for floating-point        into the instruction cache. However, flushing
+                load and store instructions. To ease the trans-     the data cache through software to keep
+                lation of x86 addressing modes, GS464               coherence between the data and instruction
+                supports the ‘‘(base) þ (index) þ disp8’’           caches is time consuming. Therefore, GS464
+                addressing mode for both fixed-point and            keeps coherence between the data and instruc-
+                floating-point load and store instructions.         tion caches, as well as the L2 cache, through
+                                                                    hardware.
+                Bounded load and store. GS464 supports
+                                                                        Translation of indirect branch instructions
+                bounded load and store instructions, which
+                                                                    is costly because the binary translator must
+                read the bound register as the memory-access
+                                                                    look up the MIPS branch target dynamically
+                boundary in addition to the normal base reg-
+                                                                    according to the x86 branch target from
+                ister and value register. The bounded load
+                                                                    some mapping mechanism, such as a hash
+                and store instructions have the same behav-
+                                                                    table. GS464 implements a 64-entry content-
+                ior as normal load and store instructions,
+                                                                    associated memory (CAM) to speed up
+                except an address exception is raised if
+                                                                    the translation and execution of indirect
+                the memory-access address of a load and
+                                                                    branch instructions. Each CAM entry
+                store instruction exceeds the boundary ad-
+                                                                    includes a process ID field, an address field,
+                dress. The bounded load and store instruc-
+                                                                    and a data field. GS464 provides instructions
+                tions help ease the translation of segment
+                                                                    to read, write, and probe the CAM. Figure 5
+                address mode instructions in x86.
+                                                                    shows an indirect branch target translation.
+                Fixed-point multiplication and division.            GS464 CAM instructions greatly reduce the
+                MIPS fixed-point multiplication and division        complexity of translation results. Although
+                instructions use the special Hi/Lo registers as     we’ve added more codes to handle the
+                destination registers, and MIPS provides            CAM miss situation, they’re rarely executed.
+                instructions to move data between Hi/Lo
+                registers and general-purpose registers.            Binary translation system
+                GS464 implements fixed-point multiplica-                The Godson-3 binary translator is built
+                tion and division instructions, which use           on top of the Linux operating system. We
+                general-purpose registers as destination regis-     improved the Linux operating system based
+                ters to ease the translation of fixed-point mul-    on Godson-3’s MIPS ISA to provide a system
+                tiplication and division x86 instructions.          call compatible with x86 Linux and increase
+                                                                    binary translator efficiency. We implemented
+                Byte insertion and extraction. The x86 ISA
+                                                                    a process-level binary translator on Linux to
+                supports 8-, 16-, 32-, and 64-bit operations,
+                                                                    run x86 applications. We can also implement
+                whereas RISC processors normally support
+                                                                    a system-level binary translator to achieve x86
+                32- and 64-bit operations. To close this
+                                                                    compatibility at the ISA level.
+                gap, GS464 implements flexible byte inser-
+                                                                        Godson-3’s binary translation system is
+                tion instructions that can insert a byte, half
+                                                                    an improvement upon the open-source binary
+                word, or word from any location of a regis-
+                                                                    translator QEMU.12 In addition to imple-
+                ter to any location of another register; and
+                                                                    menting a new interpreter and translator
+                byte extraction instructions that extract
+                                                                    under the QEMU framework, we redesigned
+                a byte, half word, or word from any register
+                                                                    the intermediate representation to allow
+                location and store the result to another reg-
+                                                                    optimizations, such as fixed register alloca-
+                ister after zero or sign extension.
+                                                                    tion and lazy conditional code evaluation.
+                Hardware supports for binary translation            Like other traditional binary translators, the
+                mechanism                                           Godson-3 VMM initially interprets x86
+                   Binary translation dynamically generates         instructions on the MIPS processor and
+                binary codes on the target machine. The bi-         monitors the behavior during interpretation.
+                nary codes generated during runtime are the         When the VMM finds hot spots, it translates
+                                                                                                                         ....................................................................
+
+                                                                                                                   MARCH/APRIL 2009                           23
+
+Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                        ...............................................................................................................................................................................................
+                        HOT CHIPS 20
+
+
+
+
+                                                                              Number of
+                                                                              instructions                         Instruction                        Comment
+                                                                              0                      MOV               %RAX            %R11
+                                                                              1                      JMPQ              %*R11
+
+                                                                               (a)
+
+                                                                              0                      MOVE              Rr11            Rrax
+                                                                              1.0                    CAMPV             Rtmp            Rr11           /* Look up the first level indirect jump
+                                                                                                                                                      address */
+                                                                              1.1                    CAMPV             Rtgt            Rtmp           /* Look up the final jump address */
+                                                                              1.2                    JR                Rtgt
+
+                                                                               (b)
+
+
+                                                                         Figure 5. Example of indirect branch target translation: The original x86 program (a), and the
+                                                                         program translated with Godson-3 content-associated memory (CAM) instructions (b). The
+                                                                         boldface text indicates new instructions for x86 emulation.
+
+
+
+                                                                        their x86 codes to MIPS codes for execution                               two platforms: a register-transfer-level (RTL)
+                                                                        and optimizes them at different levels accord-                            simulation platform and a field-programmable
+                                                                        ing to the hot degree. The multicore Godson-3                             gate array (FPGA) prototyping platform.
+                                                                        can also perform parallel optimization for                                In the RTL simulation environment, we
+                                                                        very hot spots. The Godson-3 hardware sup-                                set the core clock frequency to 1 GHz,
+                                                                        port for x86 instruction translation makes the                            the DDR2/DDR3 clock frequency to
+                                                                        translation process straightforward, not only                             333 MHz, and the HyperTransport clock
+                                                                        improving the translated code’s efficiency,                               frequency to 800 MHz. To speed up the
+                                                                        but also simplifying the binary translator’s                              simulation, we used Cadence’s Xtreme-313
+                                                                        implementation.                                                           simulation accelerator, which can achieve a
+                                                                            System optimization also improves the                                 speed of 200,000 to 400,000 cycles per sec-
+                                                                        Godson-3 binary translator’s performance.                                 ond. Because of the difficulty of building a
+                                                                        To fully use the 64-bit processor resources,                              full-scale Godson-3 FPGA prototype system,
+                                                                        such as registers, we implemented the                                     we built a partial-scale prototype to evaluate a
+                                                                        N32/N64 tool chain. The Godson-3 system                                   single processor core’s performance. The pro-
+                                                                        uses GNU binutils, the GNU compiler collec-                               totype system includes one processor core, a
+                                                                        tion (GCC), and the GNU C library                                         1-Mbyte L2 cache, one DDR2/DDR3 con-
+                                                                        (GLIBC) as the basic compilation environ-                                 troller, and one HyperTransport controller.
+                                                                        ment. We modified the binutils’ GNU Assem-                                FPGA prototyping speed is 50 MHz,
+                                                                        bler (Gas) to help GCC recognize all the new                              which is much faster than RTL simulation.
+                                                                        instructions. We added new instruction tem-                               Because the ratios between the FPGA proto-
+                                                                        plates and pipeline descriptions to GCC to                                type’s core and I/O clocks differ from those
+                                                                        improve the generated code quality. We also                               in a real system, we carefully adjusted the
+                                                                        implemented autovectorization for the 128-                                FPGA prototyping system’s I/O latency to
+                                                                        bit memory-access instructions and multimedia                             obtain accurate performance results.
+                                                                        instructions to fully utilize the Godson-3 pro-                               Table 1 shows the benchmarks we tested
+                                                                        cessor resources. We profiled GLIBC and re-                               on the Xtreme-3 and FPGA platforms. We
+                                                                        wrote the frequently executed routines.                                   selected nine typical kernels or full applica-
+                                                                                                                                                  tions to evaluate the hardware improvements
+                                                                        Preliminary performance results                                           and software translation efficiency. We ran
+                                                                           The first four-core Godson-3 design                                    all benchmarks in three modes:
+                                                                        was taped out in 2008. Before the chip                                        native MIPS mode, in which bench-
+                                                                        returned from fabrication, we carried out                                       marks are directly compiled into MIPS
+                                                                        the Godson-3 performance analysis on                                            binary and run on MIPS hardware;
+..................................................................
+
+                        24                      IEEE MICRO
+
+
+
+ Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                                      Table 1. Specifications of benchmark kernels tested on Godson-3 prototypes.
+
+                 Name                              Source            Language                                    Experiment platform                                       Note
+
+                 Floating-point IDCT              Microbench     C                                                    Xtreme-3                     x86 floating-point
+                 Floating-point FFT               Microbench     C                                                    Xtreme-3                     x86 floating-point
+                 General control                  Microbench     C                                                    Xtreme-3                     x86 control complicated programs
+                 Fixed-point IDCT                 EEMBC          x86 assembly                                         FPGA                         x86 SIMD
+                 Fixed-point FFT                  EEMBC          x86 assembly                                         FPGA                         x86 SIMD
+                 Operating system startup code    Microbench     C and x86 assembly                                   Xtreme-3/FPGA
+                 164.gzip (train)                 SPEC 2000      C                                                    FPGA
+                 197.parser (train)               SPEC 2000      C                                                    FPGA
+                 179.art (train)                  SPEC 2000      C                                                    FPGA
+
+
+
+                   basic translator mode, in which bench-
+                    marks are compiled into x86 binary                                          100
+                                                                                                                                                                    No hardware support
+                    and run on MIPS hardware using the                                           90
+                                                                                                                                                                    Hardware support
+                    basic QEMU binary translator; and                                            80
+                                                                        Performance (percent)
+
+
+
+
+                   improved translator mode, in which
+                                                                                                 70
+                    benchmarks are compiled into x86 bi-
+                    nary and run on MIPS hardware using                                          60
+                    the improved QEMU binary translator                                          50
+                    with x86 binary translation acceleration                                     40
+                    on RISC processors (XBar) hardware
+                                                                                                 30
+                    support.
+                                                                                                 20
+                    We compiled all programs with the                                           10
+                GCC-O3 flag.                                                                      0
+                    Figure 6 shows the relative performance
+                                                                                                        T
+
+                                                                                                                 FT
+
+
+                                                                                                                       C
+
+
+                                                                                                                                 1
+
+                                                                                                                                          2
+
+
+                                                                                                                                                   T
+
+                                                                                                                                                             ip
+
+                                                                                                                                                                       er
+
+
+                                                                                                                                                                                  t
+
+                                                                                                                                                                                          ge
+                                                                                                                                                                                ar
+                                                                                                      C
+
+
+
+
+                                                                                                                               BC
+
+                                                                                                                                         BC
+
+
+                                                                                                                                                   O
+                                                                                                                      G
+
+
+
+
+                                                                                                                                                            gz
+
+
+                                                                                                                                                                      rs
+                                                                                                             -F
+
+
+
+
+                                                                                                                                                                                       ra
+                                                                                                                                                                             9.
+                                                                                                  -ID
+
+
+
+
+                                                                                                                                              BO
+
+
+
+                of basic and improved translator modes
+                                                                                                                                                                  pa
+                                                                                                                           M
+
+                                                                                                                                     M
+
+
+
+
+                                                                                                                                                        4.
+                                                                                                            FP
+
+
+
+
+                                                                                                                                                                           17
+
+
+                                                                                                                                                                                      e
+                                                                                                FP
+
+
+
+
+                                                                                                                                                                                   Av
+                                                                                                                          EE
+
+                                                                                                                                    EE
+
+
+                                                                                                                                              S-
+
+                                                                                                                                                       16
+
+
+                                                                                                                                                                 7.
+                compared to native MIPS mode. Godson-
+                                                                                                                                          O
+
+
+
+
+                                                                                                                                                             19
+
+
+                3’s x86 emulation hardware support signif-
+                icantly accelerates binary translation from          Figure 6. Experimental results for the nine benchmarks. 100 percent
+                x86 to MIPS, and on average achieves per-            performance represents the execution of native MIPS code. Columns
+                formance that is nearly 70 percent of the            represent the execution of x86 emulation with and without hardware
+                ideal mode.                                          support. Higher is better.
+                    The performance results in Figure 6 are
+                still preliminary. Much more work must be
+                done to further improve the binary translator.
+                                                                        The four-core, eight-core, and 16-core
+                Scalable multicore interconnection                   Godson-3 chips take one, two, and four
+                   Figure 7 shows the Godson-3 overall ar-           nodes in the mesh, respectively. Figure 8
+                chitecture. Each node in the mesh includes           shows the architecture of the four-core and
+                an 8  8 crossbar connecting four processor          eight-core Godson-3. Both have two DDR2/
+                cores as four masters, four shared L2-cache          DDR3 controllers, two HyperTransport con-
+                banks as four slaves, and four adjacent              trollers, and other necessary peripheral inter-
+                nodes in the east, south, west, and north            faces. The four-core and eight-core Godson-3
+                directions as four masters and four slaves.          have the same I/O package.
+                A second-level crossbar inside the node con-            The Godson-3 interconnection network
+                nects the DDR2/DDR3 memory controllers               takes the 128-bit AXI standard interface,
+                to L2-cache banks. The Godson-3 Hyper-               which is simple, efficient, and open. We
+                Transport I/O controller is connected to             extended the L1 crossbar AXI interface to
+                the free crossbar ports of boundary nodes.           support cache coherence in Godson-3.
+                                                                                                                                                             ....................................................................
+
+                                                                                                                                                   MARCH/APRIL 2009                               25
+
+Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                        ...............................................................................................................................................................................................
+                        HOT CHIPS 20
+
+
+
+
+                                                                                                                                       NS NM
+
+
+                                                                                                                                                   P0       P1       P2       P3
+
+
+                                                                                                                                           m1 m2            m3       m4      m5       m6
+                                                                                                                      WM             m0                                                      m7            EM
+                                                                                                                                                            x1 switch
+                                                                                                                      WS             s0                                                      s7            ES
+                                                                                                                                            s1      s2      s3       s4       s5       s6
+
+
+                                                                                                                                                   S0       S1       S2      S3
+
+
+                                                                                                                                                           x2 switch                  SS SM
+                               I/O            I/O             I/O            I/O
+
+
+                                                                                                                                                            Memory
+                                                                                                                                                            controller
+
+
+
+                         Figure 7. Godson-3 interconnection topology. A 2D mesh connects nodes, and each node connects cores and L2
+                         modules through a crossbar; memory controllers are connected in nodes, and I/O controllers are connected in the
+                         2D mesh boundary.
+
+
+
+
+                                                                           Figure 9 shows the crossbar’s architecture.                            pipeline stalling signal from propagating
+                                                                        An 8  8 multiplexing matrix connects eight                               across stages.
+                                                                        AXI master link (AML) modules and
+                                                                        eight AXI slave link (ASL) modules. Each                                  Reconfigurable architecture
+                                                                        link has five channels according to the AXI                                  Godson-3’s reconfigurability involves
+                                                                        protocol:                                                                 three features:
+
+                                                                               write address channel (AW),                                           reconfigurable processor cores,
+                                                                               write data channel (W),                                               dynamic L2 cache migration, and
+                                                                               write response channel (B),                                           reconfigurable DMA engine.
+                                                                               read address channel (AR), and
+                                                                               read data channel (R).                                               Because Godson-3’s interconnection net-
+                                                                                                                                                  work adopts the AXI protocol, we can insert
+                                                                           The AML routes read and write requests                                 any processor cores complying with the AXI
+                                                                        (AW, W, and AR channels) according to                                     protocol into the network slots. Depending
+                                                                        the access address. Each AW or AR chan-                                   on the application, we can configure the
+                                                                        nel has eight address windows, each of                                    Godson-3 chips’ AXI ports to contain either
+                                                                        which assigns a destination ASL port to a                                 general-purpose GS464 cores or special-
+                                                                        matching request. The ASL routes read                                     purpose cores.
+                                                                        and write replies (R and B channels)                                         A distributed shared memory system’s
+                                                                        according to the corresponding request’s                                  performance depends heavily on memory-
+                                                                        AML port number. Both AML and ASL                                         access locality. In a nonuniform cache access
+                                                                        have two pipeline stages—that is, the                                     (NUCA) system such as Godson-3, accesses
+                                                                        crossbar has a latency of four hops. Two                                  to nonlocal L2 cache blocks suffer from
+                                                                        buffers for each pipeline stage prevent the                               high L2 access latency. Godson-3 can
+..................................................................
+
+                        26                      IEEE MICRO
+
+
+
+ Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                                                                        HyperTransport controller
+
+
+
+
+                                                                                                                                                                                                          HyperTransport controller
+                                                                                                                                             P0    P1    P2        P3
+
+
+
+
+                                                                                                               DMA controller
+
+
+
+
+                                                                                                                                                                                   DMA controller
+                                                                                                                                             m1    m2    m3     m4
+                                                                                                                                        m0                        m5
+                                                                                                                                                6 × 6 x1 switch
+                                                                                                                                        s0                         s5
+                                                                                                                                             s1     s2    s3    s4
+
+
+                                                                                                                                             S0    S1    S2        S3
+
+                                                                                                              PCILPC
+                                                                                                                                               5 × 3 x2 switch
+
+
+                                                                                                                                               MC0       MC1
+
+
+
+                                                               (a)
+                           HyperTransport controller
+
+
+
+
+                                                                                                                                                                                                                                                              HyperTransport controller
+                                                                                                         P0                     P1     P2     P3                   P0       P1     P2               P3
+                                                       DMA controller
+
+
+
+
+                                                                                                                                                                                                                                             DMA controller
+                                                                                                         m1                 m2       m3      m4                    m1      m2     m3                m4
+                                                                                                    m0                                         m5             m0                                      m5
+                                                                                                              6 × 6 x1 switch                                           6 × 6 x1 switch
+                                                                                                    s0                                          s5            s0                                       s5
+                                                                                                         s1                 s2         s3    s4                    s1      s2      s3               s4
+
+
+                                                                                                         S0                     S1     S2     S3                   S0       S1     S2               S3
+                                                       PCILPC
+
+
+
+
+                                                                                                          5 × 2 x2 switch                                               5 × 2 x2 switch
+
+
+                                                                                                                                 MC0                                         MC1
+
+
+
+                     (b)
+
+
+                 Figure 8. The Godson-3 architecture: four-core version (a) and eight-core version (b).
+
+
+
+                increase the locality of L2 cache access by                                                                             to or from main memory or to or from the
+                migrating shared L2 cache blocks. Each                                                                                  L2 cache directly. The DMA engine main-
+                AW or AR channel in the AXI crossbar                                                                                    tains cache coherence automatically when
+                has eight reconfigurable address windows,                                                                               transferring data between I/O and memory.
+                which let the software dynamically bind                                                                                 In addition, we can configure the DMA en-
+                memory addresses to cache block locations.                                                                              gine to prefetch data from memory to L2
+                With the reconfigurable address windows,                                                                                cache, or to transpose a matrix in the mem-
+                the software can migrate home blocks across                                                                             ory without intervention from the processor
+                cache banks, or set cache blocks as private or                                                                          core.
+                shared blocks according to the locality of
+                memory accesses.                                                                                                        The four-core physical implementation
+                   We can also configure Godson-3’s DMA                                                                                    We built the four-core Godson-3 using
+                engine to achieve high performance. Soft-                                                                               the seven-metal 65-nm CMOS process.
+                ware can decide whether the DMA data is                                                                                 We designed it using cell-based flow with
+                                                                                                                                                                                                                                      ....................................................................
+
+                                                                                                                                                                                                         MARCH/APRIL 2009                                                                 27
+
+Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                        ...............................................................................................................................................................................................
+                        HOT CHIPS 20
+
+
+
+
+                              AML0          AML1          AML2         AML3          AML4          AML5         AML6          AML7
+
+
+
+                                                                8 × 8 multiplexing matrix
+
+
+
+                              ASL0          ASL1         ASL2          ASL3          ASL4         ASL5          ASL6          ASL7
+
+
+                                             AR           AW            W             R            B
+
+
+                                            buf0         buf0         buf0         buf0         buf0
+                                            buf1         buf1         buf1         buf1         buf1          AXI master link
+                                                                                                                  (AML)                            Figure 10. Layout of the four-core Godson-3.
+                                                                                                                                                   The HyperTransport links are at the top, the
+                                            buf0         buf0         buf0         buf0         buf0
+                                                                                                                                                   CPU cores and L2 caches are in the center,
+                                            buf1         buf1         buf1         buf1         buf1
+                                                                                                                                                   and the DDR2/DDR3 controllers and physical
+                                                                                                                                                   layer are at the bottom. Two crossbars con-
+                                                                                                                                                   nect these components.
+                                            buf0         buf0         buf0         buf0         buf0
+                                            buf1         buf1         buf1         buf1         buf1
+
+                                                                                                               AXI slave link
+                                            buf0         buf0         buf0         buf0         buf0
+                                                                                                                   (ASL)                          its power dissipation ranges from 5 to 10 W
+                                            buf1         buf1         buf1         buf1         buf1
+                                                                                                                                                  depending on the application.
+                                             AR           AW            W             R            B
+
+
+
+                         Figure 9. Crossbar architecture. Four cycles are needed to travel through
+                                                                                                                                                  O      ur recent work includes an eight-core
+                                                                                                                                                         Godson-3 chip design with im-
+                                                                                                                                                  proved frequency. Moreover, research on
+                         the crossbar.                                                                                                            teraflops-scale many-core chips is also in
+                                                                                                                                                  progress.                                MICRO
+
+
+                                                                                                                                                  Acknowledgments
+                                                                        some custom-designed macros and manual                                       The work presented here is supported by
+                                                                        placement and routing. Full-custom macros                                 the National High-Tech Research and De-
+                                                                        include a four write port and four read                                   velopment 863 Program of China under
+                                                                        port (4w4r) 64  64 register file, a 64                                  Grant No. 2008AA110901, the National
+                                                                        64 CAM for TLB, a phase-locked loop                                       Basic Research 973 Program of China
+                                                                        (PLL), and a HyperTransport link. To re-                                  under Grant No. 2005CB321600, and the
+                                                                        duce clock cycle time, we manually mapped                                 National Natural Science Foundation of
+                                                                        specific datapath modules or modules with                                 China under Grant No. 60736012. We
+                                                                        replicated structure to the cell library and                              thank Lingyi Huang, Huandong Wang,
+                                                                        placed them in a bit-sliced structure. The                                Dan Tang, Menghao Su, Xiaoyu Li, Song-
+                                                                        clock tree takes an H-tree structure and is                               song Cai, Pengyu Wang, Ge Zhang, Haihua
+                                                                        mainly manually placed and routed. We                                     Shen, Dandan Huan, Baoxia Fan, Liang
+                                                                        use a clock skew technique for the critical-                              Yang, Yanping Gao, Jiangmei Wang, Ru
+                                                                        path pipeline stage to borrow time from ad-                               Wang, Ying Xu, Bing Xiao, Xu Yang, Shi-
+                                                                        jacent pipeline stages.                                                   qiang Zhong, Feng Zhang, Ying Zhao,
+                                                                           Figure 10 shows the layout of the four-                                Zongren Yang, Liqiong Yang, Lu Zhang,
+                                                                        core Godson-3. The chip includes 425 mil-                                 Hao Cui, Hang Yu, Zhuo Gao, Xiangku
+                                                                        lion transistors and the die size measures                                Li, Zichu Qi, Cheng Qian, Weidan Wu,
+                                                                        14,240 micrometers by 12,205 micrometers.                                 Jinzhao He, and Jin Zhang for their contri-
+                                                                        The chip’s highest frequency is 1.0 GHz, and                              butions to the Godson-3 project.
+..................................................................
+
+                        28                      IEEE MICRO
+
+
+
+ Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+                ....................................................................
+                                                                                       Jian Wang is an associate professor of
+                References
+                                                                                       computer science at the Institute of Com-
+                 1. R. Kessler, ‘‘The Alpha 21264 Micro-
+                                                                                       puting Technology, Chinese Academy of
+                      processor,’’ IEEE Micro, vol. 19, no. 2,
+                                                                                       Sciences. His research interests include high-
+                      Mar./Apr. 1999, pp. 24-36.
+                                                                                       performance computer architecture and
+                 2. K.C. Yeager, ‘‘The MIPS R10000 Super-
+                                                                                       operating systems. Wang has an MS in
+                      scalar Microprocessor,’’ IEEE Micro, vol.
+                                                                                       computer science from the Institute of
+                      16, no. 2, Mar./Apr. 1996, pp. 28-41.
+                                                                                       Computing Technology.
+                 3. T. Horel and G. Lauterbach, ‘‘UntraSparc-III:
+                      Designing Third-Generation 64-bit Perfor-
+                                                                                       Xiang Gao is an assistant professor of
+                      mance,’’ IEEE Micro, vol. 19, no. 3, May/
+                                                                                       computer science at the Institute of Com-
+                    June 1999, pp. 73-85.
+                                                                                       puting Technology, Chinese Academy of
+                 4. A. Kumar, ‘‘The HP PA-8000 RISC CPU,’’ IEEE
+                                                                                       Sciences. His research interests include high-
+                      Micro, vol. 17, no. 2, Mar./Apr. 1997, pp. 27-32.
+                                                                                       performance computer architecture, parallel
+                 5. R. Kalla et al., ‘‘IBM POWER5 Chip: A Dual-
+                                                                                       processing, and operating systems. Gao has a
+                      Core Multithreaded Processor,’’ IEEE Micro,
+                                                                                       PhD in computer science from the Uni-
+                      vol. 24, no. 2, Mar./Apr. 2004, pp. 40-47.
+                                                                                       versity of Science and Technology of China.
+                 6. P. Kongetira et al., ‘‘Niagara: A 32-Way
+                      Multithreaded Sparc Processor,’’ IEEE Micro,                     Yunji Chen is an assistant professor of
+                    vol. 25, no. 2, Mar./Apr. 2005, pp. 21-29.                         computer science at the Institute of Com-
+                 7. K. Sankaralingam et al., ‘‘Exploiting ILP,                         puting Technology, Chinese Academy of
+                      TLP, and DLP with the Polymorphous                               Sciences. His research interests include hard-
+                      TRIPS Architecture,’’ Proc. 30th Int’l Symp.                     ware verification and high-performance
+                      Computer Architecture (ISCA 03), ACM                             computer architecture. Chen has a PhD
+                      Press, 2003, pp. 422-433.                                        in computer science from the Institute of
+                 8. W. Hu et al., ‘‘Microarchitecture of the                           Computing Technology.
+                      Godson-2 Processor,’’ J. Computer Science
+                      and Technology, vol. 20, no. 2, Mar. 2005,                       Qi Liu is a PhD candidate in computer
+                      pp. 243-249.                                                     science at the Institute of Computing
+                 9. A. Klaiber, ‘‘The Technology behind Crusoe                         Technology, Chinese Academy of Sciences.
+                      Processors,’’ white paper, Transmeta Corp.,                      His research interests include computer
+                      Jan. 2000.                                                       architecture, virtualization, and binary trans-
+                10. A. Chernoff et al., ‘‘FX!32: A Profile-                            lation. Liu has a BS in computer science from
+                      Directed Binary Translator,’’ IEEE Micro,                        the University of Electronic Science and
+                      vol. 18, no. 2, Mar./Apr. 1998, pp. 56-64.                       Technology of China.
+                11. K. Ebcioglu et al., ‘‘Dynamic Binary Trans-
+                    lation and Optimization,’’ IEEE Trans. Com-                        Guojie Li is the director of the Institute of
+                      puters, vol. 50, no. 6, June 2001, pp. 529-548.                  Computing Technology, Chinese Academy
+                12. F. Bellard, ‘‘QEMU, a Fast and Portable                            of Sciences, and an academician at the
+                      Dynamic Translator,’’ Proc. Usenix Ann. Tech-                    Chinese Academy of Engineering. His re-
+                      nical Conf., Usenix Assoc., 2005, pp. 41-46.                     search interests include high-performance
+                13. Incisive Xtreme Series Datasheet, http://                          computer architecture, parallel algorithms,
+                      www.cadence.com/rl/Resources/datasheets/                         and artificial intelligence. Li received his PhD
+                      Cadence_6569_DS_R2.pdf.                                          in computer science from Purdue University.
+
+                                                                                          Direct questions and comments about
+                Weiwu Hu is a professor of computer science                            this article to Weiwu Hu, Institute of
+                at the Institute of Computing Technology,                              Computing Technology, Chinese Academy
+                Chinese Academy of Sciences. His research                              of Sciences, P.O. Box 2704-25, Beijing,
+                interests include high-performance com-                                China, 10019; hww@ict.ac.cn.
+                puter architecture, parallel processing, and
+                VLSI design. Hu has a PhD in computer                                  For more information on this or any other
+                science from the Institute of Computing                                computing topic, please visit our Digital
+                Technology.                                                            Library at http://computer.org/csdl.
+                                                                                                                                          ....................................................................
+
+                                                                                                                                     MARCH/APRIL 2009                          29
+
+Authorized licensed use limited to: NANJING UNIVERSITY OF SCIENCE AND TECHNOLOGY. Downloaded on November 25,2025 at 09:39:36 UTC from IEEE Xplore. Restrictions apply.
+
