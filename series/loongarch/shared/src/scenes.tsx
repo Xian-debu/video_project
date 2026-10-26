@@ -68,7 +68,7 @@ const TimelineScene: React.FC<{ c: Extract<SceneContent, { kind: "timeline" }>; 
   return (
     <div style={{ position: "absolute", inset: 0, padding: "170px " + S.pad + "px 130px" }}>
       <div style={reveal(f, 4)}><Kicker>发展脉络 / {TIMELINE[active].year}</Kicker></div>
-      <div style={{ ...reveal(f, 12), fontSize: 52, color: S.ink, fontWeight: 700, marginTop: 14 }}>{TIMELINE[active].title}</div>
+      <div style={{ ...reveal(f, 12), fontSize: 52, color: S.ink, fontWeight: 700, marginTop: 14 }}>{c.title ?? TIMELINE[active].title}</div>
       <div style={{ position: "absolute", left: x0 - 100, right: 100, top: 430 }}>
         <div style={{ position: "absolute", left: 0, right: 0, top: 52, height: 2, background: S.line }} />
         <div style={{ position: "absolute", left: 0, top: 52, height: 2, width: step * active, background: S.cyan }} />

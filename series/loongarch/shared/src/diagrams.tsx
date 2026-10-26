@@ -225,7 +225,7 @@ const Isa: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }
 const Lineage: React.FC<{ items: DiagramItem[]; frame: number }> = ({ items, frame }) => {
   const xs = [250, 430, 610, 790, 970, 1150];
   const rows = ["乱序核模板", "指令系统", "二进制翻译", "存储层次", "并行度"];
-  const activeCol = Math.min(5, Math.floor((frame / 150) % 6));
+  const activeCol = Math.min(5, Math.floor((frame / 90) % 6));
   return (
     <g>
       <Label x={W / 2} y={58} size={22} fill={S.inkDim}>五个继承方向，在同一张时间线上反复出现</Label>

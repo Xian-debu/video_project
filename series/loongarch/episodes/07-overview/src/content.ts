@@ -5,13 +5,14 @@ export const CONTENT: EpisodeContent = {
     kind: "open",
     year: "2003–2023",
     lead: "龙芯系列 · 第七集",
-    title: "二十年，一条被约束推出来的主线",
+    title: "被约束推出来的主线",
     subtitle: "六篇论文，五次转身，一次换地基。从能跑，到能追，再到自己定规则。",
     thesis: "先活下来，才有资格谈追上。",
   },
   timeline: {
     kind: "timeline",
     active: 5,
+    title: "六篇论文，一条主线",
     note: "六篇论文放在一条时间线上；顺序不是 PDF 编号，而是发表年份。",
   },
   problem: {
@@ -28,7 +29,7 @@ export const CONTENT: EpisodeContent = {
   },
   thesis: {
     kind: "thesis",
-    statement: "主线不是规划出来的，是被约束推出来的。",
+    statement: "主线是被约束推出来的。",
     detail: "这不是贬低，而是解释。正因为先解决生存问题，才有机会在后面谈性能与自主。",
     stat: "6 篇",
     statLabel: "2003–2023 · 五次转向",
@@ -36,9 +37,9 @@ export const CONTENT: EpisodeContent = {
   lineage: {
     kind: "diagram",
     variant: "lineage",
-    title: "五个方向，在同一张时间线上反复出现",
-    items: [{ label: "五条线", note: "乱序核、ISA、翻译、存储、并行：每一年只有一个方向真正往前走" }],
-    caption: "同一套乱序核骨架被反复扩参；ISA 与翻译则是另一条更慢、也更难的路。",
+    title: "五个方向，反复出现",
+    items: [{ label: "五条线" }],
+    caption: "核心模板一条线最快；ISA 与翻译最慢。",
   },
   experiment: {
     kind: "problem",

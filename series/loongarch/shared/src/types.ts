@@ -30,7 +30,7 @@ export type DiagramItem = {
 export type SceneContent =
   | { kind: "open"; year: string; lead: string; title: string; subtitle: string; thesis: string }
   | { kind: "thesis"; statement: string; detail?: string; stat?: string; statLabel?: string }
-  | { kind: "timeline"; active: number; note: string }
+  | { kind: "timeline"; active: number; note: string; title?: string }
   | {
       kind: "paper";
       paperTitle: string;
