@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "godson2",
   "kind": "series-episode",
-  "title": "Godson-2：一颗可复用的乱序核",
+  "title": "Godson-2：把乱序核做成模板",
   "series": {
     "id": "loongarch",
     "order": 2,
@@ -20,12 +20,31 @@
   "fps": 30,
   "prefix": "godson2",
   "status": "draft",
-  "paper": null,
-  "claims": null,
-  "derive": [],
-  "derived": [],
-  "derivedNote": "无派生文件",
-  "narration": null,
+  "paper": {
+    "title": "Microarchitecture of the Godson-2 Processor",
+    "authors": [
+      "Wei-Wu Hu",
+      "Fu-Xin Zhang",
+      "Zu-Song Li"
+    ],
+    "venue": "J. Comput. Sci. & Technol. 2005, 20(2)",
+    "year": 2005,
+    "pdf": "data/paper.txt"
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/paper.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/rename_sim.py"
+    }
+  ],
+  "derived": [
+    "data/rename_sim.json"
+  ],
+  "derivedNote": "结构模型输出；不是芯片实测",
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },

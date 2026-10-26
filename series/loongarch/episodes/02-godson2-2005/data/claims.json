@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "paper": "Microarchitecture of the Godson-2 Processor, J. Comput. Sci. & Technol. 2005, 20(2)",
+    "source": "data/paper.txt (OCR text)",
+    "note": "每个屏幕数字一行；quote 必须是 paper.txt 的连续切片（空白归一化后）。实验数字在 data/rename_sim.json，不冒充论文数据。"
+  },
+  "claims": [
+    {
+      "id": "year",
+      "scene": "open",
+      "onScreen": "2005",
+      "value": "2005",
+      "quote": "Mar. 2005",
+      "where": "页眉 (l.1)",
+      "note": null
+    },
+    {
+      "id": "issue",
+      "scene": "paper",
+      "onScreen": "4 发射",
+      "value": "4",
+      "quote": "64-bit, 4-issue, out-of-order execution",
+      "where": "Abstract (l.8)",
+      "note": null
+    },
+    {
+      "id": "prf",
+      "scene": "rename",
+      "onScreen": "64",
+      "value": "64",
+      "quote": "64-entry physical register file",
+      "where": "§3 (l.112)",
+      "note": "定点与浮点各一个 64 项物理寄存器堆"
+    },
+    {
+      "id": "roq",
+      "scene": "issue",
+      "onScreen": "32 项",
+      "value": "32",
+      "quote": "32-entry ROQ",
+      "where": "§3 (l.116)",
+      "note": null
+    },
+    {
+      "id": "rs",
+      "scene": "issue",
+      "onScreen": "16 项",
+      "value": "16",
+      "quote": "16-entry fix-point reser",
+      "where": "§3 (l.116)",
+      "note": "原文分栏断在 reser- / vation 之间，quote 取连续前缀"
+    },
+    {
+      "id": "units",
+      "scene": "issue",
+      "onScreen": "5 个单元",
+      "value": "5",
+      "quote": "two fix-point functional units, two floating-point functional units, and one memory access unit",
+      "where": "§4 (l.144)",
+      "note": null
+    },
+    {
+      "id": "l1",
+      "scene": "cache",
+      "onScreen": "64KB",
+      "value": "64",
+      "quote": "64KB level-one data cache",
+      "where": "§3 (l.112)",
+      "note": "I-Cache 在原文被断成 level- one，quote 取 D-Cache 句"
+    },
+    {
+      "id": "tlb",
+      "scene": "cache",
+      "onScreen": "64 项",
+      "value": "64",
+      "quote": "64-entry fully associative TLB",
+      "where": "§5 (l.252)",
+      "note": null
+    },
+    {
+      "id": "process",
+      "scene": "limits",
+      "onScreen": "0.18 微米",
+      "value": "0.18",
+      "quote": "6-metal 0.18um",
+      "where": "§1 (l.58)",
+      "note": null
+    },
+    {
+      "id": "clock",
+      "scene": "open",
+      "onScreen": "400MHz",
+      "value": "400",
+      "quote": "400MHz",
+      "where": "§1 (l.58)",
+      "note": null
+    },
+    {
+      "id": "period",
+      "scene": "limits",
+      "onScreen": "2.3ns",
+      "value": "2.3",
+      "quote": "2.3ns",
+      "where": "§1 (l.58)",
+      "note": null
+    },
+    {
+      "id": "power",
+      "scene": "limits",
+      "onScreen": "2.0-3.0 watt",
+      "value": "2.0",
+      "quote": "2.0-3.0 watt",
+      "where": "§1 (l.58)",
+      "note": "400MHz 下设计估计"
+    },
+    {
+      "id": "die",
+      "scene": "limits",
+      "onScreen": "6,700×6,200",
+      "value": "6,700",
+      "quote": "6,700 micrometers by 6,200 micrometers",
+      "where": "§1 (l.58)",
+      "note": null
+    },
+    {
+      "id": "l2",
+      "scene": "cache",
+      "value": 8,
+      "quote": "8MB",
+      "where": "§5 memory hierarchy",
+      "note": "片外统一 L2，最大 8MB",
+      "onScreen": "最大 8MB"
+    },
+    {
+      "id": "btb",
+      "scene": "predict",
+      "value": 16,
+      "quote": "16-entry BTB",
+      "where": "§4.3 branch prediction",
+      "note": "分支目标缓存",
+      "onScreen": "16 项 BTB"
+    },
+    {
+      "id": "memq",
+      "scene": "cache",
+      "value": 16,
+      "quote": "16-entry memory access queue",
+      "where": "§5 memory hierarchy",
+      "note": "访存队列",
+      "onScreen": "16 项访存队列"
+    }
+  ]
+}

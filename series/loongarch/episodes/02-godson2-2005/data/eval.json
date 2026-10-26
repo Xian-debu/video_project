@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "paper": "Microarchitecture of the Godson-2 Processor (JCST 2005, 20(2))",
+    "note": "论文事实清单；数字来自论文正文，仅用于 claims 校验与文案复核。"
+  },
+  "facts": {
+    "year": 2005,
+    "process": "6-metal 0.18um",
+    "clock": "400MHz",
+    "cycle": "2.3ns",
+    "power": "2.0-3.0 watt",
+    "die": "6,700 x 6,200 micrometers",
+    "issue": 4,
+    "prf": 64,
+    "roq": 32,
+    "rsFix": 16,
+    "rsFp": 16,
+    "l1": "64KB level-one data cache, 4-way",
+    "l1i": "64KB level-one instruction cache, 4-way",
+    "l2": "off-chip unified L2 up to 8MB",
+    "tlb": "64-entry fully associative TLB",
+    "units": 5,
+    "btb": 16,
+    "bht": "4K-entry",
+    "ghr": "9-bit",
+    "ras": 4,
+    "stages": 9
+  }
+}

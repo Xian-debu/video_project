@@ -6,3 +6,6 @@ __pycache__/
 /delivery/*.work
 /out/
 /assets/audio/clips/
+/data/rename_sim.json
+/data/lines.json
+/data/clips.local.json

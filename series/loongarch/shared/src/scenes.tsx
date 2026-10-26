@@ -29,7 +29,7 @@ const OpenScene: React.FC<{ c: Extract<SceneContent, { kind: "open" }>; f: numbe
   <div style={{ position: "absolute", inset: 0, padding: "150px " + S.pad + "px 120px" }}>
     <div style={{ position: "absolute", right: 70, top: 70, fontFamily: S.mono, fontSize: 300, lineHeight: 1, color: S.ink, opacity: 0.055, letterSpacing: -10 }}>{c.year}</div>
     <div style={reveal(f, 4)}><Kicker>{c.lead}</Kicker></div>
-    <div style={{ ...reveal(f, 16), fontFamily: S.serif, fontSize: 92, lineHeight: 1.12, color: S.ink, fontWeight: 700, marginTop: 24, maxWidth: 1240 }}>{c.title}</div>
+    <div style={{ ...reveal(f, 16), fontFamily: S.serif, fontSize: c.title.length > 15 ? 78 : 92, lineHeight: 1.12, color: S.ink, fontWeight: 700, marginTop: 24, maxWidth: 1300 }}>{c.title}</div>
     <div style={{ ...reveal(f, 30), fontSize: 36, color: S.dim, marginTop: 18, maxWidth: 1180 }}>{c.subtitle}</div>
     <div style={{ ...reveal(f, 44), marginTop: 64, maxWidth: 1180 }}>
       <Panel tone="rgba(94,234,212,0.35)" style={{ borderLeft: "4px solid " + S.cyan }}>
