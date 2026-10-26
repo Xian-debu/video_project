@@ -37,7 +37,8 @@
 - 内容提交：55bf3cd，18 场景 / 79 行，claims 15 条，A 级实验 build/page_sim.py。
 - 配音：79 段，547.1s，0 超时。
 - 配乐：复用系列床 series-566.wav（03 时长 547.1s，落在 566s 内）；自渲染 660s 版本已放弃。
-- 待办：make 全门禁、抽帧审片、交付、status ready、内容提交。
+- 渲染：make 全门禁通过，547.1s，-15 LUFS，TP -2 dBFS；抽帧 2/60/120/180/300/420/480/530s 审片通过。
+- 交付：Godson2System.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
 
 ### 04–07
 
