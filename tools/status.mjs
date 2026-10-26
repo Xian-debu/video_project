@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { checkRepo, git, isGitRepo, REPO_ROOT } from "./lib.mjs";
 
 const asJson = process.argv.includes("--json");
+const asMd = process.argv.includes("--md");
 const repo = checkRepo(REPO_ROOT);
 const rows = [];
 
@@ -58,7 +59,14 @@ for (const f of repo.films) {
   });
 }
 
-if (asJson) {
+if (asMd) {
+  console.log("| id | title | status | sec | audio | derived | delivery | BV |");
+  console.log("|---|---|---|---|---|---|---|---|");
+  for (const r of rows) {
+    console.log(`| ${r.id} | ${r.title.replace(/\|/g, "\\|")} | ${r.status} | ${r.seconds ?? "-"} | ${r.narration} | ${r.derivedMissing ? r.derivedMissing + " missing" : "ok"} | ${r.delivery} | ${r.bili ?? "-"} |`);
+  }
+  if (repo.errors.length) { console.log(""); console.log("errors:"); for (const e of repo.errors) console.log("- " + e); }
+} else if (asJson) {
   console.log(JSON.stringify({ ok: repo.errors.length === 0, films: rows, series: repo.series.map((s) => s.id), errors: repo.errors }, null, 2));
 } else {
   const header = ["id", "status", "comp", "sec", "audio", "derived?", "deliv", "dirty", "KiB", "BV"];
