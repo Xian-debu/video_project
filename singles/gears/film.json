@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "gears",
+  "kind": "single",
+  "title": "啮合：齿轮如何把速度换成力",
+  "composition": "Gears",
+  "entry": "src/Gears.tsx",
+  "exports": {
+    "component": "Gears",
+    "total": "GEARS_TOTAL",
+    "fps": "GEARS_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "gears",
+  "status": "ready",
+  "paper": null,
+  "claims": null,
+  "derive": [
+    {
+      "command": "python3 build/generate_gear_data.py"
+    }
+  ],
+  "derived": [
+    "data/backlash.json",
+    "data/geometry.json",
+    "data/history.json",
+    "data/involute.json",
+    "data/planetary.json",
+    "data/ratio.json",
+    "data/torque.json"
+  ],
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": {
+    "bv": null
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

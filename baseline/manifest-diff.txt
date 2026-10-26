@@ -1,0 +1,17 @@
+video_project / S1 zero-loss import evidence
+date: 2026-10-26 (Asia/Shanghai)
+source: /root/video-pipeline-blueprint @ bd78123 (tag pre-split)
+manifest: /root/work/split-baseline/manifest.sha256 (505 lines)
+script: /root/work/compare_s1.py
+
+result: ok=502  missing=3  changed=0
+missing:
+  scripts/char2/__pycache__/anim.cpython-312.pyc   (intentionally not migrated: __pycache__)
+  scripts/char2/__pycache__/views.cpython-312.pyc  (same)
+  scripts/char/__pycache__/bones.cpython-312.pyc   (same)
+
+notes:
+- every tracked/derived/asset/voice file found a destination with the same sha256;
+- per-film narration wav moved from public/voice/<id>_narration.wav to assets/audio/narration.wav;
+- voice clips moved to assets/audio/clips/ (gitignored in both repos);
+- char2 swift model moved to assets/public/models/swift_v25.glb (16.2 MB).

@@ -1,0 +1,228 @@
+{
+  "generatedAt": "2026-10-20T15:28:12.138Z",
+  "composition": "Hawk",
+  "out": "out/hawk-package",
+  "stages": [
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --composition=Hawk",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "claims check",
+      "command": "node scripts/qa/claims_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /tmp/bp/out/hawk-package/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=Hawk --script=src/hawk/script.ts --out=/tmp/bp/out/hawk-package/scenes --output=/tmp/bp/out/hawk-package/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /tmp/bp/out/hawk-package/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 2272",
+      "command": "npx remotion still Hawk /tmp/bp/out/hawk-package/stills/frame_2272.png --frame=2272 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 10224",
+      "command": "npx remotion still Hawk /tmp/bp/out/hawk-package/stills/frame_10224.png --frame=10224 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 18177",
+      "command": "npx remotion still Hawk /tmp/bp/out/hawk-package/stills/frame_18177.png --frame=18177 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mix",
+      "command": "node scripts/audio/mix.mjs --narration public/voice/hawk_narration.wav --music /tmp/bp/out/hawk-package/score.wav --out /tmp/bp/out/hawk-package/mix.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (mix)",
+      "command": "python3 scripts/qa/music_gate.py --mix /tmp/bp/out/hawk-package/mix.wav --narration public/voice/hawk_narration.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /tmp/bp/out/hawk-package/raw_video.mp4 -i /tmp/bp/out/hawk-package/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /tmp/bp/out/hawk-package/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /tmp/bp/out/hawk-package/programme_unnorm.mp4 /tmp/bp/out/hawk-package/Hawk.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /tmp/bp/out/hawk-package/Hawk.mp4 --thresh 12 --region full --cut-frames 1258,3046,4746,6441,9392,12140,14556,16628,18719,19952,21946",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=Hawk --script=src/hawk/script.ts --prefix=hawk",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "a5cb188879654890",
+    "seconds": 757.37,
+    "scoreReused": false,
+    "stem": {
+      "mode": "stem",
+      "path": "/tmp/bp/out/hawk-package/score.wav",
+      "full_median_db": -25.09,
+      "audible_median_db": -27.85,
+      "audible_share": 0.631,
+      "sub_share": 0.068,
+      "pass": true
+    },
+    "segments": {
+      "reused": 0,
+      "rendered": 12,
+      "scenes": 12,
+      "frames": 22721
+    },
+    "renderedSeconds": 757.367,
+    "mix": {
+      "out": "/tmp/bp/out/hawk-package/mix.wav",
+      "sampleRate": 48000,
+      "seconds": 758.56,
+      "narrationSeconds": 757.36,
+      "musicSeconds": 758,
+      "musicGainDb": 0,
+      "duckDb": 4.5,
+      "ducked": "64.6%",
+      "fadeIn": 1.5,
+      "fadeOut": 2.5,
+      "peakDbFS": -1.72,
+      "peakBeforeLimitDbFS": -1.72,
+      "rmsDbFS": -19.33,
+      "musicOnlyPeakDbFS": -10.21,
+      "preGain": 1
+    },
+    "mixGate": {
+      "mode": "mix",
+      "mix": "/tmp/bp/out/hawk-package/mix.wav",
+      "narration": "public/voice/hawk_narration.wav",
+      "speech_db": -15.42,
+      "gap_full_db": -25.2,
+      "gap_audible_db": -28.19,
+      "bed_contribution_db": 41.8,
+      "pass": true
+    },
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0176,
+      "p99": 0.1385,
+      "max": 25.99,
+      "cutFrames": [
+        1258,
+        3046,
+        4746,
+        6441,
+        9392,
+        12140,
+        14556,
+        16628,
+        18719,
+        19952,
+        21946
+      ]
+    },
+    "exports": [
+      "hawk.srt",
+      "hawk.chapters.txt",
+      "hawk.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "inputs": {
+      "src": {
+        "files": 69,
+        "sha256": "1f56e28906fb5b9e"
+      },
+      "data": {
+        "files": 31,
+        "sha256": "e050234cb188369a"
+      },
+      "scripts": {
+        "files": 50,
+        "sha256": "c267f386a4c4e2d2"
+      }
+    }
+  },
+  "pass": true
+}

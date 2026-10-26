@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://video-project.local/schema/film.schema.json",
+  "title": "film.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "kind",
+    "title",
+    "composition",
+    "entry",
+    "exports",
+    "width",
+    "height",
+    "fps",
+    "prefix",
+    "status",
+    "paper",
+    "claims",
+    "derive",
+    "derived",
+    "narration",
+    "audio",
+    "delivery",
+    "docs",
+    "bili",
+    "assetsStatus",
+    "paths"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "kind": {
+      "enum": [
+        "single",
+        "series-episode"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "composition": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$"
+    },
+    "entry": {
+      "type": "string",
+      "pattern": "^src/.+\\.tsx$"
+    },
+    "exports": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component",
+        "total",
+        "fps"
+      ],
+      "properties": {
+        "component": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+        },
+        "total": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+        },
+        "fps": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+        }
+      }
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 16
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 16
+    },
+    "fps": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 120
+    },
+    "prefix": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready",
+        "published",
+        "retired"
+      ]
+    },
+    "paper": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "authors",
+        "venue",
+        "year"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "venue": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "claims": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "ledger",
+        "paper"
+      ],
+      "properties": {
+        "ledger": {
+          "type": "string"
+        },
+        "paper": {
+          "type": "string"
+        }
+      }
+    },
+    "derive": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "derived": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "derivedNote": {
+      "type": "string"
+    },
+    "narration": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "music": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "delivery": {
+      "type": "string"
+    },
+    "docs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bili": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bv": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^BV[0-9A-Za-z]{10}$"
+        },
+        "aid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "publishedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "assetsStatus": {
+      "enum": [
+        "complete",
+        "incomplete"
+      ]
+    },
+    "paths": {
+      "$ref": "#/$defs/paths"
+    },
+    "series": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "order"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "src",
+        "data",
+        "public"
+      ],
+      "properties": {
+        "src": {
+          "const": "src"
+        },
+        "data": {
+          "const": "data"
+        },
+        "public": {
+          "const": "assets/public"
+        }
+      }
+    }
+  }
+}

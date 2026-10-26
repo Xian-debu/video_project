@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "hawk",
+  "kind": "single",
+  "title": "Hawk：看不见的用电怎么被看见",
+  "composition": "Hawk",
+  "entry": "src/Hawk.tsx",
+  "exports": {
+    "component": "Hawk",
+    "total": "HAWK_TOTAL",
+    "fps": "HAWK_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "hawk",
+  "status": "ready",
+  "paper": {
+    "title": "Hawk: An Efficient NALM System for Accurate Low-Power Appliance Recognition",
+    "authors": [
+      "Zijian Wang",
+      "Xingzhou Zhang",
+      "Yifan Wang",
+      "Xiaohui Peng",
+      "Zhiwei Xu"
+    ],
+    "venue": "ACM SenSys 2024",
+    "year": 2024,
+    "url": null
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/paper.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/generate_hawk_data.py"
+    }
+  ],
+  "derived": [
+    "data/gray.json",
+    "data/wave.json"
+  ],
+  "narration": "assets/audio/narration.wav",
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": {
+    "bv": null
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "mult",
+  "kind": "single",
+  "title": "逐位乘法：一条用加法换乘法的路",
+  "composition": "Multiplication",
+  "entry": "src/Multiplication.tsx",
+  "exports": {
+    "component": "Multiplication",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "mult",
+  "status": "ready",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [
+    "data/lines.json"
+  ],
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": {
+    "bv": null
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

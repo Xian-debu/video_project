@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "singles": [
+    "arc",
+    "char",
+    "char2",
+    "gears",
+    "hawk",
+    "lecture",
+    "mult",
+    "quickselect"
+  ],
+  "series": []
+}

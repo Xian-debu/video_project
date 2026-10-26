@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "char",
+  "kind": "single",
+  "title": "从一张三视图到会走路的胖梨",
+  "composition": "Char",
+  "entry": "src/Char.tsx",
+  "exports": {
+    "component": "Char",
+    "total": "CHAR_TOTAL",
+    "fps": "CHAR_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "char",
+  "status": "published",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": {
+    "bv": "BV1qyHN6PEQ8"
+  },
+  "assetsStatus": "incomplete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

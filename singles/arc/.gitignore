@@ -1,0 +1,11 @@
+# keep derived inputs out of git; see film.json.derived
+__pycache__/
+*.pyc
+*.tmp
+/delivery/*.mp4
+/delivery/*.work
+/out/
+/assets/audio/clips/
+/data/sim.json
+/data/lines.json
+/data/clips.json

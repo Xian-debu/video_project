@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "quickselect",
+  "kind": "single",
+  "title": "快速选择：只找第 k 小",
+  "composition": "Quickselect",
+  "entry": "src/Quickselect.tsx",
+  "exports": {
+    "component": "Quickselect",
+    "total": "QUICKSELECT_TOTAL",
+    "fps": "QUICKSELECT_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "quickselect",
+  "status": "published",
+  "paper": null,
+  "claims": null,
+  "derive": [
+    {
+      "command": "python3 build/generate_quickselect_data.py"
+    }
+  ],
+  "derived": [
+    "data/bench.json",
+    "data/timing.json",
+    "data/trace.json",
+    "data/degradation.json",
+    "data/bfprt.json"
+  ],
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [],
+  "bili": {
+    "bv": "BV1JvHA6aE4B"
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

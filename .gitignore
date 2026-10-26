@@ -1,0 +1,10 @@
+# video_project — 内容仓。引擎仓的挂载点由 engine/scripts/films.mjs 管理，这里不出现。
+**/__pycache__/
+**/*.pyc
+**/*.tmp
+**/.DS_Store
+**/delivery/*.mp4
+**/delivery/*.mp4.part
+**/delivery/*.work/
+**/out/
+**/assets/audio/clips/

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "char2",
+  "kind": "single",
+  "title": "一张三视图，一个会动的角色",
+  "composition": "Char2",
+  "entry": "src/Film.tsx",
+  "exports": {
+    "component": "Char2",
+    "total": "CHAR2_TOTAL",
+    "fps": "CHAR2_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "char2",
+  "status": "published",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [],
+  "bili": {
+    "bv": "BV1ZQnU6WEfp"
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

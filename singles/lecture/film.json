@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "lecture",
+  "kind": "single",
+  "title": "快，是可以解释的：快速排序的一堂课",
+  "composition": "Lecture",
+  "entry": "src/Lecture.tsx",
+  "exports": {
+    "component": "QuicksortLecture",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "lecture",
+  "status": "ready",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [],
+  "bili": {
+    "bv": null
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

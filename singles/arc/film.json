@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "arc",
+  "kind": "single",
+  "title": "ARC：一块会自己调参的缓存",
+  "composition": "Arc",
+  "entry": "src/Arc.tsx",
+  "exports": {
+    "component": "Arc",
+    "total": "ARC_TOTAL",
+    "fps": "ARC_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "arc",
+  "status": "published",
+  "paper": {
+    "title": "ARC: A Self-Tuning, Low Overhead Replacement Cache",
+    "authors": [
+      "Nimrod Megiddo",
+      "Dharmendra S. Modha"
+    ],
+    "venue": "USENIX FAST '03",
+    "year": 2003,
+    "url": "https://www.usenix.org/conference/fast-03/arc-self-tuning-low-overhead-replacement-cache"
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/paper.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/generate_arc_data.py"
+    }
+  ],
+  "derived": [
+    "data/sim.json"
+  ],
+  "narration": "assets/audio/narration.wav",
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": {
+    "bv": "BV1ojnt6oE79"
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}
