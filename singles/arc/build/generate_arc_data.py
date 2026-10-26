@@ -19,7 +19,7 @@ from collections import OrderedDict
 SEED = 7
 REQUESTS = 120000
 PAGES = 4000
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "arc", "sim.json")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "sim.json")
 
 
 def gen_main_trace(seed=SEED, n=REQUESTS, pages=PAGES):

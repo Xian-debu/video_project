@@ -20,7 +20,7 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "build", "bench.cpp")
-OUT = os.path.join(ROOT, "data", "quickselect")
+OUT = os.path.join(ROOT, "data")
 CXX = os.environ.get("CXX", "g++")
 CXXFLAGS = ["-O2", "-std=c++17"]
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Derive every number the gears film shows, from data/gears/params.json.
+"""Derive every number the gears film shows, from data/params.json.
 
 The rule from the first two films holds here too: nothing on screen is typed by
 hand. This script is the only place a ratio, a centre distance or a contact
@@ -14,8 +14,8 @@ import pathlib
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SRC = ROOT / "data" / "gears" / "params.json"
-OUT = ROOT / "data" / "gears"
+SRC = ROOT / "data" / "params.json"
+OUT = ROOT / "data"
 
 
 def write(name, payload):
@@ -58,7 +58,7 @@ def main() -> int:
 
     # (1) meshing pair: the geometry the 3D scene builds from
     geometry = {
-        "source": "data/gears/params.json",
+        "source": "data/params.json",
         "pressureAngleDeg": params["pressureAngleDeg"],
         "pairA": {
             "label": ca["label"],
@@ -87,7 +87,7 @@ def main() -> int:
             "teethPassed": g1["z"] * turn,
         })
     write("ratio.json", {
-        "source": "data/gears/params.json",
+        "source": "data/params.json",
         "z1": g1["z"], "z2": g2["z"], "ratio": ratio,
         "omega1TimesZ1": g1["z"], "omega2TimesZ2": g2["z"] * ratio,
         "rows": ratio_trace,
@@ -104,7 +104,7 @@ def main() -> int:
     # tangent at the base circle is radial, i.e. the involute starts perpendicular
     # to the base circle: dy/dx at t=0 is 0 for the x-axis parameterisation used here.
     write("involute.json", {
-        "source": "data/gears/params.json",
+        "source": "data/params.json",
         "baseRadius": rb,
         "addendumRadius": g1["addendumRadius"],
         "tMax": tmax,
@@ -119,7 +119,7 @@ def main() -> int:
     torque1 = power / omega1
     torque2 = torque1 * ratio
     write("torque.json", {
-        "source": "data/gears/params.json",
+        "source": "data/params.json",
         "powerW": power,
         "omega1RadPerSec": omega1,
         "torque1Nm": torque1,
@@ -153,7 +153,7 @@ def main() -> int:
         states.append({"nSun": ns, "nCarrier": nc, "nRing": nr,
                        "willis": (ns - nc) / (nr - nc) if nr != nc else None})
     write("planetary.json", {
-        "source": "data/gears/params.json",
+        "source": "data/params.json",
         "zSun": zs, "zPlanet": zp, "zRing": zr, "planets": cb["planets"],
         "condition": "zr == zs + 2*zp",
         "conditionHolds": planet_ok,
@@ -169,13 +169,13 @@ def main() -> int:
         err = math.degrees(math.atan(clearance_mm / g1["pitchRadius"]))
         rows.append({"clearanceMm": clearance_mm, "pitchRadius": g1["pitchRadius"],
                      "angularErrorDeg": err, "arcSeconds": err * 3600})
-    write("backlash.json", {"source": "data/gears/params.json", "rows": rows,
+    write("backlash.json", {"source": "data/params.json", "rows": rows,
                             "identity": "angular error (rad) = clearance / pitch radius"})
 
     # (7) the development arc, with every number marked as definition or typical
     h = params["history"]
     write("history.json", {
-        "source": "data/gears/params.json",
+        "source": "data/params.json",
         "clockRatio": h["clock"]["ratio"],
         "clockNote": h["clock"]["note"],
         "watchRatio": h["watch"]["ratio"],

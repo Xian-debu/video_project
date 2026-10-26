@@ -10,7 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 # 每部片子的数据只写进自己的目录：data/<film>/。共享的只有 design.spec.json 与
 # type-exceptions.json，它们描述的是风格契约，不属于任何一部片子。
-DATA = os.path.join(ROOT, "data", "lecture")
+DATA = os.path.join(ROOT, "data")
 
 class Counter:
     __slots__ = ("cmp", "swap", "recursion")

@@ -25,7 +25,7 @@ import sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT_DIR = os.path.join(ROOT, "data", "hawk")
+OUT_DIR = os.path.join(ROOT, "data")
 
 GRAY_SEED = 20241019
 WAVE_SEED = 20241020
