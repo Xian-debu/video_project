@@ -7,9 +7,9 @@
 | 集 | 包 | 时长 | 内容 | 配音 | 配乐 | 渲染 | 交付 | 投稿 |
 |---|---|---|---|---|---|---|---|---|
 | 01 | 01-godson1-2003 | 437.0s | ready | ready | ready | ready | ready | 待投稿 |
-| 02 | 02-godson2-2005 | 552.6s | ready | ready | 渲染中 | 待渲染 | 待交付 | 待投稿 |
-| 03 | 03-godson2-system-2006 | 547.1s | ready | ready | 渲染中 | 待渲染 | 待交付 | 待投稿 |
-| 04 | 04-godson3-2009 | — | draft | — | — | — | — | — |
+| 02 | 02-godson2-2005 | 552.6s | ready | ready | ready | ready | ready | 待投稿 |
+| 03 | 03-godson2-system-2006 | 547.1s | ready | ready | ready | ready | ready | 待投稿 |
+| 04 | 04-godson3-2009 | 480.9s | ready | ready | ready | ready | ready | 待投稿 |
 | 05 | 05-loongisa-2015 | — | draft | — | — | — | — | — |
 | 06 | 06-loongarch-2023 | — | draft | — | — | — | — | — |
 | 07 | 07-overview | — | draft | — | — | — | — | — |
@@ -40,9 +40,17 @@
 - 渲染：make 全门禁通过，547.1s，-15 LUFS，TP -2 dBFS；抽帧 2/60/120/180/300/420/480/530s 审片通过。
 - 交付：Godson2System.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
 
-### 04–07
+### 04 Godson-3（2009）
 
-- 尚未开始。按 04 → 05 → 06 → 07 顺序逐集生产；每集先写内容与实验，再配音、配乐、渲染、审片、交付。
+- 内容提交：fe50df9，18 场景 / 71 行，claims 22 条，A 级实验 build/noc_sim.py。
+- 配音：71 段，480.9s，0 超时。
+- 配乐：复用系列床 series-566.wav（04 时长 480.9s，落在 566s 内）。
+- 渲染：make 全门禁通过，480.9s，-15 LUFS，TP -2 dBFS；抽帧 2/60/120/180/240/300/360/460s 审片通过。
+- 交付：Godson3.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
+
+### 05–07
+
+- 05 已写内容与实验（build/flags_sim.py，25 条 claims），待配音；06、07 尚未开始。按 05 → 06 → 07 顺序逐集生产；每集先写内容与实验，再配音、配乐、渲染、审片、交付。
 - 为控制单核算力，02–07 复用同一张 566s 系列配乐床（make --score）；后续各集按 ≤566s 设计，若某集超长，先补长床再渲染。
 
 ## 阻塞与决定

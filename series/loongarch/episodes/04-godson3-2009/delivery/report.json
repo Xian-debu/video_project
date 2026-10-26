@@ -1,0 +1,245 @@
+{
+  "generatedAt": "2026-10-26T14:11:49.342Z",
+  "composition": "Godson3",
+  "film": {
+    "id": "godson3",
+    "pack": "series/loongarch/episodes/04-godson3-2009",
+    "series": "loongarch"
+  },
+  "out": "out/godson3",
+  "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --film=godson3",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "claims check",
+      "command": "node scripts/qa/claims_check.mjs --film=godson3",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video-pipeline-blueprint/out/godson3/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=Godson3 --script=src/godson3/script.ts --out=/root/video-pipeline-blueprint/out/godson3/scenes --output=/root/video-pipeline-blueprint/out/godson3/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video-pipeline-blueprint/out/godson3/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 1443",
+      "command": "npx remotion still Godson3 /root/video-pipeline-blueprint/out/godson3/stills/frame_1443.png --frame=1443 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 6492",
+      "command": "npx remotion still Godson3 /root/video-pipeline-blueprint/out/godson3/stills/frame_6492.png --frame=6492 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 11541",
+      "command": "npx remotion still Godson3 /root/video-pipeline-blueprint/out/godson3/stills/frame_11541.png --frame=11541 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs --compositions=Godson3 --frames=1443,6492,11541",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mix",
+      "command": "node scripts/audio/mix.mjs --narration /root/video_project/series/loongarch/episodes/04-godson3-2009/assets/audio/narration.wav --music /root/video-pipeline-blueprint/out/godson3/score.wav --out /root/video-pipeline-blueprint/out/godson3/mix.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (mix)",
+      "command": "python3 scripts/qa/music_gate.py --mix /root/video-pipeline-blueprint/out/godson3/mix.wav --narration /root/video_project/series/loongarch/episodes/04-godson3-2009/assets/audio/narration.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /root/video-pipeline-blueprint/out/godson3/raw_video.mp4 -i /root/video-pipeline-blueprint/out/godson3/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video-pipeline-blueprint/out/godson3/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /root/video-pipeline-blueprint/out/godson3/programme_unnorm.mp4 /root/video-pipeline-blueprint/out/godson3/Godson3.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /root/video-pipeline-blueprint/out/godson3/Godson3.mp4 --thresh 12 --region full",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=Godson3 --script=src/godson3/script.ts --prefix=godson3",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "6a2d2f9a11522a84",
+    "seconds": 480.87,
+    "scoreReused": false,
+    "stem": {
+      "mode": "stem",
+      "path": "/root/video-pipeline-blueprint/out/godson3/score.wav",
+      "full_median_db": -25.04,
+      "audible_median_db": -27.64,
+      "audible_share": 0.655,
+      "sub_share": 0.067,
+      "pass": true
+    },
+    "segments": {
+      "reused": 0,
+      "rendered": 18,
+      "scenes": 18,
+      "frames": 14426
+    },
+    "renderedSeconds": 480.867,
+    "mix": {
+      "out": "/root/video-pipeline-blueprint/out/godson3/mix.wav",
+      "sampleRate": 48000,
+      "seconds": 482.05,
+      "narrationSeconds": 480.85,
+      "musicSeconds": 566,
+      "musicGainDb": 0,
+      "duckDb": 4.5,
+      "ducked": "64.0%",
+      "fadeIn": 1.5,
+      "fadeOut": 2.5,
+      "peakDbFS": -1.63,
+      "peakBeforeLimitDbFS": -1.63,
+      "rmsDbFS": -19.14,
+      "musicOnlyPeakDbFS": -9.59,
+      "preGain": 1
+    },
+    "mixGate": {
+      "mode": "mix",
+      "mix": "/root/video-pipeline-blueprint/out/godson3/mix.wav",
+      "narration": "/root/video_project/series/loongarch/episodes/04-godson3-2009/assets/audio/narration.wav",
+      "speech_db": -15.13,
+      "gap_full_db": -24.98,
+      "gap_audible_db": -27.4,
+      "bed_contribution_db": 42.6,
+      "pass": true
+    },
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0085,
+      "p99": 0.0707,
+      "max": 6.11,
+      "cutFrames": null
+    },
+    "exports": [
+      "godson3.srt",
+      "godson3.chapters.txt",
+      "godson3.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "content": {
+      "id": "godson3",
+      "pack": "series/loongarch/episodes/04-godson3-2009",
+      "commit": "dda5c0002f7479a5b08e78287c921e47da2b793a",
+      "dirty": 1
+    },
+    "inputs": {
+      "src": {
+        "files": 149,
+        "sha256": "57c3e99b95b7e691"
+      },
+      "data": {
+        "files": 104,
+        "sha256": "8ea86388f192335f"
+      },
+      "scripts": {
+        "files": 48,
+        "sha256": "1cf6f1bcacf6aedd"
+      }
+    }
+  },
+  "pass": true
+}

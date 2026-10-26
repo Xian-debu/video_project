@@ -119,7 +119,7 @@ export const CONTENT: EpisodeContent = {
     kind: "problem",
     left: {
       head: "运行时环境",
-      items: ["32 个通用寄存器，够模拟 x86/ARM", "浮点/向量扩展到 64 个 256 位", "6 个 Hi/Lo 给控制寄存器模拟"],
+      items: ["32 个通用寄存器，够模拟 x86/ARM", "浮点/向量扩展到 64 个 256 位", "6 个 64 位 Hi/Lo 寄存器给控制寄存器模拟"],
     },
     right: {
       head: "核心态",
@@ -147,7 +147,7 @@ export const CONTENT: EpisodeContent = {
       { label: "x86 SUB + 四标志", value: 40, note: "LoongISA 4 条 · 10×" },
       { label: "ARM 条件执行", value: 5, note: "LoongISA 3 条 · 1.7×" },
       { label: "x87 寄存器寻址", value: 13, note: "LoongISA 1 条 · 13×" },
-      { label: "80 位浮点转换", value: 41, note: "LoongISA 1 条 · 41×" },
+      { label: "80 位浮点转换", value: 41, note: "LoongISA 1 条（单向）· 41×" },
     ],
     max: 44,
     caveat: "A 级实验：build/flags_sim.py；只数指令条数，不是周期，也不是 3A1500 实测。",
@@ -156,7 +156,7 @@ export const CONTENT: EpisodeContent = {
     kind: "problem",
     left: {
       head: "整机数字",
-      items: ["Linux 启动：本地 MIPS 2.49 亿周期", "优化翻译 3.12 亿，达到本地 79.8%", "原版 QEMU 6.53 亿，慢 26 倍"],
+      items: ["Linux 启动：本地 MIPS 2.49 亿周期", "优化翻译 3.12 亿，达到本地 79.8%", "原版 QEMU 65.3 亿，是本地的 26 倍"],
     },
     right: {
       head: "论文没证明的事",
