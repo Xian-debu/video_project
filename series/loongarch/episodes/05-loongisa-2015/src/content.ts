@@ -42,8 +42,8 @@ export const CONTENT: EpisodeContent = {
     kind: "thesis",
     statement: "不换指令系统，先做并集。",
     detail: "在 MIPS 上增加 x86 和 ARM 有、MIPS 没有的语义；功能上是三家指令系统的并集。目标不是兼容层，而是让翻译器少写指令。",
-    stat: "3 套 · 1 个壳",
-    statLabel: "MIPS 编码 + x86/ARM 二进制翻译支持；LoongISA 仍走 MIPS UDI",
+    stat: "3 套",
+    statLabel: "三家 ISA 的语义并集；编码仍走 MIPS UDI",
   },
   paper: {
     kind: "paper",
