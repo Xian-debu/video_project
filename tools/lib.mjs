@@ -13,6 +13,12 @@ export const PREFIX_RE = /^[a-z][a-z0-9-]*$/;
 export const EXPORT_RE = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 export const STATUSES = new Set(["draft", "ready", "published", "retired"]);
 export const ASSET_STATUSES = new Set(["complete", "incomplete"]);
+// Composition ids owned by the engine's demo/showcase layer (engine src/Root.tsx). A film may not
+// take one: the registry would silently shadow the demo, and the demo would shadow the film.
+export const RESERVED_COMPOSITIONS = new Set([
+  "Storyboard", "Showreel", "Transitions", "Typesetting", "ThreeCube", "ThreeStage",
+  "PlateStage", "PropStage", "Presets", "ManimOverlay", "LintFixtures", "Char2Probe",
+]);
 export const ENGINE_SRC_DIRS = new Set(["design", "storyboard", "qa", "showcase", "spike"]);
 
 export function readJson(file) {
@@ -242,6 +248,7 @@ export function validateFilm(film, ctx, errors, warnings) {
   if (typeof film.prefix !== "string" || !PREFIX_RE.test(film.prefix)) err("prefix must match ^[a-z][a-z0-9-]*$");
   if (!STATUSES.has(film.status)) err("status must be draft|ready|published|retired");
   if (!ASSET_STATUSES.has(film.assetsStatus)) err("assetsStatus must be complete|incomplete");
+  if (film.composition && RESERVED_COMPOSITIONS.has(film.composition)) err(`composition collides with an engine demo: ${film.composition}`);
   if (film.status === "published" && !(film.bili && film.bili.bv)) err("published film must carry bili.bv");
   if (film.bili && film.bili.bv != null && !/^BV[0-9A-Za-z]{10}$/.test(film.bili.bv)) err("bili.bv must look like BV1xxxxxxxxx");
   if (film.kind !== kind) err(`kind must be "${kind}"`);
