@@ -46,7 +46,7 @@
     "data/flags_sim.json"
   ],
   "derivedNote": "指令条数模型输出；不是芯片实测",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },
