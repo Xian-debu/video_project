@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "loongarch",
-  "status": "ready",
+  "status": "published",
   "paper": {
     "title": "龙芯指令系统架构技术",
     "authors": [
