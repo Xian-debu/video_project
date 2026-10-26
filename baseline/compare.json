@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "stage": "S2",
+  "engineCommit": "165f928",
+  "contentCommit": "b201ec9",
+  "capturedAt": "2026-10-26T12:02:11.318Z",
+  "frameRule": "floor(totalFrames * pct / 100)",
+  "note": "Char_55 cannot render: public/plates/char/pose_*_front.png absent (pre-existing, A0). PSNR is computed only when SHA differs.",
+  "rows": [
+    {
+      "frame": "Arc_10.png",
+      "shaEqual": false,
+      "psnr": 60.4776
+    },
+    {
+      "frame": "Arc_55.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Char2_10.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Char2_55.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Char_10.png",
+      "shaEqual": false,
+      "psnr": 63.4879
+    },
+    {
+      "frame": "Gears_10.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Gears_55.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Hawk_10.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Hawk_55.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Lecture_10.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Lecture_55.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Multiplication_10.png",
+      "shaEqual": false,
+      "psnr": 63.4879
+    },
+    {
+      "frame": "Multiplication_55.png",
+      "shaEqual": false,
+      "psnr": 63.4879
+    },
+    {
+      "frame": "Quickselect_10.png",
+      "shaEqual": true
+    },
+    {
+      "frame": "Quickselect_55.png",
+      "shaEqual": false,
+      "psnr": 63.4879
+    }
+  ],
+  "pass": true,
+  "compared": 15,
+  "expectedFailures": [
+    "Char_55"
+  ]
+}
