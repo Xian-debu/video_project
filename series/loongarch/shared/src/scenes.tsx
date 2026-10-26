@@ -7,9 +7,12 @@ import { Diagram } from "./diagrams";
 
 const clamp = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
 
+// Motion only, never opacity: a scene whose panels fade up from nothing drops the
+// whole frame's luma for a third of a second, which the flicker gate (rightly) reads
+// as a dip. Elements slide into place while fully lit.
 const reveal = (f: number, delay = 0, dur = 16) => {
   const t = interpolate(f, [delay, delay + dur], [0, 1], clamp);
-  return { opacity: t, transform: "translateY(" + (1 - t) * 18 + "px)" };
+  return { opacity: 1, transform: "translateY(" + (1 - t) * 18 + "px)" };
 };
 
 export const Kicker: React.FC<{ children: React.ReactNode; tone?: string }> = ({ children, tone = S.cyan }) => (
