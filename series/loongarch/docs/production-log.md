@@ -6,13 +6,13 @@
 
 | 集 | 包 | 时长 | 内容 | 配音 | 配乐 | 渲染 | 交付 | 投稿 |
 |---|---|---|---|---|---|---|---|---|
-| 01 | 01-godson1-2003 | 437.0s | ready | ready | ready | ready | ready | 待投稿 |
-| 02 | 02-godson2-2005 | 552.6s | ready | ready | ready | ready | ready | 待投稿 |
-| 03 | 03-godson2-system-2006 | 547.1s | ready | ready | ready | ready | ready | 待投稿 |
-| 04 | 04-godson3-2009 | 480.9s | ready | ready | ready | ready | ready | 待投稿 |
-| 05 | 05-loongisa-2015 | 498.1s | ready | ready | ready | ready | ready | 待投稿 |
-| 06 | 06-loongarch-2023 | 437.0s | ready | ready | ready | ready | ready | 待投稿 |
-| 07 | 07-overview | 210.1s | ready | ready | ready | ready | ready | 待投稿 |
+| 01 | 01-godson1-2003 | 437.0s | ready | ready | ready | ready | ready | [BV1Afno6QEP2](https://www.bilibili.com/video/BV1Afno6QEP2/) |
+| 02 | 02-godson2-2005 | 552.6s | ready | ready | ready | ready | ready | [BV1MUno6bE53](https://www.bilibili.com/video/BV1MUno6bE53/) |
+| 03 | 03-godson2-system-2006 | 547.1s | ready | ready | ready | ready | ready | [BV1NXno6dEiS](https://www.bilibili.com/video/BV1NXno6dEiS/) |
+| 04 | 04-godson3-2009 | 480.9s | ready | ready | ready | ready | ready | [BV1KQno64EBa](https://www.bilibili.com/video/BV1KQno64EBa/) |
+| 05 | 05-loongisa-2015 | 498.1s | ready | ready | ready | ready | ready | [BV1HJno6EEWu](https://www.bilibili.com/video/BV1HJno6EEWu/) |
+| 06 | 06-loongarch-2023 | 437.0s | ready | ready | ready | ready | ready | [BV1Rvno6MEwG](https://www.bilibili.com/video/BV1Rvno6MEwG/) |
+| 07 | 07-overview | 210.1s | ready | ready | ready | ready | ready | [BV1Exno65ERw](https://www.bilibili.com/video/BV1Exno65ERw/) |
 
 ## 逐集记录
 
@@ -85,3 +85,17 @@
 - 配乐生成是单核纯 JS，约 2.3 秒 CPU/秒音频；566s 实测约 22 分钟。决定：系列从 02 起共用这一张 566s 长床，避免每集重复 20 分钟以上。
 - 所有视频由 Lead 逐集串行渲染，不并行，避免 Remotion/ffmpeg 抢占内存与 CPU。
 - 每集渲染前必须 content 仓干净（make 的 contentRevision 检查），提交后再 render。
+
+## 投稿记录（2026-10-27，B 站创作中心）
+
+七集全部投递成功，分类均为「科技数码」，创作声明「含AI生成内容」，标签七枚，水印关闭，公开可见。
+
+| 集 | 标题 | BV | 时长 |
+|---|---|---|---|
+| 01 | 龙芯 01｜2003 年，中国人第一次点亮自己的 CPU：龙芯1号 | BV1Afno6QEP2 | 437.0s |
+| 02 | 龙芯 02｜四年做到 64 位乱序：Godson-2 的模板 | BV1MUno6bE53 | 552.6s |
+| 03 | 龙芯 03｜芯片之外的战争：Godson-2 系统优化 | BV1NXno6dEiS | 547.1s |
+| 04 | 龙芯 04｜四颗核连成一台机器：Godson-3 与 NoC | BV1KQno64EBa | 480.9s |
+| 05 | 龙芯 05｜兼容能不能买来：LoongISA 的并集路线 | BV1HJno6EEWu | 498.1s |
+| 06 | 龙芯 06｜换掉 MIPS 这层壳：LoongArch 与 3A5000 | BV1Rvno6MEwG | 437.0s |
+| 07 | 龙芯 07｜二十年，一条被约束推出来的主线 | BV1Exno65ERw | 210.1s |

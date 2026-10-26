@@ -52,7 +52,12 @@
   "docs": [
     "docs/plan.md"
   ],
-  "bili": null,
+  "bili": {
+    "bv": "BV1MUno6bE53",
+    "url": "https://www.bilibili.com/video/BV1MUno6bE53/",
+    "submittedAt": "2026-10-27",
+    "status": "submitted"
+  },
   "assetsStatus": "complete",
   "paths": {
     "src": "src",
