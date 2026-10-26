@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "godson2",
-  "status": "draft",
+  "status": "ready",
   "paper": {
     "title": "Microarchitecture of the Godson-2 Processor",
     "authors": [

@@ -28,23 +28,24 @@
 
 - 内容提交：7c1a5b7，18 场景 / 90 行，claims 16 条。
 - 配音：90 段，552.6s，0 超时。
-- 配乐：out/godson2/score.wav（566s，seed=23，bpm=86）生成中；单核约 1.7× 实时。
-- 待办：make 全门禁、抽帧审片、交付、status ready、内容提交。
+- 配乐：out/godson2/score.wav（566s，seed=23，bpm=86），单核约 22 分钟；已复制为系列床 /root/work/scores/series-566.wav。
+- 渲染：make 全门禁通过，552.6s，-15 LUFS，TP -2 dBFS；抽帧 2/60/120/180/300/420/480/540s 审片通过。
+- 交付：Godson2.mp4 + srt/chapters/cover/report 已生成，film.status=ready。
 
 ### 03 Godson-2 系统优化（2006）
 
 - 内容提交：55bf3cd，18 场景 / 79 行，claims 15 条，A 级实验 build/page_sim.py。
 - 配音：79 段，547.1s，0 超时。
-- 配乐：out/godson2sys/score.wav（660s，seed=31，bpm=88）生成中。
+- 配乐：复用系列床 series-566.wav（03 时长 547.1s，落在 566s 内）；自渲染 660s 版本已放弃。
 - 待办：make 全门禁、抽帧审片、交付、status ready、内容提交。
 
 ### 04–07
 
 - 尚未开始。按 04 → 05 → 06 → 07 顺序逐集生产；每集先写内容与实验，再配音、配乐、渲染、审片、交付。
-- 为控制单核算力，04–07 复用 03 的 660s 系列配乐床（make --score），不再逐集重新生成；若某集时长超过 660s，先补长床再渲染。
+- 为控制单核算力，02–07 复用同一张 566s 系列配乐床（make --score）；后续各集按 ≤566s 设计，若某集超长，先补长床再渲染。
 
 ## 阻塞与决定
 
-- 配乐生成是单核纯 JS，约 1.7 秒 CPU/秒音频；566s 需约 16 分钟，660s 需约 19 分钟。决定：系列从 03 起共用一张长床，避免每集重复 15–20 分钟。
+- 配乐生成是单核纯 JS，约 2.3 秒 CPU/秒音频；566s 实测约 22 分钟。决定：系列从 02 起共用这一张 566s 长床，避免每集重复 20 分钟以上。
 - 所有视频由 Lead 逐集串行渲染，不并行，避免 Remotion/ffmpeg 抢占内存与 CPU。
 - 每集渲染前必须 content 仓干净（make 的 contentRevision 检查），提交后再 render。
