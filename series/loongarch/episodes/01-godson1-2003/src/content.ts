@@ -12,7 +12,7 @@ export const CONTENT: EpisodeContent = {
   timeline: {
     kind: "timeline",
     active: 0,
-    note: "2003 年 4 月，龙芯1号发布。它是六篇论文的起点，也是整个系列的时间原点。",
+    note: "2003 年 4 月，龙芯1号的论文发表。它是六篇论文的起点，也是整个系列的时间原点。",
   },
   background: {
     kind: "problem",
