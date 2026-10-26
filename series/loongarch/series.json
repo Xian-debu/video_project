@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "loongarch",
+  "title": "龙芯：从跟跑到自主指令系统",
+  "description": "六篇论文串起的二十年：从龙芯1号到 LoongArch，一条微架构、指令系统、二进制翻译与存储层次的发展脉络。",
+  "episodes": [
+    "01-godson1-2003",
+    "02-godson2-2005",
+    "03-godson2-system-2006",
+    "04-godson3-2009",
+    "05-loongisa-2015",
+    "06-loongarch-2023",
+    "07-overview"
+  ],
+  "productionOrder": [
+    "01-godson1-2003",
+    "02-godson2-2005",
+    "03-godson2-system-2006",
+    "04-godson3-2009",
+    "05-loongisa-2015",
+    "06-loongarch-2023",
+    "07-overview"
+  ]
+}

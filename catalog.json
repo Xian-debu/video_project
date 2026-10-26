@@ -10,5 +10,7 @@
     "mult",
     "quickselect"
   ],
-  "series": []
+  "series": [
+    "loongarch"
+  ]
 }

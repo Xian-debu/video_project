@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "godson3",
+  "kind": "series-episode",
+  "title": "Godson-3：多核、NoC 与 x86 翻译",
+  "series": {
+    "id": "loongarch",
+    "order": 4,
+    "dir": "04-godson3-2009"
+  },
+  "composition": "Godson3",
+  "entry": "src/Godson3.tsx",
+  "exports": {
+    "component": "Godson3",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "godson3",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

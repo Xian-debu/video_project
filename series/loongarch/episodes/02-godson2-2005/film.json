@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "godson2",
+  "kind": "series-episode",
+  "title": "Godson-2：一颗可复用的乱序核",
+  "series": {
+    "id": "loongarch",
+    "order": 2,
+    "dir": "02-godson2-2005"
+  },
+  "composition": "Godson2",
+  "entry": "src/Godson2.tsx",
+  "exports": {
+    "component": "Godson2",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "godson2",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

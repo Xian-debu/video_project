@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "overview",
+  "kind": "series-episode",
+  "title": "二十年五条线：龙芯做对了什么",
+  "series": {
+    "id": "loongarch",
+    "order": 7,
+    "dir": "07-overview"
+  },
+  "composition": "LoongArchOverview",
+  "entry": "src/LoongArchOverview.tsx",
+  "exports": {
+    "component": "LoongArchOverview",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "overview",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

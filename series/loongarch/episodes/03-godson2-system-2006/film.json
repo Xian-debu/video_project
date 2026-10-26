@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "godson2sys",
+  "kind": "series-episode",
+  "title": "龙芯2号系统优化：让整机跟上核",
+  "series": {
+    "id": "loongarch",
+    "order": 3,
+    "dir": "03-godson2-system-2006"
+  },
+  "composition": "Godson2System",
+  "entry": "src/Godson2System.tsx",
+  "exports": {
+    "component": "Godson2System",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "godson2sys",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

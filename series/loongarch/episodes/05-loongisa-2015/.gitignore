@@ -1,0 +1,8 @@
+# generated/build outputs — never commit
+__pycache__/
+*.pyc
+*.tmp
+/delivery/*.mp4
+/delivery/*.work
+/out/
+/assets/audio/clips/

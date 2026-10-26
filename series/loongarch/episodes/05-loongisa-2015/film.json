@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "loongisa",
+  "kind": "series-episode",
+  "title": "LoongISA：把兼容做进系统",
+  "series": {
+    "id": "loongarch",
+    "order": 5,
+    "dir": "05-loongisa-2015"
+  },
+  "composition": "LoongISA",
+  "entry": "src/LoongISA.tsx",
+  "exports": {
+    "component": "LoongISA",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "loongisa",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

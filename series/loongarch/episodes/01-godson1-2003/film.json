@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "godson1",
+  "kind": "series-episode",
+  "title": "龙芯1号：第一块芯片的野心与妥协",
+  "series": {
+    "id": "loongarch",
+    "order": 1,
+    "dir": "01-godson1-2003"
+  },
+  "composition": "Godson1",
+  "entry": "src/Godson1.tsx",
+  "exports": {
+    "component": "Godson1",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "godson1",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}

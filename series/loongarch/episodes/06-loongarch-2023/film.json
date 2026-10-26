@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "loongarch",
+  "kind": "series-episode",
+  "title": "LoongArch：自己的指令系统",
+  "series": {
+    "id": "loongarch",
+    "order": 6,
+    "dir": "06-loongarch-2023"
+  },
+  "composition": "LoongArch",
+  "entry": "src/LoongArch.tsx",
+  "exports": {
+    "component": "LoongArch",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "loongarch",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
+}
