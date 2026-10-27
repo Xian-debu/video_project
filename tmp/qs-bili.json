@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "tools/bili_draft.mjs",
+  "film": {
+    "id": "quickselect",
+    "title": "快速选择：只找第 k 小",
+    "pack": "singles/quickselect",
+    "status": "published",
+    "bv": "BV1JvHA6aE4B"
+  },
+  "platform": {
+    "partition": "科技数码",
+    "declaration": "含AI生成内容",
+    "watermark": false,
+    "visibility": "公开可见",
+    "coverFrame": 180
+  },
+  "title": "快速选择：只找第 k 小",
+  "description": "【本集讲什么】<一句话钩子 + 本集要回答的问题>\n\n【片子里的演示】<这段演示/实验做了什么、能看到什么现象>\n实验脚本（随内容仓管理）：python3 build/generate_quickselect_data.py\n画面中的图表若为作者重绘，会在片中标注；原文图版均注明出处与页码。\n\n【关于本片】本片为论文/标准解读，含 AI 生成的画面与配音；事实与数字来自上述公开资料，实验为本机可复现的模型演示，不代表芯片实测。",
+  "tags": [
+    "龙芯",
+    "CPU",
+    "芯片",
+    "计算机体系结构",
+    "论文解读",
+    "科技史",
+    "AI生成"
+  ],
+  "series": null,
+  "notes": "tags/description are drafts: edit before submitting, then paste the final text into the form."
+}
