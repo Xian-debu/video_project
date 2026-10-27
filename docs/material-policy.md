@@ -19,7 +19,7 @@
   "plates": [
     {
       "id": "fig1a",
-      "file": "assets/plates/fig1a.png",
+      "file": "assets/public/plates/fig1a.png",
       "source": "3GPP TS 45.003 V18.0.0 (2024-05), ETSI TS 145 003",
       "doc": "TS 45.003",
       "page": "22 (PDF 23)",
@@ -32,7 +32,7 @@
 }
 ```
 
-字段硬要求：id、file、source、doc、page、figure、license、attribution 都非空；file 必须在 assets/plates/ 下；图片 ≤6 MB；声明了 width/height 时必须与文件一致。
+字段硬要求：id、file、source、doc、page、figure、license、attribution 都非空；file 必须在 assets/public/plates/ 下（这样会随 public 挂载进引擎，staticFile 才能读到）；图片 ≤6 MB；声明了 width/height 时必须与文件一致。
 
 ## 3. 电影声明与门禁
 
@@ -67,7 +67,7 @@
 - `node tools/plates.mjs`：列出每片素材数与许可证，校验失败即非零退出。
 - `node tools/check.mjs`：包含同一套校验。
 - `tools/verify.sh`：check → plates → status。
-- `node tools/new-pack.mjs --with-plates`：新片脚手架（source-figures.json + assets/plates/）。
+- `node tools/new-pack.mjs --with-plates`：新片脚手架（source-figures.json + assets/public/plates/）。
 
 ## 7. 反例（本次要修的那个）
 

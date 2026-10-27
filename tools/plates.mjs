@@ -7,7 +7,7 @@
 // The contract lives in tools/lib.mjs (checkPlates). A film that declares material:"required"
 // must show at least two original figures, each with provenance and licence, and each referenced
 // from its mounted src/. The manifest is data/source-figures.json; the files live under
-// assets/plates/.
+// assets/public/plates/.
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 

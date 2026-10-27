@@ -66,9 +66,9 @@ if (process.argv.includes("--with-plates")) {
   // manifest that already fails the gate would make the first commit red for the wrong reason.
   film.material = "optional";
   writeJson(join(packAbs, "data", "source-figures.json"), { schemaVersion: 1, plates: [] });
-  mkdirSync(join(packAbs, "assets", "plates"), { recursive: true });
-  writeFileSync(join(packAbs, "assets", "plates", ".gitkeep"), "");
-  console.log("new-pack: source-figure scaffold at data/source-figures.json + assets/plates/");
+  mkdirSync(join(packAbs, "assets", "public", "plates"), { recursive: true });
+  writeFileSync(join(packAbs, "assets", "public", "plates", ".gitkeep"), "");
+  console.log("new-pack: source-figure scaffold at data/source-figures.json + assets/public/plates/");
 }
 writeJson(join(packAbs, "film.json"), film);
 

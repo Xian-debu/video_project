@@ -8,7 +8,8 @@
     "hawk",
     "lecture",
     "mult",
-    "quickselect"
+    "quickselect",
+    "convcode"
   ],
   "series": [
     "loongarch"

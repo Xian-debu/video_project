@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "convcode",
+  "kind": "single",
+  "title": "卷积码：GSM 如何在噪声里听清你",
+  "composition": "Convcode",
+  "entry": "src/Convcode.tsx",
+  "exports": {
+    "component": "Convcode",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "convcode",
+  "status": "draft",
+  "paper": null,
+  "claims": null,
+  "derive": [],
+  "derived": [],
+  "derivedNote": "无派生文件",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": null,
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "material": "optional"
+}

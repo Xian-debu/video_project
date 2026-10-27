@@ -455,8 +455,8 @@ export function checkPlates(filmEntry, root, errors, warnings) {
       if (typeof p[k] !== "string" || !p[k].trim()) errors.push(where + `.${k} is required`);
     }
     if (typeof p.file === "string" && p.file && !relSafe(p.file, where + ".file", errors)) continue;
-    if (typeof p.file === "string" && p.file && !p.file.startsWith("assets/plates/")) {
-      errors.push(where + '.file must live under assets/plates/');
+    if (typeof p.file === "string" && p.file && !p.file.startsWith("assets/public/plates/")) {
+      errors.push(where + '.file must live under assets/public/plates/');
     }
     if (typeof p.license === "string" && p.license && !PLATE_LICENSES.some((l) => p.license.toLowerCase().includes(l))) {
       warnings.push(where + ` licence "${p.license}" is not on the known list (add it to PLATE_LICENSES if it is fine)`);
@@ -476,12 +476,12 @@ export function checkPlates(filmEntry, root, errors, warnings) {
     p.height = p.height ?? size.height;
   }
   // Orphan plate files are silent weight: nothing references them.
-  const dir = join(packAbs, "assets/plates");
+  const dir = join(packAbs, "assets/public/plates");
   if (isDir(dir)) {
     const listed = new Set(list.map((p) => p.file));
     for (const f of readdirSync(dir)) {
       if (f.startsWith(".")) continue;
-      const rel = "assets/plates/" + f;
+      const rel = "assets/public/plates/" + f;
       if (!listed.has(rel)) warnings.push(`${packRel}: ${rel} is not listed in ${platesRel}`);
     }
   }
