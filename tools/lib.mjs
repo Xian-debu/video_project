@@ -301,7 +301,10 @@ export function validateFilm(film, ctx, errors, warnings) {
     if (paths.data !== "data") err('paths.data must be "data"');
     if (paths.public !== "assets/public") err('paths.public must be "assets/public"');
   }
-  const allowed = new Set(["schemaVersion","id","kind","title","composition","entry","exports","width","height","fps","prefix","status","paper","claims","derive","derived","derivedNote","narration","audio","delivery","docs","bili","assetsStatus","paths","series","notes"]);
+  if (film.material != null && film.material !== "required" && film.material !== "optional") {
+    err('material must be "required" or "optional"');
+  }
+  const allowed = new Set(["schemaVersion","id","kind","title","composition","entry","exports","width","height","fps","prefix","status","paper","claims","derive","derived","derivedNote","narration","audio","delivery","docs","bili","assetsStatus","paths","series","notes","material"]);
   for (const k of Object.keys(film)) if (!allowed.has(k)) warn(`unknown field "${k}"`);
 }
 
@@ -396,12 +399,110 @@ export function checkCatalogConsistency(catalogResult, root, errors) {
   }
 }
 
+// ---------- material plates: the original figures a material-based film shows ----------
+// A material film is judged on whether the source itself is visible, not only on our redrawing of
+// it. data/source-figures.json is the manifest: one row per source image, with provenance and licence, and
+// the files live under assets/plates/. films that declare material:"required" must show at least
+// two of them in their mounted source.
+export const PLATE_ID_RE = /^[a-z][a-z0-9-]*$/;
+export const PLATE_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
+export const PLATE_LICENSES = [
+  "3gpp", "etsi", "cc-by", "cc0", "public-domain", "own-work", "quoted-excerpt",
+];
+
+function imageSize(buf, ext) {
+  // PNG: 8-byte signature, then IHDR (width, height at offsets 16/20).
+  if (ext === ".png" && buf.length > 24 && buf.toString("ascii", 1, 4) === "PNG") {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  // JPEG: walk the markers to SOF0/SOF2.
+  if (ext === ".jpg" || ext === ".jpeg") {
+    let i = 2;
+    while (i + 9 < buf.length) {
+      if (buf[i] !== 0xff) { i++; continue; }
+      const marker = buf[i + 1];
+      const len = buf.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+        return { width: buf.readUInt16BE(i + 7), height: buf.readUInt16BE(i + 5) };
+      }
+      i += 2 + len;
+    }
+  }
+  return null;
+}
+
+export function checkPlates(filmEntry, root, errors, warnings) {
+  const { packRel, packAbs, film } = filmEntry;
+  const platesRel = "data/source-figures.json";
+  const platesAbs = join(packAbs, platesRel);
+  const required = film.material === "required";
+  if (!isFile(platesAbs)) {
+    if (required) errors.push(`${packRel}/film.json: material is required but ${platesRel} is missing`);
+    return;
+  }
+  let doc;
+  try { doc = readJson(platesAbs); } catch (e) { errors.push(`${packRel}/${platesRel}: not valid JSON (${e.message})`); return; }
+  const list = Array.isArray(doc.plates) ? doc.plates : null;
+  if (!list) { errors.push(`${packRel}/${platesRel}: plates must be an array`); return; }
+  const seen = new Set();
+  for (const [i, p] of list.entries()) {
+    const where = `${packRel}/${platesRel}: plates[${i}]`;
+    if (!p || typeof p !== "object") { errors.push(where + " is not an object"); continue; }
+    if (!PLATE_ID_RE.test(p.id || "")) errors.push(where + ".id must match ^[a-z][a-z0-9-]*$");
+    else if (seen.has(p.id)) errors.push(where + `: duplicate plate id "${p.id}"`);
+    else seen.add(p.id);
+    for (const k of ["file", "source", "doc", "page", "figure", "license", "attribution"]) {
+      if (typeof p[k] !== "string" || !p[k].trim()) errors.push(where + `.${k} is required`);
+    }
+    if (typeof p.file === "string" && p.file && !relSafe(p.file, where + ".file", errors)) continue;
+    if (typeof p.file === "string" && p.file && !p.file.startsWith("assets/plates/")) {
+      errors.push(where + '.file must live under assets/plates/');
+    }
+    if (typeof p.license === "string" && p.license && !PLATE_LICENSES.some((l) => p.license.toLowerCase().includes(l))) {
+      warnings.push(where + ` licence "${p.license}" is not on the known list (add it to PLATE_LICENSES if it is fine)`);
+    }
+    if (typeof p.file !== "string" || !p.file) continue;
+    const abs = join(packAbs, p.file);
+    if (!isFile(abs)) { errors.push(where + `: file is missing: ${p.file}`); continue; }
+    const buf = readFileSync(abs);
+    if (buf.length > 6 * 1024 * 1024) errors.push(where + `: ${p.file} is larger than 6 MB`);
+    const ext = p.file.slice(p.file.lastIndexOf(".")).toLowerCase();
+    if (!PLATE_EXTS.has(ext)) errors.push(where + `: unsupported image type ${ext}`);
+    const size = imageSize(buf, ext);
+    if (!size) { warnings.push(where + `: could not read image size for ${p.file}`); continue; }
+    if (p.width != null && p.width !== size.width) errors.push(where + `: width ${p.width} != image ${size.width}`);
+    if (p.height != null && p.height !== size.height) errors.push(where + `: height ${p.height} != image ${size.height}`);
+    p.width = p.width ?? size.width;
+    p.height = p.height ?? size.height;
+  }
+  // Orphan plate files are silent weight: nothing references them.
+  const dir = join(packAbs, "assets/plates");
+  if (isDir(dir)) {
+    const listed = new Set(list.map((p) => p.file));
+    for (const f of readdirSync(dir)) {
+      if (f.startsWith(".")) continue;
+      const rel = "assets/plates/" + f;
+      if (!listed.has(rel)) warnings.push(`${packRel}: ${rel} is not listed in ${platesRel}`);
+    }
+  }
+  if (required) {
+    if (list.length < 2) errors.push(`${packRel}: material is required but only ${list.length} plate(s) are declared (need >= 2)`);
+    const srcDir = join(packAbs, "src");
+    const text = isDir(srcDir) ? listFiles(srcDir, [".tsx", ".ts"]).map((f) => readFileSync(f, "utf8")).join("\n") : "";
+    for (const p of list) {
+      if (p && p.id && !text.includes(p.id) && !text.includes('plates/' + p.id)) {
+        errors.push(`${packRel}: plate "${p.id}" is declared but never referenced in src/`);
+      }
+    }
+  }
+}
+
 export function checkRepo(root = REPO_ROOT) {
   const catalogResult = loadCatalog(root);
   const errors = [...catalogResult.errors];
   const warnings = [...catalogResult.warnings];
   if (catalogResult.catalog) {
-    for (const f of catalogResult.films) checkPack(f, root, errors, warnings);
+    for (const f of catalogResult.films) { checkPack(f, root, errors, warnings); checkPlates(f, root, errors, warnings); }
     checkCatalogConsistency(catalogResult, root, errors);
   }
   // root files

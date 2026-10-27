@@ -4,6 +4,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 echo "== content:check =="
 node tools/check.mjs
+echo "== content:plates =="
+node tools/plates.mjs
 echo "== content:status =="
 node tools/status.mjs
 if [ -n "${VIDEO_ENGINE:-}" ]; then
