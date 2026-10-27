@@ -1,4 +1,58 @@
 {
   "schemaVersion": 1,
-  "plates": []
+  "note": "Source figures for the convcode film. Every row is a crop from the public 3GPP/ETSI specification, not a redrawing.",
+  "plates": [
+    {
+      "id": "parity",
+      "file": "assets/public/plates/ts45003-3121-parity.png",
+      "source": "3GPP TS 45.003 V18.0.0 (2024-05), published by ETSI as TS 145 003",
+      "doc": "TS 45.003 §3.1.2.1 a)",
+      "page": "44",
+      "figure": "Parity and tailing for a speech frame — a) Parity bits",
+      "license": "3gpp-etsi quoted excerpt",
+      "attribution": "3GPP TS 45.003 V18.0.0, p.44, © ETSI",
+      "note": "50 class-1a bits protected by 3 parity bits: degenerate (53,50,2) cyclic code, g(D)=D^3+D+1.",
+      "width": 1463,
+      "height": 552
+    },
+    {
+      "id": "conv-encoder",
+      "file": "assets/public/plates/ts45003-3122-conv.png",
+      "source": "3GPP TS 45.003 V18.0.0 (2024-05), published by ETSI as TS 145 003",
+      "doc": "TS 45.003 §3.1.2.2",
+      "page": "45",
+      "figure": "Convolutional encoder",
+      "license": "3gpp-etsi quoted excerpt",
+      "attribution": "3GPP TS 45.003 V18.0.0, p.45, © ETSI",
+      "note": "Rate 1/2, K=5: G0=1+D^3+D^4, G1=1+D+D^3+D^4; the two output equations and the class-2 pass-through.",
+      "width": 1463,
+      "height": 685
+    },
+    {
+      "id": "interleave",
+      "file": "assets/public/plates/ts45003-313-interleave.png",
+      "source": "3GPP TS 45.003 V18.0.0 (2024-05), published by ETSI as TS 145 003",
+      "doc": "TS 45.003 §3.1.3",
+      "page": "45",
+      "figure": "Interleaving — the reordering rule",
+      "license": "3gpp-etsi quoted excerpt",
+      "attribution": "3GPP TS 45.003 V18.0.0, p.45, © ETSI",
+      "note": "456 coded bits spread over 8 bursts, 57 bits per burst, block diagonal depth 4.",
+      "width": 1463,
+      "height": 821
+    },
+    {
+      "id": "annexb",
+      "file": "assets/public/plates/ts45003-annexb-g.png",
+      "source": "3GPP TS 45.003 V18.0.0 (2024-05), published by ETSI as TS 145 003",
+      "doc": "TS 45.003 Annex B (informative)",
+      "page": "347",
+      "figure": "Summary of polynomials: G0 and G1 rows",
+      "license": "3gpp-etsi quoted excerpt",
+      "attribution": "3GPP TS 45.003 V18.0.0, p.347, © ETSI",
+      "note": "Both polynomials are shared across channels; TCH/FS appears in both rows, i.e. the same K=5 code is used by the full-rate speech channel.",
+      "width": 1463,
+      "height": 662
+    }
+  ]
 }

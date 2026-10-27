@@ -14,13 +14,30 @@
   "height": 1080,
   "fps": 30,
   "prefix": "convcode",
-  "status": "draft",
-  "paper": null,
-  "claims": null,
-  "derive": [],
-  "derived": [],
-  "derivedNote": "无派生文件",
-  "narration": null,
+  "status": "ready",
+  "paper": {
+    "title": "3GPP TS 45.003 V18.0.0 — Channel coding (GSM/EDGE)",
+    "authors": [
+      "3GPP TSG-GERAN"
+    ],
+    "venue": "ETSI TS 145 003 V18.0.0",
+    "year": 2024,
+    "url": "https://www.etsi.org/deliver/etsi_ts/145000_145099/145003/18.00.00_60/ts_145003v180000p.pdf"
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/spec.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/generate_convcode_data.py"
+    }
+  ],
+  "derived": [
+    "data/demo.json"
+  ],
+  "derivedNote": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },
@@ -28,12 +45,14 @@
   "docs": [
     "docs/plan.md"
   ],
-  "bili": null,
+  "bili": {
+    "bv": null
+  },
   "assetsStatus": "complete",
   "paths": {
     "src": "src",
     "data": "data",
     "public": "assets/public"
   },
-  "material": "optional"
+  "material": "required"
 }

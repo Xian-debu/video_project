@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "GSM full-rate speech channel: numbers used on screen",
+    "source": "3GPP TS 45.003 V18.0.0 (2024-05), Channel coding, published by ETSI as TS 145 003 V18.0.0",
+    "retrieved": "2026-10-26",
+    "file": "data/spec.txt (pdftotext -layout of ts_145003v180000p.pdf, 23 921 lines)",
+    "note": "Every value below is read off the specification text, not recomputed. Quotes are single-line slices of data/spec.txt."
+  },
+  "values": {
+    "speechFrameBits": 260,
+    "class1Bits": 182,
+    "class2Bits": 78,
+    "class1aBits": 50,
+    "parityBits": 3,
+    "tailBits": 4,
+    "uBits": 189,
+    "codedBits": 456,
+    "codedClass1Bits": 378,
+    "convRateNumerator": 1,
+    "convRateDenominator": 2,
+    "constraintLength": 5,
+    "memoryBits": 4,
+    "trellisStates": 16,
+    "g0TapMask": 19,
+    "g1TapMask": 27,
+    "g0Polynomial": "1 + D^3 + D^4",
+    "g1Polynomial": "1 + D + D^3 + D^4",
+    "interleaveBlocks": 8,
+    "bitsPerBlock": 57,
+    "burstBits": 114,
+    "blockDiagonalDepth": 4,
+    "frameMs": 20
+  },
+  "quotes": {
+    "parity": {
+      "line": 3193,
+      "text": "The first 50 bits of class 1 (known as class 1a for the EFR) are protected by three parity bits used for error"
+    },
+    "reorder": {
+      "line": 3209,
+      "text": "The information and parity bits of class 1 are reordered, defining 189 information + parity + tail bits of class 1,"
+    },
+    "convIntro": {
+      "line": 3225,
+      "text": "The class 1 bits are encoded with the ½ rate convolutional code defined by the polynomials:"
+    },
+    "codedBits": {
+      "line": 3231,
+      "text": "The coded bits {c(0), c(1),..., c(455)} are then defined by:"
+    },
+    "interleaveRule": {
+      "line": 3262,
+      "text": "The block of coded data is interleaved \"block diagonal\", where a new data block starts every 4th block and is distributed"
+    },
+    "perBlock": {
+      "line": 3257,
+      "text": "4(N+1) + 4, 5, 6, 7. Continuing with the next data blocks shows that one block always carries 57 bits of data from one"
+    },
+    "figure1a": {
+      "line": 1456,
+      "text": "Figure 1a: Channel Coding and Interleaving Organization for speech, circuit switched data and GPRS"
+    },
+    "annexB": {
+      "line": 1157,
+      "text": "Annex B (informative):                          Summary of Polynomials Used for Convolutional Codes and Turbo"
+    }
+  }
+}
