@@ -195,26 +195,6 @@
       "quote": null,
       "where": "build/generate_convcode_data.py, frameRecovery",
       "note": "SYNTHETIC: 每档 3000 帧、456 位中随机翻 0/10/20/30/40 位，硬判决维特比整帧恢复比例。"
-    },
-    {
-      "id": "delay-40ms",
-      "scene": "interleave",
-      "onScreen": "约 40 ms",
-      "value": "~37",
-      "dataset": "derived",
-      "quote": null,
-      "where": "8 bursts × 4.615 ms ≈ 36.9 ms",
-      "note": "DERIVED: 一帧摊到八个突发，收齐要等约 8 个 TDMA 帧（每个 4.615 ms）。"
-    },
-    {
-      "id": "throughput-13k",
-      "scene": "impl",
-      "onScreen": "13 kbps",
-      "value": "13",
-      "dataset": "GSM 全速率语音编码器",
-      "quote": null,
-      "where": "TCH/FS 语音编码 13 kbps",
-      "note": "DERIVED: 每 20 ms 一帧 260 bit 的语音编码净荷约 13 kbps；这是编码器速率，不是空口总速率。"
     }
   ]
 }

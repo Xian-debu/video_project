@@ -63,7 +63,7 @@ export const SInterleave: React.FC = () => {
               <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint, marginTop: 4 }}>一帧要等八个突发才收齐</div>
             </div>
             <Body size={FT.meta} style={{ flex: 1 }}>
-              交织不增加任何冗余，它只是把时间上的连错，换成空间上的分散。代价是延迟：约 40 ms。
+              交织不增加任何冗余，它只是把时间上的连错，换成空间上的分散。代价是延迟：八个突发之后才能收齐。
             </Body>
           </div>
         </Card>

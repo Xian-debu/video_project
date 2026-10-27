@@ -44,8 +44,8 @@ export const SImpl: React.FC = () => {
         <Card label="真正的工程量" accent={C.amber} pad={20}>
           <div style={{ display: "flex", gap: 26 }}>
             {[
-              { k: "定点化", v: "软判决的度量要压进 16 位，量化噪声会影响 0.2 dB 量级" },
-              { k: "吞吐", v: "每 20 ms 一帧，实时约束下译码器要跑满 13 kbps" },
+              { k: "定点化", v: "软判决的度量要压进有限位宽，量化噪声会吃掉一部分增益" },
+              { k: "吞吐", v: "每 20 ms 一帧，实时约束下译码器必须跟上话音" },
               { k: "功耗", v: "1990 年代手机靠电池，每条支路都要省" },
             ].map((x) => (
               <div key={x.k} style={{ flex: 1 }}>
