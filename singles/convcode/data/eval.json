@@ -29,40 +29,42 @@
     "bitsPerBlock": 57,
     "burstBits": 114,
     "blockDiagonalDepth": 4,
-    "frameMs": 20
+    "frameMs": 20,
+    "class1aCodedBits": 53,
+    "parityPolynomial": "D3 + D + 1"
   },
   "quotes": {
     "parity": {
-      "line": 3193,
+      "line": 3237,
       "text": "The first 50 bits of class 1 (known as class 1a for the EFR) are protected by three parity bits used for error"
     },
     "reorder": {
-      "line": 3209,
+      "line": 3253,
       "text": "The information and parity bits of class 1 are reordered, defining 189 information + parity + tail bits of class 1,"
     },
     "convIntro": {
-      "line": 3225,
+      "line": 3270,
       "text": "The class 1 bits are encoded with the ½ rate convolutional code defined by the polynomials:"
     },
     "codedBits": {
-      "line": 3231,
+      "line": 3276,
       "text": "The coded bits {c(0), c(1),..., c(455)} are then defined by:"
     },
     "interleaveRule": {
-      "line": 3262,
+      "line": 3307,
       "text": "The block of coded data is interleaved \"block diagonal\", where a new data block starts every 4th block and is distributed"
     },
     "perBlock": {
-      "line": 3257,
+      "line": 3302,
       "text": "4(N+1) + 4, 5, 6, 7. Continuing with the next data blocks shows that one block always carries 57 bits of data from one"
     },
     "figure1a": {
-      "line": 1456,
+      "line": 1478,
       "text": "Figure 1a: Channel Coding and Interleaving Organization for speech, circuit switched data and GPRS"
     },
     "annexB": {
-      "line": 1157,
-      "text": "Annex B (informative):                          Summary of Polynomials Used for Convolutional Codes and Turbo"
+      "line": 1174,
+      "text": "Annex B (informative): Summary of Polynomials Used for Convolutional Codes and Turbo"
     }
   }
 }

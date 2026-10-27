@@ -21,7 +21,7 @@ RATE = 0.5
 K = 5
 MEM = K - 1
 STATES = 1 << MEM
-G0 = 0b11001
+G0 = 0b10011
 G1 = 0b11011
 TAIL = MEM
 INFO_BITS = 189
@@ -235,6 +235,14 @@ def main():
         },
         "ber": ber,
         "gain": gain,
+        "display": {
+            "ber0dbPct": "%.3f" % (100.0 * ber[0]["uncoded"]),
+            "gainUncoded1e3Db": "%.2f" % gain["uncodedDb"],
+            "gainHard1e3Db": "%.2f" % gain["hardDb"],
+            "gainSoft1e3Db": "%.2f" % gain["softDb"],
+            "gain3p7Db": "%.2f" % gain["softGainDb"],
+            "recoveryPct": {"%d" % r["flips"]: "%.2f" % r["recoveredPct"] for r in rec},
+        },
         "frameRecovery": rec,
         "example": worked_example(),
         "interleave": interleave_model(),

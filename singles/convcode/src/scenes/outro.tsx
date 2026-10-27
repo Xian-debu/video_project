@@ -26,7 +26,7 @@ export const SOutro: React.FC = () => {
             { n: "189", u: "输入位", s: "一类 + 校验 + 尾零" },
             { n: "×2", u: "速率 1/2", s: "180 度翻转不变的两条支路" },
             { n: "8×57", u: "交织", s: "一帧摊到八个突发" },
-            { n: "3.6", u: "dB 增益", s: "软判决 vs 不编码（1e-3 处）" },
+            { n: "3.7", u: "dB 增益", s: "软判决 vs 不编码（1e-3 处）" },
           ].map((x) => (
             <Card key={x.n} pad={22} style={{ width: 400 }} accent={C.cyan}>
               <Mono size={FT.display} color={C.ink}>{x.n}</Mono>
