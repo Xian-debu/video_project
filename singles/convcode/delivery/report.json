@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-10-27T16:53:19.000Z",
+  "composition": "Convcode",
+  "film": {
+    "id": "convcode",
+    "pack": "singles/convcode",
+    "series": null
+  },
+  "out": "out/convcode",
+  "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --film=convcode",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "claims check",
+      "command": "node scripts/qa/claims_check.mjs --film=convcode",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video-pipeline-blueprint/out/convcode/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=Convcode --script=src/convcode/script.ts --out=/root/video-pipeline-blueprint/out/convcode/scenes --output=/root/video-pipeline-blueprint/out/convcode/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video-pipeline-blueprint/out/convcode/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 45",
+      "command": "npx remotion still Convcode /root/video-pipeline-blueprint/out/convcode/stills/frame_45.png --frame=45 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 1222",
+      "command": "npx remotion still Convcode /root/video-pipeline-blueprint/out/convcode/stills/frame_1222.png --frame=1222 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 5498",
+      "command": "npx remotion still Convcode /root/video-pipeline-blueprint/out/convcode/stills/frame_5498.png --frame=5498 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 9774",
+      "command": "npx remotion still Convcode /root/video-pipeline-blueprint/out/convcode/stills/frame_9774.png --frame=9774 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs --compositions=Convcode --frames=45,1222,5498,9774",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mix",
+      "command": "node scripts/audio/mix.mjs --narration /root/video_project/singles/convcode/assets/audio/narration.wav --music /root/video-pipeline-blueprint/out/convcode/score.wav --out /root/video-pipeline-blueprint/out/convcode/mix.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (mix)",
+      "command": "python3 scripts/qa/music_gate.py --mix /root/video-pipeline-blueprint/out/convcode/mix.wav --narration /root/video_project/singles/convcode/assets/audio/narration.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /root/video-pipeline-blueprint/out/convcode/raw_video.mp4 -i /root/video-pipeline-blueprint/out/convcode/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video-pipeline-blueprint/out/convcode/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /root/video-pipeline-blueprint/out/convcode/programme_unnorm.mp4 /root/video-pipeline-blueprint/out/convcode/Convcode.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "script dump",
+      "command": "node scripts/qa/dump_script.mjs src/convcode/script.ts data/convcode/lines.json",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /root/video-pipeline-blueprint/out/convcode/Convcode.mp4 --thresh 12 --region full --cut-frames 1049,2241,3645,5035,6662,8107,9936,11451",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=Convcode --script=src/convcode/script.ts --prefix=convcode",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "799ba0025f6fab9a",
+    "seconds": 407.27,
+    "scoreReused": true,
+    "stem": {
+      "mode": "stem",
+      "path": "/root/video-pipeline-blueprint/out/convcode/score.wav",
+      "full_median_db": -25.08,
+      "audible_median_db": -27.86,
+      "audible_share": 0.631,
+      "sub_share": 0.068,
+      "pass": true
+    },
+    "segments": {
+      "reused": 9,
+      "rendered": 0,
+      "scenes": 9,
+      "frames": 12218
+    },
+    "renderedSeconds": 407.267,
+    "mix": {
+      "out": "/root/video-pipeline-blueprint/out/convcode/mix.wav",
+      "sampleRate": 48000,
+      "seconds": 408.46,
+      "narrationSeconds": 407.26,
+      "musicSeconds": 408,
+      "musicGainDb": 0,
+      "duckDb": 4.5,
+      "ducked": "60.5%",
+      "fadeIn": 1.5,
+      "fadeOut": 2.5,
+      "peakDbFS": -1.52,
+      "peakBeforeLimitDbFS": -1.52,
+      "rmsDbFS": -19.64,
+      "musicOnlyPeakDbFS": -10.18,
+      "preGain": 1
+    },
+    "mixGate": {
+      "mode": "mix",
+      "mix": "/root/video-pipeline-blueprint/out/convcode/mix.wav",
+      "narration": "/root/video_project/singles/convcode/assets/audio/narration.wav",
+      "speech_db": -15.48,
+      "gap_full_db": -26.03,
+      "gap_audible_db": -28.66,
+      "bed_contribution_db": 41.3,
+      "pass": true
+    },
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0364,
+      "p99": 0.2507,
+      "max": 47.82,
+      "cutFrames": [
+        1049,
+        2241,
+        3645,
+        5035,
+        6662,
+        8107,
+        9936,
+        11451
+      ]
+    },
+    "exports": [
+      "convcode.srt",
+      "convcode.chapters.txt",
+      "convcode.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "content": {
+      "id": "convcode",
+      "pack": "singles/convcode",
+      "commit": "b5b99c0de78957ce9c137bd7204269959da32564",
+      "dirty": 0
+    },
+    "inputs": {
+      "src": {
+        "files": 166,
+        "sha256": "33ed63f88b1b807d"
+      },
+      "data": {
+        "files": 124,
+        "sha256": "5ec422364406e61b"
+      },
+      "scripts": {
+        "files": 47,
+        "sha256": "ba9a0448d37ee3e6"
+      }
+    }
+  },
+  "pass": true,
+  "delivery": {
+    "file": "Convcode.mp4",
+    "note": "mp4 stays untracked (delivery/.gitignore)"
+  }
+}
