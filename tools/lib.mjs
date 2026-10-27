@@ -402,7 +402,8 @@ export function checkCatalogConsistency(catalogResult, root, errors) {
 // ---------- material plates: the original figures a material-based film shows ----------
 // A material film is judged on whether the source itself is visible, not only on our redrawing of
 // it. data/source-figures.json is the manifest: one row per source image, with provenance and licence, and
-// the files live under assets/plates/. films that declare material:"required" must show at least
+// the files live under assets/public/plates/ (the public mount is what staticFile resolves). films that
+// declare material:"required" must show at least
 // two of them in their mounted source.
 export const PLATE_ID_RE = /^[a-z][a-z0-9-]*$/;
 export const PLATE_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
