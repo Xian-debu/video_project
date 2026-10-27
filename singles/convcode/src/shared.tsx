@@ -189,7 +189,7 @@ export const Flow: React.FC<{ count?: number; y: number; speed?: number; color?:
   return (
     <div style={{ position: "absolute", left: 0, top: y, width: w, height, overflow: "hidden" }}>
       {Array.from({ length: count }).map((_, i) => {
-        const x = ((i * (w / count) + f * speed * (1 + (i % 3) * 0.25) + seed) % (w + 40)) - 20;
+        const x = (i * (w / count) + f * speed * (1 + (i % 3) * 0.25) + seed) % (w - 10);
         const on = ((i * 37 + seed) % 9) < 7;
         return <div key={i} style={{ position: "absolute", left: x, top: 0, width: 10, height, background: on ? color : C.panelLine, opacity: on ? 0.8 : 0.35, borderRadius: 2 }} />;
       })}
