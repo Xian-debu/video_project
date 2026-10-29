@@ -76,7 +76,7 @@ export const SOpen: React.FC = () => {
                 fmtY: (v) => v.toFixed(0),
               }}
             />
-            <div style={{ display: "flex", gap: 26, marginTop: -14 }}>
+            <div style={{ display: "flex", gap: 26, marginTop: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <div style={{ width: 22, height: 2, background: C.violet }} />
                 <Mono size={FT.micro} color={C.inkFaint}>{"收盘价"}</Mono>
