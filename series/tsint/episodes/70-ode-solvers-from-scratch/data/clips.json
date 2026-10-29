@@ -17,7 +17,7 @@
  },
  "open#4": {
   "file": "open-4.mp3",
-  "dur": 4.464
+  "dur": 4.368
  },
  "open#5": {
   "file": "open-5.mp3",
@@ -373,7 +373,7 @@
  },
  "verification#2": {
   "file": "verification-2.mp3",
-  "dur": 3.456
+  "dur": 5.808
  },
  "verification#3": {
   "file": "verification-3.mp3",
@@ -425,11 +425,11 @@
  },
  "verification#15": {
   "file": "verification-15.mp3",
-  "dur": 4.44
+  "dur": 4.464
  },
  "verification#16": {
   "file": "verification-16.mp3",
-  "dur": 3.6
+  "dur": 3.384
  },
  "verification#17": {
   "file": "verification-17.mp3",
@@ -453,7 +453,7 @@
  },
  "boundary#1": {
   "file": "boundary-1.mp3",
-  "dur": 3.12
+  "dur": 4.824
  },
  "boundary#2": {
   "file": "boundary-2.mp3",

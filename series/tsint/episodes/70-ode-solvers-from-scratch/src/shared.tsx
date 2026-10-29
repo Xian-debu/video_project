@@ -113,8 +113,12 @@ export const Plot: React.FC<{
 }> = ({ w, h, at, dur = 40, x, y, series, grid, axes }) => {
   const f = useCurrentFrame();
   const p = pct(f, at, at + dur);
+  const cid = "plot" + React.useId().replace(/[^a-zA-Z0-9_-]/g, "");
   return (
     <svg width={w} height={h} style={{ display: "block", overflow: "visible" }}>
+      <defs>
+        <clipPath id={cid}><rect x={0} y={0} width={w} height={h} /></clipPath>
+      </defs>
       {grid ? (
         <>
           {grid.x.map((v) => (
@@ -135,6 +139,7 @@ export const Plot: React.FC<{
           ))}
         </>
       ) : null}
+      <g clipPath={"url(#" + cid + ")"}>
       {series.map((s, si) => {
         const pts = s.pts.map((q) => x(q.x).toFixed(1) + "," + y(q.y).toFixed(1)).join(" ");
         const dots = s.dot && p > 0.98 ? s.pts : [];
@@ -152,6 +157,7 @@ export const Plot: React.FC<{
           </g>
         );
       })}
+      </g>
       {axes ? (
         <>
           <text x={w / 2} y={h + 54} textAnchor="middle" fill={C.inkDim} fontFamily={FONT.sans} fontSize={FT.meta}>{axes.x}</text>
@@ -167,7 +173,7 @@ export const Plate: React.FC<{ id: string; width: number; at?: number; caption?:
   const p = plate(id);
   return (
     <SourcePlate
-      src={"tsint-70/plates/" + p.file.split("/").pop()}
+      src={"tsint-70-ode-solvers-from-scratch/plates/" + p.file.split("/").pop()}
       width={width}
       nativeW={p.width ?? 980}
       nativeH={p.height ?? 380}

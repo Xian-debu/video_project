@@ -1,54 +1,54 @@
 {
  "entry": "src/tsint-70-ode-solvers-from-scratch/script.ts",
  "fps": 30,
- "totalSec": 673.19,
+ "totalSec": 676.96,
  "scenes": [
   {
    "id": "open",
    "chapter": "开场",
    "start": 0,
-   "dur": 52.29
+   "dur": 52.19
   },
   {
    "id": "problem",
    "chapter": "问题",
-   "start": 52.29,
+   "start": 52.19,
    "dur": 76.07
   },
   {
    "id": "definitions",
    "chapter": "定义",
-   "start": 128.36,
+   "start": 128.26,
    "dur": 93.01
   },
   {
    "id": "intuition",
    "chapter": "直觉",
-   "start": 221.37,
+   "start": 221.27,
    "dur": 114.52
   },
   {
    "id": "implementation",
    "chapter": "实现",
-   "start": 335.89,
+   "start": 335.79,
    "dur": 98.78
   },
   {
    "id": "verification",
    "chapter": "验证",
-   "start": 434.67,
-   "dur": 94.49
+   "start": 434.57,
+   "dur": 96.65
   },
   {
    "id": "boundary",
    "chapter": "边界",
-   "start": 529.16,
-   "dur": 103.72
+   "start": 531.22,
+   "dur": 105.43
   },
   {
    "id": "outro",
    "chapter": "收束",
-   "start": 632.88,
+   "start": 636.65,
    "dur": 40.31
   }
  ],
@@ -85,965 +85,965 @@
    "scene": "open",
    "index": 4,
    "start": 16.68,
-   "dur": 4.81,
-   "speech": "精确解是一个闭合的椭圆：转一圈，回到原处。"
+   "dur": 4.72,
+   "speech": "精确解是一条闭合曲线：转一圈，回到原处。"
   },
   {
    "scene": "open",
    "index": 5,
-   "start": 22.04,
+   "start": 21.95,
    "dur": 3.54,
    "speech": "现在用最简单的数值方法走一遍。"
   },
   {
    "scene": "open",
    "index": 6,
-   "start": 26.14,
+   "start": 26.04,
    "dur": 3.06,
    "speech": "每一步，点都往外偏一点。"
   },
   {
    "scene": "open",
    "index": 7,
-   "start": 29.75,
+   "start": 29.65,
    "dur": 3.85,
    "speech": "十个周期之后，振幅已经明显偏大。"
   },
   {
    "scene": "open",
    "index": 8,
-   "start": 34.15,
+   "start": 34.06,
    "dur": 3.4,
    "speech": "屏幕上的能量比值，停在这个数。"
   },
   {
    "scene": "open",
    "index": 9,
-   "start": 38.1,
+   "start": 38,
    "dur": 3.78,
    "speech": "同一张网格，换四阶龙格库塔。"
   },
   {
    "scene": "open",
    "index": 10,
-   "start": 42.43,
+   "start": 42.34,
    "dur": 3.09,
    "speech": "十个周期之后，它还在原地。"
   },
   {
    "scene": "open",
    "index": 11,
-   "start": 46.07,
+   "start": 45.97,
    "dur": 4.02,
    "speech": "这一集，把这两个结果拆开算给你看。"
   },
   {
    "scene": "problem",
    "index": 0,
-   "start": 53.49,
+   "start": 53.39,
    "dur": 4.86,
    "speech": "时间序列建模里，微分方程出现得比想象中多。"
   },
   {
    "scene": "problem",
    "index": 1,
-   "start": 58.9,
+   "start": 58.8,
    "dur": 4.6,
    "speech": "连续时间的动力学，写成状态对时间的导数。"
   },
   {
    "scene": "problem",
    "index": 2,
-   "start": 64.05,
+   "start": 63.95,
    "dur": 4.38,
    "speech": "给定初始状态，解就唯一确定一条轨迹。"
   },
   {
    "scene": "problem",
    "index": 3,
-   "start": 68.98,
+   "start": 68.88,
    "dur": 3.93,
    "speech": "这叫初值问题，书里写作式 9.11。"
   },
   {
    "scene": "problem",
    "index": 4,
-   "start": 73.46,
+   "start": 73.36,
    "dur": 3.66,
    "speech": "能写出解析解的方程，其实很少。"
   },
   {
    "scene": "problem",
    "index": 5,
-   "start": 77.67,
+   "start": 77.57,
    "dur": 5.13,
    "speech": "复利、弹簧，还有少数线性系统，教科书里解过。"
   },
   {
    "scene": "problem",
    "index": 6,
-   "start": 83.35,
+   "start": 83.25,
    "dur": 4.14,
    "speech": "真实模型里的右端项，往往是神经网络。"
   },
   {
    "scene": "problem",
    "index": 7,
-   "start": 88.04,
+   "start": 87.94,
    "dur": 4.14,
    "speech": "也可能是分段定义的规则，或者一张查表。"
   },
   {
    "scene": "problem",
    "index": 8,
-   "start": 92.73,
+   "start": 92.63,
    "dur": 3.83,
    "speech": "没有公式可套，只能一步一步往前推。"
   },
   {
    "scene": "problem",
    "index": 9,
-   "start": 97.11,
+   "start": 97.01,
    "dur": 3.42,
    "speech": "推法不同，结果可能差得很远。"
   },
   {
    "scene": "problem",
    "index": 10,
-   "start": 101.08,
+   "start": 100.98,
    "dur": 2.68,
    "speech": "这一集只问三个问题。"
   },
   {
    "scene": "problem",
    "index": 11,
-   "start": 104.31,
+   "start": 104.21,
    "dur": 4.6,
    "speech": "单步公式怎么写，误差多大，什么时候会失效。"
   },
   {
    "scene": "problem",
    "index": 12,
-   "start": 109.46,
+   "start": 109.36,
    "dur": 2.87,
    "speech": "先看书中给的两个方法。"
   },
   {
    "scene": "problem",
    "index": 13,
-   "start": 112.88,
+   "start": 112.78,
    "dur": 3.37,
    "speech": "欧拉法用当前斜率走直线。"
   },
   {
    "scene": "problem",
    "index": 14,
-   "start": 116.8,
+   "start": 116.7,
    "dur": 4.38,
    "speech": "龙格库塔一步采四个斜率，再加权平均。"
   },
   {
    "scene": "problem",
    "index": 15,
-   "start": 121.73,
+   "start": 121.63,
    "dur": 4.43,
    "speech": "接下来把它们写成 Haskell，用同一组数据对比。"
   },
   {
    "scene": "definitions",
    "index": 0,
-   "start": 129.56,
+   "start": 129.46,
    "dur": 2.25,
    "speech": "先把记号钉死。"
   },
   {
    "scene": "definitions",
    "index": 1,
-   "start": 132.36,
+   "start": 132.26,
    "dur": 5.27,
    "speech": "状态是向量，时间从起点走到终点，步长固定。"
   },
   {
    "scene": "definitions",
    "index": 2,
-   "start": 138.18,
+   "start": 138.08,
    "dur": 3.93,
    "speech": "第 n 步的时间，是起点加上 n 个步长。"
   },
   {
    "scene": "definitions",
    "index": 3,
-   "start": 142.65,
+   "start": 142.55,
    "dur": 4.26,
    "speech": "欧拉法只做一件事：沿当前切线走一步。"
   },
   {
    "scene": "definitions",
    "index": 4,
-   "start": 147.46,
+   "start": 147.36,
    "dur": 5.13,
    "speech": "公式是下一个状态，等于当前状态加步长乘斜率。"
   },
   {
    "scene": "definitions",
    "index": 5,
-   "start": 153.14,
+   "start": 153.04,
    "dur": 4.26,
    "speech": "对导数等于自身的方程，从一出发走一步。"
   },
   {
    "scene": "definitions",
    "index": 6,
-   "start": 157.95,
+   "start": 157.85,
    "dur": 2.03,
    "speech": "得到一点一。"
   },
   {
    "scene": "definitions",
    "index": 7,
-   "start": 160.53,
+   "start": 160.43,
    "dur": 3.42,
    "speech": "这个数不用积分，手算就能对上。"
   },
   {
    "scene": "definitions",
    "index": 8,
-   "start": 164.5,
+   "start": 164.4,
    "dur": 3.85,
    "speech": "龙格库塔在同一段里采四个斜率。"
   },
   {
    "scene": "definitions",
    "index": 9,
-   "start": 168.91,
+   "start": 168.81,
    "dur": 4.86,
    "speech": "第一个在起点，第二第三个在中点，第四个在终点。"
   },
   {
    "scene": "definitions",
    "index": 10,
-   "start": 174.32,
+   "start": 174.22,
    "dur": 5.58,
    "speech": "然后按一、二、二、一的权重加起来，再除以六。"
   },
   {
    "scene": "definitions",
    "index": 11,
-   "start": 180.45,
+   "start": 180.35,
    "dur": 3.93,
    "speech": "同一个方程，一步得到屏幕上这个数。"
   },
   {
    "scene": "definitions",
    "index": 12,
-   "start": 184.93,
+   "start": 184.83,
    "dur": 3.16,
    "speech": "它和真实值只差一点点。"
   },
   {
    "scene": "definitions",
    "index": 13,
-   "start": 188.64,
+   "start": 188.54,
    "dur": 3.42,
    "speech": "弹簧要写成两个一阶方程。"
   },
   {
    "scene": "definitions",
    "index": 14,
-   "start": 192.61,
+   "start": 192.51,
    "dur": 5.8,
    "speech": "位移的导数是速度，速度的导数是负的角频率平方乘位移。"
   },
   {
    "scene": "definitions",
    "index": 15,
-   "start": 198.96,
+   "start": 198.86,
    "dur": 6.4,
    "speech": "角频率等于根号下刚度除以质量，书里式 9.16 和 9.17。"
   },
   {
    "scene": "definitions",
    "index": 16,
-   "start": 205.9,
+   "start": 205.8,
    "dur": 5.17,
    "speech": "精确解是余弦加正弦，周期是二派除以角频率。"
   },
   {
    "scene": "definitions",
    "index": 17,
-   "start": 211.63,
+   "start": 211.53,
    "dur": 4.53,
    "speech": "能量等于动能加势能，精确解让它保持不变。"
   },
   {
    "scene": "definitions",
    "index": 18,
-   "start": 216.7,
+   "start": 216.6,
    "dur": 2.46,
    "speech": "这就是我们的裁判。"
   },
   {
    "scene": "intuition",
    "index": 0,
-   "start": 222.57,
+   "start": 222.47,
    "dur": 4.24,
    "speech": "欧拉法错在哪，可以从一个二阶矩阵看出来。"
   },
   {
    "scene": "intuition",
    "index": 1,
-   "start": 227.36,
+   "start": 227.26,
    "dur": 5.03,
    "speech": "把位移和速度写成向量，一步更新就是线性的。"
   },
   {
    "scene": "intuition",
    "index": 2,
-   "start": 232.94,
+   "start": 232.84,
    "dur": 4.33,
    "speech": "矩阵的左上和右下是一，右上角是步长。"
   },
   {
    "scene": "intuition",
    "index": 3,
-   "start": 237.82,
+   "start": 237.72,
    "dur": 3.66,
    "speech": "左下角是负的步长乘角频率平方。"
   },
   {
    "scene": "intuition",
    "index": 4,
-   "start": 242.03,
+   "start": 241.93,
    "dur": 4.45,
    "speech": "它的两个特征值，是一加减虚数单位的步长。"
   },
   {
    "scene": "intuition",
    "index": 5,
-   "start": 247.04,
+   "start": 246.94,
    "dur": 3.64,
    "speech": "模长的平方，等于一加步长平方。"
   },
   {
    "scene": "intuition",
    "index": 6,
-   "start": 251.23,
+   "start": 251.13,
    "dur": 3.59,
    "speech": "每走一步，能量就乘上这个因子。"
   },
   {
    "scene": "intuition",
    "index": 7,
-   "start": 255.37,
+   "start": 255.27,
    "dur": 3.83,
    "speech": "不管步长多小，这个因子都大于一。"
   },
   {
    "scene": "intuition",
    "index": 8,
-   "start": 259.75,
+   "start": 259.65,
    "dur": 4.77,
    "speech": "所以欧拉法在无阻尼振子上，永远在注入能量。"
   },
   {
    "scene": "intuition",
    "index": 9,
-   "start": 265.06,
+   "start": 264.96,
    "dur": 3.95,
    "speech": "这不是舍入误差，是方法本身的性质。"
   },
   {
    "scene": "intuition",
    "index": 10,
-   "start": 269.56,
+   "start": 269.46,
    "dur": 4.55,
    "speech": "走十个周期，就是把这个因子连乘六百多次。"
   },
   {
    "scene": "intuition",
    "index": 11,
-   "start": 274.66,
+   "start": 274.56,
    "dur": 2.99,
    "speech": "结果就是屏幕上这个数。"
   },
   {
    "scene": "intuition",
    "index": 12,
-   "start": 278.2,
+   "start": 278.1,
    "dur": 4.26,
    "speech": "龙格库塔的放大因子，是一个四次多项式。"
   },
   {
    "scene": "intuition",
    "index": 13,
-   "start": 283.01,
+   "start": 282.91,
    "dur": 5.94,
    "speech": "对线性方程，它等于一加自变量，加自变量平方除以二。"
   },
   {
    "scene": "intuition",
    "index": 14,
-   "start": 289.51,
+   "start": 289.41,
    "dur": 4.89,
    "speech": "再加三次方除以六，四次方除以二十四。"
   },
   {
    "scene": "intuition",
    "index": 15,
-   "start": 294.94,
+   "start": 294.84,
    "dur": 3.59,
    "speech": "把自变量换成虚数单位乘步长。"
   },
   {
    "scene": "intuition",
    "index": 16,
-   "start": 299.08,
+   "start": 298.98,
    "dur": 3.81,
    "speech": "模长的平方，主项是步长的六次方。"
   },
   {
    "scene": "intuition",
    "index": 17,
-   "start": 303.44,
+   "start": 303.34,
    "dur": 3.35,
    "speech": "所以能量误差是六阶小量。"
   },
   {
    "scene": "intuition",
    "index": 18,
-   "start": 307.34,
+   "start": 307.24,
    "dur": 4.09,
    "speech": "步长减半，能量误差降到六十四分之一。"
   },
   {
    "scene": "intuition",
    "index": 19,
-   "start": 311.98,
+   "start": 311.88,
    "dur": 4.6,
    "speech": "这就是为什么同一张网格，它看起来像没动过。"
   },
   {
    "scene": "intuition",
    "index": 20,
-   "start": 317.13,
+   "start": 317.03,
    "dur": 4.45,
    "speech": "但龙格库塔不是免费的：一步要四次求值。"
   },
   {
    "scene": "intuition",
    "index": 21,
-   "start": 322.13,
+   "start": 322.03,
    "dur": 3.13,
    "speech": "代码更长，也更容易写错。"
   },
   {
    "scene": "intuition",
    "index": 22,
-   "start": 325.82,
+   "start": 325.72,
    "dur": 3.66,
    "speech": "而且它同样有自己的稳定边界。"
   },
   {
    "scene": "intuition",
    "index": 23,
-   "start": 330.03,
+   "start": 329.93,
    "dur": 3.66,
    "speech": "先记住这两个因子，验证时还要用。"
   },
   {
    "scene": "implementation",
    "index": 0,
-   "start": 337.09,
+   "start": 336.99,
    "dur": 4.55,
    "speech": "实现拆成四个模块，都在 ts-base 仓库里。"
   },
   {
    "scene": "implementation",
    "index": 1,
-   "start": 342.19,
+   "start": 342.09,
    "dur": 4.33,
    "speech": "物理模块只负责两件事：角频率和能量。"
   },
   {
    "scene": "implementation",
    "index": 2,
-   "start": 347.07,
+   "start": 346.97,
    "dur": 3.85,
    "speech": "解析模块给两个基准：复利和弹簧。"
   },
   {
    "scene": "implementation",
    "index": 3,
-   "start": 351.48,
+   "start": 351.38,
    "dur": 3.4,
    "speech": "欧拉和龙格库塔各自一个文件。"
   },
   {
    "scene": "implementation",
    "index": 4,
-   "start": 355.43,
+   "start": 355.33,
    "dur": 2.68,
    "speech": "它们的签名完全一样。"
   },
   {
    "scene": "implementation",
    "index": 5,
-   "start": 358.65,
+   "start": 358.55,
    "dur": 6.28,
    "speech": "接收右端函数、起点、初值、步长和步数，返回整条轨迹。"
   },
   {
    "scene": "implementation",
    "index": 6,
-   "start": 365.48,
+   "start": 365.38,
    "dur": 3.61,
    "speech": "注意返回的是 Vector，不是列表。"
   },
   {
    "scene": "implementation",
    "index": 7,
-   "start": 369.65,
+   "start": 369.55,
    "dur": 4.79,
    "speech": "轨迹要反复索引、要算长度，Vector 更合适。"
   },
   {
    "scene": "implementation",
    "index": 8,
-   "start": 374.99,
+   "start": 374.89,
    "dur": 4.41,
    "speech": "步进循环用 iterateN，累加器严格求值。"
   },
   {
    "scene": "implementation",
    "index": 9,
-   "start": 379.94,
+   "start": 379.84,
    "dur": 6.28,
    "speech": "不加感叹号，惰性求值会把几百万个未求值的表达式堆在内存里。"
   },
   {
    "scene": "implementation",
    "index": 10,
-   "start": 386.77,
+   "start": 386.67,
    "dur": 4.17,
    "speech": "这是数值代码在 Haskell 里最常见的坑。"
   },
   {
    "scene": "implementation",
    "index": 11,
-   "start": 391.49,
+   "start": 391.39,
    "dur": 4.6,
    "speech": "边界也要管：步长非正、步数为负，直接报错。"
   },
   {
    "scene": "implementation",
    "index": 12,
-   "start": 396.63,
+   "start": 396.53,
    "dur": 4.05,
    "speech": "测试用一个小 harness，三十四条断言。"
   },
   {
    "scene": "implementation",
    "index": 13,
-   "start": 401.23,
+   "start": 401.13,
    "dur": 4.65,
    "speech": "每条断言都有期望值和实际值，失败就停。"
   },
   {
    "scene": "implementation",
    "index": 14,
-   "start": 406.43,
+   "start": 406.33,
    "dur": 2.77,
    "speech": "欧拉的代码只有这几行。"
   },
   {
    "scene": "implementation",
    "index": 15,
-   "start": 409.75,
+   "start": 409.65,
    "dur": 3.69,
    "speech": "龙格库塔多了三个斜率，结构一样。"
   },
   {
    "scene": "implementation",
    "index": 16,
-   "start": 413.99,
+   "start": 413.89,
    "dur": 4.89,
    "speech": "同一套函数，既被测试调用，也被证据程序调用。"
   },
   {
    "scene": "implementation",
    "index": 17,
-   "start": 419.42,
+   "start": 419.32,
    "dur": 5.44,
    "speech": "证据程序把轨迹写成 CSV，再算能量比和收敛阶。"
   },
   {
    "scene": "implementation",
    "index": 18,
-   "start": 425.41,
+   "start": 425.31,
    "dur": 4.36,
    "speech": "这样屏幕上的每个数，都能回到一次真实运行。"
   },
   {
    "scene": "implementation",
    "index": 19,
-   "start": 430.32,
+   "start": 430.22,
    "dur": 2.15,
    "speech": "接下来跑给你看。"
   },
   {
    "scene": "verification",
    "index": 0,
-   "start": 435.87,
+   "start": 435.77,
    "dur": 2.37,
    "speech": "第一组验证：单步。"
   },
   {
    "scene": "verification",
    "index": 1,
-   "start": 438.79,
+   "start": 438.69,
    "dur": 4.57,
    "speech": "欧拉一步一点一，龙格库塔一步屏幕上这个数。"
   },
   {
    "scene": "verification",
    "index": 2,
-   "start": 443.91,
-   "dur": 3.81,
-   "speech": "和解析值对照，误差在浮点精度内。"
+   "start": 443.81,
+   "dur": 6.16,
+   "speech": "和解析值对照：欧拉的差看得见，龙格库塔的差在小数点后很多位。"
   },
   {
    "scene": "verification",
    "index": 3,
-   "start": 448.27,
+   "start": 450.52,
    "dur": 2.85,
    "speech": "第二组：十个周期的能量。"
   },
   {
    "scene": "verification",
    "index": 4,
-   "start": 451.66,
+   "start": 453.91,
    "dur": 3.3,
    "speech": "欧拉的能量比，屏幕上这个数。"
   },
   {
    "scene": "verification",
    "index": 5,
-   "start": 455.51,
+   "start": 457.77,
    "dur": 3.37,
    "speech": "和理论连乘只差最后几位。"
   },
   {
    "scene": "verification",
    "index": 6,
-   "start": 459.44,
+   "start": 461.69,
    "dur": 3.61,
    "speech": "龙格库塔的能量比，屏幕上这个数。"
   },
   {
    "scene": "verification",
    "index": 7,
-   "start": 463.6,
+   "start": 465.85,
    "dur": 3.59,
    "speech": "十圈之后，它损失了不到万分之一。"
   },
   {
    "scene": "verification",
    "index": 8,
-   "start": 467.74,
+   "start": 469.99,
    "dur": 3.52,
    "speech": "第三组：误差随步长怎么降。"
   },
   {
    "scene": "verification",
    "index": 9,
-   "start": 471.81,
+   "start": 474.06,
    "dur": 4.86,
    "speech": "横轴是步长，纵轴是终点误差，双对数坐标。"
   },
   {
    "scene": "verification",
    "index": 10,
-   "start": 477.22,
+   "start": 479.47,
    "dur": 3.54,
    "speech": "欧拉法的拟合斜率，屏幕上这个数。"
   },
   {
    "scene": "verification",
    "index": 11,
-   "start": 481.31,
+   "start": 483.57,
    "dur": 3.78,
    "speech": "龙格库塔的拟合斜率，屏幕上这个数。"
   },
   {
    "scene": "verification",
    "index": 12,
-   "start": 485.65,
+   "start": 487.9,
    "dur": 3.47,
    "speech": "一个接近一阶，一个接近四阶。"
   },
   {
    "scene": "verification",
    "index": 13,
-   "start": 489.67,
+   "start": 491.92,
    "dur": 4.53,
    "speech": "这不是挑出来的好看数字，是最小二乘的结果。"
   },
   {
    "scene": "verification",
    "index": 14,
-   "start": 494.74,
+   "start": 496.99,
    "dur": 2.46,
    "speech": "第四组：相图。"
   },
   {
    "scene": "verification",
    "index": 15,
-   "start": 497.75,
-   "dur": 4.79,
-   "speech": "精确解是闭合椭圆，欧拉是向外扩张的螺旋。"
+   "start": 500.01,
+   "dur": 4.81,
+   "speech": "精确解是闭合曲线，欧拉是向外扩张的螺旋。"
   },
   {
    "scene": "verification",
    "index": 16,
-   "start": 503.09,
-   "dur": 3.95,
-   "speech": "龙格库塔的螺旋，几乎和椭圆重合。"
+   "start": 505.37,
+   "dur": 3.73,
+   "speech": "龙格库塔的螺旋，几乎和它重合。"
   },
   {
    "scene": "verification",
    "index": 17,
-   "start": 507.59,
+   "start": 509.65,
    "dur": 2.53,
    "speech": "第五组：代码测试。"
   },
   {
    "scene": "verification",
    "index": 18,
-   "start": 510.68,
+   "start": 512.74,
    "dur": 5.1,
    "speech": "三十四条断言全部通过，边界错误也按预期抛出。"
   },
   {
    "scene": "verification",
    "index": 19,
-   "start": 516.33,
+   "start": 518.39,
    "dur": 6.73,
    "speech": "证据 JSON 记录了提交号、运行时间、编译器和每个产物的校验和。"
   },
   {
    "scene": "verification",
    "index": 20,
-   "start": 523.61,
+   "start": 525.67,
    "dur": 3.35,
    "speech": "任何一项对不上，checker 就拒绝。"
   },
   {
    "scene": "boundary",
    "index": 0,
-   "start": 530.36,
+   "start": 532.42,
    "dur": 3.66,
    "speech": "现在说边界，也就是什么时候不能用。"
   },
   {
    "scene": "boundary",
    "index": 1,
-   "start": 534.57,
-   "dur": 3.47,
-   "speech": "欧拉法在振子上没有稳定步长。"
+   "start": 536.63,
+   "dur": 5.17,
+   "speech": "第一类边界是稳定性：欧拉法在振子上没有稳定步长。"
   },
   {
    "scene": "boundary",
    "index": 2,
-   "start": 538.59,
+   "start": 542.36,
    "dur": 4.24,
    "speech": "步长再小，能量仍在涨，只是涨得慢。"
   },
   {
    "scene": "boundary",
    "index": 3,
-   "start": 543.38,
+   "start": 547.14,
    "dur": 3.76,
    "speech": "如果方程本身是衰减的，情况不同。"
   },
   {
    "scene": "boundary",
    "index": 4,
-   "start": 547.69,
+   "start": 551.45,
    "dur": 4.79,
    "speech": "测试方程里，导数等于负的衰减率乘状态。"
   },
   {
    "scene": "boundary",
    "index": 5,
-   "start": 553.03,
+   "start": 556.79,
    "dur": 4.57,
    "speech": "欧拉的放大因子，是一减步长乘衰减率。"
   },
   {
    "scene": "boundary",
    "index": 6,
-   "start": 558.15,
+   "start": 561.92,
    "dur": 3.11,
    "speech": "要求它落在负一到一之间。"
   },
   {
    "scene": "boundary",
    "index": 7,
-   "start": 561.81,
+   "start": 565.58,
    "dur": 3.64,
    "speech": "也就是步长乘衰减率小于二。"
   },
   {
    "scene": "boundary",
    "index": 8,
-   "start": 566,
+   "start": 569.76,
    "dur": 5.08,
    "speech": "超过二，数值解会振荡发散，哪怕真解在衰减。"
   },
   {
    "scene": "boundary",
    "index": 9,
-   "start": 571.63,
+   "start": 575.39,
    "dur": 4.36,
    "speech": "这叫绝对稳定性，刚性方程就卡在这里。"
   },
   {
    "scene": "boundary",
    "index": 10,
-   "start": 576.54,
+   "start": 580.3,
    "dur": 3.97,
    "speech": "龙格库塔的稳定域更大，但也是有限的。"
   },
   {
    "scene": "boundary",
    "index": 11,
-   "start": 581.06,
+   "start": 584.82,
    "dur": 5.25,
    "speech": "在虚轴上，边界是步长乘角频率小于二倍根号二。"
   },
   {
    "scene": "boundary",
    "index": 12,
-   "start": 586.86,
+   "start": 590.62,
    "dur": 3.01,
    "speech": "超过这个步长，它也会炸。"
   },
   {
    "scene": "boundary",
    "index": 13,
-   "start": 590.42,
+   "start": 594.18,
    "dur": 2.68,
    "speech": "第二类边界是光滑性。"
   },
   {
    "scene": "boundary",
    "index": 14,
-   "start": 593.65,
+   "start": 597.41,
    "dur": 4.05,
    "speech": "四阶收敛，假设右端项足够光滑。"
   },
   {
    "scene": "boundary",
    "index": 15,
-   "start": 598.24,
+   "start": 602.01,
    "dur": 4.38,
    "speech": "股票收盘价是分段常数，或者分段线性。"
   },
   {
    "scene": "boundary",
    "index": 16,
-   "start": 603.18,
+   "start": 606.94,
    "dur": 4.5,
    "speech": "拐点处斜率跳变，高阶方法的阶数会掉下来。"
   },
   {
    "scene": "boundary",
    "index": 17,
-   "start": 608.23,
+   "start": 611.99,
    "dur": 3.66,
    "speech": "这不是实现错误，是假设不成立。"
   },
   {
    "scene": "boundary",
    "index": 18,
-   "start": 612.44,
+   "start": 616.2,
    "dur": 2.56,
    "speech": "第三类边界是成本。"
   },
   {
    "scene": "boundary",
    "index": 19,
-   "start": 615.55,
+   "start": 619.31,
    "dur": 5.41,
    "speech": "龙格库塔一步四次求值，反传还要穿过整个求解器。"
   },
   {
    "scene": "boundary",
    "index": 20,
-   "start": 621.51,
+   "start": 625.28,
    "dur": 4.43,
    "speech": "神经微分方程的训练成本，主要就花在这里。"
   },
   {
    "scene": "boundary",
    "index": 21,
-   "start": 626.49,
+   "start": 630.26,
    "dur": 4.19,
    "speech": "所以下一集，我们把求解器放进网络里。"
   },
   {
    "scene": "outro",
    "index": 0,
-   "start": 634.08,
+   "start": 637.85,
    "dur": 2.56,
    "speech": "这一集做了三件事。"
   },
   {
    "scene": "outro",
    "index": 1,
-   "start": 637.19,
+   "start": 640.96,
    "dur": 4.31,
    "speech": "把欧拉和龙格库塔写成可测试的 Haskell。"
   },
   {
    "scene": "outro",
    "index": 2,
-   "start": 642.05,
+   "start": 645.82,
    "dur": 3.64,
    "speech": "用解析解和能量守恒做裁判。"
   },
   {
    "scene": "outro",
    "index": 3,
-   "start": 646.24,
+   "start": 650.01,
    "dur": 3.81,
    "speech": "量出了它们的误差阶和失效边界。"
   },
   {
    "scene": "outro",
    "index": 4,
-   "start": 650.59,
+   "start": 654.36,
    "dur": 4.5,
    "speech": "如果只记一句话：方法的选择，是模型的一部分。"
   },
   {
    "scene": "outro",
    "index": 5,
-   "start": 655.64,
+   "start": 659.41,
    "dur": 4.41,
    "speech": "同样的数据，换一个积分器，结论可能反过来。"
   },
   {
    "scene": "outro",
    "index": 6,
-   "start": 660.6,
+   "start": 664.37,
    "dur": 5.63,
    "speech": "代码、证据和这一集的全部数字，都在 ts-base 仓库。"
   },
   {
    "scene": "outro",
    "index": 7,
-   "start": 666.78,
+   "start": 670.55,
    "dur": 4.21,
    "speech": "下一集，我们让神经网络自己学动力学。"
   }

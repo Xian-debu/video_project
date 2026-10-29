@@ -4,7 +4,7 @@ import { Build } from "../../design/primitives";
 import { Card, Mono, Body, Plot, Num, Scene, PAD, ODE, beatAt, sceneFrames } from "../shared";
 
 const PW = 720;
-const PH = 600;
+const PH = 480;
 const X = (v: number) => ((v + 1.7) / 3.4) * PW;
 const Y = (v: number) => PH / 2 - (v / 3.4) * PH;
 
@@ -51,7 +51,7 @@ export const SOpen: React.FC = () => {
           </div>
         </div>
         <div style={{ display: "flex", gap: 26, marginTop: 8 }}>
-          <Mono size={FT.meta} color={C.inkDim}>{"— 精确解 · 闭合椭圆"}</Mono>
+          <Mono size={FT.meta} color={C.inkDim}>{"— 精确解 · 闭合曲线"}</Mono>
           <Mono size={FT.meta} color={C.amber}>{"— 欧拉 · 向外扩张"}</Mono>
           <Mono size={FT.meta} color={C.violet}>{"— RK4 · 几乎重合"}</Mono>
         </div>

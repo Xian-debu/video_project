@@ -76,7 +76,7 @@ export const SVerification: React.FC = () => {
                   ]} />
               </div>
               <div style={{ flex: 1 }}>
-                <Body size={FT.meta}>{"精确解闭合；欧拉向外扩张；RK4 的螺旋几乎贴着椭圆。"}</Body>
+                <Body size={FT.meta}>{"精确解闭合；欧拉向外扩张；RK4 的螺旋几乎贴着它。"}</Body>
                 <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
                   <Mono size={FT.micro} color={C.inkDim}>{"— 精确"}</Mono>
                   <Mono size={FT.micro} color={C.amber}>{"— 欧拉"}</Mono>
