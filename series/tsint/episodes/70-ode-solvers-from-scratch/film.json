@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-70",
-  "status": "draft",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
@@ -45,5 +45,9 @@
     "docs/plan.md"
   ],
   "assetsStatus": "incomplete",
-  "material": "required"
+  "material": "required",
+  "notes": "unit ids: ch9-analytic-baseline, ch9-euler, ch9-rk4 · book pp.211-215 · evidence dbc3d85",
+  "publish": {
+    "coverFrame": 1400
+  }
 }

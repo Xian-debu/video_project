@@ -1,6 +1,6 @@
 # 70-ode-solvers-from-scratch — 欧拉法把弹簧算成了永动机
 
-> status: 生产中（pack 已落地，出片见 delivery/）
+> status: 已出片（676.97 s，content commit 44b6dc1，交付 srt/chapters/cover）
 > chapter: ch09 | runtime target: 22 min | algorithms: 3
 
 ## Thesis
