@@ -1,7 +1,7 @@
 # 72-backprop-through-solver - 两种反向传播：把 200 步求解器摊开，还是在时间里倒着积分
 
 > status: produced
-> chapter: ch09 | runtime: 10:17 (616.94 s) | algorithms: 2
+> chapter: ch09 | runtime: 10:25 (625.22 s) | algorithms: 2
 
 ## Thesis
 
