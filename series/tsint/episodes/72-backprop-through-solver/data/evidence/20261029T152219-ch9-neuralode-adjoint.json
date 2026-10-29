@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "unitId": "ch9-neuralode-adjoint",
+  "episode": "backprop-through-solver",
+  "tsBaseCommit": "b8e4bceb0e51a2d1be47dd2d1e94c563748005fc",
+  "runAt": "2026-10-29T15:22:19+0000",
+  "command": "cabal run tsbase -- evidence-ch09c --out data/episodes/72-backprop-through-solver --evidence inventory/evidence",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "grad_adjoint": {"value": 29.26298550423521000, "unit": "dL/dtheta"},
+    "grad_adjoint_cont": {"value": 5.43656365691804100, "unit": "dL/dtheta"},
+    "grad_cont_closed": {"value": 5.43656365691809000, "unit": "dL/dtheta"},
+    "rel_cont": {"value": 8.98542096924496300e-15, "unit": "ratio"},
+    "rel_adjoint_direct": {"value": 0.00000000000000000, "unit": "ratio"},
+    "checkpoints_200": {"value": 11.00000000000000000, "unit": "states"},
+    "mem_adjoint_2m": {"value": 46360.00000000000000000, "unit": "bytes"},
+    "mem_adjoint_ratio": {"value": 0.46561144142696450, "unit": "ratio"},
+    "grad_wrong_sign": {"value": -29.26298550423521000, "unit": "dL/dtheta"}
+  },
+  "tests": [
+    {"name": "continuous adjoint vs 2T*exp(2*theta*T)", "expected": 5.43656365691809000, "actual": 5.43656365691804100, "pass": true},
+    {"name": "discrete adjoint vs direct", "expected": 29.26298550423521000, "actual": 29.26298550423521000, "pass": true},
+    {"name": "wrong-sign bug equals -gradient", "expected": -29.26298550423521000, "actual": -29.26298550423521000, "pass": true},
+    {"name": "checkpoints at T=200,K=20", "expected": 11.00000000000000000, "actual": 11.00000000000000000, "pass": true},
+    {"name": "adjoint max residency ratio 2M/200k", "expected": 2.00000000000000000, "actual": 0.46561144142696450, "pass": true}
+  ],
+  "inputs": [],
+  "artifacts": [
+    {"path": "data/episodes/72-backprop-through-solver/backprop_forward.csv", "sha256": "f93deebb8143a5aa0a69c219199483c05eb297443606cdb253738c3f2ba2c3c0"},
+    {"path": "data/episodes/72-backprop-through-solver/backprop_gradients.csv", "sha256": "4a2b9ee38a269ff52f70aa2d1c5f94543a53710da4600eaf387c57b42050fd0d"},
+    {"path": "data/episodes/72-backprop-through-solver/backprop_slots.csv", "sha256": "1ae61eacb467f02af2bf186d90b289b6d20d25ca07b45948299102883b9d62a3"},
+    {"path": "data/episodes/72-backprop-through-solver/backprop_memory.csv", "sha256": "68b0564f7e2573c04aff5692b678e343d21e48882b1a9ac195aded87571d2535"},
+    {"path": "data/episodes/72-backprop-through-solver/summary.json", "sha256": "da3741473ff3530575422549ea41d4482e6dc58f3c8e41f936637839fb6e236a"}
+  ]
+}

@@ -19,13 +19,21 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-72",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -2.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_backprop_data.py"
+    }
+  ],
+  "derived": [
+    "data/backprop.json"
+  ],
+  "derivedNote": "由 ts-base 的 ch09 双反传证据 JSON 与 CSV 重组；闭式、直接、伴随、差分与峰值内存逐项断言后才写出",
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +44,10 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "material": "required",
+  "notes": "unit ids: ch9-neuralode-direct, ch9-neuralode-adjoint · book pp.217-218 · evidence 908f333",
+  "publish": {
+    "coverFrame": 520
+  }
 }

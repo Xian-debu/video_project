@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "unitId": "ch9-neuralode-direct",
+  "episode": "backprop-through-solver",
+  "tsBaseCommit": "b8e4bceb0e51a2d1be47dd2d1e94c563748005fc",
+  "runAt": "2026-10-29T15:22:19+0000",
+  "command": "cabal run tsbase -- evidence-ch09c --out data/episodes/72-backprop-through-solver --evidence inventory/evidence",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "grad_direct": {"value": 29.26298550423521000, "unit": "dL/dtheta"},
+    "grad_closed": {"value": 29.26298550423383600, "unit": "dL/dtheta"},
+    "rel_error": {"value": 4.69842762112181000e-14, "unit": "ratio"},
+    "tape_200": {"value": 201.00000000000000000, "unit": "states"},
+    "mem_direct_2m": {"value": 7.45065360000000000e7, "unit": "bytes"},
+    "mem_direct_ratio": {"value": 11.95506317496055900, "unit": "ratio"}
+  },
+  "tests": [
+    {"name": "direct gradient vs closed form", "expected": 29.26298550423383600, "actual": 29.26298550423521000, "pass": true},
+    {"name": "direct gradient vs finite difference", "expected": 29.26298548846517300, "actual": 29.26298550423521000, "pass": true},
+    {"name": "RK4 direct vs R(z) closed form", "expected": 0.48856110325089575, "actual": 0.48856110325089686, "pass": true},
+    {"name": "tape slots at T=200", "expected": 201.00000000000000000, "actual": 201.00000000000000000, "pass": true},
+    {"name": "direct max residency ratio 2M/200k", "expected": 5.00000000000000000, "actual": 11.95506317496055900, "pass": true}
+  ],
+  "inputs": [],
+  "artifacts": [
+    {"path": "data/episodes/72-backprop-through-solver/backprop_forward.csv", "sha256": "f93deebb8143a5aa0a69c219199483c05eb297443606cdb253738c3f2ba2c3c0"},
+    {"path": "data/episodes/72-backprop-through-solver/backprop_gradients.csv", "sha256": "4a2b9ee38a269ff52f70aa2d1c5f94543a53710da4600eaf387c57b42050fd0d"},
+    {"path": "data/episodes/72-backprop-through-solver/backprop_slots.csv", "sha256": "1ae61eacb467f02af2bf186d90b289b6d20d25ca07b45948299102883b9d62a3"},
+    {"path": "data/episodes/72-backprop-through-solver/backprop_memory.csv", "sha256": "68b0564f7e2573c04aff5692b678e343d21e48882b1a9ac195aded87571d2535"},
+    {"path": "data/episodes/72-backprop-through-solver/summary.json", "sha256": "da3741473ff3530575422549ea41d4482e6dc58f3c8e41f936637839fb6e236a"}
+  ]
+}

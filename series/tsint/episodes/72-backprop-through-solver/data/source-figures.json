@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "book": {
+    "title": "时序智能：面向时间序列分析的人工智能方法",
+    "repo": "decisionintelligence/AI4TS",
+    "license": "CC BY-NC-ND 4.0",
+    "note": "印刷页 = PDF 页 − 8"
+  },
+  "plates": [
+    {
+      "id": "eq-backprop",
+      "file": "assets/public/plates/eq-backprop.png",
+      "doc": "时序智能 · 第9章 §9.2.2 反向传播算法",
+      "page": "p.217",
+      "figure": "式 9.23 / 9.24 / 9.25",
+      "attribution": "《时序智能》p.217 · 式 9.23–9.25 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 1241,
+      "height": 924,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.2.2（decisionintelligence/AI4TS，PDF p.225）"
+    },
+    {
+      "id": "fig-adjoint",
+      "file": "assets/public/plates/fig-adjoint.png",
+      "doc": "时序智能 · 第9章 §9.2.2 反向传播算法",
+      "page": "p.218",
+      "figure": "图 9.6",
+      "attribution": "《时序智能》p.218 · 图 9.6 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 1040,
+      "height": 699,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.2.2（decisionintelligence/AI4TS，PDF p.226）"
+    },
+    {
+      "id": "table-complexity",
+      "file": "assets/public/plates/table-complexity.png",
+      "doc": "时序智能 · 第9章 §9.2.2 反向传播算法",
+      "page": "p.218",
+      "figure": "表 9.1",
+      "attribution": "《时序智能》p.218 · 表 9.1 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 780,
+      "height": 251,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.2.2（decisionintelligence/AI4TS，PDF p.226）"
+    }
+  ]
+}
