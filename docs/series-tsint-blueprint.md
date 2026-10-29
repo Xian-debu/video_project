@@ -1,11 +1,11 @@
 # 《时序智能》系列（tsint）制作蓝图
 
-> 状态：🧭 规划冻结（2026-10-29）——**不是**开工令。逐集目录见 [series-tsint-episodes.md](series-tsint-episodes.md)。
+> 状态：🧭 规划冻结（2026-10-29）——**不是**开工令。逐集目录见 [series-tsint-episodes.md](series-tsint-episodes.md)：**74 集 / 190 个完整算法 / 190 of 193 单元**（27.2 小时）。
 > 硬约束见 [CONVENTIONS.md §8](../CONVENTIONS.md)；算法侧规范见 ts-base 的 `ALGORITHM-SPEC.md`；逐集规划真源是 ts-base 的 `plans/series.json`。
 
 ## 0. 一句话
 
-把《时序智能》9 章、约 55 组算法讲成**可验证的实现课**：每一集不超过 3 个完整 Haskell 算法，
+把《时序智能》9 章、193 个算法单元讲成**可验证的实现课**：74 集，每集不超过 3 个完整 Haskell 算法（合计 190 个），
 每个算法在 ts-base 里独立实现、有测试、有真实 A 股数据上的行为演示，视频里每个数字都能一条命令复现。
 
 ## 1. 三个仓的分工
@@ -118,3 +118,26 @@ series/tsint/
 见 ts-base `docs/08-risks.md`（同一张表）。video 侧特有风险：
 **视觉风格与算法节奏不匹配**（公式密度过高导致画面闷）——缓解：每集至少两个动态画面
 （数据图动画、终端跑测试），公式段落 ≤ 90 秒且必须有符号标注。
+
+## 10. 工具缺口（来自 session-54db5817 的真实复盘）
+
+龙芯系列的生产复盘（ts-base `docs/research/session54-workflow.md`，462 行）给出了 27 道 `make.mjs` 门禁与 23 条坑。
+可直接复用的有 9 项（pack 结构 / sync+隔离 / 27 门禁 / claims / plates / TTS / 混音+loudnorm / publish / series 结构）。
+本系列**必须新增**以下 8 项，现状全部未实现，按依赖顺序：
+
+| # | 新增件 | 验收判据 | 归属 |
+|---|---|---|---|
+| 1 | `tsbase export` → `inventory/evidence/<unit>/<ts>.json`（sha256/metrics/command/seed）+ `tools/evidence.mjs` | claims.value 与 evidence 逐位一致；sha256 对得上；command 真跑退出 0 | ts-base → 本仓 |
+| 2 | 公式：构建期 katex SSR 成 SVG 存 `data/` | 渲染期零排版计算；同一公式两次构建字节一致 | 本仓 |
+| 3 | 代码：构建期 shiki → tokens JSON | 揭示动画只读 tokens，不改文字 | 本仓 |
+| 4 | `TestTerminal` + `data/test-run.json` | `cabal test` 输出确定性（固定 seed/输入），屏上 PASS 可对到日志行 | ts-base(产) → 本仓(读) |
+| 5 | `tools/section_check.mjs` | script.ts 六段 `// SECTION:` 标记齐；缺一段 check 失败 | 本仓 |
+| 6 | `tools/series_project.mjs` | `series/tsint/series.json` 由 `plans/series.json` 生成；手改被 check 抓到 | ts-base → 本仓 |
+| 7 | `schema/film.schema.json` 的 `paper` 改 `oneOf` | 龙芯/convcode 对象形态仍通过；tsint 数组 + pages/license 通过 | 本仓 |
+| 8 | `SourceBadge` 组件 | 页码 p.XX + CC BY-NC-ND 4.0；每 plate 至少出现 N 秒由门禁断言 | 本仓 |
+
+**S2 首集规则**（由复盘强化）：样片必须是零外部数据、黄金值可手算的一集（ch08 指标或 ch09 ODE），
+样片验收通过前不铺量；先章内算法与测试全绿，再批量出片（TTS 重跑约 12 min/集）。
+
+**坑（必读）**：`films sync` 会删派生 `lines.json`；「门禁全绿」≠内容正确（G0 掩码曾全绿但错）；
+旁白 clip 数 ≠ 讲稿行数；claims 有无源数字时删数字而不是造来源；长任务走受管后台 job。
