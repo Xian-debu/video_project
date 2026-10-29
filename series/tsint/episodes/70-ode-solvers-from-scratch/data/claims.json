@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "episode": "ode-solvers-from-scratch",
+  "claims": [
+    {
+      "id": "euler-one-step",
+      "value": 1.1,
+      "source": "ts-base:inventory/evidence/ch9-euler/20261029T204911-ch9-euler.json#/metrics/one_step_h0.1/value",
+      "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+      "scene": "open"
+    },
+    {
+      "id": "rk4-one-step",
+      "value": 1.1051708333333332,
+      "source": "ts-base:inventory/evidence/ch9-rk4/20261029T204911-ch9-rk4.json#/metrics/one_step_h0.1/value",
+      "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+      "scene": "open"
+    },
+    {
+      "id": "euler-energy-ratio",
+      "value": 517.3956052425341,
+      "source": "ts-base:inventory/evidence/ch9-euler/20261029T204911-ch9-euler.json#/metrics/energy_ratio_10_periods/value",
+      "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+      "scene": "open"
+    },
+    {
+      "id": "rk4-energy-ratio",
+      "value": 0.9999912887184391,
+      "source": "ts-base:inventory/evidence/ch9-rk4/20261029T204911-ch9-rk4.json#/metrics/energy_ratio_10_periods_h0.1/value",
+      "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+      "scene": "open"
+    },
+    {
+      "id": "euler-order",
+      "value": 0.9742622483525356,
+      "source": "ts-base:inventory/evidence/ch9-euler/20261029T204911-ch9-euler.json#/metrics/order_observed/value",
+      "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+      "scene": "verification"
+    },
+    {
+      "id": "rk4-order",
+      "value": 3.992788894987829,
+      "source": "ts-base:inventory/evidence/ch9-rk4/20261029T204911-ch9-rk4.json#/metrics/order_observed/value",
+      "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+      "scene": "verification"
+    }
+  ]
+}

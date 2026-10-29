@@ -8,3 +8,5 @@
 **/delivery/*.work/
 **/out/
 **/assets/audio/clips/
+**/data/ode.json
+**/assets/audio/narration.wav

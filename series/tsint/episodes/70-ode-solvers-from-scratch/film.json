@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "tsint-70-ode-solvers-from-scratch",
   "kind": "series-episode",
-  "title": "欧拉法把弹簧算成了永动机：Δt=0.1 时 10 个周期能量涨 535 倍",
+  "title": "欧拉法把弹簧算成了永动机",
   "series": {
     "id": "tsint",
     "order": 70,
@@ -20,12 +20,19 @@
   "fps": 30,
   "prefix": "tsint-70",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_ode_data.py"
+    }
+  ],
+  "derived": [
+    "data/ode.json"
+  ],
+  "derivedNote": "由 ts-base 的 ch9 evidence 与同一组公式重算曲线；标量与证据逐项比对后才写出",
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,6 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "material": "required"
 }

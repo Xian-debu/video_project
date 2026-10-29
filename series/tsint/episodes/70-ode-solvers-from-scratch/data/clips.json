@@ -1,0 +1,570 @@
+{
+ "open#0": {
+  "file": "open-0.mp3",
+  "dur": 2.784
+ },
+ "open#1": {
+  "file": "open-1.mp3",
+  "dur": 3.72
+ },
+ "open#2": {
+  "file": "open-2.mp3",
+  "dur": 2.4
+ },
+ "open#3": {
+  "file": "open-3.mp3",
+  "dur": 2.976
+ },
+ "open#4": {
+  "file": "open-4.mp3",
+  "dur": 4.464
+ },
+ "open#5": {
+  "file": "open-5.mp3",
+  "dur": 3.192
+ },
+ "open#6": {
+  "file": "open-6.mp3",
+  "dur": 2.712
+ },
+ "open#7": {
+  "file": "open-7.mp3",
+  "dur": 3.504
+ },
+ "open#8": {
+  "file": "open-8.mp3",
+  "dur": 3.048
+ },
+ "open#9": {
+  "file": "open-9.mp3",
+  "dur": 3.432
+ },
+ "open#10": {
+  "file": "open-10.mp3",
+  "dur": 2.736
+ },
+ "open#11": {
+  "file": "open-11.mp3",
+  "dur": 3.672
+ },
+ "problem#0": {
+  "file": "problem-0.mp3",
+  "dur": 4.512
+ },
+ "problem#1": {
+  "file": "problem-1.mp3",
+  "dur": 4.248
+ },
+ "problem#2": {
+  "file": "problem-2.mp3",
+  "dur": 4.032
+ },
+ "problem#3": {
+  "file": "problem-3.mp3",
+  "dur": 3.576
+ },
+ "problem#4": {
+  "file": "problem-4.mp3",
+  "dur": 3.312
+ },
+ "problem#5": {
+  "file": "problem-5.mp3",
+  "dur": 4.776
+ },
+ "problem#6": {
+  "file": "problem-6.mp3",
+  "dur": 3.792
+ },
+ "problem#7": {
+  "file": "problem-7.mp3",
+  "dur": 3.792
+ },
+ "problem#8": {
+  "file": "problem-8.mp3",
+  "dur": 3.48
+ },
+ "problem#9": {
+  "file": "problem-9.mp3",
+  "dur": 3.072
+ },
+ "problem#10": {
+  "file": "problem-10.mp3",
+  "dur": 2.328
+ },
+ "problem#11": {
+  "file": "problem-11.mp3",
+  "dur": 4.248
+ },
+ "problem#12": {
+  "file": "problem-12.mp3",
+  "dur": 2.52
+ },
+ "problem#13": {
+  "file": "problem-13.mp3",
+  "dur": 3.024
+ },
+ "problem#14": {
+  "file": "problem-14.mp3",
+  "dur": 4.032
+ },
+ "problem#15": {
+  "file": "problem-15.mp3",
+  "dur": 4.08
+ },
+ "definitions#0": {
+  "file": "definitions-0.mp3",
+  "dur": 1.896
+ },
+ "definitions#1": {
+  "file": "definitions-1.mp3",
+  "dur": 4.92
+ },
+ "definitions#2": {
+  "file": "definitions-2.mp3",
+  "dur": 3.576
+ },
+ "definitions#3": {
+  "file": "definitions-3.mp3",
+  "dur": 3.912
+ },
+ "definitions#4": {
+  "file": "definitions-4.mp3",
+  "dur": 4.776
+ },
+ "definitions#5": {
+  "file": "definitions-5.mp3",
+  "dur": 3.912
+ },
+ "definitions#6": {
+  "file": "definitions-6.mp3",
+  "dur": 1.68
+ },
+ "definitions#7": {
+  "file": "definitions-7.mp3",
+  "dur": 3.072
+ },
+ "definitions#8": {
+  "file": "definitions-8.mp3",
+  "dur": 3.504
+ },
+ "definitions#9": {
+  "file": "definitions-9.mp3",
+  "dur": 4.512
+ },
+ "definitions#10": {
+  "file": "definitions-10.mp3",
+  "dur": 5.232
+ },
+ "definitions#11": {
+  "file": "definitions-11.mp3",
+  "dur": 3.576
+ },
+ "definitions#12": {
+  "file": "definitions-12.mp3",
+  "dur": 2.808
+ },
+ "definitions#13": {
+  "file": "definitions-13.mp3",
+  "dur": 3.072
+ },
+ "definitions#14": {
+  "file": "definitions-14.mp3",
+  "dur": 5.448
+ },
+ "definitions#15": {
+  "file": "definitions-15.mp3",
+  "dur": 6.048
+ },
+ "definitions#16": {
+  "file": "definitions-16.mp3",
+  "dur": 4.824
+ },
+ "definitions#17": {
+  "file": "definitions-17.mp3",
+  "dur": 4.176
+ },
+ "definitions#18": {
+  "file": "definitions-18.mp3",
+  "dur": 2.112
+ },
+ "intuition#0": {
+  "file": "intuition-0.mp3",
+  "dur": 3.888
+ },
+ "intuition#1": {
+  "file": "intuition-1.mp3",
+  "dur": 4.68
+ },
+ "intuition#2": {
+  "file": "intuition-2.mp3",
+  "dur": 3.984
+ },
+ "intuition#3": {
+  "file": "intuition-3.mp3",
+  "dur": 3.312
+ },
+ "intuition#4": {
+  "file": "intuition-4.mp3",
+  "dur": 4.104
+ },
+ "intuition#5": {
+  "file": "intuition-5.mp3",
+  "dur": 3.288
+ },
+ "intuition#6": {
+  "file": "intuition-6.mp3",
+  "dur": 3.24
+ },
+ "intuition#7": {
+  "file": "intuition-7.mp3",
+  "dur": 3.48
+ },
+ "intuition#8": {
+  "file": "intuition-8.mp3",
+  "dur": 4.416
+ },
+ "intuition#9": {
+  "file": "intuition-9.mp3",
+  "dur": 3.6
+ },
+ "intuition#10": {
+  "file": "intuition-10.mp3",
+  "dur": 4.2
+ },
+ "intuition#11": {
+  "file": "intuition-11.mp3",
+  "dur": 2.64
+ },
+ "intuition#12": {
+  "file": "intuition-12.mp3",
+  "dur": 3.912
+ },
+ "intuition#13": {
+  "file": "intuition-13.mp3",
+  "dur": 5.592
+ },
+ "intuition#14": {
+  "file": "intuition-14.mp3",
+  "dur": 4.536
+ },
+ "intuition#15": {
+  "file": "intuition-15.mp3",
+  "dur": 3.24
+ },
+ "intuition#16": {
+  "file": "intuition-16.mp3",
+  "dur": 3.456
+ },
+ "intuition#17": {
+  "file": "intuition-17.mp3",
+  "dur": 3.0
+ },
+ "intuition#18": {
+  "file": "intuition-18.mp3",
+  "dur": 3.744
+ },
+ "intuition#19": {
+  "file": "intuition-19.mp3",
+  "dur": 4.248
+ },
+ "intuition#20": {
+  "file": "intuition-20.mp3",
+  "dur": 4.104
+ },
+ "intuition#21": {
+  "file": "intuition-21.mp3",
+  "dur": 2.784
+ },
+ "intuition#22": {
+  "file": "intuition-22.mp3",
+  "dur": 3.312
+ },
+ "intuition#23": {
+  "file": "intuition-23.mp3",
+  "dur": 3.312
+ },
+ "implementation#0": {
+  "file": "implementation-0.mp3",
+  "dur": 4.2
+ },
+ "implementation#1": {
+  "file": "implementation-1.mp3",
+  "dur": 3.984
+ },
+ "implementation#2": {
+  "file": "implementation-2.mp3",
+  "dur": 3.504
+ },
+ "implementation#3": {
+  "file": "implementation-3.mp3",
+  "dur": 3.048
+ },
+ "implementation#4": {
+  "file": "implementation-4.mp3",
+  "dur": 2.328
+ },
+ "implementation#5": {
+  "file": "implementation-5.mp3",
+  "dur": 5.928
+ },
+ "implementation#6": {
+  "file": "implementation-6.mp3",
+  "dur": 3.264
+ },
+ "implementation#7": {
+  "file": "implementation-7.mp3",
+  "dur": 4.44
+ },
+ "implementation#8": {
+  "file": "implementation-8.mp3",
+  "dur": 4.056
+ },
+ "implementation#9": {
+  "file": "implementation-9.mp3",
+  "dur": 5.928
+ },
+ "implementation#10": {
+  "file": "implementation-10.mp3",
+  "dur": 3.816
+ },
+ "implementation#11": {
+  "file": "implementation-11.mp3",
+  "dur": 4.248
+ },
+ "implementation#12": {
+  "file": "implementation-12.mp3",
+  "dur": 3.696
+ },
+ "implementation#13": {
+  "file": "implementation-13.mp3",
+  "dur": 4.296
+ },
+ "implementation#14": {
+  "file": "implementation-14.mp3",
+  "dur": 2.424
+ },
+ "implementation#15": {
+  "file": "implementation-15.mp3",
+  "dur": 3.336
+ },
+ "implementation#16": {
+  "file": "implementation-16.mp3",
+  "dur": 4.536
+ },
+ "implementation#17": {
+  "file": "implementation-17.mp3",
+  "dur": 5.088
+ },
+ "implementation#18": {
+  "file": "implementation-18.mp3",
+  "dur": 4.008
+ },
+ "implementation#19": {
+  "file": "implementation-19.mp3",
+  "dur": 1.8
+ },
+ "verification#0": {
+  "file": "verification-0.mp3",
+  "dur": 2.016
+ },
+ "verification#1": {
+  "file": "verification-1.mp3",
+  "dur": 4.224
+ },
+ "verification#2": {
+  "file": "verification-2.mp3",
+  "dur": 3.456
+ },
+ "verification#3": {
+  "file": "verification-3.mp3",
+  "dur": 2.496
+ },
+ "verification#4": {
+  "file": "verification-4.mp3",
+  "dur": 2.952
+ },
+ "verification#5": {
+  "file": "verification-5.mp3",
+  "dur": 3.024
+ },
+ "verification#6": {
+  "file": "verification-6.mp3",
+  "dur": 3.264
+ },
+ "verification#7": {
+  "file": "verification-7.mp3",
+  "dur": 3.24
+ },
+ "verification#8": {
+  "file": "verification-8.mp3",
+  "dur": 3.168
+ },
+ "verification#9": {
+  "file": "verification-9.mp3",
+  "dur": 4.512
+ },
+ "verification#10": {
+  "file": "verification-10.mp3",
+  "dur": 3.192
+ },
+ "verification#11": {
+  "file": "verification-11.mp3",
+  "dur": 3.432
+ },
+ "verification#12": {
+  "file": "verification-12.mp3",
+  "dur": 3.12
+ },
+ "verification#13": {
+  "file": "verification-13.mp3",
+  "dur": 4.176
+ },
+ "verification#14": {
+  "file": "verification-14.mp3",
+  "dur": 2.112
+ },
+ "verification#15": {
+  "file": "verification-15.mp3",
+  "dur": 4.44
+ },
+ "verification#16": {
+  "file": "verification-16.mp3",
+  "dur": 3.6
+ },
+ "verification#17": {
+  "file": "verification-17.mp3",
+  "dur": 2.184
+ },
+ "verification#18": {
+  "file": "verification-18.mp3",
+  "dur": 4.752
+ },
+ "verification#19": {
+  "file": "verification-19.mp3",
+  "dur": 6.384
+ },
+ "verification#20": {
+  "file": "verification-20.mp3",
+  "dur": 3.0
+ },
+ "boundary#0": {
+  "file": "boundary-0.mp3",
+  "dur": 3.312
+ },
+ "boundary#1": {
+  "file": "boundary-1.mp3",
+  "dur": 3.12
+ },
+ "boundary#2": {
+  "file": "boundary-2.mp3",
+  "dur": 3.888
+ },
+ "boundary#3": {
+  "file": "boundary-3.mp3",
+  "dur": 3.408
+ },
+ "boundary#4": {
+  "file": "boundary-4.mp3",
+  "dur": 4.44
+ },
+ "boundary#5": {
+  "file": "boundary-5.mp3",
+  "dur": 4.224
+ },
+ "boundary#6": {
+  "file": "boundary-6.mp3",
+  "dur": 2.76
+ },
+ "boundary#7": {
+  "file": "boundary-7.mp3",
+  "dur": 3.288
+ },
+ "boundary#8": {
+  "file": "boundary-8.mp3",
+  "dur": 4.728
+ },
+ "boundary#9": {
+  "file": "boundary-9.mp3",
+  "dur": 4.008
+ },
+ "boundary#10": {
+  "file": "boundary-10.mp3",
+  "dur": 3.624
+ },
+ "boundary#11": {
+  "file": "boundary-11.mp3",
+  "dur": 4.896
+ },
+ "boundary#12": {
+  "file": "boundary-12.mp3",
+  "dur": 2.664
+ },
+ "boundary#13": {
+  "file": "boundary-13.mp3",
+  "dur": 2.328
+ },
+ "boundary#14": {
+  "file": "boundary-14.mp3",
+  "dur": 3.696
+ },
+ "boundary#15": {
+  "file": "boundary-15.mp3",
+  "dur": 4.032
+ },
+ "boundary#16": {
+  "file": "boundary-16.mp3",
+  "dur": 4.152
+ },
+ "boundary#17": {
+  "file": "boundary-17.mp3",
+  "dur": 3.312
+ },
+ "boundary#18": {
+  "file": "boundary-18.mp3",
+  "dur": 2.208
+ },
+ "boundary#19": {
+  "file": "boundary-19.mp3",
+  "dur": 5.064
+ },
+ "boundary#20": {
+  "file": "boundary-20.mp3",
+  "dur": 4.08
+ },
+ "boundary#21": {
+  "file": "boundary-21.mp3",
+  "dur": 3.84
+ },
+ "outro#0": {
+  "file": "outro-0.mp3",
+  "dur": 2.208
+ },
+ "outro#1": {
+  "file": "outro-1.mp3",
+  "dur": 3.96
+ },
+ "outro#2": {
+  "file": "outro-2.mp3",
+  "dur": 3.288
+ },
+ "outro#3": {
+  "file": "outro-3.mp3",
+  "dur": 3.456
+ },
+ "outro#4": {
+  "file": "outro-4.mp3",
+  "dur": 4.152
+ },
+ "outro#5": {
+  "file": "outro-5.mp3",
+  "dur": 4.056
+ },
+ "outro#6": {
+  "file": "outro-6.mp3",
+  "dur": 5.28
+ },
+ "outro#7": {
+  "file": "outro-7.mp3",
+  "dur": 3.864
+ }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "unitId": "ch9-rk4",
+  "episode": "ode-solvers-from-scratch",
+  "tsBaseCommit": "dbc3d85210804f9495f88d685be0c1a41c094d10",
+  "runAt": "2026-10-29T20:49:11+0800",
+  "command": "cabal run tsbase -- evidence-ch09 --out data/episodes/70-ode-solvers-from-scratch --evidence inventory/evidence",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "one_step_h0.1": {"value": 1.10517083333333320, "unit": "ratio"},
+    "energy_ratio_10_periods_h0.1": {"value": 0.99999128871843910, "unit": "ratio"},
+    "energy_ratio_10_periods_h0.01": {"value": 0.99999999991277120, "unit": "ratio"},
+    "err_T10_h0.1": {"value": 0.16889393052406376, "unit": "absolute"},
+    "order_observed": {"value": 3.99278889498782900, "unit": "order"}
+  },
+  "tests": [
+    {"name": "one step of x'=x with h=0.1 equals P4(0.1)", "expected": 1.10517083333333320, "actual": 1.10517083333333320, "pass": true},
+    {"name": "amplification equals P4(0.1)", "expected": 1.10517083333333320, "actual": 1.10517083333333320, "pass": true},
+    {"name": "energy factor |P4(i*0.1)|", "expected": 0.99999999306423610, "actual": 0.99999998612847230, "pass": true}
+  ],
+  "inputs": [],
+  "artifacts": [
+    {"path": "data/episodes/70-ode-solvers-from-scratch/analytic_compound.csv", "sha256": "d97253ebc191c721f806b651b0b142a23fc07e17a0da3cbeae48a755431636a2"},
+    {"path": "data/episodes/70-ode-solvers-from-scratch/analytic_spring.csv", "sha256": "3912e7f398988ff9f88a9aaa93f17031dcd2c304bf13d358c26a6e449ddbbdfd"},
+    {"path": "data/episodes/70-ode-solvers-from-scratch/euler_spring_h0.1.csv", "sha256": "e0fc6294b7709c41c539a7942319a23bb83abe348fc2ff1e4f2c846c3eba7845"},
+    {"path": "data/episodes/70-ode-solvers-from-scratch/rk4_spring_h0.1.csv", "sha256": "d950f4fb5c280b4b576a91c734a2b693599c7f9d28708c059a0a42935bdb27e8"},
+    {"path": "data/episodes/70-ode-solvers-from-scratch/rk4_spring_h0.01.csv", "sha256": "4e5df337eb02db76c079863369d8f04ab313c3c27cc30d32585a46967115c375"},
+    {"path": "data/episodes/70-ode-solvers-from-scratch/convergence.csv", "sha256": "6c4f66b47c161f9c35db43bc3a1f93ff7c9470dd65264d6cce421e0e2af984cc"},
+    {"path": "data/episodes/70-ode-solvers-from-scratch/summary.json", "sha256": "c271066dd154837fc7f5683f3d750e47c7e7c0d7145ae5d7dde5f9b1c37a91a0"}
+  ]
+}

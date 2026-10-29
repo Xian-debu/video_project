@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "book": {
+    "title": "时序智能：面向时间序列分析的人工智能方法",
+    "repo": "decisionintelligence/AI4TS",
+    "license": "CC BY-NC-ND 4.0",
+    "note": "印刷页 = PDF 页 − 8"
+  },
+  "plates": [
+    {
+      "id": "eq-euler",
+      "file": "assets/public/plates/eq-euler.png",
+      "doc": "时序智能 · 第9章 §9.1.2 微分方程求解方法",
+      "page": "p.213",
+      "figure": "式 9.11 / 9.12",
+      "attribution": "《时序智能》p.213 · 式 9.11、9.12 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 980,
+      "height": 360,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.1.2（decisionintelligence/AI4TS，PDF p.221/222）"
+    },
+    {
+      "id": "eq-rk4",
+      "file": "assets/public/plates/eq-rk4.png",
+      "doc": "时序智能 · 第9章 §9.1.2 微分方程求解方法",
+      "page": "p.213",
+      "figure": "式 9.13",
+      "attribution": "《时序智能》p.213 · 式 9.13 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 980,
+      "height": 380,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.1.2（decisionintelligence/AI4TS，PDF p.221/222）"
+    },
+    {
+      "id": "eq-spring",
+      "file": "assets/public/plates/eq-spring.png",
+      "doc": "时序智能 · 第9章 §9.1.2 微分方程求解方法",
+      "page": "p.214",
+      "figure": "式 9.16 / 9.17",
+      "attribution": "《时序智能》p.214 · 式 9.16、9.17 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 980,
+      "height": 380,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.1.2（decisionintelligence/AI4TS，PDF p.221/222）"
+    }
+  ]
+}
