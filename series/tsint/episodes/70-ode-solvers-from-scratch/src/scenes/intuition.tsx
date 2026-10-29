@@ -39,7 +39,7 @@ export const SIntuition: React.FC = () => {
                   </g>
                 ))}
                 <line x1={0} y1={Y(1)} x2={PW} y2={Y(1)} stroke={C.cyan} strokeWidth={1.5} strokeDasharray="6 6" opacity={0.9} />
-                <text x={8} y={Y(1) - 10} fill={C.cyan} fontFamily={FONT.mono} fontSize={FT.micro}>{"|R| = 1 · 能量守恒线"}</text>
+                <text x={8} y={Y(1) - 26} fill={C.cyan} fontFamily={FONT.mono} fontSize={FT.micro}>{"|R| = 1 · 能量守恒线"}</text>
               </svg>
               <div style={{ position: "absolute", inset: 0 }}>
                 <Plot w={PW} h={PH} at={beats[5]} dur={55} x={X} y={Y}
@@ -53,7 +53,7 @@ export const SIntuition: React.FC = () => {
                 <Mono size={FT.micro} color={C.coral}>{"y = 2√2"}</Mono>
               </div>
             </div>
-            <div style={{ display: "flex", gap: 28, marginTop: 6 }}>
+            <div style={{ display: "flex", gap: 28, marginTop: 30 }}>
               <Mono size={FT.meta} color={C.amber}>{"— 欧拉：恒大于 1"}</Mono>
               <Mono size={FT.meta} color={C.violet}>{"— RK4：先低于 1"}</Mono>
               <Mono size={FT.meta} color={C.coral}>{"| 稳定边界"}</Mono>
