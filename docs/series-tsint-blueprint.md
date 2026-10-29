@@ -2,6 +2,7 @@
 
 > 状态：🧭 规划冻结（2026-10-29）——**不是**开工令。逐集目录见 [series-tsint-episodes.md](series-tsint-episodes.md)：**74 集 / 190 个完整算法 / 190 of 193 单元**（27.2 小时）。
 > 硬约束见 [CONVENTIONS.md §8](../CONVENTIONS.md)；算法侧规范见 ts-base 的 `ALGORITHM-SPEC.md`；逐集规划真源是 ts-base 的 `plans/series.json`。
+> 预算与风险账见 ts-base 的 `plans/AUDIT.md`（训练预跑 8.7–52 CPU 小时、38 集含 ≥2 个训练算法、依赖链最长 15 集）。
 
 ## 0. 一句话
 
