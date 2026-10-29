@@ -20,12 +20,20 @@
   "fps": 30,
   "prefix": "tsint-74",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -2.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_fidelity_data.py"
+    }
+  ],
+  "derived": [
+    "data/fidelity.json"
+  ],
+  "derivedNote": "由 ts-base 的 ch9 TV / DTW 证据 JSON 与 CSV 重组；TV 曲线、黄金例、平移、三角反例、带约束逐项断言后才写出",
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +44,7 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "material": "optional",
+  "notes": "unit ids: ch9-tv-reg, ch9-dtw · book p.219 · evidence a32c1e0"
 }

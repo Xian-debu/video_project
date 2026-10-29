@@ -1,0 +1,1275 @@
+{
+ "entry": "src/tsint-74-fidelity-tv-and-dtw/script.ts",
+ "fps": 30,
+ "totalSec": 763.75,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 66.04
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 66.04,
+   "dur": 102.45
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 168.49,
+   "dur": 132.58
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 301.07,
+   "dur": 122.68
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 423.75,
+   "dur": 101.32
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 525.07,
+   "dur": 111.79
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 636.86,
+   "dur": 89.14
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 726,
+   "dur": 37.75
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.28,
+   "speech": "这一集讲两个保真度指标。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.03,
+   "dur": 4.62,
+   "speech": "先看两条形状相同、只是错开三步的序列。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.2,
+   "dur": 3.57,
+   "speech": "逐点 MSE 是十五点八一。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 14.32,
+   "dur": 2.56,
+   "speech": "DTW 却是零。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.42,
+   "dur": 4.33,
+   "speech": "同一个形状，两个指标给出完全不同的答案。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 22.31,
+   "dur": 3.9,
+   "speech": "书里在二百一十九页只留了两句话。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 26.76,
+   "dur": 5.13,
+   "speech": "一句是 TV 正则，控制预测精度与动态保真度。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 32.44,
+   "dur": 4.45,
+   "speech": "一句是 DTW，作为超越 MSE 的指标。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 37.44,
+   "dur": 3.66,
+   "speech": "没有公式，没有数据，没有复现协议。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 41.65,
+   "dur": 4.55,
+   "speech": "所以书里的百分之四十五点九只能标 C 级。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 46.75,
+   "dur": 4.17,
+   "speech": "这一集补上定义、代码和可复算的数。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 51.47,
+   "dur": 3.95,
+   "speech": "先看 TV 怎样把抖动写进损失。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 55.97,
+   "dur": 3.78,
+   "speech": "再看 DTW 怎样对齐两条形状。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 60.3,
+   "dur": 3.54,
+   "speech": "最后说清楚，它们各自不是什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 67.24,
+   "dur": 2.85,
+   "speech": "MSE 的算法很直接。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 70.64,
+   "dur": 4.17,
+   "speech": "两条序列逐点相减，平方，再平均。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 75.35,
+   "dur": 4.21,
+   "speech": "形状对、只是晚三步，每个点都会被罚。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 80.12,
+   "dur": 3.4,
+   "speech": "这不是模型错了，是相位错了。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 84.06,
+   "dur": 4.19,
+   "speech": "把二十一点序列画出来，错位看得更清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 88.8,
+   "dur": 3.61,
+   "speech": "紫色是原序列，黄色晚三步。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 92.97,
+   "dur": 3.59,
+   "speech": "每个采样点都落在不同的相位上。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 97.11,
+   "dur": 3.64,
+   "speech": "逐点误差累加，就是十五点八一。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 101.3,
+   "dur": 2.7,
+   "speech": "DTW 换了一个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 104.55,
+   "dur": 3.73,
+   "speech": "它不要求第 i 个点只对第 i 个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 108.83,
+   "dur": 4.45,
+   "speech": "允许一个点对多个点，也允许多个点对一个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 113.84,
+   "dur": 4.14,
+   "speech": "只要路径从左上走到右下，代价最小。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 118.53,
+   "dur": 4.67,
+   "speech": "黄金例：一、二、三，对二、三。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 123.75,
+   "dur": 7.14,
+   "speech": "一条最优路径是 (0,0)、(1,0)、(2,1)。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 131.44,
+   "dur": 2.56,
+   "speech": "代价是一，不是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 134.55,
+   "dur": 4.12,
+   "speech": "但路径不是唯一的，这里只展示一条。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 139.22,
+   "dur": 4.24,
+   "speech": "回到二十一点序列，DTW 的代价是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 144,
+   "dur": 4.81,
+   "speech": "路径长度三十三，说明它把很多点重复对齐了。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 149.37,
+   "dur": 4.24,
+   "speech": "所以 DTW 零不等于两条序列相同。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 154.16,
+   "dur": 4.57,
+   "speech": "它只说：允许拉伸之后，形状可以完全重合。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 159.28,
+   "dur": 3.76,
+   "speech": "这两个指标回答的不是同一个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 163.59,
+   "dur": 2.7,
+   "speech": "下面把定义写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 169.69,
+   "dur": 2.05,
+   "speech": "先定义 TV。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 172.29,
+   "dur": 4.45,
+   "speech": "对序列 x，TV 是相邻差绝对值的和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 177.3,
+   "dur": 5.65,
+   "speech": "公式是 sum |x_{t+1} - x_t|。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 183.5,
+   "dur": 4.26,
+   "speech": "它衡量的是这条曲线一共拐了多少路。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 188.31,
+   "dur": 2.89,
+   "speech": "常数序列的 TV 是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 191.76,
+   "dur": 2.87,
+   "speech": "抖动越多，TV 越大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 195.18,
+   "dur": 4.09,
+   "speech": "损失写成 MSE 加 lambda 乘 TV。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 199.82,
+   "dur": 3.16,
+   "speech": "lambda 是权重，不是学习率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 203.53,
+   "dur": 3.61,
+   "speech": "lambda 越大，越不愿意看到抖动。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 207.69,
+   "dur": 4.65,
+   "speech": "但 TV 是一次量纲，MSE 是平方量纲。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 212.89,
+   "dur": 3.25,
+   "speech": "比较之前，先把序列标准化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 216.69,
+   "dur": 3.73,
+   "speech": "TV 在相邻差为零的地方不可导。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 220.98,
+   "dur": 2.27,
+   "speech": "所以用次梯度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 223.8,
+   "dur": 3.23,
+   "speech": "第 i 个分量是两个 sign 相减。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 227.58,
+   "dur": 9.13,
+   "speech": "sign(x_i 减 x_{i-1})，减 sign(x_{i+1} 减 x_i)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 237.26,
+   "dur": 3.06,
+   "speech": "差为零时，次梯度取零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 240.87,
+   "dur": 2.41,
+   "speech": "再看 DTW。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 243.84,
+   "dur": 7.86,
+   "speech": "D(i,j) 等于 |x_i 减 y_j| 加三个前驱的最小值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 252.25,
+   "dur": 3.35,
+   "speech": "三个前驱是上、左、左上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 256.15,
+   "dur": 3.09,
+   "speech": "第一行和第一列直接累加。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 259.79,
+   "dur": 4.21,
+   "speech": "终点 D(n-1,m-1) 就是代价。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 264.55,
+   "dur": 2.85,
+   "speech": "本集用未开方版本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 267.95,
+   "dur": 4.21,
+   "speech": "开方版叫 rooted DTW，量纲不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 272.71,
+   "dur": 4.48,
+   "speech": "序列长度不同时，还要按路径长度归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 277.74,
+   "dur": 4.21,
+   "speech": "这三个约定不写清楚，数字就会对不上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 282.5,
+   "dur": 2.32,
+   "speech": "书里只给了名字。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 285.37,
+   "dur": 5.03,
+   "speech": "TV 的 l1 形式、DTW 的递推，都是标准定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 290.95,
+   "dur": 3.85,
+   "speech": "本集把它们标成推断，不冒充原文。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 295.35,
+   "dur": 3.52,
+   "speech": "定义写完，看它们各自买到了什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 302.27,
+   "dur": 3.23,
+   "speech": "先看 TV 的 lambda 在买什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 306.05,
+   "dur": 3.11,
+   "speech": "取一条干净的正弦加趋势。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 309.71,
+   "dur": 3.88,
+   "speech": "观测上叠加交替的正负零点四噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 314.14,
+   "dur": 4.29,
+   "speech": "训练时只看观测，评估时看干净信号。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 318.97,
+   "dur": 3.97,
+   "speech": "lambda 等于零，模型拟合每一个噪声点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 323.5,
+   "dur": 2.82,
+   "speech": "TV 是九十四点九八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 326.87,
+   "dur": 3.4,
+   "speech": "干净 MSE 是零点一六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 330.82,
+   "dur": 3.4,
+   "speech": "加大 lambda，TV 迅速下降。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 334.77,
+   "dur": 4.09,
+   "speech": "到零点零零五，TV 是十三点九九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 339.41,
+   "dur": 3.66,
+   "speech": "干净 MSE 降到零点零零七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 343.62,
+   "dur": 3.83,
+   "speech": "这就是甜区：抖动少了，误差也小了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 348,
+   "dur": 2.58,
+   "speech": "再加大到零点零五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 351.13,
+   "dur": 2.7,
+   "speech": "TV 只剩四点五四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 354.39,
+   "dur": 3.97,
+   "speech": "干净 MSE 反而升到零点一八七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 358.91,
+   "dur": 3.33,
+   "speech": "为什么？峰值被抹平了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 362.79,
+   "dur": 3.69,
+   "speech": "数据项拉不回来，细节就丢了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 367.02,
+   "dur": 3.3,
+   "speech": "所以 lambda 不是越大越好。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 370.87,
+   "dur": 3.21,
+   "speech": "它买的是平滑，卖的是峰值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 374.63,
+   "dur": 3.21,
+   "speech": "再看 DTW 的对齐网格。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 378.39,
+   "dur": 3.61,
+   "speech": "两个序列的每个点对，都有一个代价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 382.55,
+   "dur": 3.16,
+   "speech": "最优路径从左上到右下。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 386.26,
+   "dur": 3.73,
+   "speech": "相位错开时，它沿着对角线平移。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 390.54,
+   "dur": 3.45,
+   "speech": "代价可以降到零，但路径变长了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 394.54,
+   "dur": 3.23,
+   "speech": "路径长度三十三，就是代价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 398.32,
+   "dur": 2.73,
+   "speech": "最后看三角不等式。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 401.59,
+   "dur": 3.33,
+   "speech": "x 到 z 的 DTW 是六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 405.47,
+   "dur": 3.61,
+   "speech": "x 到 y 是二，y 到 z 是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 409.63,
+   "dur": 3.49,
+   "speech": "六大于二加零，违反量是四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 413.68,
+   "dur": 3.06,
+   "speech": "所以 DTW 不是度量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 417.29,
+   "dur": 4.26,
+   "speech": "这两条曲线，回答的是两个不同的问题。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 424.95,
+   "dur": 3.35,
+   "speech": "代码在 ts-base 的第 9 章。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 428.85,
+   "dur": 2.97,
+   "speech": "两个模块，互不 import。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 432.37,
+   "dur": 5.99,
+   "speech": "TvReg 导出 TV、MSE、损失、次梯度、下降。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 438.91,
+   "dur": 2.85,
+   "speech": "关键行是 TV 的定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 442.3,
+   "dur": 5.15,
+   "speech": "V.zipWith (-) (V.tail xs) xs，再取绝对值求和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 448,
+   "dur": 4.24,
+   "speech": "次梯度处理边界：左邻和右邻分别判断。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 452.79,
+   "dur": 4.45,
+   "speech": "差为零时返回零，这是 l1 的次梯度选择。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 457.79,
+   "dur": 4,
+   "speech": "tvDescent 做的是确定性的次梯度下降。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 462.34,
+   "dur": 3.93,
+   "speech": "学习率和 lambda 分开传，避免混淆。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 466.82,
+   "dur": 3.33,
+   "speech": "Dtw 模块先建整张表。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 470.69,
+   "dur": 3.59,
+   "speech": "每个格子取三个前驱的最小值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 474.83,
+   "dur": 3.69,
+   "speech": "回溯时记录路径，返回零基下标。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 479.07,
+   "dur": 4.19,
+   "speech": "dtwCost 只要距离，用滚动两行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 483.81,
+   "dur": 4.62,
+   "speech": "空间从 n 乘 m 降到 min(n,m)。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 488.98,
+   "dur": 3.61,
+   "speech": "dtwBanded 加 Sakoe-Chiba 窗口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 493.15,
+   "dur": 3.85,
+   "speech": "带宽 w 是设计参数，不是常数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 497.55,
+   "dur": 2.49,
+   "speech": "三个容易错的地方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 500.59,
+   "dur": 3.95,
+   "speech": "第一，lambda 和 MSE 的量纲不同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 505.09,
+   "dur": 4.24,
+   "speech": "第二，TV 在零处不可导，不能直接求导。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 509.87,
+   "dur": 4.24,
+   "speech": "第三，DTW 不是度量，不能当距离用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 514.66,
+   "dur": 3.76,
+   "speech": "还有复杂度：无窗口是 n 乘 m。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 518.97,
+   "dur": 3.9,
+   "speech": "一万点以上，要加窗口或降采样。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 526.27,
+   "dur": 3.54,
+   "speech": "所有数字来自同一次证据运行。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 530.36,
+   "dur": 2.99,
+   "speech": "测试一共一百四十二条。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 533.9,
+   "dur": 2.41,
+   "speech": "先看 TV 的定义。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 536.87,
+   "dur": 3.37,
+   "speech": "序列一、二、四、七。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 540.79,
+   "dur": 3.21,
+   "speech": "相邻差是一、二、三。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 544.55,
+   "dur": 2.08,
+   "speech": "TV 等于六。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 547.17,
+   "dur": 2.44,
+   "speech": "再看三个 lambda。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 550.16,
+   "dur": 5.63,
+   "speech": "lambda 零：TV 九十四点九八，干净 MSE 零点一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 556.34,
+   "dur": 6.37,
+   "speech": "lambda 零点零零五：TV 十三点九九，干净 MSE 零点零零七。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 563.27,
+   "dur": 5.97,
+   "speech": "lambda 零点零五：TV 四点五四，干净 MSE 零点一八七。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 569.78,
+   "dur": 4.05,
+   "speech": "甜区和过平滑，都能回到 CSV。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 574.38,
+   "dur": 4.67,
+   "speech": "黄金例：一、二、三，对二、三。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 579.6,
+   "dur": 2.8,
+   "speech": "代价是一，路径三步。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 582.95,
+   "dur": 5.99,
+   "speech": "平移例：MSE 十五点八一，DTW 零，路径三十三步。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 589.49,
+   "dur": 3.81,
+   "speech": "这两个数放在一起，就是本集的核心。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 593.84,
+   "dur": 3.47,
+   "speech": "三角不等式：六，二，零。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 597.86,
+   "dur": 3.28,
+   "speech": "六大于二加零，违反量四。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 601.69,
+   "dur": 3.47,
+   "speech": "带约束：五百点，窗口二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 605.71,
+   "dur": 4.41,
+   "speech": "代价二十八点五三，和完整 DTW 相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 610.67,
+   "dur": 2.65,
+   "speech": "耗时三十一点五毫秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 613.87,
+   "dur": 3.47,
+   "speech": "这些数都在证据 JSON 里。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 617.89,
+   "dur": 3.33,
+   "speech": "提交号是 a32c1e0。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 621.77,
+   "dur": 3.25,
+   "speech": "一百四十二条断言全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 625.57,
+   "dur": 3.76,
+   "speech": "屏幕上的每个数，都能回到这次运行。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 629.88,
+   "dur": 2.08,
+   "speech": "下面说边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 632.51,
+   "dur": 2.15,
+   "speech": "哪些话不能说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 638.06,
+   "dur": 3.85,
+   "speech": "第一条边界：书里的百分之四十五点九。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 642.46,
+   "dur": 3.76,
+   "speech": "它没有基线，没有数据，没有硬件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 646.77,
+   "dur": 2.89,
+   "speech": "只能标 C，不能当结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 650.22,
+   "dur": 3.13,
+   "speech": "第二条：TV 的 l1 形式。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 653.9,
+   "dur": 3.85,
+   "speech": "书里只写了名字，公式是本集补的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 658.3,
+   "dur": 3.4,
+   "speech": "换成平方 TV，数值会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 662.25,
+   "dur": 2.89,
+   "speech": "第三条：lambda 的甜区。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 665.7,
+   "dur": 3.81,
+   "speech": "零点零零五是这条合成序列上的值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 670.05,
+   "dur": 3.64,
+   "speech": "换数据、换噪声，甜区会移动。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 674.24,
+   "dur": 3.33,
+   "speech": "第四条：TV 会抹掉峰值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 678.12,
+   "dur": 4.84,
+   "speech": "拐点、冲击、尖峰，都是 TV 要罚的东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 683.5,
+   "dur": 3.21,
+   "speech": "第五条：DTW 不是度量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 687.26,
+   "dur": 2.89,
+   "speech": "三角不等式可以差出四。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 690.7,
+   "dur": 3.61,
+   "speech": "它也不能直接比较不同长度的序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 694.87,
+   "dur": 3.45,
+   "speech": "归一化方式不同，数值就不同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 698.86,
+   "dur": 3.11,
+   "speech": "第六条：DTW 的复杂度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 702.52,
+   "dur": 3.76,
+   "speech": "无窗口是 n 乘 m，内存也扛不住。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 706.83,
+   "dur": 4.26,
+   "speech": "带宽能提速，但可能把最优路径挡在外面。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 711.64,
+   "dur": 3.59,
+   "speech": "最后一条：本集用的是合成序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 715.78,
+   "dur": 3.69,
+   "speech": "它能验证定义，不能替代真实任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 720.02,
+   "dur": 3.78,
+   "speech": "所以下面这些话，都要带上条件。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 727.2,
+   "dur": 2.13,
+   "speech": "误差有三种。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 729.88,
+   "dur": 2.73,
+   "speech": "幅度错，MSE 管。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 733.15,
+   "dur": 2.56,
+   "speech": "抖动多，TV 管。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 736.26,
+   "dur": 2.85,
+   "speech": "相位错，DTW 管。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 739.66,
+   "dur": 3.33,
+   "speech": "没有一个指标能同时管三种。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 743.53,
+   "dur": 3.49,
+   "speech": "选指标之前，先问误差长什么样。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 747.58,
+   "dur": 2.49,
+   "speech": "第 9 章到这里结束。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 750.61,
+   "dur": 2.75,
+   "speech": "这个系列也到这里结束。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 753.91,
+   "dur": 3.35,
+   "speech": "七十四个问题，一百九十个算法。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 757.81,
+   "dur": 3.73,
+   "speech": "愿你看数字时，先看它漏掉了什么。"
+  }
+ ]
+}

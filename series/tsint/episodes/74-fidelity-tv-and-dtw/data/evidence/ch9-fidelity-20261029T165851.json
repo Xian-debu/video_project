@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "unitId": "74-fidelity-tv-and-dtw",
+  "episode": "74-fidelity-tv-and-dtw",
+  "tsBaseCommit": "a32c1e095bcf23e5b05f6b2290068c872662d612",
+  "runAt": "2026-10-29T16:58:51+0000",
+  "command": "cabal run tsbase -- evidence-ch09e --out data/episodes/74-fidelity-tv-and-dtw --evidence inventory/evidence",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "tv_lambda_best": {"value": 5.00000000000000000e-3, "unit": "lambda"},
+    "tv_tv_best": {"value": 13.99010337396510400, "unit": "variation"},
+    "tv_clean_mse_best": {"value": 7.06594719940738500e-3, "unit": "mse"},
+    "tv_clean_mse_over": {"value": 0.18698043848077975, "unit": "mse"},
+    "dtw_golden": {"value": 1.00000000000000000, "unit": "cost"},
+    "dtw_shift_mse": {"value": 15.80952380952381000, "unit": "mse"},
+    "dtw_shift_cost": {"value": 0.00000000000000000, "unit": "cost"},
+    "dtw_triangle_violation": {"value": 4.00000000000000000, "unit": "cost"},
+    "dtw_banded_ms": {"value": 32.39964100000000000, "unit": "milliseconds"}
+  },
+  "tests": [
+    {"name": "TV constant is zero", "expected": 0.00000000000000000, "actual": 0.00000000000000000, "pass": true},
+    {"name": "TV [1,2,4,7] is 6", "expected": 6.00000000000000000, "actual": 6.00000000000000000, "pass": true},
+    {"name": "tvLoss lambda=0 equals MSE", "expected": 10.00000000000000000, "actual": 10.00000000000000000, "pass": true},
+    {"name": "DTW golden cost", "expected": 1.00000000000000000, "actual": 1.00000000000000000, "pass": true},
+    {"name": "DTW triangle xz", "expected": 6.00000000000000000, "actual": 6.00000000000000000, "pass": true},
+    {"name": "DTW triangle xy", "expected": 2.00000000000000000, "actual": 2.00000000000000000, "pass": true},
+    {"name": "DTW triangle yz", "expected": 0.00000000000000000, "actual": 0.00000000000000000, "pass": true},
+    {"name": "DTW banded equals full", "expected": 28.53169548885456000, "actual": 28.53169548885456000, "pass": true},
+    {"name": "TV sweet spot clean MSE", "expected": 7.06594719940738500e-3, "actual": 7.06594719940738500e-3, "pass": true},
+    {"name": "TV oversmooth clean MSE", "expected": 0.18698043848077975, "actual": 0.18698043848077975, "pass": true}
+  ],
+  "artifacts": [
+    {"path": "data/episodes/74-fidelity-tv-and-dtw/summary.json"},
+    {"path": "data/episodes/74-fidelity-tv-and-dtw/tv_curve.csv"},
+    {"path": "data/episodes/74-fidelity-tv-and-dtw/dtw_shift.csv"},
+    {"path": "data/episodes/74-fidelity-tv-and-dtw/dtw_triangle.csv"}
+  ]
+}
