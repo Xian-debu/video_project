@@ -1,6 +1,6 @@
 # 73-variants-beyond-solver - 不求解器也能算：CfC 的闭式解与灰色 GM-ODE
 
-> status: draft (scaffolded, scenes written; narration and render pending)
+> status: ready (delivered; 734 s render, srt/chapters/cover in delivery/)
 > chapter: ch09 | runtime target: 18 min | algorithms: 2
 
 ## Thesis
