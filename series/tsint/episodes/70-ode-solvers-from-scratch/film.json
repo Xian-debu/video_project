@@ -22,7 +22,8 @@
   "status": "draft",
   "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -2.5
   },
   "derive": [
     {
