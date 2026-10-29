@@ -22,7 +22,8 @@
   "status": "draft",
   "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [
     {
@@ -33,6 +34,9 @@
     "data/intro.json"
   ],
   "claims": null,
+  "publish": {
+    "coverFrame": 2300
+  },
   "paths": {
     "src": "src",
     "data": "data",
