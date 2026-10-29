@@ -1,0 +1,11 @@
+views: bars_daily, bars_minute, instruments, adj_events, calendar, index_daily, index_members
+bars_daily               rows=  17,763,617
+                         range=1990-12-19..2026-10-28 codes=5917
+bars_minute              rows= 105,435,686
+                         range=2008-10-23 10:00:00+08:00..2026-10-28 15:00:00+08:00 codes=5857
+instruments              rows=       5,917
+adj_events               rows=      65,288
+calendar                 rows=       8,751
+index_daily              rows=      22,719
+index_members            rows=         300
+lake size: 1390.6 MB

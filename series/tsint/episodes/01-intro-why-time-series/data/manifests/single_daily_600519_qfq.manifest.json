@@ -1,0 +1,29 @@
+{
+ "name": "single_daily_600519_qfq",
+ "note": "茅台 2015 起前复权日线，演示复权口径",
+ "kind": "daily",
+ "codes": [
+  "sh600519"
+ ],
+ "start": "2015-01-01",
+ "end": null,
+ "rows": 2870,
+ "columns": [
+  "code",
+  "trade_date",
+  "open",
+  "high",
+  "low",
+  "close",
+  "volume",
+  "amount",
+  "adj_factor"
+ ],
+ "bytes": 323803,
+ "sha256": "29f6ce3e09db3355b000ff801cb6ded95b1426682b7831e9b9d52533e7eed10c",
+ "source": {
+  "repo": "ts-admin",
+  "commit": "5e80ec3",
+  "lake": "data/lake (parquet) via tsa.api.Lake"
+ }
+}

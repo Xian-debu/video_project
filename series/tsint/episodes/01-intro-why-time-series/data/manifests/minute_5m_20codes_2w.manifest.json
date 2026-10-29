@@ -1,0 +1,53 @@
+{
+ "name": "minute_5m_20codes_2w",
+ "note": "20 只 × 两周 5 分钟线（批量/并行演示）",
+ "kind": "minute",
+ "codes": [
+  "sh600000",
+  "sh600353",
+  "sh600703",
+  "sh601098",
+  "sh603080",
+  "sh603421",
+  "sh603967",
+  "sh688143",
+  "sh688496",
+  "sz000045",
+  "sz000810",
+  "sz002021",
+  "sz002296",
+  "sz002578",
+  "sz002869",
+  "sz300111",
+  "sz300400",
+  "sz300669",
+  "sz300945",
+  "sz301235"
+ ],
+ "start": "2026-09-14",
+ "end": "2026-09-30",
+ "rows": 10032,
+ "columns": [
+  "code",
+  "freq",
+  "bar_time",
+  "open",
+  "high",
+  "low",
+  "close",
+  "volume",
+  "amount",
+  "adj_factor",
+  "source",
+  "fetched_at",
+  "month",
+  "year"
+ ],
+ "bytes": 1213770,
+ "sha256": "c76d1fea052edc9f4bad6f8052407f5f7a9ac13ee8bdaf77f32c7340c5a12fda",
+ "source": {
+  "repo": "ts-admin",
+  "commit": "5e80ec3",
+  "lake": "data/lake (parquet) via tsa.api.Lake"
+ }
+}

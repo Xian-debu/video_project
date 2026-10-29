@@ -1,0 +1,34 @@
+{
+ "name": "minute_5m_600519_1m",
+ "note": "茅台 5 分钟线一个月（48 根/日）",
+ "kind": "minute",
+ "codes": [
+  "sh600519"
+ ],
+ "start": "2026-09-01",
+ "end": "2026-09-30",
+ "rows": 960,
+ "columns": [
+  "code",
+  "freq",
+  "bar_time",
+  "open",
+  "high",
+  "low",
+  "close",
+  "volume",
+  "amount",
+  "adj_factor",
+  "source",
+  "fetched_at",
+  "month",
+  "year"
+ ],
+ "bytes": 124038,
+ "sha256": "2f771576708d5d89df01384765e69b040b6304969274b9e64cf4ff94063fd123",
+ "source": {
+  "repo": "ts-admin",
+  "commit": "5e80ec3",
+  "lake": "data/lake (parquet) via tsa.api.Lake"
+ }
+}

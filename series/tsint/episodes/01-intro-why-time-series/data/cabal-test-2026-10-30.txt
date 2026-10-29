@@ -1,0 +1,15 @@
+# cabal test snapshot 2026-10-30, haskell-ts, GHC 9.14.1, cabal 3.16.1.0
+core.vec: 7/7 passed
+algos.ch09.analytic: 10/10 passed
+algos.ch09.euler: 9/9 passed
+algos.ch09.rk4: 8/8 passed
+algos.ch09.paramfit: 6/6 passed
+algos.ch09.neuralode: 11/11 passed
+algos.ch09.directgrad: 10/10 passed
+algos.ch09.adjoint: 12/12 passed
+algos.ch09.cfc: 17/17 passed
+algos.ch09.gmode: 18/18 passed
+algos.ch09.tvreg: 19/19 passed
+algos.ch09.dtw: 15/15 passed
+[PASS] count: 142
+1 of 1 test suites (1 of 1 test cases) passed.

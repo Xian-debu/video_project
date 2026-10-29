@@ -1,0 +1,29 @@
+{
+ "name": "suspended_gap_600519",
+ "note": "停牌/缺日示例：用于缺失值填充算法的真实缺口演示",
+ "kind": "daily",
+ "codes": [
+  "sh600519"
+ ],
+ "start": "2015-01-01",
+ "end": "2015-12-31",
+ "rows": 244,
+ "columns": [
+  "code",
+  "trade_date",
+  "open",
+  "high",
+  "low",
+  "close",
+  "volume",
+  "amount",
+  "adj_factor"
+ ],
+ "bytes": 16328,
+ "sha256": "a14f6601ecfe20c681767501984ad643dfdadf06e7b8d342f9d355c8d180c15f",
+ "source": {
+  "repo": "ts-admin",
+  "commit": "5e80ec3",
+  "lake": "data/lake (parquet) via tsa.api.Lake"
+ }
+}

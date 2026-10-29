@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "tsint-01-intro-why-time-series",
   "kind": "series-episode",
-  "title": "一条带时间戳的序列能承载什么：四个任务、三次范式迁移，与本系列的方法论",
+  "title": "一条序列，五个问题：从任务定义到可复算的管线",
   "series": {
     "id": "tsint",
     "order": 1,
@@ -20,12 +20,18 @@
   "fps": 30,
   "prefix": "tsint-01",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_intro_data.py"
+    }
+  ],
+  "derived": [
+    "data/intro.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",

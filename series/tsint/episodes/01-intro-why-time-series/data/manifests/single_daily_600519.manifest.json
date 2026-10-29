@@ -1,0 +1,29 @@
+{
+ "name": "single_daily_600519",
+ "note": "茅台全历史日线（原始价 + adj_factor），约 6000 行",
+ "kind": "daily",
+ "codes": [
+  "sh600519"
+ ],
+ "start": "2001-01-01",
+ "end": null,
+ "rows": 6030,
+ "columns": [
+  "code",
+  "trade_date",
+  "open",
+  "high",
+  "low",
+  "close",
+  "volume",
+  "amount",
+  "adj_factor"
+ ],
+ "bytes": 398507,
+ "sha256": "93588f0bc0ce5c010f479b5376a0642fabefe392b05b5c9fad2263a93daabdd8",
+ "source": {
+  "repo": "ts-admin",
+  "commit": "5e80ec3",
+  "lake": "data/lake (parquet) via tsa.api.Lake"
+ }
+}

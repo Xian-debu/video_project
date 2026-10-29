@@ -1,0 +1,1492 @@
+{
+ "entry": "src/tsint-01-intro-why-time-series/script.ts",
+ "fps": 30,
+ "totalSec": 821.76,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 77.2
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 77.2,
+   "dur": 105.44
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 182.64,
+   "dur": 121.93
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 304.57,
+   "dur": 134.42
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 438.99,
+   "dur": 125.05
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 564.04,
+   "dur": 104.53
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 668.57,
+   "dur": 100.42
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 768.99,
+   "dur": 52.77
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.09,
+   "speech": "这一集是整部系列的地图。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.84,
+   "dur": 5.49,
+   "speech": "书的第一章没有算法，只给了定义、任务和一张方法表。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.87,
+   "dur": 2.17,
+   "speech": "它列了五个任务。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 13.6,
+   "dur": 4.48,
+   "speech": "预测、异常检测、分类、插值、聚类。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 18.62,
+   "dur": 3.95,
+   "speech": "前四个，本系列各有一条算法主线。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 23.12,
+   "dur": 4.36,
+   "speech": "聚类只有一句列举，没有形式化定义，不硬做。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 28.03,
+   "dur": 3.25,
+   "speech": "所以这一集的算法数是零。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 31.84,
+   "dur": 2.25,
+   "speech": "但零不等于空。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 34.63,
+   "dur": 2.34,
+   "speech": "它要钉住三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 37.52,
+   "dur": 3.18,
+   "speech": "第一，五个任务分别在问什么。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 41.26,
+   "dur": 3.76,
+   "speech": "第二，为什么时间顺序不是普通特征。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 45.56,
+   "dur": 3.57,
+   "speech": "第三，屏幕上的数凭什么可复算。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 49.68,
+   "dur": 2.94,
+   "speech": "书把方法分成四个阶段。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 53.17,
+   "dur": 5.29,
+   "speech": "统计学习、机器学习、深度学习、预训练大模型。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 59.02,
+   "dur": 3.93,
+   "speech": "这不是四个时代，是四次偏置搬家。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 63.49,
+   "dur": 3.61,
+   "speech": "方程、特征、结构、数据。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 67.66,
+   "dur": 3.78,
+   "speech": "后面七十三集，都会回到这条主线。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 71.99,
+   "dur": 3.01,
+   "speech": "先从一条真实的日线说起。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 78.4,
+   "dur": 5.34,
+   "speech": "这是贵州茅台从两千零一年到两千零二十六年的日线。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 84.29,
+   "dur": 2.92,
+   "speech": "一共六千零三十个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 87.76,
+   "dur": 4.29,
+   "speech": "先看一个数：价格水平的滞后一阶自相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 92.6,
+   "dur": 3.01,
+   "speech": "零点九九九五五一三。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 96.16,
+   "dur": 2.05,
+   "speech": "几乎等于一。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 98.76,
+   "dur": 4.24,
+   "speech": "意思是，今天的价格几乎就是昨天的价格。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 103.55,
+   "dur": 1.96,
+   "speech": "再看收益率。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 106.06,
+   "dur": 2.8,
+   "speech": "零点零零九八八七一。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 109.41,
+   "dur": 2.03,
+   "speech": "几乎等于零。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 111.99,
+   "dur": 5.39,
+   "speech": "同一条序列，水平值和收益率，给出完全不同的自相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 117.93,
+   "dur": 2.2,
+   "speech": "这就是非平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 120.68,
+   "dur": 5.37,
+   "speech": "均值从一百一十三点九六，走到一千一百一十五点六三。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 126.59,
+   "dur": 3.76,
+   "speech": "把时间顺序打乱，价格还是价格。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 130.9,
+   "dur": 3.01,
+   "speech": "但预测问题已经换了一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 134.46,
+   "dur": 2.29,
+   "speech": "再看采样间隔。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 137.31,
+   "dur": 5.2,
+   "speech": "六千零二十九个相邻间隔里，四千七百四十二个是一天。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 143.06,
+   "dur": 4.26,
+   "speech": "十六个是两天，一千一百一十五个是三天。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 147.87,
+   "dur": 3.37,
+   "speech": "超过三天的，只有一百五十六个。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 151.79,
+   "dur": 2.97,
+   "speech": "最长的一次，五十三天。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 155.31,
+   "dur": 3.9,
+   "speech": "从二零零六年二月二十三，到四月十七。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 159.76,
+   "dur": 3.3,
+   "speech": "这是停牌，不是传感器掉线。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 163.61,
+   "dur": 3.83,
+   "speech": "把它当缺失值填掉，任务就换掉了。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 167.99,
+   "dur": 4.96,
+   "speech": "所以顺序、间隔、停牌，都是问题的一部分。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 173.5,
+   "dur": 3.69,
+   "speech": "不是预处理里可以随便抹掉的噪声。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 177.74,
+   "dur": 2.7,
+   "speech": "下面把定义写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 183.84,
+   "dur": 2.49,
+   "speech": "定义写在式一点一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 186.88,
+   "dur": 3.81,
+   "speech": "X 等于 x1 到 xT 组成的向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 191.23,
+   "dur": 2.75,
+   "speech": "属于 R 的 T 乘 N。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 194.53,
+   "dur": 4.31,
+   "speech": "x_t 是时间戳 t 上的观测向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 199.39,
+   "dur": 3.13,
+   "speech": "T 是长度，N 是变量数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 203.08,
+   "dur": 3.06,
+   "speech": "这里有三个容易混的地方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 206.69,
+   "dur": 3.54,
+   "speech": "第一，t 是时间戳，不是行号。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 210.78,
+   "dur": 3.49,
+   "speech": "采样可以等距，也可以被事件触发。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 214.82,
+   "dur": 2.49,
+   "speech": "等距叫均匀采样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 217.86,
+   "dur": 2.7,
+   "speech": "不等距叫非均匀采样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 221.11,
+   "dur": 3.37,
+   "speech": "第二，N 等于一是单变量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 225.04,
+   "dur": 2.61,
+   "speech": "N 大于一是多变量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 228.19,
+   "dur": 2.63,
+   "speech": "气象站的气温是一条。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 231.37,
+   "dur": 3.35,
+   "speech": "四个路口一周的流量是四条。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 235.27,
+   "dur": 4.21,
+   "speech": "它们彼此相关，不能当成四条独立序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 240.04,
+   "dur": 3.21,
+   "speech": "第三，五个任务的输出不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 243.79,
+   "dur": 2.25,
+   "speech": "预测给未来值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 246.59,
+   "dur": 2.85,
+   "speech": "异常检测给异常分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 249.98,
+   "dur": 2.46,
+   "speech": "分类给类别标签。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 253,
+   "dur": 2.41,
+   "speech": "插值补缺失值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 255.96,
+   "dur": 2.1,
+   "speech": "聚类给分组。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 258.61,
+   "dur": 3.25,
+   "speech": "书里的图一点一画了这五个任务。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 262.42,
+   "dur": 4.24,
+   "speech": "同一串观测，问的问题不同，输出就不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 267.2,
+   "dur": 3.66,
+   "speech": "预测是历史序列接到预测序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 271.42,
+   "dur": 3.57,
+   "speech": "异常检测在序列里标出异常点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 275.53,
+   "dur": 3.37,
+   "speech": "分类把整条序列映射到类别。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 279.46,
+   "dur": 2.56,
+   "speech": "插值把缺口补上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 282.56,
+   "dur": 3.61,
+   "speech": "聚类把相似序列放进同一组。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 286.73,
+   "dur": 3.35,
+   "speech": "这些任务的评价指标也不一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 290.63,
+   "dur": 1.98,
+   "speech": "预测看误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 293.16,
+   "dur": 3.13,
+   "speech": "异常检测看命中与误报。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 296.84,
+   "dur": 2.25,
+   "speech": "分类看准确率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 299.64,
+   "dur": 2.73,
+   "speech": "插值看缺口段误差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 305.77,
+   "dur": 3.47,
+   "speech": "方法表把几十年压成四个阶段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 309.79,
+   "dur": 5.73,
+   "speech": "统计学习，代表是 ARIMA、ETS、Theta、VAR。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 316.07,
+   "dur": 2.46,
+   "speech": "偏置写在方程里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 319.08,
+   "dur": 3.66,
+   "speech": "假设线性、平稳、误差有分布。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 323.29,
+   "dur": 5.01,
+   "speech": "好处是可解释，坏处是难处理非线性和多变量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 328.85,
+   "dur": 6.97,
+   "speech": "机器学习，代表是 XGBoost、GBRT、随机森林、LightGBM。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 336.37,
+   "dur": 2.41,
+   "speech": "偏置写在特征里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 339.33,
+   "dur": 4.14,
+   "speech": "人先造出滞后、滚动均值、日历特征。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 344.03,
+   "dur": 4.36,
+   "speech": "好处是模型多样，坏处是依赖特征工程。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 348.93,
+   "dur": 4.29,
+   "speech": "深度学习，代表从 MLP 到 Transformer。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 353.77,
+   "dur": 2.39,
+   "speech": "偏置写在结构里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 356.71,
+   "dur": 5.44,
+   "speech": "卷积假设局部，循环假设递推，注意力假设全局相关。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 362.7,
+   "dur": 4.33,
+   "speech": "好处是自动表征，坏处是算力和数据。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 367.58,
+   "dur": 5.46,
+   "speech": "预训练大模型，代表是 TimesFM、Moirai、Chronos。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 373.59,
+   "dur": 2.37,
+   "speech": "偏置写在数据里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 376.51,
+   "dur": 4.98,
+   "speech": "先在大量序列上预训练，再用少量任务数据适配。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 382.04,
+   "dur": 4.02,
+   "speech": "好处是泛化，坏处是可解释性和成本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 386.61,
+   "dur": 3.33,
+   "speech": "这四次迁移，不是简单替代。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 390.49,
+   "dur": 2.73,
+   "speech": "统计模型今天还在用。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 393.77,
+   "dur": 3.4,
+   "speech": "深度模型也不总比树模型好。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 397.71,
+   "dur": 3.69,
+   "speech": "大模型更不是所有任务的默认答案。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 401.95,
+   "dur": 3.9,
+   "speech": "真正变的是，人把假设放在了哪里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 406.4,
+   "dur": 4.26,
+   "speech": "从方程，到特征，到结构，到数据。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 411.21,
+   "dur": 3.4,
+   "speech": "每一次搬家，都换来了新的能力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 415.16,
+   "dur": 2.89,
+   "speech": "也换走了旧的可解释性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 418.61,
+   "dur": 2.8,
+   "speech": "书里没有给逐年时间线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 421.95,
+   "dur": 2.61,
+   "speech": "这一集也不补年份。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 425.11,
+   "dur": 3.85,
+   "speech": "只把四阶段和它们的代价说清楚。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 429.51,
+   "dur": 2.8,
+   "speech": "下一集开始，逐个实现。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 432.86,
+   "dur": 3.93,
+   "speech": "先看这条管线怎么把数变成证据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 440.19,
+   "dur": 3.47,
+   "speech": "这一集没有模型，只有一条管线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 444.21,
+   "dur": 3.66,
+   "speech": "起点是本机的 ts-admin 数据湖。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 448.42,
+   "dur": 4.26,
+   "speech": "一条 tsa status，给出这一天的快照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 453.23,
+   "dur": 3.04,
+   "speech": "日线一千七百七十六万行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 456.82,
+   "dur": 3.49,
+   "speech": "分钟线一亿零五百四十三万行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 460.87,
+   "dur": 2.7,
+   "speech": "五千九百一十七个标的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 464.12,
+   "dur": 3.06,
+   "speech": "体积一千三百九十点六兆。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 467.73,
+   "dur": 3.13,
+   "speech": "从湖里导出六个演示切片。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 471.41,
+   "dur": 3.42,
+   "speech": "单票全历史，六千零三十行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 475.39,
+   "dur": 4.05,
+   "speech": "同一只票的前复权，两千八百七十行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 479.98,
+   "dur": 5.01,
+   "speech": "一百二十只票一年的面板，两万八千三百五十三行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 485.54,
+   "dur": 3.76,
+   "speech": "含停牌空档的一年，二百四十四行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 489.85,
+   "dur": 4.07,
+   "speech": "单只票一个月的五分钟线，九百六十行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 494.47,
+   "dur": 4.74,
+   "speech": "二十只票两周的分钟面板，一万零三十二行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 499.76,
+   "dur": 4.24,
+   "speech": "六个切片合计四万八千四百八十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 504.55,
+   "dur": 2.97,
+   "speech": "每个切片都有 manifest。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 508.06,
+   "dur": 3.83,
+   "speech": "行数、字节、原文件 sha256。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 512.44,
+   "dur": 3.76,
+   "speech": "任何一个字节变了，指纹就对不上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 516.75,
+   "dur": 2.8,
+   "speech": "然后进入 ts-base。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 520.1,
+   "dur": 2.39,
+   "speech": "用 Haskell 写实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 523.04,
+   "dur": 2.41,
+   "speech": "为什么是 Haskell。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 526,
+   "dur": 1.86,
+   "speech": "不是为了快。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 528.41,
+   "dur": 4.77,
+   "speech": "是为了让每条断言都能被编译器和测试判决。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 533.73,
+   "dur": 2.56,
+   "speech": "类型不对，编译不过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 536.84,
+   "dur": 2.61,
+   "speech": "边界不对，测试不过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 539.99,
+   "dur": 2.46,
+   "speech": "这一集没有新算法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 543.01,
+   "dur": 4.12,
+   "speech": "但已有的一百四十二条测试全部通过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 547.67,
+   "dur": 3.18,
+   "speech": "十二个模块，一个测试套件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 551.41,
+   "dur": 4.36,
+   "speech": "GHC 九点十四点一，cabal 三点十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 556.31,
+   "dur": 2.53,
+   "speech": "这就是本集的账本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 559.4,
+   "dur": 2.44,
+   "speech": "下面逐项对数字。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 565.24,
+   "dur": 2.39,
+   "speech": "第一组，湖快照。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 568.18,
+   "dur": 4.21,
+   "speech": "日线一千七百七十六万三千六百一十七行。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 572.94,
+   "dur": 4.74,
+   "speech": "分钟线一亿零五百四十三万五千六百八十六行。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 578.24,
+   "dur": 2.89,
+   "speech": "标的五千九百一十七个。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 581.68,
+   "dur": 3.06,
+   "speech": "体积一千三百九十点六兆。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 585.29,
+   "dur": 2.56,
+   "speech": "第二组，六个切片。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 588.4,
+   "dur": 3.37,
+   "speech": "合计四万八千四百八十九行。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 592.32,
+   "dur": 4.09,
+   "speech": "合计三百八十四万五千八百三十字节。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 596.97,
+   "dur": 3.13,
+   "speech": "六个文件，六个 sha256。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 600.65,
+   "dur": 3.18,
+   "speech": "第三组，六百五十九的统计。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 604.38,
+   "dur": 2.53,
+   "speech": "长度六千零三十。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 607.47,
+   "dur": 4.14,
+   "speech": "价格自相关零点九九九五五一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 612.16,
+   "dur": 3.9,
+   "speech": "收益率自相关零点零零九八八七一。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 616.61,
+   "dur": 2.65,
+   "speech": "最长间隔五十三天。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 619.82,
+   "dur": 3.83,
+   "speech": "从二零零六年二月二十三到四月十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 624.2,
+   "dur": 4.84,
+   "speech": "六千零二十九个间隔里，一百五十六个超过三天。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 629.58,
+   "dur": 2.37,
+   "speech": "第四组，测试。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 632.5,
+   "dur": 2.87,
+   "speech": "一百四十二条全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 635.92,
+   "dur": 1.91,
+   "speech": "十二个模块。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 638.38,
+   "dur": 4.05,
+   "speech": "其中第九章十一个模块，一百三十五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 642.98,
+   "dur": 2.82,
+   "speech": "core 的向量模块七条。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 646.35,
+   "dur": 3.25,
+   "speech": "这些数字都能回到一次运行。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 650.15,
+   "dur": 2.34,
+   "speech": "没有一条是手填的。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 653.04,
+   "dur": 2.65,
+   "speech": "本集也没有拟合结果。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 656.25,
+   "dur": 2.75,
+   "speech": "所以这里不比较模型。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 659.55,
+   "dur": 2.53,
+   "speech": "只证明管线跑通。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 662.63,
+   "dur": 3.73,
+   "speech": "下一个问题，这条管线不能证明什么。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 669.77,
+   "dur": 2.53,
+   "speech": "第一条，证据等级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 672.85,
+   "dur": 2.68,
+   "speech": "书的第一章没有实验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 676.08,
+   "dur": 3.49,
+   "speech": "没有数据，没有代码，没有基线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 680.13,
+   "dur": 4.29,
+   "speech": "这一集的数字来自本机快照，不是书的实验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 684.96,
+   "dur": 2.27,
+   "speech": "所以只能标 C。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 687.78,
+   "dur": 2.56,
+   "speech": "第二条，快照时间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 690.89,
+   "dur": 3.64,
+   "speech": "二零零六年十月二十八日之后就变了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 695.08,
+   "dur": 3.76,
+   "speech": "湖每天增长，重跑会得到新行数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 699.39,
+   "dur": 3.49,
+   "speech": "画面锁在这一天的 status 文件上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 703.43,
+   "dur": 2.68,
+   "speech": "第三条，样本范围。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 706.66,
+   "dur": 2.29,
+   "speech": "一只票不是市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 709.5,
+   "dur": 3.13,
+   "speech": "面板只有一百二十只票一年。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 713.19,
+   "dur": 3.73,
+   "speech": "生存偏差、停牌、涨跌停都在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 717.47,
+   "dur": 2.65,
+   "speech": "不能外推成市场结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 720.67,
+   "dur": 2.56,
+   "speech": "第四条，任务范围。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 723.78,
+   "dur": 2.13,
+   "speech": "书列五个任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 726.46,
+   "dur": 3.35,
+   "speech": "本系列只做前四个的算法主线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 730.36,
+   "dur": 3.35,
+   "speech": "聚类只有名字，没有形式化定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 734.26,
+   "dur": 3.33,
+   "speech": "不把五个任务说成五条主线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 738.13,
+   "dur": 2.34,
+   "speech": "第五条，性能。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 741.03,
+   "dur": 2.53,
+   "speech": "没有基线就不排序。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 744.11,
+   "dur": 3.83,
+   "speech": "没有切分、没有误差、没有对照模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 748.49,
+   "dur": 2.34,
+   "speech": "第六条，实现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 751.38,
+   "dur": 2.73,
+   "speech": "Haskell 慢，这是事实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 754.66,
+   "dur": 3.73,
+   "speech": "选它是为了可判决，不是为了速度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 758.94,
+   "dur": 2.39,
+   "speech": "第七条，等级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 761.88,
+   "dur": 4.91,
+   "speech": "C 不抬成 A，机制可复现，性能数字不可复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 770.19,
+   "dur": 2.37,
+   "speech": "这一集没有算法。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 773.11,
+   "dur": 2.22,
+   "speech": "它给了三样东西。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 775.88,
+   "dur": 2.63,
+   "speech": "五个任务，四条主线。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 779.06,
+   "dur": 2.92,
+   "speech": "四次迁移，一个方向。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 782.53,
+   "dur": 3.3,
+   "speech": "一条管线，一百四十二条断言。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 786.38,
+   "dur": 2.68,
+   "speech": "先问任务，再问模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 789.61,
+   "dur": 2.75,
+   "speech": "先问数据，再问指标。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 792.91,
+   "dur": 2.63,
+   "speech": "先问证据，再问结论。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 796.09,
+   "dur": 3.33,
+   "speech": "第 02 集开始，进入具体算法。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 799.96,
+   "dur": 2.89,
+   "speech": "下一集是缺失值三法。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 803.41,
+   "dur": 3.42,
+   "speech": "三种补洞，先看谁在改方差。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 807.38,
+   "dur": 3.93,
+   "speech": "均值填充、末值填充、线性插值。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 811.85,
+   "dur": 3.42,
+   "speech": "每一个都有公式，也都有代价。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 815.83,
+   "dur": 3.73,
+   "speech": "愿你看数字时，先看它漏掉了什么。"
+  }
+ ]
+}
