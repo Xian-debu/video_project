@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-09-mlp-and-tcn",
+  "kind": "series-episode",
+  "title": "MLP 与 TCN：从一行仿射变换到因果膨胀卷积",
+  "series": {
+    "id": "tsint",
+    "order": 9,
+    "dir": "09-mlp-and-tcn"
+  },
+  "composition": "Tsint09MlpAndTcn",
+  "entry": "src/Tsint09MlpAndTcn.tsx",
+  "exports": {
+    "component": "Tsint09MlpAndTcn",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-09",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

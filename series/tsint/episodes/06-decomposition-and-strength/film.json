@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-06-decomposition-and-strength",
+  "kind": "series-episode",
+  "title": "经典分解与两个强度指标：趋势有多强，季节有多强",
+  "series": {
+    "id": "tsint",
+    "order": 6,
+    "dir": "06-decomposition-and-strength"
+  },
+  "composition": "Tsint06DecompositionAndStrength",
+  "entry": "src/Tsint06DecompositionAndStrength.tsx",
+  "exports": {
+    "component": "Tsint06DecompositionAndStrength",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-06",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

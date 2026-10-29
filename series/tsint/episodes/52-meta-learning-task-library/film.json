@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-52-meta-learning-task-library",
+  "kind": "series-episode",
+  "title": "把 300 只股票当成 300 个任务：元学习选模型",
+  "series": {
+    "id": "tsint",
+    "order": 52,
+    "dir": "52-meta-learning-task-library"
+  },
+  "composition": "Tsint52MetaLearningTaskLibrary",
+  "entry": "src/Tsint52MetaLearningTaskLibrary.tsx",
+  "exports": {
+    "component": "Tsint52MetaLearningTaskLibrary",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-52",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

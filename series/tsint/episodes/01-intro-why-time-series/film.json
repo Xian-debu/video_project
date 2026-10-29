@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-01-intro-why-time-series",
+  "kind": "series-episode",
+  "title": "一条带时间戳的序列能承载什么：四个任务、三次范式迁移，与本系列的方法论",
+  "series": {
+    "id": "tsint",
+    "order": 1,
+    "dir": "01-intro-why-time-series"
+  },
+  "composition": "Tsint01IntroWhyTimeSeries",
+  "entry": "src/Tsint01IntroWhyTimeSeries.tsx",
+  "exports": {
+    "component": "Tsint01IntroWhyTimeSeries",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-01",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

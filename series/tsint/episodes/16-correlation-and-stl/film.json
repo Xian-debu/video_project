@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-16-correlation-and-stl",
+  "kind": "series-episode",
+  "title": "相关性与 STL：一个数说面板，一条分解说序列",
+  "series": {
+    "id": "tsint",
+    "order": 16,
+    "dir": "16-correlation-and-stl"
+  },
+  "composition": "Tsint16CorrelationAndStl",
+  "entry": "src/Tsint16CorrelationAndStl.tsx",
+  "exports": {
+    "component": "Tsint16CorrelationAndStl",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-16",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

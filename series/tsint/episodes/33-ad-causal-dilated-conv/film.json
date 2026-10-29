@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-33-ad-causal-dilated-conv",
+  "kind": "series-episode",
+  "title": "卷积看见了未来：因果卷积、膨胀核与 TCN",
+  "series": {
+    "id": "tsint",
+    "order": 33,
+    "dir": "33-ad-causal-dilated-conv"
+  },
+  "composition": "Tsint33AdCausalDilatedConv",
+  "entry": "src/Tsint33AdCausalDilatedConv.tsx",
+  "exports": {
+    "component": "Tsint33AdCausalDilatedConv",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-33",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

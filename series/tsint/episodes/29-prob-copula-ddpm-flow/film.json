@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-29-prob-copula-ddpm-flow",
+  "kind": "series-episode",
+  "title": "概率生成补集：Copula、扩散损失、连续流",
+  "series": {
+    "id": "tsint",
+    "order": 29,
+    "dir": "29-prob-copula-ddpm-flow"
+  },
+  "composition": "Tsint29ProbCopulaDdpmFlow",
+  "entry": "src/Tsint29ProbCopulaDdpmFlow.tsx",
+  "exports": {
+    "component": "Tsint29ProbCopulaDdpmFlow",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-29",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

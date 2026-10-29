@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-43-shapelet-search-pips",
+  "kind": "series-episode",
+  "title": "Shapelet：从一条序列里挖出一小段判别力",
+  "series": {
+    "id": "tsint",
+    "order": 43,
+    "dir": "43-shapelet-search-pips"
+  },
+  "composition": "Tsint43ShapeletSearchPips",
+  "entry": "src/Tsint43ShapeletSearchPips.tsx",
+  "exports": {
+    "component": "Tsint43ShapeletSearchPips",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-43",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

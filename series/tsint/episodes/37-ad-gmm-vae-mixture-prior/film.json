@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-37-ad-gmm-vae-mixture-prior",
+  "kind": "series-episode",
+  "title": "混合先验：GMM-VAE 与『多个正常模式』",
+  "series": {
+    "id": "tsint",
+    "order": 37,
+    "dir": "37-ad-gmm-vae-mixture-prior"
+  },
+  "composition": "Tsint37AdGmmVaeMixturePrior",
+  "entry": "src/Tsint37AdGmmVaeMixturePrior.tsx",
+  "exports": {
+    "component": "Tsint37AdGmmVaeMixturePrior",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-37",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

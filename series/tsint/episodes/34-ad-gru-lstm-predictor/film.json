@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-34-ad-gru-lstm-predictor",
+  "kind": "series-episode",
+  "title": "预测未来，误差就是分数：GRU 单元与 LSTM 预测器",
+  "series": {
+    "id": "tsint",
+    "order": 34,
+    "dir": "34-ad-gru-lstm-predictor"
+  },
+  "composition": "Tsint34AdGruLstmPredictor",
+  "entry": "src/Tsint34AdGruLstmPredictor.tsx",
+  "exports": {
+    "component": "Tsint34AdGruLstmPredictor",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-34",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

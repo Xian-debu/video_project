@@ -1,6 +1,7 @@
 # 《时序智能》系列（tsint）制作蓝图
 
-> 状态：🧭 规划冻结（2026-10-29）——**不是**开工令。逐集目录见 [series-tsint-episodes.md](series-tsint-episodes.md)：**74 集 / 190 个完整算法 / 190 of 193 单元**（27.2 小时）。
+> 状态：🚧 **制作中**（2026-10-29 夜获批全面开工，用户全权委托）——74 集骨架已建（`series/tsint/`，叙事顺序固定），按 `series.json` 的 `productionOrder` 逐集生产；film `status` 最多 `ready`，**不发布 B 站**。
+> 逐集目录见 [series-tsint-episodes.md](series-tsint-episodes.md)：**74 集 / 190 个完整算法 / 190 of 193 单元**（27.2 小时）。
 > 硬约束见 [CONVENTIONS.md §8](../CONVENTIONS.md)；算法侧规范见 ts-base 的 `ALGORITHM-SPEC.md`；逐集规划真源是 ts-base 的 `plans/series.json`。
 > 预算与风险账见 ts-base 的 `plans/AUDIT.md`（训练预跑 8.7–52 CPU 小时、38 集含 ≥2 个训练算法、依赖链最长 15 集）。
 
@@ -137,8 +138,34 @@ series/tsint/
 | 7 | `schema/film.schema.json` 的 `paper` 改 `oneOf` | 龙芯/convcode 对象形态仍通过；tsint 数组 + pages/license 通过 | 本仓 |
 | 8 | `SourceBadge` 组件 | 页码 p.XX + CC BY-NC-ND 4.0；每 plate 至少出现 N 秒由门禁断言 | 本仓 |
 
-**S2 首集规则**（由复盘强化）：样片必须是零外部数据、黄金值可手算的一集（ch08 指标或 ch09 ODE），
-样片验收通过前不铺量；先章内算法与测试全绿，再批量出片（TTS 重跑约 12 min/集）。
+**S2 首集规则已被用户取消**（2026-10-29 夜：「也不用样片了，直接正式开工了」）：不再单独拍样片，直接按 `productionOrder` 逐集生产；「零外部数据、黄金值可手算」仍是首集 `ode-solvers-from-scratch` 的选题特征。先算法与测试全绿，再出片（TTS 重跑约 12 min/集）。
 
 **坑（必读）**：`films sync` 会删派生 `lines.json`；「门禁全绿」≠内容正确（G0 掩码曾全绿但错）；
 旁白 clip 数 ≠ 讲稿行数；claims 有无源数字时删数字而不是造来源；长任务走受管后台 job。
+
+## 11. 生产管理与执行状态（2026-10-29 夜起）
+
+### 11.1 骨架（S0，已完成）
+
+- `series/tsint/` 一次性按**叙事顺序**建好 74 个 `episodes/NN-slug/` 包（`tools/scaffold-series.mjs` 由 ts-base `plans/series.json` 生成，可重跑；`--force` 覆盖）。
+- `series.json`: `episodes[]` = 叙事顺序 74 个目录；`productionOrder[]` = ts-base 的生产顺序（首集 `70-ode-solvers-from-scratch`）。
+- 每包最小可校验形态：`film.json`（status draft、assetsStatus incomplete、无 narration/claims）+ `src/Tsint<NN><Slug>.tsx` stub（导出 TOTAL/FPS/组件）+ `docs/plan.md` + `data/`、`delivery/`、`assets/{public,audio}/`。
+- `catalog.json` 注册 `tsint`；`node tools/check.mjs` → 90 films / 2 series / 0 error / 0 warning。
+
+### 11.2 每集生产流水线（顺序固定）
+
+1. **算法**（ts-base）：按该集 `algorithms[].module` 实现模块与 Spec，`cabal test` 全绿；
+2. **证据**：生成 `inventory/evidence/<unit>/<runAt>.json`（command/env/seed/inputs sha256/metrics/tests），`check_evidence.py` 通过；
+3. **数据**：需要湖数据的集从 `ts-base/data/demo/` 或 ts-admin 导出 CSV + manifest，写进该包 `data/`，sha256 进 claims；
+4. **画面**：`src/` Remotion 组件按六段结构（问题/公式/推导直觉/实现/验证/边界）+ 示意图 + 原文页码角标；
+5. **旁白**：`docs/narration.md` → TTS `assets/audio/narration.wav`（入库）；
+6. **claims**：`data/claims.json` 每条 `source: ts-base:…`，`check_evidence.py --claims` 交叉核对；
+7. **门禁**：`node tools/check.mjs` 0 error；ts-base `cabal test` 全绿；`python3 plans/check_evidence.py` 全绿；
+8. **提交**：一集一个提交 `tsint/epNN: …`；film.json 升到 `status: ready`，不写 `bili.bv`。
+
+### 11.3 管理纪律
+
+- 叙事顺序（`episodes[]`）与生产顺序（`productionOrder[]`）分离：先生产第 70 集不影响第 1 集的编号。
+- 禁止跨集顺手改规划；改规划单独提交并在 ts-base `docs/10` 写决策。
+- 每集只提交本集文件 + 必要的共享组件；共享组件升级单独提交并说明影响面。
+- 自主决定逐条写入本仓 [SELF-AUTH.md](../SELF-AUTH.md)。

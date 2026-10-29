@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-65-error-metrics-trio",
+  "kind": "series-episode",
+  "title": "误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动",
+  "series": {
+    "id": "tsint",
+    "order": 65,
+    "dir": "65-error-metrics-trio"
+  },
+  "composition": "Tsint65ErrorMetricsTrio",
+  "entry": "src/Tsint65ErrorMetricsTrio.tsx",
+  "exports": {
+    "component": "Tsint65ErrorMetricsTrio",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-65",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

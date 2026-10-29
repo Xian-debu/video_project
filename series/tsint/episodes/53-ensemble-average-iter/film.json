@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-53-ensemble-average-iter",
+  "kind": "series-episode",
+  "title": "集成：平均就能赢，但别乱调权",
+  "series": {
+    "id": "tsint",
+    "order": 53,
+    "dir": "53-ensemble-average-iter"
+  },
+  "composition": "Tsint53EnsembleAverageIter",
+  "entry": "src/Tsint53EnsembleAverageIter.tsx",
+  "exports": {
+    "component": "Tsint53EnsembleAverageIter",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-53",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

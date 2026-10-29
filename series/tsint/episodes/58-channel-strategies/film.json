@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-58-channel-strategies",
+  "kind": "series-episode",
+  "title": "通道独立还是混合：一个由相关性决定的选择题",
+  "series": {
+    "id": "tsint",
+    "order": 58,
+    "dir": "58-channel-strategies"
+  },
+  "composition": "Tsint58ChannelStrategies",
+  "entry": "src/Tsint58ChannelStrategies.tsx",
+  "exports": {
+    "component": "Tsint58ChannelStrategies",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-58",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

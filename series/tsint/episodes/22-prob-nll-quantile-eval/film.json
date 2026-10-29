@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-22-prob-nll-quantile-eval",
+  "kind": "series-episode",
+  "title": "概率预测入门：高斯 NLL、分位数损失、分位数指标",
+  "series": {
+    "id": "tsint",
+    "order": 22,
+    "dir": "22-prob-nll-quantile-eval"
+  },
+  "composition": "Tsint22ProbNllQuantileEval",
+  "entry": "src/Tsint22ProbNllQuantileEval.tsx",
+  "exports": {
+    "component": "Tsint22ProbNllQuantileEval",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-22",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

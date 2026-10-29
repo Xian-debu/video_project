@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-40-ad-adversarial-dual-decoder",
+  "kind": "series-episode",
+  "title": "两个解码器，一个说谎：USAD 对抗、DAGMM 能量与多 AE 中位数",
+  "series": {
+    "id": "tsint",
+    "order": 40,
+    "dir": "40-ad-adversarial-dual-decoder"
+  },
+  "composition": "Tsint40AdAdversarialDualDecoder",
+  "entry": "src/Tsint40AdAdversarialDualDecoder.tsx",
+  "exports": {
+    "component": "Tsint40AdAdversarialDualDecoder",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-40",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

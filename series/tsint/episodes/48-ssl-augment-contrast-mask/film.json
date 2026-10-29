@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-48-ssl-augment-contrast-mask",
+  "kind": "series-episode",
+  "title": "没有标签怎么办：增强、对比与掩码重构",
+  "series": {
+    "id": "tsint",
+    "order": 48,
+    "dir": "48-ssl-augment-contrast-mask"
+  },
+  "composition": "Tsint48SslAugmentContrastMask",
+  "entry": "src/Tsint48SslAugmentContrastMask.tsx",
+  "exports": {
+    "component": "Tsint48SslAugmentContrastMask",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-48",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

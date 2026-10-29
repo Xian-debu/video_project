@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-27-patch-embed-and-two-attn",
+  "kind": "series-episode",
+  "title": "块嵌入与两种注意力架构：PatchTST 与交叉注意力解码器",
+  "series": {
+    "id": "tsint",
+    "order": 27,
+    "dir": "27-patch-embed-and-two-attn"
+  },
+  "composition": "Tsint27PatchEmbedAndTwoAttn",
+  "entry": "src/Tsint27PatchEmbedAndTwoAttn.tsx",
+  "exports": {
+    "component": "Tsint27PatchEmbedAndTwoAttn",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-27",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

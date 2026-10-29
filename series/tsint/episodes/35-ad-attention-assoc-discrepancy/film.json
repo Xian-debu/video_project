@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-35-ad-attention-assoc-discrepancy",
+  "kind": "series-episode",
+  "title": "注意力矩阵里的异常：关联差异、两阶段焦点与次邻域遮罩",
+  "series": {
+    "id": "tsint",
+    "order": 35,
+    "dir": "35-ad-attention-assoc-discrepancy"
+  },
+  "composition": "Tsint35AdAttentionAssocDiscrepancy",
+  "entry": "src/Tsint35AdAttentionAssocDiscrepancy.tsx",
+  "exports": {
+    "component": "Tsint35AdAttentionAssocDiscrepancy",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-35",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

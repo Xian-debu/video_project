@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-14-nonstationary-attention",
+  "kind": "series-episode",
+  "title": "非平稳注意力：一个标量 τ 与一个向量 Δ 能改什么",
+  "series": {
+    "id": "tsint",
+    "order": 14,
+    "dir": "14-nonstationary-attention"
+  },
+  "composition": "Tsint14NonstationaryAttention",
+  "entry": "src/Tsint14NonstationaryAttention.tsx",
+  "exports": {
+    "component": "Tsint14NonstationaryAttention",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-14",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

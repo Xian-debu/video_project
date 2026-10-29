@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-26-seq-compress-three-ways",
+  "kind": "series-episode",
+  "title": "序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩",
+  "series": {
+    "id": "tsint",
+    "order": 26,
+    "dir": "26-seq-compress-three-ways"
+  },
+  "composition": "Tsint26SeqCompressThreeWays",
+  "entry": "src/Tsint26SeqCompressThreeWays.tsx",
+  "exports": {
+    "component": "Tsint26SeqCompressThreeWays",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-26",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

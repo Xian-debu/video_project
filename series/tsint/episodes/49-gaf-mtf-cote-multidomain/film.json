@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-49-gaf-mtf-cote-multidomain",
+  "kind": "series-episode",
+  "title": "换一种表示：图像化编码与多域集成",
+  "series": {
+    "id": "tsint",
+    "order": 49,
+    "dir": "49-gaf-mtf-cote-multidomain"
+  },
+  "composition": "Tsint49GafMtfCoteMultidomain",
+  "entry": "src/Tsint49GafMtfCoteMultidomain.tsx",
+  "exports": {
+    "component": "Tsint49GafMtfCoteMultidomain",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-49",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

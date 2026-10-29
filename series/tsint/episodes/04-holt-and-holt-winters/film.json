@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-04-holt-and-holt-winters",
+  "kind": "series-episode",
+  "title": "Holt 家族：三行递推把趋势和季节塞进指数平滑",
+  "series": {
+    "id": "tsint",
+    "order": 4,
+    "dir": "04-holt-and-holt-winters"
+  },
+  "composition": "Tsint04HoltAndHoltWinters",
+  "entry": "src/Tsint04HoltAndHoltWinters.tsx",
+  "exports": {
+    "component": "Tsint04HoltAndHoltWinters",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-04",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

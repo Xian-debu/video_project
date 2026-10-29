@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-57-tokenization-trio",
+  "kind": "series-episode",
+  "title": "把序列切成块：Patch、周期、分辨率前缀",
+  "series": {
+    "id": "tsint",
+    "order": 57,
+    "dir": "57-tokenization-trio"
+  },
+  "composition": "Tsint57TokenizationTrio",
+  "entry": "src/Tsint57TokenizationTrio.tsx",
+  "exports": {
+    "component": "Tsint57TokenizationTrio",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-57",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

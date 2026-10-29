@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-41-ad-sparse-prior-dual-attention",
+  "kind": "series-episode",
+  "title": "换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力",
+  "series": {
+    "id": "tsint",
+    "order": 41,
+    "dir": "41-ad-sparse-prior-dual-attention"
+  },
+  "composition": "Tsint41AdSparsePriorDualAttention",
+  "entry": "src/Tsint41AdSparsePriorDualAttention.tsx",
+  "exports": {
+    "component": "Tsint41AdSparsePriorDualAttention",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-41",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

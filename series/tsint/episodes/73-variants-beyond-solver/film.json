@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-73-variants-beyond-solver",
+  "kind": "series-episode",
+  "title": "不求解器也能算：CfC 的闭式解与灰色 GM-ODE",
+  "series": {
+    "id": "tsint",
+    "order": 73,
+    "dir": "73-variants-beyond-solver"
+  },
+  "composition": "Tsint73VariantsBeyondSolver",
+  "entry": "src/Tsint73VariantsBeyondSolver.tsx",
+  "exports": {
+    "component": "Tsint73VariantsBeyondSolver",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-73",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-32-ad-classic-unsupervised",
+  "kind": "series-episode",
+  "title": "三种几何直觉：距离、密度、随机分割",
+  "series": {
+    "id": "tsint",
+    "order": 32,
+    "dir": "32-ad-classic-unsupervised"
+  },
+  "composition": "Tsint32AdClassicUnsupervised",
+  "entry": "src/Tsint32AdClassicUnsupervised.tsx",
+  "exports": {
+    "component": "Tsint32AdClassicUnsupervised",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-32",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

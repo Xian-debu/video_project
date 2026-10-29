@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-31-ad-threshold-and-baselines",
+  "kind": "series-episode",
+  "title": "分数怎么变成 0/1：阈值、分类器，与最笨的基线",
+  "series": {
+    "id": "tsint",
+    "order": 31,
+    "dir": "31-ad-threshold-and-baselines"
+  },
+  "composition": "Tsint31AdThresholdAndBaselines",
+  "entry": "src/Tsint31AdThresholdAndBaselines.tsx",
+  "exports": {
+    "component": "Tsint31AdThresholdAndBaselines",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-31",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

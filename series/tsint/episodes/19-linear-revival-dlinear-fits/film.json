@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-19-linear-revival-dlinear-fits",
+  "kind": "series-episode",
+  "title": "线性模型复兴：共享权重线性、DLinear、FITS",
+  "series": {
+    "id": "tsint",
+    "order": 19,
+    "dir": "19-linear-revival-dlinear-fits"
+  },
+  "composition": "Tsint19LinearRevivalDlinearFits",
+  "entry": "src/Tsint19LinearRevivalDlinearFits.tsx",
+  "exports": {
+    "component": "Tsint19LinearRevivalDlinearFits",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-19",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

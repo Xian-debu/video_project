@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-25-rnn-recurrence-vs-segments",
+  "kind": "series-episode",
+  "title": "递归与分段：RNN 的两条生成路",
+  "series": {
+    "id": "tsint",
+    "order": 25,
+    "dir": "25-rnn-recurrence-vs-segments"
+  },
+  "composition": "Tsint25RnnRecurrenceVsSegments",
+  "entry": "src/Tsint25RnnRecurrenceVsSegments.tsx",
+  "exports": {
+    "component": "Tsint25RnnRecurrenceVsSegments",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-25",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

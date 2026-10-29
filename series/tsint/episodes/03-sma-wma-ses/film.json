@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-03-sma-wma-ses",
+  "kind": "series-episode",
+  "title": "滑动平均与一次指数平滑：N 和 α 是同一把尺子的两种刻度",
+  "series": {
+    "id": "tsint",
+    "order": 3,
+    "dir": "03-sma-wma-ses"
+  },
+  "composition": "Tsint03SmaWmaSes",
+  "entry": "src/Tsint03SmaWmaSes.tsx",
+  "exports": {
+    "component": "Tsint03SmaWmaSes",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-03",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

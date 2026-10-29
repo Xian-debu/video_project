@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-13-normalization-trio",
+  "kind": "series-episode",
+  "title": "归一化三兄弟：差别只在「用谁的统计量」",
+  "series": {
+    "id": "tsint",
+    "order": 13,
+    "dir": "13-normalization-trio"
+  },
+  "composition": "Tsint13NormalizationTrio",
+  "entry": "src/Tsint13NormalizationTrio.tsx",
+  "exports": {
+    "component": "Tsint13NormalizationTrio",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-13",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

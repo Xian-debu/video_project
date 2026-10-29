@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-50-model-selection-skeleton",
+  "kind": "series-episode",
+  "title": "自动选模型：池子比策略更重要",
+  "series": {
+    "id": "tsint",
+    "order": 50,
+    "dir": "50-model-selection-skeleton"
+  },
+  "composition": "Tsint50ModelSelectionSkeleton",
+  "entry": "src/Tsint50ModelSelectionSkeleton.tsx",
+  "exports": {
+    "component": "Tsint50ModelSelectionSkeleton",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-50",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

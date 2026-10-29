@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-54-darts-differentiable-search",
+  "kind": "series-episode",
+  "title": "把架构搜索变成可微：DARTS 与三层搜索空间",
+  "series": {
+    "id": "tsint",
+    "order": 54,
+    "dir": "54-darts-differentiable-search"
+  },
+  "composition": "Tsint54DartsDifferentiableSearch",
+  "entry": "src/Tsint54DartsDifferentiableSearch.tsx",
+  "exports": {
+    "component": "Tsint54DartsDifferentiableSearch",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-54",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

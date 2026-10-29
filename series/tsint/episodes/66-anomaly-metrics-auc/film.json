@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-66-anomaly-metrics-auc",
+  "kind": "series-episode",
+  "title": "不平衡数据上的三门考卷：Acc 0.99 的模型其实什么都没学到",
+  "series": {
+    "id": "tsint",
+    "order": 66,
+    "dir": "66-anomaly-metrics-auc"
+  },
+  "composition": "Tsint66AnomalyMetricsAuc",
+  "entry": "src/Tsint66AnomalyMetricsAuc.tsx",
+  "exports": {
+    "component": "Tsint66AnomalyMetricsAuc",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-66",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

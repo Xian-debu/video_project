@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-51-ga-search-incremental",
+  "kind": "series-episode",
+  "title": "省算力的两把刀：遗传算法与学习曲线外推",
+  "series": {
+    "id": "tsint",
+    "order": 51,
+    "dir": "51-ga-search-incremental"
+  },
+  "composition": "Tsint51GaSearchIncremental",
+  "entry": "src/Tsint51GaSearchIncremental.tsx",
+  "exports": {
+    "component": "Tsint51GaSearchIncremental",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-51",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

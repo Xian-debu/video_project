@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-28-channel-three-complements",
+  "kind": "series-episode",
+  "title": "通道三补集：混合 MLP、路由注意力、动态聚类",
+  "series": {
+    "id": "tsint",
+    "order": 28,
+    "dir": "28-channel-three-complements"
+  },
+  "composition": "Tsint28ChannelThreeComplements",
+  "entry": "src/Tsint28ChannelThreeComplements.tsx",
+  "exports": {
+    "component": "Tsint28ChannelThreeComplements",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-28",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

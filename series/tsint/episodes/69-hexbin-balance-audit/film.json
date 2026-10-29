@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-69-hexbin-balance-audit",
+  "kind": "series-episode",
+  "title": "你的基准数据集均衡吗：PCA 投影 + Hexbin 密度图",
+  "series": {
+    "id": "tsint",
+    "order": 69,
+    "dir": "69-hexbin-balance-audit"
+  },
+  "composition": "Tsint69HexbinBalanceAudit",
+  "entry": "src/Tsint69HexbinBalanceAudit.tsx",
+  "exports": {
+    "component": "Tsint69HexbinBalanceAudit",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-69",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

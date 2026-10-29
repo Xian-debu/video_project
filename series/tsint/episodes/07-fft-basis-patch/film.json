@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-07-fft-basis-patch",
+  "kind": "series-episode",
+  "title": "频域与分块：FFT、基展开、Patch 三种「换坐标系」的方式",
+  "series": {
+    "id": "tsint",
+    "order": 7,
+    "dir": "07-fft-basis-patch"
+  },
+  "composition": "Tsint07FftBasisPatch",
+  "entry": "src/Tsint07FftBasisPatch.tsx",
+  "exports": {
+    "component": "Tsint07FftBasisPatch",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-07",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

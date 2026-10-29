@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-08-adf-shifting-transition",
+  "kind": "series-episode",
+  "title": "冷门三指标：ADF 检验、漂移性、转移性",
+  "series": {
+    "id": "tsint",
+    "order": 8,
+    "dir": "08-adf-shifting-transition"
+  },
+  "composition": "Tsint08AdfShiftingTransition",
+  "entry": "src/Tsint08AdfShiftingTransition.tsx",
+  "exports": {
+    "component": "Tsint08AdfShiftingTransition",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-08",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

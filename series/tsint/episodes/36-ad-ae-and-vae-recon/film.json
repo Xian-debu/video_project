@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-36-ad-ae-and-vae-recon",
+  "kind": "series-episode",
+  "title": "从重构到概率：AE 与 VAE 的潜空间",
+  "series": {
+    "id": "tsint",
+    "order": 36,
+    "dir": "36-ad-ae-and-vae-recon"
+  },
+  "composition": "Tsint36AdAeAndVaeRecon",
+  "entry": "src/Tsint36AdAeAndVaeRecon.tsx",
+  "exports": {
+    "component": "Tsint36AdAeAndVaeRecon",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-36",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

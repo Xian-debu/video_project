@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-74-fidelity-tv-and-dtw",
+  "kind": "series-episode",
+  "title": "别只看 MSE：总变差正则与 DTW 保真度",
+  "series": {
+    "id": "tsint",
+    "order": 74,
+    "dir": "74-fidelity-tv-and-dtw"
+  },
+  "composition": "Tsint74FidelityTvAndDtw",
+  "entry": "src/Tsint74FidelityTvAndDtw.tsx",
+  "exports": {
+    "component": "Tsint74FidelityTvAndDtw",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-74",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

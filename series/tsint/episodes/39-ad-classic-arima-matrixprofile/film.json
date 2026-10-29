@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-39-ad-classic-arima-matrixprofile",
+  "kind": "series-episode",
+  "title": "残差与邻居：ARIMA 残差检测与 Matrix Profile discord",
+  "series": {
+    "id": "tsint",
+    "order": 39,
+    "dir": "39-ad-classic-arima-matrixprofile"
+  },
+  "composition": "Tsint39AdClassicArimaMatrixprofile",
+  "entry": "src/Tsint39AdClassicArimaMatrixprofile.tsx",
+  "exports": {
+    "component": "Tsint39AdClassicArimaMatrixprofile",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-39",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

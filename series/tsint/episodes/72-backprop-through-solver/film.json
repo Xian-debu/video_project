@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-72-backprop-through-solver",
+  "kind": "series-episode",
+  "title": "两种反向传播：把 200 步求解器摊开，还是在时间里倒着积分",
+  "series": {
+    "id": "tsint",
+    "order": 72,
+    "dir": "72-backprop-through-solver"
+  },
+  "composition": "Tsint72BackpropThroughSolver",
+  "entry": "src/Tsint72BackpropThroughSolver.tsx",
+  "exports": {
+    "component": "Tsint72BackpropThroughSolver",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-72",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

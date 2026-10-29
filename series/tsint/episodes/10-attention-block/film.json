@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-10-attention-block",
+  "kind": "series-episode",
+  "title": "注意力：一次 softmax 加权，把「对齐」变成可看的矩阵",
+  "series": {
+    "id": "tsint",
+    "order": 10,
+    "dir": "10-attention-block"
+  },
+  "composition": "Tsint10AttentionBlock",
+  "entry": "src/Tsint10AttentionBlock.tsx",
+  "exports": {
+    "component": "Tsint10AttentionBlock",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-10",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

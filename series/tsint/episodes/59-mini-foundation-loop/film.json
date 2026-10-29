@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-59-mini-foundation-loop",
+  "kind": "series-episode",
+  "title": "一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本",
+  "series": {
+    "id": "tsint",
+    "order": 59,
+    "dir": "59-mini-foundation-loop"
+  },
+  "composition": "Tsint59MiniFoundationLoop",
+  "entry": "src/Tsint59MiniFoundationLoop.tsx",
+  "exports": {
+    "component": "Tsint59MiniFoundationLoop",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-59",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

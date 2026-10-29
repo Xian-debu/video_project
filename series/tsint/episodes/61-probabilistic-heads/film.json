@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-61-probabilistic-heads",
+  "kind": "series-episode",
+  "title": "不止一个数：分位损失、分位线交叉与分布头",
+  "series": {
+    "id": "tsint",
+    "order": 61,
+    "dir": "61-probabilistic-heads"
+  },
+  "composition": "Tsint61ProbabilisticHeads",
+  "entry": "src/Tsint61ProbabilisticHeads.tsx",
+  "exports": {
+    "component": "Tsint61ProbabilisticHeads",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-61",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

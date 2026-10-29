@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-20-conv-dilated-fft-2d",
+  "kind": "series-episode",
+  "title": "卷积看时序：因果空洞卷积、FFT 周期、二维聚合",
+  "series": {
+    "id": "tsint",
+    "order": 20,
+    "dir": "20-conv-dilated-fft-2d"
+  },
+  "composition": "Tsint20ConvDilatedFft2d",
+  "entry": "src/Tsint20ConvDilatedFft2d.tsx",
+  "exports": {
+    "component": "Tsint20ConvDilatedFft2d",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-20",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

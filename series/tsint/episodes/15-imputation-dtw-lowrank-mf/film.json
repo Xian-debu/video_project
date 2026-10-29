@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-15-imputation-dtw-lowrank-mf",
+  "kind": "series-episode",
+  "title": "缺失值三法：邻域、低秩、因子",
+  "series": {
+    "id": "tsint",
+    "order": 15,
+    "dir": "15-imputation-dtw-lowrank-mf"
+  },
+  "composition": "Tsint15ImputationDtwLowrankMf",
+  "entry": "src/Tsint15ImputationDtwLowrankMf.tsx",
+  "exports": {
+    "component": "Tsint15ImputationDtwLowrankMf",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-15",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-68-fewshot-and-cost",
+  "kind": "series-episode",
+  "title": "5% 的样本怎么选：Few-shot 采样器与它的成本账",
+  "series": {
+    "id": "tsint",
+    "order": 68,
+    "dir": "68-fewshot-and-cost"
+  },
+  "composition": "Tsint68FewshotAndCost",
+  "entry": "src/Tsint68FewshotAndCost.tsx",
+  "exports": {
+    "component": "Tsint68FewshotAndCost",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-68",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

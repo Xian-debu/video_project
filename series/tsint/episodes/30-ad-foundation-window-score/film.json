@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-30-ad-foundation-window-score",
+  "kind": "series-episode",
+  "title": "地基：窗口·指标·评分——异常检测里 80% 的差别不在模型",
+  "series": {
+    "id": "tsint",
+    "order": 30,
+    "dir": "30-ad-foundation-window-score"
+  },
+  "composition": "Tsint30AdFoundationWindowScore",
+  "entry": "src/Tsint30AdFoundationWindowScore.tsx",
+  "exports": {
+    "component": "Tsint30AdFoundationWindowScore",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-30",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

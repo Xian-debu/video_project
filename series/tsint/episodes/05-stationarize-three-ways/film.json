@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-05-stationarize-three-ways",
+  "kind": "series-episode",
+  "title": "三种平稳化：差分、对数、Z-score 各治什么病",
+  "series": {
+    "id": "tsint",
+    "order": 5,
+    "dir": "05-stationarize-three-ways"
+  },
+  "composition": "Tsint05StationarizeThreeWays",
+  "entry": "src/Tsint05StationarizeThreeWays.tsx",
+  "exports": {
+    "component": "Tsint05StationarizeThreeWays",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-05",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

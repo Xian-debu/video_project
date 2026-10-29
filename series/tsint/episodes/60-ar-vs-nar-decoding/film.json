@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-60-ar-vs-nar-decoding",
+  "kind": "series-episode",
+  "title": "一步一步还是一口气：自回归与非自回归解码",
+  "series": {
+    "id": "tsint",
+    "order": 60,
+    "dir": "60-ar-vs-nar-decoding"
+  },
+  "composition": "Tsint60ArVsNarDecoding",
+  "entry": "src/Tsint60ArVsNarDecoding.tsx",
+  "exports": {
+    "component": "Tsint60ArVsNarDecoding",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-60",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

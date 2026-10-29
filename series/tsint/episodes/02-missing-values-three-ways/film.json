@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-02-missing-values-three-ways",
+  "kind": "series-episode",
+  "title": "缺失值三法：谁在偷偷改变你的方差",
+  "series": {
+    "id": "tsint",
+    "order": 2,
+    "dir": "02-missing-values-three-ways"
+  },
+  "composition": "Tsint02MissingValuesThreeWays",
+  "entry": "src/Tsint02MissingValuesThreeWays.tsx",
+  "exports": {
+    "component": "Tsint02MissingValuesThreeWays",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-02",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}

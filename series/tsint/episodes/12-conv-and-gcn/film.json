@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tsint-12-conv-and-gcn",
+  "kind": "series-episode",
+  "title": "卷积与图卷积：同一件事的两种定义域",
+  "series": {
+    "id": "tsint",
+    "order": 12,
+    "dir": "12-conv-and-gcn"
+  },
+  "composition": "Tsint12ConvAndGcn",
+  "entry": "src/Tsint12ConvAndGcn.tsx",
+  "exports": {
+    "component": "Tsint12ConvAndGcn",
+    "total": "TOTAL",
+    "fps": "FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "tsint-12",
+  "status": "draft",
+  "narration": null,
+  "audio": {
+    "music": null
+  },
+  "derive": [],
+  "derived": [],
+  "claims": null,
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "assetsStatus": "incomplete"
+}
