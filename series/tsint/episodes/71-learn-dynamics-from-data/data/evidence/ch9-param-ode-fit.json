@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "unitId": "ch9-param-ode-fit",
+  "episode": "learn-dynamics-from-data",
+  "tsBaseCommit": "11068207ed79801e5422fe701049fbc3474144ae",
+  "runAt": "2026-10-29T22:24:05+0800",
+  "command": "cabal run tsbase -- evidence-ch09b --out data/episodes/71-learn-dynamics-from-data --evidence inventory/evidence --demo data/demo/000001_200d.csv",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "k_closed_synth": {"value": 9.81460411064497400e-2, "unit": "per-unit-time"},
+    "k_gradient_synth": {"value": 9.99580699228912200e-2, "unit": "per-unit-time"},
+    "k_stock_200d": {"value": 1.27028932750224330, "unit": "per-normalized-time"},
+    "r2_stock_exp_fit": {"value": 0.94135353064980180, "unit": "ratio"}
+  },
+  "tests": [
+    {"name": "closed-form k on noisy synthetic data", "expected": 0.10000000000000000, "actual": 9.81460411064497400e-2, "pass": true},
+    {"name": "gradient k differs from closed form by", "expected": 0.00000000000000000, "actual": -1.81202881644147720e-3, "pass": true},
+    {"name": "stock window has 200 rows", "expected": 200.00000000000000000, "actual": 200.00000000000000000, "pass": true},
+    {"name": "stock exponential fit R^2", "expected": 0.00000000000000000, "actual": 0.94135353064980180, "pass": true}
+  ],
+  "inputs": [],
+  "artifacts": [
+    {"path": "data/episodes/71-learn-dynamics-from-data/paramfit_synth.csv", "sha256": "99d1c51e2a018d498e40259e621db84d6b24e653a1bd1a22ec41cbd26dea62b2"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/paramfit_stock.csv", "sha256": "d2041193713686f42b7682bc3d76eb017a4524f148889abbc54b465272a8fa15"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_loss_sin.csv", "sha256": "a3b9b71652f0b9a5bec58fc0d225a67293f4bba760f6d25a8babb1673bb176f1"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_sin.csv", "sha256": "32313b91a4c5cfbb2631f614f339e5651a20f4feae073f671830b8488980abaa"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_loss_stock.csv", "sha256": "69d6f4467eb140e8fd02ea07a6931c04634e2b787f5d535c0ba40145475123cf"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_stock.csv", "sha256": "7162ed411205456b3317a4bad89eefd54c20caa218f740746602fbabd0aaa039"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/summary.json", "sha256": "96fdfbad6704cebc9cb41acf9edcbd4945652cc5c3ee2efa4d83fe7452cfef2a"}
+  ]
+}

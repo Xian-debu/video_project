@@ -19,13 +19,21 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-71",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -2.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_neural_data.py"
+    }
+  ],
+  "derived": [
+    "data/neural.json"
+  ],
+  "derivedNote": "由 ts-base 的 ch09 证据 JSON 与 CSV 重组；闭式 k、训练 MSE、参数计数逐项断言后才写出",
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +44,10 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "material": "required",
+  "notes": "unit ids: ch9-param-ode-fit, ch9-neuralode-forward · book pp.212-217 · evidence 29418ad",
+  "publish": {
+    "coverFrame": 520
+  }
 }

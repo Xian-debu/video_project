@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "book": {
+    "title": "时序智能：面向时间序列分析的人工智能方法",
+    "repo": "decisionintelligence/AI4TS",
+    "license": "CC BY-NC-ND 4.0",
+    "note": "印刷页 = PDF 页 − 8"
+  },
+  "plates": [
+    {
+      "id": "eq-compound",
+      "file": "assets/public/plates/eq-compound.png",
+      "doc": "时序智能 · 第9章 §9.1.3 时间依赖型微分方程与时间序列",
+      "page": "p.214",
+      "figure": "式 9.14 / 9.15",
+      "attribution": "《时序智能》p.214 · 式 9.14、9.15 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 1011,
+      "height": 538,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.1.3（decisionintelligence/AI4TS，PDF p.222）"
+    },
+    {
+      "id": "eq-neuralode",
+      "file": "assets/public/plates/eq-neuralode.png",
+      "doc": "时序智能 · 第9章 §9.2.1 神经微分方程简介",
+      "page": "p.215",
+      "figure": "式 9.18",
+      "attribution": "《时序智能》p.215 · 式 9.18 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 1011,
+      "height": 660,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.2.1（decisionintelligence/AI4TS，PDF p.223）"
+    },
+    {
+      "id": "eq-odesolve",
+      "file": "assets/public/plates/eq-odesolve.png",
+      "doc": "时序智能 · 第9章 §9.2.1 神经微分方程简介",
+      "page": "p.217",
+      "figure": "式 9.21 / 9.22",
+      "attribution": "《时序智能》p.217 · 式 9.21、9.22 · CC BY-NC-ND 4.0",
+      "license": "cc-by-nc-nd 4.0",
+      "width": 1011,
+      "height": 386,
+      "source": "《时序智能：面向时间序列分析的人工智能方法》第9章 §9.2.1（decisionintelligence/AI4TS，PDF p.225）"
+    }
+  ]
+}

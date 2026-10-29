@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "unitId": "ch9-neuralode-forward",
+  "episode": "learn-dynamics-from-data",
+  "tsBaseCommit": "11068207ed79801e5422fe701049fbc3474144ae",
+  "runAt": "2026-10-29T22:24:05+0800",
+  "command": "cabal run tsbase -- evidence-ch09b --out data/episodes/71-learn-dynamics-from-data --evidence inventory/evidence --demo data/demo/000001_200d.csv",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "param_count": {"value": 337.00000000000000000, "unit": "params"},
+    "train_mse_sin": {"value": 4.18390312131132200e-3, "unit": "mse"},
+    "full_rmse_sin": {"value": 0.74997068688635780, "unit": "rmse"},
+    "rollout_rmse_sin_25": {"value": 0.40794443642788214, "unit": "rmse"},
+    "train_mse_stock": {"value": 7.87687120334061600e-3, "unit": "mse"},
+    "full_rmse_stock": {"value": 0.45960674293569964, "unit": "rmse"},
+    "rollout_rmse_stock_50": {"value": 0.10422545562606406, "unit": "rmse"},
+    "train_seconds": {"value": 94.06347174400000000, "unit": "s"}
+  },
+  "tests": [
+    {"name": "MLP 2->16->16->1 parameter count", "expected": 337.00000000000000000, "actual": 337.00000000000000000, "pass": true},
+    {"name": "sin train MSE after 300 epochs", "expected": 5.00000000000000000e-2, "actual": 4.18390312131132200e-3, "pass": true},
+    {"name": "sin 25-step rollout RMSE", "expected": 0.50000000000000000, "actual": 0.40794443642788214, "pass": true},
+    {"name": "sin full trajectory RMSE", "expected": 1.00000000000000000, "actual": 0.74997068688635780, "pass": true},
+    {"name": "stock 50-step rollout RMSE", "expected": 0.20000000000000000, "actual": 0.10422545562606406, "pass": true},
+    {"name": "stock full reconstruction RMSE", "expected": 0.60000000000000000, "actual": 0.45960674293569964, "pass": true}
+  ],
+  "inputs": [],
+  "artifacts": [
+    {"path": "data/episodes/71-learn-dynamics-from-data/paramfit_synth.csv", "sha256": "99d1c51e2a018d498e40259e621db84d6b24e653a1bd1a22ec41cbd26dea62b2"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/paramfit_stock.csv", "sha256": "d2041193713686f42b7682bc3d76eb017a4524f148889abbc54b465272a8fa15"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_loss_sin.csv", "sha256": "a3b9b71652f0b9a5bec58fc0d225a67293f4bba760f6d25a8babb1673bb176f1"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_sin.csv", "sha256": "32313b91a4c5cfbb2631f614f339e5651a20f4feae073f671830b8488980abaa"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_loss_stock.csv", "sha256": "69d6f4467eb140e8fd02ea07a6931c04634e2b787f5d535c0ba40145475123cf"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/neuralode_stock.csv", "sha256": "7162ed411205456b3317a4bad89eefd54c20caa218f740746602fbabd0aaa039"},
+    {"path": "data/episodes/71-learn-dynamics-from-data/summary.json", "sha256": "96fdfbad6704cebc9cb41acf9edcbd4945652cc5c3ee2efa4d83fe7452cfef2a"}
+  ]
+}

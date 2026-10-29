@@ -1,0 +1,1121 @@
+{
+ "entry": "src/tsint-71-learn-dynamics-from-data/script.ts",
+ "fps": 30,
+ "totalSec": 614.86,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 48.81
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 48.81,
+   "dur": 63.2
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 112.01,
+   "dur": 91.22
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 203.23,
+   "dur": 94.24
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 297.47,
+   "dur": 90.25
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 387.72,
+   "dur": 104.14
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 491.86,
+   "dur": 86.21
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 578.07,
+   "dur": 36.79
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.97,
+   "speech": "这一集从一条两百天的股票走势开始。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.72,
+   "dur": 3.76,
+   "speech": "二零零六年十一月，到二零零七年十月。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.03,
+   "dur": 3.01,
+   "speech": "把收盘价除以第一天的值。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 13.6,
+   "dur": 3.01,
+   "speech": "得到一条几乎单边的曲线。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.16,
+   "dur": 3.47,
+   "speech": "用一个常数增长率去拟合它。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.18,
+   "dur": 3.06,
+   "speech": "屏幕上的 R²，是这个数。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 24.79,
+   "dur": 2.99,
+   "speech": "增长率 k，也只有一个数。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 28.33,
+   "dur": 2.87,
+   "speech": "两百个观测，两个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 31.75,
+   "dur": 3.93,
+   "speech": "拟合得很紧，紧到像一条动力学定律。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 36.23,
+   "dur": 3.28,
+   "speech": "但这只是把一条曲线按住。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 40.06,
+   "dur": 2.65,
+   "speech": "如果 k 每天都在变呢。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 43.26,
+   "dur": 3.35,
+   "speech": "这一集，把 k 换成一张表。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 50.01,
+   "dur": 3.4,
+   "speech": "真实系统里，增长率不是常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 53.96,
+   "dur": 4.57,
+   "speech": "宏观环境、公司盈利、市场情绪，都在换。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 59.08,
+   "dur": 2.39,
+   "speech": "更麻烦的是采样。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 62.02,
+   "dur": 3.9,
+   "speech": "交易日不连续，周末和停牌都在里面。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 66.47,
+   "dur": 4.12,
+   "speech": "固定步长的离散模型，得先把这些洞补上。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 71.14,
+   "dur": 3.18,
+   "speech": "微分方程不要求等间隔。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 74.87,
+   "dur": 4.07,
+   "speech": "任意时刻都能问，积分器走到哪算到哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 79.49,
+   "dur": 3.97,
+   "speech": "这是它的原生优势，也是这一集的动机。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 84.02,
+   "dur": 3.83,
+   "speech": "把右端项换成网络以后，有三个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 88.4,
+   "dur": 2.58,
+   "speech": "第一步，k 怎么估。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 91.53,
+   "dur": 2.34,
+   "speech": "f 怎么参数化。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 94.42,
+   "dur": 2.7,
+   "speech": "训练怎么穿过求解器。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 97.67,
+   "dur": 3.28,
+   "speech": "先看最简单的一步：一个常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 101.5,
+   "dur": 4.24,
+   "speech": "再看不那么简单的：一个三百多参数的网络。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 106.29,
+   "dur": 3.52,
+   "speech": "两者用同一个损失、同一个前向。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 113.21,
+   "dur": 2.82,
+   "speech": "先把连续模型写下来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 116.58,
+   "dur": 3.52,
+   "speech": "状态的变化率，等于 k 乘状态。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 120.65,
+   "dur": 2.73,
+   "speech": "这是书里式 9.14。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 123.93,
+   "dur": 4.33,
+   "speech": "它的解是初始值乘指数，式 9.15。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 128.81,
+   "dur": 3.33,
+   "speech": "给定初值，整条轨迹就定了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 132.69,
+   "dur": 3.33,
+   "speech": "现在只有离散观测，怎么估 k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 136.56,
+   "dur": 2.61,
+   "speech": "把两边同时取对数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 139.72,
+   "dur": 3.45,
+   "speech": "指数曲线就变成一条直线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 143.71,
+   "dur": 2.77,
+   "speech": "直线的斜率，就是 k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 147.04,
+   "dur": 2.65,
+   "speech": "最小二乘有闭式解。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 150.24,
+   "dur": 3.04,
+   "speech": "分母是时间的中心化方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 153.83,
+   "dur": 3.61,
+   "speech": "分子是时间与对数观测的协方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 157.99,
+   "dur": 2.7,
+   "speech": "一行公式，不需要迭代。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 161.25,
+   "dur": 3.88,
+   "speech": "神经微分方程把 k 换成一个函数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 165.67,
+   "dur": 5.37,
+   "speech": "书里式 9.18，右端是 fθ(x,t)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 171.59,
+   "dur": 4.31,
+   "speech": "θ 是网络权重，x 和 t 是输入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 176.45,
+   "dur": 4.43,
+   "speech": "给定初值和目标时刻，求解器输出估计。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 181.43,
+   "dur": 2.58,
+   "speech": "这写成式 9.21。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 184.56,
+   "dur": 3.73,
+   "speech": "损失还是均方误差，式 9.22。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 188.85,
+   "dur": 3.18,
+   "speech": "网络两层 tanh，宽度十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 192.58,
+   "dur": 3.54,
+   "speech": "输入两维：状态和归一化时间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 196.67,
+   "dur": 4.36,
+   "speech": "输出一维变化率，参数一共三百三十七个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 204.43,
+   "dur": 3.16,
+   "speech": "为什么闭式解能一行算出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 208.14,
+   "dur": 3.23,
+   "speech": "因为对数把乘法变成加法。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 211.92,
+   "dur": 3.78,
+   "speech": "指数曲线在 log 坐标里是直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 216.25,
+   "dur": 3.01,
+   "speech": "直线的斜率，就是增长率。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 219.81,
+   "dur": 3.54,
+   "speech": "股票这条，取对数后仍有波动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 223.91,
+   "dur": 3.47,
+   "speech": "R² 只衡量直线贴得多紧。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 227.93,
+   "dur": 3.61,
+   "speech": "它不证明背后真是指数动力学。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 232.09,
+   "dur": 2.97,
+   "speech": "这是第一层要记住的边界。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 235.61,
+   "dur": 2.65,
+   "speech": "网络的思路完全不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 238.81,
+   "dur": 2.68,
+   "speech": "它不假设函数形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 242.04,
+   "dur": 3.97,
+   "speech": "只假设变化率能由状态和时间算出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 246.56,
+   "dur": 3.09,
+   "speech": "两层十六，中间用 tanh。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 250.2,
+   "dur": 2.27,
+   "speech": "为什么要加时间。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 253.02,
+   "dur": 3.83,
+   "speech": "自治函数无法表达显式的时间依赖。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 257.4,
+   "dur": 4,
+   "speech": "加了 t，才能拟合像正弦这样的轨迹。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 261.95,
+   "dur": 2.51,
+   "speech": "t 必须先归一化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 265.01,
+   "dur": 3.57,
+   "speech": "否则输入尺度差太多，梯度会乱。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 269.12,
+   "dur": 2.53,
+   "speech": "训练用中心差分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 272.21,
+   "dur": 3.66,
+   "speech": "三百三十七个参数，每个扰动两次。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 276.42,
+   "dur": 3.47,
+   "speech": "一个 epoch 要六百七十四次前向。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 280.44,
+   "dur": 4,
+   "speech": "窗口只有四步，每步最多走四分之一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 284.99,
+   "dur": 2.77,
+   "speech": "损失只在窗口内计算。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 288.31,
+   "dur": 2.97,
+   "speech": "所以训练误差可以很小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 291.83,
+   "dur": 3.45,
+   "speech": "也正是整段积分会漂移的原因。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 298.67,
+   "dur": 2.41,
+   "speech": "实现分两个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 301.63,
+   "dur": 3.01,
+   "speech": "ParamFit 负责常数拟合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 305.2,
+   "dur": 3.54,
+   "speech": "NeuralODE 负责网络前向和训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 309.29,
+   "dur": 2.37,
+   "speech": "fitK 是闭式解。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 312.21,
+   "dur": 3.54,
+   "speech": "输入时间和观测两列，输出 k。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 316.3,
+   "dur": 4.05,
+   "speech": "观测太少，或者时间全一样，直接报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 320.89,
+   "dur": 3.78,
+   "speech": "fitKGradient 用梯度下降做对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 325.23,
+   "dur": 3.4,
+   "speech": "损失是原始空间的均方误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 329.17,
+   "dur": 3.18,
+   "speech": "梯度可以手推，也可以用差分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 332.91,
+   "dur": 4.24,
+   "speech": "两条路给出同一个答案，才能互相当裁判。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 337.69,
+   "dur": 4.12,
+   "speech": "NeuralODE 里，MLP 就是一串 Double。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 342.36,
+   "dur": 4.09,
+   "speech": "参数拍平成一个向量，方便有限差分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 347.01,
+   "dur": 4.17,
+   "speech": "forwardMLP 做两层矩阵乘加 tanh。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 351.72,
+   "dur": 4.33,
+   "speech": "integrateRHS 用 RK4 走一小段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 356.61,
+   "dur": 2.99,
+   "speech": "forward 把一个窗口积出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 360.15,
+   "dur": 3.76,
+   "speech": "lossMSE 把预测和观测相减。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 364.45,
+   "dur": 3.23,
+   "speech": "trainFiniteDiff 是外层循环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 368.23,
+   "dur": 4.24,
+   "speech": "每个参数正负各扰动一次，算中心差分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 373.02,
+   "dur": 4.12,
+   "speech": "Haskell 是惰性的，训练必须强制求值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 377.69,
+   "dur": 3.59,
+   "speech": "不加 evaluate，计时会得到零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 381.83,
+   "dur": 3.69,
+   "speech": "测试一共五十条，边界也在里面。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 388.92,
+   "dur": 2.58,
+   "speech": "第一组：合成数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 392.05,
+   "dur": 2.46,
+   "speech": "真值 k 是零点一。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 395.06,
+   "dur": 3.13,
+   "speech": "观测上加了百分之二的噪声。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 398.75,
+   "dur": 3.04,
+   "speech": "闭式解给出屏幕上这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 402.34,
+   "dur": 2.41,
+   "speech": "梯度版给出这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 405.3,
+   "dur": 2.49,
+   "speech": "两个都贴着真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 408.34,
+   "dur": 2.46,
+   "speech": "第二组：真实股票。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 411.35,
+   "dur": 3.47,
+   "speech": "同一条 2006 到 2007 的走势。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 415.37,
+   "dur": 2.37,
+   "speech": "拟出 k 等于这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 418.28,
+   "dur": 2.46,
+   "speech": "R² 等于这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 421.3,
+   "dur": 3.04,
+   "speech": "这是归一化时间上的增长率。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 424.88,
+   "dur": 2.85,
+   "speech": "不是年化收益率，别混。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 428.28,
+   "dur": 2.61,
+   "speech": "第三组：正弦轨迹。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 431.44,
+   "dur": 3.01,
+   "speech": "网络有三百三十七个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 435,
+   "dur": 3.66,
+   "speech": "训练窗口内的 MSE 是这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 439.21,
+   "dur": 2.49,
+   "speech": "这个数看起来很小。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 442.25,
+   "dur": 3.81,
+   "speech": "但整段积分，RMSE 是这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 446.6,
+   "dur": 3.25,
+   "speech": "二十五步 rollout 是这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 450.41,
+   "dur": 3.09,
+   "speech": "误差在累积，不在窗口里。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 454.04,
+   "dur": 2.58,
+   "speech": "第四组：股票轨迹。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 457.18,
+   "dur": 3.06,
+   "speech": "窗口 MSE 是这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 460.79,
+   "dur": 2.85,
+   "speech": "五十步 rollout 是这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 464.18,
+   "dur": 3.21,
+   "speech": "整段 RMSE 是这个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 467.94,
+   "dur": 3.01,
+   "speech": "末段预测已经明显偏离。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 471.5,
+   "dur": 2.49,
+   "speech": "第五组：训练成本。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 474.54,
+   "dur": 2.97,
+   "speech": "两段训练一共这个秒数。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 478.06,
+   "dur": 3.3,
+   "speech": "每个 epoch 六百七十四次前向。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 481.91,
+   "dur": 3.73,
+   "speech": "所有数字都写进证据 JSON。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 486.19,
+   "dur": 3.47,
+   "speech": "提交号、命令、校验和都在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 493.06,
+   "dur": 2.85,
+   "speech": "现在说这一集的边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 496.46,
+   "dur": 3.78,
+   "speech": "第一类：局部拟合不等于长程预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 500.79,
+   "dur": 3.09,
+   "speech": "训练只约束窗口内的四步。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 504.42,
+   "dur": 3.35,
+   "speech": "窗口外没有数据，误差会累积。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 508.32,
+   "dur": 4.17,
+   "speech": "正弦的整段 RMSE 是 0.75。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 513.04,
+   "dur": 2.56,
+   "speech": "股票的末段也偏了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 516.15,
+   "dur": 4.38,
+   "speech": "这不是训练失败，是目标函数没管那么远。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 521.08,
+   "dur": 2.49,
+   "speech": "第二类：有限差分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 524.12,
+   "dur": 3.69,
+   "speech": "三百三十七个参数，每个两次前向。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 528.35,
+   "dur": 4.12,
+   "speech": "参数再多一个量级，成本就不可接受。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 533.02,
+   "dur": 3.95,
+   "speech": "而且差分有截断误差和舍入误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 537.52,
+   "dur": 3.73,
+   "speech": "步长太大不准，太小相减相消。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 541.8,
+   "dur": 2.85,
+   "speech": "第三类：采样不规则。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 545.2,
+   "dur": 2.77,
+   "speech": "ODE 能接受任意时刻。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 548.52,
+   "dur": 2.87,
+   "speech": "但训练窗口要自己切。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 551.94,
+   "dur": 4.43,
+   "speech": "停牌、节假日、缺失值，都会改变窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 556.92,
+   "dur": 2.56,
+   "speech": "第四类边界：外推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 560.03,
+   "dur": 3.47,
+   "speech": "网络只在数据覆盖的区域里可信。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 564.05,
+   "dur": 3.13,
+   "speech": "走出分布，它没有物理约束。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 567.74,
+   "dur": 3.47,
+   "speech": "所以下一集，手写反向传播。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 571.76,
+   "dur": 4.12,
+   "speech": "让梯度穿过求解器，而不是扰动参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 579.27,
+   "dur": 2.56,
+   "speech": "这一集做了三件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 582.38,
+   "dur": 3.37,
+   "speech": "把一个常数拟合写成闭式解。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 586.3,
+   "dur": 3.52,
+   "speech": "把 k 换成一个三百多参数的网络。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 590.37,
+   "dur": 4.57,
+   "speech": "用同一个 RK4 前向和 MSE 训练它。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 595.49,
+   "dur": 2.44,
+   "speech": "如果只记一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 598.48,
+   "dur": 4.62,
+   "speech": "把常数换成函数，ODE 就变成可训练模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 603.65,
+   "dur": 5.01,
+   "speech": "代码、证据和全部数字，都在 ts-base 仓库。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 609.21,
+   "dur": 3.45,
+   "speech": "下一集，梯度怎么穿过求解器。"
+  }
+ ]
+}
