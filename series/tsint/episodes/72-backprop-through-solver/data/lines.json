@@ -1,1134 +1,1128 @@
 {
+ "entry": "src/tsint-72-backprop-through-solver/script.ts",
+ "fps": 30,
  "totalSec": 625.22,
  "scenes": [
   {
    "id": "open",
-   "start": 0,
-   "dur": 49.57,
    "chapter": "开场",
-   "title": "一条链，两次反向"
+   "start": 0,
+   "dur": 49.57
   },
   {
    "id": "problem",
-   "start": 49.57,
-   "dur": 62.41,
    "chapter": "问题",
-   "title": "梯度从哪里来"
+   "start": 49.57,
+   "dur": 62.41
   },
   {
    "id": "definitions",
-   "start": 111.98,
-   "dur": 102.17,
    "chapter": "定义",
-   "title": "把求解器摊开"
+   "start": 111.98,
+   "dur": 102.17
   },
   {
    "id": "intuition",
-   "start": 214.15,
-   "dur": 88.71,
    "chapter": "直觉",
-   "title": "两种走法"
+   "start": 214.15,
+   "dur": 88.71
   },
   {
    "id": "implementation",
-   "start": 302.86,
-   "dur": 87.19,
    "chapter": "实现",
-   "title": "把反传写成可测试的 Haskell"
+   "start": 302.86,
+   "dur": 87.19
   },
   {
    "id": "verification",
-   "start": 390.05,
-   "dur": 114.35,
    "chapter": "验证",
-   "title": "每个数字都能回到一次运行"
+   "start": 390.05,
+   "dur": 114.35
   },
   {
    "id": "boundary",
-   "start": 504.4,
-   "dur": 86.19,
    "chapter": "边界",
-   "title": "什么时候不该用伴随法"
+   "start": 504.4,
+   "dur": 86.19
   },
   {
    "id": "outro",
-   "start": 590.59,
-   "dur": 34.63,
    "chapter": "收束",
-   "title": "用时间换空间。"
+   "start": 590.59,
+   "dur": 34.63
   }
  ],
  "lines": [
   {
    "scene": "open",
    "index": 0,
-   "speech": "这一集只有一条链。",
    "start": 1.2,
-   "dur": 2.37
+   "dur": 2.37,
+   "speech": "这一集只有一条链。"
   },
   {
    "scene": "open",
    "index": 1,
-   "speech": "两百步显式欧拉，一个参数。",
    "start": 4.12,
-   "dur": 3.25
+   "dur": 3.25,
+   "speech": "两百步显式欧拉，一个参数。"
   },
   {
    "scene": "open",
    "index": 2,
-   "speech": "初值一，步长零点零一，参数零点五。",
    "start": 7.92,
-   "dur": 4.05
+   "dur": 4.05,
+   "speech": "初值一，步长零点零一，参数零点五。"
   },
   {
    "scene": "open",
    "index": 3,
-   "speech": "走完两百步，终点是二点七一。",
    "start": 12.52,
-   "dur": 3.45
+   "dur": 3.45,
+   "speech": "走完两百步，终点是二点七一。"
   },
   {
    "scene": "open",
    "index": 4,
-   "speech": "损失是终点的平方。",
    "start": 16.51,
-   "dur": 2.65
+   "dur": 2.65,
+   "speech": "损失是终点的平方。"
   },
   {
    "scene": "open",
    "index": 5,
-   "speech": "现在要求，损失对参数的梯度。",
    "start": 19.72,
-   "dur": 3.47
+   "dur": 3.47,
+   "speech": "现在要求，损失对参数的梯度。"
   },
   {
    "scene": "open",
    "index": 6,
-   "speech": "闭式解给出这个数。",
    "start": 23.74,
-   "dur": 2.49
+   "dur": 2.49,
+   "speech": "闭式解给出这个数。"
   },
   {
    "scene": "open",
    "index": 7,
-   "speech": "直接反传给出这个数。",
    "start": 26.77,
-   "dur": 2.77
+   "dur": 2.77,
+   "speech": "直接反传给出这个数。"
   },
   {
    "scene": "open",
    "index": 8,
-   "speech": "伴随法给出同一个数。",
    "start": 30.1,
-   "dur": 2.7
+   "dur": 2.7,
+   "speech": "伴随法给出同一个数。"
   },
   {
    "scene": "open",
    "index": 9,
-   "speech": "数字一样，代价不一样。",
    "start": 33.35,
-   "dur": 2.82
+   "dur": 2.82,
+   "speech": "数字一样，代价不一样。"
   },
   {
    "scene": "open",
    "index": 10,
-   "speech": "一个把每一步都存下来。",
    "start": 36.72,
-   "dur": 2.92
+   "dur": 2.92,
+   "speech": "一个把每一步都存下来。"
   },
   {
    "scene": "open",
    "index": 11,
-   "speech": "一个只存检查点，其余重算。",
    "start": 40.19,
-   "dur": 3.33
+   "dur": 3.33,
+   "speech": "一个只存检查点，其余重算。"
   },
   {
    "scene": "open",
    "index": 12,
-   "speech": "这一集，把两条路都走一遍。",
    "start": 44.06,
-   "dur": 3.3
+   "dur": 3.3,
+   "speech": "这一集，把两条路都走一遍。"
   },
   {
    "scene": "problem",
    "index": 0,
-   "speech": "前向只有一件事：一步一步推状态。",
    "start": 50.77,
-   "dur": 3.66
+   "dur": 3.66,
+   "speech": "前向只有一件事：一步一步推状态。"
   },
   {
    "scene": "problem",
    "index": 1,
-   "speech": "反传要做另一件事：把终点的误差送回去。",
    "start": 54.98,
-   "dur": 4.26
+   "dur": 4.26,
+   "speech": "反传要做另一件事：把终点的误差送回去。"
   },
   {
    "scene": "problem",
    "index": 2,
-   "speech": "直接法沿路存下每一个状态。",
    "start": 59.79,
-   "dur": 3.23
+   "dur": 3.23,
+   "speech": "直接法沿路存下每一个状态。"
   },
   {
    "scene": "problem",
    "index": 3,
-   "speech": "反向时按原路取用。",
    "start": 63.57,
-   "dur": 2.58
+   "dur": 2.58,
+   "speech": "反向时按原路取用。"
   },
   {
    "scene": "problem",
    "index": 4,
-   "speech": "两百步，就存两百零一个状态。",
    "start": 66.71,
-   "dur": 3.4
+   "dur": 3.4,
+   "speech": "两百步，就存两百零一个状态。"
   },
   {
    "scene": "problem",
    "index": 5,
-   "speech": "步数再大，内存跟着线性涨。",
    "start": 70.65,
-   "dur": 3.49
+   "dur": 3.49,
+   "speech": "步数再大，内存跟着线性涨。"
   },
   {
    "scene": "problem",
    "index": 6,
-   "speech": "实测从二十万步到两百万步，峰值内存涨了将近十二倍。",
    "start": 74.7,
-   "dur": 5.68
+   "dur": 5.68,
+   "speech": "实测从二十万步到两百万步，峰值内存涨了将近十二倍。"
   },
   {
    "scene": "problem",
    "index": 7,
-   "speech": "伴随法不存整条路。",
    "start": 80.93,
-   "dur": 2.7
+   "dur": 2.7,
+   "speech": "伴随法不存整条路。"
   },
   {
    "scene": "problem",
    "index": 8,
-   "speech": "它每二十步留一个检查点。",
    "start": 84.18,
-   "dur": 3.09
+   "dur": 3.09,
+   "speech": "它每二十步留一个检查点。"
   },
   {
    "scene": "problem",
    "index": 9,
-   "speech": "两百步只留十一个。",
    "start": 87.81,
-   "dur": 2.49
+   "dur": 2.49,
+   "speech": "两百步只留十一个。"
   },
   {
    "scene": "problem",
    "index": 10,
-   "speech": "反向时从检查点重算一小段。",
    "start": 90.85,
-   "dur": 3.52
+   "dur": 3.52,
+   "speech": "反向时从检查点重算一小段。"
   },
   {
    "scene": "problem",
    "index": 11,
-   "speech": "内存降到常数附近，时间多花一次前向。",
    "start": 94.92,
-   "dur": 4.38
+   "dur": 4.38,
+   "speech": "内存降到常数附近，时间多花一次前向。"
   },
   {
    "scene": "problem",
    "index": 12,
-   "speech": "这就是用时间换空间。",
    "start": 99.85,
-   "dur": 2.75
+   "dur": 2.75,
+   "speech": "这就是用时间换空间。"
   },
   {
    "scene": "problem",
    "index": 13,
-   "speech": "问题是，换来的梯度还可信吗。",
    "start": 103.15,
-   "dur": 3.45
+   "dur": 3.45,
+   "speech": "问题是，换来的梯度还可信吗。"
   },
   {
    "scene": "problem",
    "index": 14,
-   "speech": "先看直接法怎么推。",
    "start": 107.15,
-   "dur": 2.63
+   "dur": 2.63,
+   "speech": "先看直接法怎么推。"
   },
   {
    "scene": "definitions",
    "index": 0,
-   "speech": "把求解器摊开，它就是一条计算链。",
    "start": 113.18,
-   "dur": 3.64
+   "dur": 3.64,
+   "speech": "把求解器摊开，它就是一条计算链。"
   },
   {
    "scene": "definitions",
    "index": 1,
-   "speech": "状态从 x0 走到 xT。",
    "start": 117.37,
-   "dur": 3.35
+   "dur": 3.35,
+   "speech": "状态从 x0 走到 xT。"
   },
   {
    "scene": "definitions",
    "index": 2,
-   "speech": "每一步，x 加上步长乘右端项。",
    "start": 121.27,
-   "dur": 3.81
+   "dur": 3.81,
+   "speech": "每一步，x 加上步长乘右端项。"
   },
   {
    "scene": "definitions",
    "index": 3,
-   "speech": "损失只看轨迹的终点。",
    "start": 125.62,
-   "dur": 2.8
+   "dur": 2.8,
+   "speech": "损失只看轨迹的终点。"
   },
   {
    "scene": "definitions",
    "index": 4,
-   "speech": "所以终点的梯度，先从这里来。",
    "start": 128.97,
-   "dur": 3.57
+   "dur": 3.57,
+   "speech": "所以终点的梯度，先从这里来。"
   },
   {
    "scene": "definitions",
    "index": 5,
-   "speech": "对终点求导，得到伴随变量的初值。",
    "start": 133.09,
-   "dur": 3.93
+   "dur": 3.93,
+   "speech": "对终点求导，得到伴随变量的初值。"
   },
   {
    "scene": "definitions",
    "index": 6,
-   "speech": "然后一步一步往回走。",
    "start": 137.56,
-   "dur": 2.7
+   "dur": 2.7,
+   "speech": "然后一步一步往回走。"
   },
   {
    "scene": "definitions",
    "index": 7,
-   "speech": "每退一步，伴随变量乘上这一歩的雅可比。",
    "start": 140.82,
-   "dur": 4.17
+   "dur": 4.17,
+   "speech": "每退一步，伴随变量乘上这一歩的雅可比。"
   },
   {
    "scene": "definitions",
    "index": 8,
-   "speech": "参数梯度把每一步的贡献加起来。",
    "start": 145.53,
-   "dur": 3.61
+   "dur": 3.61,
+   "speech": "参数梯度把每一步的贡献加起来。"
   },
   {
    "scene": "definitions",
    "index": 9,
-   "speech": "这是直接法，也是标准的反传。",
    "start": 149.7,
-   "dur": 3.37
+   "dur": 3.37,
+   "speech": "这是直接法，也是标准的反传。"
   },
   {
    "scene": "definitions",
    "index": 10,
-   "speech": "书里把它写成式 9.23。",
    "start": 153.62,
-   "dur": 3.09
+   "dur": 3.09,
+   "speech": "书里把它写成式 9.23。"
   },
   {
    "scene": "definitions",
    "index": 11,
-   "speech": "伴随法换一个角度。",
    "start": 157.26,
-   "dur": 2.49
+   "dur": 2.49,
+   "speech": "伴随法换一个角度。"
   },
   {
    "scene": "definitions",
    "index": 12,
-   "speech": "它不逐歩存状态，而是让伴随量自己满足一个微分方程。",
    "start": 160.29,
-   "dur": 5.58
+   "dur": 5.58,
+   "speech": "它不逐歩存状态，而是让伴随量自己满足一个微分方程。"
   },
   {
    "scene": "definitions",
    "index": 13,
-   "speech": "式 9.24，伴随量的变化率等于负的雅可比转置乘伴随量。",
    "start": 166.42,
-   "dur": 6.33
+   "dur": 6.33,
+   "speech": "式 9.24，伴随量的变化率等于负的雅可比转置乘伴随量。"
   },
   {
    "scene": "definitions",
    "index": 14,
-   "speech": "从终点反向积分，回到起点。",
    "start": 173.3,
-   "dur": 3.47
+   "dur": 3.47,
+   "speech": "从终点反向积分，回到起点。"
   },
   {
    "scene": "definitions",
    "index": 15,
-   "speech": "参数梯度是整条轨迹上的积分，式 9.25。",
    "start": 177.32,
-   "dur": 4.67
+   "dur": 4.67,
+   "speech": "参数梯度是整条轨迹上的积分，式 9.25。"
   },
   {
    "scene": "definitions",
    "index": 16,
-   "speech": "一个是离散递推，一个是连续反向。",
    "start": 182.54,
-   "dur": 3.93
+   "dur": 3.93,
+   "speech": "一个是离散递推，一个是连续反向。"
   },
   {
    "scene": "definitions",
    "index": 17,
-   "speech": "表 9.1 把代价写得很清楚。",
    "start": 187.02,
-   "dur": 3.3
+   "dur": 3.3,
+   "speech": "表 9.1 把代价写得很清楚。"
   },
   {
    "scene": "definitions",
    "index": 18,
-   "speech": "直接法空间随求解器调用次数线性涨。",
    "start": 190.87,
-   "dur": 4.5
+   "dur": 4.5,
+   "speech": "直接法空间随求解器调用次数线性涨。"
   },
   {
    "scene": "definitions",
    "index": 19,
-   "speech": "伴随法空间是常数。",
    "start": 195.92,
-   "dur": 2.65
+   "dur": 2.65,
+   "speech": "伴随法空间是常数。"
   },
   {
    "scene": "definitions",
    "index": 20,
-   "speech": "两者时间都是线性的。",
    "start": 199.12,
-   "dur": 2.68
+   "dur": 2.68,
+   "speech": "两者时间都是线性的。"
   },
   {
    "scene": "definitions",
    "index": 21,
-   "speech": "连续反向积分，还得知道整条前向轨迹。",
    "start": 202.35,
-   "dur": 4.69
+   "dur": 4.69,
+   "speech": "连续反向积分，还得知道整条前向轨迹。"
   },
   {
    "scene": "definitions",
    "index": 22,
-   "speech": "所以真正做的时候，仍然要存一些状态。",
    "start": 207.6,
-   "dur": 4.36
+   "dur": 4.36,
+   "speech": "所以真正做的时候，仍然要存一些状态。"
   },
   {
    "scene": "intuition",
    "index": 0,
-   "speech": "直接法像一卷磁带。",
    "start": 215.35,
-   "dur": 2.7
+   "dur": 2.7,
+   "speech": "直接法像一卷磁带。"
   },
   {
    "scene": "intuition",
    "index": 1,
-   "speech": "前向走一遍，每一步都录下来。",
    "start": 218.6,
-   "dur": 3.4
+   "dur": 3.4,
+   "speech": "前向走一遍，每一步都录下来。"
   },
   {
    "scene": "intuition",
    "index": 2,
-   "speech": "反向播放，按帧取状态。",
    "start": 222.55,
-   "dur": 3.06
+   "dur": 3.06,
+   "speech": "反向播放，按帧取状态。"
   },
   {
    "scene": "intuition",
    "index": 3,
-   "speech": "磁带越长，占的地方越大。",
    "start": 226.16,
-   "dur": 3.25
+   "dur": 3.25,
+   "speech": "磁带越长，占的地方越大。"
   },
   {
    "scene": "intuition",
    "index": 4,
-   "speech": "伴随法像分段重跑。",
    "start": 229.97,
-   "dur": 2.65
+   "dur": 2.65,
+   "speech": "伴随法像分段重跑。"
   },
   {
    "scene": "intuition",
    "index": 5,
-   "speech": "每二十步做一个书签。",
    "start": 233.17,
-   "dur": 2.65
+   "dur": 2.65,
+   "speech": "每二十步做一个书签。"
   },
   {
    "scene": "intuition",
    "index": 6,
-   "speech": "反向到一个书签，就从这里重新跑到下一段。",
    "start": 236.37,
-   "dur": 4.36
+   "dur": 4.36,
+   "speech": "反向到一个书签，就从这里重新跑到下一段。"
   },
   {
    "scene": "intuition",
    "index": 7,
-   "speech": "两百步，十一个书签就够。",
    "start": 241.28,
-   "dur": 3.01
+   "dur": 3.01,
+   "speech": "两百步，十一个书签就够。"
   },
   {
    "scene": "intuition",
    "index": 8,
-   "speech": "每一段重算二十步。",
    "start": 244.85,
-   "dur": 2.63
+   "dur": 2.63,
+   "speech": "每一段重算二十步。"
   },
   {
    "scene": "intuition",
    "index": 9,
-   "speech": "总计算量大约变成前向的两倍。",
    "start": 248.03,
-   "dur": 3.57
+   "dur": 3.57,
+   "speech": "总计算量大约变成前向的两倍。"
   },
   {
    "scene": "intuition",
    "index": 10,
-   "speech": "空间只要书签和当前段。",
    "start": 252.14,
-   "dur": 3.01
+   "dur": 3.01,
+   "speech": "空间只要书签和当前段。"
   },
   {
    "scene": "intuition",
    "index": 11,
-   "speech": "这是 checkpoint 的基本算术。",
    "start": 255.71,
-   "dur": 2.92
+   "dur": 2.92,
+   "speech": "这是 checkpoint 的基本算术。"
   },
   {
    "scene": "intuition",
    "index": 12,
-   "speech": "再把连续版本写下来。",
    "start": 259.17,
-   "dur": 2.75
+   "dur": 2.75,
+   "speech": "再把连续版本写下来。"
   },
   {
    "scene": "intuition",
    "index": 13,
-   "speech": "它把离散的递推换成反向的微分方程。",
    "start": 262.47,
-   "dur": 4.14
+   "dur": 4.14,
+   "speech": "它把离散的递推换成反向的微分方程。"
   },
   {
    "scene": "intuition",
    "index": 14,
-   "speech": "状态从终点退到起点。",
    "start": 267.17,
-   "dur": 2.94
+   "dur": 2.94,
+   "speech": "状态从终点退到起点。"
   },
   {
    "scene": "intuition",
    "index": 15,
-   "speech": "伴随量也跟着退。",
    "start": 270.66,
-   "dur": 2.39
+   "dur": 2.39,
+   "speech": "伴随量也跟着退。"
   },
   {
    "scene": "intuition",
    "index": 16,
-   "speech": "参数梯度沿路积分。",
    "start": 273.6,
-   "dur": 2.61
+   "dur": 2.61,
+   "speech": "参数梯度沿路积分。"
   },
   {
    "scene": "intuition",
    "index": 17,
-   "speech": "它不需要存每一步。",
    "start": 276.75,
-   "dur": 2.56
+   "dur": 2.56,
+   "speech": "它不需要存每一步。"
   },
   {
    "scene": "intuition",
    "index": 18,
-   "speech": "但反向积分本身也有误差。",
    "start": 279.86,
-   "dur": 3.21
+   "dur": 3.21,
+   "speech": "但反向积分本身也有误差。"
   },
   {
    "scene": "intuition",
    "index": 19,
-   "speech": "步长、积分器、刚性，都会进来。",
    "start": 283.62,
-   "dur": 3.9
+   "dur": 3.9,
+   "speech": "步长、积分器、刚性，都会进来。"
   },
   {
    "scene": "intuition",
    "index": 20,
-   "speech": "所以伴随法的常数空间，不是免费的。",
    "start": 288.07,
-   "dur": 4
+   "dur": 4,
+   "speech": "所以伴随法的常数空间，不是免费的。"
   },
   {
    "scene": "intuition",
    "index": 21,
-   "speech": "它是拿重算和数值误差，换掉磁带。",
    "start": 292.62,
-   "dur": 3.95
+   "dur": 3.95,
+   "speech": "它是拿重算和数值误差，换掉磁带。"
   },
   {
    "scene": "intuition",
    "index": 22,
-   "speech": "这笔账，要在每一步都算清楚。",
    "start": 297.12,
-   "dur": 3.54
+   "dur": 3.54,
+   "speech": "这笔账，要在每一步都算清楚。"
   },
   {
    "scene": "implementation",
    "index": 0,
-   "speech": "实现分两个模块。",
    "start": 304.06,
-   "dur": 2.41
+   "dur": 2.41,
+   "speech": "实现分两个模块。"
   },
   {
    "scene": "implementation",
    "index": 1,
-   "speech": "DirectGrad 走磁带。",
    "start": 307.02,
-   "dur": 2.49
+   "dur": 2.49,
+   "speech": "DirectGrad 走磁带。"
   },
   {
    "scene": "implementation",
    "index": 2,
-   "speech": "Adjoint 走检查点。",
    "start": 310.06,
-   "dur": 2.49
+   "dur": 2.49,
+   "speech": "Adjoint 走检查点。"
   },
   {
    "scene": "implementation",
    "index": 3,
-   "speech": "两个模块的入口签名几乎一样。",
    "start": 313.1,
-   "dur": 3.54
+   "dur": 3.54,
+   "speech": "两个模块的入口签名几乎一样。"
   },
   {
    "scene": "implementation",
    "index": 4,
-   "speech": "给右端项、两个偏导、步长、初值、步数。",
    "start": 317.19,
-   "dur": 4.86
+   "dur": 4.86,
+   "speech": "给右端项、两个偏导、步长、初值、步数。"
   },
   {
    "scene": "implementation",
    "index": 5,
-   "speech": "直接法返回一个梯度。",
    "start": 322.6,
-   "dur": 2.73
+   "dur": 2.73,
+   "speech": "直接法返回一个梯度。"
   },
   {
    "scene": "implementation",
    "index": 6,
-   "speech": "伴随法多一个检查点间隔。",
    "start": 325.88,
-   "dur": 3.16
+   "dur": 3.16,
+   "speech": "伴随法多一个检查点间隔。"
   },
   {
    "scene": "implementation",
    "index": 7,
-   "speech": "磁带用严格向量，不用惰性列表。",
    "start": 329.58,
-   "dur": 3.76
+   "dur": 3.76,
+   "speech": "磁带用严格向量，不用惰性列表。"
   },
   {
    "scene": "implementation",
    "index": 8,
-   "speech": "两百零一个状态，索引是常数时间。",
    "start": 333.89,
-   "dur": 3.78
+   "dur": 3.78,
+   "speech": "两百零一个状态，索引是常数时间。"
   },
   {
    "scene": "implementation",
    "index": 9,
-   "speech": "反向循环里，伴随量先乘雅可比。",
    "start": 338.22,
-   "dur": 3.85
+   "dur": 3.85,
+   "speech": "反向循环里，伴随量先乘雅可比。"
   },
   {
    "scene": "implementation",
    "index": 10,
-   "speech": "参数梯度再累加这一歩的贡献。",
    "start": 342.63,
-   "dur": 3.4
+   "dur": 3.4,
+   "speech": "参数梯度再累加这一歩的贡献。"
   },
   {
    "scene": "implementation",
    "index": 11,
-   "speech": "顺序写反，梯度就错。",
    "start": 346.58,
-   "dur": 2.89
+   "dur": 2.89,
+   "speech": "顺序写反，梯度就错。"
   },
   {
    "scene": "implementation",
    "index": 12,
-   "speech": "伴随法先做一次前向，只收检查点。",
    "start": 350.02,
-   "dur": 3.83
+   "dur": 3.83,
+   "speech": "伴随法先做一次前向，只收检查点。"
   },
   {
    "scene": "implementation",
    "index": 13,
-   "speech": "反向时从检查点重建一小段。",
    "start": 354.4,
-   "dur": 3.76
+   "dur": 3.76,
+   "speech": "反向时从检查点重建一小段。"
   },
   {
    "scene": "implementation",
    "index": 14,
-   "speech": "每一段仍然用同一套递推。",
    "start": 358.71,
-   "dur": 3.01
+   "dur": 3.01,
+   "speech": "每一段仍然用同一套递推。"
   },
   {
    "scene": "implementation",
    "index": 15,
-   "speech": "错方向版本，就是把符号翻过来。",
    "start": 362.27,
-   "dur": 3.54
+   "dur": 3.54,
+   "speech": "错方向版本，就是把符号翻过来。"
   },
   {
    "scene": "implementation",
    "index": 16,
-   "speech": "它用来演示漏负号的 bug。",
    "start": 366.36,
-   "dur": 2.87
+   "dur": 2.87,
+   "speech": "它用来演示漏负号的 bug。"
   },
   {
    "scene": "implementation",
    "index": 17,
-   "speech": "测试一共七十二條。",
    "start": 369.78,
-   "dur": 2.63
+   "dur": 2.63,
+   "speech": "测试一共七十二條。"
   },
   {
    "scene": "implementation",
    "index": 18,
-   "speech": "五十条是前几集留下的。",
    "start": 372.96,
-   "dur": 2.89
+   "dur": 2.89,
+   "speech": "五十条是前几集留下的。"
   },
   {
    "scene": "implementation",
    "index": 19,
-   "speech": "这一集新增十条直接法，十二条伴随法。",
    "start": 376.41,
-   "dur": 4.19
+   "dur": 4.19,
+   "speech": "这一集新增十条直接法，十二条伴随法。"
   },
   {
    "scene": "implementation",
    "index": 20,
-   "speech": "没有用固定的一乘十的负九次方容差。",
    "start": 381.15,
-   "dur": 3.73
+   "dur": 3.73,
+   "speech": "没有用固定的一乘十的负九次方容差。"
   },
   {
    "scene": "implementation",
    "index": 21,
-   "speech": "用的是相对误差。",
    "start": 385.43,
-   "dur": 2.41
+   "dur": 2.41,
+   "speech": "用的是相对误差。"
   },
   {
    "scene": "verification",
    "index": 0,
-   "speech": "第一组：闭式解。",
    "start": 391.25,
-   "dur": 2.22
+   "dur": 2.22,
+   "speech": "第一组：闭式解。"
   },
   {
    "scene": "verification",
    "index": 1,
-   "speech": "参数零点五，走两百步。",
    "start": 394.02,
-   "dur": 3.13
+   "dur": 3.13,
+   "speech": "参数零点五，走两百步。"
   },
   {
    "scene": "verification",
    "index": 2,
-   "speech": "梯度是二十九点二六二九八五五零四二三三八三六。",
    "start": 397.71,
-   "dur": 5.65
+   "dur": 5.65,
+   "speech": "梯度是二十九点二六二九八五五零四二三三八三六。"
   },
   {
    "scene": "verification",
    "index": 3,
-   "speech": "第二组：直接法。",
    "start": 403.91,
-   "dur": 2.32
+   "dur": 2.32,
+   "speech": "第二组：直接法。"
   },
   {
    "scene": "verification",
    "index": 4,
-   "speech": "同一个梯度，末位差四乘十的负十四次方。",
    "start": 406.78,
-   "dur": 4.14
+   "dur": 4.14,
+   "speech": "同一个梯度，末位差四乘十的负十四次方。"
   },
   {
    "scene": "verification",
    "index": 5,
-   "speech": "这个差是浮点舍入，不是算法错。",
    "start": 411.47,
-   "dur": 3.54
+   "dur": 3.54,
+   "speech": "这个差是浮点舍入，不是算法错。"
   },
   {
    "scene": "verification",
    "index": 6,
-   "speech": "第三组：伴随法。",
    "start": 415.56,
-   "dur": 2.39
+   "dur": 2.39,
+   "speech": "第三组：伴随法。"
   },
   {
    "scene": "verification",
    "index": 7,
-   "speech": "它和直接法逐位相同。",
    "start": 418.5,
-   "dur": 2.73
+   "dur": 2.73,
+   "speech": "它和直接法逐位相同。"
   },
   {
    "scene": "verification",
    "index": 8,
-   "speech": "不是近似相等，是完全相等。",
    "start": 421.78,
-   "dur": 3.52
+   "dur": 3.52,
+   "speech": "不是近似相等，是完全相等。"
   },
   {
    "scene": "verification",
    "index": 9,
-   "speech": "因为两百步的链，每一段都精确重算。",
    "start": 425.85,
-   "dur": 3.9
+   "dur": 3.9,
+   "speech": "因为两百步的链，每一段都精确重算。"
   },
   {
    "scene": "verification",
    "index": 10,
-   "speech": "第四组：有限差分。",
    "start": 430.3,
-   "dur": 2.61
+   "dur": 2.61,
+   "speech": "第四组：有限差分。"
   },
   {
    "scene": "verification",
    "index": 11,
-   "speech": "只扰动参数，不碰求解器内部。",
    "start": 433.45,
-   "dur": 3.64
+   "dur": 3.64,
+   "speech": "只扰动参数，不碰求解器内部。"
   },
   {
    "scene": "verification",
    "index": 12,
-   "speech": "相对误差五乘十的负十次方。",
    "start": 437.64,
-   "dur": 3.13
+   "dur": 3.13,
+   "speech": "相对误差五乘十的负十次方。"
   },
   {
    "scene": "verification",
    "index": 13,
-   "speech": "它和反传互相独立，数字对上了。",
    "start": 441.33,
-   "dur": 3.61
+   "dur": 3.61,
+   "speech": "它和反传互相独立，数字对上了。"
   },
   {
    "scene": "verification",
    "index": 14,
-   "speech": "第五组：RK4 与连续伴随。",
    "start": 445.49,
-   "dur": 3.49
+   "dur": 3.49,
+   "speech": "第五组：RK4 与连续伴随。"
   },
   {
    "scene": "verification",
    "index": 15,
-   "speech": "四阶直接法对闭式，误差一乘十的负十五次方。",
    "start": 449.53,
-   "dur": 4.69
+   "dur": 4.69,
+   "speech": "四阶直接法对闭式，误差一乘十的负十五次方。"
   },
   {
    "scene": "verification",
    "index": 16,
-   "speech": "连续伴随对闭式，误差九乘十的负十五次方。",
    "start": 454.78,
-   "dur": 4.53
+   "dur": 4.53,
+   "speech": "连续伴随对闭式，误差九乘十的负十五次方。"
   },
   {
    "scene": "verification",
    "index": 17,
-   "speech": "内存这一组，看峰值。",
    "start": 459.85,
-   "dur": 2.92
+   "dur": 2.92,
+   "speech": "内存这一组，看峰值。"
   },
   {
    "scene": "verification",
    "index": 18,
-   "speech": "二十万步到两百万步。",
    "start": 463.32,
-   "dur": 2.85
+   "dur": 2.85,
+   "speech": "二十万步到两百万步。"
   },
   {
    "scene": "verification",
    "index": 19,
-   "speech": "直接法涨了将近十二倍。",
    "start": 466.72,
-   "dur": 2.89
+   "dur": 2.89,
+   "speech": "直接法涨了将近十二倍。"
   },
   {
    "scene": "verification",
    "index": 20,
-   "speech": "伴随法没有跟着涨。",
    "start": 470.16,
-   "dur": 2.51
+   "dur": 2.51,
+   "speech": "伴随法没有跟着涨。"
   },
   {
    "scene": "verification",
    "index": 21,
-   "speech": "最后是一个彩蛋。",
    "start": 473.22,
-   "dur": 2.32
+   "dur": 2.32,
+   "speech": "最后是一个彩蛋。"
   },
   {
    "scene": "verification",
    "index": 22,
-   "speech": "把上一集的股票增长率代进同一条链。",
    "start": 476.09,
-   "dur": 4
+   "dur": 4,
+   "speech": "把上一集的股票增长率代进同一条链。"
   },
   {
    "scene": "verification",
    "index": 23,
-   "speech": "两百步，终点三点五四七六。",
    "start": 480.64,
-   "dur": 3.49
+   "dur": 3.49,
+   "speech": "两百步，终点三点五四七六。"
   },
   {
    "scene": "verification",
    "index": 24,
-   "speech": "梯度二十五点零一二一一四八二八二八二三二。",
    "start": 484.68,
-   "dur": 4.29
+   "dur": 4.29,
+   "speech": "梯度二十五点零一二一一四八二八二八二三二。"
   },
   {
    "scene": "verification",
    "index": 25,
-   "speech": "这不是预测，只是把真实参数放进这条链。",
    "start": 489.52,
-   "dur": 4.48
+   "dur": 4.48,
+   "speech": "这不是预测，只是把真实参数放进这条链。"
   },
   {
    "scene": "verification",
    "index": 26,
-   "speech": "所有数字都在证据 JSON 里。",
    "start": 494.55,
-   "dur": 3.64
+   "dur": 3.64,
+   "speech": "所有数字都在证据 JSON 里。"
   },
   {
    "scene": "verification",
    "index": 27,
-   "speech": "提交号、命令、校验和都在。",
    "start": 498.73,
-   "dur": 3.47
+   "dur": 3.47,
+   "speech": "提交号、命令、校验和都在。"
   },
   {
    "scene": "boundary",
    "index": 0,
-   "speech": "现在说这一集的边界。",
    "start": 505.6,
-   "dur": 2.85
+   "dur": 2.85,
+   "speech": "现在说这一集的边界。"
   },
   {
    "scene": "boundary",
    "index": 1,
-   "speech": "第一类：直接法的内存。",
    "start": 509,
-   "dur": 2.77
+   "dur": 2.77,
+   "speech": "第一类：直接法的内存。"
   },
   {
    "scene": "boundary",
    "index": 2,
-   "speech": "步数一大，磁带就装不下。",
    "start": 512.32,
-   "dur": 3.16
+   "dur": 3.16,
+   "speech": "步数一大，磁带就装不下。"
   },
   {
    "scene": "boundary",
    "index": 3,
-   "speech": "这不是实现问题，是复杂度。",
    "start": 516.03,
-   "dur": 3.23
+   "dur": 3.23,
+   "speech": "这不是实现问题，是复杂度。"
   },
   {
    "scene": "boundary",
    "index": 4,
-   "speech": "第二类：伴随法的重算。",
    "start": 519.81,
-   "dur": 2.75
+   "dur": 2.75,
+   "speech": "第二类：伴随法的重算。"
   },
   {
    "scene": "boundary",
    "index": 5,
-   "speech": "省了内存，时间至少多一倍。",
    "start": 523.11,
-   "dur": 3.28
+   "dur": 3.28,
+   "speech": "省了内存，时间至少多一倍。"
   },
   {
    "scene": "boundary",
    "index": 6,
-   "speech": "检查点太稀，重算变长；太密，内存又上去。",
    "start": 526.94,
-   "dur": 5.1
+   "dur": 5.1,
+   "speech": "检查点太稀，重算变长；太密，内存又上去。"
   },
   {
    "scene": "boundary",
    "index": 7,
-   "speech": "第三类：刚性和不连续。",
    "start": 532.59,
-   "dur": 2.97
+   "dur": 2.97,
+   "speech": "第三类：刚性和不连续。"
   },
   {
    "scene": "boundary",
    "index": 8,
-   "speech": "右端项变化太快，反向积分会失稳。",
    "start": 536.1,
-   "dur": 3.97
+   "dur": 3.97,
+   "speech": "右端项变化太快，反向积分会失稳。"
   },
   {
    "scene": "boundary",
    "index": 9,
-   "speech": "分段常数的数据，导数在拐点处不存在。",
    "start": 540.63,
-   "dur": 4.29
+   "dur": 4.29,
+   "speech": "分段常数的数据，导数在拐点处不存在。"
   },
   {
    "scene": "boundary",
    "index": 10,
-   "speech": "伴随方程也就没有定义。",
    "start": 545.46,
-   "dur": 2.94
+   "dur": 2.94,
+   "speech": "伴随方程也就没有定义。"
   },
   {
    "scene": "boundary",
    "index": 11,
-   "speech": "第四类：可逆性。",
    "start": 548.96,
-   "dur": 2.27
+   "dur": 2.27,
+   "speech": "第四类：可逆性。"
   },
   {
    "scene": "boundary",
    "index": 12,
-   "speech": "连续伴随要求能把状态倒着积回去。",
    "start": 551.78,
-   "dur": 4.07
+   "dur": 4.07,
+   "speech": "连续伴随要求能把状态倒着积回去。"
   },
   {
    "scene": "boundary",
    "index": 13,
-   "speech": "耗散系统会丢信息，倒积会放大误差。",
    "start": 556.4,
-   "dur": 4.07
+   "dur": 4.07,
+   "speech": "耗散系统会丢信息，倒积会放大误差。"
   },
   {
    "scene": "boundary",
    "index": 14,
-   "speech": "所以实际实现仍然存轨迹，只是存得少。",
    "start": 561.02,
-   "dur": 4.48
+   "dur": 4.48,
+   "speech": "所以实际实现仍然存轨迹，只是存得少。"
   },
   {
    "scene": "boundary",
    "index": 15,
-   "speech": "第五类边界：符号。",
    "start": 566.04,
-   "dur": 2.49
+   "dur": 2.49,
+   "speech": "第五类边界：符号。"
   },
   {
    "scene": "boundary",
    "index": 16,
-   "speech": "伴随方程前面有一个负号。",
    "start": 569.08,
-   "dur": 3.01
+   "dur": 3.01,
+   "speech": "伴随方程前面有一个负号。"
   },
   {
    "scene": "boundary",
    "index": 17,
-   "speech": "漏掉它，梯度会整体翻过来。",
    "start": 572.64,
-   "dur": 3.23
+   "dur": 3.23,
+   "speech": "漏掉它，梯度会整体翻过来。"
   },
   {
    "scene": "boundary",
    "index": 18,
-   "speech": "这个错，数值上很容易看见。",
    "start": 576.42,
-   "dur": 3.23
+   "dur": 3.23,
+   "speech": "这个错，数值上很容易看见。"
   },
   {
    "scene": "boundary",
    "index": 19,
-   "speech": "所以先跑小规模对照，再上大规模。",
    "start": 580.2,
-   "dur": 4.19
+   "dur": 4.19,
+   "speech": "所以先跑小规模对照，再上大规模。"
   },
   {
    "scene": "boundary",
    "index": 20,
-   "speech": "下一集，把这条链放进网络里。",
    "start": 584.94,
-   "dur": 3.45
+   "dur": 3.45,
+   "speech": "下一集，把这条链放进网络里。"
   },
   {
    "scene": "outro",
    "index": 0,
-   "speech": "如果只记一句话。",
    "start": 591.79,
-   "dur": 2.44
+   "dur": 2.44,
+   "speech": "如果只记一句话。"
   },
   {
    "scene": "outro",
    "index": 1,
-   "speech": "反传要梯度，也要内存。",
    "start": 594.78,
-   "dur": 3.04
+   "dur": 3.04,
+   "speech": "反传要梯度，也要内存。"
   },
   {
    "scene": "outro",
    "index": 2,
-   "speech": "直接法存整条磁带。",
    "start": 598.37,
-   "dur": 2.7
+   "dur": 2.7,
+   "speech": "直接法存整条磁带。"
   },
   {
    "scene": "outro",
    "index": 3,
-   "speech": "伴随法只存检查点，其余重算。",
    "start": 601.62,
-   "dur": 3.59
+   "dur": 3.59,
+   "speech": "伴随法只存检查点，其余重算。"
   },
   {
    "scene": "outro",
    "index": 4,
-   "speech": "数字一样，代价不同。",
    "start": 605.76,
-   "dur": 2.73
+   "dur": 2.73,
+   "speech": "数字一样，代价不同。"
   },
   {
    "scene": "outro",
    "index": 5,
-   "speech": "选哪条路，看内存更贵，还是时间更贵。",
    "start": 609.03,
-   "dur": 4.65
+   "dur": 4.65,
+   "speech": "选哪条路，看内存更贵，还是时间更贵。"
   },
   {
    "scene": "outro",
    "index": 6,
-   "speech": "代码、证据和全部数字，都在 ts-base 仓库。",
    "start": 614.23,
-   "dur": 5.01
+   "dur": 5.01,
+   "speech": "代码、证据和全部数字，都在 ts-base 仓库。"
   },
   {
    "scene": "outro",
    "index": 7,
-   "speech": "下一集，把梯度穿进网络。",
    "start": 619.79,
-   "dur": 3.23
+   "dur": 3.23,
+   "speech": "下一集，把梯度穿进网络。"
   }
  ]
 }
