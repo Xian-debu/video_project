@@ -14,4 +14,4 @@
 **/out/
 **/assets/audio/clips/
 **/data/ode.json
-**/assets/audio/narration.wav
+**/assets/audio/narration.wav**/data/neural.json
