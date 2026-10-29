@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "unitId": "73-variants-beyond-solver",
+  "episode": "73-variants-beyond-solver",
+  "tsBaseCommit": "d894a85bf02f8a5a366b9bb1844bed87c4af063f",
+  "runAt": "2026-10-29T15:56:34+0000",
+  "command": "cabal run tsbase -- evidence-ch09d --out data/episodes/73-variants-beyond-solver --evidence inventory/evidence",
+  "env": {"ghc": "9.14.1", "cabal": "3.16.1.0", "seed": 0},
+  "metrics": {
+    "ago_last": {"value": 10.00000000000000000, "unit": "level"},
+    "gm_a": {"value": 3.04568527918781800e-2, "unit": "rate"},
+    "gm_b": {"value": 12.18274111675126500, "unit": "level"},
+    "gm_mape": {"value": 4.81419241725861900e-3, "unit": "percent"},
+    "gm_rk4_max_error": {"value": 2.55795384873636070e-13, "unit": "absolute"},
+    "softplus_stable_1000": {"value": 1000.00000000000000000, "unit": "value"},
+    "logsumexp_1000_1000": {"value": 1000.69314718055990000, "unit": "value"}
+  },
+  "tests": [
+    {"name": "GM fit normal-equation residual", "expected": 0.00000000000000000, "actual": 8.02078710447852100e-12, "pass": true},
+    {"name": "closed-form vs RK4 max error", "expected": 0.00000000000000000, "actual": 2.55795384873636070e-13, "pass": true},
+    {"name": "softplus stable at 1000", "expected": 1000.00000000000000000, "actual": 1000.00000000000000000, "pass": true},
+    {"name": "cfc closed form at t=1", "expected": 0.13533528323661270, "actual": 0.13533528323661270, "pass": true},
+    {"name": "logsumexp on [1000,1000]", "expected": 1000.69314718055990000, "actual": 1000.69314718055990000, "pass": true}
+  ],
+  "artifacts": [
+    {"path": "data/episodes/73-variants-beyond-solver/summary.json"},
+    {"path": "data/episodes/73-variants-beyond-solver/cfc.csv"},
+    {"path": "data/episodes/73-variants-beyond-solver/gm_fit.csv"},
+    {"path": "data/episodes/73-variants-beyond-solver/gm_rk4.csv"}
+  ]
+}

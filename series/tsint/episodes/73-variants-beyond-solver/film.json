@@ -20,12 +20,23 @@
   "fps": 30,
   "prefix": "tsint-73",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -2.5
   },
-  "derive": [],
-  "derived": [],
+  "publish": {
+    "coverFrame": 1200
+  },
+  "derive": [
+    {
+      "command": "python3 build/generate_variants_data.py"
+    }
+  ],
+  "derived": [
+    "data/variants.json"
+  ],
+  "derivedNote": "由 ts-base 的 ch9 CfC / GM-ODE 证据 JSON 与 CSV 重组；AGO、拟合系数、RK4 误差与 SoftPlus 溢出逐项断言后才写出",
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +47,7 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "material": "optional",
+  "notes": "unit ids: ch9-cfc, ch9-gm-ode · book p.219 · evidence d894a85"
 }

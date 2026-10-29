@@ -1,0 +1,1233 @@
+{
+ "entry": "src/tsint-73-variants-beyond-solver/script.ts",
+ "fps": 30,
+ "totalSec": 734.02,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 59.51
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 59.51,
+   "dur": 86.08
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 145.59,
+   "dur": 151.95
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 297.54,
+   "dur": 110.89
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 408.43,
+   "dur": 89.42
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 497.85,
+   "dur": 113.53
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 611.38,
+   "dur": 82.51
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 693.89,
+   "dur": 40.13
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.63,
+   "speech": "这一集讲两个变体。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.38,
+   "dur": 4.24,
+   "speech": "它们都出现在书的第 9 章，219 页。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.17,
+   "dur": 4,
+   "speech": "一个叫 CfC，闭式连续时间网络。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 13.72,
+   "dur": 4.29,
+   "speech": "一个叫 GM-ODE，灰色神经微分方程。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 18.55,
+   "dur": 2.65,
+   "speech": "书里给的说法很诱人。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.76,
+   "dur": 4.41,
+   "speech": "CfC 比传统方法快一百到十万倍。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 26.71,
+   "dur": 3.78,
+   "speech": "GM-ODE 的测试集 MAPE 不到百分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 31.04,
+   "dur": 3.09,
+   "speech": "但书里只有两段机制描述。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 34.68,
+   "dur": 3.71,
+   "speech": "没有数据，没有代码，没有复现协议。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.94,
+   "dur": 3.69,
+   "speech": "所以这两个数字只能标 C 级。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 43.18,
+   "dur": 3.49,
+   "speech": "这一集不复述结论，只拆机制。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 47.22,
+   "dur": 3.42,
+   "speech": "拆完你会发现，两条路并不一样。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 51.19,
+   "dur": 2.82,
+   "speech": "一条真的去掉了求解器。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 54.56,
+   "dur": 2.75,
+   "speech": "另一条，求解器还在。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 60.71,
+   "dur": 2.97,
+   "speech": "先把求解器的账算清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 64.23,
+   "dur": 3.81,
+   "speech": "RK4 走一步，要算四次右端项。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 68.58,
+   "dur": 3.47,
+   "speech": "两百步，就是八百次函数求值。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 72.6,
+   "dur": 3.21,
+   "speech": "每次求值都要访问一遍网络。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 76.36,
+   "dur": 3.23,
+   "speech": "这是训练和推理共同的开销。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 80.14,
+   "dur": 5.49,
+   "speech": "CfC 的想法是：对常数输入，这条 ODE 有闭式解。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 86.17,
+   "dur": 3.93,
+   "speech": "既然有闭式解，为什么还要一步一步积。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 90.65,
+   "dur": 4.19,
+   "speech": "一次指数运算，就能得到任意时刻的状态。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 95.39,
+   "dur": 3.25,
+   "speech": "于是求解器被整个拿掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 99.19,
+   "dur": 2.97,
+   "speech": "GM-ODE 的出发点不同。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 102.71,
+   "dur": 3.09,
+   "speech": "它关心的不是求解器太慢。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 106.35,
+   "dur": 4.05,
+   "speech": "它关心的是小样本下，右端项学不准。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 110.94,
+   "dur": 3.3,
+   "speech": "灰色理论给了一个白化方程。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 114.79,
+   "dur": 4.55,
+   "speech": "右端项从黑箱网络，换成带结构的线性项。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 119.89,
+   "dur": 3.28,
+   "speech": "但方程本身仍然要积分。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 123.72,
+   "dur": 3.42,
+   "speech": "论文里用的是四阶龙格库塔。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 127.69,
+   "dur": 3.57,
+   "speech": "所以 GM-ODE 没有去掉求解器。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 131.81,
+   "dur": 3.23,
+   "speech": "它去掉的是黑箱右端项。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 135.59,
+   "dur": 4.26,
+   "speech": "把这两件事混为一谈，这一集就白做了。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 140.4,
+   "dur": 2.99,
+   "speech": "下面把两条路分别拆开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 146.79,
+   "dur": 3.16,
+   "speech": "先看 CfC 的标量版本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 150.5,
+   "dur": 2.68,
+   "speech": "这是它的微分方程。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 153.73,
+   "dur": 4.81,
+   "speech": "左边是变化率，右边是负 f 乘 x 减 A。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 159.09,
+   "dur": 5.05,
+   "speech": "这里用标量版本，w_tau 已经并进 f。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 164.69,
+   "dur": 2.41,
+   "speech": "A 是候选状态。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 167.66,
+   "dur": 4.19,
+   "speech": "对常数输入，这是一个一阶线性方程。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 172.4,
+   "dur": 3.93,
+   "speech": "解是指数衰减，加上一个常数偏移。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 176.87,
+   "dur": 6.16,
+   "speech": "x(t) 等于 A，加上 x0 减 A，乘 e 的负 f t 次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 183.58,
+   "dur": 4.24,
+   "speech": "初值在 x0，时间大了收敛到 A。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 188.37,
+   "dur": 3.78,
+   "speech": "网络不需要积分，只要学 f 和 A。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 192.7,
+   "dur": 4.14,
+   "speech": "但完整的 CfC 还有两个候选状态。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 197.39,
+   "dur": 2.94,
+   "speech": "一个叫 g，一个叫 h。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 200.89,
+   "dur": 3.93,
+   "speech": "它用 Sigmoid 门在两个候选之间插值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 205.36,
+   "dur": 4.02,
+   "speech": "门控曲线和指数解不是同一条曲线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 209.93,
+   "dur": 3.4,
+   "speech": "但它同样只需要一次 exp。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 213.88,
+   "dur": 2.63,
+   "speech": "这就是闭式解近似。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 217.06,
+   "dur": 3.88,
+   "speech": "它把 ODE 的时间演化，压成一次前向。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 221.49,
+   "dur": 4.21,
+   "speech": "代价是，它不保证逐点等于原方程的解。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 226.25,
+   "dur": 3.16,
+   "speech": "再看 GM-ODE 的灰色部分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 229.96,
+   "dur": 3.23,
+   "speech": "第一步是累加生成，AGO。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 233.74,
+   "dur": 5.05,
+   "speech": "把原始序列逐项累加，得到一条单调上升的序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 239.35,
+   "dur": 3.54,
+   "speech": "一阶差分就是逆运算，IAGO。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 243.44,
+   "dur": 8.01,
+   "speech": "GM(1,1) 在白化方程里假设，累加序列满足 dz/dt 加 a z 等于 b。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 251.99,
+   "dur": 4.41,
+   "speech": "把离散观测代进去，得到一组线性方程。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 256.95,
+   "dur": 2.8,
+   "speech": "两个未知数，a 和 b。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 260.3,
+   "dur": 2.87,
+   "speech": "用最小二乘一次解出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 263.72,
+   "dur": 3.04,
+   "speech": "这是闭式拟合，不需要训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 267.31,
+   "dur": 3.9,
+   "speech": "然后解白化方程，得到累加层的预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 271.76,
+   "dur": 3.76,
+   "speech": "再做一次 IAGO，回到原始尺度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 276.07,
+   "dur": 2.7,
+   "speech": "预测公式是一个指数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 279.32,
+   "dur": 5.65,
+   "speech": "所以 GM(1,1) 的骨架，是指数加最小二乘。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 285.52,
+   "dur": 6.13,
+   "speech": "GM-ODE 把它嵌进神经微分方程，右端项仍然交给 RK4。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 292.21,
+   "dur": 3.13,
+   "speech": "这就是两条路的第一个区别。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 298.74,
+   "dur": 3.16,
+   "speech": "先看 CfC 的两条曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 302.45,
+   "dur": 3.23,
+   "speech": "紫线是标量方程的闭式解。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 306.23,
+   "dur": 4.24,
+   "speech": "x0 等于一，A 等于零，f 等于二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 311.02,
+   "dur": 3.49,
+   "speech": "它从一出发，指数衰减到零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 315.06,
+   "dur": 2.61,
+   "speech": "黄线是门控混合。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 318.22,
+   "dur": 3.54,
+   "speech": "g 等于零点二，h 等于零点八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 322.31,
+   "dur": 4.07,
+   "speech": "t 等于零时，门停在两条候选的中点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 326.93,
+   "dur": 3.16,
+   "speech": "时间变大，它收敛到 h。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 330.64,
+   "dur": 2.77,
+   "speech": "两条线不是逐点对照。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 333.96,
+   "dur": 3.33,
+   "speech": "它们回答的是两个不同的问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 337.84,
+   "dur": 3.52,
+   "speech": "紫线问：给定初值，解长什么样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 341.9,
+   "dur": 3.97,
+   "speech": "黄线问：门如何在两个候选之间移动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 346.43,
+   "dur": 3.57,
+   "speech": "共同点是，都只要一次 exp。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 350.54,
+   "dur": 3.11,
+   "speech": "都不需要八百次 RK4。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 354.2,
+   "dur": 3.04,
+   "speech": "再看 GM-ODE 的累加层。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 357.79,
+   "dur": 2.39,
+   "speech": "原始序列在下降。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 360.73,
+   "dur": 3.54,
+   "speech": "累加之后，变成一条上升的阶梯。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 364.82,
+   "dur": 3.28,
+   "speech": "白化方程拟合的是这条阶梯。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 368.65,
+   "dur": 3.4,
+   "speech": "拟合完，再差分回原始尺度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 372.6,
+   "dur": 3.25,
+   "speech": "所以屏幕上会有两条曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 376.4,
+   "dur": 4.26,
+   "speech": "一条是原始观测，一条是还原后的预测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 381.22,
+   "dur": 3.78,
+   "speech": "它们不重合，因为模型只有一个指数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 385.55,
+   "dur": 3.69,
+   "speech": "但这一个指数，已经把趋势抓住了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 389.78,
+   "dur": 2.82,
+   "speech": "最后再看一眼计算量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 393.16,
+   "dur": 4.36,
+   "speech": "闭式解一次求值，RK4 两百步八百次。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 398.06,
+   "dur": 3.83,
+   "speech": "这是这一集唯一可以直接比较的倍数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 402.44,
+   "dur": 3.78,
+   "speech": "书里说的一百到十万倍，不是这个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 409.63,
+   "dur": 3.25,
+   "speech": "实现放在两个 Haskell 模块里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 413.43,
+   "dur": 3.18,
+   "speech": "CfC 模块只有六个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 417.17,
+   "dur": 4.93,
+   "speech": "稳定 softplus、朴素 softplus、log-sum-exp。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 422.65,
+   "dur": 3.76,
+   "speech": "闭式解、门控混合、轨迹生成。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 426.96,
+   "dur": 2.34,
+   "speech": "先看 softplus。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 429.85,
+   "dur": 4.12,
+   "speech": "x 大于零时，把 e 的 x 次方提出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 434.52,
+   "dur": 4.29,
+   "speech": "写成 x 加 log 一加 e 的负 x 次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 439.35,
+   "dur": 3.4,
+   "speech": "这样 x 再大，也不会先溢出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 443.3,
+   "dur": 3.97,
+   "speech": "朴素版直接算 log 一加 e 的 x 次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 447.83,
+   "dur": 3.54,
+   "speech": "x 等于一千时，结果就是无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 451.92,
+   "dur": 3.59,
+   "speech": "这不是数学错，是浮点数的边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 456.06,
+   "dur": 3.61,
+   "speech": "log-sum-exp 用同样的技巧。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 460.22,
+   "dur": 4.14,
+   "speech": "先减最大值，再取指数，最后加回去。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 464.91,
+   "dur": 3.73,
+   "speech": "GM-ODE 模块自带 RK4 的一步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 469.2,
+   "dur": 4.67,
+   "speech": "这是仓库规则：算法模块之间不互相 import。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 474.42,
+   "dur": 4.21,
+   "speech": "重复十几行，换每个模块可以单独验证。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 479.18,
+   "dur": 4.33,
+   "speech": "gm11Fit 解一个二乘二的正规方程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 484.07,
+   "dur": 3.33,
+   "speech": "ago 和 iago 都是一行扫描。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 487.94,
+   "dur": 4.02,
+   "speech": "gmOdeIntegrate 仍然调用 RK4。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 492.51,
+   "dur": 3.13,
+   "speech": "这一点，代码里看得最清楚。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 499.05,
+   "dur": 2.8,
+   "speech": "第一组：AGO 和 IAGO。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 502.4,
+   "dur": 2.87,
+   "speech": "输入序列是一二三四。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 505.82,
+   "dur": 2.61,
+   "speech": "累加得到一、三、六、十。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 508.97,
+   "dur": 2.63,
+   "speech": "差分回到一二三四。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 512.15,
+   "dur": 2.63,
+   "speech": "逐位相等，没有误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 515.33,
+   "dur": 3.95,
+   "speech": "第二组：GM(1,1) 的拟合。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 519.83,
+   "dur": 3.33,
+   "speech": "二十四个点，公比零点九七。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 523.71,
+   "dur": 3.78,
+   "speech": "拟合出 a 等于零点零三零四五七。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 528.04,
+   "dur": 2.89,
+   "speech": "b 等于十二点一八二七。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 531.49,
+   "dur": 3.69,
+   "speech": "这两个数和手算的离散公式对得上。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 535.72,
+   "dur": 4.36,
+   "speech": "还原到原始尺度，MAPE 是零点零零四八一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 540.63,
+   "dur": 3.13,
+   "speech": "也就是百分之零点四八。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 544.31,
+   "dur": 3.78,
+   "speech": "不是书里的零点八二，也不是一点一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 548.65,
+   "dur": 3.59,
+   "speech": "因为数据是合成的，任务也不同。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 552.79,
+   "dur": 2.92,
+   "speech": "第三组：白化方程的解。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 556.25,
+   "dur": 4.17,
+   "speech": "RK4 步长零点零一，走两千四百步。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 560.97,
+   "dur": 5.53,
+   "speech": "整数点和闭式解的最大误差，二点五六乘十的负十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 567.05,
+   "dur": 4.93,
+   "speech": "这说明 RK4 和闭式解在同一个方程上对上了。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 572.54,
+   "dur": 3.11,
+   "speech": "第四组：softplus 的溢出。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 576.2,
+   "dur": 4.05,
+   "speech": "朴素版在 x 等于一千时返回无穷。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 580.79,
+   "dur": 2.37,
+   "speech": "稳定版返回一千。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 583.71,
+   "dur": 5.2,
+   "speech": "log-sum-exp 在两个一千上返回一千点六九三。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 589.46,
+   "dur": 3.25,
+   "speech": "这就是数值稳定的全部意义。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 593.26,
+   "dur": 2.89,
+   "speech": "测试一共一百零八条。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 596.71,
+   "dur": 3.59,
+   "speech": "前面七十三条是前几集留下的。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 600.85,
+   "dur": 5.08,
+   "speech": "这一集新增十七条 CfC，十八条 GM-ODE。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 606.47,
+   "dur": 2.7,
+   "speech": "一百零八条全部通过。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 612.58,
+   "dur": 2.68,
+   "speech": "最后说几条使用边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 615.81,
+   "dur": 4.62,
+   "speech": "第一，书里的两个性能数字，都只能标 C。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 620.98,
+   "dur": 5.32,
+   "speech": "CfC 的一百到十万倍，没有说基线、数据和硬件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 626.85,
+   "dur": 4.09,
+   "speech": "GM-ODE 的 MAPE，没有说划分和预处理。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 631.49,
+   "dur": 3.54,
+   "speech": "我们能复现的是机制，不是这两个数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 635.58,
+   "dur": 3.35,
+   "speech": "第二，这里只验证了标量版本。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 639.48,
+   "dur": 4.43,
+   "speech": "完整网络还有门控、归一化和多层耦合。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 644.46,
+   "dur": 3.85,
+   "speech": "一层对上，不等于整个模型没有误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 648.87,
+   "dur": 5.32,
+   "speech": "第三，GM(1,1) 的白化方程是线性的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 654.74,
+   "dur": 4.09,
+   "speech": "真实序列有季节、有拐点、有冲击。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 659.38,
+   "dur": 2.63,
+   "speech": "一个指数抓不住这些。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 662.56,
+   "dur": 3.76,
+   "speech": "第四，MAPE 在小样本上很不稳定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 666.87,
+   "dur": 3.47,
+   "speech": "接近零的观测会把百分比放大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 670.89,
+   "dur": 5.03,
+   "speech": "所以零点八二和一点一三，不能直接搬到别的任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 676.47,
+   "dur": 3.47,
+   "speech": "第五，GM-ODE 仍然要积分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 680.49,
+   "dur": 3.66,
+   "speech": "它的计算瓶颈没有被闭式解消掉。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 684.7,
+   "dur": 3.71,
+   "speech": "它换来的是小样本下的结构先验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 688.96,
+   "dur": 2.73,
+   "speech": "这两笔账，要分开算。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 695.09,
+   "dur": 2.44,
+   "speech": "如果只记一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 698.08,
+   "dur": 3.61,
+   "speech": "CfC 用闭式解换掉求解器。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 702.24,
+   "dur": 4.29,
+   "speech": "GM-ODE 用灰色结构换掉黑箱右端项。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 707.08,
+   "dur": 2.89,
+   "speech": "一个省的是函数求值。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 710.52,
+   "dur": 2.44,
+   "speech": "一个省的是样本。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 713.51,
+   "dur": 3.95,
+   "speech": "两个都值得学，但不是同一个技巧。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 718.01,
+   "dur": 5.01,
+   "speech": "代码、证据和全部数字，都在 ts-base 仓库。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 723.57,
+   "dur": 3.97,
+   "speech": "下一集，把保真度写进损失函数。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 728.09,
+   "dur": 3.73,
+   "speech": "总变差和动态时间规整，接着讲。"
+  }
+ ]
+}
