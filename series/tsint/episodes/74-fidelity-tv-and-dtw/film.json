@@ -19,11 +19,14 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-74",
-  "status": "draft",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
     "musicGainDb": -2.5
+  },
+  "publish": {
+    "coverFrame": 1950
   },
   "derive": [
     {
@@ -44,7 +47,7 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete",
+  "assetsStatus": "complete",
   "material": "optional",
   "notes": "unit ids: ch9-tv-reg, ch9-dtw · book p.219 · evidence a32c1e0"
 }

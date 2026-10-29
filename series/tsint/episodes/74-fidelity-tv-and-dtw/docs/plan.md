@@ -1,7 +1,7 @@
 # 74-fidelity-tv-and-dtw - 别只看 MSE：总变差正则与 DTW 保真度
 
-> status: draft (证据已生成，scenes 待写)
-> chapter: ch09 | runtime target: 18 min | algorithms: 2
+> status: ready (成片 763.77 s，已交付)
+> chapter: ch09 | runtime target: 13 min | algorithms: 2
 
 ## Thesis
 
@@ -25,7 +25,7 @@ MSE 只看逐点幅度，看不见「形状对、只是晚了几步」。把同�
 3. DTW 黄金例：`[1,2,3]` vs `[2,3]` = 1，路径 `(0,0),(1,0),(2,1)`。
 4. 平移例：MSE=15.80952380952381，DTW=0，路径长度 33。
 5. 三角不等式反例：x=[0,0]、y=[0,2]、z=[0,2,2,2]；xz=6，xy+yz=2，违反量 4。
-6. 带约束：n=500、w=20，cost=28.53169548885456，31.535698 ms，与完整 DTW 相等。
+6. 带约束：n=500、w=20，cost=28.53169548885456，32.399641 ms，与完整 DTW 相等。
 
 看完能回答：什么时候该用 DTW 而不是 MSE；TV 的 λ 在买什么、又在卖什么。
 
