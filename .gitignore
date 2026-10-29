@@ -6,6 +6,10 @@
 **/delivery/*.mp4
 **/delivery/*.mp4.part
 **/delivery/*.work/
+**/delivery/*.wav
+**/delivery/score.meta.json
+**/delivery/scenes/
+**/delivery/stills/
 **/out/
 **/assets/audio/clips/
 **/data/ode.json
