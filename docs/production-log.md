@@ -159,3 +159,16 @@
 - 偏差: 计划 22 min，实做 22.91 min（+0.91 min）；29 页（verification 6 页）；旁白 346 条、语音 1,040 s；证据 39 条超过计划的 30 条
 - 备注: ch02 第五集；下一步 E07 `fft-basis-patch`（频域与分块：FFT / 基展开 / Patch，三种换坐标系的方式）。**E04 bed 1560 s 可用到 E07 的 23 min 左右，再长就需重建 bed**
 
+## E07 fft-basis-patch — 2026-10-31
+- ts-base: 0f68316（Fft/BasisExp/Patchify 三模块 + 47 断言，总套件 550）→ 6480e48（`app/Ch07FftEvidence.hs` + 证据数据，55 条检查 26/18/11）→ df5f27e（SELF-AUTH A19：归一化/补零/最小二乘坐标/Patch 填充）
+- ts-admin: a021e44（`inventory/scripts/export_ch02_fft.py`：600519 日线 730 行 2019-01-02–2021-12-31，窗口取最后 512 点；5 分钟 240 根 2026-08-10–08-14，每天 48 根）
+- video_project: 27b6e73（pack/scenes/script/294 行讲稿/narration/plan）→ b110a64（页间交叉淡变 + outro Build 提前）→ **09063b4**（本次 delivery 提交：cover.png 153,988 B / srt / chapters / film ready + coverFrame 2259）
+- 引擎: 无（a667688；score 复用 `out/e04-score-loop-48k.wav` 1560 s、48 kHz）
+- 成片: 1,298.73 s（21:38.73），−15 LUFS，TP −2 dBFS，38,962 帧，8 场；294 条旁白，语音 1,011.3 s，字幕跨度 1.2→1296.52 s（speaking 1,114.2 s）
+- 流水线: 8 段分开渲染（reused 0 / rendered 8）；musicGain −4.5 dB、ducked 52.8%、peak −1.0 dBFS；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.84、gap_full −30.44、gap_audible −33.18、bed vs speech −9.6；flicker mean|d| 0.0213、p99 0.3153、max 10.04、cuts 7；294 cue 无一换行、最长 34 字（budget 34）；8 章；封面 frame 2259（75.30 s，茅台日线 + FFT 窗口 512 / 最大谱线 bin 1 双卡、无字幕）
+- 卡点: ① 图 2.12 合成信号的口径分裂——CSV 只导前 1,000 点，但 FFT 实际用 4,096 点（bin 0.244 Hz，10 Hz = 40.96 bin 才「不在整格」），intuition 图标题与「泄漏」文案改成「分析 4096 点 · 图中前 1000 点」，讲稿边界段同步改；② `Pages` 页间淡变非重叠（`outO [b−fade,b]` + 下一页 `inO [b,b+fade]`）→ 边界帧两页同时透明，flicker 门在 outro 判 blink dips（frame 37684 depth 5.5 / 38093 depth 5.2）；改 `outO [b,b+fade]` 真正交叉淡变，并把 outro 内容 Build 提前到 `lf 0.36/0.55`；③ dump 的 `lines.json` 落引擎 `data/tsint-07-…/`，TTS 后 `voice.json` 也要 cp 回引擎同名目录再重 dump，否则时间轴全空；④ pack 一提交 HEAD 移动，make 的 content check 立刻失败，必须先 `films.mjs sync`；⑤ 封面候选 f631（标题页）/ f5766 / f2259 都在字幕间隙，取内容最全的 2259
+- 返工: 讲稿 268→294 行扩写一次成型；静帧 37 页末帧 lint 一轮 PASS（预修 definitions p4 callout top 640→672、intuition 图标题）；make 2 轮（第 1 轮 flicker 失败 + 1 轮 PASS）；TTS 294 条一次过
+- 偏差: 计划 23 min，实做 21.65 min（−1.35 min）；37 页；旁白 294 条、语音 1,011 s；证据 55 条
+- 备注: ch02 第六集；下一步 E08 `adf-shifting-transition`（冷门三指标：ADF/漂移性/转移性）。**E04 bed 1560 s 仍够 E08 的 1440 s；超过 1560 s 再重建**
+
+
