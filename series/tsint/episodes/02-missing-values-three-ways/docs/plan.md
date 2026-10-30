@@ -42,14 +42,14 @@
 
 ## Algorithms
 
-- ch2-locf - 末值填充（LOCF / LOCF-Forward）(TsBase.Algos.Ch02.Locf)，22 条断言
+- ch2-locf - 末值填充（LOCF / LOCF-Forward）(TsBase.Algos.Ch02.Locf)，12 条测试断言
   - `locf :: V.Vector (Maybe Double) -> Either LocfError (V.Vector Double, V.Vector Bool)`：一次前向扫描，携带最近观测；首端缺失或整段无观测 → Left；值向量 + 掩码（True 表示填出来的）。
   - `locfForward`：跳过首端缺失，其余相同（价格口径的误差用它）；`imputedCount :: V.Vector Bool -> Int`。
-- ch2-statimp - 统计量填充（均值/中位数）(TsBase.Algos.Ch02.StatImp)，11 条断言
+- ch2-statimp - 统计量填充（均值/中位数）(TsBase.Algos.Ch02.StatImp)，13 条测试断言
   - `statimp :: Stat -> V.Vector (Maybe Double) -> Either StatImpError (V.Vector Double, V.Vector Bool)`；`data Stat = Mean | Median`。
   - 均值用 Kahan 补偿求和（一万个点的用例）；中位数排序后取中，偶数取中间两个平均。
   - `popVar` / `populationVariance :: V.Vector Double -> Double`：总体方差（除 T，ddof=0）——这一集要的是「这段窗口」的描述统计，不是总体无偏估计。
-- ch2-lininterp - 线性插值填充 (TsBase.Algos.Ch02.LinInterp)，16 条断言
+- ch2-lininterp - 线性插值填充 (TsBase.Algos.Ch02.LinInterp)，11 条测试断言
   - `lininterp :: (Double, Double) -> Int -> Either LinInterpError [Double]`：等距坐标；`lininterpAxis :: V.Vector Double -> V.Vector (Maybe Double) -> Either LinInterpError …`：按日期比例，不规则间隔也对。
   - 前缀扫描记左邻下标、后缀扫描记右邻；首尾必须有观测，否则 Left。
 
