@@ -1,0 +1,1714 @@
+{
+ "open#0": {
+  "file": "open-0.mp3",
+  "dur": 2.064
+ },
+ "open#1": {
+  "file": "open-1.mp3",
+  "dur": 2.616
+ },
+ "open#2": {
+  "file": "open-2.mp3",
+  "dur": 1.944
+ },
+ "open#3": {
+  "file": "open-3.mp3",
+  "dur": 1.848
+ },
+ "open#4": {
+  "file": "open-4.mp3",
+  "dur": 3.36
+ },
+ "open#5": {
+  "file": "open-5.mp3",
+  "dur": 1.92
+ },
+ "open#6": {
+  "file": "open-6.mp3",
+  "dur": 1.632
+ },
+ "open#7": {
+  "file": "open-7.mp3",
+  "dur": 2.736
+ },
+ "open#8": {
+  "file": "open-8.mp3",
+  "dur": 1.776
+ },
+ "open#9": {
+  "file": "open-9.mp3",
+  "dur": 2.712
+ },
+ "open#10": {
+  "file": "open-10.mp3",
+  "dur": 3.168
+ },
+ "open#11": {
+  "file": "open-11.mp3",
+  "dur": 3.072
+ },
+ "open#12": {
+  "file": "open-12.mp3",
+  "dur": 2.928
+ },
+ "open#13": {
+  "file": "open-13.mp3",
+  "dur": 2.376
+ },
+ "open#14": {
+  "file": "open-14.mp3",
+  "dur": 2.64
+ },
+ "open#15": {
+  "file": "open-15.mp3",
+  "dur": 2.544
+ },
+ "open#16": {
+  "file": "open-16.mp3",
+  "dur": 1.968
+ },
+ "open#17": {
+  "file": "open-17.mp3",
+  "dur": 1.944
+ },
+ "open#18": {
+  "file": "open-18.mp3",
+  "dur": 2.328
+ },
+ "open#19": {
+  "file": "open-19.mp3",
+  "dur": 2.28
+ },
+ "open#20": {
+  "file": "open-20.mp3",
+  "dur": 2.064
+ },
+ "open#21": {
+  "file": "open-21.mp3",
+  "dur": 2.232
+ },
+ "open#22": {
+  "file": "open-22.mp3",
+  "dur": 1.872
+ },
+ "open#23": {
+  "file": "open-23.mp3",
+  "dur": 1.92
+ },
+ "open#24": {
+  "file": "open-24.mp3",
+  "dur": 3.24
+ },
+ "open#25": {
+  "file": "open-25.mp3",
+  "dur": 3.576
+ },
+ "open#26": {
+  "file": "open-26.mp3",
+  "dur": 1.944
+ },
+ "open#27": {
+  "file": "open-27.mp3",
+  "dur": 2.568
+ },
+ "open#28": {
+  "file": "open-28.mp3",
+  "dur": 1.752
+ },
+ "open#29": {
+  "file": "open-29.mp3",
+  "dur": 2.208
+ },
+ "open#30": {
+  "file": "open-30.mp3",
+  "dur": 2.208
+ },
+ "open#31": {
+  "file": "open-31.mp3",
+  "dur": 1.968
+ },
+ "open#32": {
+  "file": "open-32.mp3",
+  "dur": 1.704
+ },
+ "open#33": {
+  "file": "open-33.mp3",
+  "dur": 2.64
+ },
+ "open#34": {
+  "file": "open-34.mp3",
+  "dur": 2.664
+ },
+ "open#35": {
+  "file": "open-35.mp3",
+  "dur": 2.4
+ },
+ "open#36": {
+  "file": "open-36.mp3",
+  "dur": 2.112
+ },
+ "open#37": {
+  "file": "open-37.mp3",
+  "dur": 2.592
+ },
+ "open#38": {
+  "file": "open-38.mp3",
+  "dur": 1.824
+ },
+ "open#39": {
+  "file": "open-39.mp3",
+  "dur": 2.688
+ },
+ "open#40": {
+  "file": "open-40.mp3",
+  "dur": 1.92
+ },
+ "open#41": {
+  "file": "open-41.mp3",
+  "dur": 2.52
+ },
+ "open#42": {
+  "file": "open-42.mp3",
+  "dur": 2.592
+ },
+ "problem#0": {
+  "file": "problem-0.mp3",
+  "dur": 1.992
+ },
+ "problem#1": {
+  "file": "problem-1.mp3",
+  "dur": 2.856
+ },
+ "problem#2": {
+  "file": "problem-2.mp3",
+  "dur": 2.736
+ },
+ "problem#3": {
+  "file": "problem-3.mp3",
+  "dur": 2.64
+ },
+ "problem#4": {
+  "file": "problem-4.mp3",
+  "dur": 3.312
+ },
+ "problem#5": {
+  "file": "problem-5.mp3",
+  "dur": 2.592
+ },
+ "problem#6": {
+  "file": "problem-6.mp3",
+  "dur": 2.64
+ },
+ "problem#7": {
+  "file": "problem-7.mp3",
+  "dur": 3.192
+ },
+ "problem#8": {
+  "file": "problem-8.mp3",
+  "dur": 2.712
+ },
+ "problem#9": {
+  "file": "problem-9.mp3",
+  "dur": 2.784
+ },
+ "problem#10": {
+  "file": "problem-10.mp3",
+  "dur": 2.808
+ },
+ "problem#11": {
+  "file": "problem-11.mp3",
+  "dur": 1.968
+ },
+ "problem#12": {
+  "file": "problem-12.mp3",
+  "dur": 2.784
+ },
+ "problem#13": {
+  "file": "problem-13.mp3",
+  "dur": 2.592
+ },
+ "problem#14": {
+  "file": "problem-14.mp3",
+  "dur": 1.776
+ },
+ "problem#15": {
+  "file": "problem-15.mp3",
+  "dur": 2.328
+ },
+ "problem#16": {
+  "file": "problem-16.mp3",
+  "dur": 2.064
+ },
+ "problem#17": {
+  "file": "problem-17.mp3",
+  "dur": 1.896
+ },
+ "problem#18": {
+  "file": "problem-18.mp3",
+  "dur": 2.832
+ },
+ "problem#19": {
+  "file": "problem-19.mp3",
+  "dur": 2.064
+ },
+ "problem#20": {
+  "file": "problem-20.mp3",
+  "dur": 2.736
+ },
+ "problem#21": {
+  "file": "problem-21.mp3",
+  "dur": 2.808
+ },
+ "problem#22": {
+  "file": "problem-22.mp3",
+  "dur": 1.704
+ },
+ "problem#23": {
+  "file": "problem-23.mp3",
+  "dur": 2.76
+ },
+ "problem#24": {
+  "file": "problem-24.mp3",
+  "dur": 2.76
+ },
+ "problem#25": {
+  "file": "problem-25.mp3",
+  "dur": 2.616
+ },
+ "problem#26": {
+  "file": "problem-26.mp3",
+  "dur": 1.848
+ },
+ "problem#27": {
+  "file": "problem-27.mp3",
+  "dur": 2.52
+ },
+ "problem#28": {
+  "file": "problem-28.mp3",
+  "dur": 1.824
+ },
+ "problem#29": {
+  "file": "problem-29.mp3",
+  "dur": 2.88
+ },
+ "problem#30": {
+  "file": "problem-30.mp3",
+  "dur": 2.448
+ },
+ "problem#31": {
+  "file": "problem-31.mp3",
+  "dur": 1.896
+ },
+ "problem#32": {
+  "file": "problem-32.mp3",
+  "dur": 1.92
+ },
+ "problem#33": {
+  "file": "problem-33.mp3",
+  "dur": 2.352
+ },
+ "problem#34": {
+  "file": "problem-34.mp3",
+  "dur": 2.064
+ },
+ "problem#35": {
+  "file": "problem-35.mp3",
+  "dur": 1.968
+ },
+ "problem#36": {
+  "file": "problem-36.mp3",
+  "dur": 2.808
+ },
+ "problem#37": {
+  "file": "problem-37.mp3",
+  "dur": 1.968
+ },
+ "problem#38": {
+  "file": "problem-38.mp3",
+  "dur": 2.304
+ },
+ "problem#39": {
+  "file": "problem-39.mp3",
+  "dur": 2.256
+ },
+ "problem#40": {
+  "file": "problem-40.mp3",
+  "dur": 2.664
+ },
+ "problem#41": {
+  "file": "problem-41.mp3",
+  "dur": 2.448
+ },
+ "problem#42": {
+  "file": "problem-42.mp3",
+  "dur": 2.688
+ },
+ "problem#43": {
+  "file": "problem-43.mp3",
+  "dur": 2.904
+ },
+ "problem#44": {
+  "file": "problem-44.mp3",
+  "dur": 2.4
+ },
+ "problem#45": {
+  "file": "problem-45.mp3",
+  "dur": 2.208
+ },
+ "problem#46": {
+  "file": "problem-46.mp3",
+  "dur": 2.664
+ },
+ "problem#47": {
+  "file": "problem-47.mp3",
+  "dur": 2.64
+ },
+ "problem#48": {
+  "file": "problem-48.mp3",
+  "dur": 2.28
+ },
+ "problem#49": {
+  "file": "problem-49.mp3",
+  "dur": 2.136
+ },
+ "problem#50": {
+  "file": "problem-50.mp3",
+  "dur": 2.664
+ },
+ "problem#51": {
+  "file": "problem-51.mp3",
+  "dur": 2.376
+ },
+ "problem#52": {
+  "file": "problem-52.mp3",
+  "dur": 2.064
+ },
+ "problem#53": {
+  "file": "problem-53.mp3",
+  "dur": 2.208
+ },
+ "problem#54": {
+  "file": "problem-54.mp3",
+  "dur": 2.904
+ },
+ "problem#55": {
+  "file": "problem-55.mp3",
+  "dur": 2.64
+ },
+ "problem#56": {
+  "file": "problem-56.mp3",
+  "dur": 2.808
+ },
+ "definitions#0": {
+  "file": "definitions-0.mp3",
+  "dur": 1.728
+ },
+ "definitions#1": {
+  "file": "definitions-1.mp3",
+  "dur": 1.896
+ },
+ "definitions#2": {
+  "file": "definitions-2.mp3",
+  "dur": 2.688
+ },
+ "definitions#3": {
+  "file": "definitions-3.mp3",
+  "dur": 2.016
+ },
+ "definitions#4": {
+  "file": "definitions-4.mp3",
+  "dur": 2.328
+ },
+ "definitions#5": {
+  "file": "definitions-5.mp3",
+  "dur": 2.376
+ },
+ "definitions#6": {
+  "file": "definitions-6.mp3",
+  "dur": 2.52
+ },
+ "definitions#7": {
+  "file": "definitions-7.mp3",
+  "dur": 1.656
+ },
+ "definitions#8": {
+  "file": "definitions-8.mp3",
+  "dur": 2.784
+ },
+ "definitions#9": {
+  "file": "definitions-9.mp3",
+  "dur": 2.736
+ },
+ "definitions#10": {
+  "file": "definitions-10.mp3",
+  "dur": 2.424
+ },
+ "definitions#11": {
+  "file": "definitions-11.mp3",
+  "dur": 1.776
+ },
+ "definitions#12": {
+  "file": "definitions-12.mp3",
+  "dur": 2.04
+ },
+ "definitions#13": {
+  "file": "definitions-13.mp3",
+  "dur": 1.992
+ },
+ "definitions#14": {
+  "file": "definitions-14.mp3",
+  "dur": 2.952
+ },
+ "definitions#15": {
+  "file": "definitions-15.mp3",
+  "dur": 2.112
+ },
+ "definitions#16": {
+  "file": "definitions-16.mp3",
+  "dur": 2.064
+ },
+ "definitions#17": {
+  "file": "definitions-17.mp3",
+  "dur": 2.856
+ },
+ "definitions#18": {
+  "file": "definitions-18.mp3",
+  "dur": 2.256
+ },
+ "definitions#19": {
+  "file": "definitions-19.mp3",
+  "dur": 1.872
+ },
+ "definitions#20": {
+  "file": "definitions-20.mp3",
+  "dur": 2.232
+ },
+ "definitions#21": {
+  "file": "definitions-21.mp3",
+  "dur": 1.896
+ },
+ "definitions#22": {
+  "file": "definitions-22.mp3",
+  "dur": 2.28
+ },
+ "definitions#23": {
+  "file": "definitions-23.mp3",
+  "dur": 2.76
+ },
+ "definitions#24": {
+  "file": "definitions-24.mp3",
+  "dur": 2.808
+ },
+ "definitions#25": {
+  "file": "definitions-25.mp3",
+  "dur": 2.544
+ },
+ "definitions#26": {
+  "file": "definitions-26.mp3",
+  "dur": 2.664
+ },
+ "definitions#27": {
+  "file": "definitions-27.mp3",
+  "dur": 2.136
+ },
+ "definitions#28": {
+  "file": "definitions-28.mp3",
+  "dur": 1.776
+ },
+ "definitions#29": {
+  "file": "definitions-29.mp3",
+  "dur": 1.848
+ },
+ "definitions#30": {
+  "file": "definitions-30.mp3",
+  "dur": 2.856
+ },
+ "definitions#31": {
+  "file": "definitions-31.mp3",
+  "dur": 2.736
+ },
+ "definitions#32": {
+  "file": "definitions-32.mp3",
+  "dur": 1.608
+ },
+ "definitions#33": {
+  "file": "definitions-33.mp3",
+  "dur": 1.728
+ },
+ "definitions#34": {
+  "file": "definitions-34.mp3",
+  "dur": 1.848
+ },
+ "definitions#35": {
+  "file": "definitions-35.mp3",
+  "dur": 2.592
+ },
+ "definitions#36": {
+  "file": "definitions-36.mp3",
+  "dur": 3.024
+ },
+ "definitions#37": {
+  "file": "definitions-37.mp3",
+  "dur": 2.256
+ },
+ "definitions#38": {
+  "file": "definitions-38.mp3",
+  "dur": 2.448
+ },
+ "definitions#39": {
+  "file": "definitions-39.mp3",
+  "dur": 2.616
+ },
+ "definitions#40": {
+  "file": "definitions-40.mp3",
+  "dur": 2.4
+ },
+ "definitions#41": {
+  "file": "definitions-41.mp3",
+  "dur": 1.488
+ },
+ "definitions#42": {
+  "file": "definitions-42.mp3",
+  "dur": 2.352
+ },
+ "definitions#43": {
+  "file": "definitions-43.mp3",
+  "dur": 2.52
+ },
+ "definitions#44": {
+  "file": "definitions-44.mp3",
+  "dur": 1.344
+ },
+ "definitions#45": {
+  "file": "definitions-45.mp3",
+  "dur": 2.928
+ },
+ "definitions#46": {
+  "file": "definitions-46.mp3",
+  "dur": 1.68
+ },
+ "definitions#47": {
+  "file": "definitions-47.mp3",
+  "dur": 3.72
+ },
+ "definitions#48": {
+  "file": "definitions-48.mp3",
+  "dur": 1.92
+ },
+ "definitions#49": {
+  "file": "definitions-49.mp3",
+  "dur": 2.232
+ },
+ "definitions#50": {
+  "file": "definitions-50.mp3",
+  "dur": 1.92
+ },
+ "definitions#51": {
+  "file": "definitions-51.mp3",
+  "dur": 2.664
+ },
+ "definitions#52": {
+  "file": "definitions-52.mp3",
+  "dur": 2.016
+ },
+ "definitions#53": {
+  "file": "definitions-53.mp3",
+  "dur": 2.496
+ },
+ "definitions#54": {
+  "file": "definitions-54.mp3",
+  "dur": 1.776
+ },
+ "definitions#55": {
+  "file": "definitions-55.mp3",
+  "dur": 2.184
+ },
+ "definitions#56": {
+  "file": "definitions-56.mp3",
+  "dur": 1.848
+ },
+ "definitions#57": {
+  "file": "definitions-57.mp3",
+  "dur": 2.544
+ },
+ "definitions#58": {
+  "file": "definitions-58.mp3",
+  "dur": 2.52
+ },
+ "definitions#59": {
+  "file": "definitions-59.mp3",
+  "dur": 3.624
+ },
+ "definitions#60": {
+  "file": "definitions-60.mp3",
+  "dur": 2.472
+ },
+ "definitions#61": {
+  "file": "definitions-61.mp3",
+  "dur": 1.8
+ },
+ "definitions#62": {
+  "file": "definitions-62.mp3",
+  "dur": 2.112
+ },
+ "intuition#0": {
+  "file": "intuition-0.mp3",
+  "dur": 2.016
+ },
+ "intuition#1": {
+  "file": "intuition-1.mp3",
+  "dur": 2.496
+ },
+ "intuition#2": {
+  "file": "intuition-2.mp3",
+  "dur": 1.896
+ },
+ "intuition#3": {
+  "file": "intuition-3.mp3",
+  "dur": 1.608
+ },
+ "intuition#4": {
+  "file": "intuition-4.mp3",
+  "dur": 1.992
+ },
+ "intuition#5": {
+  "file": "intuition-5.mp3",
+  "dur": 2.424
+ },
+ "intuition#6": {
+  "file": "intuition-6.mp3",
+  "dur": 2.232
+ },
+ "intuition#7": {
+  "file": "intuition-7.mp3",
+  "dur": 2.592
+ },
+ "intuition#8": {
+  "file": "intuition-8.mp3",
+  "dur": 1.92
+ },
+ "intuition#9": {
+  "file": "intuition-9.mp3",
+  "dur": 1.752
+ },
+ "intuition#10": {
+  "file": "intuition-10.mp3",
+  "dur": 2.448
+ },
+ "intuition#11": {
+  "file": "intuition-11.mp3",
+  "dur": 2.544
+ },
+ "intuition#12": {
+  "file": "intuition-12.mp3",
+  "dur": 2.616
+ },
+ "intuition#13": {
+  "file": "intuition-13.mp3",
+  "dur": 2.16
+ },
+ "intuition#14": {
+  "file": "intuition-14.mp3",
+  "dur": 1.704
+ },
+ "intuition#15": {
+  "file": "intuition-15.mp3",
+  "dur": 1.776
+ },
+ "intuition#16": {
+  "file": "intuition-16.mp3",
+  "dur": 2.328
+ },
+ "intuition#17": {
+  "file": "intuition-17.mp3",
+  "dur": 1.632
+ },
+ "intuition#18": {
+  "file": "intuition-18.mp3",
+  "dur": 2.52
+ },
+ "intuition#19": {
+  "file": "intuition-19.mp3",
+  "dur": 1.608
+ },
+ "intuition#20": {
+  "file": "intuition-20.mp3",
+  "dur": 2.424
+ },
+ "intuition#21": {
+  "file": "intuition-21.mp3",
+  "dur": 1.896
+ },
+ "intuition#22": {
+  "file": "intuition-22.mp3",
+  "dur": 2.112
+ },
+ "intuition#23": {
+  "file": "intuition-23.mp3",
+  "dur": 2.04
+ },
+ "intuition#24": {
+  "file": "intuition-24.mp3",
+  "dur": 2.28
+ },
+ "intuition#25": {
+  "file": "intuition-25.mp3",
+  "dur": 1.824
+ },
+ "intuition#26": {
+  "file": "intuition-26.mp3",
+  "dur": 1.848
+ },
+ "intuition#27": {
+  "file": "intuition-27.mp3",
+  "dur": 2.616
+ },
+ "intuition#28": {
+  "file": "intuition-28.mp3",
+  "dur": 1.512
+ },
+ "intuition#29": {
+  "file": "intuition-29.mp3",
+  "dur": 1.656
+ },
+ "intuition#30": {
+  "file": "intuition-30.mp3",
+  "dur": 2.304
+ },
+ "intuition#31": {
+  "file": "intuition-31.mp3",
+  "dur": 2.424
+ },
+ "intuition#32": {
+  "file": "intuition-32.mp3",
+  "dur": 2.568
+ },
+ "intuition#33": {
+  "file": "intuition-33.mp3",
+  "dur": 2.256
+ },
+ "intuition#34": {
+  "file": "intuition-34.mp3",
+  "dur": 2.616
+ },
+ "intuition#35": {
+  "file": "intuition-35.mp3",
+  "dur": 1.752
+ },
+ "intuition#36": {
+  "file": "intuition-36.mp3",
+  "dur": 2.544
+ },
+ "intuition#37": {
+  "file": "intuition-37.mp3",
+  "dur": 2.88
+ },
+ "intuition#38": {
+  "file": "intuition-38.mp3",
+  "dur": 2.088
+ },
+ "intuition#39": {
+  "file": "intuition-39.mp3",
+  "dur": 2.496
+ },
+ "intuition#40": {
+  "file": "intuition-40.mp3",
+  "dur": 2.712
+ },
+ "intuition#41": {
+  "file": "intuition-41.mp3",
+  "dur": 2.592
+ },
+ "intuition#42": {
+  "file": "intuition-42.mp3",
+  "dur": 1.728
+ },
+ "intuition#43": {
+  "file": "intuition-43.mp3",
+  "dur": 2.928
+ },
+ "intuition#44": {
+  "file": "intuition-44.mp3",
+  "dur": 2.112
+ },
+ "intuition#45": {
+  "file": "intuition-45.mp3",
+  "dur": 2.736
+ },
+ "intuition#46": {
+  "file": "intuition-46.mp3",
+  "dur": 2.832
+ },
+ "intuition#47": {
+  "file": "intuition-47.mp3",
+  "dur": 2.928
+ },
+ "intuition#48": {
+  "file": "intuition-48.mp3",
+  "dur": 1.896
+ },
+ "intuition#49": {
+  "file": "intuition-49.mp3",
+  "dur": 1.8
+ },
+ "intuition#50": {
+  "file": "intuition-50.mp3",
+  "dur": 3.168
+ },
+ "intuition#51": {
+  "file": "intuition-51.mp3",
+  "dur": 1.536
+ },
+ "intuition#52": {
+  "file": "intuition-52.mp3",
+  "dur": 2.184
+ },
+ "intuition#53": {
+  "file": "intuition-53.mp3",
+  "dur": 1.896
+ },
+ "intuition#54": {
+  "file": "intuition-54.mp3",
+  "dur": 2.136
+ },
+ "intuition#55": {
+  "file": "intuition-55.mp3",
+  "dur": 2.064
+ },
+ "intuition#56": {
+  "file": "intuition-56.mp3",
+  "dur": 1.824
+ },
+ "intuition#57": {
+  "file": "intuition-57.mp3",
+  "dur": 2.496
+ },
+ "intuition#58": {
+  "file": "intuition-58.mp3",
+  "dur": 2.232
+ },
+ "intuition#59": {
+  "file": "intuition-59.mp3",
+  "dur": 2.232
+ },
+ "implementation#0": {
+  "file": "implementation-0.mp3",
+  "dur": 2.568
+ },
+ "implementation#1": {
+  "file": "implementation-1.mp3",
+  "dur": 2.112
+ },
+ "implementation#2": {
+  "file": "implementation-2.mp3",
+  "dur": 2.64
+ },
+ "implementation#3": {
+  "file": "implementation-3.mp3",
+  "dur": 2.256
+ },
+ "implementation#4": {
+  "file": "implementation-4.mp3",
+  "dur": 1.8
+ },
+ "implementation#5": {
+  "file": "implementation-5.mp3",
+  "dur": 2.184
+ },
+ "implementation#6": {
+  "file": "implementation-6.mp3",
+  "dur": 1.92
+ },
+ "implementation#7": {
+  "file": "implementation-7.mp3",
+  "dur": 1.92
+ },
+ "implementation#8": {
+  "file": "implementation-8.mp3",
+  "dur": 2.616
+ },
+ "implementation#9": {
+  "file": "implementation-9.mp3",
+  "dur": 2.16
+ },
+ "implementation#10": {
+  "file": "implementation-10.mp3",
+  "dur": 1.824
+ },
+ "implementation#11": {
+  "file": "implementation-11.mp3",
+  "dur": 2.952
+ },
+ "implementation#12": {
+  "file": "implementation-12.mp3",
+  "dur": 2.4
+ },
+ "implementation#13": {
+  "file": "implementation-13.mp3",
+  "dur": 2.088
+ },
+ "implementation#14": {
+  "file": "implementation-14.mp3",
+  "dur": 1.8
+ },
+ "implementation#15": {
+  "file": "implementation-15.mp3",
+  "dur": 2.232
+ },
+ "implementation#16": {
+  "file": "implementation-16.mp3",
+  "dur": 2.64
+ },
+ "implementation#17": {
+  "file": "implementation-17.mp3",
+  "dur": 2.136
+ },
+ "implementation#18": {
+  "file": "implementation-18.mp3",
+  "dur": 2.4
+ },
+ "implementation#19": {
+  "file": "implementation-19.mp3",
+  "dur": 2.568
+ },
+ "implementation#20": {
+  "file": "implementation-20.mp3",
+  "dur": 2.112
+ },
+ "implementation#21": {
+  "file": "implementation-21.mp3",
+  "dur": 2.328
+ },
+ "implementation#22": {
+  "file": "implementation-22.mp3",
+  "dur": 1.848
+ },
+ "implementation#23": {
+  "file": "implementation-23.mp3",
+  "dur": 2.4
+ },
+ "implementation#24": {
+  "file": "implementation-24.mp3",
+  "dur": 1.776
+ },
+ "implementation#25": {
+  "file": "implementation-25.mp3",
+  "dur": 2.4
+ },
+ "implementation#26": {
+  "file": "implementation-26.mp3",
+  "dur": 2.208
+ },
+ "implementation#27": {
+  "file": "implementation-27.mp3",
+  "dur": 3.12
+ },
+ "implementation#28": {
+  "file": "implementation-28.mp3",
+  "dur": 2.136
+ },
+ "implementation#29": {
+  "file": "implementation-29.mp3",
+  "dur": 2.544
+ },
+ "implementation#30": {
+  "file": "implementation-30.mp3",
+  "dur": 2.04
+ },
+ "implementation#31": {
+  "file": "implementation-31.mp3",
+  "dur": 1.848
+ },
+ "implementation#32": {
+  "file": "implementation-32.mp3",
+  "dur": 2.304
+ },
+ "implementation#33": {
+  "file": "implementation-33.mp3",
+  "dur": 1.848
+ },
+ "implementation#34": {
+  "file": "implementation-34.mp3",
+  "dur": 2.016
+ },
+ "implementation#35": {
+  "file": "implementation-35.mp3",
+  "dur": 2.4
+ },
+ "implementation#36": {
+  "file": "implementation-36.mp3",
+  "dur": 2.04
+ },
+ "implementation#37": {
+  "file": "implementation-37.mp3",
+  "dur": 2.016
+ },
+ "implementation#38": {
+  "file": "implementation-38.mp3",
+  "dur": 2.088
+ },
+ "implementation#39": {
+  "file": "implementation-39.mp3",
+  "dur": 2.448
+ },
+ "implementation#40": {
+  "file": "implementation-40.mp3",
+  "dur": 2.952
+ },
+ "implementation#41": {
+  "file": "implementation-41.mp3",
+  "dur": 2.496
+ },
+ "implementation#42": {
+  "file": "implementation-42.mp3",
+  "dur": 2.952
+ },
+ "implementation#43": {
+  "file": "implementation-43.mp3",
+  "dur": 1.704
+ },
+ "implementation#44": {
+  "file": "implementation-44.mp3",
+  "dur": 3.0
+ },
+ "implementation#45": {
+  "file": "implementation-45.mp3",
+  "dur": 2.424
+ },
+ "implementation#46": {
+  "file": "implementation-46.mp3",
+  "dur": 2.856
+ },
+ "implementation#47": {
+  "file": "implementation-47.mp3",
+  "dur": 2.016
+ },
+ "implementation#48": {
+  "file": "implementation-48.mp3",
+  "dur": 2.28
+ },
+ "implementation#49": {
+  "file": "implementation-49.mp3",
+  "dur": 1.752
+ },
+ "implementation#50": {
+  "file": "implementation-50.mp3",
+  "dur": 2.664
+ },
+ "implementation#51": {
+  "file": "implementation-51.mp3",
+  "dur": 1.8
+ },
+ "implementation#52": {
+  "file": "implementation-52.mp3",
+  "dur": 1.944
+ },
+ "implementation#53": {
+  "file": "implementation-53.mp3",
+  "dur": 1.728
+ },
+ "implementation#54": {
+  "file": "implementation-54.mp3",
+  "dur": 2.856
+ },
+ "implementation#55": {
+  "file": "implementation-55.mp3",
+  "dur": 1.968
+ },
+ "implementation#56": {
+  "file": "implementation-56.mp3",
+  "dur": 1.488
+ },
+ "implementation#57": {
+  "file": "implementation-57.mp3",
+  "dur": 1.824
+ },
+ "implementation#58": {
+  "file": "implementation-58.mp3",
+  "dur": 1.752
+ },
+ "implementation#59": {
+  "file": "implementation-59.mp3",
+  "dur": 1.824
+ },
+ "implementation#60": {
+  "file": "implementation-60.mp3",
+  "dur": 1.704
+ },
+ "implementation#61": {
+  "file": "implementation-61.mp3",
+  "dur": 3.024
+ },
+ "verification#0": {
+  "file": "verification-0.mp3",
+  "dur": 2.52
+ },
+ "verification#1": {
+  "file": "verification-1.mp3",
+  "dur": 2.16
+ },
+ "verification#2": {
+  "file": "verification-2.mp3",
+  "dur": 1.776
+ },
+ "verification#3": {
+  "file": "verification-3.mp3",
+  "dur": 1.392
+ },
+ "verification#4": {
+  "file": "verification-4.mp3",
+  "dur": 1.608
+ },
+ "verification#5": {
+  "file": "verification-5.mp3",
+  "dur": 1.68
+ },
+ "verification#6": {
+  "file": "verification-6.mp3",
+  "dur": 2.208
+ },
+ "verification#7": {
+  "file": "verification-7.mp3",
+  "dur": 2.184
+ },
+ "verification#8": {
+  "file": "verification-8.mp3",
+  "dur": 1.752
+ },
+ "verification#9": {
+  "file": "verification-9.mp3",
+  "dur": 1.728
+ },
+ "verification#10": {
+  "file": "verification-10.mp3",
+  "dur": 1.992
+ },
+ "verification#11": {
+  "file": "verification-11.mp3",
+  "dur": 1.392
+ },
+ "verification#12": {
+  "file": "verification-12.mp3",
+  "dur": 1.248
+ },
+ "verification#13": {
+  "file": "verification-13.mp3",
+  "dur": 1.728
+ },
+ "verification#14": {
+  "file": "verification-14.mp3",
+  "dur": 1.704
+ },
+ "verification#15": {
+  "file": "verification-15.mp3",
+  "dur": 2.328
+ },
+ "verification#16": {
+  "file": "verification-16.mp3",
+  "dur": 2.04
+ },
+ "verification#17": {
+  "file": "verification-17.mp3",
+  "dur": 2.28
+ },
+ "verification#18": {
+  "file": "verification-18.mp3",
+  "dur": 1.68
+ },
+ "verification#19": {
+  "file": "verification-19.mp3",
+  "dur": 1.8
+ },
+ "verification#20": {
+  "file": "verification-20.mp3",
+  "dur": 1.512
+ },
+ "verification#21": {
+  "file": "verification-21.mp3",
+  "dur": 1.512
+ },
+ "verification#22": {
+  "file": "verification-22.mp3",
+  "dur": 2.016
+ },
+ "verification#23": {
+  "file": "verification-23.mp3",
+  "dur": 2.064
+ },
+ "verification#24": {
+  "file": "verification-24.mp3",
+  "dur": 1.56
+ },
+ "verification#25": {
+  "file": "verification-25.mp3",
+  "dur": 2.616
+ },
+ "verification#26": {
+  "file": "verification-26.mp3",
+  "dur": 1.608
+ },
+ "verification#27": {
+  "file": "verification-27.mp3",
+  "dur": 2.736
+ },
+ "verification#28": {
+  "file": "verification-28.mp3",
+  "dur": 2.64
+ },
+ "verification#29": {
+  "file": "verification-29.mp3",
+  "dur": 2.352
+ },
+ "verification#30": {
+  "file": "verification-30.mp3",
+  "dur": 1.776
+ },
+ "verification#31": {
+  "file": "verification-31.mp3",
+  "dur": 2.256
+ },
+ "verification#32": {
+  "file": "verification-32.mp3",
+  "dur": 1.584
+ },
+ "verification#33": {
+  "file": "verification-33.mp3",
+  "dur": 2.04
+ },
+ "verification#34": {
+  "file": "verification-34.mp3",
+  "dur": 3.24
+ },
+ "verification#35": {
+  "file": "verification-35.mp3",
+  "dur": 2.664
+ },
+ "verification#36": {
+  "file": "verification-36.mp3",
+  "dur": 2.136
+ },
+ "verification#37": {
+  "file": "verification-37.mp3",
+  "dur": 2.904
+ },
+ "verification#38": {
+  "file": "verification-38.mp3",
+  "dur": 3.0
+ },
+ "verification#39": {
+  "file": "verification-39.mp3",
+  "dur": 2.352
+ },
+ "verification#40": {
+  "file": "verification-40.mp3",
+  "dur": 2.184
+ },
+ "verification#41": {
+  "file": "verification-41.mp3",
+  "dur": 1.992
+ },
+ "verification#42": {
+  "file": "verification-42.mp3",
+  "dur": 1.752
+ },
+ "verification#43": {
+  "file": "verification-43.mp3",
+  "dur": 2.184
+ },
+ "verification#44": {
+  "file": "verification-44.mp3",
+  "dur": 1.728
+ },
+ "verification#45": {
+  "file": "verification-45.mp3",
+  "dur": 2.28
+ },
+ "verification#46": {
+  "file": "verification-46.mp3",
+  "dur": 2.28
+ },
+ "verification#47": {
+  "file": "verification-47.mp3",
+  "dur": 1.944
+ },
+ "verification#48": {
+  "file": "verification-48.mp3",
+  "dur": 2.064
+ },
+ "verification#49": {
+  "file": "verification-49.mp3",
+  "dur": 3.0
+ },
+ "verification#50": {
+  "file": "verification-50.mp3",
+  "dur": 2.568
+ },
+ "verification#51": {
+  "file": "verification-51.mp3",
+  "dur": 2.904
+ },
+ "verification#52": {
+  "file": "verification-52.mp3",
+  "dur": 1.752
+ },
+ "verification#53": {
+  "file": "verification-53.mp3",
+  "dur": 1.776
+ },
+ "verification#54": {
+  "file": "verification-54.mp3",
+  "dur": 2.136
+ },
+ "verification#55": {
+  "file": "verification-55.mp3",
+  "dur": 2.328
+ },
+ "verification#56": {
+  "file": "verification-56.mp3",
+  "dur": 2.664
+ },
+ "verification#57": {
+  "file": "verification-57.mp3",
+  "dur": 2.688
+ },
+ "boundary#0": {
+  "file": "boundary-0.mp3",
+  "dur": 2.448
+ },
+ "boundary#1": {
+  "file": "boundary-1.mp3",
+  "dur": 2.016
+ },
+ "boundary#2": {
+  "file": "boundary-2.mp3",
+  "dur": 1.896
+ },
+ "boundary#3": {
+  "file": "boundary-3.mp3",
+  "dur": 1.944
+ },
+ "boundary#4": {
+  "file": "boundary-4.mp3",
+  "dur": 2.304
+ },
+ "boundary#5": {
+  "file": "boundary-5.mp3",
+  "dur": 1.968
+ },
+ "boundary#6": {
+  "file": "boundary-6.mp3",
+  "dur": 1.992
+ },
+ "boundary#7": {
+  "file": "boundary-7.mp3",
+  "dur": 2.88
+ },
+ "boundary#8": {
+  "file": "boundary-8.mp3",
+  "dur": 1.992
+ },
+ "boundary#9": {
+  "file": "boundary-9.mp3",
+  "dur": 2.616
+ },
+ "boundary#10": {
+  "file": "boundary-10.mp3",
+  "dur": 1.704
+ },
+ "boundary#11": {
+  "file": "boundary-11.mp3",
+  "dur": 2.64
+ },
+ "boundary#12": {
+  "file": "boundary-12.mp3",
+  "dur": 2.112
+ },
+ "boundary#13": {
+  "file": "boundary-13.mp3",
+  "dur": 1.92
+ },
+ "boundary#14": {
+  "file": "boundary-14.mp3",
+  "dur": 2.304
+ },
+ "boundary#15": {
+  "file": "boundary-15.mp3",
+  "dur": 2.496
+ },
+ "boundary#16": {
+  "file": "boundary-16.mp3",
+  "dur": 2.256
+ },
+ "boundary#17": {
+  "file": "boundary-17.mp3",
+  "dur": 2.256
+ },
+ "boundary#18": {
+  "file": "boundary-18.mp3",
+  "dur": 2.88
+ },
+ "boundary#19": {
+  "file": "boundary-19.mp3",
+  "dur": 1.8
+ },
+ "boundary#20": {
+  "file": "boundary-20.mp3",
+  "dur": 1.872
+ },
+ "boundary#21": {
+  "file": "boundary-21.mp3",
+  "dur": 2.352
+ },
+ "boundary#22": {
+  "file": "boundary-22.mp3",
+  "dur": 2.208
+ },
+ "boundary#23": {
+  "file": "boundary-23.mp3",
+  "dur": 1.728
+ },
+ "boundary#24": {
+  "file": "boundary-24.mp3",
+  "dur": 1.68
+ },
+ "boundary#25": {
+  "file": "boundary-25.mp3",
+  "dur": 2.04
+ },
+ "boundary#26": {
+  "file": "boundary-26.mp3",
+  "dur": 2.016
+ },
+ "boundary#27": {
+  "file": "boundary-27.mp3",
+  "dur": 2.928
+ },
+ "boundary#28": {
+  "file": "boundary-28.mp3",
+  "dur": 2.04
+ },
+ "boundary#29": {
+  "file": "boundary-29.mp3",
+  "dur": 1.512
+ },
+ "boundary#30": {
+  "file": "boundary-30.mp3",
+  "dur": 2.544
+ },
+ "boundary#31": {
+  "file": "boundary-31.mp3",
+  "dur": 2.424
+ },
+ "boundary#32": {
+  "file": "boundary-32.mp3",
+  "dur": 2.448
+ },
+ "boundary#33": {
+  "file": "boundary-33.mp3",
+  "dur": 2.256
+ },
+ "boundary#34": {
+  "file": "boundary-34.mp3",
+  "dur": 1.896
+ },
+ "boundary#35": {
+  "file": "boundary-35.mp3",
+  "dur": 1.944
+ },
+ "boundary#36": {
+  "file": "boundary-36.mp3",
+  "dur": 2.352
+ },
+ "boundary#37": {
+  "file": "boundary-37.mp3",
+  "dur": 1.896
+ },
+ "boundary#38": {
+  "file": "boundary-38.mp3",
+  "dur": 2.184
+ },
+ "boundary#39": {
+  "file": "boundary-39.mp3",
+  "dur": 2.688
+ },
+ "boundary#40": {
+  "file": "boundary-40.mp3",
+  "dur": 1.968
+ },
+ "boundary#41": {
+  "file": "boundary-41.mp3",
+  "dur": 1.944
+ },
+ "boundary#42": {
+  "file": "boundary-42.mp3",
+  "dur": 2.592
+ },
+ "boundary#43": {
+  "file": "boundary-43.mp3",
+  "dur": 2.64
+ },
+ "boundary#44": {
+  "file": "boundary-44.mp3",
+  "dur": 2.472
+ },
+ "boundary#45": {
+  "file": "boundary-45.mp3",
+  "dur": 1.944
+ },
+ "boundary#46": {
+  "file": "boundary-46.mp3",
+  "dur": 1.704
+ },
+ "boundary#47": {
+  "file": "boundary-47.mp3",
+  "dur": 1.776
+ },
+ "boundary#48": {
+  "file": "boundary-48.mp3",
+  "dur": 1.68
+ },
+ "boundary#49": {
+  "file": "boundary-49.mp3",
+  "dur": 1.944
+ },
+ "boundary#50": {
+  "file": "boundary-50.mp3",
+  "dur": 2.328
+ },
+ "boundary#51": {
+  "file": "boundary-51.mp3",
+  "dur": 2.544
+ },
+ "boundary#52": {
+  "file": "boundary-52.mp3",
+  "dur": 2.4
+ },
+ "boundary#53": {
+  "file": "boundary-53.mp3",
+  "dur": 3.24
+ },
+ "outro#0": {
+  "file": "outro-0.mp3",
+  "dur": 1.368
+ },
+ "outro#1": {
+  "file": "outro-1.mp3",
+  "dur": 2.52
+ },
+ "outro#2": {
+  "file": "outro-2.mp3",
+  "dur": 1.632
+ },
+ "outro#3": {
+  "file": "outro-3.mp3",
+  "dur": 1.512
+ },
+ "outro#4": {
+  "file": "outro-4.mp3",
+  "dur": 1.8
+ },
+ "outro#5": {
+  "file": "outro-5.mp3",
+  "dur": 1.944
+ },
+ "outro#6": {
+  "file": "outro-6.mp3",
+  "dur": 1.512
+ },
+ "outro#7": {
+  "file": "outro-7.mp3",
+  "dur": 1.872
+ },
+ "outro#8": {
+  "file": "outro-8.mp3",
+  "dur": 2.28
+ },
+ "outro#9": {
+  "file": "outro-9.mp3",
+  "dur": 2.76
+ },
+ "outro#10": {
+  "file": "outro-10.mp3",
+  "dur": 1.584
+ },
+ "outro#11": {
+  "file": "outro-11.mp3",
+  "dur": 1.8
+ },
+ "outro#12": {
+  "file": "outro-12.mp3",
+  "dur": 1.512
+ },
+ "outro#13": {
+  "file": "outro-13.mp3",
+  "dur": 1.512
+ },
+ "outro#14": {
+  "file": "outro-14.mp3",
+  "dur": 1.704
+ },
+ "outro#15": {
+  "file": "outro-15.mp3",
+  "dur": 1.968
+ },
+ "outro#16": {
+  "file": "outro-16.mp3",
+  "dur": 2.088
+ },
+ "outro#17": {
+  "file": "outro-17.mp3",
+  "dur": 2.016
+ },
+ "outro#18": {
+  "file": "outro-18.mp3",
+  "dur": 2.184
+ },
+ "outro#19": {
+  "file": "outro-19.mp3",
+  "dur": 2.376
+ },
+ "outro#20": {
+  "file": "outro-20.mp3",
+  "dur": 2.832
+ },
+ "outro#21": {
+  "file": "outro-21.mp3",
+  "dur": 1.872
+ },
+ "outro#22": {
+  "file": "outro-22.mp3",
+  "dur": 2.424
+ },
+ "outro#23": {
+  "file": "outro-23.mp3",
+  "dur": 2.568
+ },
+ "outro#24": {
+  "file": "outro-24.mp3",
+  "dur": 2.544
+ },
+ "outro#25": {
+  "file": "outro-25.mp3",
+  "dur": 2.232
+ },
+ "outro#26": {
+  "file": "outro-26.mp3",
+  "dur": 2.016
+ },
+ "outro#27": {
+  "file": "outro-27.mp3",
+  "dur": 1.464
+ },
+ "outro#28": {
+  "file": "outro-28.mp3",
+  "dur": 1.536
+ },
+ "outro#29": {
+  "file": "outro-29.mp3",
+  "dur": 1.8
+ },
+ "outro#30": {
+  "file": "outro-30.mp3",
+  "dur": 1.464
+ }
+}

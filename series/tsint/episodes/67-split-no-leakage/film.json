@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "tsint-67-split-no-leakage",
   "kind": "series-episode",
-  "title": "切数据的三条规矩：一次 shuffle 就让你的 MSE 好一个数量级",
+  "title": "切数据的三条规矩：一次 shuffle 就让你的 MSE 好两个数量级",
   "series": {
     "id": "tsint",
     "order": 67,
@@ -19,13 +19,20 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-67",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_split_data.py"
+    }
+  ],
+  "derived": [
+    "data/split.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "publish": {
+    "coverFrame": 2200
+  }
 }
