@@ -262,8 +262,8 @@ export const GapTimeline: React.FC<{ width: number; height?: number; at?: number
         const isLast = i === 2;
         return (
           <g key={r.code}>
-            <text x={0} y={y + 18} fill={isLast ? C.coral : C.inkDim} fontFamily={FONT.mono} fontSize={FT.meta}>{r.code}</text>
-            <text x={0} y={y + 34} fill={C.inkFaint} fontFamily={FONT.sans} fontSize={FT.tiny}>{r.label}</text>
+            <text x={0} y={y + 14} fill={isLast ? C.coral : C.inkDim} fontFamily={FONT.mono} fontSize={FT.meta}>{r.code}</text>
+            <text x={0} y={y + 38} fill={C.inkFaint} fontFamily={FONT.sans} fontSize={FT.tiny}>{r.label}</text>
             {isLast ? (
               <g>
                 {s.segments.map((g, gi) => (
