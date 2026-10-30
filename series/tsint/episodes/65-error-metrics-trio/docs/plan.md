@@ -1,6 +1,6 @@
 # 65-error-metrics-trio - 误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动
 
-> status: draft (scenes, narration, stills approved; delivery building)
+> status: ready (delivery built 2026-10-30; 756.57 s, -15 LUFS, TP -2 dBFS)
 > chapter: ch08 | runtime target: 13 min | algorithms: 3
 
 ## Thesis
@@ -72,6 +72,10 @@
 - 证据 JSON：ts-base summary.json 与 inventory/evidence/ch8-error-metrics.json
 - 测试：cabal test 37 条全过（13 + 14 + 10）
 
-## Delivery
+## Delivery（2026-10-30）
 
-（make 完成后补：成片时长、响度、旁白、配乐复用、字幕/章节/封面帧与 QA。）
+- 成片：delivery/Tsint65ErrorMetricsTrio.mp4，756.57 s（22,697 帧 @30fps），H.264 + AAC；响度 I=-15 LUFS，TP=-2 dBFS。
+- 旁白：193 条，实测 560.0 s 语音，assets/audio/narration.wav 756.55 s（0 overrun）；TTS zh-CN-YunyangNeural。
+- 配乐：复用第 01 集 score.wav 822 s（seed=11 / energy=0.8 / bpm=84 / minor），混音 bed 增益 -4.5 dB，music gate 全过（speech -24.4、bed vs speech -8.5、full -30.12）。
+- 交付件：tsint-65.srt（193 cues，最长行 27 字符）、tsint-65.chapters.txt（8 章）、tsint-65.chapters.ffmeta.txt、cover.png（第 1937 帧）。
+- QA：still lint 4 帧 PASS（48/48/33/108 boxes）、luma flicker PASS（7 个切点，max 10.59）、loudnorm PASS。
