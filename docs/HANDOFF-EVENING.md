@@ -18,25 +18,28 @@
 
 ## 2. 状态（2026-10-30 18:0x 实测）
 
-- 成片 **14 / 74**：E01、E02、E03、E04、E65、E66、E67、E68、E69、E70–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **31 / 190** 模块、**441** 条断言（ch02 8 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E04 交付后）：video_project 本次 E04 交付提交（HEAD）、ts-base `65b3cab`、ts-admin `776f57e`、
+- 成片 **16 / 74**：E01–E06、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **37 / 190** 模块、**503** 条断言（ch02 14 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E06 交付后）：video_project `784074a`、ts-base `5303159`、ts-admin `30f9b27`、
   engine `856d804`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
 - E04 成片 `1480.90 s / 44,427 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，351 cue、8 章、封面 6860。
+- E05 成片 `1209.03 s / 36,271 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，309 cue、8 章、封面 1519。
+- E06 成片 `1374.73 s / 41,093 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，346 cue、8 章、封面 1450。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E05 `stationarize-three-ways`**（ch02，20 min，规格见 `ts-base/plans/series.json`）；
-  score 可直接复用 `out/e04-score-loop-48k.wav`（1560 s，够 E05–E07 的 20–25 min）。
+- 下一步入口：**E07 `fft-basis-patch`**（ch02 后段，23 min 左右）；
+  score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E07 若 ≤1560 s 直接 `--score=` 复用）。
 
 ## 3. 授权（增量自授权清单）
 
 本会话新增 **A5**（见 `SELF-AUTH.md`）：按用户 2026-10-30 晚指令，**恢复全系列生产**，
 无人值守逐集推进；仍未发布 B 站、仍只到 `ready`；每集验证后提交，提交说明附本文件与 A5 引用。
+E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A18），提交 body 同时引用对应条目。
 每个仓的每次提交都在 commit body 末尾带一行：
 
 ```
@@ -77,16 +80,22 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 64 集）
+## 5. 排期（production_order 剩余 58 集）
 
-E01–E05 与 E68–E70 已交付；ch02 前四集成片 18.42 / 21.67 / 24.68 / 20.15 min。按 `production_order` 继续：
-**E06 decomposition** → E07 fft → E08 adf → E09 mlp-tcn → … → E64 llm-side-adapters。
+E01–E06 与 E65–E74 已交付；ch02 前六集成片 18.42 / 21.67 / 24.68 / 20.15 / 22.91 min。按 `production_order` 继续：
+**E07 fft-basis-patch** → E08 adf → E09 mlp-tcn → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
 对数入口拒绝非正（`LogNonPositive i v`），绝不加 1；Z-score 用总体 σ（除以 T）、返回 `(z, μ, σ)`、σ=0 拒绝。
 数据在 `/root/ts-base/data/episodes/05-stationarize-three-ways/`（600519 730 行、000001 244 行、000693 4,487 含有 2,491 个零、
-随机游走 10,001 点、异方差 5,000 点）；成片 score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E06 若 ≤1560 s 直接 `--score=` 复用）。
+随机游走 10,001 点、异方差 5,000 点）。
+
+E06 冻结口径（E07 起复用）：趋势核 `[1/(2m), 1/m, …, 1/(2m)]`，端点返回 `Nothing`，有效区间 `span = (m div 2, n − m div 2 − 1)`；
+加法分解 ΣS=0、乘法分解 mean(S)=1；错误 `DecompBadPeriod / DecompTooShort / DecompNonPositive i v / DecompZeroSeasonal i v`，门槛 `m ≥ 2 且 n ≥ 2m+1`；
+两个强度指标的分母**各去各的**：`F_trend = max 0 (1 − var(R)/var(X−S))`、`F_season = max 0 (1 − var(R)/var(X−T))`，用总体方差、分母退化返回 `Nothing` 对外取 0，乘法口径在 log 尺度上算。
+数据在 `/root/ts-base/data/episodes/06-decomposition-and-strength/`（600519/000001 各 730 行、5 分钟 240 根、上证 2015 平盘 120 行、synthetic 240 行）；
+成片 score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E07 若 ≤1560 s 直接 `--score=` 复用）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -131,6 +140,10 @@ E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -
 - `films.mjs check --strict` 对 mount 哈希敏感：手改挂载点后必须重新 `sync`。
 - TSX 版心是 `G.pad = SPACING.pageMargin = 72` → 内容宽 **1776**（不是 1856）；三卡行（600×3+gap26）必须缩到 574。
 - TTS 单条重录的键是 `scene#index`（如 `--only 'definitions#35'`），写成 `definitions-35` 会 synth 0 条再因缺 clip 报错。
+- `dump_script.mjs` 把 `lines.json` 写进**引擎**的 `data/<film-id>/`，不是 pack；TTS 在 pack 里跑，必须把这一个文件 `cp` 回 pack 的 `data/`，否则 `FileNotFoundError: 'data/lines.json'`。
+- film 声明了 `narration` 就必须真有 `assets/audio/narration.wav`（gitignore）：先 `python3 build/make_narration.py` 拼，再 make；否则 content check 报 `narration is missing`。
+- 封面帧不要落在 `Build at` 的起点：`coverFrame` 取该页 gate 全部结束之后、且字幕间隙内（E06 的 1250 正好是 `.26` 起点，右栏全空；1450 才完整）。
+- 静帧要看**页中点帧**：`Pages at` 的下一段起点前的中点必须有内容，gate 晚于中点就会出现「静帧空白」假象；页多时宁可拆页（E06 verification 5→6 页）。
 - 新集 score 不要直接重渲染（1210 s 单线程 >1 分钟仍未出、30 分钟级）；先 `--score=` 复用已有最长 bed 再 atrim。
 - WSL 冷启动后 Docker 容器不自动起：`docker start haskell-ts`，再 `cabal build all`。
 

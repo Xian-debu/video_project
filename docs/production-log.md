@@ -147,3 +147,15 @@
 - 偏差: 计划 20 min，实做 20.15 min（+0.15 min）；旁白 309 条、语音 908 s，密度高于 E04（351 条/1,142 s）以外的最低值，但仍保住 20 min
 - 备注: ch02 第四集；下一步 E06 `decomposition`（分解：趋势/季节/残差，书 2.4 之后）。**E04 bed 1560 s 已够 E06 的 1300 s 左右，继续 `--score=` 复用；新集超过 1560 s 才需重建 bed**
 
+## E06 decomposition-and-strength — 2026-10-30
+- ts-base: 3bce049（ClassicalDecomp/TrendStrength/SeasonalStrength 三模块 + 28 断言，总套件 503；SELF-AUTH A18 d0fb444）→ 3c7d013（茅台 730 行分解 + 48 相位 profile + synthetic 240 行 + summary.json）→ 7fa2e6d（`app/Ch06DecompEvidence.hs` + `evidence-ch06-decomp`，39 条检查 13/12/14）→ 83c8bfb（证据输出 + 三份 evidence 快照）→ 3a97ccd（修 E05 证据 writer 的 tests JSON 缺 `}`）→ 5303159（manifest 记 exporter 提交 30f9b27）
+- ts-admin: 30f9b27（`export_ch02_decomp.py`：600519 730 行 / 000001 730 行 / 5 分钟 240 根 / 上证 2015 平盘 120 行）
+- video_project: b59fb85（pack/scenes/script/346 行讲稿/narration/plan）→ **784074a**（本次 delivery 提交：cover.png 157,721 B / srt / chapters / film ready + coverFrame 1450）
+- 引擎: 无（复用 E04 1560 s bed `--score=out/e04-score-loop-48k.wav`；先在前台跑被 120 s 超时截断，改后台 job 重跑）
+- 成片: 1,374.73 s（22:54.73），−15 LUFS，TP −2 dBFS，41,093 帧，8 场；346 条旁白，语音 1,040.5 s，字幕跨度 1,372.5 s（1.2→1372.52）
+- 流水线: 8 段渲染；musicGain −4.5 dB、ducked 50.4%、peak −1 dBFS；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.92、bed vs speech −9.5、gap audible −33.42；flicker mean|d| 0.0179、p99 0.2936、max 10.13、cuts 7；346 cue 无一换行、最长 33 字；8 章；封面 frame 1450（48.33 s，茅台曲线 + 两个强度卡、无字幕）
+- 卡点: ① dump 的 `lines.json` 落在**引擎** `data/tsint-06-…/`，pack 里没有 → TTS 报 `FileNotFoundError: 'data/lines.json'`，必须 `cp` 回 pack `data/`；② film 声明 narration 但没有 narration.wav → check 报 `narration is missing`，先跑 `build/make_narration.py`（131,392,364 B / 1,368.67 s）；③ `DecompStat` 上季节字段叫 `seasonal` 不是 `season`（tsc 6 处报错）；④ 噪声种子 44 的 ac1=0.203 把「纯噪声」趋势强度抬到 0.416，换 seed 45（ac1=0.012，趋势 0.2747）并把这次踩坑独立成 verification 第 5 页；⑤ 封面帧 1250 正好是 Stats `Build at=.26` 的起点，右栏全空 → 改 1450；⑥ make 的 content check 依旧要求先 commit 再 sync
+- 返工: 静态页 3 轮（首轮 28 帧抓 6 处：problem p3 profile 图淡入过晚、两处 Bars 标签折行、implementation 签名 `\n` 被折叠、verification/boundary/outro 的 goal 与 title 重复；次轮修 gates；终轮把 verification 拆成 6 页并把种子坑独立）；讲稿一次成型无 TTS 重录；make 1 次 PASS
+- 偏差: 计划 22 min，实做 22.91 min（+0.91 min）；29 页（verification 6 页）；旁白 346 条、语音 1,040 s；证据 39 条超过计划的 30 条
+- 备注: ch02 第五集；下一步 E07 `fft-basis-patch`（频域与分块：FFT / 基展开 / Patch，三种换坐标系的方式）。**E04 bed 1560 s 可用到 E07 的 23 min 左右，再长就需重建 bed**
+
