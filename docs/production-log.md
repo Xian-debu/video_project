@@ -135,3 +135,15 @@
 - 偏差: 计划 24 min，实做 24.68 min（+0.68 min）；旁白 351 条、语音 1,142 s；证据从 18 条扩到 24 条（日内口径重做）
 - 备注: ch02 第三集；下一步 E05 `stationarize-three-ways`（三种平稳化：差分、对数、Z-score，书 2.4）
 
+## E05 stationarize-three-ways — 2026-10-30
+- ts-base: 0a2d412（Diff/LogT/ZScore 三模块 + 34 断言，总套件 475；SELF-AUTH A17）→ 8c454dd（`app/Ch05StationarizeEvidence.hs` + `evidence-ch05-stationarize`，31 条检查 16/10/5）→ 118b29b（三只日线 + summary.json + 合成序列）
+- ts-admin: eeb23ac（`inventory/scripts/export_ch05_stationarize.py`：600519 730 行 / 000001 244 行 / 000693 4,487 行含 2,491 零 / 随机游走 10,001 点 / 异方差 5,000 点）
+- video_project: 01317d9（pack/scenes/script/派生数据/plan）→ d34d3db（「一半」改「过半」+ 重录旁白 + coverFrame 1519）→ **514cc7a**（本次 delivery 提交：cover.png / srt / chapters / film ready）
+- 引擎: 无（score 由 E04 1560 s bed `--score=out/e04-score-loop-48k.wav` 复用；新谱 1210 s 单线程跑了 1 分多钟未完成即杀掉，避免重蹈 30 分钟）
+- 成片: 1,209.03 s（20:09.03），−15 LUFS，TP −2 dBFS，36,271 帧，8 场；309 条旁白，语音 908.1 s，字幕跨度 1,016.3 s（1.2→1206.83）
+- 流水线: 8 段一次性渲染（0 reused / 8 rendered）；musicGain −4.5 dB、ducked 49.2%、peak −1.11 dBFS；stem 门 full −25.1 / audible 63.0% / sub 6.8%；mix 门 speech −23.49、bed vs speech −9.9、gap audible −33.37；flicker mean|d| 0.0164、p99 0.2749、max 7.74、cuts 7；stills lint PASS（4 帧 + 28 张全页复核）；309 cue 无一换行、最长 26 字；8 章；封面 frame 1519（50.63 s，茅台曲线页、无字幕）
+- 卡点: ① still lint 首轮满屏越界——真实 `PAD=72`/`CW=1776`，我按 96 排版，右列 `PAD+1220+636`、三卡行 1852 全部出界，逐处改 1776/574/580/592/832；② `implementation p1` 右卡「看不见」其实 `Build at=lf(0.18)` 正好从页中点开始淡入，非缺陷；③ TTS `--only` 的键是 `scene#index`（`definitions#35`），写成 `definitions-35` 会 synth 0 条再因缺 clip 失败；④ make 的 content check 依旧要求 commit 后先 `sync`；⑤ 直接重渲染 1210 s score 太慢，复用 E04 bed
+- 返工: 1 轮布局（8 处宽度/间距修正）+ 1 次文案（2491/4487=55.5%，「一半」→「过半」并重录 1 条旁白）；make 1 次 PASS
+- 偏差: 计划 20 min，实做 20.15 min（+0.15 min）；旁白 309 条、语音 908 s，密度高于 E04（351 条/1,142 s）以外的最低值，但仍保住 20 min
+- 备注: ch02 第四集；下一步 E06 `decomposition`（分解：趋势/季节/残差，书 2.4 之后）。**E04 bed 1560 s 已够 E06 的 1300 s 左右，继续 `--score=` 复用；新集超过 1560 s 才需重建 bed**
+

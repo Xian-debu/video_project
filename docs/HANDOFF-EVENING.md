@@ -79,10 +79,14 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
 
 ## 5. 排期（production_order 剩余 64 集）
 
-E02/E03/E04 已交付（ch02 八算法 + 证据 + 成片 18.42/21.67/24.68 min）。按 `production_order` 继续：
-**E05 stationarize** → E06 decomposition → E07 fft → E08 adf →
-E09 mlp-tcn → … → E64 llm-side-adapters。每章开工前先读该章 `plans` 的 unit 清单与
-`ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
+E01–E05 与 E68–E70 已交付；ch02 前四集成片 18.42 / 21.67 / 24.68 / 20.15 min。按 `production_order` 继续：
+**E06 decomposition** → E07 fft → E08 adf → E09 mlp-tcn → … → E64 llm-side-adapters。
+每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
+
+E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
+对数入口拒绝非正（`LogNonPositive i v`），绝不加 1；Z-score 用总体 σ（除以 T）、返回 `(z, μ, σ)`、σ=0 拒绝。
+数据在 `/root/ts-base/data/episodes/05-stationarize-three-ways/`（600519 730 行、000001 244 行、000693 4,487 含有 2,491 个零、
+随机游走 10,001 点、异方差 5,000 点）；成片 score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E06 若 ≤1560 s 直接 `--score=` 复用）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -125,9 +129,12 @@ E09 mlp-tcn → … → E64 llm-side-adapters。每章开工前先读该章 `pla
 - 混音采样率 44.1 vs 48 kHz 必须重采样；score 超过 822 s 用交叉淡化拼接而不是重渲染
   （重渲染 1365 s 需 >14 min，且易 OOM）。
 - `films.mjs check --strict` 对 mount 哈希敏感：手改挂载点后必须重新 `sync`。
+- TSX 版心是 `G.pad = SPACING.pageMargin = 72` → 内容宽 **1776**（不是 1856）；三卡行（600×3+gap26）必须缩到 574。
+- TTS 单条重录的键是 `scene#index`（如 `--only 'definitions#35'`），写成 `definitions-35` 会 synth 0 条再因缺 clip 报错。
+- 新集 score 不要直接重渲染（1210 s 单线程 >1 分钟仍未出、30 分钟级）；先 `--score=` 复用已有最长 bed 再 atrim。
 - WSL 冷启动后 Docker 容器不自动起：`docker start haskell-ts`，再 `cabal build all`。
 
-## 8. 断线恢复（60 秒）
+## 9. 断线恢复（60 秒）
 
 ```bash
 cd /root/video_project && git status --short && node tools/status.mjs --md | grep -c ready
