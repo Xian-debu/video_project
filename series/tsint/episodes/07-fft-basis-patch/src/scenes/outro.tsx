@@ -54,7 +54,7 @@ export const SOutro: React.FC = () => {
           <div style={{ position: "absolute", left: PAD, top: 236, fontFamily: FONT.sans, fontSize: FT.h2, color: C.inkDim }}>
             换坐标之后，简单和贵，各自换了地方。
           </div>
-          <Build at={lf("outro", 0.39)}>
+          <Build at={lf("outro", 0.36)}>
             <div style={{ position: "absolute", left: PAD, top: 318, display: "flex", gap: 26 }}>
               <Card label="FFT" accent={C.cyan} style={{ width: 574, height: 300 }}>
                 <div style={{ fontFamily: FONT.sans, fontSize: FT.h2, color: C.cyan }}>频率变简单</div>
@@ -87,7 +87,7 @@ export const SOutro: React.FC = () => {
           <div style={{ position: "absolute", left: PAD, top: 236, fontFamily: FONT.sans, fontSize: FT.h2, color: C.inkDim }}>
             下一集的问题。
           </div>
-          <Build at={lf("outro", 0.58)}>
+          <Build at={lf("outro", 0.55)}>
             <div style={{ position: "absolute", left: PAD, top: 310, width: 1776 }}>
               <Card label="留给下一集" accent={C.cyan} style={{ height: 230 }}>
                 <div style={{ fontFamily: FONT.sans, fontSize: FT.h1, color: C.ink }}>形状一样、长度一样的两条序列，频谱一定一样吗？</div>

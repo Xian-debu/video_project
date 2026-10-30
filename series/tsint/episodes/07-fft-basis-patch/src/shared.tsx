@@ -150,7 +150,8 @@ export const Pages: React.FC<{ id: string; at: number[]; children: React.ReactNo
         const b = (i + 1 < at.length ? at[i + 1] : 1) * dur;
         const last = i === children.length - 1;
         const inO = interpolate(f, [a, a + fade], [0, 1], clamp);
-        const outO = last ? 1 : interpolate(f, [b - fade, b], [1, 0], clamp);
+        // 页间是交叉淡变：退场页在新页进场期间继续显示，避免边界处闪黑。
+        const outO = last ? 1 : interpolate(f, [b, b + fade], [1, 0], clamp);
         const o = Math.min(inO, outO);
         if (o <= 0.001) return null;
         return <div key={i} style={{ position: "absolute", inset: 0, opacity: o }}>{child}</div>;
