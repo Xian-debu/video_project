@@ -98,3 +98,16 @@
 - 返工: 3 次（首轮静帧版式、intuition 示意图、definitions 卡标签）
 - 偏差: 计划 16 min，实做 16.02 min，几乎命中
 - 备注: ch08 第五集，ch08 全部成片；下一步按 production_order 回到 E02 `missing-values-three-ways`（ch01）
+
+## E02 missing-values-three-ways — 2026-10-30
+- ts-base: eb38253（Locf/StatImp/LinInterp 三模块 + 36 断言，总套件 367；SELF-AUTH A12）→ 164e440（三只 qfq 日线 + manifest 279,873 B）→ 0b5175f（`app/Ch02ImputeEvidence.hs` + `evidence-ch02-impute` 分支，49 条运行时检查；SELF-AUTH A13）
+- ts-admin: da0e0c0（`inventory/scripts/export_ch02_missing.py`，sh600519 5,834 行 / sz000001 5,902 行 / sz000693 1,996 行）
+- video_project: e395e08（pack/scenes/script/派生数据）→ 9b0cb5c（narration 拼接脚本）→ fb64aa6（ready + coverFrame 4480）→ 0a247ad（断言口径修正）→ 910da65（时间轴标签行距）→ 1bc9abd（narration 48 kHz）→ 本次 delivery/文档提交
+- 引擎: 无（score 由 E69 961.34 s bed 两份 6 s 交叉淡化后 atrim 1105.01 s、48 kHz，`--score=` 复用；1105 s 直接重渲染 >20 min 且未完成）
+- 成片: 1,105.01 s（18.42 min），−15 LUFS，TP −2 dBFS，33,150 帧，8 场；298 条旁白，918.3 s 字幕跨度
+- 流水线: 8 段分开渲染（segments reused 8/rendered 0，树哈希未变）；mix musicGain −4.5 dB、ducked 48.2%、peak −1.13 dBFS；flicker mean|d| 0.0195、p99 0.2729、max 11.63、cuts 7；298 cue 无一换行、最长 25 字；8 章；封面 frame 4480（149.33 s，三数页、无字幕）
+- 卡点: ① film 声明 narration 但文件不存在——先补 `build/make_narration.py` 按 `lines.json` 的 start 把 298 条 clip 拼成 narration.wav（gitignore，不入库）；② make 的 content check 连未跟踪脚本也算 dirty；③ 提交后 HEAD 移动必须重新 sync；④ 直接重渲染 1105 s score 单线程跑 20 min 未完成——改用 E69 bed 交叉淡化拼接；⑤ still lint 在 f45 判 ticker 与名称行重叠 29%（>25% 上限）——行距 16→24 px；⑥ mix 拒绝 24 kHz 旁白对 48 kHz bed——make_narration 输出改 48 kHz
+- 返工: 5 次 make（4 次失败 + 1 次 PASS）；首轮 27 张静帧版式修正 5 处（problem 标题换行、WindowPlot y 轴被全序列均价 495.16 拉爆、implementation 代码块过晚、StatImp 卡溢出、boundary 三卡）
+- 偏差: 计划 19 min，实做 18.42 min（−0.58 min）；旁白 298 条、语音 813 s，密度低于 E68
+- 备注: ch02 第一集；下一步 E03 `sma-wma-ses`（SMA/WMA/SES，α=2/(N+1) 的滞后等价，21 min）。**下一集起 score 继续复用 `out/e02-score-loop-48k.wav`（1105 s，够 E03 的 1260 s 不够——E03 需先重建 ≥1300 s 的 bed）**
+

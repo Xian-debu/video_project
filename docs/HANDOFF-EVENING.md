@@ -18,17 +18,18 @@
 
 ## 2. 状态（2026-10-30 18:0x 实测）
 
-- 成片 **11 / 74**：E01、E65、E66、E67、E68、E69、E70–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **23 / 190** 模块、**331** 条断言（ch09 11/142；ch08 E65 3/37、E66 3/46、E67 3/50、E68 3/66、E69 1/23）。
-- 四仓 HEAD（E68 完成后）：video_project `32290a0`、ts-base `255dc3f`、ts-admin `a37e35a`、
+- 成片 **12 / 74**：E01、E02、E65、E66、E67、E68、E69、E70–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **26 / 190** 模块、**367** 条断言（ch02 3/36；ch08 13/222；ch09 11/142）。
+- 四仓 HEAD（E02 交付前）：video_project `1bc9abd`、ts-base `0b5175f`、ts-admin `da0e0c0`、
   engine `856d804`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
-- E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3900。
+- E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
+- E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E02 `missing-values-three-ways`**（ch01，production_order 中 69 之后 71–74 已完成，
-  第一个未生产集是 E02；规格见 `ts-base/plans/series.json`；ch08 五集已全成片）。
+- 下一步入口：**E03 `sma-wma-ses`**（ch03，规格见 `ts-base/plans/series.json`）；
+  预期 21 min（1260 s）——现有 `out/e02-score-loop-48k.wav` 只有 1105 s，**先按 E67 方式重建 ≥1300 s bed**。
 
 ## 3. 授权（增量自授权清单）
 
@@ -76,10 +77,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
 
 ## 5. 排期（production_order 剩余 64 集）
 
-ch08 收尾：E68 已完成；**E69 hexbin-balance-audit**（共用 822 s score 与 ch08 视觉语法）。随后按 `production_order` 顺序：E02 missing-values → E03 sma-wma-ses →
-E04 holt → E05 stationarize → E06 decomposition → E07 fft → E08 adf → E09 mlp-tcn → … →
-E64 llm-side-adapters。每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，
-按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
+E02 已交付（ch02 三算法 + 证据 + 成片 18.42 min）。按 `production_order` 继续：
+**E03 sma-wma-ses** → E04 holt → E05 stationarize → E06 decomposition → E07 fft → E08 adf →
+E09 mlp-tcn → … → E64 llm-side-adapters。每章开工前先读该章 `plans` 的 unit 清单与
+`ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
