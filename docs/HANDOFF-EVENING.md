@@ -18,15 +18,16 @@
 
 ## 2. 状态（2026-10-30 18:0x 实测）
 
-- 成片 **9 / 74**：E01、E65、E66、E67、E70–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **20 / 190** 模块、**275** 条断言（ch09 11/142；ch08 E65 3/37、E66 3/46、E67 3/50）。
-- 四仓 HEAD（开工前）：video_project `2cbad83`、ts-base `b97c7db`、ts-admin `b071b6f`、
+- 成片 **10 / 74**：E01、E65、E66、E67、E68、E70–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **22 / 190** 模块、**308** 条断言（ch09 11/142；ch08 E65 3/37、E66 3/46、E67 3/50、E68 3/66）。
+- 四仓 HEAD（E68 完成后）：video_project `32290a0`、ts-base `255dc3f`、ts-admin `a37e35a`、
   engine `856d804`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
+- E68 成片 `1123.81 s / 33714 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E68 `fewshot-and-cost`**（规格见 `ts-base/plans/series.json` 第 68 项，
-  设计决定已冻结在本文件 §6）。
+- 下一步入口：**E69 `hexbin-balance-audit`**（规格见 `ts-base/plans/series.json` 第 69 项，
+  设计要点：PCA 二维全秩旋转 + 六边形网格 + 集中度；E68 冻结决定见 §6，E69 冻结决定见 §7）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -72,10 +73,9 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 65 集）
+## 5. 排期（production_order 剩余 64 集）
 
-ch08 收尾：**E68 fewshot-and-cost → E69 hexbin-balance-audit**（同批，共用 822 s score 与
-ch08 视觉语法）。随后按 `production_order` 顺序：E02 missing-values → E03 sma-wma-ses →
+ch08 收尾：E68 已完成；**E69 hexbin-balance-audit**（共用 822 s score 与 ch08 视觉语法）。随后按 `production_order` 顺序：E02 missing-values → E03 sma-wma-ses →
 E04 holt → E05 stationarize → E06 decomposition → E07 fft → E08 adf → E09 mlp-tcn → … →
 E64 llm-side-adapters。每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，
 按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
@@ -96,7 +96,21 @@ E64 llm-side-adapters。每章开工前先读该章 `plans` 的 unit 清单与 `
   次取 7 次中位数）、峰值内存（`+RTS -s` 的 max residency，不是 GC 前 heap）；三规模 MLP
   8/32/128 画"成本-误差"散点，**效率必须与精度一起报**。
 
-## 7. 已知坑（上一会话踩过，直接规避）
+## 7. E69 已冻结的设计决定（开工即用，避免重新发明）
+
+- **窗口 = 32 步 × 2 维特征**：单票 32 个交易日窗口压成 (均值 μ, 波动 σ) 两点特征 → 5 万窗口
+  （20 只 × 约 2,500 天）。这样 PCA 的协方差是 2×2，**特征值有闭式解、全秩旋转可逆**，
+  才可能满足"反变换重构 <1e-10"；书里并未给公式（B 级证据，片子标注"本仓实现"）。
+- **标准化**：逐维 z-score 后再 PCA，否则价格量级会垄断第一主成分（impl_notes 第 2 条）。
+- **hexbin 坐标**：中心 = (col + 0.5·(row mod 2), row·√3/2)，用固定公式而不是取整；
+  相邻 bin 不能错位。空 bin 与单样本 bin 分开统计（长尾）。
+- **集中度定义**：按 bin 样本数降序，取前 20% 的 bin，计算它们覆盖的样本比例；
+  阈值 60% 是**本仓设定**（书中无此数），画面与 plan 都要标注。
+- **对照**：20 只股票 panel 版本 vs 只用 3 只蓝筹（如 600519/601318/600036）版本，比较集中度。
+- 数据 ≤5 MB：ts-admin 只导 close（20 票 × 约 2,500 行），窗口与 PCA 在 Haskell 里算；
+  散点图在 pack 里下采样到 5,000 点，hexbin 网格 40×40 全量入 pack。
+
+## 8. 已知坑（上一会话踩过，直接规避）
 
 - 容器 12 GiB 上限挡宿主 OOM；但**无限列表仍会 OOM-kill 测试**（`[0, 0 .. 6]` 步长 0），
   测试里永远写有限列表。

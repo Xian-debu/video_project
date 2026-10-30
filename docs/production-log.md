@@ -75,3 +75,14 @@
 - 偏差: 计划 22 min，实做 22.75 min（+45 s）；全片 428 条旁白，语音密度高于 E66
 - 备注: ch08 第三集；首次全自动封面帧；下一步 E68 按 production_order（用户已要求后续视频暂停）
 
+## E68 fewshot-and-cost — 2026-10-30
+- ts-base: 267b0c2（FewShotSampler / Efficiency + 33 断言，总套件 308）→ 0fca48c（1,200 点日线 CSV + manifest）→ f49c7c1（MLP 严格更新、推理计时去共享）→ e73c193（证据元数据修剪 + UTC runAt）→ 255dc3f（证据快照：22 + 13 条检查）
+- ts-admin: a37e35a（export_ch08_fewshot.py，000001.SZ 1,200 点，只读 Lake）
+- video_project: 856f0c8（pack/scenes/script/narration timing）→ d0bdb6d（静帧复核后版式修正）→ 32290a0（delivery 导出）→ 本次文档提交
+- 引擎: 无（复用 E66 822 s score；两份 6 s acrossfade 后 atrim 1,123.81 s、48 kHz，make 全阶段 PASS）
+- 成片: 1,123.81 s（18.73 min），−15 LUFS，TP −2 dBFS，33,714 帧，8 场；316 条旁白，927.2 s 语音
+- 流水线: 8 段分开渲染；stills 45/3,371/15,171/26,971；mix musicGain −4.5 dB、ducked 46.3%；flicker mean|d| 0.0118、p99 0.1078、max 12.16、cuts 7；316 cue 无一换行、最长 29 字；8 章；封面 frame 2200（73.33 s）
+- 卡点: ① TTS 只装在 /root/.venvs/tts（host python3 无 edge_tts）；② dump_script 必须跑引擎副本，否则 ../../data 落到内容仓；③ 计划手算 337 与"输入 1 维"矛盾（1 维 = 321），改用 2 个滞后输入并在画面并列 321/337；④ 两个反例（点×均匀、点×随机）由库直接 error，证据生成器本地重建索引；⑤ 128 维 MLP 同预算 MSE 反而最大（0.0100），保留为结论并改断言
+- 返工: 3 次（首轮静帧：单位缺失/Lazy 倍数措辞/右栏空白；二轮：intuition 行距、definitions 卡高与 Quote 位置、outro 拍点）
+- 偏差: 计划 16 min，实做 18.73 min（+2.73 min）；旁白 316 条、语音 927 s，密度高于 E67
+- 备注: ch08 第四集；下一步 E69 hexbin-balance-audit（PCA + Hexbin 均衡性，书 p.198 图 8.2，1 算法，16 min）
