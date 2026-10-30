@@ -293,6 +293,12 @@ export function validateFilm(film, ctx, errors, warnings) {
   if (relSafe(film.delivery, "delivery", errors) && film.delivery !== "delivery") err('delivery must be "delivery"');
   if (!Array.isArray(film.docs)) err("docs must be an array");
   else film.docs.forEach((d, i) => relSafe(d, `docs[${i}]`, errors));
+  if (film.publish != null) {
+    if (typeof film.publish !== "object" || Array.isArray(film.publish)) err("publish must be an object");
+    else if (!Number.isInteger(film.publish.coverFrame) || film.publish.coverFrame < 0) {
+      err("publish.coverFrame must be a non-negative integer");
+    }
+  }
 
   const paths = film.paths;
   if (!paths || typeof paths !== "object") err("paths is required");
@@ -304,7 +310,7 @@ export function validateFilm(film, ctx, errors, warnings) {
   if (film.material != null && film.material !== "required" && film.material !== "optional") {
     err('material must be "required" or "optional"');
   }
-  const allowed = new Set(["schemaVersion","id","kind","title","composition","entry","exports","width","height","fps","prefix","status","paper","claims","derive","derived","derivedNote","narration","audio","delivery","docs","bili","assetsStatus","paths","series","notes","material"]);
+  const allowed = new Set(["schemaVersion","id","kind","title","composition","entry","exports","width","height","fps","prefix","status","paper","claims","derive","derived","derivedNote","narration","audio","delivery","docs","publish","bili","assetsStatus","paths","series","notes","material"]);
   for (const k of Object.keys(film)) if (!allowed.has(k)) warn(`unknown field "${k}"`);
 }
 
