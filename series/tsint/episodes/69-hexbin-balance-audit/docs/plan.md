@@ -1,6 +1,6 @@
 # 69-hexbin-balance-audit - 你的基准数据集均衡吗：PCA 投影 + Hexbin 密度图
 
-> status: draft (pack scaffolding, data + algorithms ready)
+> status: ready — rendered 961.33 s (16:01), −15 LUFS / TP −2 dBFS
 > chapter: ch08 | runtime target: 16 min | algorithms: 1
 
 ## Thesis
@@ -82,4 +82,7 @@
 
 ## Delivery
 
-- 待渲染：8 场脚本与画面已就位；TTS 后重 dump 时间线，再跑 make。
+- 成片：delivery/Tsint69HexbinBalanceAudit.mp4，961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS。
+- 交付件：tsint-69.srt（247 cue，0 换行，最长 32 字）、tsint-69.chapters.txt（8 章，961.34 s）、cover.png（frame 3900）。
+- 静帧复核三轮：问题场结论条下移避免压字幕；直觉场补轴向坐标示意图；定义场第三张卡标为「下一节」预览。
+- make 全阶段 PASS（content commit 记录在 delivery/report.json）。
