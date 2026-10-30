@@ -111,3 +111,16 @@
 - 偏差: 计划 19 min，实做 18.42 min（−0.58 min）；旁白 298 条、语音 813 s，密度低于 E68
 - 备注: ch02 第一集；下一步 E03 `sma-wma-ses`（SMA/WMA/SES，α=2/(N+1) 的滞后等价，21 min）。**下一集起 score 继续复用 `out/e02-score-loop-48k.wav`（1105 s，够 E03 的 1260 s 不够——E03 需先重建 ≥1300 s 的 bed）**
 
+## E03 sma-wma-ses — 2026-10-30
+- ts-base: 39c2fa7（Sma/Wma/Ses 三模块 + 41 断言，总套件 408；SELF-AUTH A14）→ eaa7367（茅台日线 730 行 + 5 分钟线 240 行）→ f7b469a（`app/Ch03SmoothingEvidence.hs` + `evidence-ch03-smoothing` 分支，summary.json + 三份证据快照 12/13/16）
+- ts-admin: 243fd60（`inventory/scripts/export_ch03_smoothing.py`，sh600519 2019-01-02–2021-12-31 前复权 730 行；5 分钟线 240 根）
+- video_project: b30d06d（pack/scenes/script/派生数据）→ 本次 delivery/文档提交
+- 引擎: 无（复用 E69 961.34 s bed 两份 6 s acrossfade + atrim 1320 s、48 kHz，`--score=` 复用）
+- 成片: 1,299.93 s（21:39.93），−15 LUFS，TP −2 dBFS，38,998 帧，8 场；343 条旁白，语音 968.4 s，字幕跨度 1,088.5 s
+- 流水线: score 复用（音乐门 stem PASS：full −25.09 / audible 63% / sub 7%）；8 段分开渲染；mix musicGain −4.5 dB、ducked 48.5%、peak −1.0 dBFS；mix 门 speech −23.38、bed vs speech −9.7、gap audible −33.1；flicker mean|d| 0.0171、p99 0.2442、max 9.38、cuts 7；343 cue 无一换行、最长 25 字；8 章；封面 frame 5610（187.00 s，三数页、无字幕）
+- 卡点: ① engine 的 `src/tsint-03-sma-wma-ses` 是 sync 出来的真实拷贝，改 pack 后不 sync 会渲染旧代码；② summary.json 字段名与派生层不一致（`daily_compare`→`dailyCompare`、`corr_sma20_ses21`、`max_diff_first5`/`max_diff_after100`、α 在 `M.bridge.alpha_for_20`）；③ `fmtE(0)` 走 `Math.log10(0)` 出 NaN，验证页出现「差是 NaN e NaN」——加 0 分支；④ 两处 Mono 内联（推导行、`alphaForWindow`/`windowForAlpha`）挤成一行，改 block div；⑤ make 的 content check 连未提交 docs/派生都算 dirty；⑥ 首轮 make 被外层命令超时截断，改后台日志重跑才拿到全阶段 PASS
+- 返工: 3 轮静帧（29 张首轮抓 6 处版式；次轮修 verification 卡高、StepPlot 说明条；终轮复核 3 页），无内容重写
+- 偏差: 计划 21 min，实做 21.67 min（+0.67 min）；旁白 343 条、语音 968 s，密度高于 E02
+- 备注: ch02 第二集；下一步 E04 `stationarity-and-differencing`（平稳性与差分，书 2.4）
+
+

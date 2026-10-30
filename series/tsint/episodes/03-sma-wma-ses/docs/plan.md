@@ -1,6 +1,6 @@
 # E03 · 滑动平均与一次指数平滑：N 和 α 是同一把尺子的两种刻度
 
-status: production — target ~1280 s (21 min), −15 LUFS / TP −2 dBFS
+status: ready — rendered 1299.9 s (21:40), −15 LUFS / TP −2 dBFS
 series: tsint · ch02 · episode 03
 book: 《AI for Trading》第 2 章，印刷 p.21–22（PDF p.29–30）
 
