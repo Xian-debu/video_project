@@ -15,11 +15,11 @@ export const SDefinitions: React.FC = () => {
 
       <div style={{ position: "absolute", left: PAD, top: 292, display: "flex", gap: 24 }}>
         <Build at={b(0)}>
-          <Card label="绝对误差 · 式 8.1 / 8.5 / 8.6" accent={C.cyan} pad={20} style={{ width: w, height: 584 }}>
+          <Card label="绝对误差 · 式 8.1 / 8.5 / 8.6" accent={C.cyan} pad={20} style={{ width: w, height: 620 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <Math tex={String.raw`\mathrm{MSE}=\frac{1}{h}\sum_{k=1}^{h}(F_k-Y_k)^2`} block size={28} color={C.cyan} align="left" />
-              <Math tex={String.raw`\mathrm{RMSE}=\sqrt{\mathrm{MSE}}`} block size={28} color={C.cyan} align="left" />
-              <Math tex={String.raw`\mathrm{MAE}=\frac{1}{h}\sum_{k=1}^{h}|F_k-Y_k|`} block size={28} color={C.cyan} align="left" />
+              <Math tex={String.raw`\mathrm{MSE}=\frac{1}{h}\sum_{k=1}^{h}(F_k-Y_k)^2`} block size={24} color={C.cyan} align="left" />
+              <Math tex={String.raw`\mathrm{RMSE}=\sqrt{\mathrm{MSE}}`} block size={24} color={C.cyan} align="left" />
+              <Math tex={String.raw`\mathrm{MAE}=\frac{1}{h}\sum_{k=1}^{h}|F_k-Y_k|`} block size={24} color={C.cyan} align="left" />
             </div>
             <div style={{ marginTop: 18, borderTop: "1px solid " + C.panelLine, paddingTop: 14 }}>
               <Body size={FT.meta} color={C.inkDim}>{"MSE 按平方罚，一个 4 倍误差会变成 16 倍。"}</Body>
@@ -31,12 +31,11 @@ export const SDefinitions: React.FC = () => {
               <div style={{ fontFamily: FONT.mono, fontSize: FT.meta, color: C.inkDim, marginTop: 6 }}>{"1 1 1 1  →  MSE 1 / MAE 1"}</div>
               <div style={{ fontFamily: FONT.mono, fontSize: FT.meta, color: C.inkDim, marginTop: 4 }}>{"4 0 0 0  →  MSE 4 / MAE 1"}</div>
             </div>
-            <div style={{ marginTop: 14 }}><K>{"h = 预测步数 · F = 预测 · Y = 真实"}</K></div>
           </Card>
         </Build>
 
         <Build at={b(17)}>
-          <Card label="百分比 · 式 8.3 / 8.4 · MAPE 同形" accent={C.amber} pad={20} style={{ width: w, height: 584 }}>
+          <Card label="百分比 · 式 8.3 / 8.4 · MAPE 同形" accent={C.amber} pad={20} style={{ width: w, height: 620 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <Math tex={String.raw`\mathrm{MPE}=\frac{100\%}{h}\sum_{k=1}^{h}\frac{Y_k-F_k}{Y_k}`} block size={20} color={C.amber} align="left" />
               <Math tex={String.raw`\mathrm{MAPE}=\frac{100\%}{h}\sum_{k=1}^{h}\frac{|F_k-Y_k|}{|Y_k|}`} block size={20} color={C.amber} align="left" />
@@ -52,7 +51,7 @@ export const SDefinitions: React.FC = () => {
         </Build>
 
         <Build at={b(25)}>
-          <Card label="比例基准 · 式 8.2" accent={C.violet} pad={20} style={{ width: w, height: 584 }}>
+          <Card label="比例基准 · 式 8.2" accent={C.violet} pad={20} style={{ width: w, height: 620 }}>
             <Math
               tex={String.raw`\mathrm{MASE}=\frac{\frac{1}{h}\sum_{k=M+1}^{M+h}|F_k-Y_k|}{\frac{1}{M-s}\sum_{k=s+1}^{M}|Y_k-Y_{k-s}|}`}
               block size={26} color={C.violet} align="left"
@@ -72,7 +71,7 @@ export const SDefinitions: React.FC = () => {
         </Build>
       </div>
 
-      <Build at={b(29)} style={{ position: "absolute", left: PAD, top: 916, width: 1680 }}>
+      <Build at={b(26)} style={{ position: "absolute", left: PAD, top: 950, width: 1680 }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 20 }}>
           <div style={{ fontFamily: FONT.serif, fontSize: FT.h2, color: C.ink }}>{"定义只规定罚法，任务才规定选哪把尺。"}</div>
           <K>{"七个式子，六条有编号；三个基准。"}</K>
