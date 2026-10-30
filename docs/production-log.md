@@ -123,4 +123,15 @@
 - 偏差: 计划 21 min，实做 21.67 min（+0.67 min）；旁白 343 条、语音 968 s，密度高于 E02
 - 备注: ch02 第二集；下一步 E04 `stationarity-and-differencing`（平稳性与差分，书 2.4）
 
+## E04 holt-and-holt-winters — 2026-10-30
+- ts-base: 19afbda（Holt/HoltWinters 两模块 + 33 断言，总套件 441；SELF-AUTH A15）→ 67d72d3（`app/Ch04HoltEvidence.hs` + `evidence-ch04-holt`，24 条检查）→ 65b3cab（日线 730 行 / 5 分钟 3,264 根 / 成交量 4,487 行 + 证据快照）
+- ts-admin: 776f57e（`inventory/scripts/export_ch04_holt.py`：600519 日线 730 行、5 分钟只保留每天恰好 48 根的 68 天、sz000693 成交量 4,487 行含 2,491 个零；零值按 zero_filled 记）
+- video_project: 90b9287（pack/scenes/script/派生数据/plan）→ 本次 delivery/文档提交
+- 引擎: 无（E69 961 s bed 两份 6 s acrossfade + atrim 1560 s、48 kHz，`--score=` 复用）
+- 成片: 1,480.90 s（24:40.90），−15 LUFS，TP −2 dBFS，44,427 帧，8 场；351 条旁白，语音 1,142.2 s，字幕跨度 1,477.5 s（1.2→1478.69）
+- 流水线: score 复用（stem 门：full −25.1 / audible 63.1% / sub 6.8%）；8 段分开渲染；mix musicGain −4.5 dB、ducked 51.9%、peak −1.0 dBFS；mix 门 speech −23.57、bed vs speech −9.5、gap audible −33.08；flicker mean|d| 0.0173、p99 0.2587、max 10.24、cuts 7；stills lint PASS（4 帧；29 张全页帧另跑一轮 PASS）；351 cue 中 6 条换行、最长 34 字；8 章；封面 frame 6860（228.67 s，open 场末「2,491 / 1,628 / 4,487」页，无字幕）
+- 卡点: ① TTS 必须用 `/root/.venvs/tts/bin/python`（系统 python3 没有 edge_tts）；② open 场漏渲染 `SceneHead`（元素 import 了却没用）；③ Flatten 迷你图 y 映射方向写反、虚线/标签被裁；④ SeasonPlot 只画正柱、负值全 1px、intraday 折线错层；⑤ ScaleSketch 上下两排反了、负值向上画；⑥ 两处 Build at 正好等于页中点（珊瑚卡与青卡在静帧里根本看不到）；⑦ make 的 content check 连未提交 docs 都算 dirty，必须先提交 pack 再 make
+- 返工: 3 轮静帧（29 张首轮抓 6 处，次轮修 2 处，终轮复核 open/直觉页）；1 次 TTS 重跑（换解释器）；make 1 次 PASS
+- 偏差: 计划 24 min，实做 24.68 min（+0.68 min）；旁白 351 条、语音 1,142 s；证据从 18 条扩到 24 条（日内口径重做）
+- 备注: ch02 第三集；下一步 E05 `stationarize-three-ways`（三种平稳化：差分、对数、Z-score，书 2.4）
 

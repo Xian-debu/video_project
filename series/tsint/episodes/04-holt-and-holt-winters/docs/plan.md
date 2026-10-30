@@ -1,6 +1,6 @@
 # E04 · Holt 家族：趋势和季节，各一个旋钮
 
-status: production
+status: ready
 series: tsint · ch02 · episode 04
 book: 《AI for Trading》第 2 章，印刷 p.22–23（PDF p.30–31）
 

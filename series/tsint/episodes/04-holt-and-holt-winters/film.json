@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-04",
-  "status": "draft",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
@@ -44,5 +44,5 @@
   "publish": {
     "coverFrame": 6860
   },
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete"
 }
