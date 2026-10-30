@@ -38,3 +38,15 @@
 - 返工: 2 次（open 卡片高度、definitions 卡片高度/文案；均由 still 复核发现）
 - 偏差: 计划 14 min，实做 13.70 min；导论集无算法，保留 0 个算法单元的诚实计数
 - 备注: 首个非 ch09 集；下一集按 production_order 为 E65 error-metrics-trio（ch08）
+
+## E65 error-metrics-trio — 2026-10-30
+- ts-base: 3442ee1（ErrorMetrics / PercentageErrors / Mase + 37 断言 + evidence 模块）→ f177e78（20 只 A 股 CSV + ch8 evidence 快照）
+- ts-admin: c1630fb（export_ch08_metrics.py，20 只 × 2020–2025，28,949 行）
+- video_project: dc423ba（pack/scenes/script/narration timing）→ 4dbeb1f（definitions 卡片高度与公式字号）→ 本次 delivery 提交
+- 引擎: d319797（SELF-AUTH E1/E2：score 跨集复用与 coverFrame 接线）
+- 成片: 756.57 s（12.61 min），−15 LUFS，TP −2 dBFS，22697 帧，8 场；193 条旁白，560.0 s 语音
+- 流水线: 复用第 01 集 822 s score（seed=11 / energy=0.8 / bpm=84 / minor），混音 gain −4.5 dB；画面分段渲染 4 min；stills→mix→loudnorm→flicker→publish 全过
+- 卡点: ① TSX 里 TeX 用普通字符串，\r/\f 被 JS 吃掉，KaTeX 渲染红色源码 → 全部改 String.raw；② definitions 卡片固定高度装不下三条公式 + 小条，footer 溢出 → 公式 32→24、卡高 584→620、footer 从 b(29) 提前到 b(26)；③ make 仍用 180 帧封面 → 单独 publish --cover-frame=1937
+- 返工: 4 次（definitions TeX、卡片高度、boundary/outro 入场时序、封面帧），均由 still 复核或 make gate 发现
+- 偏差: 计划 13 min，实做 12.61 min；三算法集控制在 822 s 配乐内，未重渲染 score
+- 备注: 首个 ch08 集；后续 E66–E69 共用同一 score 与「四组数 + 七边界」语法
