@@ -1,6 +1,6 @@
 # 01-intro-why-time-series - 一条序列，五个问题
 
-> status: draft (scenes, narration, stills approved; delivery building)
+> status: ready (delivery built 2026-10-30; 821.77 s, -15 LUFS, TP -2 dBFS)
 > chapter: ch01 | runtime target: 14 min | algorithms: 0
 
 ## Thesis
@@ -69,3 +69,12 @@
 - 切片：`data/manifests/*.manifest.json`
 - 证据 JSON：`data/intro.json`（182,733 bytes）
 - 测试：`cabal test` 142 条全过（12 个模块）
+
+## Delivery（2026-10-30）
+
+- 成片：`delivery/Tsint01IntroWhyTimeSeries.mp4`，821.77 s（24,653 帧 @30fps），H.264 + AAC；响度 I=-15 LUFS，TP=-2 dBFS。
+- 旁白：205 条，实测 686.1 s 语音，`assets/audio/narration.wav` 821.76 s（0 overrun）；TTS `zh-CN-YunyangNeural`。
+- 配乐：`score.wav` 822 s，seed=11 / energy=0.8 / bpm=84 / minor；混音 bed 增益 -4.5 dB，music gate 全过。
+- 交付件：`tsint-01.srt`（205 cues，最长行 34 字符）、`tsint-01.chapters.txt`（8 章）、`tsint-01.chapters.ffmeta.txt`、`cover.png`（第 2300 帧）。
+- QA：still lint 4 帧 PASS（无出框/重叠）、luma flicker PASS（7 个切点）、loudnorm PASS。
+- 引擎提交 f140af4 支持 film 自定义封面帧；本集 `publish.coverFrame=2300`。
