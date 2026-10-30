@@ -18,16 +18,17 @@
 
 ## 2. 状态（2026-10-30 18:0x 实测）
 
-- 成片 **10 / 74**：E01、E65、E66、E67、E68、E70–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **22 / 190** 模块、**308** 条断言（ch09 11/142；ch08 E65 3/37、E66 3/46、E67 3/50、E68 3/66）。
+- 成片 **11 / 74**：E01、E65、E66、E67、E68、E69、E70–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **23 / 190** 模块、**331** 条断言（ch09 11/142；ch08 E65 3/37、E66 3/46、E67 3/50、E68 3/66、E69 1/23）。
 - 四仓 HEAD（E68 完成后）：video_project `32290a0`、ts-base `255dc3f`、ts-admin `a37e35a`、
   engine `856d804`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
-- E68 成片 `1123.81 s / 33714 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，316 cue、8 章、封面 2200。
+- E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3900。
+- E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E69 `hexbin-balance-audit`**（规格见 `ts-base/plans/series.json` 第 69 项，
-  设计要点：PCA 二维全秩旋转 + 六边形网格 + 集中度；E68 冻结决定见 §6，E69 冻结决定见 §7）。
+- 下一步入口：**E02 `missing-values-three-ways`**（ch01，production_order 中 69 之后 71–74 已完成，
+  第一个未生产集是 E02；规格见 `ts-base/plans/series.json`；ch08 五集已全成片）。
 
 ## 3. 授权（增量自授权清单）
 

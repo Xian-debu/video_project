@@ -86,3 +86,15 @@
 - 返工: 3 次（首轮静帧：单位缺失/Lazy 倍数措辞/右栏空白；二轮：intuition 行距、definitions 卡高与 Quote 位置、outro 拍点）
 - 偏差: 计划 16 min，实做 18.73 min（+2.73 min）；旁白 316 条、语音 927 s，密度高于 E67
 - 备注: ch08 第四集；下一步 E69 hexbin-balance-audit（PCA + Hexbin 均衡性，书 p.198 图 8.2，1 算法，16 min）
+
+## E69 hexbin-balance-audit — 2026-10-30
+- ts-base: 64773de（HexbinBalance：pca2/hexbin/concentration + 23 断言，总套件 331）→ 0eb1597（20 只 `panel_20.csv` 50,757 行）→ 26374d9（`app/Ch08HexbinEvidence.hs` + `evidence-ch08-hexbin` 分支）→ d9701f6（证据快照：12 条检查）→ c8d9631（网格敏感度 15/20/30/40/60）
+- ts-admin: e798aad（`export_ch08_hexbin.py`，20 只 A 股 2015–2025 前复权，50,757 行 / 2.15 MB，只读 Lake）
+- video_project: 820298d（pack/scenes/script/narration timing）→ e20b985（场景补 `lines` 字段供分段渲染哈希）→ f8831df（ready + coverFrame 3900）→ 本次 delivery/文档提交
+- 引擎: 无（复用 E66 822 s score；两份 6 s acrossfade + atrim 961.34 s、48 kHz）
+- 成片: 961.33 s（16.02 min），−15 LUFS，TP −2 dBFS，28,840 帧，8 场；247 条旁白，716.2 s 语音
+- 流水线: 8 段分开渲染；mix musicGain −4.5 dB；flicker mean|d| 0.0144、p99 0.1741、max 11.95、cuts 7；247 cue 无一换行、最长 32 字；8 章；封面 frame 3900
+- 卡点: ① 首轮 make 在 render 阶段报 `Cannot read properties of undefined (reading 'join')` —— script.ts 的 SCENES 缺 `lines` 字段，分段渲染哈希取不到行；② 未提交的 publish 产物让 content check 判 dirty，必须先删再重跑；③ 直觉场讲轴向坐标时只有真实密度图，补 `HexSchematic`；④ 问题场结论条压字幕
+- 返工: 3 次（首轮静帧版式、intuition 示意图、definitions 卡标签）
+- 偏差: 计划 16 min，实做 16.02 min，几乎命中
+- 备注: ch08 第五集，ch08 全部成片；下一步按 production_order 回到 E02 `missing-values-three-ways`（ch01）
