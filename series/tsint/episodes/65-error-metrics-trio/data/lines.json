@@ -1,0 +1,1408 @@
+{
+ "entry": "src/tsint-65-error-metrics-trio/script.ts",
+ "fps": 30,
+ "totalSec": 756.55,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 78.73
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 78.73,
+   "dur": 104.61
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 183.34,
+   "dur": 128.83
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 312.17,
+   "dur": 103.49
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 415.66,
+   "dur": 102.98
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 518.64,
+   "dur": 104.06
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 622.7,
+   "dur": 86.36
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 709.06,
+   "dur": 47.49
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.23,
+   "speech": "这一集讲三个误差指标。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.98,
+   "dur": 4.07,
+   "speech": "同一组预测，换个罚法，结论就变了。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.6,
+   "dur": 4.02,
+   "speech": "四个误差，一、一、一、一。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 14.17,
+   "dur": 3.11,
+   "speech": "MSE 是一，MAE 也是一。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.83,
+   "dur": 3.66,
+   "speech": "换成四、零、零、零。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 22.04,
+   "dur": 3.35,
+   "speech": "MSE 涨到四，MAE 还是一。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 25.94,
+   "dur": 4.43,
+   "speech": "大偏差被平方放大，小偏差被平均抹平。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 30.92,
+   "dur": 3.69,
+   "speech": "这不是数字游戏，是两种价值观。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 35.16,
+   "dur": 3.28,
+   "speech": "书在二百零五页给了六条公式。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.99,
+   "dur": 3.35,
+   "speech": "MSE、RMSE、MAE。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 42.89,
+   "dur": 4.05,
+   "speech": "还有 MPE、sMAPE、MASE。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 47.48,
+   "dur": 3.35,
+   "speech": "但书里没给代码，也没给数据。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 51.38,
+   "dur": 2.41,
+   "speech": "这一集钉三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 54.35,
+   "dur": 2.94,
+   "speech": "平方罚和绝对罚差在哪。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 57.84,
+   "dur": 3.18,
+   "speech": "跨序列为什么不能只看 MAE。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 61.57,
+   "dur": 2.73,
+   "speech": "MASE 的分母用哪一段。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 64.85,
+   "dur": 3.3,
+   "speech": "先看同一组误差，两种罚法。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 68.7,
+   "dur": 3.35,
+   "speech": "再看二十只股票，两种排名。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 72.6,
+   "dur": 3.93,
+   "speech": "最后把三个指标写成可测试的代码。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 79.93,
+   "dur": 2.53,
+   "speech": "先做一个最小实验。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 83.01,
+   "dur": 2.85,
+   "speech": "两组误差，都是四个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 86.41,
+   "dur": 2.27,
+   "speech": "A 组是四个一。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 89.23,
+   "dur": 3.09,
+   "speech": "B 组是一个四，三个零。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 92.87,
+   "dur": 3.3,
+   "speech": "两组的绝对误差和都是四。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 96.72,
+   "dur": 2.41,
+   "speech": "所以 MAE 都是一。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 99.68,
+   "dur": 3.04,
+   "speech": "平方之后，A 组和是四。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 103.27,
+   "dur": 2.25,
+   "speech": "B 组和是十六。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 106.07,
+   "dur": 3.83,
+   "speech": "平均下来，MSE 从一涨到四。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 110.45,
+   "dur": 3.59,
+   "speech": "RMSE 开根号，从一涨到二。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 114.59,
+   "dur": 2.41,
+   "speech": "MAE 呢，一动不动。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 117.55,
+   "dur": 2.37,
+   "speech": "这不是说 MAE 更好。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 120.47,
+   "dur": 3.52,
+   "speech": "它只说，MAE 不区分大错和小错。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 124.53,
+   "dur": 3.4,
+   "speech": "四个小错和一个大错，一样重。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 128.48,
+   "dur": 3.35,
+   "speech": "MSE 把大错按面积放大。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 132.38,
+   "dur": 2.99,
+   "speech": "代价是对离群点敏感。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 135.92,
+   "dur": 3.23,
+   "speech": "指标不是裁判，是一个权重。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 139.7,
+   "dur": 3.35,
+   "speech": "选哪个，先问你要罚哪种错。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 143.6,
+   "dur": 2.25,
+   "speech": "再看真实数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 146.4,
+   "dur": 3.73,
+   "speech": "二十只 A 股，二零二零到二零二五。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 150.68,
+   "dur": 2.85,
+   "speech": "训练四年，测试两年。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 154.08,
+   "dur": 3.81,
+   "speech": "预测规则只有一条：昨天等于今天。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 158.43,
+   "dur": 3.16,
+   "speech": "按 MAE 排，工商银行最小。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 162.14,
+   "dur": 3.33,
+   "speech": "按 MAPE 排，长江电力第一。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 166.02,
+   "dur": 3.18,
+   "speech": "长江电力的 MAE 只排第六。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 169.75,
+   "dur": 3.66,
+   "speech": "贵州茅台 MAE 垫底，MAPE 却第四。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 173.96,
+   "dur": 3.9,
+   "speech": "同一组预测，两把尺，两个冠军。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 178.41,
+   "dur": 2.73,
+   "speech": "下面把公式写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 184.54,
+   "dur": 3.16,
+   "speech": "三个指标，六条编号公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 188.25,
+   "dur": 1.98,
+   "speech": "先约定符号。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 190.78,
+   "dur": 5.08,
+   "speech": "Y_k 是真实值，F_k 是预测值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 196.41,
+   "dur": 2.49,
+   "speech": "h 是预测步数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 199.44,
+   "dur": 4.65,
+   "speech": "误差方向统一写成 F 减 Y，正数高估。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 204.64,
+   "dur": 2.49,
+   "speech": "第一条，MSE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 207.68,
+   "dur": 3.4,
+   "speech": "误差平方，求和，除以 h。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 211.62,
+   "dur": 2.77,
+   "speech": "平方让正负不抵消。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 214.95,
+   "dur": 3.13,
+   "speech": "也让大误差按平方增长。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 218.63,
+   "dur": 2.77,
+   "speech": "第二条，RMSE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 221.96,
+   "dur": 4.31,
+   "speech": "就是 MSE 开根号，量纲回到原序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 226.82,
+   "dur": 2.49,
+   "speech": "但仍然按平方罚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 229.85,
+   "dur": 2.32,
+   "speech": "第三条，MAE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 232.72,
+   "dur": 3.88,
+   "speech": "误差取绝对值，求和，除以 h。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 237.15,
+   "dur": 3.18,
+   "speech": "每个误差权重相同，更稳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 240.88,
+   "dur": 3.66,
+   "speech": "但它在零点不可导，要用次梯度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 245.09,
+   "dur": 2.1,
+   "speech": "再看百分比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 247.74,
+   "dur": 3.9,
+   "speech": "MPE 先算 Y 减 F，再除以 Y。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 252.2,
+   "dur": 3.21,
+   "speech": "方向反了，正数表示低估。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 255.95,
+   "dur": 3.88,
+   "speech": "MAPE 取绝对值，再除以 Y 的绝对值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 260.38,
+   "dur": 3.64,
+   "speech": "它把不同价格拉到同一把尺上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 264.57,
+   "dur": 3.73,
+   "speech": "但 Y 等于零就爆，负数也没有意义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 268.85,
+   "dur": 3.13,
+   "speech": "收益率序列不能直接算 MAPE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 272.54,
+   "dur": 4.31,
+   "speech": "sMAPE 换分母，用两个绝对值的平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 277.4,
+   "dur": 4.36,
+   "speech": "上下对称，代价是上限只有百分之二百。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 282.3,
+   "dur": 2.53,
+   "speech": "最后一个，MASE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 285.39,
+   "dur": 3.54,
+   "speech": "分子是测试段的平均绝对误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 289.48,
+   "dur": 3.52,
+   "speech": "分母是训练段的季节朴素误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 293.55,
+   "dur": 4,
+   "speech": "季节 s 自己指定，分母只用训练段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 298.1,
+   "dur": 3.54,
+   "speech": "书里把分母写成 M 减 S。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 302.19,
+   "dur": 3.73,
+   "speech": "本集统一用小写 s，含义一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 306.47,
+   "dur": 3.49,
+   "speech": "六条公式写完，看它们怎么打架。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 313.37,
+   "dur": 2.61,
+   "speech": "现在看二十只股票。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 316.53,
+   "dur": 2.87,
+   "speech": "横轴是 MAE，对数刻度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 319.95,
+   "dur": 2.8,
+   "speech": "纵轴是 MAPE，百分比。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 323.29,
+   "dur": 2.46,
+   "speech": "每个点是一只股票。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 326.31,
+   "dur": 3.85,
+   "speech": "如果两把尺一致，点应该沿斜线排。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 330.71,
+   "dur": 1.84,
+   "speech": "实际不是。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 333.1,
+   "dur": 2.61,
+   "speech": "左边是长江电力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 336.25,
+   "dur": 3.4,
+   "speech": "MAE 只有零点一八六，排第六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 340.2,
+   "dur": 4.09,
+   "speech": "MAPE 只有零点六八七个百分点，排第一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 344.85,
+   "dur": 2.56,
+   "speech": "右边是贵州茅台。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 347.95,
+   "dur": 2.82,
+   "speech": "MAE 十三点五五，垫底。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 351.33,
+   "dur": 2.99,
+   "speech": "MAPE 零点九三，排第四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 354.87,
+   "dur": 1.6,
+   "speech": "为什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 357.01,
+   "dur": 4.36,
+   "speech": "茅台一股一千多块，十几块只占百分之一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 361.92,
+   "dur": 4.81,
+   "speech": "长江电力一股二十多块，一毛八也占零点七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 367.29,
+   "dur": 3.64,
+   "speech": "绝对误差看价格，百分比看比例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 371.47,
+   "dur": 3.23,
+   "speech": "两把尺问的不是同一个问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 375.25,
+   "dur": 1.84,
+   "speech": "再看 MASE。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 377.64,
+   "dur": 3.35,
+   "speech": "二十只股票，十四只小于一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 381.54,
+   "dur": 4.17,
+   "speech": "小于一，说明测试误差比训练基准还小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 386.26,
+   "dur": 3.61,
+   "speech": "中位数是零点七九一七九三五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 390.42,
+   "dur": 3.3,
+   "speech": "中国中免最小，零点二八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 394.27,
+   "dur": 3.04,
+   "speech": "工商银行最大，二点二七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 397.86,
+   "dur": 4.05,
+   "speech": "同一套规则，换只股票，结论翻过来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 402.46,
+   "dur": 2.53,
+   "speech": "不要问哪个指标最好。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 405.54,
+   "dur": 4.05,
+   "speech": "先问你比较的是价格、比例，还是基准。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 410.14,
+   "dur": 3.33,
+   "speech": "下面把三个指标写成代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 416.86,
+   "dur": 3.59,
+   "speech": "代码在 ts-base，三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 421,
+   "dur": 2.46,
+   "speech": "第一个，ErrorMetrics。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 424.01,
+   "dur": 3.69,
+   "speech": "mse、rmse、mae 三个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 428.25,
+   "dur": 3.09,
+   "speech": "输入两个向量，输出一个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 431.88,
+   "dur": 3.61,
+   "speech": "入口检查长度、空值和 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 436.05,
+   "dur": 2.77,
+   "speech": "长度不等直接报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 439.37,
+   "dur": 3.09,
+   "speech": "出现 NaN 或无穷也报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 443.01,
+   "dur": 2.65,
+   "speech": "求和用 Kahan 补偿。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 446.21,
+   "dur": 3.25,
+   "speech": "避免长序列的浮点累积误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 450.02,
+   "dur": 2.77,
+   "speech": "第二个，PercentageErrors。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 453.34,
+   "dur": 3.69,
+   "speech": "mpe、smape、mape 三个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 457.58,
+   "dur": 3.97,
+   "speech": "默认 eps 是一乘十的负十二次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 462.1,
+   "dur": 4,
+   "speech": "严格版遇到 Y 小于等于零就报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 466.65,
+   "dur": 3.3,
+   "speech": "skipping 版跳过，并返回计数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 470.5,
+   "dur": 3.73,
+   "speech": "全部被跳过也报错，不静默返回零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 474.78,
+   "dur": 2.34,
+   "speech": "第三个，Mase。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 477.68,
+   "dur": 5.15,
+   "speech": "参数是季节 s、训练段、真实值、预测值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 483.38,
+   "dur": 2.58,
+   "speech": "分母只从训练段算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 486.51,
+   "dur": 2.65,
+   "speech": "s 小于一，报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 489.71,
+   "dur": 3.25,
+   "speech": "训练段不够两个季节，报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 493.52,
+   "dur": 3.06,
+   "speech": "分母为零，返回正无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 497.13,
+   "dur": 2.94,
+   "speech": "不返回零，也不返回 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 500.62,
+   "dur": 3.16,
+   "speech": "三个模块，三十七条测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 504.33,
+   "dur": 4.33,
+   "speech": "十三条给误差三件套，十四条给百分比。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 509.21,
+   "dur": 4.05,
+   "speech": "十条给 MASE，全部在 cabal test 里跑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 513.81,
+   "dur": 2.63,
+   "speech": "代码写完，看数字。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 519.84,
+   "dur": 1.86,
+   "speech": "先说数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 522.25,
+   "dur": 4.17,
+   "speech": "二十只 A 股，两万八千九百四十九行。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 526.97,
+   "dur": 3.01,
+   "speech": "训练二零二零到二零二三。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 530.53,
+   "dur": 3.01,
+   "speech": "测试二零二四到二零二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 534.1,
+   "dur": 3.01,
+   "speech": "预测规则是 naive-1。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 537.66,
+   "dur": 2.53,
+   "speech": "第一组，误差例子。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 540.74,
+   "dur": 4.6,
+   "speech": "A 组 MSE 一，RMSE 一，MAE 一。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 545.89,
+   "dur": 4.45,
+   "speech": "B 组 MSE 四，RMSE 二，MAE 一。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 550.9,
+   "dur": 2.37,
+   "speech": "第二组，MASE。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 553.81,
+   "dur": 3.93,
+   "speech": "中位数零点七九一七九三五四一。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 558.29,
+   "dur": 2.27,
+   "speech": "十四只小于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 561.11,
+   "dur": 4.14,
+   "speech": "中国中免最小，零点二八一六一二四。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 565.8,
+   "dur": 3.93,
+   "speech": "工商银行最大，二点二七五二七七六。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 570.28,
+   "dur": 2.29,
+   "speech": "第三组，排序。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 573.12,
+   "dur": 4.02,
+   "speech": "工商银行 MAE 第一，长江电力 MAPE 第一。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 577.69,
+   "dur": 2.46,
+   "speech": "长江电力 MAE 第六。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 580.7,
+   "dur": 3.52,
+   "speech": "贵州茅台 MAE 第二十，MAPE 第四。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 584.77,
+   "dur": 2.41,
+   "speech": "第四组，收益率。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 587.74,
+   "dur": 2.61,
+   "speech": "每只四百八十三个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 590.89,
+   "dur": 3.83,
+   "speech": "茅台有二百六十五个负收益，两个零。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 595.27,
+   "dur": 2.99,
+   "speech": "MAPE 只能算二百一十六个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 598.81,
+   "dur": 3.33,
+   "speech": "跳过二百六十七个，超过一半。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 602.69,
+   "dur": 4.07,
+   "speech": "剩下这些点，MAPE 是两千零八十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 607.31,
+   "dur": 4.26,
+   "speech": "sMAPE 是百分之一百四十七点三九。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 612.12,
+   "dur": 3.59,
+   "speech": "这不是模型好坏，是尺子失效。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 616.26,
+   "dur": 4.24,
+   "speech": "三十七条测试全过，每个数回到一次运行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 623.9,
+   "dur": 1.84,
+   "speech": "七个边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 626.29,
+   "dur": 3.01,
+   "speech": "第一，MSE 按平方罚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 629.85,
+   "dur": 3.4,
+   "speech": "一个离群点能主导整个分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 633.8,
+   "dur": 3.73,
+   "speech": "第二，RMSE 和原序列同量纲。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 638.08,
+   "dur": 3.16,
+   "speech": "但它仍然不是绝对值平均。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 641.79,
+   "dur": 3.01,
+   "speech": "第三，MAE 在零点不可导。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 645.36,
+   "dur": 3.45,
+   "speech": "训练时要换次梯度或平滑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 649.35,
+   "dur": 3.21,
+   "speech": "第四，MAPE 怕零和负数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 653.11,
+   "dur": 3.09,
+   "speech": "收益率序列一半的点不能算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 656.74,
+   "dur": 5.25,
+   "speech": "第五，sMAPE 有上限，最多各罚百分之二百。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 662.54,
+   "dur": 3.23,
+   "speech": "第六，MASE 依赖季节 s。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 666.32,
+   "dur": 2.7,
+   "speech": "s 选错，分母就错。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 669.57,
+   "dur": 3.33,
+   "speech": "训练段太短，也估不出基准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 673.45,
+   "dur": 3.21,
+   "speech": "第七，二十只股票不是市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 677.2,
+   "dur": 2.94,
+   "speech": "两年测试也不是长期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 680.7,
+   "dur": 3.21,
+   "speech": "这一集没有模型，只有指标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 684.45,
+   "dur": 2.58,
+   "speech": "所以不给模型排名。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 687.58,
+   "dur": 2.7,
+   "speech": "也不说哪个指标最好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 690.84,
+   "dur": 2.97,
+   "speech": "指标是尺子，不是结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 694.35,
+   "dur": 2.7,
+   "speech": "先问你要罚哪种错。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 697.6,
+   "dur": 2.53,
+   "speech": "再问序列有没有零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 700.69,
+   "dur": 2.65,
+   "speech": "最后问基准从哪来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 703.89,
+   "dur": 2.97,
+   "speech": "这三问答完，再选指标。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 710.26,
+   "dur": 1.72,
+   "speech": "一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 712.53,
+   "dur": 3.76,
+   "speech": "先问误差怎么罚，再问模型谁更好。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 716.84,
+   "dur": 3.06,
+   "speech": "三个指标，回答三个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 720.45,
+   "dur": 3.3,
+   "speech": "平方罚、绝对罚、比例罚。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 724.3,
+   "dur": 4.24,
+   "speech": "一条管线，二十只股票，三十七条测试。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 729.09,
+   "dur": 3.18,
+   "speech": "下一集，异常检测的指标。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 732.82,
+   "dur": 3.37,
+   "speech": "九十九比一的数据，全判正常。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 736.74,
+   "dur": 3.88,
+   "speech": "准确率九十九，AUC 只有零点五。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 741.17,
+   "dur": 2.75,
+   "speech": "那是另一把尺的陷阱。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 744.47,
+   "dur": 3.18,
+   "speech": "七十四集，一百九十个算法。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 748.2,
+   "dur": 2.25,
+   "speech": "每集都可复算。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 751,
+   "dur": 3.35,
+   "speech": "愿你看分数时，先看它怎么罚。"
+  }
+ ]
+}
