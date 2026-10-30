@@ -60,3 +60,15 @@
 - 返工: 3 次（标题字号、open 三件事卡增高、implementation 补手算样例），均由 still 复核发现
 - 偏差: 计划 18 min，实做 11.65 min；旁白 194 条比 E65 少 58 s，画面按 822 s 配乐内复用
 - 备注: ch08 第二集；下一步 E67 split-no-leakage（时间序列切分与泄漏）
+## E67 split-no-leakage — 2026-10-30
+- ts-base: b97c7db（TemporalSplit / FixedForecast / RollingForecast + 50 断言 + 2600 点日线与 20 只面板）
+- ts-admin: b071b6f（export_ch08_split.py，000001.SZ 2015–2025，2600 行）
+- video_project: 9f41b7d（pack/scenes/script/narration timing）→ 0587077（split.json 列为 derive 产物）→ b651b13（delivery 导出）→ 本次封面/文档提交
+- 引擎: 856d804（films.mjs 把 film.publish 带进 registry；make 首次自动使用 coverFrame，不再单独 publish）
+- 成片: 1364.93 s（22.75 min），−15 LUFS，TP −2 dBFS，40948 帧，8 场；428 条旁白，1106.7 s 语音
+- 流水线: 复用 E66 822 s score，两份 6 s 交叉淡化到 1365 s 并重采样 48 kHz；8 段 render 复用；stills→mix→loudnorm→flicker→publish 全过；flicker mean|d| 0.0113、p99 0.1121、max 12.05、cuts 7
+- 卡点: ① 测试里 `[0, 0 .. 6]` 步长 0 生成无限列表，spec 被 cgroup OOM kill（12 GB 容器上限挡住宿主崩溃）→ 改 `0 : [0 .. 6]`；② rolling 轮数测试手算错（s=1 应 36、2600 应 70）→ 改断言；③ render_music 生成 1365 s 需 >14 min → 复用 E66 score 拼接；④ 混音采样率 44.1 vs 48 kHz → 重采样；⑤ make 三次被 content check 拦（derived 入库、delivery 未提交、HEAD 移动）→ 逐项提交后 sync；⑥ registry 丢 publish 字段导致封面 180 → films.mjs 接线
+- 返工: 4 次（open 三件事卡高度、implementation/verification/intuition/boundary/outro 卡片高度、script kicker 对齐、封面帧 2200）
+- 偏差: 计划 22 min，实做 22.75 min（+45 s）；全片 428 条旁白，语音密度高于 E66
+- 备注: ch08 第三集；首次全自动封面帧；下一步 E68 按 production_order（用户已要求后续视频暂停）
+

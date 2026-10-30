@@ -86,4 +86,10 @@
 
 ## Delivery
 
-- 渲染与响度数据待 make 后回填。
+- 成片：`delivery/Tsint67SplitNoLeakage.mp4`，1364.93 s（22.75 min），40948 帧，1920×1080 / 30 fps，8 场。
+- 响度：综合 −15 LUFS，真峰值 −2 dBFS（loudnorm 目标区间 −16.5..−13，TP ≤ −1.5）。
+- 闪烁门禁：mean|d| 0.0113、p99 0.1121、max 12.05、cuts 7，PASS。
+- 字幕与章节：428 条 cue，8 章；0 条换行，最长行 21 字符，语音 1106.7 s。
+- 封面：`delivery/cover.png`，frame 2200（73.33 s），由 `film.publish.coverFrame` 传入 make。
+- 配乐：复用 E66 的 822 s score，按 6 s 交叉淡化拼到 1365 s 并重采样到 48 kHz；未重渲染 score。
+- make 全 gate 通过；`films check --strict` 在提交后复核。不定向 B 站发布。
