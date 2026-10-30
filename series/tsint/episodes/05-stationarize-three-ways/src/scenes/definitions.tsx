@@ -96,7 +96,7 @@ export const SDefinitions: React.FC = () => {
             <div style={{ position: "absolute", left: PAD + 944, top: 318, width: 832 }}>
               <Stat label="A 股成交量里的零" accent={C.coral} value="4,487 行 / 2,491 个零" sub="上一集那只长停牌样本；最长连续 1,628 天" style={{ height: 210 }} valueSize={40} />
               <Body style={{ marginTop: 18 }}>
-                直接取对数，一半数据变成负无穷。加一是办法，但要写进口径。这一集的做法是：先检查，再变换；拒绝，不猜。
+                直接取对数，过半数据变成负无穷。加一是办法，但要写进口径。这一集的做法是：先检查，再变换；拒绝，不猜。
               </Body>
             </div>
           </Build>

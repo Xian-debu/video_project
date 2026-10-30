@@ -947,7 +947,7 @@
    "index": 35,
    "start": 489.05,
    "dur": 4.14,
-   "speech": "直接取对数，一半数据变成负无穷。"
+   "speech": "直接取对数，过半数据变成负无穷。"
   },
   {
    "scene": "definitions",
