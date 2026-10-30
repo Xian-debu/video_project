@@ -1,0 +1,2458 @@
+{
+ "entry": "src/tsint-03-sma-wma-ses/script.ts",
+ "fps": 30,
+ "totalSec": 1299.94,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 188.98
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 188.98,
+   "dur": 193.27
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 382.25,
+   "dur": 209.21
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 591.46,
+   "dur": 202
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 793.46,
+   "dur": 169.24
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 962.7,
+   "dur": 209.26
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1171.96,
+   "dur": 82.43
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1254.39,
+   "dur": 45.55
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.71,
+   "speech": "一条价格曲线，两个可以调的旋钮。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.46,
+   "dur": 4,
+   "speech": "一个是窗口多宽，一个是权重怎么给。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.01,
+   "dur": 2.75,
+   "speech": "这是平滑的全部自由。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 13.31,
+   "dur": 3.28,
+   "speech": "但这两个旋钮不是随便拧的。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.14,
+   "dur": 2.89,
+   "speech": "拧得不对，线看起来还行。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.58,
+   "dur": 2.51,
+   "speech": "实际上它慢半拍。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.64,
+   "dur": 3.47,
+   "speech": "而且不同的平滑器，慢得不一样。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 27.66,
+   "dur": 4.33,
+   "speech": "这一集只问一件事：不同的平滑器，差在哪。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 32.54,
+   "dur": 2.34,
+   "speech": "先把数据摆出来。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 35.44,
+   "dur": 4.33,
+   "speech": "贵州茅台，二零一九年初到二零二一年底。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 40.32,
+   "dur": 3.76,
+   "speech": "七百三十个交易日，前复权收盘价。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 44.63,
+   "dur": 2.82,
+   "speech": "三年不到，涨了两倍半。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 48,
+   "dur": 4.43,
+   "speech": "从四百九十二元，最高到两千二百二十七元。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 52.98,
+   "dur": 3.9,
+   "speech": "区间涨幅，百分之二百五十四点六八。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 57.43,
+   "dur": 3.4,
+   "speech": "这种走势，平滑器最容易吵架。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 61.38,
+   "dur": 3.28,
+   "speech": "窗口说，我只认最近二十天。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 65.21,
+   "dur": 3.01,
+   "speech": "指数说，我记得很久以前。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 68.77,
+   "dur": 3.11,
+   "speech": "两边都说自己在讲趋势。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 72.43,
+   "dur": 4.62,
+   "speech": "三条线并排看：SMA 五、二十、六十。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 77.6,
+   "dur": 2.87,
+   "speech": "窗口越宽，线越平。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 81.02,
+   "dur": 2.58,
+   "speech": "这是定义，不是发现。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 84.16,
+   "dur": 3.4,
+   "speech": "但平滑有代价，代价叫滞后。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 88.1,
+   "dur": 4.05,
+   "speech": "滞后多少，可以算，而且可以算得很准。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 92.7,
+   "dur": 3.95,
+   "speech": "平滑也是量化里最便宜的一步预处理。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 97.2,
+   "dur": 4,
+   "speech": "它把噪声压下去，也把转折点往后推。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 101.75,
+   "dur": 2.89,
+   "speech": "所以平滑不是免费的。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 105.19,
+   "dur": 4.45,
+   "speech": "在价格序列上，这个代价直接变成买卖点。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 110.2,
+   "dur": 3.78,
+   "speech": "这本书第二章，二十一页到二十二页。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 114.53,
+   "dur": 4.86,
+   "speech": "给了三条公式：SMA、WMA、SES。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 119.94,
+   "dur": 4.86,
+   "speech": "书里没给权重方案，也没给 N 和 α 的换算。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 125.35,
+   "dur": 2.7,
+   "speech": "这两件事，本仓补上。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 128.6,
+   "dur": 3.25,
+   "speech": "为什么平滑值得单独一集。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 132.41,
+   "dur": 3.83,
+   "speech": "因为它是所有后续指标的第一道工序。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 136.79,
+   "dur": 4.26,
+   "speech": "均线、通道、突破，都建立在它上面。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 141.6,
+   "dur": 2.77,
+   "speech": "平滑选错，后面全错。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 144.92,
+   "dur": 2.34,
+   "speech": "先记住三个数字。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 147.82,
+   "dur": 1.77,
+   "speech": "九点五。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 150.13,
+   "dur": 1.89,
+   "speech": "六点三三。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 152.57,
+   "dur": 1.69,
+   "speech": "四十八。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 154.81,
+   "dur": 4,
+   "speech": "九点五是 SMA20 的平均等待时间。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 159.36,
+   "dur": 4.62,
+   "speech": "六点三三是线性加权 WMA 的平均等待。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 164.53,
+   "dur": 3.59,
+   "speech": "四十八是两种采样频率的倍数。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 168.67,
+   "dur": 3.37,
+   "speech": "第一个数说，等权要等这么久。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 172.6,
+   "dur": 3.45,
+   "speech": "第二个数说，偏心会缩短等待。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 176.59,
+   "dur": 3.52,
+   "speech": "第三个数说，窗口必须带单位。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 180.66,
+   "dur": 3.13,
+   "speech": "这三个数，后面逐个解释。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 184.34,
+   "dur": 2.44,
+   "speech": "先从一个问题开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 190.18,
+   "dur": 2.85,
+   "speech": "为什么平滑一定要滞后。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 193.58,
+   "dur": 2.63,
+   "speech": "因为平滑器只看过去。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 196.76,
+   "dur": 4.36,
+   "speech": "它没有未来的信息，只能把已经发生的摊开。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 201.66,
+   "dur": 3.4,
+   "speech": "平均，就是把最近的变化摊开。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 205.61,
+   "dur": 2.41,
+   "speech": "摊开，反应就慢。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 208.58,
+   "dur": 2.89,
+   "speech": "慢多少，取决于怎么摊。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 212.02,
+   "dur": 4.53,
+   "speech": "从信号处理的角度，平滑器是一个低通滤波器。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 217.1,
+   "dur": 4.43,
+   "speech": "它让慢变成分通过，把快变成分压掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 222.08,
+   "dur": 2.49,
+   "speech": "代价是相位延迟。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 225.11,
+   "dur": 3.25,
+   "speech": "窗口越大，方差降得越多。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 228.92,
+   "dur": 4.14,
+   "speech": "SMA 的方差，大约是原来的 N 分之一。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 233.61,
+   "dur": 2.32,
+   "speech": "但滞后也越大。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 236.48,
+   "dur": 3.47,
+   "speech": "这是一个交换，没有免费的午餐。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 240.5,
+   "dur": 4.14,
+   "speech": "所以选窗口，其实是在选交换比例。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 245.19,
+   "dur": 4.74,
+   "speech": "问题变成：怎么把两个平滑器放在同一把尺子上。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 250.48,
+   "dur": 2.8,
+   "speech": "先看一个更基本的事实。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 253.83,
+   "dur": 2.82,
+   "speech": "平滑是一个线性算子。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 257.2,
+   "dur": 4.96,
+   "speech": "输出是输入的加权和，权重非负、和为归一。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 262.71,
+   "dur": 3.73,
+   "speech": "权重向量的形状，决定了响应形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 266.99,
+   "dur": 2.05,
+   "speech": "也决定了滞后。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 269.6,
+   "dur": 4.43,
+   "speech": "所以比较两个平滑器，就是比较两组权重。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 274.58,
+   "dur": 3.49,
+   "speech": "但权重长度不同，不能直接比。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 278.62,
+   "dur": 3.01,
+   "speech": "于是要找一把公共的尺子。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 282.18,
+   "dur": 3.66,
+   "speech": "这把尺子，就是阶跃响应的质心。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 286.4,
+   "dur": 3.13,
+   "speech": "三种摊法，对应三条公式。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 290.08,
+   "dur": 3.52,
+   "speech": "第一种，SMA，摊得均匀。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 294.15,
+   "dur": 3.04,
+   "speech": "每个窗口里的点，一样重。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 297.74,
+   "dur": 3.49,
+   "speech": "第二种，WMA，可以偏心。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 301.78,
+   "dur": 2.87,
+   "speech": "近的点重，远的点轻。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 305.2,
+   "dur": 3.59,
+   "speech": "第三种，SES，更极端。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 309.34,
+   "dur": 3.3,
+   "speech": "越远越轻，但永远不归零。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 313.19,
+   "dur": 2.94,
+   "speech": "三种摊法，三种滞后。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 316.68,
+   "dur": 3.69,
+   "speech": "滞后可以写成数学，也可以画成图。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 320.92,
+   "dur": 2.53,
+   "speech": "画法是给一个阶跃。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 324,
+   "dur": 2.77,
+   "speech": "让序列从零跳到一。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 327.33,
+   "dur": 2.51,
+   "speech": "看输出多久跟上。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 330.39,
+   "dur": 3.52,
+   "speech": "上升的快慢，就是滞后的形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 334.46,
+   "dur": 3.52,
+   "speech": "曲线下面的面积，是平均滞后。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 338.52,
+   "dur": 3.06,
+   "speech": "这个面积有名字，叫质心。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 342.14,
+   "dur": 2.7,
+   "speech": "质心是一个一阶矩。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 345.39,
+   "dur": 3.01,
+   "speech": "它把整条响应压成一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 348.95,
+   "dur": 4.69,
+   "speech": "窗口 N 给一个数，平滑系数 α 也给一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 354.2,
+   "dur": 2.13,
+   "speech": "它们能对上吗。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 356.87,
+   "dur": 2.34,
+   "speech": "能，但要对准。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 359.76,
+   "dur": 3.64,
+   "speech": "对准的条件，就是这一集的核心。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 363.95,
+   "dur": 4.45,
+   "speech": "在讲这个条件之前，先把三条公式写清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 368.96,
+   "dur": 1.93,
+   "speech": "公式很短。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 371.44,
+   "dur": 2.61,
+   "speech": "但有一处最容易抄错。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 374.6,
+   "dur": 2.65,
+   "speech": "就是 WMA 的分母。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 377.8,
+   "dur": 2.25,
+   "speech": "下一场看定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 383.45,
+   "dur": 2.73,
+   "speech": "先把三条公式摆出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 386.73,
+   "dur": 3.37,
+   "speech": "式二点一三，简单移动平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 390.65,
+   "dur": 4.29,
+   "speech": "s_t 等于最近 N 个 x 的平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 395.49,
+   "dur": 4.05,
+   "speech": "窗口里的每个点，权重都是 N 分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 400.08,
+   "dur": 3.09,
+   "speech": "窗口向右滑，一步一个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 403.72,
+   "dur": 4.45,
+   "speech": "输出比输入短 N 减一行，这是右端对齐。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 408.72,
+   "dur": 3.33,
+   "speech": "式二点一四，加权移动平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 412.6,
+   "dur": 4.48,
+   "speech": "s_t 等于加权和除以权重和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 417.63,
+   "dur": 3.45,
+   "speech": "分母是权重之和，不是 N。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 421.62,
+   "dur": 2.49,
+   "speech": "这一点最容易抄错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 424.66,
+   "dur": 4.26,
+   "speech": "除以权重和，常数序列才不会被缩放。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 429.47,
+   "dur": 4.21,
+   "speech": "w_i 非负，且至少有一个为正。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 434.23,
+   "dur": 4.72,
+   "speech": "书上没给权重方案，只说近的点权重大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 439.5,
+   "dur": 3.93,
+   "speech": "所以权重怎么取，是实现的自由。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 443.98,
+   "dur": 3.88,
+   "speech": "本仓选了两组：线性和对称三角。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 448.41,
+   "dur": 4.21,
+   "speech": "等权时，WMA 退化成 SMA。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 453.17,
+   "dur": 3.66,
+   "speech": "三角权，中间最大，两端最小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 457.38,
+   "dur": 3.3,
+   "speech": "式二点一五，一次指数平滑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 461.23,
+   "dur": 5.51,
+   "speech": "s_t 等于 α 乘今天，加一减 α 乘昨天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 467.29,
+   "dur": 2.89,
+   "speech": "式二点一六，初始值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 470.74,
+   "dur": 3.16,
+   "speech": "s0 取前三个点的平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 474.45,
+   "dur": 3.16,
+   "speech": "这是为了少受第一个点的影响。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 478.15,
+   "dur": 3.45,
+   "speech": "α 的范围，书上写零到一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 482.15,
+   "dur": 2.39,
+   "speech": "实际可以取到一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 485.09,
+   "dur": 3.33,
+   "speech": "α 等于一，就是只看今天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 488.97,
+   "dur": 3.33,
+   "speech": "α 接近零，就是记得很久。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 492.84,
+   "dur": 3.61,
+   "speech": "α 等于零，输出恒等于初值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 497.01,
+   "dur": 3.57,
+   "speech": "窗口 N 是整数，α 是实数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 501.12,
+   "dur": 3.04,
+   "speech": "两个参数不是同类的东西。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 504.71,
+   "dur": 3.25,
+   "speech": "所以换算必须给一个准则。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 508.51,
+   "dur": 2.73,
+   "speech": "定义讲完，做一个换算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 511.79,
+   "dur": 3.54,
+   "speech": "给 SMA 的 N，配一个 α。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 515.88,
+   "dur": 3.9,
+   "speech": "要求是：两条阶跃响应的质心相等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 520.33,
+   "dur": 4.05,
+   "speech": "SMA 的质心，是 N 减一除以二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 524.93,
+   "dur": 1.91,
+   "speech": "为什么是它。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 527.39,
+   "dur": 4.17,
+   "speech": "窗口里的点权重一样，平均位置就在正中。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 532.11,
+   "dur": 4.33,
+   "speech": "窗口长度 N，中心在 N 减一除以二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 536.99,
+   "dur": 4.45,
+   "speech": "SES 的质心，是一减 α 除以 α。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 541.99,
+   "dur": 3.04,
+   "speech": "这是几何级数的一阶矩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 545.58,
+   "dur": 3.01,
+   "speech": "两者相等，解出 α。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 549.15,
+   "dur": 3.28,
+   "speech": "解出来是二除以 N 加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 552.97,
+   "dur": 3.73,
+   "speech": "这一步，书上没有，是本仓的推导。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 557.26,
+   "dur": 3.69,
+   "speech": "这个换算，只保证一阶矩相等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 561.49,
+   "dur": 4,
+   "speech": "它不保证方差，也不保证高阶形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 566.04,
+   "dur": 3.25,
+   "speech": "但作为起点，它比拍脑袋强。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 569.85,
+   "dur": 4.09,
+   "speech": "N 等于二十，α 等于二十一分之二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 574.49,
+   "dur": 2.77,
+   "speech": "约等于零点零九五二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 577.81,
+   "dur": 2.49,
+   "speech": "这个数字后面要用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 580.85,
+   "dur": 2.08,
+   "speech": "它不是巧合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 583.48,
+   "dur": 3.37,
+   "speech": "它说的是：平均等待时间相等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 587.4,
+   "dur": 1.86,
+   "speech": "仅此而已。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 592.66,
+   "dur": 1.79,
+   "speech": "先看图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 595,
+   "dur": 3.45,
+   "speech": "七百三十天，三条 SMA。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 599,
+   "dur": 2.7,
+   "speech": "细线是原始收盘价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 602.25,
+   "dur": 4.36,
+   "speech": "三条线共用同一段窗口，只是长度不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 607.16,
+   "dur": 2.75,
+   "speech": "线越宽，窗口越大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 610.46,
+   "dur": 2.75,
+   "speech": "越宽越平，也越慢。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 613.76,
+   "dur": 2.1,
+   "speech": "这不是错觉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 616.41,
+   "dur": 2.25,
+   "speech": "把最后一段放大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 619.2,
+   "dur": 3.13,
+   "speech": "原始价在二零二一年见顶。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 622.89,
+   "dur": 4.09,
+   "speech": "最后一天收盘，一千七百七十一点八七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 627.53,
+   "dur": 4.19,
+   "speech": "SMA20 是一千七百九十八点二七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 632.27,
+   "dur": 3.81,
+   "speech": "SES 是一千七百八十点八七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 636.63,
+   "dur": 2.87,
+   "speech": "两条线都高于收盘价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 640.05,
+   "dur": 3.83,
+   "speech": "因为末尾在下跌，滞后表现为偏高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 644.43,
+   "dur": 2.89,
+   "speech": "SMA 五，反应最快。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 647.87,
+   "dur": 2.94,
+   "speech": "SMA 二十，慢一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 651.36,
+   "dur": 3.04,
+   "speech": "SMA 六十，明显滞后。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 654.95,
+   "dur": 2.15,
+   "speech": "滞后不是错误。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 657.65,
+   "dur": 2.56,
+   "speech": "滞后是定义的一部分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 660.76,
+   "dur": 2.2,
+   "speech": "再看阶跃响应。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 663.51,
+   "dur": 3.13,
+   "speech": "横轴是时间，纵轴是输出。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 667.19,
+   "dur": 2.89,
+   "speech": "SMA20 是一条斜线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 670.64,
+   "dur": 2.68,
+   "speech": "每一步增加零点零五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 673.86,
+   "dur": 2.92,
+   "speech": "二十步到顶，正好到一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 677.33,
+   "dur": 3.9,
+   "speech": "SES 配同一个质心，是指数曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 681.78,
+   "dur": 2.56,
+   "speech": "第一步就跳到 α。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 684.89,
+   "dur": 3.3,
+   "speech": "之后每步乘一减 α。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 688.74,
+   "dur": 2.17,
+   "speech": "两者面积一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 691.47,
+   "dur": 2.49,
+   "speech": "但形状完全不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 694.5,
+   "dur": 3.61,
+   "speech": "SMA 的响应，是矩形窗的卷积。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 698.67,
+   "dur": 3.9,
+   "speech": "SES 的响应，是几何衰减的卷积。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 703.12,
+   "dur": 2.94,
+   "speech": "一个截断，一个不截断。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 706.61,
+   "dur": 2.82,
+   "speech": "这就是尾巴差异的来源。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 709.98,
+   "dur": 3.78,
+   "speech": "SMA 在第二十步就完全到位。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 714.32,
+   "dur": 2.89,
+   "speech": "SES 还在慢慢爬。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 717.76,
+   "dur": 3.57,
+   "speech": "到百分之五十，SMA 用十步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 721.88,
+   "dur": 2.58,
+   "speech": "SES 只用六步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 725.01,
+   "dur": 4.09,
+   "speech": "到百分之九十五，SMA 用十八步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 729.65,
+   "dur": 2.8,
+   "speech": "SES 要二十九步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 733,
+   "dur": 2.77,
+   "speech": "前快后慢，尾巴很长。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 736.32,
+   "dur": 3.35,
+   "speech": "同样的平均滞后，尾巴差一截。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 740.22,
+   "dur": 2.92,
+   "speech": "这就是质心相同的意义。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 743.69,
+   "dur": 2.63,
+   "speech": "它匹配的是一阶矩。"
+  },
+  {
+   "scene": "intuition",
+   "index": 43,
+   "start": 746.87,
+   "dur": 2.25,
+   "speech": "不是整条曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 44,
+   "start": 749.67,
+   "dur": 4.05,
+   "speech": "所以 α 等于二除以 N 加一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 45,
+   "start": 754.26,
+   "dur": 2.34,
+   "speech": "是一个好的起点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 46,
+   "start": 757.16,
+   "dur": 1.81,
+   "speech": "不是等价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 47,
+   "start": 759.52,
+   "dur": 3.45,
+   "speech": "如果换一个 α，比如零点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 48,
+   "start": 763.52,
+   "dur": 2.2,
+   "speech": "质心只有一步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 49,
+   "start": 766.26,
+   "dur": 2.87,
+   "speech": "那就不是 N 等于二十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 50,
+   "start": 769.68,
+   "dur": 2.8,
+   "speech": "它等效于 N 等于三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 51,
+   "start": 773.03,
+   "dur": 2.8,
+   "speech": "拿它去比 N 等于二十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 52,
+   "start": 776.38,
+   "dur": 2.32,
+   "speech": "比的不是一个东西。"
+  },
+  {
+   "scene": "intuition",
+   "index": 53,
+   "start": 779.25,
+   "dur": 5.25,
+   "speech": "拿 α 等于零点五，去说自己在比 N 等于二十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 54,
+   "start": 785.04,
+   "dur": 2.94,
+   "speech": "这是最常见的口径错误。"
+  },
+  {
+   "scene": "intuition",
+   "index": 55,
+   "start": 788.54,
+   "dur": 2.73,
+   "speech": "换算不是可选的装饰。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 794.66,
+   "dur": 2.92,
+   "speech": "三个模块，不到三百行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 798.13,
+   "dur": 3.04,
+   "speech": "三个文件，对应三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 801.72,
+   "dur": 2.58,
+   "speech": "都只依赖 vector。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 804.85,
+   "dur": 2.73,
+   "speech": "对外只导出必要的东西。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 808.12,
+   "dur": 4.41,
+   "speech": "第一个模块导出 sma 和 smaDirect。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 813.08,
+   "dur": 4.62,
+   "speech": "第二个导出 wma、meanLag 和错误类型。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 818.25,
+   "dur": 5.17,
+   "speech": "第三个导出 ses、sesAuto 和换算函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 823.98,
+   "dur": 2.29,
+   "speech": "先看 SMA。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 826.82,
+   "dur": 2.46,
+   "speech": "窗口和增量维护。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 829.83,
+   "dur": 3.78,
+   "speech": "状态是一个和，加一个窗口缓冲。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 834.16,
+   "dur": 2.85,
+   "speech": "每步加新点，减旧点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 837.56,
+   "dur": 1.89,
+   "speech": "常数时间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 840,
+   "dur": 2.61,
+   "speech": "但浮点误差会累积。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 843.15,
+   "dur": 3.83,
+   "speech": "所以每一千零二十四步，重算一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 847.53,
+   "dur": 2.03,
+   "speech": "把误差钉住。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 850.11,
+   "dur": 2.97,
+   "speech": "对照实现 smaDirect。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 853.63,
+   "dur": 2.97,
+   "speech": "直接求和，二次复杂度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 857.14,
+   "dur": 2.49,
+   "speech": "慢，但不会漂。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 860.18,
+   "dur": 2.63,
+   "speech": "两条路径互相验证。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 863.36,
+   "dur": 2.41,
+   "speech": "再看 WMA。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 866.32,
+   "dur": 3.25,
+   "speech": "权重向量，下标零是最旧。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 870.13,
+   "dur": 2.32,
+   "speech": "分母是权重和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 873,
+   "dur": 3.37,
+   "speech": "权重和先算一次，循环里复用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 876.92,
+   "dur": 1.91,
+   "speech": "三种错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 879.38,
+   "dur": 3.93,
+   "speech": "空权重、负权重、权重和为零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 883.86,
+   "dur": 2.32,
+   "speech": "边界返回 Either。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 886.72,
+   "dur": 1.91,
+   "speech": "不返回 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 889.18,
+   "dur": 2.08,
+   "speech": "出错就短路。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 891.81,
+   "dur": 2.8,
+   "speech": "这比返回 NaN 更好测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 895.16,
+   "dur": 3.23,
+   "speech": "meanLag 顺手把质心也算了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 898.94,
+   "dur": 2.65,
+   "speech": "最后看 SES。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 902.14,
+   "dur": 4.48,
+   "speech": "递推写成 s 加 α 乘 x 减 s。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 907.17,
+   "dur": 2.58,
+   "speech": "数学上等价于原式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 910.3,
+   "dur": 2.2,
+   "speech": "数值上更稳。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 913.05,
+   "dur": 3.54,
+   "speech": "α 很小时，不会灾难性抵消。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 917.14,
+   "dur": 2.92,
+   "speech": "没有窗口，只有一个状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 920.61,
+   "dur": 3.66,
+   "speech": "这是它和 SMA 最大的结构差别。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 924.82,
+   "dur": 2.68,
+   "speech": "初始值按式二点一六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 928.05,
+   "dur": 2.44,
+   "speech": "取前三个点的平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 931.04,
+   "dur": 3.04,
+   "speech": "不足三个点，就用全部点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 934.63,
+   "dur": 3.04,
+   "speech": "这个退化分支，书上没写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 938.22,
+   "dur": 2.49,
+   "speech": "换算函数有四个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 941.25,
+   "dur": 3.47,
+   "speech": "从 N 到 α，从 α 到 N。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 945.27,
+   "dur": 2.17,
+   "speech": "两个质心公式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 948,
+   "dur": 2.39,
+   "speech": "四个都是纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 950.94,
+   "dur": 2.08,
+   "speech": "可以逐点对拍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 953.56,
+   "dur": 4.29,
+   "speech": "三个模块的断言，十二、十三、十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 958.4,
+   "dur": 2.1,
+   "speech": "加起来四十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 963.9,
+   "dur": 2.17,
+   "speech": "验证分五步。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 966.62,
+   "dur": 2.51,
+   "speech": "第一步，黄金样例。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 969.68,
+   "dur": 2.56,
+   "speech": "一到五，窗口三。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 972.79,
+   "dur": 2.85,
+   "speech": "输出二、三、四。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 976.19,
+   "dur": 2.08,
+   "speech": "手算就能对。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 978.82,
+   "dur": 3.47,
+   "speech": "这是教科书上的例子，不用证明。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 982.84,
+   "dur": 2.75,
+   "speech": "第二步，质心恒等式。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 986.14,
+   "dur": 3.4,
+   "speech": "SMA20 的质心，九点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 990.08,
+   "dur": 3.9,
+   "speech": "SES 配二十一分之二，也是九点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 994.54,
+   "dur": 3.61,
+   "speech": "两者差零，到小数点后十二位。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 998.7,
+   "dur": 2.58,
+   "speech": "这是设计出来的相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 1001.83,
+   "dur": 2.13,
+   "speech": "不是拟合出来的。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 1004.51,
+   "dur": 2.63,
+   "speech": "第三步，实测质心。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 1007.69,
+   "dur": 2.97,
+   "speech": "给一段阶跃，直接量面积。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 1011.2,
+   "dur": 2.61,
+   "speech": "量出来还是九点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 1014.36,
+   "dur": 2.63,
+   "speech": "公式和实测对上了。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 1017.54,
+   "dur": 3.88,
+   "speech": "实测和公式，两条路都到九点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 1021.97,
+   "dur": 3.47,
+   "speech": "第四步，WMA 的三种权重。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 1025.99,
+   "dur": 3.88,
+   "speech": "等权，质心九点五，和 SMA 一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 1030.42,
+   "dur": 3.09,
+   "speech": "线性权，质心六点三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 1034.05,
+   "dur": 3.37,
+   "speech": "对称三角权，质心九点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 1037.98,
+   "dur": 3.49,
+   "speech": "同样二十个点，滞后差三点二。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 1042.02,
+   "dur": 4.91,
+   "speech": "同样二十个点，WMA 的滞后可以是六点三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 1047.48,
+   "dur": 2.27,
+   "speech": "也可以是九点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1050.3,
+   "dur": 2.68,
+   "speech": "取决于你信近端多少。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1053.53,
+   "dur": 3.33,
+   "speech": "所以 WMA 不是一个算法。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1057.4,
+   "dur": 1.84,
+   "speech": "它是一族。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1059.79,
+   "dur": 2.56,
+   "speech": "权重方案决定滞后。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1062.9,
+   "dur": 2.89,
+   "speech": "第五步，两个工程问题。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1066.34,
+   "dur": 2.8,
+   "speech": "第一，增量维护的漂移。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1069.69,
+   "dur": 2.75,
+   "speech": "十万个点，斜坡输入。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1072.99,
+   "dur": 5.05,
+   "speech": "增量与直接求和，最大差二点五乘十的负十一次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1078.6,
+   "dur": 1.72,
+   "speech": "可以忽略。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1080.86,
+   "dur": 1.86,
+   "speech": "但不是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1083.28,
+   "dur": 2.53,
+   "speech": "第二，初始化敏感。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1086.36,
+   "dur": 3.83,
+   "speech": "两种初值，前五个点差一点五元。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1090.74,
+   "dur": 3.18,
+   "speech": "一百个点后，差不到万分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1094.47,
+   "dur": 2.61,
+   "speech": "初值只影响开头。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1097.63,
+   "dur": 3.33,
+   "speech": "但开头正是第一眼看到的地方。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1101.5,
+   "dur": 3.33,
+   "speech": "所以初始化不是实现细节。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1105.38,
+   "dur": 2.39,
+   "speech": "它是结果的一部分。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1108.32,
+   "dur": 2.44,
+   "speech": "最后看日线对比。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1111.31,
+   "dur": 5.17,
+   "speech": "SMA20 与 SES 的相关系数，零点九九九二。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1117.03,
+   "dur": 2.27,
+   "speech": "看起来几乎一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1119.85,
+   "dur": 2.82,
+   "speech": "但最大差八十二块九。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1123.22,
+   "dur": 3.73,
+   "speech": "在千八的价位上，是百分之四点六。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1127.51,
+   "dur": 3.01,
+   "speech": "相关高，不等于同一条线。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1131.07,
+   "dur": 3.21,
+   "speech": "这就是为什么两条都要画。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1134.83,
+   "dur": 1.84,
+   "speech": "再看频率。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1137.22,
+   "dur": 2.75,
+   "speech": "日线一根，四个小时。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1140.52,
+   "dur": 2.94,
+   "speech": "五分钟线一根，五分钟。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1144.01,
+   "dur": 3.73,
+   "speech": "同样窗口二十，含义差四十八倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1148.29,
+   "dur": 4.38,
+   "speech": "所以窗口的数字，离开单位就没有意义。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1153.22,
+   "dur": 2.22,
+   "speech": "最后是工程账。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1156,
+   "dur": 3.97,
+   "speech": "四十一条新断言，总套件四百零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1160.52,
+   "dur": 3.88,
+   "speech": "三个单元，三份证据 JSON。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1164.95,
+   "dur": 4.81,
+   "speech": "数据哈希 e104a2fa，一条命令可以复跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1173.16,
+   "dur": 2.15,
+   "speech": "边界有五条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1175.86,
+   "dur": 4.98,
+   "speech": "第一，α 等于二除以 N 加一，只匹配质心。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1181.39,
+   "dur": 2.03,
+   "speech": "不匹配方差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1183.97,
+   "dur": 2.27,
+   "speech": "也不匹配尾部。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1186.79,
+   "dur": 4.36,
+   "speech": "第二，WMA 的权重方案是自由选择。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1191.7,
+   "dur": 3.13,
+   "speech": "书上没给，本仓选了两组。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1195.38,
+   "dur": 2.94,
+   "speech": "换一组权重，滞后就变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1198.88,
+   "dur": 3.13,
+   "speech": "第三，SES 没有窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1202.56,
+   "dur": 4.24,
+   "speech": "说 N 等于二十，只是换算出来的等效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1207.35,
+   "dur": 4.19,
+   "speech": "严格说，SES 的有效窗口是无限的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1212.09,
+   "dur": 3.06,
+   "speech": "第四，初始化影响开头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1215.7,
+   "dur": 3.57,
+   "speech": "前三个点怎么取，会写进曲线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1219.82,
+   "dur": 2.89,
+   "speech": "第五，频率改变一切。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1223.26,
+   "dur": 3.69,
+   "speech": "同样二十个点，日线是八十小时。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1227.5,
+   "dur": 2.89,
+   "speech": "五分钟线是一百分钟。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1230.94,
+   "dur": 2.01,
+   "speech": "差四十八倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1233.5,
+   "dur": 3.04,
+   "speech": "窗口数字，必须带单位。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1237.08,
+   "dur": 2.58,
+   "speech": "这些边界不是缺陷。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1240.22,
+   "dur": 2.61,
+   "speech": "是方法本身的选择。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1243.37,
+   "dur": 2.85,
+   "speech": "还有一条，不在公式里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1246.77,
+   "dur": 2.44,
+   "speech": "平滑不制造信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1249.76,
+   "dur": 2.44,
+   "speech": "它只是延迟信息。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1255.59,
+   "dur": 2.41,
+   "speech": "回到开头三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1258.55,
+   "dur": 3.37,
+   "speech": "九点五，SMA20 的质心。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1262.48,
+   "dur": 3.25,
+   "speech": "六点三三，线性加权的质心。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1266.28,
+   "dur": 2.97,
+   "speech": "四十八，两种频率的倍数。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1269.8,
+   "dur": 3.64,
+   "speech": "一个判据：先问滞后，再看曲线。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1273.99,
+   "dur": 2.94,
+   "speech": "平滑器不是越平滑越好。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1277.48,
+   "dur": 2.85,
+   "speech": "它是在用滞后换稳定。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1280.87,
+   "dur": 2.32,
+   "speech": "换多少，可以算。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1283.74,
+   "dur": 4.21,
+   "speech": "这三集连起来，是一条数据处理的流水线。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1288.51,
+   "dur": 2.89,
+   "speech": "缺失、平滑、趋势。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1291.95,
+   "dur": 2.13,
+   "speech": "下一集讲 Holt。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1294.63,
+   "dur": 3.11,
+   "speech": "趋势和季节，各一个旋钮。"
+  }
+ ]
+}
