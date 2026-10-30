@@ -20,12 +20,19 @@
   "fps": 30,
   "prefix": "tsint-68",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_fewshot_data.py"
+    }
+  ],
+  "derived": [
+    "data/fewshot.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "publish": {
+    "coverFrame": 2200
+  }
 }

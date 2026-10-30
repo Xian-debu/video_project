@@ -1,0 +1,2269 @@
+{
+ "entry": "src/tsint-68-fewshot-and-cost/script.ts",
+ "fps": 30,
+ "totalSec": 1123.81,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 119.26
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 119.26,
+   "dur": 146.56
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 265.82,
+   "dur": 149.01
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 414.83,
+   "dur": 144.59
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 559.42,
+   "dur": 171.76
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 731.18,
+   "dur": 180.23
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 911.41,
+   "dur": 129.03
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1040.44,
+   "dur": 83.37
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.61,
+   "speech": "这一集讲采样位置。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.36,
+   "dur": 2.97,
+   "speech": "同一只股票，同一段历史。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.87,
+   "dur": 3.37,
+   "speech": "一千个训练点，只取百分之五。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.8,
+   "dur": 2.39,
+   "speech": "预算只有五十个点。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.74,
+   "dur": 3.09,
+   "speech": "取在前端，只覆盖三个月。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 18.37,
+   "dur": 3.25,
+   "speech": "取成均匀窗口，铺满四年。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.18,
+   "dur": 3.23,
+   "speech": "模型没变，测试集也没变。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.96,
+   "dur": 2.87,
+   "speech": "分数却不可直接比较。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.38,
+   "dur": 2.2,
+   "speech": "这到底是为什么？"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 32.12,
+   "dur": 3.13,
+   "speech": "因为五十个点看到的世界不同。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 35.81,
+   "dur": 3.52,
+   "speech": "书在二百零三页讲少样本。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 39.88,
+   "dur": 3.13,
+   "speech": "二百零四页讲采样策略。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 43.56,
+   "dur": 2.94,
+   "speech": "二百零六页讲评估指标。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.05,
+   "dur": 3.01,
+   "speech": "二百零七页讲效率指标。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 50.62,
+   "dur": 3.21,
+   "speech": "这一集把两件事放在一起。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 54.37,
+   "dur": 2.94,
+   "speech": "第一，五个百分点怎么选。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 57.86,
+   "dur": 3.42,
+   "speech": "第二，选完以后成本怎么记账。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 61.84,
+   "dur": 2.29,
+   "speech": "先看手上的数据。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 64.68,
+   "dur": 3.23,
+   "speech": "一只股票，一千两百个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 68.46,
+   "dur": 2.65,
+   "speech": "从二零二零年一月二日。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 71.66,
+   "dur": 2.97,
+   "speech": "到二零二四年十二月十三日。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 75.18,
+   "dur": 2.34,
+   "speech": "前一千点做训练。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 78.07,
+   "dur": 2.46,
+   "speech": "后两百点做测试。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 81.08,
+   "dur": 3.57,
+   "speech": "训练窗停在二零二四年二月二十日。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 85.2,
+   "dur": 3.04,
+   "speech": "测试窗从二月二十一日开始。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 88.79,
+   "dur": 2.68,
+   "speech": "百分之五，五十个点。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 92.02,
+   "dur": 2.8,
+   "speech": "八个组合，每个五十点。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 95.36,
+   "dur": 2.34,
+   "speech": "合计四百个位置。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 98.26,
+   "dur": 3.21,
+   "speech": "两个算法，三十三条断言。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 102.01,
+   "dur": 2.73,
+   "speech": "先记住三个关键数字。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 105.29,
+   "dur": 3.45,
+   "speech": "五十个采样点，一千点训练窗。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 109.28,
+   "dur": 3.85,
+   "speech": "三百三十七，是效率自检的参数量。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 113.69,
+   "dur": 3.37,
+   "speech": "为什么是三百三十七，后面算。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 120.46,
+   "dur": 2.34,
+   "speech": "先看问题出在哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 123.35,
+   "dur": 3.04,
+   "speech": "八种采样，都取五十个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 126.94,
+   "dur": 2.39,
+   "speech": "位置却分成几类。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 129.88,
+   "dur": 3.23,
+   "speech": "前端窗口，取零到四十九。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 133.66,
+   "dur": 2.63,
+   "speech": "十个窗口首尾相接。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 136.84,
+   "dur": 3.18,
+   "speech": "覆盖二零二零年一月至三月。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 140.57,
+   "dur": 2.27,
+   "speech": "一共只有三个月。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 143.39,
+   "dur": 4.07,
+   "speech": "后端窗口，取九百五十到九百九十九。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 148.01,
+   "dur": 4.07,
+   "speech": "覆盖二零二三年十二月至二零二四年二月。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 152.63,
+   "dur": 2.27,
+   "speech": "同样只有三个月。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 155.45,
+   "dur": 3.04,
+   "speech": "均匀窗口，锚点等间隔。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 159.04,
+   "dur": 2.77,
+   "speech": "十个窗口铺满训练窗。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 162.36,
+   "dur": 2.73,
+   "speech": "跨度九百九十九个索引。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 165.64,
+   "dur": 2.75,
+   "speech": "可是只看到十个五天。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 168.94,
+   "dur": 2.44,
+   "speech": "合计还是五十天。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 171.93,
+   "dur": 2.92,
+   "speech": "随机窗口，种子四十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 175.4,
+   "dur": 2.97,
+   "speech": "十个窗口落在八个月份。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 178.91,
+   "dur": 3.28,
+   "speech": "最大空格一百六十八个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 182.74,
+   "dur": 2.58,
+   "speech": "接近八个月没有样本。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 185.87,
+   "dur": 3.35,
+   "speech": "最后一个窗口停在九月二十五日。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 189.77,
+   "dur": 3.13,
+   "speech": "训练窗末尾还有九十三个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 193.46,
+   "dur": 2.39,
+   "speech": "一次都没被看到。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 196.4,
+   "dur": 2.89,
+   "speech": "所以问题不是取多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 199.84,
+   "dur": 2.49,
+   "speech": "问题是取在哪里。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 202.88,
+   "dur": 2.63,
+   "speech": "五十个点的百分之五。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 206.06,
+   "dur": 2.53,
+   "speech": "不是随机取五十个。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 209.14,
+   "dur": 3.16,
+   "speech": "是按位置规则取五十个。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 212.85,
+   "dur": 3.09,
+   "speech": "换一条规则，分布就变了。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 216.48,
+   "dur": 3.3,
+   "speech": "分数变了，未必是模型变了。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 220.34,
+   "dur": 2.51,
+   "speech": "可能只是采样换了。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 223.4,
+   "dur": 2.25,
+   "speech": "书给了四个方向。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 226.19,
+   "dur": 2.75,
+   "speech": "前端，捕获初始模式。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 229.49,
+   "dur": 2.8,
+   "speech": "后端，提取最新动态。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 232.84,
+   "dur": 2.92,
+   "speech": "均匀，保证全局覆盖。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 236.31,
+   "dur": 3.13,
+   "speech": "随机，增强分布鲁棒性。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 239.99,
+   "dur": 2.99,
+   "speech": "但书还有一条更硬的约束。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 243.53,
+   "dur": 3.21,
+   "speech": "时间序列的样本必须连续。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 247.29,
+   "dur": 3.47,
+   "speech": "所以点采样不能随机撒点。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 251.31,
+   "dur": 2.34,
+   "speech": "只能取连续的段。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 254.2,
+   "dur": 2.56,
+   "speech": "这是二百零四页写的。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 257.31,
+   "dur": 2.85,
+   "speech": "我们把它做成两条反例。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 260.7,
+   "dur": 2.92,
+   "speech": "下一段先把定义写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 267.02,
+   "dur": 2.37,
+   "speech": "先把定义写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 269.94,
+   "dur": 3.18,
+   "speech": "采样率 rho，这里百分之五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 273.67,
+   "dur": 2.46,
+   "speech": "预算按采样点算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 276.68,
+   "dur": 3.23,
+   "speech": "一千点训练窗，预算五十点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 280.46,
+   "dur": 2.51,
+   "speech": "第一种是窗口采样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 283.52,
+   "dur": 2.61,
+   "speech": "以连续窗口为单元。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 286.68,
+   "dur": 2.94,
+   "speech": "窗宽 w，这里取五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 290.17,
+   "dur": 3.4,
+   "speech": "窗口数 k 等于预算除以 w。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 294.12,
+   "dur": 2.8,
+   "speech": "五十除以五，等于十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 297.46,
+   "dur": 2.65,
+   "speech": "十个窗口，每个五点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 300.67,
+   "dur": 2.56,
+   "speech": "加起来正好五十点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 303.78,
+   "dur": 2.68,
+   "speech": "锚点决定窗口放在哪。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 307,
+   "dur": 3.09,
+   "speech": "前端，从零开始连续取。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 310.64,
+   "dur": 2.94,
+   "speech": "后端，从末尾往前取。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 314.13,
+   "dur": 3.35,
+   "speech": "均匀，第 i 个锚点等间隔。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 318.03,
+   "dur": 4.53,
+   "speech": "公式是 floor(i 乘 n 减 w 除以 k 减一)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 323.11,
+   "dur": 3.52,
+   "speech": "加一点零 e 负九，削浮点噪声。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 327.18,
+   "dur": 3.54,
+   "speech": "随机，用种子生成候选锚点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 331.27,
+   "dur": 2.46,
+   "speech": "排序后取前 k 个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 334.28,
+   "dur": 2.29,
+   "speech": "第二种是点采样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 337.12,
+   "dur": 2.56,
+   "speech": "样本单元是单点吗？"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 340.23,
+   "dur": 3.49,
+   "speech": "书里的点采样仍然取连续段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 344.28,
+   "dur": 3.47,
+   "speech": "前端点采样，取前段连续点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 348.3,
+   "dur": 3.49,
+   "speech": "后端点采样，取末端连续点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 352.34,
+   "dur": 3.01,
+   "speech": "所以合法策略只有六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 355.9,
+   "dur": 2.82,
+   "speech": "四个窗口，加两个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 359.28,
+   "dur": 2.37,
+   "speech": "另外两个是反例。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 362.19,
+   "dur": 3.21,
+   "speech": "等距抽样，每二十点取一个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 365.95,
+   "dur": 2.56,
+   "speech": "五十个点，五十段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 369.06,
+   "dur": 3.25,
+   "speech": "随机撒点，散在整条轴上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 372.86,
+   "dur": 2.77,
+   "speech": "也是五十个点，五十段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 376.18,
+   "dur": 2.89,
+   "speech": "这两种破坏时间连续性。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 379.63,
+   "dur": 2.37,
+   "speech": "库函数直接报错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 382.54,
+   "dur": 2.89,
+   "speech": "不是效果差，是不合法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 385.99,
+   "dur": 2.27,
+   "speech": "这个区分很重要。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 388.81,
+   "dur": 2.46,
+   "speech": "还有一个取整边界。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 391.82,
+   "dur": 3.95,
+   "speech": "十点序列，百分之五，算出零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 396.32,
+   "dur": 2.44,
+   "speech": "四舍五入得到零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 399.31,
+   "dur": 2.39,
+   "speech": "零个点没法训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 402.25,
+   "dur": 3.28,
+   "speech": "所以口径写死，至少一个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 406.08,
+   "dur": 2.73,
+   "speech": "文档和画面都要标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 409.35,
+   "dur": 3.28,
+   "speech": "不标，复现的人会得到零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 416.03,
+   "dur": 2.53,
+   "speech": "现在把八行画出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 419.11,
+   "dur": 2.32,
+   "speech": "每一行五十个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 421.98,
+   "dur": 2.87,
+   "speech": "横轴是训练窗一千点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 425.4,
+   "dur": 2.58,
+   "speech": "第一行，前端窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 428.53,
+   "dur": 3.18,
+   "speech": "一条实心带，零到四十九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 432.27,
+   "dur": 2.61,
+   "speech": "第二行，后端窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 435.42,
+   "dur": 3.66,
+   "speech": "实心带从九百五十到九百九十九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 439.63,
+   "dur": 2.61,
+   "speech": "第三行，均匀窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 442.79,
+   "dur": 3.09,
+   "speech": "十个短块，等间隔铺开。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 446.43,
+   "dur": 2.58,
+   "speech": "第四行，随机窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 449.56,
+   "dur": 3.25,
+   "speech": "十个短块，位置由种子决定。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 453.36,
+   "dur": 2.89,
+   "speech": "注意，有两块几乎挨着。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 456.81,
+   "dur": 2.49,
+   "speech": "随机不等于均匀。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 459.84,
+   "dur": 2.7,
+   "speech": "第五行，前端点采样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 463.09,
+   "dur": 3.01,
+   "speech": "索引和第一行完全相同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 466.66,
+   "dur": 2.77,
+   "speech": "第六行，后端点采样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 469.98,
+   "dur": 3.04,
+   "speech": "索引和第二行完全相同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 473.57,
+   "dur": 2.94,
+   "speech": "这是本集要说明的细节。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 477.06,
+   "dur": 2.8,
+   "speech": "五十点预算，窗宽五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 480.41,
+   "dur": 2.63,
+   "speech": "十个窗口首尾相接。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 483.59,
+   "dur": 2.61,
+   "speech": "索引集合就重合了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 486.75,
+   "dur": 2.46,
+   "speech": "但样本单元不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 489.76,
+   "dur": 3.11,
+   "speech": "窗口采样，十个五点的样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 493.42,
+   "dur": 3.28,
+   "speech": "点采样，五十个单点的样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 497.25,
+   "dur": 3.06,
+   "speech": "同样的位置，不同的训练集。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 500.86,
+   "dur": 2.58,
+   "speech": "第七行，等距反例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 503.99,
+   "dur": 2.25,
+   "speech": "五十个孤立的点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 506.79,
+   "dur": 2.61,
+   "speech": "第八行，散点反例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 509.94,
+   "dur": 2.56,
+   "speech": "也是五十个孤立的点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 513.05,
+   "dur": 2.94,
+   "speech": "再看各自覆盖多少个月份。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 516.54,
+   "dur": 3.04,
+   "speech": "前端三个月，后端三个月。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 520.13,
+   "dur": 2.77,
+   "speech": "均匀窗口十个不同月份。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 523.45,
+   "dur": 2.92,
+   "speech": "随机窗口八个不同月份。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 526.92,
+   "dur": 2.56,
+   "speech": "等距反例四十六个月。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 530.03,
+   "dur": 2.63,
+   "speech": "散点反例二十一个月。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 533.21,
+   "dur": 2.7,
+   "speech": "点越散，月份越多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 536.46,
+   "dur": 2.61,
+   "speech": "但时间连续性越差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 539.62,
+   "dur": 2.73,
+   "speech": "这是取舍，不是好坏。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 542.89,
+   "dur": 3.01,
+   "speech": "捕获初始模式，选前端。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 546.46,
+   "dur": 3.09,
+   "speech": "跟踪最新动态，选后端。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 550.09,
+   "dur": 3.13,
+   "speech": "要全局覆盖，选均匀。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 553.78,
+   "dur": 3.45,
+   "speech": "要分布鲁棒，随机加多种子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 560.62,
+   "dur": 2.34,
+   "speech": "下面看两个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 563.51,
+   "dur": 2.7,
+   "speech": "采样器是一个纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 566.76,
+   "dur": 2.41,
+   "speech": "输入配置和向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 569.73,
+   "dur": 2.44,
+   "speech": "输出样本和索引。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 572.72,
+   "dur": 2.46,
+   "speech": "索引一定要返回。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 575.73,
+   "dur": 2.51,
+   "speech": "否则无法复核位置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 578.79,
+   "dur": 2.53,
+   "speech": "配置有五个字段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 581.87,
+   "dur": 4.36,
+   "speech": "采样率，类型，锚点，窗宽，种子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 586.78,
+   "dur": 5.13,
+   "speech": "默认，百分之五，窗口，前端，五，四十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 592.46,
+   "dur": 2.46,
+   "speech": "函数先算出点数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 595.47,
+   "dur": 3.69,
+   "speech": "点数等于 max 一，round rho 乘 n。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 599.7,
+   "dur": 2.41,
+   "speech": "接下来算窗口数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 602.67,
+   "dur": 4.36,
+   "speech": "取 n 除以 w 与预算除以 w 的较小者。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 607.58,
+   "dur": 4.48,
+   "speech": "前端窗口，索引从零到 k 乘 w 减一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 612.6,
+   "dur": 4.6,
+   "speech": "后端窗口，从 n 减 k 乘 w 到 n 减一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 617.75,
+   "dur": 2.94,
+   "speech": "均匀窗口，逐个算锚点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 621.24,
+   "dur": 3.66,
+   "speech": "随机窗口，用线性同余生成键。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 625.46,
+   "dur": 3.04,
+   "speech": "键相同的按索引排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 629.04,
+   "dur": 2.25,
+   "speech": "取前 k 个锚点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 631.84,
+   "dur": 2.61,
+   "speech": "同种子，逐位相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 635,
+   "dur": 2.56,
+   "speech": "换种子，位置不同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 638.1,
+   "dur": 2.63,
+   "speech": "非法组合直接报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 641.28,
+   "dur": 2.87,
+   "speech": "窗口采样复杂度 O n。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 644.7,
+   "dur": 2.77,
+   "speech": "点采样复杂度 O 预算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 648.03,
+   "dur": 2.97,
+   "speech": "第二个模块是效率三件套。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 651.54,
+   "dur": 3.54,
+   "speech": "参数量，训练时间，推理时间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 655.64,
+   "dur": 2.85,
+   "speech": "再加峰值内存和误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 659.03,
+   "dur": 2.46,
+   "speech": "参数量不能手填。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 662.04,
+   "dur": 2.39,
+   "speech": "要按网络形状算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 664.98,
+   "dur": 3.23,
+   "speech": "两层 MLP，输入二维。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 668.76,
+   "dur": 3.9,
+   "speech": "第一层，二乘十六加十六，四十八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 673.22,
+   "dur": 4.38,
+   "speech": "第二层，十六乘十六加十六，二百七十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 678.15,
+   "dur": 3.81,
+   "speech": "输出层，十六乘一加一，十七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 682.5,
+   "dur": 2.44,
+   "speech": "合计三百三十七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 685.49,
+   "dur": 2.46,
+   "speech": "输入若只有一维呢？"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 688.5,
+   "dur": 3.61,
+   "speech": "第一层少十六个权重，三百二十一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 692.67,
+   "dur": 2.89,
+   "speech": "计划写的是三百三十七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 696.11,
+   "dur": 3.37,
+   "speech": "所以模型用两个滞后输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 700.04,
+   "dur": 2.77,
+   "speech": "这个差异画面要标出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 703.36,
+   "dur": 2.46,
+   "speech": "计时协议也写死。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 706.37,
+   "dur": 3.9,
+   "speech": "预热三次，重复七次，取中位数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 710.82,
+   "dur": 4.29,
+   "speech": "训练两百步，批十六，学习率零点零五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 715.66,
+   "dur": 2.41,
+   "speech": "推理前必须 force。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 718.62,
+   "dur": 3.01,
+   "speech": "不 force，测到的是 thunk。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 722.19,
+   "dur": 2.58,
+   "speech": "峰值内存不靠估算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 725.32,
+   "dur": 3.66,
+   "speech": "用 RTS 统计的 max residency。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 732.38,
+   "dur": 2.44,
+   "speech": "现在看验证结果。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 735.37,
+   "dur": 2.63,
+   "speech": "采样器十八条断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 738.55,
+   "dur": 2.46,
+   "speech": "效率模块十五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 741.56,
+   "dur": 2.89,
+   "speech": "合计三十三条新断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 745,
+   "dur": 2.46,
+   "speech": "全套三百零八条。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 748.02,
+   "dur": 4.07,
+   "speech": "证据检查二十二加十三，共三十五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 752.64,
+   "dur": 2.25,
+   "speech": "先看位置对不对。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 755.43,
+   "dur": 2.94,
+   "speech": "八种策略，每种五十点。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 758.92,
+   "dur": 2.92,
+   "speech": "八乘五十，四百个位置。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 762.39,
+   "dur": 2.58,
+   "speech": "全部落在训练窗内。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 765.52,
+   "dur": 2.49,
+   "speech": "前端零到四十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 768.56,
+   "dur": 3.25,
+   "speech": "后端九百五十到九百九十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 772.36,
+   "dur": 3.66,
+   "speech": "均匀十个窗口，跨度九百九十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 776.58,
+   "dur": 3.04,
+   "speech": "最大空格一百零六个交易日。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 780.16,
+   "dur": 2.32,
+   "speech": "随机种子四十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 783.03,
+   "dur": 3.33,
+   "speech": "第一个十六，最后一个九百零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 786.91,
+   "dur": 2.65,
+   "speech": "最大空格一百六十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 790.11,
+   "dur": 2.58,
+   "speech": "反例一，步长二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 793.24,
+   "dur": 2.56,
+   "speech": "五十个点，五十段。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 796.35,
+   "dur": 2.65,
+   "speech": "反例二，五十个散点。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 799.56,
+   "dur": 2.7,
+   "speech": "最大空格一百二十三。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 802.81,
+   "dur": 2.73,
+   "speech": "再看种子这条断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 806.08,
+   "dur": 2.49,
+   "speech": "同种子两次采样。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 809.12,
+   "dur": 2.63,
+   "speech": "索引必须逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 812.3,
+   "dur": 2.63,
+   "speech": "换种子，索引不同。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 815.48,
+   "dur": 2.99,
+   "speech": "这条断言保证可复现。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 819.02,
+   "dur": 2.49,
+   "speech": "边界，十点序列。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 822.06,
+   "dur": 2.99,
+   "speech": "原始取整零，提升到一。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 825.6,
+   "dur": 2.68,
+   "speech": "窗口数也提升到一。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 828.82,
+   "dur": 2.29,
+   "speech": "再看效率这一侧。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 831.67,
+   "dur": 4.67,
+   "speech": "三百三十七，等于四十八加二百七十二加十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 836.89,
+   "dur": 2.87,
+   "speech": "一维输入是三百二十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 840.31,
+   "dur": 2.41,
+   "speech": "三个规模参数量。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 843.27,
+   "dur": 4.77,
+   "speech": "一百零五，一千一百八十五，一万七千零二十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 848.59,
+   "dur": 2.29,
+   "speech": "训练时间差很多。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 851.43,
+   "dur": 5.46,
+   "speech": "二十四点七，二百七十一点八，七千零四十一点零毫秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 857.44,
+   "dur": 2.44,
+   "speech": "推理时间也差很多。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 860.43,
+   "dur": 4.48,
+   "speech": "零点零九五，零点六二二，十一点三二毫秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 865.46,
+   "dur": 2.97,
+   "speech": "峰值内存同样差很多。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 868.98,
+   "dur": 4.24,
+   "speech": "三点八，二十点七，二百六十二点六兆。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 873.76,
+   "dur": 2.39,
+   "speech": "最后看误差三档。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 876.7,
+   "dur": 5.1,
+   "speech": "零点零零三零，零点零零三一六，零点零一零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 882.36,
+   "dur": 2.25,
+   "speech": "最后一个数最大。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 885.15,
+   "dur": 3.4,
+   "speech": "同预算下，大模型没有更准。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 889.1,
+   "dur": 2.61,
+   "speech": "这是真的，不是笔误。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 892.26,
+   "dur": 2.53,
+   "speech": "延迟测量留了对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 895.34,
+   "dur": 3.3,
+   "speech": "不求值，零点零零零七毫秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 899.19,
+   "dur": 3.16,
+   "speech": "求值后，零点零九五毫秒起。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 902.9,
+   "dur": 2.63,
+   "speech": "整整差三个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 906.08,
+   "dur": 3.13,
+   "speech": "所以计时前必须先 force。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 912.61,
+   "dur": 2.44,
+   "speech": "最后说清楚边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 915.6,
+   "dur": 2.37,
+   "speech": "第一，证据等级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 918.51,
+   "dur": 2.49,
+   "speech": "采样协议是 B 级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 921.55,
+   "dur": 2.53,
+   "speech": "书只有定义和图。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 924.63,
+   "dur": 2.92,
+   "speech": "实现和数字是 A 级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 928.1,
+   "dur": 3.57,
+   "speech": "三十五条检查，三十三条断言。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 932.22,
+   "dur": 2.34,
+   "speech": "第二，数据范围。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 935.11,
+   "dur": 3.47,
+   "speech": "单票，一千两百天，前复权。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 939.13,
+   "dur": 2.46,
+   "speech": "不跨市场，不外推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 942.14,
+   "dur": 2.44,
+   "speech": "第三，采样口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 945.13,
+   "dur": 2.17,
+   "speech": "百分之五按点算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 947.85,
+   "dur": 2.68,
+   "speech": "窗宽五，所以十窗。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 951.08,
+   "dur": 2.97,
+   "speech": "前后端按连续窗定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 954.6,
+   "dur": 2.85,
+   "speech": "书里没有写死这一点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 957.99,
+   "dur": 2.77,
+   "speech": "本仓口径，画面标注。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 961.32,
+   "dur": 2.41,
+   "speech": "第四，效率协议。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 964.28,
+   "dur": 3.4,
+   "speech": "固定两百步，学习率零点零五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 968.23,
+   "dur": 3.25,
+   "speech": "同一台 CPU，同一批数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 972.03,
+   "dur": 3.54,
+   "speech": "峰值用 RTS，预热三次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 976.13,
+   "dur": 2.73,
+   "speech": "重复七次取中位数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 979.4,
+   "dur": 2.82,
+   "speech": "第五，误差非单调。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 982.77,
+   "dur": 3.06,
+   "speech": "同预算下大模型更差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 986.39,
+   "dur": 2.39,
+   "speech": "但预算是固定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 989.33,
+   "dur": 2.77,
+   "speech": "不能外推成大模型无用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 992.65,
+   "dur": 2.92,
+   "speech": "第六，反例不是差策略。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 996.12,
+   "dur": 2.34,
+   "speech": "是不合法的策略。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 999.01,
+   "dur": 3.09,
+   "speech": "展示它们是为了说明约束。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1002.65,
+   "dur": 2.49,
+   "speech": "第七，复现路径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1005.68,
+   "dur": 3.88,
+   "speech": "命令、提交、证据文件都在仓里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1010.11,
+   "dur": 4.14,
+   "speech": "引用标页码，协议 CC BY-NC-ND。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1014.8,
+   "dur": 2.53,
+   "speech": "还有一条隐藏边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1017.89,
+   "dur": 3.54,
+   "speech": "前端窗口和前端点的索引相同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1021.98,
+   "dur": 2.46,
+   "speech": "但样本单元不同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1024.99,
+   "dur": 3.47,
+   "speech": "十个五点的样本，对五十个单点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1029.01,
+   "dur": 2.39,
+   "speech": "训练集不是一回事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1031.95,
+   "dur": 3.11,
+   "speech": "所以看图不能只看索引。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1035.61,
+   "dur": 2.63,
+   "speech": "这就是这一集的边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1041.64,
+   "dur": 2.46,
+   "speech": "最后用一句话收。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1044.65,
+   "dur": 2.49,
+   "speech": "采样要先定协议。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1047.69,
+   "dur": 4.02,
+   "speech": "窗口类型，锚点，窗宽，种子。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1052.26,
+   "dur": 2.49,
+   "speech": "这四个都要写死。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1055.3,
+   "dur": 2.53,
+   "speech": "再报成本四件套。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1058.38,
+   "dur": 3.54,
+   "speech": "参数量，训练时间，推理时间。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1062.47,
+   "dur": 2.46,
+   "speech": "最后加峰值内存。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1065.48,
+   "dur": 2.61,
+   "speech": "四件套一起报出来。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1068.64,
+   "dur": 2.29,
+   "speech": "最后记住三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1071.48,
+   "dur": 3.33,
+   "speech": "五十，一千，三百三十七。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1075.36,
+   "dur": 3.09,
+   "speech": "五十个点，一千点训练窗。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1079,
+   "dur": 3.09,
+   "speech": "三百三十七，参数自检。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1082.63,
+   "dur": 2.49,
+   "speech": "还有一组成本对照。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1085.67,
+   "dur": 3.04,
+   "speech": "训练时间差二百八十四倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1089.26,
+   "dur": 3.01,
+   "speech": "推理时间差一百一十九倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1092.82,
+   "dur": 2.75,
+   "speech": "峰值内存差六十九倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1096.12,
+   "dur": 2.85,
+   "speech": "误差反而差三点三倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1099.52,
+   "dur": 2.94,
+   "speech": "越大越慢，也未必越准。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1103.01,
+   "dur": 2.56,
+   "speech": "下一集讲均衡性。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1106.12,
+   "dur": 3.25,
+   "speech": "五万个窗口在 PCA 平面上。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1109.92,
+   "dur": 2.37,
+   "speech": "用 hexbin 看密度。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1112.84,
+   "dur": 2.63,
+   "speech": "你的基准真的均衡吗？"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1116.02,
+   "dur": 2.37,
+   "speech": "这一集先到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1118.93,
+   "dur": 2.68,
+   "speech": "先到这里，下一集见。"
+  }
+ ]
+}
