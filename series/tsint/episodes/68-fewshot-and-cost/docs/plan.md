@@ -1,6 +1,6 @@
 # 68-fewshot-and-cost - 5% 的样本怎么选：Few-shot 采样器与它的成本账
 
-> status: draft (scaffolded, not produced)
+> status: ready (delivered 2026-10-30, 1123.8 s / 18.73 min)
 > chapter: ch08 | runtime target: 16 min | algorithms: 2
 
 ## Thesis
@@ -86,3 +86,10 @@ few-shot 只能取「连续的时间段」而不能随机撒点（否则时间�
 - ts-admin 导出：`a37e35a` feat(export): add ch08 few-shot 1200-point sample
 - 复现：`cabal run -v0 tsbase -- evidence-ch08-fewshot --data data/episodes/68-fewshot-and-cost --out data/episodes/68-fewshot-and-cost --evidence inventory/evidence +RTS -s -T`
 - 派生：`python3 build/generate_fewshot_data.py`（本目录）
+
+## Delivery
+
+- 成片：`delivery/Tsint68FewshotAndCost.mp4` 1123.81 s / 33,714 帧 / 8 场 / −15 LUFS / TP −2 dBFS
+- 交付：316 条字幕 cue、8 章、封面 frame 2200（73.33 s）
+- 渲染：`node scripts/make.mjs --film=tsint-68-fewshot-and-cost --score=out/e68-score-loop-48k.wav`（内容提交 `d0bdb6d`，make 全阶段 PASS，报告 `delivery/report.json`）
+- 状态：ready（不发布 B 站，仅到 ready；自授权清单见 `docs/SELF-AUTH.md` A6）
