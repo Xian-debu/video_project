@@ -50,3 +50,13 @@
 - 返工: 4 次（definitions TeX、卡片高度、boundary/outro 入场时序、封面帧），均由 still 复核或 make gate 发现
 - 偏差: 计划 13 min，实做 12.61 min；三算法集控制在 822 s 配乐内，未重渲染 score
 - 备注: 首个 ch08 集；后续 E66–E69 共用同一 score 与「四组数 + 七边界」语法
+## E66 anomaly-metrics-auc — 2026-10-30
+- ts-base: 9312f62（ConfusionMetrics / RocAuc / PrAuc + 46 断言 + AUC/PR 曲线）→ d1a25d9（E66 evidence 快照，含 243 点双曲线）
+- video_project: 4290579（pack/scenes/script/narration timing）→ 本次 delivery 提交
+- 引擎: 无（复用第 01 集 822 s score；make 的 coverFrame 仍走单独 publish）
+- 成片: 698.93 s（11.65 min），−15 LUFS，TP −2 dBFS，20968 帧，8 场；194 条旁白，501.5 s 语音
+- 流水线: score 复用；画面分段渲染约 4 min；stills→mix→loudnorm→flicker→publish 全过；music gate speech −24.54、bed vs speech −8.4、full −29.95
+- 卡点: ① film 字号族没有 h3，TSX 里 FT.h3 = undefined，标题退回 16px（open/boundary/shared Quote 共 5 处）；② 首轮 make 在 content check 因 pack 未提交直接退出；③ make 仍用 180 帧封面 → 单独 publish --cover-frame=2200；④ verification 的 threshold 联合类型 string-or-number 导致 toFixed TS2339，改 Number(...)
+- 返工: 3 次（标题字号、open 三件事卡增高、implementation 补手算样例），均由 still 复核发现
+- 偏差: 计划 18 min，实做 11.65 min；旁白 194 条比 E65 少 58 s，画面按 822 s 配乐内复用
+- 备注: ch08 第二集；下一步 E67 split-no-leakage（时间序列切分与泄漏）

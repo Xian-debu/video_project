@@ -1,6 +1,6 @@
 # 66-anomaly-metrics-auc - 不平衡数据上的三门考卷：Acc 0.99 的模型其实什么都没学到
 
-> status: draft (scenes, narration and stills built; delivery building)
+> status: ready (delivery built 2026-10-30; 698.93 s, -15 LUFS, TP -2 dBFS)
 > chapter: ch08 | runtime target: 12 min | algorithms: 3
 
 ## Thesis
@@ -76,8 +76,10 @@
 - 证据 JSON：ts-base data/episodes/66-anomaly-metrics-auc/summary.json、auc_20.csv、inventory/evidence/ch8-anomaly-metrics.json
 - 测试：cabal test 46 条全过（19 + 14 + 13）
 
-## Delivery
+## Delivery（2026-10-30）
 
+- 成片：delivery/Tsint66AnomalyMetricsAuc.mp4，698.93 s（20,968 帧 @30fps），H.264 + AAC；响度 I=-15 LUFS，TP=-2 dBFS。
 - 旁白：194 条，实测 501.5 s 语音，assets/audio/narration.wav 698.92 s（0 overrun）；TTS zh-CN-YunyangNeural。
-- 配乐：复用第 01 集 score.wav 822 s（seed=11 / energy=0.8 / bpm=84 / minor），混音 bed 增益 -4.5 dB。
-- 成片：待 make（预计 698.92 s / 20,968 帧）。
+- 配乐：复用第 01 集 score.wav 822 s（seed=11 / energy=0.8 / bpm=84 / minor），混音 bed 增益 -4.5 dB，music gate 全过（speech -24.54、bed vs speech -8.4、full -29.95）。
+- 交付件：tsint-66.srt（194 cues，最长行 19 字符）、tsint-66.chapters.txt（8 章）、tsint-66.chapters.ffmeta.txt、cover.png（第 2200 帧）。
+- QA：still lint 4 帧 PASS、luma flicker PASS（7 个切点，max 10.97）、loudnorm PASS、publish PASS。
