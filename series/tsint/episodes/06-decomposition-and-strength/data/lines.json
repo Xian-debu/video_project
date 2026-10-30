@@ -1,0 +1,2479 @@
+{
+ "entry": "src/tsint-06-decomposition-and-strength/script.ts",
+ "fps": 30,
+ "totalSec": 1368.67,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 157.47
+  },
+  {
+   "id": "problem",
+   "chapter": "一件真事",
+   "start": 157.47,
+   "dur": 174.23
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 331.7,
+   "dur": 227.4
+  },
+  {
+   "id": "intuition",
+   "chapter": "看图",
+   "start": 559.1,
+   "dur": 205.65
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 764.75,
+   "dur": 165.34
+  },
+  {
+   "id": "verification",
+   "chapter": "数字",
+   "start": 930.09,
+   "dur": 232.3
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1162.39,
+   "dur": 142.36
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1304.75,
+   "dur": 63.92
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.91,
+   "speech": "前面五集，一直在处理一整条序列。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.66,
+   "dur": 5.24,
+   "speech": "差分、对数、标准化，都是在整条序列上做手术。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 11.44,
+   "dur": 2.35,
+   "speech": "这一集换一个问法。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 14.34,
+   "dur": 3.68,
+   "speech": "一条序列里，其实混着几种东西。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 18.58,
+   "dur": 3.46,
+   "speech": "趋势，季节，还有剩下的残差。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 22.59,
+   "dur": 3.46,
+   "speech": "拆开它们，才谈得上分别描述。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 26.6,
+   "dur": 2.35,
+   "speech": "这一步叫经典分解。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 29.5,
+   "dur": 3.46,
+   "speech": "拆开之后，还要回答两个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 33.51,
+   "dur": 3.46,
+   "speech": "趋势占了多少，季节占了多少。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 37.52,
+   "dur": 4.35,
+   "speech": "书里给了两个数，式二点一和式二点二。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 42.42,
+   "dur": 2.57,
+   "speech": "趋势强度，季节强度。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 45.54,
+   "dur": 2.13,
+   "speech": "都在零到一之间。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 48.22,
+   "dur": 2.35,
+   "speech": "这一集就做三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 51.12,
+   "dur": 2.57,
+   "speech": "把分解的定义写清楚。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 54.24,
+   "dur": 2.35,
+   "speech": "把两个强度算出来。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 57.14,
+   "dur": 3.24,
+   "speech": "再说明它们不能用来干什么。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 60.93,
+   "dur": 1.46,
+   "speech": "先看数据。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 62.94,
+   "dur": 5.68,
+   "speech": "贵州茅台，二零一九到二零二一，七百三十个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 69.18,
+   "dur": 3.24,
+   "speech": "周期取五，一周五个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 72.97,
+   "dur": 2.79,
+   "speech": "趋势强度零点九九八一。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 76.31,
+   "dur": 2.79,
+   "speech": "季节强度零点零零八三。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 79.66,
+   "dur": 3.24,
+   "speech": "平安银行，同样七百三十天。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 83.44,
+   "dur": 3.24,
+   "speech": "周期取二十一，大约一个月。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 87.23,
+   "dur": 2.79,
+   "speech": "趋势强度零点九五四九。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 90.58,
+   "dur": 2.79,
+   "speech": "季节强度零点零一三九。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 93.92,
+   "dur": 4.13,
+   "speech": "两个样本，趋势都很强，季节都很弱。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 98.6,
+   "dur": 3.68,
+   "speech": "这不是巧合，是日线价格的性质。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 102.83,
+   "dur": 1.91,
+   "speech": "再看一个反例。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 105.29,
+   "dur": 4.57,
+   "speech": "茅台五分钟线，二百四十根，周期四十八。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 110.41,
+   "dur": 3.68,
+   "speech": "一天四十八根，正好一个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 114.64,
+   "dur": 2.57,
+   "speech": "趋势强度零点六七五。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 117.77,
+   "dur": 2.79,
+   "speech": "季节强度零点一八七五。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 121.11,
+   "dur": 4.79,
+   "speech": "同一个标的，换了采样频率，两个数都变了。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 126.46,
+   "dur": 3.24,
+   "speech": "所以强度是描述，不是本质。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 130.24,
+   "dur": 2.79,
+   "speech": "合成序列先给三个极端。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 133.59,
+   "dur": 3.91,
+   "speech": "纯趋势，趋势强度一，季节强度零。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 138.04,
+   "dur": 3.91,
+   "speech": "纯周期，趋势强度零，季节强度一。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 142.5,
+   "dur": 3.68,
+   "speech": "纯噪声，趋势强度零点二七四七。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 146.73,
+   "dur": 2.13,
+   "speech": "注意最后一个数。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 149.41,
+   "dur": 1.4,
+   "speech": "不是零。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 151.36,
+   "dur": 3.91,
+   "speech": "这一集的难点，就在这个不是零上。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 158.67,
+   "dur": 1.91,
+   "speech": "先说一件真事。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 161.13,
+   "dur": 3.24,
+   "speech": "书里第二十五页，有一组数。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 164.91,
+   "dur": 2.57,
+   "speech": "趋势强度零点九九八。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 168.04,
+   "dur": 2.57,
+   "speech": "季节强度零点二一零。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 171.16,
+   "dur": 3.91,
+   "speech": "另一组，零点九四四和零点四四一。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 175.61,
+   "dur": 2.57,
+   "speech": "看起来，季节也不小。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 178.74,
+   "dur": 3.02,
+   "speech": "我们照着做，复现不出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 182.3,
+   "dur": 4.57,
+   "speech": "用同一只股票，季节强度是零点零零八三。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 187.43,
+   "dur": 1.91,
+   "speech": "差了二十五倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 189.88,
+   "dur": 1.68,
+   "speech": "原因有三个。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 192.11,
+   "dur": 3.24,
+   "speech": "第一，书里没说周期取多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 195.9,
+   "dur": 5.02,
+   "speech": "周期五和周期二十一，是两个完全不同的季节。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 201.47,
+   "dur": 3.46,
+   "speech": "第二，书里没说端点怎么处理。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 205.48,
+   "dur": 5.46,
+   "speech": "移动平均吃掉的两端，算不算进方差，结果差很多。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 211.49,
+   "dur": 3.24,
+   "speech": "第三，书里没给出数据窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 215.28,
+   "dur": 4.57,
+   "speech": "所以这四个数，只能当引用，不能当结论。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 220.4,
+   "dur": 2.79,
+   "speech": "这就是证据分级的意思。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 223.75,
+   "dur": 3.91,
+   "speech": "我们自己跑的数，全部进证据文件。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 228.2,
+   "dur": 3.02,
+   "speech": "三十九条检查，零条失败。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 231.77,
+   "dur": 3.02,
+   "speech": "每一条都能回到一行代码。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 235.34,
+   "dur": 2.57,
+   "speech": "那为什么还要讲分解。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 238.46,
+   "dur": 3.91,
+   "speech": "因为它是后面所有模型的前置步骤。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 242.91,
+   "dur": 7.68,
+   "speech": "ARIMA 的季节项，指数平滑的季节状态，都要先知道季节长什么样。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 251.15,
+   "dur": 3.46,
+   "speech": "分解给出的，是一张体检报告。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 255.16,
+   "dur": 4.13,
+   "speech": "趋势多强，季节多强，残差还剩多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 259.84,
+   "dur": 2.57,
+   "speech": "它不回答明天涨不涨。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 262.96,
+   "dur": 3.68,
+   "speech": "它回答这条序列里，规律占多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 267.19,
+   "dur": 4.13,
+   "speech": "把这两个问题分开，是这一集的主线。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 271.87,
+   "dur": 1.68,
+   "speech": "先看一张图。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 274.1,
+   "dur": 3.46,
+   "speech": "茅台七百三十天收盘价，黄色。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 278.11,
+   "dur": 1.91,
+   "speech": "趋势项，青色。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 280.57,
+   "dur": 2.13,
+   "speech": "两条线几乎重合。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 283.25,
+   "dur": 4.57,
+   "speech": "重合意味着，趋势项解释了绝大部分变异。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 288.37,
+   "dur": 2.79,
+   "speech": "再看分解之后的季节项。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 291.71,
+   "dur": 2.57,
+   "speech": "幅度不到正负三块钱。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 294.84,
+   "dur": 3.46,
+   "speech": "相对两千块的价格，可以忽略。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 298.85,
+   "dur": 3.46,
+   "speech": "所以趋势强度高，季节强度低。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 302.86,
+   "dur": 1.91,
+   "speech": "再看五分钟线。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 305.31,
+   "dur": 4.13,
+   "speech": "一天四十八根，五天就是二百四十根。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 309.99,
+   "dur": 4.57,
+   "speech": "趋势项跟着价格走，但没有日线那么贴合。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 315.11,
+   "dur": 3.02,
+   "speech": "季节项有明显的日内形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 318.68,
+   "dur": 2.13,
+   "speech": "早盘低，午后高。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 321.36,
+   "dur": 3.68,
+   "speech": "这就是采样频率改变结论的例子。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 325.59,
+   "dur": 3.91,
+   "speech": "同一个标的，两个频率，两个故事。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 332.9,
+   "dur": 1.91,
+   "speech": "定义先写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 335.36,
+   "dur": 4.79,
+   "speech": "加法模型，x 等于 t 加 s 加 r。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 340.7,
+   "dur": 4.79,
+   "speech": "乘法模型，x 等于 t 乘 s 乘 r。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 346.04,
+   "dur": 3.46,
+   "speech": "三个字母，趋势、季节、残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 350.06,
+   "dur": 3.02,
+   "speech": "趋势项是中心化移动平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 353.62,
+   "dur": 3.02,
+   "speech": "参数 m，就是季节周期。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 357.19,
+   "dur": 4.35,
+   "speech": "本仓把 m 和 L 当成同一个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 362.09,
+   "dur": 3.91,
+   "speech": "拆成两个，只会制造不一致的组合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 366.54,
+   "dur": 1.4,
+   "speech": "先看核。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 368.49,
+   "dur": 3.91,
+   "speech": "奇数 m，权重全是 m 分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 372.95,
+   "dur": 6.13,
+   "speech": "偶数 m，首末是二 m 分之一，中间是 m 分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 379.63,
+   "dur": 2.35,
+   "speech": "长度是 m 加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 382.53,
+   "dur": 2.35,
+   "speech": "比如 m 等于四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 385.43,
+   "dur": 6.57,
+   "speech": "核就是八分之一，四分之一，四分之一，四分之一，八分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 392.55,
+   "dur": 1.68,
+   "speech": "权重和是一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 394.78,
+   "dur": 1.68,
+   "speech": "一阶矩是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 397.02,
+   "dur": 4.13,
+   "speech": "这两条保证常数和线性序列原样通过。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 401.69,
+   "dur": 2.35,
+   "speech": "趋势算完，去趋势。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 404.59,
+   "dur": 3.46,
+   "speech": "加法减掉趋势，乘法除以趋势。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 408.61,
+   "dur": 2.79,
+   "speech": "剩下的，按相位求均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 411.95,
+   "dur": 3.24,
+   "speech": "相位就是下标对 L 取余。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 415.74,
+   "dur": 4.13,
+   "speech": "同一个相位，跨周期共享一个季节值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 420.42,
+   "dur": 3.46,
+   "speech": "加法要让一个周期内的和为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 424.43,
+   "dur": 3.68,
+   "speech": "乘法要让一个周期内的均值是一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 428.66,
+   "dur": 4.13,
+   "speech": "这一步不做，整体水平会漏进季节项。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 433.34,
+   "dur": 1.46,
+   "speech": "最后残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 435.35,
+   "dur": 3.46,
+   "speech": "加法是 x 减 t 减 s。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 439.36,
+   "dur": 4.13,
+   "speech": "乘法是 x 除以 t，再除以 s。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 444.04,
+   "dur": 1.68,
+   "speech": "端点不补值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 446.27,
+   "dur": 4.13,
+   "speech": "趋势和残差，两端各 k 个点是空。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 450.95,
+   "dur": 3.91,
+   "speech": "k 等于 m 除以二，向下取整。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 455.41,
+   "dur": 3.24,
+   "speech": "空不是零，也不是 NaN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 459.19,
+   "dur": 2.13,
+   "speech": "空就是没有定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 461.87,
+   "dur": 3.91,
+   "speech": "长度下限，n 至少二 m 加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 466.33,
+   "dur": 5.68,
+   "speech": "移动平均吃掉两端，剩下的点要让每个相位都有观测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 472.56,
+   "dur": 2.79,
+   "speech": "这就是分解的全部定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 475.91,
+   "dur": 3.68,
+   "speech": "下面两个强度，是给分解打分的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 480.14,
+   "dur": 5.24,
+   "speech": "趋势强度，一减残差方差除以去季节序列的方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 485.93,
+   "dur": 5.24,
+   "speech": "季节强度，一减残差方差除以去趋势序列的方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 491.72,
+   "dur": 3.91,
+   "speech": "两个都在外面套一个 max 零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 496.17,
+   "dur": 1.91,
+   "speech": "负值截断到零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 498.63,
+   "dur": 3.46,
+   "speech": "都只在趋势有定义的位置统计。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 502.64,
+   "dur": 5.02,
+   "speech": "方差是总体方差，除以 n，不是 n 减一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 508.21,
+   "dur": 4.13,
+   "speech": "分母退化，返回零，不返回 NaN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 512.88,
+   "dur": 3.02,
+   "speech": "常数序列两个指标都是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 516.45,
+   "dur": 4.13,
+   "speech": "一个常数，既没有趋势，也没有季节。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 521.13,
+   "dur": 4.79,
+   "speech": "乘法模型，在 log 尺度上套同一公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 526.47,
+   "dur": 3.68,
+   "speech": "这一条是扩展，书里只写了加法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 530.71,
+   "dur": 4.13,
+   "speech": "参数错，长度不够，乘法遇到非正数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 535.38,
+   "dur": 3.46,
+   "speech": "都返回错误，不返回 NaN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 539.39,
+   "dur": 3.24,
+   "speech": "这就是四条错误分支的来历。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 543.18,
+   "dur": 1.91,
+   "speech": "定义到此为止。"
+  },
+  {
+   "scene": "definitions",
+   "index": 52,
+   "start": 545.64,
+   "dur": 4.35,
+   "speech": "记住三个词：中心化、相位、总体方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 53,
+   "start": 550.54,
+   "dur": 4.13,
+   "speech": "后面所有数字，都从这三步里长出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 54,
+   "start": 555.22,
+   "dur": 1.68,
+   "speech": "下一场看图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 560.3,
+   "dur": 2.35,
+   "speech": "先回答四个为什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 563.2,
+   "dur": 4.79,
+   "speech": "第一个，偶数核为什么不是做两次移动平均。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 568.54,
+   "dur": 2.35,
+   "speech": "两种写法代数等价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 571.44,
+   "dur": 2.57,
+   "speech": "但直接卷积只走一趟。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 574.57,
+   "dur": 3.46,
+   "speech": "权重和恒为一，一阶矩恒为零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 578.58,
+   "dur": 2.57,
+   "speech": "常数进去，常数出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 581.7,
+   "dur": 4.13,
+   "speech": "线性序列进去，还是同一条线性序列。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 586.38,
+   "dur": 5.02,
+   "speech": "区间一长，两次移动平均会引入额外端点缺失。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 591.94,
+   "dur": 2.13,
+   "speech": "所以选直接卷积。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 594.62,
+   "dur": 3.91,
+   "speech": "第二个，季节为什么按相位求均值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 599.08,
+   "dur": 4.79,
+   "speech": "如果按日历求均值，每个日期只有一个观测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 604.42,
+   "dur": 2.57,
+   "speech": "那是噪声，不是季节。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 607.54,
+   "dur": 3.68,
+   "speech": "按相位，同一个位置跨周期共享。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 611.78,
+   "dur": 4.35,
+   "speech": "周期五，一周五个交易日，周五对周五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 616.68,
+   "dur": 4.13,
+   "speech": "周期二十一，一个月二十一个交易日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 621.36,
+   "dur": 3.46,
+   "speech": "相位把不同月份的同一天对齐。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 625.37,
+   "dur": 2.79,
+   "speech": "端点的点仍然有季节值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 628.71,
+   "dur": 2.79,
+   "speech": "缺失只影响趋势和残差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 632.06,
+   "dur": 4.35,
+   "speech": "第三个，为什么分母是去季节、去趋势。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 636.96,
+   "dur": 5.02,
+   "speech": "用原始序列当分母，另一项的方差会被算进来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 642.52,
+   "dur": 4.13,
+   "speech": "一个强季节序列，趋势强度会被抬高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 647.2,
+   "dur": 4.57,
+   "speech": "反过来，长趋势序列，季节强度会被压扁。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 652.32,
+   "dur": 2.79,
+   "speech": "所以分母必须各去各的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 655.67,
+   "dur": 4.57,
+   "speech": "第四个，纯噪声的趋势强度为什么不是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 660.79,
+   "dur": 3.46,
+   "speech": "移动平均把噪声平滑掉一部分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 664.8,
+   "dur": 3.91,
+   "speech": "残差方差只剩原来的零点七二五倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 669.26,
+   "dur": 2.79,
+   "speech": "一减，就是零点二七五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 672.6,
+   "dur": 2.13,
+   "speech": "这个数不是趋势。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 675.28,
+   "dur": 1.91,
+   "speech": "它是核的残余。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 677.73,
+   "dur": 2.35,
+   "speech": "核越长，残余越小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 680.63,
+   "dur": 4.35,
+   "speech": "所以零点二七五要跟周期和长度一起看。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 685.53,
+   "dur": 2.57,
+   "speech": "不能单独当一个门槛。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 688.66,
+   "dur": 2.13,
+   "speech": "看三个合成序列。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 691.33,
+   "dur": 2.57,
+   "speech": "纯趋势，上升的直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 694.46,
+   "dur": 3.02,
+   "speech": "趋势强度一，季节强度零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 698.02,
+   "dur": 4.35,
+   "speech": "纯周期，十、十三、十六、十九，循环。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 702.92,
+   "dur": 1.91,
+   "speech": "均值十四点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 705.38,
+   "dur": 5.24,
+   "speech": "季节项是负四点五、负一点五、一点五、四点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 711.17,
+   "dur": 3.02,
+   "speech": "趋势强度零，季节强度一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 714.73,
+   "dur": 3.24,
+   "speech": "所以指标能把纯规律认出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 718.52,
+   "dur": 3.91,
+   "speech": "纯噪声，两条都低，但趋势不是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 722.98,
+   "dur": 1.91,
+   "speech": "再看交换实验。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 725.43,
+   "dur": 4.13,
+   "speech": "趋势加噪声，趋势强度零点九九九五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 43,
+   "start": 730.11,
+   "dur": 4.13,
+   "speech": "季节加噪声，季节强度零点九三四一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 44,
+   "start": 734.79,
+   "dur": 3.68,
+   "speech": "交换过来，趋势强度零点二五八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 45,
+   "start": 739.02,
+   "dur": 2.57,
+   "speech": "季节强度零点零零七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 46,
+   "start": 742.14,
+   "dur": 2.79,
+   "speech": "两个差值都大于零点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 47,
+   "start": 745.49,
+   "dur": 3.02,
+   "speech": "这就是两个指标的分辨力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 48,
+   "start": 749.06,
+   "dur": 2.79,
+   "speech": "但分辨力不等于显著性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 49,
+   "start": 752.4,
+   "dur": 3.02,
+   "speech": "这一点，边界那一场再说。"
+  },
+  {
+   "scene": "intuition",
+   "index": 50,
+   "start": 755.97,
+   "dur": 3.91,
+   "speech": "先记住：零点二七五，是核的脚印。"
+  },
+  {
+   "scene": "intuition",
+   "index": 51,
+   "start": 760.42,
+   "dur": 2.13,
+   "speech": "不是趋势的脚印。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 765.95,
+   "dur": 3.02,
+   "speech": "三个模块，一个共享类型。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 769.52,
+   "dur": 3.46,
+   "speech": "共享类型放在 Core 里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 773.53,
+   "dur": 4.79,
+   "speech": "因为算法模块之间不许互相 import。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 778.87,
+   "dur": 2.13,
+   "speech": "这是本仓的纪律。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 781.55,
+   "dur": 3.46,
+   "speech": "第一块，Decomp 记录。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 785.56,
+   "dur": 2.79,
+   "speech": "模式，周期，原始序列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 788.91,
+   "dur": 4.35,
+   "speech": "趋势和残差，都是 Maybe 向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 793.81,
+   "dur": 2.35,
+   "speech": "季节项是全长向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 796.71,
+   "dur": 3.24,
+   "speech": "趋势区间，用一对下标给出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 800.49,
+   "dur": 4.79,
+   "speech": "第二块，ClassicalDecomp。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 805.84,
+   "dur": 1.91,
+   "speech": "导出两个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 808.29,
+   "dur": 3.24,
+   "speech": "中心化核，和经典分解本身。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 812.08,
+   "dur": 2.79,
+   "speech": "核返回 Either。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 815.43,
+   "dur": 2.79,
+   "speech": "周期小于二，直接报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 818.77,
+   "dur": 3.24,
+   "speech": "分解也返回 Either。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 822.56,
+   "dur": 2.79,
+   "speech": "四类错误，显式列出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 825.91,
+   "dur": 2.35,
+   "speech": "周期错，长度不够。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 828.81,
+   "dur": 2.13,
+   "speech": "乘法遇到非正数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 831.48,
+   "dur": 1.68,
+   "speech": "乘法除以零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 833.72,
+   "dur": 4.13,
+   "speech": "为什么用 Either，不用异常。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 838.39,
+   "dur": 3.68,
+   "speech": "纯函数，错误是返回值的一部分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 842.63,
+   "dur": 2.13,
+   "speech": "调用方必须处理。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 845.31,
+   "dur": 2.35,
+   "speech": "第三块，两个强度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 848.21,
+   "dur": 2.35,
+   "speech": "每个模块两个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 851.11,
+   "dur": 3.24,
+   "speech": "一个给强度，一个给方差比。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 854.89,
+   "dur": 4.13,
+   "speech": "方差比单独导出，测试和画面都要用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 859.57,
+   "dur": 3.46,
+   "speech": "退化时返回 Nothing。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 863.58,
+   "dur": 3.91,
+   "speech": "外层把 Nothing 变成零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 868.04,
+   "dur": 4.79,
+   "speech": "乘法模式，取 log 之后套同一套公式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 873.38,
+   "dur": 4.35,
+   "speech": "为什么用 Maybe，不用 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 878.28,
+   "dur": 2.57,
+   "speech": "NaN 会悄悄传染。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 881.41,
+   "dur": 4.57,
+   "speech": "一个 NaN 进方差，整条序列就废了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 886.53,
+   "dur": 3.46,
+   "speech": "Maybe 让缺失变成结构。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 890.54,
+   "dur": 3.02,
+   "speech": "想用的时候，必须先对齐。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 894.11,
+   "dur": 4.57,
+   "speech": "对齐只有一个入口，alignPair。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 899.23,
+   "dur": 3.24,
+   "speech": "它只留两边都有定义的位置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 903.02,
+   "dur": 3.24,
+   "speech": "这就是端点处理的唯一出口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 906.81,
+   "dur": 1.46,
+   "speech": "代码不长。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 908.82,
+   "dur": 3.24,
+   "speech": "三个模块加起来不到三百行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 912.61,
+   "dur": 2.57,
+   "speech": "但每条分支都有测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 915.73,
+   "dur": 1.91,
+   "speech": "下一场看数字。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 918.18,
+   "dur": 3.46,
+   "speech": "三条测试文件，十三、八、七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 922.19,
+   "dur": 2.35,
+   "speech": "一共二十八条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 925.09,
+   "dur": 2.79,
+   "speech": "套件五百零三条，全过。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 931.29,
+   "dur": 1.4,
+   "speech": "先手算。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 933.24,
+   "dur": 4.79,
+   "speech": "核 m 等于四，权重和是一，一阶矩是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 938.58,
+   "dur": 2.35,
+   "speech": "线性序列一到十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 941.48,
+   "dur": 4.13,
+   "speech": "趋势在第二点等于三，第三点等于四。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 946.16,
+   "dur": 2.35,
+   "speech": "和原序列完全一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 949.06,
+   "dur": 4.79,
+   "speech": "纯周期，四个相位，十、十三、十六、十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 954.41,
+   "dur": 1.91,
+   "speech": "均值十四点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 956.86,
+   "dur": 5.02,
+   "speech": "季节项负四点五、负一点五、一点五、四点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 962.43,
+   "dur": 2.35,
+   "speech": "一个周期求和，零。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 965.33,
+   "dur": 3.02,
+   "speech": "乘法模型，季节项均值一。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 968.9,
+   "dur": 4.35,
+   "speech": "重建误差，二点二七乘十的负十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 973.8,
+   "dur": 4.79,
+   "speech": "季节项周期和，二点二二乘十的负十六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 979.14,
+   "dur": 1.91,
+   "speech": "都是机器精度。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 981.6,
+   "dur": 1.91,
+   "speech": "再看真实数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 984.05,
+   "dur": 3.91,
+   "speech": "茅台，周期五，有效点七百二十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 988.51,
+   "dur": 5.24,
+   "speech": "趋势强度零点九九八一，季节强度零点零零八三。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 994.3,
+   "dur": 3.68,
+   "speech": "趋势区间，第二到第七百二十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 998.53,
+   "dur": 4.57,
+   "speech": "平安银行，周期二十一，有效点七百一十。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 1003.65,
+   "dur": 5.24,
+   "speech": "趋势强度零点九五四九，季节强度零点零一三九。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 1009.44,
+   "dur": 3.68,
+   "speech": "趋势区间，第十到第七百一十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 1013.67,
+   "dur": 4.79,
+   "speech": "五分钟线，周期四十八，有效点一百九十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 1019.02,
+   "dur": 5.02,
+   "speech": "趋势强度零点六七五，季节强度零点一八七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 1024.58,
+   "dur": 4.13,
+   "speech": "趋势区间，第二十四到第二百一十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 1029.26,
+   "dur": 4.35,
+   "speech": "指数横盘，周期五，有效点一百一十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1034.16,
+   "dur": 5.24,
+   "speech": "趋势强度零点九五九四，季节强度零点零一六三。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1039.95,
+   "dur": 2.57,
+   "speech": "四个样本，四个周期。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1043.07,
+   "dur": 3.46,
+   "speech": "两个日线趋势都强，季节都弱。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1047.08,
+   "dur": 3.46,
+   "speech": "五分钟线趋势掉到零点六七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1051.1,
+   "dur": 2.79,
+   "speech": "季节升到零点一八七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1054.44,
+   "dur": 2.79,
+   "speech": "频率一换，两个数都变。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1057.78,
+   "dur": 4.13,
+   "speech": "这就是为什么强度必须连口径一起报。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1062.46,
+   "dur": 1.46,
+   "speech": "再看合成。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1064.47,
+   "dur": 2.13,
+   "speech": "纯趋势，一和零。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1067.15,
+   "dur": 2.13,
+   "speech": "纯周期，零和一。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1069.83,
+   "dur": 4.35,
+   "speech": "纯噪声，零点二七四七和零点零零四二。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1074.73,
+   "dur": 4.57,
+   "speech": "趋势加噪声，零点九九九五和零点零零七。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1079.85,
+   "dur": 4.57,
+   "speech": "季节加噪声，零点二五八和零点九三四一。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1084.97,
+   "dur": 4.57,
+   "speech": "交换差值，零点七四一六和零点九二七一。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1090.1,
+   "dur": 2.35,
+   "speech": "都过零点五的门限。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1093,
+   "dur": 3.02,
+   "speech": "乘性序列，两个都接近一。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1096.56,
+   "dur": 1.91,
+   "speech": "这里有一个坑。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1099.02,
+   "dur": 3.46,
+   "speech": "第一版噪声序列，种子四十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1103.03,
+   "dur": 2.79,
+   "speech": "一阶自相关零点二零三。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1106.37,
+   "dur": 3.24,
+   "speech": "趋势强度虚高到零点四一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1110.16,
+   "dur": 3.91,
+   "speech": "换种子四十五，回到零点二七四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1114.62,
+   "dur": 3.91,
+   "speech": "所以证据要固定种子，也要报种子。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1119.07,
+   "dur": 5.68,
+   "speech": "三十九条检查，十三手算，十二真实数据，十四合成。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1125.31,
+   "dur": 4.13,
+   "speech": "十三条手算里，有一条是核的权重和。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1129.98,
+   "dur": 2.35,
+   "speech": "有一条是端点区间。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1132.88,
+   "dur": 2.35,
+   "speech": "有一条是季节相位。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1135.78,
+   "dur": 3.91,
+   "speech": "每一条都能在证据文件里搜到名字。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1140.24,
+   "dur": 3.24,
+   "speech": "测试这边，二十八条新断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1144.03,
+   "dur": 3.46,
+   "speech": "十三、八、七，分在三个模块。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1148.04,
+   "dur": 3.24,
+   "speech": "套件总数五百零三，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1151.83,
+   "dur": 3.46,
+   "speech": "这一集的验收标准，就一句话。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1155.84,
+   "dur": 4.35,
+   "speech": "画面上的每个数字，都能回到一条检查。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1163.59,
+   "dur": 2.13,
+   "speech": "四条不能说的话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1166.27,
+   "dur": 3.68,
+   "speech": "第一条，趋势强度高，就能预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1170.5,
+   "dur": 1.4,
+   "speech": "不能。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1172.45,
+   "dur": 3.68,
+   "speech": "强度是解释比例，不是可预测性。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1176.68,
+   "dur": 2.57,
+   "speech": "它没说未来误差多大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1179.81,
+   "dur": 2.35,
+   "speech": "也没做显著性检验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1182.71,
+   "dur": 4.13,
+   "speech": "一条随机游走，趋势强度也可能很高。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1187.38,
+   "dur": 4.35,
+   "speech": "第二条，季节强度高，就能做季节交易。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1192.28,
+   "dur": 1.4,
+   "speech": "不能。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1194.23,
+   "dur": 4.35,
+   "speech": "强度是方差占比，没算成本，没算滑点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1199.13,
+   "dur": 3.91,
+   "speech": "也没回答，这个季节明年还在不在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1203.59,
+   "dur": 3.68,
+   "speech": "第三条，纯噪声的趋势强度是零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1207.82,
+   "dur": 1.4,
+   "speech": "不是。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1209.77,
+   "dur": 2.79,
+   "speech": "零点二七四是核的残余。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1213.12,
+   "dur": 3.46,
+   "speech": "换周期、换长度，这个数会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1217.13,
+   "dur": 3.46,
+   "speech": "所以拿它当固定门槛，会误判。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1221.14,
+   "dur": 3.24,
+   "speech": "第四条，分解是唯一的分解。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1224.93,
+   "dur": 1.4,
+   "speech": "不是。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1226.88,
+   "dur": 4.79,
+   "speech": "STL、X 十三、HP 滤波，都叫分解。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1232.22,
+   "dur": 4.35,
+   "speech": "它们给出的趋势和季节，可以完全不同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1237.12,
+   "dur": 4.13,
+   "speech": "经典分解只是其中一种，最老的那种。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1241.8,
+   "dur": 1.91,
+   "speech": "再说实现代价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1244.26,
+   "dur": 1.46,
+   "speech": "端点丢点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1246.27,
+   "dur": 3.02,
+   "speech": "周期五，两端各丢两个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1249.83,
+   "dur": 3.68,
+   "speech": "七百三十天，只剩七百二十六天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1254.07,
+   "dur": 3.46,
+   "speech": "周期二十一，两端各丢十个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1258.08,
+   "dur": 1.91,
+   "speech": "只剩七百一十。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1260.53,
+   "dur": 3.91,
+   "speech": "周期四十八，两端各丢二十四个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1264.99,
+   "dur": 4.57,
+   "speech": "五分钟线二百四十根，只剩一百九十二根。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1270.11,
+   "dur": 2.79,
+   "speech": "丢点不是缺陷，是定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1273.46,
+   "dur": 3.02,
+   "speech": "移动平均在端点没有定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1277.02,
+   "dur": 3.91,
+   "speech": "补零、补端点值，都是凭空造趋势。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1281.48,
+   "dur": 1.46,
+   "speech": "还有三条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1283.49,
+   "dur": 2.79,
+   "speech": "周期必须等于季节长度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1286.83,
+   "dur": 4.35,
+   "speech": "选错周期，季节项会把别的周期吸进来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1291.73,
+   "dur": 1.91,
+   "speech": "乘法要求全正。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1294.19,
+   "dur": 5.02,
+   "speech": "有零有负，只能走加法，或者先加一再取对数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1299.76,
+   "dur": 2.79,
+   "speech": "分解不预测，它只描述。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1305.95,
+   "dur": 1.46,
+   "speech": "回到开头。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1307.96,
+   "dur": 4.35,
+   "speech": "分解把一条序列拆成趋势、季节、残差。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1312.86,
+   "dur": 3.24,
+   "speech": "两个强度，各回答一个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1316.65,
+   "dur": 3.68,
+   "speech": "趋势解释了去季节之后多少变异。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1320.88,
+   "dur": 3.68,
+   "speech": "季节解释了去趋势之后多少变异。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1325.12,
+   "dur": 3.24,
+   "speech": "都是比值，都在零到一之间。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1328.91,
+   "dur": 3.46,
+   "speech": "都不是显著性，也都不是预测。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1332.92,
+   "dur": 2.13,
+   "speech": "如果只记一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1335.59,
+   "dur": 3.68,
+   "speech": "分解是体检报告，不是天气预报。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1339.83,
+   "dur": 2.13,
+   "speech": "下一集换坐标系。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1342.51,
+   "dur": 3.46,
+   "speech": "FFT，基展开，Patch。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1346.52,
+   "dur": 3.91,
+   "speech": "三种把序列搬到另一个空间的办法。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1350.97,
+   "dur": 5.02,
+   "speech": "看看换空间之后，什么变简单了，什么变贵了。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1356.54,
+   "dur": 4.13,
+   "speech": "这一集的代码、数据、证据都已入库。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1361.22,
+   "dur": 3.24,
+   "speech": "每个数字都能在证据里查到。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1365.01,
+   "dur": 1.46,
+   "speech": "感谢观看。"
+  }
+ ]
+}
