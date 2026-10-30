@@ -1,0 +1,2514 @@
+{
+ "entry": "src/tsint-04-holt-and-holt-winters/script.ts",
+ "fps": 30,
+ "totalSec": 1480.89,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 230.43
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 230.43,
+   "dur": 206.66
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 437.09,
+   "dur": 251.23
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 688.32,
+   "dur": 198.21
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 886.53,
+   "dur": 157.31
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 1043.84,
+   "dur": 252.62
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1296.46,
+   "dur": 120.98
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1417.44,
+   "dur": 63.45
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.64,
+   "speech": "一次指数平滑，只会回答一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.39,
+   "dur": 2.68,
+   "speech": "现在大概在什么水平。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.62,
+   "dur": 3.49,
+   "speech": "它的预测，永远是一条水平线。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.66,
+   "dur": 4.12,
+   "speech": "所以它看不见趋势，也看不见季节。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.33,
+   "dur": 3.69,
+   "speech": "Holt 给模型加了第二个状态：趋势。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.56,
+   "dur": 3.35,
+   "speech": "Holt-Winters 再加一层：季节。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 25.46,
+   "dur": 3.97,
+   "speech": "状态从一个变成两个，再变成三个。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 29.99,
+   "dur": 4.21,
+   "speech": "代价是：递推多了两行，参数多了两个。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 34.75,
+   "dur": 2.77,
+   "speech": "这一集讲这三行递推。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.08,
+   "dur": 2.82,
+   "speech": "也讲它们什么时候会坏。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 41.45,
+   "dur": 1.86,
+   "speech": "先看数据。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 43.86,
+   "dur": 4.33,
+   "speech": "贵州茅台，二零一九年初到二零二一年底。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 48.74,
+   "dur": 3.76,
+   "speech": "七百三十个交易日，前复权收盘价。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 53.05,
+   "dur": 3.9,
+   "speech": "区间涨幅，百分之二百五十四点六八。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 57.5,
+   "dur": 4.26,
+   "speech": "灰色是收盘价，琥珀色是 Holt 的拟合。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 62.32,
+   "dur": 2.46,
+   "speech": "两条线贴得很紧。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 65.33,
+   "dur": 3.4,
+   "speech": "但贴得紧，不等于预测得准。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 69.28,
+   "dur": 2.32,
+   "speech": "先把三个数记住。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 72.14,
+   "dur": 4.84,
+   "speech": "第一，手算到第三步，水平是十三点二八一二五。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 77.53,
+   "dur": 4.31,
+   "speech": "第二，同一步的趋势是一点二九六八七五。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 82.39,
+   "dur": 4.65,
+   "speech": "第三，下一步的预测是十四点五七八一二五。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 87.59,
+   "dur": 4.05,
+   "speech": "这三个数，后面每一个都能回到断言。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 92.18,
+   "dur": 2.89,
+   "speech": "现在看家族的三个成员。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 95.63,
+   "dur": 3.35,
+   "speech": "SES 只有一个状态：水平。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 99.53,
+   "dur": 3.25,
+   "speech": "Holt 有两个：水平、趋势。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 103.33,
+   "dur": 4.48,
+   "speech": "Holt-Winters 有三个：水平、趋势、季节。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 108.36,
+   "dur": 3.3,
+   "speech": "每多一个状态，就多一个旋钮。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 112.21,
+   "dur": 4.12,
+   "speech": "Holt 多的是 β，控制趋势更新多快。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 116.88,
+   "dur": 4.5,
+   "speech": "Holt-Winters 多的是 γ，控制季节更新多快。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 121.93,
+   "dur": 3.18,
+   "speech": "还要多一个数：季节周期 L。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 125.66,
+   "dur": 2.94,
+   "speech": "周内季节，L 等于五。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 129.16,
+   "dur": 3.13,
+   "speech": "日内季节，L 等于四十八。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 132.84,
+   "dur": 4.21,
+   "speech": "这一集真正想说的是加法与乘法的分界。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 137.6,
+   "dur": 2.7,
+   "speech": "不是季节形状好不好看。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 140.86,
+   "dur": 2.61,
+   "speech": "是误差的度量不一样。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 144.01,
+   "dur": 3.4,
+   "speech": "乘法把季节写成水平的百分比。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 147.96,
+   "dur": 2.97,
+   "speech": "于是递推里出现了除法。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 151.48,
+   "dur": 4.19,
+   "speech": "任何零或者负值，都会让除法当场爆炸。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 156.22,
+   "dur": 3.47,
+   "speech": "A 股成交量里，零一点也不少。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 160.24,
+   "dur": 4.36,
+   "speech": "四千四百八十七行里，有两千四百九十一个零。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 165.14,
+   "dur": 4.14,
+   "speech": "最长的一段连续零，一千六百二十八天。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 169.84,
+   "dur": 3.21,
+   "speech": "所以乘法模型不是差一点。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 173.59,
+   "dur": 2.63,
+   "speech": "是必须加保护分支。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 176.77,
+   "dur": 2.61,
+   "speech": "这是这一集的主结论。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 179.93,
+   "dur": 2.53,
+   "speech": "另一个结论关于趋势。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 183.01,
+   "dur": 3.25,
+   "speech": "趋势对一步误差，可能是负担。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 186.82,
+   "dur": 5.01,
+   "speech": "七百三十个交易日上，它让误差变差百分之一点六三。"
+  },
+  {
+   "scene": "open",
+   "index": 47,
+   "start": 192.37,
+   "dur": 3.81,
+   "speech": "但外推五步的时候，只有它能走出去。"
+  },
+  {
+   "scene": "open",
+   "index": 48,
+   "start": 196.73,
+   "dur": 2.46,
+   "speech": "两件事要分开说。"
+  },
+  {
+   "scene": "open",
+   "index": 49,
+   "start": 199.74,
+   "dur": 4.53,
+   "speech": "最后一件：日内季节在成交量里，不在价格里。"
+  },
+  {
+   "scene": "open",
+   "index": 50,
+   "start": 204.82,
+   "dur": 4.21,
+   "speech": "按当日均值归一成份额，形状才对得上。"
+  },
+  {
+   "scene": "open",
+   "index": 51,
+   "start": 209.58,
+   "dur": 3.85,
+   "speech": "拟合和实测的相关系数，零点九八。"
+  },
+  {
+   "scene": "open",
+   "index": 52,
+   "start": 213.98,
+   "dur": 4.19,
+   "speech": "这一集的所有数字，都可以在证据文件里查到。"
+  },
+  {
+   "scene": "open",
+   "index": 53,
+   "start": 218.72,
+   "dur": 4.19,
+   "speech": "先从一个问题开始：为什么平滑的预测是平的。"
+  },
+  {
+   "scene": "open",
+   "index": 54,
+   "start": 223.46,
+   "dur": 4.77,
+   "speech": "然后再看，加了趋势之后，它凭什么能走出去。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 231.63,
+   "dur": 3.21,
+   "speech": "一次平滑的递推只有一行。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 235.39,
+   "dur": 8.32,
+   "speech": "s_t 等于 α 乘 x_t，加上一减 α 乘 s_{t-1}。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 244.25,
+   "dur": 3.01,
+   "speech": "它没有斜率，也没有季节。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 247.82,
+   "dur": 4.48,
+   "speech": "所以不管外推多少步，答案都是同一个 s。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 252.85,
+   "dur": 3.52,
+   "speech": "这就是为什么它的预测是水平线。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 256.91,
+   "dur": 3.37,
+   "speech": "Holt 在水平之外，多维护一个 b。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 260.84,
+   "dur": 3.45,
+   "speech": "b 是趋势，单位是每天涨多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 264.83,
+   "dur": 3.73,
+   "speech": "预测就变成 s 加上 h 乘 b。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 269.12,
+   "dur": 2.63,
+   "speech": "h 是外推的步数。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 272.3,
+   "dur": 4.96,
+   "speech": "h 等于一，是明天；h 等于五，是五天后。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 277.81,
+   "dur": 3.4,
+   "speech": "所以 Holt 的预测是一条斜线。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 281.75,
+   "dur": 3.25,
+   "speech": "问题是，这条斜线可靠吗。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 285.56,
+   "dur": 1.72,
+   "speech": "看日线。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 287.83,
+   "dur": 3.73,
+   "speech": "灰色是收盘价，琥珀色是 Holt。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 292.11,
+   "dur": 2.92,
+   "speech": "拟合线看起来跟得很紧。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 295.58,
+   "dur": 3.93,
+   "speech": "但把一步误差加起来，Holt 反而更差。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 300.05,
+   "dur": 3.4,
+   "speech": "一百六十三万，对一百六十一万。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 304,
+   "dur": 2.61,
+   "speech": "差百分之一点六三。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 307.16,
+   "dur": 1.6,
+   "speech": "为什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 309.31,
+   "dur": 4.26,
+   "speech": "因为一步预测里，b 带来的是上一刻的斜率。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 314.12,
+   "dur": 4.19,
+   "speech": "行情噪声大的时候，这个斜率是负资产。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 318.86,
+   "dur": 3.4,
+   "speech": "它把昨天的方向，硬塞给今天。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 322.81,
+   "dur": 2.92,
+   "speech": "所以趋势不是免费的。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 326.27,
+   "dur": 3.09,
+   "speech": "它的价值在更远的地方。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 329.91,
+   "dur": 4,
+   "speech": "外推五步、十步，水平线一定错。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 334.46,
+   "dur": 2.65,
+   "speech": "斜线至少能跟着走。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 337.66,
+   "dur": 2.58,
+   "speech": "什么时候斜线也错。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 340.79,
+   "dur": 1.74,
+   "speech": "转折点。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 343.09,
+   "dur": 4.36,
+   "speech": "趋势会继续往前冲，直到数据把它拽回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 347.99,
+   "dur": 3.61,
+   "speech": "这是滞后，也是这一族模型的宿命。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 352.16,
+   "dur": 2.37,
+   "speech": "第二个问题：季节。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 355.07,
+   "dur": 2.94,
+   "speech": "周内季节，L 等于五。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 358.57,
+   "dur": 2.63,
+   "speech": "五个位置，五个偏移量。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 361.75,
+   "dur": 3.78,
+   "speech": "加法模型认为，偏移是固定的元数。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 366.08,
+   "dur": 3.88,
+   "speech": "乘法模型认为，偏移是水平的百分比。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 370.51,
+   "dur": 3.9,
+   "speech": "前者对加法成立，后者对乘法成立。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 374.96,
+   "dur": 3.64,
+   "speech": "真实数据往往两个都不完全对。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 379.15,
+   "dur": 2.75,
+   "speech": "但乘法有一个硬约束。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 382.45,
+   "dur": 3.57,
+   "speech": "它要求所有的值和水平都是正的。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 386.56,
+   "dur": 2.46,
+   "speech": "因为公式里有除法。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 389.57,
+   "dur": 6.04,
+   "speech": "x_t 除以 s_{t-1} 加 b_{t-1}。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 396.16,
+   "dur": 4.29,
+   "speech": "还有 x_t 除以 p_{t-L}。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 401,
+   "dur": 3.16,
+   "speech": "分母是零，结果就不是数。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 404.71,
+   "dur": 2.05,
+   "speech": "分子是零呢。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 407.31,
+   "dur": 3.3,
+   "speech": "看起来没事，p 被拉向零。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 411.16,
+   "dur": 2.99,
+   "speech": "下一步，分母就变成零。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 414.7,
+   "dur": 3.18,
+   "speech": "所以零不是「这一根没成交」。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 418.43,
+   "dur": 2.87,
+   "speech": "零是一个会传染的状态。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 421.85,
+   "dur": 4,
+   "speech": "要么在入口拒绝，要么在递推里爆炸。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 426.4,
+   "dur": 1.93,
+   "speech": "我们选前者。"
+  },
+  {
+   "scene": "problem",
+   "index": 50,
+   "start": 428.89,
+   "dur": 3.09,
+   "speech": "这是实现那一场要讲的。"
+  },
+  {
+   "scene": "problem",
+   "index": 51,
+   "start": 432.52,
+   "dur": 2.37,
+   "speech": "先把公式写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 438.29,
+   "dur": 3.06,
+   "speech": "式 2.17，水平的更新。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 441.9,
+   "dur": 10.79,
+   "speech": "s_t 等于 α 乘 x_t，加上一减 α，乘上 s_{t-1} 加 b_{t-1}。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 453.24,
+   "dur": 3.13,
+   "speech": "式 2.18，趋势的更新。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 456.93,
+   "dur": 9.52,
+   "speech": "b_t 等于 β 乘 s_t 减 s_{t-1}，加上一减 β 乘 b_{t-1}。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 466.99,
+   "dur": 6.54,
+   "speech": "注意顺序：先算 s_t，再用 s_t 算 b_t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 474.09,
+   "dur": 4.6,
+   "speech": "反过来写，会得到另一条看起来也合理的曲线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 479.23,
+   "dur": 3.49,
+   "speech": "测试把两种顺序的差异钉住了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 483.28,
+   "dur": 3.95,
+   "speech": "初始化的式 2.19 和 2.20。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 487.78,
+   "dur": 3.3,
+   "speech": "s0 取前 n 个点的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 491.63,
+   "dur": 3.49,
+   "speech": "b0 取前 n 个一阶差分的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 495.67,
+   "dur": 2.1,
+   "speech": "n 默认是三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 498.33,
+   "dur": 3.83,
+   "speech": "不给 b0，又不够三个点，就是错误。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 502.71,
+   "dur": 5.15,
+   "speech": "接着是加法 Holt-Winters，式 2.21 到 2.26。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 508.41,
+   "dur": 11.85,
+   "speech": "s_t 等于 α 乘 x_t 减 p_{t-L}，加上一减 α 乘 s_{t-1} 加 b_{t-1}。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 520.8,
+   "dur": 3.06,
+   "speech": "b_t 和 Holt 一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 524.41,
+   "dur": 11.77,
+   "speech": "p_t 等于 γ 乘 x_t 减 s_{t-1} 减 b_{t-1}，加上一减 γ 乘 p_{t-L}。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 536.74,
+   "dur": 2.89,
+   "speech": "三个状态，三行递推。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 540.18,
+   "dur": 3.61,
+   "speech": "初始化在式 2.24 到 2.26。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 544.35,
+   "dur": 3.37,
+   "speech": "s0 是前 L 个点的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 548.27,
+   "dur": 4.86,
+   "speech": "b0 是后 L 个点的均值，减前 L 个点的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 553.68,
+   "dur": 3.73,
+   "speech": "p0 的每一项，是 x 减 s0。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 557.97,
+   "dur": 3.81,
+   "speech": "所以序列至少要有两个 L 那么长。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 562.32,
+   "dur": 3.25,
+   "speech": "不够长，直接报错，不许猜。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 566.13,
+   "dur": 4.07,
+   "speech": "乘法版本，式 2.27 到 2.33。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 570.75,
+   "dur": 11.99,
+   "speech": "s_t 等于 α 乘 x_t 除以 p_{t-L}，加上一减 α 乘 s_{t-1} 加 b_{t-1}。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 583.29,
+   "dur": 11.94,
+   "speech": "p_t 等于 γ 乘 x_t 除以 s_{t-1} 加 b_{t-1}，加上一减 γ 乘 p_{t-L}。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 595.78,
+   "dur": 3.09,
+   "speech": "两处除法，就是两个爆点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 599.41,
+   "dur": 3.95,
+   "speech": "初始化的式 2.30 到 2.33。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 603.91,
+   "dur": 3.49,
+   "speech": "s0 还是前 L 个点的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 607.96,
+   "dur": 2.92,
+   "speech": "b0 还是两段均值的差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 611.43,
+   "dur": 4.77,
+   "speech": "p0 先算 x 除以 s0，再除以它的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 616.74,
+   "dur": 2.89,
+   "speech": "这样 p0 的平均值是一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 620.19,
+   "dur": 3.61,
+   "speech": "乘法的季节，是围绕一的倍数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 624.35,
+   "dur": 3.64,
+   "speech": "一以上是旺季，一以下是淡季。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 628.54,
+   "dur": 3.64,
+   "speech": "书里没写的一件事：周期归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 632.73,
+   "dur": 3.76,
+   "speech": "长序列上，季节项会整体漂移。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 637.03,
+   "dur": 3.06,
+   "speech": "加法会漂，乘法也会漂。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 640.65,
+   "dur": 3.37,
+   "speech": "我们的做法是每 L 步校一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 644.57,
+   "dur": 5.56,
+   "speech": "加法把最近 L 个季节项去均值，水平加上那个均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 650.68,
+   "dur": 4.81,
+   "speech": "乘法把均值归一成一，水平和趋势同乘。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 656.04,
+   "dur": 3.69,
+   "speech": "两种调整，都不改变下一步的预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 660.28,
+   "dur": 3.45,
+   "speech": "这条是本仓选择，不是书上的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 664.27,
+   "dur": 4.98,
+   "speech": "测试用关闭归一化的版本，对书本公式逐位手算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 669.81,
+   "dur": 3.57,
+   "speech": "再用开启的版本，钉住预测不变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 673.92,
+   "dur": 2.17,
+   "speech": "公式就是这些。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 676.65,
+   "dur": 3.47,
+   "speech": "下一步，看每个旋钮实际管什么。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 680.67,
+   "dur": 2.94,
+   "speech": "以及，坏的时候长什么样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 684.16,
+   "dur": 1.96,
+   "speech": "先看旋钮。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 689.52,
+   "dur": 3.01,
+   "speech": "三个旋钮，各管一件事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 693.08,
+   "dur": 3.76,
+   "speech": "α 管水平：今天的数据，信多少。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 697.39,
+   "dur": 3.97,
+   "speech": "α 大，水平追得快，也抖得厉害。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 701.92,
+   "dur": 3.33,
+   "speech": "α 小，水平稳，但慢。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 705.79,
+   "dur": 3.3,
+   "speech": "β 管趋势：斜率更新多快。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 709.64,
+   "dur": 4.48,
+   "speech": "β 等于零，趋势冻结，退化成一次平滑。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 714.67,
+   "dur": 3.52,
+   "speech": "β 大，斜率跟着最新变化跑。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 718.74,
+   "dur": 4.05,
+   "speech": "γ 管季节：这个位置的偏移，改多少。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 723.34,
+   "dur": 3.73,
+   "speech": "γ 等于零，季节形状固定不动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 727.62,
+   "dur": 2.7,
+   "speech": "三个旋钮不是独立的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 730.87,
+   "dur": 2.77,
+   "speech": "它们争的是同一份误差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 734.2,
+   "dur": 2.65,
+   "speech": "看一步递推在干什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 737.4,
+   "dur": 6.16,
+   "speech": "先算 s_{t-1} 加 b_{t-1}，这是今天的预测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 744.11,
+   "dur": 4.33,
+   "speech": "误差 e，是 x_t 减去这个预测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 748.99,
+   "dur": 3.88,
+   "speech": "水平往误差的方向挪，挪 α 倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 753.42,
+   "dur": 5.15,
+   "speech": "趋势往误差的方向挪，挪 β 倍，但挪的是变化量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 759.12,
+   "dur": 3.9,
+   "speech": "季节记住这个位置的偏差，挪 γ 倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 763.57,
+   "dur": 3.85,
+   "speech": "三行递推，其实就是三次往误差挪。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 767.98,
+   "dur": 3.64,
+   "speech": "这就是指数平滑家族的全部秘密。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 772.16,
+   "dur": 1.86,
+   "speech": "再看外推。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 774.58,
+   "dur": 5.63,
+   "speech": "h 步预测等于 s 加 h 乘 b，再加对应位置的季节项。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 780.76,
+   "dur": 3.54,
+   "speech": "斜线能走出去，但走不出转折。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 784.85,
+   "dur": 3.25,
+   "speech": "外推越远，误差的方差越大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 788.65,
+   "dur": 4.77,
+   "speech": "所以这族模型的预测区间，是一个张开的喇叭。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 793.97,
+   "dur": 3.73,
+   "speech": "书里没画这个喇叭，但它是必然的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 798.25,
+   "dur": 2.41,
+   "speech": "最后看季节形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 801.22,
+   "dur": 3.57,
+   "speech": "周内五个位置，偏移有正有负。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 805.33,
+   "dur": 3.69,
+   "speech": "加法说，周五比均值高五块八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 809.57,
+   "dur": 3.78,
+   "speech": "乘法说，周五是水平的一点零五倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 813.9,
+   "dur": 3.45,
+   "speech": "水平翻倍，乘法的偏移也翻倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 817.9,
+   "dur": 1.93,
+   "speech": "加法不会。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 820.38,
+   "dur": 2.7,
+   "speech": "真实数据里，哪个对。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 823.63,
+   "dur": 1.96,
+   "speech": "看成交量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 826.14,
+   "dur": 3.09,
+   "speech": "日内的成交量，是一个 U 形。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 829.78,
+   "dur": 4.12,
+   "speech": "开盘最忙，中午最闲，收盘前又起来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 834.44,
+   "dur": 2.77,
+   "speech": "这个形状，价格里没有。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 837.77,
+   "dur": 3.64,
+   "speech": "价格的日内路径，更像随机游走。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 841.96,
+   "dur": 5.01,
+   "speech": "所以拿价格做 L 等于四十八，只会拟合噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 847.51,
+   "dur": 3.25,
+   "speech": "拿成交量做，形状才稳定。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 851.32,
+   "dur": 2.41,
+   "speech": "但成交量有零点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 854.28,
+   "dur": 2.46,
+   "speech": "这就是乘法的麻烦。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 857.29,
+   "dur": 3.83,
+   "speech": "零在乘法里不是「没有」，是「无穷大」。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 861.67,
+   "dur": 3.21,
+   "speech": "所以保护分支不是可选项。"
+  },
+  {
+   "scene": "intuition",
+   "index": 43,
+   "start": 865.43,
+   "dur": 4.24,
+   "speech": "它是模型能不能在真实数据上跑的分界线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 44,
+   "start": 870.22,
+   "dur": 2.87,
+   "speech": "下一页，看代码怎么写。"
+  },
+  {
+   "scene": "intuition",
+   "index": 45,
+   "start": 873.64,
+   "dur": 2.32,
+   "speech": "先记住这个判断。"
+  },
+  {
+   "scene": "intuition",
+   "index": 46,
+   "start": 876.5,
+   "dur": 4.98,
+   "speech": "加法与乘法的差别，是误差度量，不是形状偏好。"
+  },
+  {
+   "scene": "intuition",
+   "index": 47,
+   "start": 882.04,
+   "dur": 2.29,
+   "speech": "形状只是结果。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 887.73,
+   "dur": 2.87,
+   "speech": "两个模块，不到四百行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 891.15,
+   "dur": 5.32,
+   "speech": "Holt 模块：参数、拟合结果、错误类型，加三个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 897.02,
+   "dur": 2.37,
+   "speech": "核心就是这两行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 899.93,
+   "dur": 3.09,
+   "speech": "先算 s，用上一刻的 b。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 903.57,
+   "dur": 3.11,
+   "speech": "再算 b，用刚刚的 s。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 907.23,
+   "dur": 2.13,
+   "speech": "顺序不能反。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 909.91,
+   "dur": 6.4,
+   "speech": "拟合值 fitted 用的是 s_{t-1} 加 b_{t-1}。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 916.85,
+   "dur": 3.73,
+   "speech": "不是 s_t 加 b_t。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 921.14,
+   "dur": 3.01,
+   "speech": "后者偷看了当天的收盘价。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 924.7,
+   "dur": 3.11,
+   "speech": "画在图上会提前知道答案。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 928.36,
+   "dur": 3.54,
+   "speech": "Holt-Winters 模块多一个季节向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 932.45,
+   "dur": 3.88,
+   "speech": "加法版本，三行递推，跟书上一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 936.88,
+   "dur": 2.89,
+   "speech": "乘法版本，两处除法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 940.33,
+   "dur": 3.61,
+   "speech": "入口先检查所有的 x 都大于零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 944.49,
+   "dur": 3.64,
+   "speech": "有一个小于等于零，直接返回错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 948.68,
+   "dur": 2.73,
+   "speech": "错误里带下标和值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 951.95,
+   "dur": 4.89,
+   "speech": "递推里 p_{t-L} 和 s 加 b 也检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 957.39,
+   "dur": 3.35,
+   "speech": "任何一处非正，同一个错误码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 961.29,
+   "dur": 3.52,
+   "speech": "绝不产出 NaN，也绝不产出无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 965.36,
+   "dur": 2.82,
+   "speech": "归一化每 L 步做一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 968.73,
+   "dur": 3.16,
+   "speech": "加法去均值，乘法归一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 972.44,
+   "dur": 3.18,
+   "speech": "调整之后，下一步预测不变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 976.17,
+   "dur": 2.58,
+   "speech": "这条有专门的测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 979.3,
+   "dur": 2.7,
+   "speech": "测试一共三十三条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 982.55,
+   "dur": 3.59,
+   "speech": "Holt 十四条，Holt-Winters 十九条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 986.69,
+   "dur": 3.04,
+   "speech": "整套现在是四百四十一条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 990.28,
+   "dur": 1.69,
+   "speech": "测什么。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 992.53,
+   "dur": 4.05,
+   "speech": "黄金样例：手算的状态值逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 997.12,
+   "dur": 3.47,
+   "speech": "β 等于零，退化成一次平滑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 1001.14,
+   "dur": 3.13,
+   "speech": "γ 等于零，退化成 Holt。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 1004.83,
+   "dur": 3.16,
+   "speech": "序列短于两个 L，报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 1008.53,
+   "dur": 3.47,
+   "speech": "乘法遇到零，报错，不是 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 1012.55,
+   "dur": 3.37,
+   "speech": "归一化前后，下一步预测不变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 1016.48,
+   "dur": 4.05,
+   "speech": "网格搜索的最优值，不差于固定组合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 1021.07,
+   "dur": 2.75,
+   "speech": "还有一条容易被忽略的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 1024.37,
+   "dur": 2.87,
+   "speech": "fitted 不偷看当天数据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 1027.79,
+   "dur": 4.98,
+   "speech": "这条如果破了，验证那一场的所有数字都会变好看。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 1033.33,
+   "dur": 1.89,
+   "speech": "也会全错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 1035.76,
+   "dur": 2.41,
+   "speech": "下一页，看数字。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 1038.73,
+   "dur": 2.92,
+   "speech": "先看手算的那三个状态。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 1045.04,
+   "dur": 2.15,
+   "speech": "验证分五块。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 1047.74,
+   "dur": 4.29,
+   "speech": "手算、日线、季节、零值、日内。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 1052.58,
+   "dur": 1.69,
+   "speech": "先手算。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 1054.82,
+   "dur": 5.7,
+   "speech": "α 等于 β 等于零点五，s0 等于十，b0 等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 1061.07,
+   "dur": 2.92,
+   "speech": "输入十、十二、十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 1064.54,
+   "dur": 4.45,
+   "speech": "第一步，s 等于十点五，b 等于零点七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 1069.54,
+   "dur": 5.34,
+   "speech": "第二步，s 等于十一点六二五，b 等于零点九三七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 1075.44,
+   "dur": 3.95,
+   "speech": "第三步，s 等于十三点二八一二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 1079.94,
+   "dur": 3.18,
+   "speech": "b 等于一点二九六八七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 1083.67,
+   "dur": 3.88,
+   "speech": "下一步预测，十四点五七八一二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 1088.1,
+   "dur": 3.23,
+   "speech": "三个数，跟断言逐位相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 1091.88,
+   "dur": 4.05,
+   "speech": "加法与乘法的黄金样例也手算了四步。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 1096.47,
+   "dur": 2.49,
+   "speech": "每一个状态都能对上。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 1099.51,
+   "dur": 2.17,
+   "speech": "第二块，日线。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 1102.23,
+   "dur": 3.3,
+   "speech": "Holt 的一步误差，一百六十三万。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 1106.08,
+   "dur": 3.66,
+   "speech": "同 α 的一次平滑，一百六十一万。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 1110.3,
+   "dur": 3.76,
+   "speech": "趋势让误差变差百分之一点六三。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 1114.6,
+   "dur": 2.25,
+   "speech": "这个结论不漂亮。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 1117.4,
+   "dur": 2.29,
+   "speech": "但它是数据说的。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 1120.24,
+   "dur": 3.04,
+   "speech": "我们没有为了好看去换参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 1123.83,
+   "dur": 3.3,
+   "speech": "末态的水平是一八三二点二。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 1127.68,
+   "dur": 2.87,
+   "speech": "趋势是每天三点二二。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 1131.1,
+   "dur": 2.25,
+   "speech": "第三块，季节。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 1133.9,
+   "dur": 3.61,
+   "speech": "L 等于五，误差一百二十一万。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1138.06,
+   "dur": 2.89,
+   "speech": "季节振幅十一点八一元。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1141.51,
+   "dur": 4.43,
+   "speech": "L 等于二百五十二，误差一千五百八十五万。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1146.49,
+   "dur": 3.06,
+   "speech": "振幅七百五十四点五九元。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1150.1,
+   "dur": 3.88,
+   "speech": "L 等于二百五十二，是一年的交易日。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1154.53,
+   "dur": 4.6,
+   "speech": "振幅这么大，说明年度季节在价格上很强。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1159.68,
+   "dur": 3.97,
+   "speech": "乘法 L 等于五，误差一百二十二万。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1164.2,
+   "dur": 2.08,
+   "speech": "比加法略差。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1166.83,
+   "dur": 4.67,
+   "speech": "差得不多，说明这段数据上两种度量都能用。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1172.05,
+   "dur": 2.34,
+   "speech": "第四块，零值。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1174.94,
+   "dur": 4.57,
+   "speech": "停牌记零的成交量序列，四千四百八十七行。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1180.06,
+   "dur": 3.57,
+   "speech": "零两千四百九十一个，超过一半。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1184.18,
+   "dur": 5.15,
+   "speech": "加法模型能跑，误差七点三三七乘十的十六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1189.88,
+   "dur": 4.65,
+   "speech": "这个数字大得没有意义，因为水平被零拉飞了。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1195.08,
+   "dur": 2.92,
+   "speech": "乘法模型直接返回错误。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1198.54,
+   "dur": 5.08,
+   "speech": "错误码 HWNonPositive，下标二十三，值零。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1204.17,
+   "dur": 4.19,
+   "speech": "不是 NaN，不是无穷，是一个可以处理的错误。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1208.91,
+   "dur": 2.89,
+   "speech": "这就是保护分支的价值。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1212.36,
+   "dur": 2.17,
+   "speech": "第五块，日内。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1215.08,
+   "dur": 4.45,
+   "speech": "五分钟线，只保留每天恰好四十八根的日子。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1220.08,
+   "dur": 3.35,
+   "speech": "六十八天，三千二百六十四根。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1223.98,
+   "dur": 3.28,
+   "speech": "按当日均值归一成份额。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1227.81,
+   "dur": 3.04,
+   "speech": "开盘第一根，四点二六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1231.4,
+   "dur": 3.33,
+   "speech": "中午十一点半，零点六六四。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1235.28,
+   "dur": 3.3,
+   "speech": "收盘最后一根，一点三七三。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1239.13,
+   "dur": 4.09,
+   "speech": "U 形很清楚，最低在十四点二十分附近。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1243.77,
+   "dur": 4.89,
+   "speech": "拟合的季节，跟实测轮廓的相关系数零点九八。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1249.21,
+   "dur": 2.39,
+   "speech": "振幅三点九九。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1252.15,
+   "dur": 4.86,
+   "speech": "参数是 α 零点一，β 零，γ 零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1257.56,
+   "dur": 4.93,
+   "speech": "β 等于零，趋势冻结，因为份额没有长期趋势。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1263.04,
+   "dur": 3.18,
+   "speech": "这也是一个选择，不是书上的。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1266.78,
+   "dur": 3.49,
+   "speech": "二十四条证据检查，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1270.82,
+   "dur": 3.9,
+   "speech": "四条手算，六条模型，十四条数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1275.27,
+   "dur": 4.02,
+   "speech": "每一个屏幕上的数字，都能回到一条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 1279.84,
+   "dur": 2.97,
+   "speech": "这就是这一集的验证标准。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 1283.36,
+   "dur": 2.08,
+   "speech": "不是「看起来对」。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 1285.99,
+   "dur": 1.84,
+   "speech": "是「能复现」。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 1288.38,
+   "dur": 2.41,
+   "speech": "下一页，说边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 61,
+   "start": 1291.34,
+   "dur": 2.92,
+   "speech": "哪些话，这一集不能说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1297.66,
+   "dur": 2.29,
+   "speech": "五条不能说的话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1300.5,
+   "dur": 4.98,
+   "speech": "第一，α 等于二除以 N 加一，只匹配质心。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1306.04,
+   "dur": 4.55,
+   "speech": "上一集讲过，它不匹配方差，也不匹配尾部。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1311.14,
+   "dur": 3.4,
+   "speech": "第二，趋势一定让预测更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1315.08,
+   "dur": 4.17,
+   "speech": "不一定。一步误差上，它刚才就输了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1319.8,
+   "dur": 3.16,
+   "speech": "第三，乘法模型更高级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1323.51,
+   "dur": 2.89,
+   "speech": "它只是另一种误差度量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1326.95,
+   "dur": 3.47,
+   "speech": "数据里有零，它就不能直接用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1330.97,
+   "dur": 3.25,
+   "speech": "第四，季节振幅是常数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1334.78,
+   "dur": 3.59,
+   "speech": "加法这么假设，乘法不这么假设。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1338.92,
+   "dur": 3.3,
+   "speech": "真实数据，两个都不完全对。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1342.77,
+   "dur": 3.04,
+   "speech": "第五，L 可以随便取。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1346.36,
+   "dur": 4.24,
+   "speech": "L 是周期，取错了，季节项就是噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1351.14,
+   "dur": 2.58,
+   "speech": "还有一条不在公式里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1354.28,
+   "dur": 2.77,
+   "speech": "零不是缺失，是信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1357.6,
+   "dur": 4.29,
+   "speech": "停牌就是停牌，没有成交就是没有成交。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1362.44,
+   "dur": 3.88,
+   "speech": "把它当缺失填掉，你会失去一条事实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1366.86,
+   "dur": 4.19,
+   "speech": "把它当零喂给乘法，模型会当场坏掉。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1371.6,
+   "dur": 2.63,
+   "speech": "两种错，方向相反。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1374.78,
+   "dur": 4.24,
+   "speech": "正确处理是：先判断语义，再决定模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1379.57,
+   "dur": 2.13,
+   "speech": "最后一个边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1382.25,
+   "dur": 2.22,
+   "speech": "外推不是预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1385.02,
+   "dur": 4.36,
+   "speech": "斜线延出去，只是把最后一个斜率延续。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1389.93,
+   "dur": 3.61,
+   "speech": "它不知道转折，也不该假装知道。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1394.09,
+   "dur": 4.43,
+   "speech": "所以这一族模型的输出，要带不确定区间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1399.07,
+   "dur": 3.47,
+   "speech": "区间不是装饰，是模型的一部分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1403.09,
+   "dur": 2.73,
+   "speech": "这些边界，不是缺陷。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1406.37,
+   "dur": 2.61,
+   "speech": "是方法本身的选择。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1409.52,
+   "dur": 2.13,
+   "speech": "你可以接受交换。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1412.2,
+   "dur": 3.04,
+   "speech": "但不能假装交换不存在。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1418.64,
+   "dur": 2.03,
+   "speech": "回到三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1421.22,
+   "dur": 4.12,
+   "speech": "手算第三步，水平十三点二八一二五。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1425.89,
+   "dur": 2.97,
+   "speech": "趋势一点二九六八七五。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1429.4,
+   "dur": 3.73,
+   "speech": "下一步预测十四点五七八一二五。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1433.69,
+   "dur": 2.13,
+   "speech": "再加一个判断。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1436.36,
+   "dur": 3.3,
+   "speech": "加法与乘法的分界，是除法。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1440.22,
+   "dur": 3.9,
+   "speech": "真实数据有零，就必须有保护分支。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1444.67,
+   "dur": 3.57,
+   "speech": "这一集的方法，可以用一句话记住。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1448.78,
+   "dur": 4,
+   "speech": "先问数据能不能除，再问模型准不准。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1453.33,
+   "dur": 2.73,
+   "speech": "下一集，讲平稳化。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1456.61,
+   "dur": 3.95,
+   "speech": "差分、对数、去趋势，三条路。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1461.11,
+   "dur": 3.64,
+   "speech": "为什么时间序列模型都怕非平稳。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1465.3,
+   "dur": 5.2,
+   "speech": "以及，怎么把一条不平稳的序列，变成可以建模的序列。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1471.04,
+   "dur": 2.29,
+   "speech": "这一集就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1473.89,
+   "dur": 2.56,
+   "speech": "数字都在证据里。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1477,
+   "dur": 1.69,
+   "speech": "下次见。"
+  }
+ ]
+}
