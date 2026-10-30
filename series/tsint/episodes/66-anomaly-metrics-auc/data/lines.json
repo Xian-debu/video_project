@@ -1,0 +1,1415 @@
+{
+ "entry": "src/tsint-66-anomaly-metrics-auc/script.ts",
+ "fps": 30,
+ "totalSec": 698.92,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 79.55
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 79.55,
+   "dur": 89.42
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 168.97,
+   "dur": 120.5
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 289.47,
+   "dur": 92.18
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 381.65,
+   "dur": 95.86
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 477.51,
+   "dur": 91.31
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 568.82,
+   "dur": 82.43
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 651.25,
+   "dur": 47.67
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.73,
+   "speech": "这一集讲三把尺子。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.48,
+   "dur": 3.93,
+   "speech": "同一份数据，三个指标，三种判决。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.95,
+   "dur": 2.92,
+   "speech": "九十九个正常，一个异常。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.42,
+   "dur": 2.39,
+   "speech": "模型全判正常。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.36,
+   "dur": 3.47,
+   "speech": "准确率零点九九，看起来满分。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.38,
+   "dur": 4.09,
+   "speech": "ROC-AUC 是零点五，等于随机猜。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 24.02,
+   "dur": 3.69,
+   "speech": "AP 是零点零一，等于正类比例。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 28.26,
+   "dur": 3.76,
+   "speech": "一个模型，三个分数，谁在说谎。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 32.57,
+   "dur": 3.25,
+   "speech": "书在二百零六页写得很清楚。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 36.37,
+   "dur": 3.97,
+   "speech": "AUC 等于零点五，就是随机猜测。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 40.9,
+   "dur": 3.45,
+   "speech": "但如果只看准确率，它像满分。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 44.89,
+   "dur": 2.41,
+   "speech": "这一集钉三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 47.86,
+   "dur": 3.66,
+   "speech": "准确率在不平衡数据上会骗人。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 52.07,
+   "dur": 3.18,
+   "speech": "ROC 和 PR 曲线怎么读。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 55.8,
+   "dur": 3.42,
+   "speech": "三个指标怎么写成可测代码。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 59.77,
+   "dur": 3.09,
+   "speech": "先看一个九十九比一的样本。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 63.41,
+   "dur": 3.59,
+   "speech": "再看两万三千八百二十九个真实点。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 67.55,
+   "dur": 3.49,
+   "speech": "最后看二十只股票，谁排第一。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 71.59,
+   "dur": 2.97,
+   "speech": "同一份预测，三把尺子。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 75.11,
+   "dur": 2.25,
+   "speech": "先问谁在少数。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 80.75,
+   "dur": 3.21,
+   "speech": "全判正常，准确率九十九。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 84.51,
+   "dur": 2.8,
+   "speech": "一百个样本，一个正类。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 87.85,
+   "dur": 2.49,
+   "speech": "预测全部是正常。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 90.89,
+   "dur": 3.61,
+   "speech": "混淆矩阵：真阳零、假阳零。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 95.05,
+   "dur": 2.8,
+   "speech": "假阴一，真阴九十九。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 98.4,
+   "dur": 3.09,
+   "speech": "准确率等于九十九除以一百。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 102.04,
+   "dur": 1.96,
+   "speech": "零点九九。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 104.55,
+   "dur": 2.17,
+   "speech": "但召回率是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 107.27,
+   "dur": 2.44,
+   "speech": "一个异常都没抓到。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 110.26,
+   "dur": 2.32,
+   "speech": "精确率没有定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 113.13,
+   "dur": 3.01,
+   "speech": "因为模型从没预测过正类。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 116.69,
+   "dur": 2.32,
+   "speech": "F1 也是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 119.56,
+   "dur": 3.66,
+   "speech": "准确率给了满分，召回率给了零分。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 123.77,
+   "dur": 2.25,
+   "speech": "换到真实数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 126.57,
+   "dur": 2.94,
+   "speech": "两万三千八百二十九个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 130.06,
+   "dur": 2.87,
+   "speech": "正类两千两百一十七个。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 133.48,
+   "dur": 2.46,
+   "speech": "占百分之九点三。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 136.49,
+   "dur": 3.37,
+   "speech": "全判正常，准确率九十点七。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 140.41,
+   "dur": 1.81,
+   "speech": "还是很高。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 142.78,
+   "dur": 3.4,
+   "speech": "但漏掉两千两百一十七个异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 146.73,
+   "dur": 3.04,
+   "speech": "这就是不平衡数据的陷阱。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 150.31,
+   "dur": 2.58,
+   "speech": "多数类撑起准确率。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 153.45,
+   "dur": 2.37,
+   "speech": "少数类决定任务。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 156.36,
+   "dur": 3.25,
+   "speech": "所以要看排序，不只看阈值。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 160.17,
+   "dur": 3.47,
+   "speech": "AUC 和 AP 都在问同一件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 164.19,
+   "dur": 2.58,
+   "speech": "正类排得够不够前。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 170.17,
+   "dur": 2.68,
+   "speech": "先把四个计数写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 173.4,
+   "dur": 3.83,
+   "speech": "真阳、假阳、假阴、真阴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 177.78,
+   "dur": 4.12,
+   "speech": "精确率等于真阳除以真阳加假阳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 182.45,
+   "dur": 4,
+   "speech": "召回率等于真阳除以真阳加假阴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 186.99,
+   "dur": 3.81,
+   "speech": "准确率等于真阳加真阴除以总数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 191.35,
+   "dur": 4,
+   "speech": "F1 是精确率和召回率的调和平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 195.9,
+   "dur": 3.25,
+   "speech": "书里给了式八点七到八点十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 199.7,
+   "dur": 3.09,
+   "speech": "这四个都依赖一个阈值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 203.34,
+   "dur": 3.04,
+   "speech": "换个阈值，四个数全变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 206.93,
+   "dur": 3.18,
+   "speech": "ROC 曲线把阈值全扫一遍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 210.66,
+   "dur": 2.25,
+   "speech": "横轴是假阳率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 213.45,
+   "dur": 2.32,
+   "speech": "纵轴是真阳率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 216.32,
+   "dur": 3.3,
+   "speech": "曲线下的面积就是 AUC。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 220.17,
+   "dur": 2.94,
+   "speech": "AUC 零点五，随机。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 223.67,
+   "dur": 2.75,
+   "speech": "AUC 一，完美排序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 226.97,
+   "dur": 2.87,
+   "speech": "它只看排序，不看阈值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 230.39,
+   "dur": 2.73,
+   "speech": "PR 曲线换两个轴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 233.66,
+   "dur": 3.16,
+   "speech": "横轴召回率，纵轴精确率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 237.37,
+   "dur": 3.47,
+   "speech": "曲线下的面积叫 PR-AUC。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 241.39,
+   "dur": 3.59,
+   "speech": "平均精确率 AP 是它的阶梯版。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 245.53,
+   "dur": 3.33,
+   "speech": "AP 的随机基线不是零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 249.41,
+   "dur": 2.03,
+   "speech": "是正类比例。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 251.99,
+   "dur": 3.13,
+   "speech": "这里正类占百分之九点三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 255.67,
+   "dur": 3.69,
+   "speech": "所以 AP 零点零九三才算随机。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 259.91,
+   "dur": 2.87,
+   "speech": "三个指标，三种问法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 263.33,
+   "dur": 2.68,
+   "speech": "准确率问：猜对多少。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 266.55,
+   "dur": 2.63,
+   "speech": "AUC 问：排得对不对。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 269.73,
+   "dur": 3.01,
+   "speech": "AP 问：前面抓得准不准。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 273.3,
+   "dur": 3.09,
+   "speech": "书里只给定义，没给实现。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 276.93,
+   "dur": 3.06,
+   "speech": "本集把三个都写成代码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 280.55,
+   "dur": 2.39,
+   "speech": "边界也要写进去。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 283.49,
+   "dur": 3.78,
+   "speech": "空集、单类、NaN，都要有答案。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 290.67,
+   "dur": 2.75,
+   "speech": "看真实的 ROC 曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 293.97,
+   "dur": 3.21,
+   "speech": "横轴假阳率，纵轴真阳率。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 297.73,
+   "dur": 2.51,
+   "speech": "对角线是随机猜。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 300.79,
+   "dur": 3.21,
+   "speech": "这条曲线只比对线高一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 304.54,
+   "dur": 2.73,
+   "speech": "AUC 零点五四零八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 307.82,
+   "dur": 2.58,
+   "speech": "比随机高零点零四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 310.95,
+   "dur": 3.85,
+   "speech": "二十只股票里，十五只超过零点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 315.35,
+   "dur": 2.68,
+   "speech": "中位数零点五五八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 318.58,
+   "dur": 3.45,
+   "speech": "最高工商银行，零点七九八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 322.58,
+   "dur": 3.33,
+   "speech": "最低中国中免，零点四六五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 326.45,
+   "dur": 3.42,
+   "speech": "同一个分数，换只股票就翻车。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 330.43,
+   "dur": 2.44,
+   "speech": "再看 PR 曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 333.41,
+   "dur": 3.16,
+   "speech": "横轴召回率，纵轴精确率。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 337.12,
+   "dur": 2.77,
+   "speech": "底部虚线是正类比例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 340.45,
+   "dur": 2.8,
+   "speech": "曲线大部分贴着底部。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 343.79,
+   "dur": 2.58,
+   "speech": "AP 零点一一二一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 346.93,
+   "dur": 2.92,
+   "speech": "是随机基线的一点二倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 350.39,
+   "dur": 2.92,
+   "speech": "不算零，也远谈不上好。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 353.86,
+   "dur": 3.49,
+   "speech": "注意这两张图讲的是同一份分数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 357.91,
+   "dur": 2.37,
+   "speech": "ROC 看起来还行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 360.82,
+   "dur": 2.39,
+   "speech": "PR 看起来很差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 363.76,
+   "dur": 2.65,
+   "speech": "因为 PR 关心前面。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 366.97,
+   "dur": 3.54,
+   "speech": "正类少的时候，前面全是假阳。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 371.06,
+   "dur": 2.39,
+   "speech": "精确率就掉下来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 374,
+   "dur": 2.37,
+   "speech": "两个指标不矛盾。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 376.91,
+   "dur": 2.53,
+   "speech": "它们在问不同的问题。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 382.85,
+   "dur": 3.09,
+   "speech": "三个模块，四十六条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 386.49,
+   "dur": 2.58,
+   "speech": "第一个是混淆矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 389.62,
+   "dur": 2.41,
+   "speech": "四个计数用整数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 392.58,
+   "dur": 3.95,
+   "speech": "精确率、召回率、准确率、F1。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 397.08,
+   "dur": 2.68,
+   "speech": "分母为零时返回什么。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 400.31,
+   "dur": 3.06,
+   "speech": "这里返回空值，不返回零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 403.92,
+   "dur": 3.78,
+   "speech": "因为没预测过正类，精确率不存在。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 408.25,
+   "dur": 2.56,
+   "speech": "第二个是 ROC-AUC。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 411.36,
+   "dur": 2.41,
+   "speech": "用 Mann-Whitney 秩和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 414.33,
+   "dur": 2.65,
+   "speech": "并列分数取平均秩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 417.53,
+   "dur": 2.65,
+   "speech": "单类样本返回空值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 420.73,
+   "dur": 2.85,
+   "speech": "因为 AUC 没有定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 424.13,
+   "dur": 3.45,
+   "speech": "第三个是 PR-AUC 和 AP。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 428.13,
+   "dur": 2.34,
+   "speech": "按分数降序扫。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 431.02,
+   "dur": 3.11,
+   "speech": "每一步算召回率和精确率。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 434.68,
+   "dur": 2.34,
+   "speech": "阶梯面积求和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 437.57,
+   "dur": 3.3,
+   "speech": "端点写死，避免浮点抖动。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 441.42,
+   "dur": 2.77,
+   "speech": "三个模块都不读文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 444.75,
+   "dur": 3.23,
+   "speech": "输入是向量，输出是数字。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 448.53,
+   "dur": 2.37,
+   "speech": "这样测试才能判。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 451.44,
+   "dur": 2.97,
+   "speech": "四十六条断言全部通过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 454.96,
+   "dur": 3.49,
+   "speech": "边界、黄金值、随机基线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 459,
+   "dur": 3.21,
+   "speech": "黄金值 AUC 零点七五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 462.76,
+   "dur": 2.8,
+   "speech": "黄金值 AP 零点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 466.11,
+   "dur": 2.39,
+   "speech": "不是从数据里抄的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 469.05,
+   "dur": 2.39,
+   "speech": "是手算能对上的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 471.99,
+   "dur": 3.33,
+   "speech": "代码先写边界，再算指标。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 478.71,
+   "dur": 2.87,
+   "speech": "四组数字，逐项对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 482.13,
+   "dur": 2.58,
+   "speech": "第一组，合成样本。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 485.26,
+   "dur": 2.7,
+   "speech": "一百个点，一个正类。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 488.51,
+   "dur": 3.88,
+   "speech": "准确率零点九九，AUC 零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 492.94,
+   "dur": 2.25,
+   "speech": "AP 零点零一。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 495.74,
+   "dur": 2.56,
+   "speech": "第二组，真实数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 498.85,
+   "dur": 2.94,
+   "speech": "两万三千八百二十九个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 502.34,
+   "dur": 2.87,
+   "speech": "正类两千两百一十七个。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 505.76,
+   "dur": 2.73,
+   "speech": "AUC 零点五四零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 509.03,
+   "dur": 2.58,
+   "speech": "AP 零点一一二一。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 512.17,
+   "dur": 2.87,
+   "speech": "第三组，阈值一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 515.59,
+   "dur": 2.32,
+   "speech": "真阳四百四十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 518.45,
+   "dur": 2.61,
+   "speech": "假阳两千九百零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 521.61,
+   "dur": 2.75,
+   "speech": "精确率百分之十三点二。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 524.91,
+   "dur": 2.87,
+   "speech": "召回率百分之十九点九。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 528.33,
+   "dur": 2.85,
+   "speech": "准确率百分之八十点四。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 531.73,
+   "dur": 3.4,
+   "speech": "比全判正常还低十点三个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 535.67,
+   "dur": 2.77,
+   "speech": "第四组，二十只股票。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 539,
+   "dur": 3.23,
+   "speech": "十五只 AUC 超过零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 542.78,
+   "dur": 4.05,
+   "speech": "最高零点七九八，最低零点四六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 547.37,
+   "dur": 2.92,
+   "speech": "四十六条测试全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 550.84,
+   "dur": 3.25,
+   "speech": "每个数字都能回到一次运行。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 554.65,
+   "dur": 2.49,
+   "speech": "本集没有训练模型。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 557.68,
+   "dur": 1.98,
+   "speech": "也没有调参。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 560.21,
+   "dur": 3.18,
+   "speech": "只有标签、分数、阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 563.95,
+   "dur": 2.68,
+   "speech": "和一套可复算的指标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 570.02,
+   "dur": 2.8,
+   "speech": "七个边界，一把尺子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 573.37,
+   "dur": 2.37,
+   "speech": "第一，证据等级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 576.28,
+   "dur": 2.68,
+   "speech": "书里只有定义和公式。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 579.51,
+   "dur": 2.58,
+   "speech": "没有代码，没有实验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 582.64,
+   "dur": 3.54,
+   "speech": "本集所有数字来自本机快照。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 586.74,
+   "dur": 2.29,
+   "speech": "第二，标签定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 589.58,
+   "dur": 2.68,
+   "speech": "未来五日跌百分之五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 592.81,
+   "dur": 3.47,
+   "speech": "换一个阈值，正类就换一批。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 596.83,
+   "dur": 2.44,
+   "speech": "第三，分数定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 599.82,
+   "dur": 2.8,
+   "speech": "二十日波动率的 z 分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 603.16,
+   "dur": 3.33,
+   "speech": "不是模型输出，是手工特征。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 607.04,
+   "dur": 2.61,
+   "speech": "第四，样本范围。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 610.2,
+   "dur": 2.89,
+   "speech": "二十只大盘股，六年。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 613.64,
+   "dur": 2.05,
+   "speech": "不是全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 616.24,
+   "dur": 2.53,
+   "speech": "第五，阈值选择。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 619.33,
+   "dur": 3.28,
+   "speech": "一点零、一点五、二点零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 623.16,
+   "dur": 2.39,
+   "speech": "都是事先写死的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 626.1,
+   "dur": 2.49,
+   "speech": "没有调参挑最好看。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 629.13,
+   "dur": 2.61,
+   "speech": "第六，单类未定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 632.29,
+   "dur": 3.64,
+   "speech": "一只股票没有正类，AUC 就没有。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 636.48,
+   "dur": 2.25,
+   "speech": "代码返回空值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 639.27,
+   "dur": 2.22,
+   "speech": "第七，等级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 642.04,
+   "dur": 3.25,
+   "speech": "机制可复现，数字可复算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 645.85,
+   "dur": 3.21,
+   "speech": "但没有基线模型，不能外推。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 652.45,
+   "dur": 2.97,
+   "speech": "一句话，先问谁在少数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 655.97,
+   "dur": 3.25,
+   "speech": "准确率、AUC、AP。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 659.77,
+   "dur": 2.87,
+   "speech": "三个指标，三种问法。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 663.19,
+   "dur": 3.35,
+   "speech": "不平衡数据上，先看少数类。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 667.09,
+   "dur": 3.06,
+   "speech": "再看排序，最后看阈值。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 670.7,
+   "dur": 2.85,
+   "speech": "这一集给了三把尺子。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 674.1,
+   "dur": 2.32,
+   "speech": "也给了三条边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 676.97,
+   "dur": 2.61,
+   "speech": "下一集讲数据划分。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 680.12,
+   "dur": 3.61,
+   "speech": "训练集、验证集、测试集。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 684.29,
+   "dur": 2.87,
+   "speech": "时间序列不能随机切。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 687.71,
+   "dur": 2.85,
+   "speech": "切错一次，指标全废。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 691.1,
+   "dur": 2.25,
+   "speech": "先问谁在少数。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 693.9,
+   "dur": 2.82,
+   "speech": "再问尺子量的是什么。"
+  }
+ ]
+}
