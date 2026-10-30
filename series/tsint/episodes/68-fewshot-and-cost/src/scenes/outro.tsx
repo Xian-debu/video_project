@@ -23,7 +23,7 @@ export const SOutro: React.FC = () => {
             <Stat label="参数量" value={self.params} sub="48 + 272 + 17" accent={C.amber} style={{ width: 262, height: 210 }} />
           </div>
         </Build>
-        <Build at={b(8)}>
+        <Build at={b(6)}>
           <Card label="成本四件套（同预算 200 步）" accent={C.cyan} style={{ width: 820, height: 306, marginTop: 20 }} pad={18}>
             <div style={{ display: "flex", paddingBottom: 8, borderBottom: "1px solid " + C.panelLine, fontFamily: FONT.mono, fontSize: FT.micro, color: C.inkFaint }}>
               <div style={{ flex: 1 }}>指标</div><div style={{ width: 220, textAlign: "right" }}>105 参数</div><div style={{ width: 220, textAlign: "right" }}>17,025 参数</div><div style={{ width: 130, textAlign: "right" }}>倍数</div>
@@ -49,14 +49,14 @@ export const SOutro: React.FC = () => {
       </div>
 
       <div style={{ position: "absolute", left: 936, top: 292, width: 912 }}>
-        <Build at={b(13)}>
+        <Build at={b(10)}>
           <Card label="一句话" accent={C.coral} style={{ width: 912, height: 210 }} pad={24}>
             <Body color={C.ink} size={FT.h2} style={{ fontFamily: FONT.serif, lineHeight: 1.5 }}>
               采样先定协议：窗口类型、锚点、窗宽、种子，四个都写死；再报成本：参数量、训练、推理、峰值内存。
             </Body>
           </Card>
         </Build>
-        <Build at={b(18)}>
+        <Build at={b(14)}>
           <Card label="下一集 · 69" accent={C.violet} style={{ width: 912, height: 236, marginTop: 20 }} pad={22}>
             <Body size={FT.h2} color={C.ink} style={{ fontFamily: FONT.serif }}>你的基准数据集均衡吗？</Body>
             <Body size={FT.meta} color={C.inkDim} style={{ marginTop: 12 }}>
@@ -70,7 +70,7 @@ export const SOutro: React.FC = () => {
             </div>
           </Card>
         </Build>
-        <Build at={b(22)}>
+        <Build at={b(20)}>
           <div style={{ marginTop: 18, fontFamily: FONT.mono, fontSize: FT.micro, color: C.inkFaint }}>
             50 / 1,000 / 337 · 数据 {M.data.rows} 行 · {M.meta.tests.suite} 条断言
           </div>

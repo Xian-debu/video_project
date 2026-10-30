@@ -63,7 +63,8 @@ export const PAD = G.pad;
 export const CW = 1920 - PAD * 2;
 
 export const fmtInt = (v: number) => v.toLocaleString("en-US");
-export const fmtMs = (v: number) => (v >= 1000 ? (v / 1000).toFixed(2) + " s" : v >= 10 ? v.toFixed(1) : v >= 1 ? v.toFixed(2) : v.toFixed(4));
+export const fmtMs = (v: number) =>
+  v >= 1000 ? (v / 1000).toFixed(2) + " s" : v >= 10 ? v.toFixed(1) + " ms" : v >= 1 ? v.toFixed(2) + " ms" : v.toFixed(4) + " ms";
 export const fmtMse = (v: number) => v.toFixed(4);
 
 export const sceneFrames = (id: string): number => {

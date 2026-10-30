@@ -26,7 +26,7 @@ export const SProblem: React.FC = () => {
           </div>
         </Build>
         {rows.map((s, i) => (
-          <Build key={s.key} at={b(2 + Math.floor(i * 0.6))}>
+          <Build key={s.key} at={b(3 + Math.round(i * 2.4))}>
             <div style={{
               display: "flex", alignItems: "baseline", padding: "11px 0",
               borderBottom: "1px solid " + C.panelLine,
@@ -43,7 +43,7 @@ export const SProblem: React.FC = () => {
             </div>
           </Build>
         ))}
-        <Build at={b(24)}>
+        <Build at={b(22)}>
           <div style={{ marginTop: 16, fontFamily: FONT.mono, fontSize: FT.meta, color: C.inkFaint, lineHeight: 1.7 }}>
             8 种策略、每种 50 点、合计 400 个位置；训练窗 1,000 点，空洞按交易日计数。
           </div>
@@ -51,23 +51,24 @@ export const SProblem: React.FC = () => {
       </div>
 
       <div style={{ position: "absolute", left: 1190, top: 292, width: 658 }}>
-        <Build at={b(26)}>
+        <Build at={b(19)}>
+          <Card accent={C.amber} style={{ width: 658, height: 150 }} pad={18}>
+            <Body color={C.inkDim} size={FT.meta} style={{ lineHeight: 1.7 }}>
+              随机窗口（seed 42）最后一块停在索引 906：训练窗末尾
+              <span style={{ color: C.amber }}> 93 个点</span>一次都没被看到。
+            </Body>
+          </Card>
+        </Build>
+        <Build at={b(25)}>
           <Stat label="覆盖跨度" value={front.months + " → " + uniform.months + " 个月"}
             sub="前端窗口 3 个月；等距反例 46 个月（但 50 段，不合法）"
-            accent={C.coral} style={{ width: 658, height: 176 }} valueSize={FT.num} />
+            accent={C.coral} style={{ width: 658, height: 176, marginTop: 16 }} valueSize={FT.num} />
         </Build>
-        <Build at={b(30)}>
+        <Build at={b(36)}>
           <Quote width={658} lines={[
             "由于需保证单个样本的时间连续性，在固定采样率（如 5%）下无法随机离散选择点，因此仅采用位置策略。",
             "前、后端窗口：捕获初始模式 / 提取最新动态。",
           ]} label="原文 · p.204 · 8.6.1" source="《时序智能》p.204 · 短摘录 · CC BY-NC-ND 4.0" />
-        </Build>
-        <Build at={b(34)}>
-          <Card accent={C.amber} style={{ width: 658, height: 112, marginTop: 16 }} pad={18}>
-            <Body color={C.inkDim} size={FT.meta}>
-              随机窗口（seed 42）最后窗口停在索引 906：训练窗末尾 93 个点一次都没被看到。
-            </Body>
-          </Card>
         </Build>
       </div>
     </Scene>

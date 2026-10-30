@@ -65,6 +65,9 @@ export const SVerification: React.FC = () => {
                 <div style={{ flex: 1, textAlign: "right", color: s.mse > 0.005 ? C.coral : C.inkDim }}>{fmtMse(s.mse)}</div>
               </div>
             ))}
+            <div style={{ marginTop: 14, fontFamily: FONT.mono, fontSize: FT.micro, color: C.inkFaint, lineHeight: 1.7 }}>
+              同预算 200 步 · 推理前 force · 峰值取 max residency；{eff.scales[2].params.toLocaleString("en-US")} 参数一档误差最大。
+            </div>
           </Card>
         </Build>
         <Build at={b(24)}>

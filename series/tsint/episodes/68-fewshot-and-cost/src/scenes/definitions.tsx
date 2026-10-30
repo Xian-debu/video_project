@@ -20,7 +20,7 @@ export const SDefinitions: React.FC = () => {
 
       <div style={{ position: "absolute", left: PAD, top: 292, width: 576 }}>
         <Build at={b(0)}>
-          <Card label="1 · 预算与窗口数" accent={C.cyan} style={{ width: 576, height: 470 }} pad={20}>
+          <Card label="1 · 预算与窗口数" accent={C.cyan} style={{ width: 576, height: 440 }} pad={20}>
             <Code lines={[
               "ρ = 0.05   n_train = 1000",
               "budget = max 1 (round (ρ·n))",
@@ -41,7 +41,7 @@ export const SDefinitions: React.FC = () => {
 
       <div style={{ position: "absolute", left: PAD + 600, top: 292, width: 576 }}>
         <Build at={b(9)}>
-          <Card label="2 · 四个锚点" accent={C.violet} style={{ width: 576, height: 470 }} pad={20}>
+          <Card label="2 · 四个锚点" accent={C.violet} style={{ width: 576, height: 440 }} pad={20}>
             <div style={{ fontFamily: FONT.mono, fontSize: FT.code, lineHeight: 2.0 }}>
               <div style={{ color: C.cyan }}>front    [0 .. k·w−1]</div>
               <div style={{ color: C.cyan }}>back     [n−k·w .. n−1]</div>
@@ -53,14 +53,14 @@ export const SDefinitions: React.FC = () => {
               锚点之外再加「采样单元」：窗口采样取 5 点宽的一段，点采样只取 1 点。
               点采样的前/后端仍取连续段，不能撒点。
             </Body>
-            <div style={{ marginTop: 10 }}><Mono size={FT.micro} color={C.inkFaint}>1e−9 削 floor 的浮点噪声；本集 k=10、w=5 → 均匀窗口起点 0, 110, 221, …, 995，末窗止于 999</Mono></div>
+            <div style={{ marginTop: 10 }}><Mono size={FT.micro} color={C.inkFaint}>1e−9 削浮点噪声；k=10、w=5 → 均匀起点 0, 110, …, 995（末窗止于 999）</Mono></div>
           </Card>
         </Build>
       </div>
 
       <div style={{ position: "absolute", left: PAD + 1200, top: 292, width: 576 }}>
         <Build at={b(17)}>
-          <Card label="3 · 合法与反例" accent={C.coral} style={{ width: 576, height: 470 }} pad={20}>
+          <Card label="3 · 合法与反例" accent={C.coral} style={{ width: 576, height: 440 }} pad={20}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {["窗口×前", "窗口×后", "窗口×均匀", "窗口×随机", "点×前", "点×后"].map((t) => (
                 <span key={t} style={{ padding: "3px 10px", borderRadius: 6, border: "1px solid " + C.cyan, color: C.cyan, fontFamily: FONT.mono, fontSize: FT.micro }}>{t} ✓</span>
@@ -83,7 +83,7 @@ export const SDefinitions: React.FC = () => {
         </Build>
       </div>
 
-      <div style={{ position: "absolute", left: PAD, top: 792, width: 1776 }}>
+      <div style={{ position: "absolute", left: PAD, top: 756, width: 1776 }}>
         <Build at={b(30)}>
           <Quote width={1776} label="原文 · p.203–204 · 8.6.1" lines={[
             "窗口采样：以连续时间窗口为单元提取片段，适配大模型的序列建模能力。前端窗口捕获初始模式，后端窗口提取最新动态，均匀窗口保证全局覆盖，随机窗口增强分布鲁棒性。",
