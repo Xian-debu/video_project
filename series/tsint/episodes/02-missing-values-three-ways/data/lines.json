@@ -1,0 +1,2143 @@
+{
+ "entry": "src/tsint-02-missing-values-three-ways/script.ts",
+ "fps": 30,
+ "totalSec": 1105.01,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 150.91
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 150.91,
+   "dur": 151.64
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 302.55,
+   "dur": 161.98
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 464.53,
+   "dur": 143.85
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 608.38,
+   "dur": 150.57
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 758.95,
+   "dur": 208.72
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 967.67,
+   "dur": 84.5
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1052.17,
+   "dur": 52.84
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.49,
+   "speech": "一条价格序列，中间断了六年。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.24,
+   "dur": 2.25,
+   "speech": "这不是一个比喻。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.04,
+   "dur": 3.81,
+   "speech": "这是三只股票里，最长的一段空档。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.4,
+   "dur": 3.4,
+   "speech": "两千四百五十天，没有一行数据。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.34,
+   "dur": 3.78,
+   "speech": "从二零零七年四月，到二零一四年一月。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.68,
+   "dur": 3.97,
+   "speech": "这本书第二章，第一件事就是缺失值。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 25.2,
+   "dur": 3.54,
+   "speech": "十六页到十七页，给了三种填法。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 29.29,
+   "dur": 3.04,
+   "speech": "上一次观测值，往前带。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 32.88,
+   "dur": 2.68,
+   "speech": "均值，或者中位数。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 36.11,
+   "dur": 2.65,
+   "speech": "还有线性插值这一种。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 39.31,
+   "dur": 3.45,
+   "speech": "三种填法，代码都不到一百行。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 43.31,
+   "dur": 2.87,
+   "speech": "但填完之后，方差会变。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 46.73,
+   "dur": 2.58,
+   "speech": "收益的分布，也会变。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 49.86,
+   "dur": 3.09,
+   "speech": "后面所有指标，都跟着变。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 53.5,
+   "dur": 2.53,
+   "speech": "这一集不比谁更准。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 56.58,
+   "dur": 2.73,
+   "speech": "这一集只回答一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 59.86,
+   "dur": 2.99,
+   "speech": "你填进去的那个数，凭什么。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 63.4,
+   "dur": 2.39,
+   "speech": "先看看数据本身。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 66.34,
+   "dur": 3.06,
+   "speech": "三只股票，二十五年日线。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 69.95,
+   "dur": 3.25,
+   "speech": "茅台，五千八百三十四行。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 73.75,
+   "dur": 3.16,
+   "speech": "平安银行，五千九百零二行。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 77.46,
+   "dur": 3.88,
+   "speech": "还有一支退市的票，一千九百九十六行。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 81.89,
+   "dur": 4.29,
+   "speech": "三份文件，二十七万九千八百七十三字节。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 86.72,
+   "dur": 4.09,
+   "speech": "全部前复权，价格和行情软件不一样。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 91.37,
+   "dur": 4.12,
+   "speech": "比如二零零九年，五十七元，不是二百元。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 96.04,
+   "dur": 2.82,
+   "speech": "停牌的日子，就没有行。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 99.41,
+   "dur": 2.75,
+   "speech": "所以缺失不是空值。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 102.71,
+   "dur": 3.21,
+   "speech": "缺失是这一行根本不存在。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 106.46,
+   "dur": 3.35,
+   "speech": "这句话决定了后面所有选择。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 110.36,
+   "dur": 4.07,
+   "speech": "如果按行号对齐，你会把停牌当成数据。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 114.98,
+   "dur": 3.64,
+   "speech": "如果按日期对齐，你会得到一个大洞。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 119.17,
+   "dur": 3.83,
+   "speech": "一个跨越六年的收益，会被算成一天。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 123.55,
+   "dur": 2.37,
+   "speech": "这是最危险的错。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 126.47,
+   "dur": 3.18,
+   "speech": "本集的代码，按日期对齐。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 130.2,
+   "dur": 3.18,
+   "speech": "缺口就是缺口，不补日期。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 133.93,
+   "dur": 2.34,
+   "speech": "先记住三个数字。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 136.82,
+   "dur": 2.34,
+   "speech": "五千八百三十三。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 139.72,
+   "dur": 2.44,
+   "speech": "然后是二百九十二。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 142.7,
+   "dur": 2.58,
+   "speech": "最后是四点五三元。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 145.84,
+   "dur": 2.87,
+   "speech": "下面逐个解释这三个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 152.11,
+   "dur": 2.51,
+   "speech": "为什么要处理缺失。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 155.17,
+   "dur": 2.25,
+   "speech": "先说第一个反例。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 157.97,
+   "dur": 3.13,
+   "speech": "如果把缺失的行直接删掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 161.65,
+   "dur": 3.45,
+   "speech": "剩下的样本，就不是随机样本。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 165.65,
+   "dur": 3.25,
+   "speech": "停牌往往发生在坏消息之后。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 169.45,
+   "dur": 2.85,
+   "speech": "也可能发生在重组之前。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 172.85,
+   "dur": 3.11,
+   "speech": "删掉它们，等于删掉尾部。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 176.51,
+   "dur": 3.23,
+   "speech": "波动被低估，收益被高估。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 180.29,
+   "dur": 2.51,
+   "speech": "这是样本选择偏误。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 183.35,
+   "dur": 2.27,
+   "speech": "再说第二个做法。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 186.17,
+   "dur": 2.94,
+   "speech": "第二个做法，用均值填。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 189.66,
+   "dur": 2.46,
+   "speech": "均值是一个常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 192.67,
+   "dur": 2.44,
+   "speech": "常数不贡献方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 195.66,
+   "dur": 2.77,
+   "speech": "填得越多，方差越小。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 198.98,
+   "dur": 2.29,
+   "speech": "这是可以算出来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 201.83,
+   "dur": 3.76,
+   "speech": "第三个做法，上一次观测值往前带。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 206.13,
+   "dur": 2.99,
+   "speech": "填出来的收益，很多是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 209.67,
+   "dur": 2.53,
+   "speech": "零收益不贡献方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 212.76,
+   "dur": 3.21,
+   "speech": "但零收益会改变分布形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 216.51,
+   "dur": 3.37,
+   "speech": "所以三种填法，都有代价。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 220.44,
+   "dur": 2.8,
+   "speech": "关键是代价有多大。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 223.79,
+   "dur": 2.8,
+   "speech": "本集用遮挡实验来量。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 227.13,
+   "dur": 3.45,
+   "speech": "在一段完整序列里，人为挖洞。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 231.13,
+   "dur": 3.52,
+   "speech": "挖掉百分之五，或者百分之二十。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 235.2,
+   "dur": 2.37,
+   "speech": "只在序列内部挖。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 238.11,
+   "dur": 2.53,
+   "speech": "首尾各留一个观测。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 241.2,
+   "dur": 3.09,
+   "speech": "因为首端缺失，没有左端点。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 244.83,
+   "dur": 2.85,
+   "speech": "末端缺失，没有右端点。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 248.23,
+   "dur": 3.81,
+   "speech": "线性插值在这两种情况下无定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 252.59,
+   "dur": 2.39,
+   "speech": "末值填充也一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 255.53,
+   "dur": 3.69,
+   "speech": "这是算法的边界，不是实现的缺陷。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 259.76,
+   "dur": 3.37,
+   "speech": "收益率一共五千八百三十三个。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 263.69,
+   "dur": 3.09,
+   "speech": "百分之五，是二百九十二个。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 267.32,
+   "dur": 3.64,
+   "speech": "百分之二十，是一千一百六十七个。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 271.51,
+   "dur": 3.33,
+   "speech": "挖完洞，用三种方法填回去。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 275.39,
+   "dur": 2.41,
+   "speech": "再和真实值比较。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 278.35,
+   "dur": 2.32,
+   "speech": "这就是遮挡实验。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 281.22,
+   "dur": 2.56,
+   "speech": "比较的指标有三个。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 284.33,
+   "dur": 2.75,
+   "speech": "价格的平均绝对误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 287.63,
+   "dur": 2.73,
+   "speech": "收益的平均绝对误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 290.9,
+   "dur": 2.37,
+   "speech": "最后一个是方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 293.82,
+   "dur": 3.45,
+   "speech": "方差最重要，因为它决定风险。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 297.81,
+   "dur": 2.53,
+   "speech": "下面把公式写出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 303.75,
+   "dur": 2.56,
+   "speech": "定义其实只有三行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 306.86,
+   "dur": 2.8,
+   "speech": "第一行，上一次观测值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 310.21,
+   "dur": 2.63,
+   "speech": "向前找最近的观测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 313.39,
+   "dur": 3.57,
+   "speech": "如果整段都没有观测，返回错误。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 317.5,
+   "dur": 2.82,
+   "speech": "首端缺失，也返回错误。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 320.87,
+   "dur": 2.61,
+   "speech": "因为前面没有值可以带。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 324.03,
+   "dur": 4.12,
+   "speech": "填出来的位置，用一个布尔向量标出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 328.7,
+   "dur": 2.46,
+   "speech": "这个向量叫掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 331.71,
+   "dur": 2.73,
+   "speech": "第二行，统计量填充。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 334.99,
+   "dur": 3.47,
+   "speech": "两个统计量，均值和中位数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 339.01,
+   "dur": 2.49,
+   "speech": "均值用卡汉求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 342.04,
+   "dur": 2.99,
+   "speech": "一万个点，也不会掉精度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 345.58,
+   "dur": 2.44,
+   "speech": "中位数要先排序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 348.57,
+   "dur": 2.37,
+   "speech": "排序之后取中间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 351.49,
+   "dur": 3.69,
+   "speech": "偶数个点，取中间两个的平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 355.72,
+   "dur": 2.68,
+   "speech": "第三行，线性插值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 358.95,
+   "dur": 2.41,
+   "speech": "左端点，右端点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 361.91,
+   "dur": 2.97,
+   "speech": "按位置比例取中间值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 365.43,
+   "dur": 4.05,
+   "speech": "公式是左值，加上差值乘以比例。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 370.03,
+   "dur": 2.32,
+   "speech": "比例就是距离比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 372.89,
+   "dur": 2.99,
+   "speech": "如果给的是日期，不是行号。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 376.43,
+   "dur": 2.53,
+   "speech": "那就用日期做坐标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 379.52,
+   "dur": 2.85,
+   "speech": "这个版本叫按轴插值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 382.91,
+   "dur": 3.11,
+   "speech": "三行公式，三个错误类型。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 386.57,
+   "dur": 3.71,
+   "speech": "首端缺失，末端缺失，全缺失。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 390.83,
+   "dur": 2.99,
+   "speech": "还有一个坐标长度不匹配。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 394.37,
+   "dur": 2.75,
+   "speech": "所有错误都可以被测试。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 397.67,
+   "dur": 2.97,
+   "speech": "填完之后，得到两个向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 401.19,
+   "dur": 2.97,
+   "speech": "一个是值，一个是掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 404.71,
+   "dur": 3.52,
+   "speech": "掩码告诉你，哪些位置是算出来的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 408.77,
+   "dur": 3.13,
+   "speech": "这个设计贯穿三个模块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 412.46,
+   "dur": 2.53,
+   "speech": "返回值不是裸向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 415.54,
+   "dur": 2.63,
+   "speech": "是值，加一个掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 418.72,
+   "dur": 4.98,
+   "speech": "因为下游必须知道，哪个数是观测，哪个数是猜测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 424.25,
+   "dur": 3.04,
+   "speech": "这就是定义层最重要的约定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 427.84,
+   "dur": 2.77,
+   "speech": "再说方差为什么准。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 431.17,
+   "dur": 3.42,
+   "speech": "均值填充，填进去的是常数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 435.14,
+   "dur": 2.65,
+   "speech": "常数和观测无关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 438.34,
+   "dur": 2.85,
+   "speech": "方差只剩下观测部分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 441.74,
+   "dur": 2.75,
+   "speech": "观测比例是一减 p。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 445.04,
+   "dur": 4.29,
+   "speech": "所以方差等于一减 p，乘以原方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 449.87,
+   "dur": 2.22,
+   "speech": "这是一个恒等式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 452.65,
+   "dur": 3.66,
+   "speech": "实测应该等于预测，误差为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 456.86,
+   "dur": 2.27,
+   "speech": "后面验证会用到。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 459.68,
+   "dur": 2.65,
+   "speech": "下面看图形更直观。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 465.73,
+   "dur": 2.37,
+   "speech": "选一段真实行情。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 468.65,
+   "dur": 2.85,
+   "speech": "二零零八年十二月二十九日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 472.04,
+   "dur": 2.8,
+   "speech": "到二零零九年五月十五日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 475.39,
+   "dur": 2.13,
+   "speech": "九十一个交易日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 478.07,
+   "dur": 4.65,
+   "speech": "前复权价格，五十七点四元到六十一点三元。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 483.26,
+   "dur": 2.41,
+   "speech": "中间遮住九个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 486.23,
+   "dur": 2.32,
+   "speech": "也就是百分之五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 489.09,
+   "dur": 2.63,
+   "speech": "图上画了三条曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 492.27,
+   "dur": 2.61,
+   "speech": "青色是线性插值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 495.43,
+   "dur": 3.06,
+   "speech": "琥珀色是上一次观测值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 499.04,
+   "dur": 2.46,
+   "speech": "珊瑚色的是均值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 502.05,
+   "dur": 2.56,
+   "speech": "均值是一条水平线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 505.16,
+   "dur": 4.45,
+   "speech": "它用的是整个序列的平均价，四百九十五元。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 510.17,
+   "dur": 3.85,
+   "speech": "这段行情只有五十七元，高出去八倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 514.57,
+   "dur": 3.09,
+   "speech": "所以均值离真值最远。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 518.21,
+   "dur": 2.97,
+   "speech": "上一次观测值，是阶梯。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 521.72,
+   "dur": 2.68,
+   "speech": "它只在观测点跳一下。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 524.95,
+   "dur": 2.34,
+   "speech": "中间一段是平的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 527.84,
+   "dur": 3.64,
+   "speech": "线性插值，把缺口连成直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 532.03,
+   "dur": 3.13,
+   "speech": "在这段行情里，它最贴近。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 535.71,
+   "dur": 2.68,
+   "speech": "但这是有趋势的行情。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 538.94,
+   "dur": 3.61,
+   "speech": "如果换成震荡行情，结论会变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 543.11,
+   "dur": 3.06,
+   "speech": "所以看图，不能只看一张。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 546.72,
+   "dur": 2.58,
+   "speech": "再看那个六年的缺口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 549.85,
+   "dur": 2.68,
+   "speech": "二零零七年四月二十七日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 553.08,
+   "dur": 2.68,
+   "speech": "到二零一四年一月十日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 556.31,
+   "dur": 2.46,
+   "speech": "中间没有任何一行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 559.32,
+   "dur": 2.75,
+   "speech": "这不是普通的缺失值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 562.62,
+   "dur": 2.44,
+   "speech": "这是根本没有交易。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 565.61,
+   "dur": 4.12,
+   "speech": "用上一次观测值去填，会得到一个常数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 570.27,
+   "dur": 3.3,
+   "speech": "用均值去填，也是一个常数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 574.13,
+   "dur": 3.47,
+   "speech": "用线性插值，会画一条直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 578.15,
+   "dur": 3.16,
+   "speech": "三种填法，都在编造历史。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 581.85,
+   "dur": 3.09,
+   "speech": "区别只是编造的形状不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 585.49,
+   "dur": 3.61,
+   "speech": "所以第一件事，是判断缺失机制。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 589.65,
+   "dur": 2.99,
+   "speech": "是随机缺失，还是停牌。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 593.19,
+   "dur": 2.44,
+   "speech": "还是整段没有数据。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 596.18,
+   "dur": 2.8,
+   "speech": "机制不同，填法不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 599.53,
+   "dur": 3.64,
+   "speech": "这段窗口还会用在实现和验证里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 603.72,
+   "dur": 2.46,
+   "speech": "下面看代码怎么写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 609.58,
+   "dur": 3.16,
+   "speech": "模块在 TsBase 第二章。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 613.29,
+   "dur": 2.7,
+   "speech": "三个文件，各自独立。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 616.54,
+   "dur": 2.34,
+   "speech": "一共不到三百行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 619.43,
+   "dur": 2.37,
+   "speech": "依赖只有向量库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 622.35,
+   "dur": 2.75,
+   "speech": "先看末值填充模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 625.65,
+   "dur": 2.46,
+   "speech": "核心是一次扫描。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 628.66,
+   "dur": 3.59,
+   "speech": "扫描的时候，携带上一个观测值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 632.8,
+   "dur": 3.28,
+   "speech": "遇到观测，就更新携带值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 636.63,
+   "dur": 3.06,
+   "speech": "遇到缺失，就用携带值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 640.24,
+   "dur": 3.3,
+   "speech": "如果携带值是空的，就报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 644.09,
+   "dur": 2.77,
+   "speech": "一次遍历，线性时间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 647.42,
+   "dur": 3.09,
+   "speech": "掩码在同一个循环里生成。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 651.05,
+   "dur": 3.21,
+   "speech": "第二个函数，允许首端缺失。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 654.81,
+   "dur": 3.78,
+   "speech": "因为方向是向前的，首端没有前值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 659.14,
+   "dur": 3.23,
+   "speech": "所以它先跳过首端的缺失。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 662.92,
+   "dur": 3.52,
+   "speech": "剩下的部分，和第一个函数一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 666.99,
+   "dur": 3.23,
+   "speech": "本集的价格误差，用的就是它。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 670.77,
+   "dur": 2.44,
+   "speech": "再看统计量填充。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 673.76,
+   "dur": 2.7,
+   "speech": "一个求和，一个排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 677.01,
+   "dur": 2.46,
+   "speech": "均值用卡汉补偿。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 680.02,
+   "dur": 5.2,
+   "speech": "补偿的作用，是让一万个点的和，误差在一个最小单位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 685.77,
+   "dur": 2.44,
+   "speech": "中位数要靠排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 688.76,
+   "dur": 2.77,
+   "speech": "排序是对数线性时间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 692.08,
+   "dur": 3.47,
+   "speech": "本集的数据量，排序不到十毫秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 696.1,
+   "dur": 2.65,
+   "speech": "第三个，线性插值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 699.3,
+   "dur": 2.49,
+   "speech": "先找左邻和右邻。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 702.34,
+   "dur": 2.77,
+   "speech": "左邻用一次前缀扫描。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 705.66,
+   "dur": 2.73,
+   "speech": "右邻用一次后缀扫描。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 708.94,
+   "dur": 2.77,
+   "speech": "然后按位置比例插值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 712.26,
+   "dur": 3.49,
+   "speech": "如果是日期坐标，就按日期比例。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 716.31,
+   "dur": 3.73,
+   "speech": "这个版本支持不规则时间间隔。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 720.59,
+   "dur": 2.68,
+   "speech": "所有函数都是纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 723.82,
+   "dur": 3.16,
+   "speech": "输入输出都是不可变向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 727.53,
+   "dur": 2.58,
+   "speech": "没有全局可变状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 730.66,
+   "dur": 2.17,
+   "speech": "没有随机数输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 733.38,
+   "dur": 2.56,
+   "speech": "没有隐式类型转换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 736.49,
+   "dur": 2.41,
+   "speech": "所以可以逐点对拍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 739.46,
+   "dur": 3.97,
+   "speech": "四十九条断言，全部来自测试套件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 743.98,
+   "dur": 2.53,
+   "speech": "单测覆盖三种错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 747.06,
+   "dur": 2.97,
+   "speech": "三种错误，各有一个用例。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 750.58,
+   "dur": 2.63,
+   "speech": "这就是可验证的含义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 753.76,
+   "dur": 2.99,
+   "speech": "下面看真实数据上的数字。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 760.15,
+   "dur": 2.29,
+   "speech": "先看一个小例子。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 762.99,
+   "dur": 3.73,
+   "speech": "序列是一，缺失，缺失，四。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 767.28,
+   "dur": 4.57,
+   "speech": "上一次观测值，得到一，一，一，四。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 772.4,
+   "dur": 4.5,
+   "speech": "线性插值，得到一，二，三，四。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 777.45,
+   "dur": 2.99,
+   "speech": "算出来的均值是二点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 780.99,
+   "dur": 2.51,
+   "speech": "中位数也是二点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 784.05,
+   "dur": 2.65,
+   "speech": "这个例子写进了测试。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 787.26,
+   "dur": 2.37,
+   "speech": "再看方差怎么变。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 790.17,
+   "dur": 4.55,
+   "speech": "原始收益率方差，三点九八乘十的负四次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 795.27,
+   "dur": 3.13,
+   "speech": "遮住百分之五之后，填回去。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 798.96,
+   "dur": 3.95,
+   "speech": "方差变成三点七八乘十的负四次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 803.46,
+   "dur": 2.46,
+   "speech": "正好少了百分之五。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 806.47,
+   "dur": 2.37,
+   "speech": "遮住百分之二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 809.39,
+   "dur": 3.93,
+   "speech": "方差变成三点一六乘十的负四次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 813.86,
+   "dur": 2.29,
+   "speech": "少了百分之二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 816.71,
+   "dur": 3.81,
+   "speech": "这个损失比例，正好等于遮挡比例。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 821.06,
+   "dur": 3.16,
+   "speech": "这是均值填充的解析结果。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 824.77,
+   "dur": 2.7,
+   "speech": "因为常数不贡献方差。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 828.02,
+   "dur": 3.3,
+   "speech": "方差按观测比例线性缩小。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 831.87,
+   "dur": 3.28,
+   "speech": "实测和预测的相对误差是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 835.7,
+   "dur": 3.57,
+   "speech": "中位数填充也接近，三点七八。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 839.82,
+   "dur": 3.9,
+   "speech": "但中位数不是线性算子，没有恒等式。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 844.27,
+   "dur": 2.73,
+   "speech": "再看末值填充的代价。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 847.55,
+   "dur": 4.48,
+   "speech": "二百九十二个遮挡点，填出二百九十二段平台。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 852.57,
+   "dur": 3.95,
+   "speech": "零收益从三十五个，涨到三百二十四个。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 857.07,
+   "dur": 2.41,
+   "speech": "多了二百八十九个。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 860.04,
+   "dur": 3.06,
+   "speech": "最大跳跃，百分之十二点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 863.65,
+   "dur": 3.93,
+   "speech": "这是把一段下跌，压缩成了一次跳变。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 868.13,
+   "dur": 3.21,
+   "speech": "如果把遮挡改成连续两块。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 871.88,
+   "dur": 3.25,
+   "speech": "平台数减半，一百四十六段。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 875.69,
+   "dur": 4.24,
+   "speech": "但价格误差从六点八二，涨到八点一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 880.47,
+   "dur": 3.47,
+   "speech": "因为平台更长，误差累积更多。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 884.49,
+   "dur": 3.49,
+   "speech": "再看价格口径的平均绝对误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 888.54,
+   "dur": 3.16,
+   "speech": "线性插值，四点五三元。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 892.25,
+   "dur": 2.99,
+   "speech": "末值填充，六点八二元。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 895.79,
+   "dur": 3.78,
+   "speech": "均值填充，五百二十一点六三元。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 900.12,
+   "dur": 2.34,
+   "speech": "差了两个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 903.01,
+   "dur": 2.73,
+   "speech": "但换成收益率口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 906.29,
+   "dur": 3.9,
+   "speech": "均值填充反而最好，零点零一四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 910.74,
+   "dur": 2.97,
+   "speech": "线性插值零点零一八五。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 914.25,
+   "dur": 2.94,
+   "speech": "末值填充零点零二一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 917.75,
+   "dur": 2.39,
+   "speech": "这不是自相矛盾。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 920.69,
+   "dur": 2.41,
+   "speech": "这是因为口径不同。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 923.65,
+   "dur": 3.81,
+   "speech": "价格是百元级，收益率是百分级。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 928.01,
+   "dur": 3.76,
+   "speech": "所以屏幕上报误差，必须写口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 932.31,
+   "dur": 3.73,
+   "speech": "分段看，误差还随价格水平变化。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 936.6,
+   "dur": 3.64,
+   "speech": "第一段均价低，误差零点零八元。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 940.79,
+   "dur": 3.52,
+   "speech": "最后一段均价高，误差十三元。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 944.85,
+   "dur": 2.8,
+   "speech": "方法没变，价格变了。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 948.2,
+   "dur": 3.73,
+   "speech": "四十九条检查，和断言一一对应。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 952.49,
+   "dur": 2.77,
+   "speech": "总测试三百六十七条。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 955.81,
+   "dur": 3.25,
+   "speech": "数据哈希以 45ba 开头。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 959.61,
+   "dur": 2.51,
+   "speech": "证据随时可以重跑。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 962.67,
+   "dur": 2.8,
+   "speech": "下面说这一集的边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 968.87,
+   "dur": 3.95,
+   "speech": "第一条，均值填充只适合平稳段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 973.37,
+   "dur": 3.85,
+   "speech": "有趋势的序列，均值会系统性偏移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 977.77,
+   "dur": 3.3,
+   "speech": "第二条，末值填充会压方差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 981.63,
+   "dur": 2.37,
+   "speech": "也会制造零收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 984.54,
+   "dur": 4.14,
+   "speech": "第三条，线性插值假设直线路径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 989.23,
+   "dur": 2.7,
+   "speech": "跳空缺口会被低估。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 992.49,
+   "dur": 4.38,
+   "speech": "第四条，价格口径的误差依赖价格水平。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 997.42,
+   "dur": 3.93,
+   "speech": "同一只股票，早期价格低，误差也小。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1001.89,
+   "dur": 3.47,
+   "speech": "分段看，第一段只有零点零八元。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1005.91,
+   "dur": 3.66,
+   "speech": "这不是方法更好，是价格更低。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1010.13,
+   "dur": 2.97,
+   "speech": "第五条，停牌不是缺失。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1013.64,
+   "dur": 3.85,
+   "speech": "删掉停牌行，会引入样本选择偏误。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1018.05,
+   "dur": 2.94,
+   "speech": "第六条，遮挡是人为的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1021.54,
+   "dur": 3.28,
+   "speech": "真实缺失机制可能非随机。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1025.37,
+   "dur": 3.88,
+   "speech": "比如收盘价缺失，往往和波动有关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1029.79,
+   "dur": 3.95,
+   "speech": "第七条，百分之二十只是压力测试。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1034.29,
+   "dur": 4.33,
+   "speech": "真实数据里，二十五个点里缺一个，已经很糟。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1039.18,
+   "dur": 3.93,
+   "speech": "所以结论只在这三种填法之间成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1043.65,
+   "dur": 3.25,
+   "speech": "不构成对别的插值方法的评价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1047.46,
+   "dur": 2.51,
+   "speech": "这就是方法的边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1053.37,
+   "dur": 2.41,
+   "speech": "回到开头三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1056.33,
+   "dur": 2.8,
+   "speech": "五千八百三十三个收益率。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1059.68,
+   "dur": 2.58,
+   "speech": "二百九十二个遮挡点。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1062.81,
+   "dur": 4.09,
+   "speech": "四点五三元，对五百二十一点六三元。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1067.46,
+   "dur": 2.77,
+   "speech": "三种填法，一个判据。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1070.78,
+   "dur": 2.99,
+   "speech": "先问缺在哪，再选填法。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1074.32,
+   "dur": 4.12,
+   "speech": "代码、证据、成片，都在版本库里。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1078.99,
+   "dur": 2.77,
+   "speech": "数据哈希写在证据里。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1082.31,
+   "dur": 2.7,
+   "speech": "四十九条检查可以重跑。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1085.57,
+   "dur": 2.63,
+   "speech": "下一集开始讲平滑。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1088.75,
+   "dur": 4.48,
+   "speech": "简单移动平均，加权移动平均，指数平滑。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1093.77,
+   "dur": 2.85,
+   "speech": "三个窗口，三种权重。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1097.17,
+   "dur": 2.8,
+   "speech": "同一个问题，滞后多少。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1100.52,
+   "dur": 2.29,
+   "speech": "那我们就下集见。"
+  }
+ ]
+}
