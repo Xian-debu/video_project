@@ -19,13 +19,20 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-07",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_fft_data.py"
+    }
+  ],
+  "derived": [
+    "data/fft.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete",
+  "publish": {
+    "coverFrame": 2259
+  }
 }

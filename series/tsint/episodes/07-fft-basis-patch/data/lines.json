@@ -1,0 +1,2115 @@
+{
+ "entry": "src/tsint-07-fft-basis-patch/script.ts",
+ "fps": 30,
+ "totalSec": 1298.72,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 206.24
+  },
+  {
+   "id": "problem",
+   "chapter": "一件真事",
+   "start": 206.24,
+   "dur": 134.35
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 340.59,
+   "dur": 186.81
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 527.4,
+   "dur": 165.43
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 692.83,
+   "dur": 185.37
+  },
+  {
+   "id": "verification",
+   "chapter": "数字",
+   "start": 878.2,
+   "dur": 181.83
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1060.03,
+   "dur": 170.39
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1230.42,
+   "dur": 68.3
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.66,
+   "speech": "前面六集，一直在时间轴上做事。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.41,
+   "dur": 3.78,
+   "speech": "差分、对数、标准化、分解。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.74,
+   "dur": 4.45,
+   "speech": "都是在同一条坐标轴上，把序列拆成几段。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 14.75,
+   "dur": 2.46,
+   "speech": "这一集换一个方向。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.76,
+   "dur": 2.82,
+   "speech": "不拆序列，换坐标系。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.13,
+   "dur": 3.85,
+   "speech": "时间轴还是那条时间轴，换的是表示。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 25.54,
+   "dur": 4.07,
+   "speech": "同一条序列，换一组基，换个样子看。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 30.16,
+   "dur": 3.88,
+   "speech": "书里第二十五到三十页，给了三种办法。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 34.58,
+   "dur": 3.3,
+   "speech": "FFT，基展开，Patch。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.44,
+   "dur": 4.72,
+   "speech": "它们的共同点，都是把序列写成另一组数的组合。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 43.7,
+   "dur": 4.09,
+   "speech": "不同点，是那组数怎么选，代价在哪里。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 48.35,
+   "dur": 4.5,
+   "speech": "换句话说，同一条序列，有不止一种写法。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 53.4,
+   "dur": 2.46,
+   "speech": "先看一段真实数据。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 56.41,
+   "dur": 4.84,
+   "speech": "贵州茅台，二零一九到二零二一，七百三十个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 61.8,
+   "dur": 4.26,
+   "speech": "取最后五百一十二个点，做一次 FFT。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 66.61,
+   "dur": 3.52,
+   "speech": "频谱里最大的一格，是第一个 bin。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 70.68,
+   "dur": 4.38,
+   "speech": "前二十五个 bin，占了百分之九十七点七的能量。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 75.61,
+   "dur": 4,
+   "speech": "换成周期，这是两年以上的慢波动。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 80.16,
+   "dur": 4.19,
+   "speech": "周期五的那条线，落在一百零二号 bin 附近。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 84.9,
+   "dur": 4.57,
+   "speech": "四到七天这个波段，占比只有百分之零点三二。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 90.02,
+   "dur": 4.12,
+   "speech": "所以日线里，一周的周期几乎看不见。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 94.69,
+   "dur": 3.57,
+   "speech": "这是换坐标之后，看到的第一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 98.81,
+   "dur": 4.21,
+   "speech": "第二件事，五分钟线能看见日内结构。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 103.57,
+   "dur": 3.95,
+   "speech": "再看五分钟线，五天，二百四十根。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 108.07,
+   "dur": 4.14,
+   "speech": "一天四十八根，切 Patch 正好十二块。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 112.76,
+   "dur": 2.99,
+   "speech": "三种办法，对应三个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 116.3,
+   "dur": 3.69,
+   "speech": "这三个问题，也是这一章的三条线。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 120.54,
+   "dur": 3.3,
+   "speech": "整段序列，频率成分是什么。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 124.39,
+   "dur": 3.45,
+   "speech": "已知一组基本形状，系数是多少。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 128.39,
+   "dur": 3.78,
+   "speech": "序列不稳，能不能切成小段分别看。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 132.72,
+   "dur": 3.09,
+   "speech": "这一集就按这三个问题走。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 136.36,
+   "dur": 3.18,
+   "speech": "先讲为什么书里的公式不够用。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 140.09,
+   "dur": 3.4,
+   "speech": "再讲三种办法各自在做什么。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 144.04,
+   "dur": 3.83,
+   "speech": "然后给签名、给实现、给数字。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 148.42,
+   "dur": 4.89,
+   "speech": "最后说清，换坐标之后什么变简单，什么变贵。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 153.85,
+   "dur": 3.16,
+   "speech": "先看一个数，算一算复杂度。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 157.56,
+   "dur": 5.49,
+   "speech": "五百一十二个点，直接算 DFT，要二十六万次复数乘法。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 163.6,
+   "dur": 4.57,
+   "speech": "radix-2 的 FFT，只要两千三百零四次。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 168.72,
+   "dur": 4.41,
+   "speech": "快一百一十三倍，这是换坐标的第一个红利。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 173.68,
+   "dur": 2.44,
+   "speech": "但红利不是白拿的。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 176.66,
+   "dur": 3.42,
+   "speech": "radix-2 要求长度是二的幂。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 180.64,
+   "dur": 4.36,
+   "speech": "长度不是二的幂，就得补零，或者换算法。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 185.54,
+   "dur": 2.8,
+   "speech": "补零不等于提高分辨率。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 188.89,
+   "dur": 3.16,
+   "speech": "这句话后面还会再说一遍。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 192.6,
+   "dur": 3.83,
+   "speech": "这一集的所有数字，都能在证据里查到。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 196.98,
+   "dur": 3.37,
+   "speech": "三条证据文件，五十五条检查。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 200.9,
+   "dur": 3.13,
+   "speech": "先从书页上的三个缺口开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 207.44,
+   "dur": 3.3,
+   "speech": "先说一件真事，从书页开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 211.29,
+   "dur": 3.49,
+   "speech": "书里第二十五页，式二点三九。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 215.34,
+   "dur": 4.17,
+   "speech": "X 等于各个基函数乘以系数，再求和。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 220.05,
+   "dur": 4.48,
+   "speech": "写法很清楚：选一组基，把序列投影上去。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 225.08,
+   "dur": 3.25,
+   "speech": "但系数怎么求，书里没有给。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 228.88,
+   "dur": 3.45,
+   "speech": "只引了一篇参考文献，四十二号。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 232.88,
+   "dur": 3.06,
+   "speech": "这是第一个缺口：系数求解。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 236.49,
+   "dur": 3.4,
+   "speech": "我们的补法，是经典最小二乘。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 240.44,
+   "dur": 3.33,
+   "speech": "正规方程，加 Cholesky 分解。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 244.32,
+   "dur": 3.64,
+   "speech": "引用 Golub 和 Van Loan，一九九六。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 248.5,
+   "dur": 4.41,
+   "speech": "正规方程会把条件数平方，这是它的代价。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 253.46,
+   "dur": 3.18,
+   "speech": "第二个缺口，在第二十九页。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 257.19,
+   "dur": 3.54,
+   "speech": "书里写的，是连续傅里叶变换。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 261.28,
+   "dur": 4.53,
+   "speech": "给的是 Y 等于 IFFT 作用在 FFT 上的流程。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 266.36,
+   "dur": 3.52,
+   "speech": "离散的 DFT 怎么写，没给。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 270.43,
+   "dur": 3.69,
+   "speech": "radix-2 的蝶形怎么排，也没给。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 274.66,
+   "dur": 4.53,
+   "speech": "我们补的是 Cooley 和 Tukey 的算法，引五十一号。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 279.74,
+   "dur": 3.69,
+   "speech": "补的是离散算法，不是连续变换。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 283.98,
+   "dur": 3.18,
+   "speech": "第三个缺口，在第二十八页。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 287.71,
+   "dur": 6.47,
+   "speech": "Triformer 的切片，公式是长度减段长，除以步长，取整，加二。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 294.73,
+   "dur": 4.86,
+   "speech": "那个加二是哪来的，书里只说了一句「在末尾填充」。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 300.14,
+   "dur": 2.7,
+   "speech": "填什么值，书里没说。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 303.39,
+   "dur": 4.21,
+   "speech": "我们的选择是：填最后那个值，填 S 个。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 308.16,
+   "dur": 2.75,
+   "speech": "我们的答案是不补零。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 311.46,
+   "dur": 4.5,
+   "speech": "补零会造出一个假的跳变，Patch 自己会看见。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 316.51,
+   "dur": 3.61,
+   "speech": "这三处，都写进了自授权文件。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 320.67,
+   "dur": 4.67,
+   "speech": "每条都注明：书里没有，我们补了什么，依据是谁。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 325.89,
+   "dur": 5.17,
+   "speech": "这一集的规矩，是书里给的照做，书里没给的标出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 331.62,
+   "dur": 3.16,
+   "speech": "不把补的东西，说成书里的。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 335.32,
+   "dur": 3.06,
+   "speech": "下面把三种办法过一遍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 341.79,
+   "dur": 2.94,
+   "speech": "先看 FFT 在做什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 345.28,
+   "dur": 3.93,
+   "speech": "一条序列，看成一组正弦波的叠加。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 349.76,
+   "dur": 3.69,
+   "speech": "每个频率配一个复数：振幅和相位。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 353.99,
+   "dur": 2.94,
+   "speech": "频谱就是这组复数的模。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 357.49,
+   "dur": 3.64,
+   "speech": "相位也在里面，只是这一集只看模。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 361.67,
+   "dur": 3.28,
+   "speech": "书里图二点一二，是一个例子。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 365.5,
+   "dur": 6.4,
+   "speech": "呼吸，零点三赫兹；心跳，一点一七赫兹；再加十赫兹的噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 372.45,
+   "dur": 3.81,
+   "speech": "采样率一千赫兹，四千零九十六个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 376.81,
+   "dur": 4.67,
+   "speech": "做一次 FFT，三个峰落在对应的频率上。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 382.03,
+   "dur": 2.65,
+   "speech": "把九到十一赫兹滤掉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 385.23,
+   "dur": 4.09,
+   "speech": "剩下的 RMS 是零点七九零六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 389.87,
+   "dur": 4.79,
+   "speech": "被滤掉的那部分，RMS 是零点一七九零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 395.21,
+   "dur": 2.77,
+   "speech": "手算是零点一七六八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 398.54,
+   "dur": 3.95,
+   "speech": "差的那一点，来自十赫兹不在整 bin 上。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 403.04,
+   "dur": 4.69,
+   "speech": "这就是泄漏：频率对不上格子，能量摊到邻格。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 408.28,
+   "dur": 3.04,
+   "speech": "格子越稀，泄漏越明显。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 411.87,
+   "dur": 2.65,
+   "speech": "第二个办法，基展开。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 415.07,
+   "dur": 3.85,
+   "speech": "不一定是正弦，任何一组函数都行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 419.48,
+   "dur": 4.53,
+   "speech": "多项式、傅里叶基、小波，只要能算内积。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 424.55,
+   "dur": 3.45,
+   "speech": "选一组基，解一个最小二乘。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 428.55,
+   "dur": 3.23,
+   "speech": "系数就是内积意义下的投影。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 432.33,
+   "dur": 5.39,
+   "speech": "线性序列，二百五十个点，真值斜率零点一，截距五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 438.27,
+   "dur": 4.33,
+   "speech": "拟合出来的系数，是十七点五和十二点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 443.15,
+   "dur": 5.22,
+   "speech": "为什么是这个数？因为基用的是 v 等于二 u 减一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 448.93,
+   "dur": 3.9,
+   "speech": "u 从零到一，v 就从负一到一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 453.38,
+   "dur": 4.14,
+   "speech": "所以截距落在 v 等于零，也就是中点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 458.07,
+   "dur": 4.17,
+   "speech": "残差最大值，七点一乘十的负十五次方。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 462.79,
+   "dur": 2.8,
+   "speech": "机器精度，等于精确。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 466.13,
+   "dur": 2.58,
+   "speech": "第三个办法，Patch。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 469.27,
+   "dur": 2.63,
+   "speech": "不再假设整段平稳。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 472.45,
+   "dur": 4.38,
+   "speech": "切成固定长度的小段，每段自己一个表示。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 477.38,
+   "dur": 3.64,
+   "speech": "长度四十八，段长八，步长四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 481.57,
+   "dur": 5.2,
+   "speech": "段数等于四十八减八，除以四，向下取整，再加二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 487.31,
+   "dur": 2.89,
+   "speech": "四十八个点，一共十二段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 490.76,
+   "dur": 4.19,
+   "speech": "最后一段不够八个数，末尾补四个重复值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 495.5,
+   "dur": 4.19,
+   "speech": "拼回去的时候，重叠的地方按次数平均。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 500.24,
+   "dur": 3.28,
+   "speech": "四十八个点，往返误差是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 504.07,
+   "dur": 3.35,
+   "speech": "三种办法，一句话各说一遍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 507.97,
+   "dur": 3.09,
+   "speech": "FFT：整段变成频率。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 511.6,
+   "dur": 3.47,
+   "speech": "基展开：整段变成一组系数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 515.62,
+   "dur": 3.13,
+   "speech": "Patch：整段变成很多小段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 519.31,
+   "dur": 5.89,
+   "speech": "换坐标之后，局部性、稀疏性、可解释性，各自换了位置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 528.6,
+   "dur": 4,
+   "speech": "三个算法，三条签名，三套约定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 533.15,
+   "dur": 2.56,
+   "speech": "第一条，FFT。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 536.26,
+   "dur": 4.62,
+   "speech": "输入一个复数向量，输出同样长度的复数向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 541.43,
+   "dur": 3.52,
+   "speech": "长度必须是二的幂，不是就报错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 545.5,
+   "dur": 3.49,
+   "speech": "频带滤波的签名，多一个采样率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 549.54,
+   "dur": 3.37,
+   "speech": "频带的单位是赫兹，不是 bin。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 553.46,
+   "dur": 2.29,
+   "speech": "这个约定很重要。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 556.31,
+   "dur": 4.79,
+   "speech": "用户说十赫兹，指的是频率，不是第十个格子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 561.65,
+   "dur": 3.9,
+   "speech": "正变换不归一化，逆变换除以 N。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 566.1,
+   "dur": 4.17,
+   "speech": "所以 FFT 再做 IFFT，回到原序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 570.82,
+   "dur": 3.81,
+   "speech": "这条往返恒等式，后面有一条检查。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 575.17,
+   "dur": 4.81,
+   "speech": "频带之外的能量，用频域掩码清零，再变回去。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 580.54,
+   "dur": 3.76,
+   "speech": "掩码是硬边，后面会讲它的代价。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 584.84,
+   "dur": 4.07,
+   "speech": "硬边等价于在频域加了一个矩形窗。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 589.46,
+   "dur": 2.44,
+   "speech": "第二条，基展开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 592.45,
+   "dur": 3.57,
+   "speech": "输入一组基函数，一个观测向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 596.57,
+   "dur": 2.65,
+   "speech": "输出系数和拟合值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 599.77,
+   "dur": 4.17,
+   "speech": "第一套约定：基的个数不能超过观测个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 604.49,
+   "dur": 2.75,
+   "speech": "多了，欠定，报错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 607.79,
+   "dur": 3.18,
+   "speech": "第二套：设计矩阵必须满秩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 611.52,
+   "dur": 2.85,
+   "speech": "不满秩，奇异，报错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 614.92,
+   "dur": 4.89,
+   "speech": "第三套：基函数用 v 坐标，v 等于二 u 减一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 620.35,
+   "dur": 2.73,
+   "speech": "这样数值条件好得多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 623.63,
+   "dur": 3.93,
+   "speech": "实测条件数，归一化之后是七点零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 628.1,
+   "dur": 4.57,
+   "speech": "直接用 t 的幂，是三点四乘十的十三次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 633.23,
+   "dur": 2.41,
+   "speech": "差了十二个数量级。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 636.19,
+   "dur": 3.54,
+   "speech": "同一个拟合问题，只换了一组坐标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 640.28,
+   "dur": 2.34,
+   "speech": "第三条，Patch。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 643.18,
+   "dur": 4.41,
+   "speech": "输入长度、段长、步长，输出一个矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 648.13,
+   "dur": 6.18,
+   "speech": "段数公式写死：长度减段长，除以步长，向下取整，再加二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 654.86,
+   "dur": 5.32,
+   "speech": "加二的意思是：开头一段，结尾一段，中间按步长走。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 660.73,
+   "dur": 4.24,
+   "speech": "填充只发生在末尾，填 S 个最后的值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 665.52,
+   "dur": 3.85,
+   "speech": "填充不是补零，是把最后一个值重复。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 669.92,
+   "dur": 3.25,
+   "speech": "三条签名，三个错误类型。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 673.73,
+   "dur": 3.73,
+   "speech": "错误都用 Either 返回，不抛异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 678.01,
+   "dur": 3.52,
+   "speech": "这样测试可以逐条覆盖错误分支。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 682.08,
+   "dur": 2.97,
+   "speech": "错误分支也是接口的一部分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 685.6,
+   "dur": 5.03,
+   "speech": "后面每一条数字，都对应一个错误分支，或者一条检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 694.03,
+   "dur": 2.73,
+   "speech": "先说 FFT 的实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 697.31,
+   "dur": 3.78,
+   "speech": "位反转置换，然后按级做蝶形。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 701.64,
+   "dur": 4.21,
+   "speech": "旋转因子每二百五十六个蝶形重算一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 706.4,
+   "dur": 4.79,
+   "speech": "这样内存占用小，代价是多算几次三角函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 711.74,
+   "dur": 4.29,
+   "speech": "用 ST 可变向量，原地做，不复制。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 716.58,
+   "dur": 3.57,
+   "speech": "代价是代码不再是纯函数式的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 720.69,
+   "dur": 3.61,
+   "speech": "结果是复数向量，长度不变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 724.86,
+   "dur": 4.09,
+   "speech": "和朴素 DFT 对比，一千零二十四个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 729.5,
+   "dur": 3.81,
+   "speech": "最大误差，一点二二乘十的负十次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 733.86,
+   "dur": 3.78,
+   "speech": "在这台机器上，这就是浮点噪声。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 738.19,
+   "dur": 4.43,
+   "speech": "两个实现的结果，在误差范围内是同一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 743.17,
+   "dur": 4.67,
+   "speech": "频带滤波：先把频带外的 bin 清零，再变回去。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 748.39,
+   "dur": 2.82,
+   "speech": "掩码是硬边，不是窗。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 751.76,
+   "dur": 4.38,
+   "speech": "硬边会带来振铃，这是边界那节要说的事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 756.69,
+   "dur": 4.02,
+   "speech": "振铃不是 bug，是矩形窗的傅里叶变换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 761.27,
+   "dur": 3.09,
+   "speech": "再说第二个办法，基展开。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 764.9,
+   "dur": 3.16,
+   "speech": "设计矩阵，一列一个基函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 768.61,
+   "dur": 4.36,
+   "speech": "正规方程，矩阵乘转置，解线性系统。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 773.52,
+   "dur": 4.09,
+   "speech": "Cholesky 分解，只对对称正定矩阵有效。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 778.16,
+   "dur": 3.23,
+   "speech": "所以先检查秩，再分解。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 781.94,
+   "dur": 4.43,
+   "speech": "系数出来之后，拟合值是设计矩阵乘系数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 786.92,
+   "dur": 2.97,
+   "speech": "残差是观测减拟合值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 790.44,
+   "dur": 3.78,
+   "speech": "真实数据上，前二百五十个收盘价。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 794.77,
+   "dur": 4.69,
+   "speech": "三次多项式拟合，残差最大值九十七点一一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 800.01,
+   "dur": 4.74,
+   "speech": "这个数看着大，但价格本身在五百到两千之间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 805.31,
+   "dur": 4.84,
+   "speech": "重建误差是零：拟合值加残差，精确等于观测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 810.69,
+   "dur": 3.37,
+   "speech": "这条是恒等式，不是拟合得好。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 814.62,
+   "dur": 4.09,
+   "speech": "所以重建误差这个数，永远接近零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 819.26,
+   "dur": 2.1,
+   "speech": "最后说 Patch。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 821.91,
+   "dur": 3.57,
+   "speech": "填充：末尾补 S 个最后的值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 826.03,
+   "dur": 3.73,
+   "speech": "四十八个点，补四个，变五十二个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 830.31,
+   "dur": 4.26,
+   "speech": "按步长四切，正好十二段，每段八个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 835.13,
+   "dur": 4.05,
+   "speech": "拼回去：重叠的点按覆盖次数平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 839.72,
+   "dur": 3.47,
+   "speech": "原来的四十八个点，全部被覆盖。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 843.74,
+   "dur": 3.01,
+   "speech": "拼回来，往返误差是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 847.31,
+   "dur": 4.21,
+   "speech": "这个零是精确的，因为每一步都是线性操作。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 852.07,
+   "dur": 4.12,
+   "speech": "但它依赖填充和覆盖次数正好对上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 856.74,
+   "dur": 2.99,
+   "speech": "三种实现，三种代价。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 860.28,
+   "dur": 3.73,
+   "speech": "FFT 快，但要求长度是二的幂。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 864.56,
+   "dur": 3.66,
+   "speech": "基展开准，但要解一个线性系统。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 868.77,
+   "dur": 3.09,
+   "speech": "Patch 灵活，但要处理边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 872.41,
+   "dur": 3.59,
+   "speech": "这些代价，都会在数字那节出现。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 879.4,
+   "dur": 2.97,
+   "speech": "五十五条检查，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 882.92,
+   "dur": 4.81,
+   "speech": "十五条手算，七条真实数据，三十三条合成。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 888.28,
+   "dur": 3.21,
+   "speech": "三条证据文件，按算法分。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 892.04,
+   "dur": 5.05,
+   "speech": "FFT 二十六条，基展开十八条，Patch 十一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 897.64,
+   "dur": 3.33,
+   "speech": "手算的部分，先看 Parseval。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 901.52,
+   "dur": 4.24,
+   "speech": "五百一十二个点，时域能量和频域能量。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 906.3,
+   "dur": 4.14,
+   "speech": "相对误差，八点四七乘十的负十六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 911,
+   "dur": 3.16,
+   "speech": "冲激函数，频谱全是一。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 914.7,
+   "dur": 2.94,
+   "speech": "直流信号，只有第零个 bin。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 918.2,
+   "dur": 3.21,
+   "speech": "余弦，非零 bin 只有两个。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 921.95,
+   "dur": 3.11,
+   "speech": "这些是精确的，不是近似。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 925.61,
+   "dur": 3.33,
+   "speech": "每一条都写成了一个命名的检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 929.49,
+   "dur": 3.35,
+   "speech": "合成部分，三个整 bin 单音。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 933.39,
+   "dur": 4.12,
+   "speech": "采样率一千零二十四，四千零九十六个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 938.06,
+   "dur": 3.83,
+   "speech": "频率零点二五、一点二五、十赫兹。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 942.44,
+   "dur": 3.49,
+   "speech": "振幅一、零点五、零点二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 946.48,
+   "dur": 3.66,
+   "speech": "频谱在 bin 一、五、四十上。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 950.69,
+   "dur": 4.29,
+   "speech": "值正好是二零四八、一零二四、五一二。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 955.53,
+   "dur": 4.48,
+   "speech": "为什么是这个数？振幅乘点数，除以二。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 960.56,
+   "dur": 4.38,
+   "speech": "带通一到二赫兹，只留一点二五赫兹那个音。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 965.49,
+   "dur": 5.44,
+   "speech": "RMS 是零点三五三六，等于零点五除以根号二。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 971.48,
+   "dur": 3.83,
+   "speech": "带阻九到十一赫兹，去掉第三个音。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 975.86,
+   "dur": 3.3,
+   "speech": "RMS 是零点七九零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 979.71,
+   "dur": 4.07,
+   "speech": "两个都和手算一致，容差百分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 984.33,
+   "dur": 4.14,
+   "speech": "真实数据这部分，窗口长度五百一十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 989.02,
+   "dur": 4.33,
+   "speech": "频谱长度二百五十六，因为实序列前后对称。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 993.9,
+   "dur": 2.87,
+   "speech": "最大能量在第一号 bin。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 997.32,
+   "dur": 2.65,
+   "speech": "低频占比九十七点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1000.53,
+   "dur": 2.73,
+   "speech": "周期五占比零点三二。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1003.8,
+   "dur": 2.73,
+   "speech": "三个数，三条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1007.08,
+   "dur": 3.06,
+   "speech": "数字不靠眼看，靠断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1010.69,
+   "dur": 4.17,
+   "speech": "基展开这部分，最值得看的是条件数。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1015.41,
+   "dur": 6.06,
+   "speech": "归一化基，七点零；原始幂基，三点四乘十的十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1022.02,
+   "dur": 3.42,
+   "speech": "这不是精度问题，是设计问题。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1025.99,
+   "dur": 3.85,
+   "speech": "同一组数据，两种基，两个条件数。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1030.4,
+   "dur": 5.32,
+   "speech": "换一组基，同一个最小二乘，条件数差十二个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1036.26,
+   "dur": 3.33,
+   "speech": "测试这边，四十七条新断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1040.14,
+   "dur": 4.89,
+   "speech": "FFT 十八条，基展开十四条，Patch 十五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1045.58,
+   "dur": 3.33,
+   "speech": "套件总数五百五十，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1049.45,
+   "dur": 3.88,
+   "speech": "这一集的验收标准，和上一集一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1053.88,
+   "dur": 3.95,
+   "speech": "画面上的每个数字，都能回到一条检查。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1061.23,
+   "dur": 2.37,
+   "speech": "四条不能说的话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1064.15,
+   "dur": 3.11,
+   "speech": "第一条，补零能提高分辨率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1067.81,
+   "dur": 2.41,
+   "speech": "不能，这是误解。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1070.77,
+   "dur": 5.25,
+   "speech": "补零只是在频域插值，格子变密，峰还是那么宽。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1076.57,
+   "dur": 3.54,
+   "speech": "补零只是把同一个峰，画得更细。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1080.66,
+   "dur": 4.21,
+   "speech": "分辨率由观测时长决定，不由点数决定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1085.42,
+   "dur": 3.9,
+   "speech": "第二条，FFT 能找到任何周期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1089.87,
+   "dur": 3.54,
+   "speech": "不能，频率对不上格子就会泄漏。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1093.97,
+   "dur": 5.85,
+   "speech": "这个例子是周期五：五百一十二个点，落在第一百零二点四格。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1100.36,
+   "dur": 4.21,
+   "speech": "不在格子上，能量就摊到相邻的两格。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1105.13,
+   "dur": 4.5,
+   "speech": "一百零二加一百零三，占了百分之八十二点七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1110.18,
+   "dur": 3.66,
+   "speech": "峰高被削掉，旁边长出假的旁瓣。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1114.39,
+   "dur": 3.71,
+   "speech": "这是硬截断的代价，不是算法的错。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1118.65,
+   "dur": 4.91,
+   "speech": "要减泄漏，得加窗；加了窗，主瓣又变宽。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1124.11,
+   "dur": 3.73,
+   "speech": "第三条，基展开的系数一定可信。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1128.39,
+   "dur": 3.16,
+   "speech": "不能，条件数会放大误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1132.1,
+   "dur": 4.21,
+   "speech": "条件数大的时候，系数对噪声极其敏感。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1136.87,
+   "dur": 4.5,
+   "speech": "同一组数据，换个基，系数可能完全不一样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1141.92,
+   "dur": 2.89,
+   "speech": "但拟合值可以几乎一样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1145.36,
+   "dur": 2.97,
+   "speech": "系数有歧义，拟合值没有。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1148.88,
+   "dur": 4.14,
+   "speech": "报系数的时候，要连基和条件数一起报。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1153.57,
+   "dur": 3.78,
+   "speech": "第四条，Patch 拼回去等于原序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1157.9,
+   "dur": 2.53,
+   "speech": "不是，只有特例成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1160.99,
+   "dur": 4.65,
+   "speech": "只有不重叠、或者填充恰好补上的时候才等于。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1166.18,
+   "dur": 4.45,
+   "speech": "一般情况下，重叠平均会抹掉一点高频。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1171.19,
+   "dur": 4.6,
+   "speech": "这一集里误差是零，因为填充和覆盖都对上了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1176.33,
+   "dur": 2.97,
+   "speech": "换个步长，就不是零了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1179.85,
+   "dur": 2.89,
+   "speech": "重叠越多，平均得越狠。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1183.29,
+   "dur": 3.13,
+   "speech": "再说这三种办法的代价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1186.98,
+   "dur": 3.42,
+   "speech": "radix-2 要求长度是二的幂。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1190.95,
+   "dur": 5.01,
+   "speech": "七百三十个点，补到一千零二十四，多算百分之四十。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1196.51,
+   "dur": 4.07,
+   "speech": "不补，就得用 Bluestein，或者别的算法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1201.13,
+   "dur": 4.17,
+   "speech": "基展开要解线性系统，复杂度是立方的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1205.84,
+   "dur": 4.26,
+   "speech": "观测多了，正规方程的条件数还会变差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1210.65,
+   "dur": 3.93,
+   "speech": "所以要么换基，要么先做正交化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1215.13,
+   "dur": 4.57,
+   "speech": "Patch 切得越碎，段数越多，参数总量越大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1220.25,
+   "dur": 3.01,
+   "speech": "换坐标从来不是免费的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1223.82,
+   "dur": 4.41,
+   "speech": "它只是把代价，从一个地方搬到另一个地方。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1231.62,
+   "dur": 2.82,
+   "speech": "三个数，给这一集收尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1234.99,
+   "dur": 4.69,
+   "speech": "一个 Parseval 误差，八点四七乘十的负十六次方。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1240.24,
+   "dur": 2.87,
+   "speech": "一个条件数，七点零。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1243.66,
+   "dur": 3.06,
+   "speech": "一个 Patch 往返误差，零。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1247.27,
+   "dur": 3.18,
+   "speech": "三种坐标，一个共同的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1251,
+   "dur": 4.07,
+   "speech": "换完之后，什么变简单了，什么变贵了。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1255.62,
+   "dur": 4.38,
+   "speech": "FFT 让频率变简单，让长度变贵。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1260.55,
+   "dur": 4.14,
+   "speech": "基展开让投影变简单，让求逆变贵。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1265.24,
+   "dur": 4.14,
+   "speech": "Patch 让局部性变简单，让边界变贵。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1269.94,
+   "dur": 2.89,
+   "speech": "下一集，我们回到时间轴。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1273.38,
+   "dur": 2.41,
+   "speech": "但带着一个新问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1276.34,
+   "dur": 4.98,
+   "speech": "形状一样、长度一样的两条序列，频谱一定一样吗？"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1281.88,
+   "dur": 2.75,
+   "speech": "如果不一样，差在哪里。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1285.18,
+   "dur": 4.17,
+   "speech": "这一集的代码、数据、证据都已入库。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1289.89,
+   "dur": 3.28,
+   "speech": "每个数字，都能在证据里查到。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1293.72,
+   "dur": 2.8,
+   "speech": "感谢观看，下一集见。"
+  }
+ ]
+}
