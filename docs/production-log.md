@@ -17,6 +17,9 @@
 
 ## 记录
 
+> 2026-10-30 晚：新会话承接，全系列恢复生产（SELF-AUTH A5）。操作入口 `docs/HANDOFF-EVENING.md`；
+> 以下按 `production_order` 继续，每集仍一提交一条目。
+
 ## E70 ode-solvers-from-scratch — 2026-10-29
 - ts-base: dbc3d85（analytic / Euler / RK4 + 34 断言 + 3 份 evidence）
 - video_project: 6fa7265（pack 首版）→ 06ddedc（关键帧修复）→ 3416d4f（图例避让）→ 44b6dc1（score −2.5 dB）；交付 srt/chapters/cover 随后提交
