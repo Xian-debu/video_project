@@ -11,7 +11,7 @@
   - ch09：11 模块 / 142 条（E70–E74）；
   - ch08：E65 3 / 37，E66 3 / 46，E67 3 / 50。
 - 四仓当前 HEAD：
-  - `video_project`（内容）：`38e5d12`（E67 收尾；含 `publish` 契约与 schema 支持）；
+  - `video_project`（内容）：E67 收尾关键提交 `38e5d12`（含 `publish` 契约与 schema 支持）；HEAD 以 `git log -1` 为准；
   - `ts-base`（算法/证据）：`b97c7db`；
   - `ts-admin`（数据导出）：`b071b6f`；
   - `video-pipeline-blueprint`（引擎）：`856d804`。
