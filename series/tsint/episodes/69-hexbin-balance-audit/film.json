@@ -22,10 +22,17 @@
   "status": "draft",
   "narration": null,
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_hexbin_data.py"
+    }
+  ],
+  "derived": [
+    "data/hexbin.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "publish": {
+    "coverFrame": 0
+  }
 }

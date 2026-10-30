@@ -1,0 +1,1786 @@
+{
+ "entry": "src/tsint-69-hexbin-balance-audit/script.ts",
+ "fps": 30,
+ "totalSec": 961.34,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 133.96
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 133.96,
+   "dur": 121.17
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 255.13,
+   "dur": 132.55
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 387.68,
+   "dur": 149.65
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 537.33,
+   "dur": 144.69
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 682.02,
+   "dur": 124.71
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 806.73,
+   "dur": 86.53
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 893.26,
+   "dur": 68.08
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.49,
+   "speech": "这一集做一个体检。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.24,
+   "dur": 3.45,
+   "speech": "体检对象，是一份基准数据集。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.23,
+   "dur": 3.09,
+   "speech": "问题只有一句话：它均衡吗？"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.87,
+   "dur": 3.78,
+   "speech": "数据是二十只 A 股，十年日线。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.2,
+   "dur": 2.63,
+   "speech": "五万零七百五十七行。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.38,
+   "dur": 2.68,
+   "speech": "从二零一五年一月五日。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.61,
+   "dur": 3.13,
+   "speech": "到二零二五年十二月三十一日。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 26.29,
+   "dur": 3.66,
+   "speech": "最长的一只，两千六百多个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 30.5,
+   "dur": 3.4,
+   "speech": "用三十二个日收益做一个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 34.45,
+   "dur": 2.46,
+   "speech": "一天一天往后滑。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.46,
+   "dur": 3.3,
+   "speech": "一共五万零一百一十七个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 41.32,
+   "dur": 2.68,
+   "speech": "每个窗口压成两个数。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.54,
+   "dur": 2.46,
+   "speech": "一个是平均日收益。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.56,
+   "dur": 2.58,
+   "speech": "一个是日收益的波动。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 50.69,
+   "dur": 3.06,
+   "speech": "把五万个点画到平面上。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 54.3,
+   "dur": 3.4,
+   "speech": "再盖上六边形格子，数人头。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 58.25,
+   "dur": 2.92,
+   "speech": "三百三十三个格子被用到。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 61.72,
+   "dur": 3.49,
+   "speech": "前百分之二十，是六十七个格子。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 65.76,
+   "dur": 3.37,
+   "speech": "这六十七个格子装了多少样本？"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 69.68,
+   "dur": 2.56,
+   "speech": "百分之九十二点零四。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 72.79,
+   "dur": 4.45,
+   "speech": "最大的一个格子，装了两千五百八十三个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 77.8,
+   "dur": 3.42,
+   "speech": "占全部样本的百分之五点一五。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 81.77,
+   "dur": 2.85,
+   "speech": "换三只大盘蓝筹来看。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 85.16,
+   "dur": 2.68,
+   "speech": "七千九百二十一个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 88.39,
+   "dur": 3.01,
+   "speech": "集中度百分之七十点零九。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 91.96,
+   "dur": 3.64,
+   "speech": "书里的评估章，从数据切分讲起。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 96.14,
+   "dur": 3.09,
+   "speech": "网格化密度图本身不新。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 99.78,
+   "dur": 3.66,
+   "speech": "但很少有人真的把集中度算一遍。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 103.99,
+   "dur": 3.16,
+   "speech": "这一集把三件事做完整。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 107.7,
+   "dur": 4.24,
+   "speech": "投影、数格子、算出可复核的集中度。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 112.49,
+   "dur": 3.85,
+   "speech": "二十三条断言，十二条证据检查。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 116.89,
+   "dur": 2.7,
+   "speech": "所有数字都进 git。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 120.14,
+   "dur": 2.13,
+   "speech": "先记住三个数。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 122.82,
+   "dur": 2.82,
+   "speech": "五万零一百一十七个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 126.19,
+   "dur": 2.46,
+   "speech": "三百三十三个格子。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 129.2,
+   "dur": 2.56,
+   "speech": "百分之九十二点零四。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 135.16,
+   "dur": 2.7,
+   "speech": "先说为什么均衡重要。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 138.41,
+   "dur": 3.76,
+   "speech": "模型在全量数据上算一个总误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 142.72,
+   "dur": 3.57,
+   "speech": "总误差是平均，平均会藏东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 146.84,
+   "dur": 3.49,
+   "speech": "如果九成样本挤在少数格子里。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 150.88,
+   "dur": 3.54,
+   "speech": "那么总误差主要由这些格子决定。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 154.97,
+   "dur": 3.4,
+   "speech": "稀疏格子里的失败，权重很小。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 158.92,
+   "dur": 3.88,
+   "speech": "但真实世界恰恰是稀疏区更危险。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 163.35,
+   "dur": 3.81,
+   "speech": "极端行情、极端波动，都在尾部。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 167.7,
+   "dur": 4.55,
+   "speech": "所以基准的均衡性，决定了结论的适用范围。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 172.8,
+   "dur": 2.08,
+   "speech": "看这两组数。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 175.43,
+   "dur": 3.33,
+   "speech": "二十只股票，集中度九成二。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 179.31,
+   "dur": 3.13,
+   "speech": "三只蓝筹，集中度七成。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 182.99,
+   "dur": 3.85,
+   "speech": "蓝筹更集中，因为它们更像彼此。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 187.4,
+   "dur": 3.85,
+   "speech": "这不是数据错误，是真实的分布形态。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 191.8,
+   "dur": 3.28,
+   "speech": "但拿它当基准，覆盖就有限。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 195.63,
+   "dur": 3.59,
+   "speech": "稀疏的格子里，样本只有个位数。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 199.77,
+   "dur": 3.95,
+   "speech": "一个模型在这些格子上错得很离谱。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 204.27,
+   "dur": 2.94,
+   "speech": "总误差也未必看得出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 207.76,
+   "dur": 3.13,
+   "speech": "所以需要一个可量化的判据。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 211.44,
+   "dur": 3.01,
+   "speech": "本集用的判据，是集中度。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 215.01,
+   "dur": 3.01,
+   "speech": "前百分之二十的占用格子。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 218.57,
+   "dur": 2.53,
+   "speech": "承载的样本占比。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 221.66,
+   "dur": 3.49,
+   "speech": "超过百分之六十，记为不均衡。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 225.7,
+   "dur": 2.65,
+   "speech": "这个阈值是本仓约定。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 228.9,
+   "dur": 3.69,
+   "speech": "书里没有给数字，只给了图形判读。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 233.14,
+   "dur": 3.66,
+   "speech": "这本书在二百零二页讲评估设置。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 237.35,
+   "dur": 3.3,
+   "speech": "二百零五页开始讲评估指标。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 241.2,
+   "dur": 3.73,
+   "speech": "数据层体检，是评估之前的评估。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 245.49,
+   "dur": 3.88,
+   "speech": "数据不均衡，后面的指标都要打折扣。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 249.92,
+   "dur": 3.01,
+   "speech": "先看数据怎么变成窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 256.33,
+   "dur": 2.41,
+   "speech": "定义从窗口开始。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 259.29,
+   "dur": 3.66,
+   "speech": "一个窗口，取连续三十二个日收益。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 263.51,
+   "dur": 3.52,
+   "speech": "需要三十三个收盘价，才算得出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 267.57,
+   "dur": 3.18,
+   "speech": "每只股票两千六百多个交易日。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 271.31,
+   "dur": 3.3,
+   "speech": "去掉头尾不够一个窗口的部分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 275.16,
+   "dur": 3.97,
+   "speech": "每只股票，一千二百到两千六百个窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 279.68,
+   "dur": 3.83,
+   "speech": "二十只加起来，五万零一百一十七个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 284.06,
+   "dur": 2.68,
+   "speech": "每个窗口压成两个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 287.29,
+   "dur": 2.97,
+   "speech": "第一个是均值，记作 μ。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 290.81,
+   "dur": 3.09,
+   "speech": "第二个是波动，记作 σ。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 294.44,
+   "dur": 2.65,
+   "speech": "波动用总体标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 297.65,
+   "dur": 2.89,
+   "speech": "除以三十二，不是三十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 301.09,
+   "dur": 4.14,
+   "speech": "因为我们要的是这一段窗口的描述统计。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 305.78,
+   "dur": 3.59,
+   "speech": "这两个数，就是平面的横纵坐标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 309.92,
+   "dur": 2.87,
+   "speech": "但两者的量级差很多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 313.34,
+   "dur": 2.65,
+   "speech": "均值大约万分之五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 316.55,
+   "dur": 2.49,
+   "speech": "波动大约百分之二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 319.58,
+   "dur": 3.64,
+   "speech": "不标准化，第一主成分只会是波动。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 323.77,
+   "dur": 2.65,
+   "speech": "所以逐维做 z-score。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 326.97,
+   "dur": 3.09,
+   "speech": "减均值，再除以标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 330.61,
+   "dur": 4,
+   "speech": "标准化之后，协方差矩阵对角都是 1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 335.16,
+   "dur": 2.63,
+   "speech": "只剩一个相关系数 b。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 338.34,
+   "dur": 2.37,
+   "speech": "二维有闭式解。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 341.25,
+   "dur": 3.37,
+   "speech": "特征值是一加减 b 的绝对值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 345.18,
+   "dur": 3.37,
+   "speech": "本数据 b 等于零点零七四四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 349.1,
+   "dur": 3.81,
+   "speech": "于是 λ1 等于一点零七四四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 353.46,
+   "dur": 3.13,
+   "speech": "λ2 等于零点九二五六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 357.14,
+   "dur": 3.33,
+   "speech": "两个特征值加起来，正好是二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 361.02,
+   "dur": 2.75,
+   "speech": "特征向量是四十五度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 364.32,
+   "dur": 4.5,
+   "speech": "第一主成分，就是均值加波动，除以根号二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 369.37,
+   "dur": 2.08,
+   "speech": "这不是巧合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 372,
+   "dur": 3.83,
+   "speech": "对角相等时，特征向量与 b 无关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 376.38,
+   "dur": 5.65,
+   "speech": "投影之后再反变换，误差是二点七八乘十的负十七次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 382.58,
+   "dur": 2.89,
+   "speech": "下一个问题，怎么数格子。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 388.88,
+   "dur": 3.23,
+   "speech": "六边形分箱，和方格不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 392.66,
+   "dur": 3.57,
+   "speech": "方格有四个邻居，六边形有六个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 396.78,
+   "dur": 3.9,
+   "speech": "六边形更接近圆，方向偏差更小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 401.23,
+   "dur": 2.7,
+   "speech": "坐标用轴向整数对。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 404.48,
+   "dur": 3.01,
+   "speech": "列是 col，行是 row。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 408.04,
+   "dur": 5.29,
+   "speech": "中心横坐标，等于 s 乘 col，再加半行的偏移。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 413.89,
+   "dur": 5.17,
+   "speech": "中心纵坐标，等于 s 乘二分之根号三，再乘 row。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 419.61,
+   "dur": 2.92,
+   "speech": "反过来，给一个点找格子。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 423.08,
+   "dur": 2.77,
+   "speech": "先按纵坐标算出 row。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 426.4,
+   "dur": 3.93,
+   "speech": "再按横坐标和行偏移算出 col。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 430.88,
+   "dur": 2.89,
+   "speech": "两次 round，就近取整。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 434.32,
+   "dur": 3.73,
+   "speech": "再加一个极小数，削掉浮点噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 438.61,
+   "dur": 2.56,
+   "speech": "s 由网格数决定。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 441.72,
+   "dur": 4.72,
+   "speech": "三十乘三十时，s 是最大值除以三十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 446.98,
+   "dur": 3.49,
+   "speech": "本数据里，s 大约千分之三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 451.03,
+   "dur": 3.57,
+   "speech": "图上每个六边形，就是一群窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 455.14,
+   "dur": 2.87,
+   "speech": "颜色越暖，样本越多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 458.56,
+   "dur": 2.8,
+   "speech": "密集区在均值零附近。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 461.91,
+   "dur": 2.61,
+   "speech": "波动在百分之二左右。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 465.07,
+   "dur": 2.05,
+   "speech": "越往外越稀。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 467.67,
+   "dur": 3.33,
+   "speech": "边缘的格子，只有个位数样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 471.55,
+   "dur": 3.23,
+   "speech": "图形还略微向右上倾斜。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 475.33,
+   "dur": 3.4,
+   "speech": "高波动的窗口，均值也略高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 479.28,
+   "dur": 3.69,
+   "speech": "相关系数是正的，零点零七四四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 483.51,
+   "dur": 2.53,
+   "speech": "换网格尺寸会怎样？"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 486.6,
+   "dur": 4.6,
+   "speech": "十五、二十、三十、四十、六十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 491.74,
+   "dur": 2.01,
+   "speech": "集中度依次是："
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 494.3,
+   "dur": 2.22,
+   "speech": "零点九二一三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 497.07,
+   "dur": 2.1,
+   "speech": "零点九二〇二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 499.72,
+   "dur": 2.2,
+   "speech": "零点九二〇四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 502.47,
+   "dur": 2.2,
+   "speech": "零点九〇二四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 505.22,
+   "dur": 2.25,
+   "speech": "零点八六二三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 508.02,
+   "dur": 3.25,
+   "speech": "从十五到三十，几乎不变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 511.82,
+   "dur": 3.16,
+   "speech": "到六十才降到零点八六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 515.53,
+   "dur": 3.33,
+   "speech": "说明九成二不是画法造成的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 519.4,
+   "dur": 3.49,
+   "speech": "但格子越细，尾部越容易漏。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 523.45,
+   "dur": 4.09,
+   "speech": "占用格子从一百零二，涨到九百五十一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 528.09,
+   "dur": 4.38,
+   "speech": "所以报集中度，必须同时报网格尺寸。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 533.02,
+   "dur": 2.1,
+   "speech": "现在看实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 538.53,
+   "dur": 3.18,
+   "speech": "模块在 TsBase 的第八章。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 542.26,
+   "dur": 2.75,
+   "speech": "名字叫 HexbinBalance。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 545.56,
+   "dur": 2.44,
+   "speech": "核心只有四个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 548.55,
+   "dur": 4.67,
+   "speech": "pca2 算均值、标准差、旋转和特征值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 553.77,
+   "dur": 4.45,
+   "speech": "project2 和 reconstruct2 做投影与反变换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 558.77,
+   "dur": 3.88,
+   "speech": "binOf 和 hexCenter 做分箱与格心。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 563.2,
+   "dur": 2.85,
+   "speech": "concentration 算集中度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 566.6,
+   "dur": 2.32,
+   "speech": "先看 pca2。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 569.47,
+   "dur": 1.91,
+   "speech": "两遍扫描。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 571.93,
+   "dur": 3.04,
+   "speech": "第一遍算均值和标准差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 575.51,
+   "dur": 2.65,
+   "speech": "第二遍算相关系数 b。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 578.72,
+   "dur": 3.37,
+   "speech": "特征值是一加减 b 的绝对值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 582.64,
+   "dur": 2.7,
+   "speech": "旋转角固定四十五度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 585.89,
+   "dur": 2.53,
+   "speech": "不用调线性代数库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 588.98,
+   "dur": 3.3,
+   "speech": "二乘二的手写解，二十二行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 592.83,
+   "dur": 4.21,
+   "speech": "精度足够：反变换误差十的负十七次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 597.59,
+   "dur": 2.05,
+   "speech": "再看 binOf。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 600.2,
+   "dur": 3.04,
+   "speech": "先算 row，再算 col。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 603.79,
+   "dur": 2.75,
+   "speech": "两个 round，就近取整。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 607.09,
+   "dur": 3.37,
+   "speech": "中心公式和分箱公式互为逆。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 611.01,
+   "dur": 5.22,
+   "speech": "二十三条断言里，有一条就是全部占用格子互逆。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 616.78,
+   "dur": 3.13,
+   "speech": "计数用 Data.Map.Strict。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 620.47,
+   "dur": 4.02,
+   "speech": "稀疏整数映射，按 key 排序，可审计。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 625.04,
+   "dur": 3.37,
+   "speech": "这是本仓第一次引入 containers。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 628.96,
+   "dur": 2.39,
+   "speech": "复杂度是线性的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 631.9,
+   "dur": 4.19,
+   "speech": "每个窗口一次分箱，五万个窗口不到一秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 636.64,
+   "dur": 2.65,
+   "speech": "断言一共二十三条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 639.85,
+   "dur": 2.94,
+   "speech": "四个格心，落四个格子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 643.34,
+   "dur": 3.28,
+   "speech": "九加一，集中度是零点九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 647.17,
+   "dur": 3.66,
+   "speech": "十个均匀格子，集中度是零点二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 651.38,
+   "dur": 2.75,
+   "speech": "平移之后，集中度不变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 654.68,
+   "dur": 4.89,
+   "speech": "完全相关时，λ1 等于二，λ2 等于零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 660.11,
+   "dur": 2.49,
+   "speech": "常量列不产生 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 663.15,
+   "dur": 2.51,
+   "speech": "输入 NaN 必须报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 666.21,
+   "dur": 3.37,
+   "speech": "证据生成器调用同一批函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 670.13,
+   "dur": 4.24,
+   "speech": "屏幕上的数，和测试里的数是同一个来源。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 674.92,
+   "dur": 2.25,
+   "speech": "这就是可复核。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 677.72,
+   "dur": 2.1,
+   "speech": "下面看数字。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 683.22,
+   "dur": 2.7,
+   "speech": "左边，是数据体检。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 686.47,
+   "dur": 3.3,
+   "speech": "五万零七百五十七行原始数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 690.32,
+   "dur": 4.26,
+   "speech": "二十只股票，窗口一千二百到两千六百。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 695.14,
+   "dur": 2.82,
+   "speech": "五万零一百一十七个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 698.51,
+   "dur": 2.92,
+   "speech": "三百三十三个占用格子。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 701.98,
+   "dur": 3.25,
+   "speech": "六十七个格子，承载九成二。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 705.78,
+   "dur": 3.52,
+   "speech": "最大格子两千五百八十三个样本。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 709.85,
+   "dur": 3.42,
+   "speech": "占全部样本的百分之五点一五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 713.82,
+   "dur": 4.72,
+   "speech": "反变换最大误差，二点七八乘十的负十七次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 719.09,
+   "dur": 3.4,
+   "speech": "特征值之和，二点零零零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 723.04,
+   "dur": 3.66,
+   "speech": "三只蓝筹：七千九百二十一个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 727.25,
+   "dur": 3.88,
+   "speech": "三百一十九个格子，集中度七成零一。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 731.68,
+   "dur": 2.82,
+   "speech": "右边，是网格敏感度。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 735.05,
+   "dur": 5.05,
+   "speech": "五个尺寸，集中度从零点九二一到零点八六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 740.65,
+   "dur": 3.42,
+   "speech": "每个尺寸的占用格子也报出来。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 744.62,
+   "dur": 3.42,
+   "speech": "十二条证据检查，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 748.6,
+   "dur": 3.61,
+   "speech": "二十三条断言，来自测试套件。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 752.76,
+   "dur": 2.73,
+   "speech": "总套件三百三十一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 756.04,
+   "dur": 4.14,
+   "speech": "证据 JSON 记录了输入的 sha256。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 760.73,
+   "dur": 3.52,
+   "speech": "数据文件的哈希，和证据一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 764.8,
+   "dur": 2.51,
+   "speech": "复现命令只有一行。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 767.86,
+   "dur": 3.88,
+   "speech": "运行证据生成器，重算全部数字。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 772.28,
+   "dur": 3.35,
+   "speech": "如果数据被改动，哈希对不上。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 776.18,
+   "dur": 2.03,
+   "speech": "证据就作废。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 778.76,
+   "dur": 5.63,
+   "speech": "版本也写进证据：GHC 九点一四，cabal 三点一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 784.94,
+   "dur": 3.35,
+   "speech": "提交哈希写在 JSON 里。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 788.84,
+   "dur": 4.05,
+   "speech": "所以每个数字，都能追到一次具体的运行。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 793.44,
+   "dur": 2.68,
+   "speech": "这是 A 级证据的要求。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 796.67,
+   "dur": 2.22,
+   "speech": "断言不是装饰。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 799.44,
+   "dur": 2.46,
+   "speech": "它是数字的身份证。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 802.45,
+   "dur": 2.08,
+   "speech": "下面说边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 807.93,
+   "dur": 2.8,
+   "speech": "第一条，阈值是我们定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 811.28,
+   "dur": 3.09,
+   "speech": "百分之六十不是书里的数字。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 814.91,
+   "dur": 2.97,
+   "speech": "书里只给了密度图的读法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 818.43,
+   "dur": 2.65,
+   "speech": "换阈值，结论会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 821.63,
+   "dur": 3.78,
+   "speech": "第二条，集中度高不等于数据坏。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 825.97,
+   "dur": 3.28,
+   "speech": "真实分布本来就常常集中。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 829.79,
+   "dur": 3.06,
+   "speech": "要看任务是否需要尾部覆盖。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 833.41,
+   "dur": 3.73,
+   "speech": "第三条，二维窗口丢了内部形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 837.69,
+   "dur": 5.17,
+   "speech": "三十二天里的路径、极值、顺序，全被压成两个数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 843.41,
+   "dur": 4.24,
+   "speech": "同均值同波动的两个窗口，可能完全不同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 848.2,
+   "dur": 3.83,
+   "speech": "第四条，二十只股票不是全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 852.58,
+   "dur": 2.77,
+   "speech": "蓝筹又只代表大盘。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 855.91,
+   "dur": 3.4,
+   "speech": "结论不能推到小盘和别的市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 859.85,
+   "dur": 3.61,
+   "speech": "第五条，网格尺寸会改变分母。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 864.02,
+   "dur": 4.24,
+   "speech": "本集固定三十乘三十，并给出敏感度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 868.81,
+   "dur": 3.49,
+   "speech": "第六条，集中度不是唯一判据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 872.85,
+   "dur": 3.93,
+   "speech": "还要看任务误差、覆盖度和时间切分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 877.33,
+   "dur": 3.4,
+   "speech": "第七条，不能说 SOTA 无效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 881.27,
+   "dur": 4.09,
+   "speech": "只能说，验证集中在这六十七个格子里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 885.92,
+   "dur": 2.58,
+   "speech": "结论要跟着证据走。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 889.05,
+   "dur": 2.01,
+   "speech": "这就是边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 894.46,
+   "dur": 2.61,
+   "speech": "回到开头那三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 897.62,
+   "dur": 2.82,
+   "speech": "五万零一百一十七个窗口。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 900.99,
+   "dur": 2.46,
+   "speech": "三百三十三个格子。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 904,
+   "dur": 3.35,
+   "speech": "前六十七个格子，装了九成二。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 907.9,
+   "dur": 4.77,
+   "speech": "一个判据：前百分之二十的格子，覆盖超过六成。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 913.22,
+   "dur": 2.1,
+   "speech": "记为不均衡。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 915.87,
+   "dur": 2.03,
+   "speech": "一句话总结。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 918.45,
+   "dur": 3.85,
+   "speech": "数据均衡性，是评估之前的第一步。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 922.85,
+   "dur": 4.07,
+   "speech": "不均衡的基准，会放大平均误差的错觉。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 927.47,
+   "dur": 2.49,
+   "speech": "下一集进入第九章。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 930.51,
+   "dur": 4.38,
+   "speech": "一个弹簧振子，用显式欧拉算十个周期。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 935.44,
+   "dur": 3.69,
+   "speech": "步长零点一，能量涨了五百一十七倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 939.68,
+   "dur": 3.83,
+   "speech": "换成 RK4，误差按四阶下降。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 944.06,
+   "dur": 2.39,
+   "speech": "那就是数值积分。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 947,
+   "dur": 3.35,
+   "speech": "这一集的代码、证据、成片。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 950.9,
+   "dur": 1.98,
+   "speech": "都在 git 里。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 953.43,
+   "dur": 3.28,
+   "speech": "数字可复核，结论有边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 957.26,
+   "dur": 1.89,
+   "speech": "我们下集见。"
+  }
+ ]
+}
