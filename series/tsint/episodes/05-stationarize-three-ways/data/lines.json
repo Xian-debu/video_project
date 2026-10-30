@@ -1,0 +1,2220 @@
+{
+ "entry": "src/tsint-05-stationarize-three-ways/script.ts",
+ "fps": 30,
+ "totalSec": 1209.08,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 144.64
+  },
+  {
+   "id": "problem",
+   "chapter": "一件真事",
+   "start": 144.64,
+   "dur": 208.51
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 353.15,
+   "dur": 222.22
+  },
+  {
+   "id": "intuition",
+   "chapter": "看图",
+   "start": 575.37,
+   "dur": 162.44
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 737.81,
+   "dur": 111.35
+  },
+  {
+   "id": "verification",
+   "chapter": "数字",
+   "start": 849.16,
+   "dur": 219.46
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1068.62,
+   "dur": 87.98
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1156.6,
+   "dur": 52.48
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.81,
+   "speech": "三条路：差分、对数、Z-score。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.56,
+   "dur": 2.7,
+   "speech": "书把它们放在同一节。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.81,
+   "dur": 2.29,
+   "speech": "标题叫平稳化。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.65,
+   "dur": 3.4,
+   "speech": "但三条路做的，不是同一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.6,
+   "dur": 2.94,
+   "speech": "只有差分，改变积分阶。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.09,
+   "dur": 2.65,
+   "speech": "对数改变方差尺度。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.3,
+   "dur": 2.49,
+   "speech": "Z-score 改变坐标。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.33,
+   "dur": 2.68,
+   "speech": "它连趋势都碰不到。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 28.56,
+   "dur": 3.04,
+   "speech": "这一集把这三件事拆开。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 32.15,
+   "dur": 3.3,
+   "speech": "拆开之后，每条路各归各位。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 36,
+   "dur": 1.86,
+   "speech": "先看数据。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 38.41,
+   "dur": 4.33,
+   "speech": "贵州茅台，二零一九年初到二零二一年底。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 43.3,
+   "dur": 3.76,
+   "speech": "七百三十个交易日，前复权收盘价。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.6,
+   "dur": 3.66,
+   "speech": "区间涨幅百分之二百五十四点六八。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 51.82,
+   "dur": 4.43,
+   "speech": "从四百九十二元，最高到两千二百二十七元。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 56.8,
+   "dur": 2.65,
+   "speech": "三个数字，先记住。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 60,
+   "dur": 4.74,
+   "speech": "第一个，水平序列的自相关，零点九九四一。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 65.29,
+   "dur": 3.33,
+   "speech": "差分之后，负的零点零一五二。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 69.17,
+   "dur": 3.04,
+   "speech": "第二个，一万点随机游走。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 72.76,
+   "dur": 3.09,
+   "speech": "水平方差两千四百五十八。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 76.39,
+   "dur": 2.61,
+   "speech": "差分方差一点零一。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 79.55,
+   "dur": 2.34,
+   "speech": "差了两个数量级。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 82.44,
+   "dur": 3.4,
+   "speech": "第三个，Z-score 之后的自相关。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 86.39,
+   "dur": 3.76,
+   "speech": "零点九九四一，和原来一模一样。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 90.7,
+   "dur": 2.94,
+   "speech": "三个数字，三种命运。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 94.19,
+   "dur": 2.37,
+   "speech": "差分改了积分阶。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 97.1,
+   "dur": 3.4,
+   "speech": "对数没改自相关，也没改趋势。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 101.05,
+   "dur": 2.58,
+   "speech": "Z-score 什么也没改。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 104.18,
+   "dur": 2.97,
+   "speech": "所以主结论先放在这。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 107.7,
+   "dur": 2.82,
+   "speech": "Z-score 不是平稳化方法。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 111.07,
+   "dur": 4.36,
+   "speech": "它是仿射变换，准确的名字叫标准化。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 115.98,
+   "dur": 3.11,
+   "speech": "后面的验证会给出证据。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 119.64,
+   "dur": 3.49,
+   "speech": "差是二点四乘十的负十五次方。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 123.68,
+   "dur": 2.29,
+   "speech": "数值上就是零。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 126.53,
+   "dur": 2.63,
+   "speech": "这一集按三条路走。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 129.71,
+   "dur": 4.07,
+   "speech": "每一条都说清楚能治什么、不能治什么。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 134.33,
+   "dur": 4.96,
+   "speech": "判断标准只有一条：变换之后，积分阶有没有降。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 139.84,
+   "dur": 2.61,
+   "speech": "降了，才叫平稳化。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 145.84,
+   "dur": 2.46,
+   "speech": "为什么要在乎平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 148.85,
+   "dur": 4.74,
+   "speech": "因为后面的模型，都假设统计性质不随时间变。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 154.14,
+   "dur": 4.19,
+   "speech": "均值、方差、自相关，都得是常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 158.88,
+   "dur": 3.13,
+   "speech": "不是近似常数，是常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 162.57,
+   "dur": 2.49,
+   "speech": "看这条价格曲线。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 165.6,
+   "dur": 2.8,
+   "speech": "二零一九年在五百附近。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 168.95,
+   "dur": 3.01,
+   "speech": "二零二一年最高两千二。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 172.52,
+   "dur": 2.41,
+   "speech": "均值一直在移动。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 175.48,
+   "dur": 4.09,
+   "speech": "移动的均值，让回归系数失去意义。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 180.12,
+   "dur": 3.97,
+   "speech": "自相关零点九九四，几乎是单位根。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 184.65,
+   "dur": 3.73,
+   "speech": "今天的价格，几乎就是明天的价格。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 188.93,
+   "dur": 4.07,
+   "speech": "差分之后，自相关掉到负的零点零一五。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 193.55,
+   "dur": 2.89,
+   "speech": "均值变成一点七五元。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 197,
+   "dur": 2.68,
+   "speech": "标准差二十八点二元。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 200.22,
+   "dur": 2.8,
+   "speech": "这两个数不随时间漂。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 203.57,
+   "dur": 3.21,
+   "speech": "这就是平稳和不平稳的差别。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 207.33,
+   "dur": 1.86,
+   "speech": "换个样本。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 209.74,
+   "dur": 2.73,
+   "speech": "平安银行，二零一五年。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 213.02,
+   "dur": 3.01,
+   "speech": "那一年有牛市，也有股灾。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 216.58,
+   "dur": 2.89,
+   "speech": "水平自相关零点九八。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 220.02,
+   "dur": 2.56,
+   "speech": "差分之后零点零五。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 223.13,
+   "dur": 2.92,
+   "speech": "所以不是茅台的特殊性。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 226.6,
+   "dur": 3.04,
+   "speech": "是价格这个量本身的性质。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 230.19,
+   "dur": 2.8,
+   "speech": "再看一个更干净的例子。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 233.54,
+   "dur": 4.14,
+   "speech": "随机游走，一万零一个点，种子四十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 238.23,
+   "dur": 3.18,
+   "speech": "水平的方差两千四百五十八。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 241.96,
+   "dur": 3.28,
+   "speech": "而且它随时间线性增长。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 245.79,
+   "dur": 2.73,
+   "speech": "差分的方差一点零一。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 249.06,
+   "dur": 3.11,
+   "speech": "和步长噪声的方差一对得上。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 252.72,
+   "dur": 2.75,
+   "speech": "这就是积分阶的区别。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 256.02,
+   "dur": 2.7,
+   "speech": "水平序列是一阶单整。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 259.28,
+   "dur": 2.37,
+   "speech": "差分之后是零阶。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 262.19,
+   "dur": 2.87,
+   "speech": "还有第三种病：异方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 265.61,
+   "dur": 2.34,
+   "speech": "方差本身在变。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 268.5,
+   "dur": 3.04,
+   "speech": "一千个点的乘性噪声序列。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 272.09,
+   "dur": 4.41,
+   "speech": "水平值和局部波动幅度的相关，零点九四。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 277.05,
+   "dur": 3.21,
+   "speech": "取对数之后，负的零点三七。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 280.8,
+   "dur": 2.41,
+   "speech": "异方差被压掉了。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 283.77,
+   "dur": 2.87,
+   "speech": "但趋势和自相关没动。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 287.19,
+   "dur": 3.76,
+   "speech": "所以对数治的是方差，不是趋势。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 291.5,
+   "dur": 4.48,
+   "speech": "三件事分清楚：积分阶、方差、坐标。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 296.52,
+   "dur": 4,
+   "speech": "对应三条路：差分、对数、标准化。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 301.07,
+   "dur": 4.48,
+   "speech": "有人说随机游走差分后方差是二 sigma 方。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 306.1,
+   "dur": 2.87,
+   "speech": "那是白噪声差分的方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 309.52,
+   "dur": 3.73,
+   "speech": "随机游走差分回来的是步长噪声。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 313.8,
+   "dur": 2.8,
+   "speech": "方差就是 sigma 方。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 317.15,
+   "dur": 3.04,
+   "speech": "实测一点零一，理论一。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 320.74,
+   "dur": 3.78,
+   "speech": "分不清这两个，后面的检验全会错。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 325.07,
+   "dur": 2.99,
+   "speech": "这一集把这条写进证据。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 328.61,
+   "dur": 3.97,
+   "speech": "这三件事经常被混成一件。"
+  },
+  {
+   "scene": "problem",
+   "index": 50,
+   "start": 333.14,
+   "dur": 4.07,
+   "speech": "混了之后，选错工具，检验也跟着错。"
+  },
+  {
+   "scene": "problem",
+   "index": 51,
+   "start": 337.76,
+   "dur": 3.01,
+   "speech": "所以先诊断，再变换。"
+  },
+  {
+   "scene": "problem",
+   "index": 52,
+   "start": 341.32,
+   "dur": 5.1,
+   "speech": "顺序是：先看均值，再看方差，最后看自相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 53,
+   "start": 346.97,
+   "dur": 3.97,
+   "speech": "现在看定义，定义要能挡住错误实现。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 354.35,
+   "dur": 2.46,
+   "speech": "差分，先给定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 357.36,
+   "dur": 3.21,
+   "speech": "一阶差分，是今天减昨天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 361.12,
+   "dur": 3.81,
+   "speech": "二阶差分，对一阶差分再做一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 365.47,
+   "dur": 4.02,
+   "speech": "季节差分，今天减上一个周期的同一天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 370.05,
+   "dur": 2.77,
+   "speech": "写成 delta 下角 L。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 373.37,
+   "dur": 2.46,
+   "speech": "L 是周期长度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 376.38,
+   "dur": 2.92,
+   "speech": "周内数据，L 等于五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 379.85,
+   "dur": 3.45,
+   "speech": "日内四十八根，L 等于四十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 383.85,
+   "dur": 4.29,
+   "speech": "一般写法，d 阶差分再叠一个季节差分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 388.68,
+   "dur": 3.37,
+   "speech": "两个都是线性算子，可以交换。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 392.61,
+   "dur": 5.17,
+   "speech": "这一集固定：先做 d 次普通差分，再做一次季节差分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 398.33,
+   "dur": 3.9,
+   "speech": "完美线性序列，差分之后是常数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 402.78,
+   "dur": 5.41,
+   "speech": "一、四、九、十六，差成三、五、七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 408.75,
+   "dur": 2.85,
+   "speech": "再差一次，二、二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 412.14,
+   "dur": 3.57,
+   "speech": "周期二的季节差分，八、十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 416.26,
+   "dur": 3.64,
+   "speech": "所以差分把多项式趋势降一阶。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 420.45,
+   "dur": 3.33,
+   "speech": "二次变线性，线性变常数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 424.32,
+   "dur": 2.56,
+   "speech": "常数再差就是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 427.43,
+   "dur": 2.29,
+   "speech": "索引要跟着丢。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 430.27,
+   "dur": 2.37,
+   "speech": "差一次少一个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 433.19,
+   "dur": 2.58,
+   "speech": "差两次少两个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 436.32,
+   "dur": 3.73,
+   "speech": "时间戳必须一起丢，不能只丢值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 440.61,
+   "dur": 3.64,
+   "speech": "只丢值，日期和数值就错位了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 444.79,
+   "dur": 4.69,
+   "speech": "这种错不会报错，只会给一条看起来合理的曲线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 450.04,
+   "dur": 2.75,
+   "speech": "对数，定义更简单。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 453.34,
+   "dur": 2.15,
+   "speech": "逐元素取对数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 456.04,
+   "dur": 3.16,
+   "speech": "底数可以是一、十、二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 459.75,
+   "dur": 3.01,
+   "speech": "底数只改单位，不改形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 463.31,
+   "dur": 2.2,
+   "speech": "但它有定义域。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 466.06,
+   "dur": 2.85,
+   "speech": "零和负数没有实对数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 469.45,
+   "dur": 2.41,
+   "speech": "不能返回负无穷。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 472.42,
+   "dur": 2.27,
+   "speech": "也不能返回 NaN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 475.24,
+   "dur": 3.49,
+   "speech": "必须显式报错，带下标和原值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 479.28,
+   "dur": 3.28,
+   "speech": "A 股成交量里，零不罕见。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 483.11,
+   "dur": 5.39,
+   "speech": "上一集那只票，四千四百八十七行里两千四百九十一个零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 489.05,
+   "dur": 4.14,
+   "speech": "直接取对数，一半数据变成负无穷。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 493.74,
+   "dur": 2.94,
+   "speech": "所以先检查，再变换。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 497.23,
+   "dur": 3.37,
+   "speech": "加一是个办法，但要写进口径。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 501.16,
+   "dur": 3.49,
+   "speech": "这一集的做法是：拒绝，不猜。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 505.2,
+   "dur": 3.35,
+   "speech": "Z-score，公式三行里最长。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 509.1,
+   "dur": 3.04,
+   "speech": "减去均值，除以标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 512.69,
+   "dur": 3.09,
+   "speech": "均值一千二百五十四点二五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 516.33,
+   "dur": 2.97,
+   "speech": "标准差四百零七点一七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 519.84,
+   "dur": 3.54,
+   "speech": "变换之后，均值零，方差一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 523.93,
+   "dur": 3.61,
+   "speech": "这两个性质，对任何输入都成立。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 528.1,
+   "dur": 3.59,
+   "speech": "所以它叫标准化，不叫平稳化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 532.24,
+   "dur": 2.51,
+   "speech": "它没改变序列形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 535.3,
+   "dur": 2.41,
+   "speech": "也没改变自相关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 538.26,
+   "dur": 4.17,
+   "speech": "书上把它放在平稳化小节，是位置错了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 542.98,
+   "dur": 3.21,
+   "speech": "这一集要把这句话说清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 546.73,
+   "dur": 2.41,
+   "speech": "总体方差除以 T。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 549.7,
+   "dur": 3.11,
+   "speech": "样本方差除以 T 减一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 52,
+   "start": 553.36,
+   "dur": 2.39,
+   "speech": "两者差一个因子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 53,
+   "start": 556.3,
+   "dur": 4.36,
+   "speech": "这一集跟书里式二点五一致，用总体口径。"
+  },
+  {
+   "scene": "definitions",
+   "index": 54,
+   "start": 561.21,
+   "dur": 3.4,
+   "speech": "公式都很短，坑都在边界上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 55,
+   "start": 565.15,
+   "dur": 3.3,
+   "speech": "下面把三条路放进代码里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 56,
+   "start": 569.01,
+   "dur": 4.17,
+   "speech": "每个错误，都对应一个真实数据里的情形。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 576.57,
+   "dur": 2.87,
+   "speech": "为什么差分能改积分阶。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 579.99,
+   "dur": 3.04,
+   "speech": "因为差分是积分的逆运算。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 583.58,
+   "dur": 2.58,
+   "speech": "价格是收益的累加。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 586.71,
+   "dur": 3.04,
+   "speech": "累加一次，积分阶加一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 590.3,
+   "dur": 2.8,
+   "speech": "差分一次，正好抵消。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 593.65,
+   "dur": 3.4,
+   "speech": "所以差分不是把曲线压平。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 597.59,
+   "dur": 2.94,
+   "speech": "它是在把生成机制还原。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 601.09,
+   "dur": 2.89,
+   "speech": "用随机游走看最清楚。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 604.53,
+   "dur": 4,
+   "speech": "水平序列的自相关，零点九九九八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 609.08,
+   "dur": 2.49,
+   "speech": "几乎是完美的记忆。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 612.11,
+   "dur": 3.04,
+   "speech": "差分之后，零点零零零六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 615.7,
+   "dur": 2.13,
+   "speech": "记忆被拿掉了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 618.38,
+   "dur": 3.09,
+   "speech": "拿掉记忆，也就拿掉了趋势。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 622.01,
+   "dur": 2.97,
+   "speech": "但代价是噪声被放大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 625.53,
+   "dur": 3.81,
+   "speech": "相邻两点的差，方差是原来的两倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 629.89,
+   "dur": 3.21,
+   "speech": "这是对白噪声做差分的结论。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 633.64,
+   "dur": 4.62,
+   "speech": "对随机游走，差分回来的是步长噪声本身。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 638.81,
+   "dur": 2.8,
+   "speech": "方差就是 sigma 方。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 642.16,
+   "dur": 2.82,
+   "speech": "这是两种情形，别混。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 645.53,
+   "dur": 2.63,
+   "speech": "对数为什么治异方差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 648.71,
+   "dur": 2.53,
+   "speech": "因为乘法变成加法。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 651.8,
+   "dur": 4.91,
+   "speech": "方差随水平增长，取对数后方差变成常数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 657.26,
+   "dur": 3.52,
+   "speech": "但加法趋势，对数原样保留。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 661.33,
+   "dur": 3.66,
+   "speech": "它甚至会把指数增长变成线性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 665.54,
+   "dur": 3.01,
+   "speech": "所以对数之后，还是要差分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 669.1,
+   "dur": 2.99,
+   "speech": "Z-score 为什么什么也没改。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 672.64,
+   "dur": 2.7,
+   "speech": "因为它是仿射变换。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 675.89,
+   "dur": 3.3,
+   "speech": "平移加缩放，不改变相关性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 679.75,
+   "dur": 4,
+   "speech": "自相关只看形状，不看位置和尺度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 684.29,
+   "dur": 4.31,
+   "speech": "所以 Z 的自相关，和原序列完全一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 689.15,
+   "dur": 4.74,
+   "speech": "测试里钉住了，差是二点四乘十的负十五次方。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 694.45,
+   "dur": 3.06,
+   "speech": "三个变换，三个不变量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 698.06,
+   "dur": 2.29,
+   "speech": "差分改积分阶。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 700.9,
+   "dur": 2.49,
+   "speech": "对数改方差尺度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 703.94,
+   "dur": 2.27,
+   "speech": "标准化改坐标。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 706.76,
+   "dur": 3.35,
+   "speech": "认清这一点，就不会用错工具。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 710.66,
+   "dur": 3.21,
+   "speech": "变换本身也会制造新问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 714.41,
+   "dur": 2.65,
+   "speech": "差分会把噪声放大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 717.62,
+   "dur": 2.27,
+   "speech": "对数会遇到零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 720.44,
+   "dur": 3.06,
+   "speech": "标准化会遇到常数序列。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 724.05,
+   "dur": 3.85,
+   "speech": "这三个边界，下一场在代码里处理。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 728.45,
+   "dur": 3.88,
+   "speech": "记住这三个不变量，比记住公式有用。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 732.88,
+   "dur": 2.73,
+   "speech": "公式会忘，作用不会。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 739.01,
+   "dur": 2.89,
+   "speech": "三个模块，都在第二章。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 742.45,
+   "dur": 2.7,
+   "speech": "差分模块导出 diff。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 745.71,
+   "dur": 4.09,
+   "speech": "参数是阶数、可选季节周期、序列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 750.35,
+   "dur": 3.06,
+   "speech": "返回 Either，错误分三种。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 753.96,
+   "dur": 3.73,
+   "speech": "阶数为负、周期非法、长度不够。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 758.25,
+   "dur": 3.18,
+   "speech": "全部显式返回，不抛异常。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 761.98,
+   "dur": 2.77,
+   "speech": "对数模块导出 logT。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 765.3,
+   "dur": 4.05,
+   "speech": "底数是枚举：自然对数、十、二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 769.9,
+   "dur": 2.94,
+   "speech": "先扫描一遍找非正数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 773.39,
+   "dur": 3.11,
+   "speech": "找到就返回下标和原值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 777.05,
+   "dur": 2.37,
+   "speech": "找不到才做映射。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 779.97,
+   "dur": 2.75,
+   "speech": "Z-score 模块导出 zscore。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 783.27,
+   "dur": 4.65,
+   "speech": "返回三个值：标准化序列、均值、标准差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 788.46,
+   "dur": 3.18,
+   "speech": "均值标准差两遍扫描算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 792.19,
+   "dur": 3.04,
+   "speech": "不用 E 叉方减均值平方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 795.78,
+   "dur": 3.42,
+   "speech": "那个公式在大基线上会抵消。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 799.75,
+   "dur": 3.64,
+   "speech": "测试里用一个一亿的基线钉住。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 803.94,
+   "dur": 3.06,
+   "speech": "三个模块都不互相依赖。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 807.55,
+   "dur": 2.1,
+   "speech": "只依赖 vector。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 810.21,
+   "dur": 2.87,
+   "speech": "没有 IO，没有随机数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 813.63,
+   "dur": 2.44,
+   "speech": "三十四条新断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 816.61,
+   "dur": 4.29,
+   "speech": "差分十五条，对数九条，标准化十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 821.45,
+   "dur": 3.25,
+   "speech": "整套四百七十五条，全过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 825.25,
+   "dur": 2.25,
+   "speech": "错误分支也测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 828.05,
+   "dur": 5.29,
+   "speech": "空序列、单点、常数序列、负阶数、超长季节。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 833.89,
+   "dur": 3.09,
+   "speech": "每一个都返回确定的错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 837.53,
+   "dur": 4.09,
+   "speech": "实现的选择只有一条：错误必须可处理。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 842.17,
+   "dur": 4.79,
+   "speech": "调用方拿到 Either，就知道该修数据还是换方法。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 850.36,
+   "dur": 1.86,
+   "speech": "先看手算。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 852.77,
+   "dur": 5.61,
+   "speech": "一、四、九、十六，一阶差分三、五、七。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 858.93,
+   "dur": 2.61,
+   "speech": "二阶差分二、二。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 862.08,
+   "dur": 3.57,
+   "speech": "周期二的季节差分，八、十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 866.2,
+   "dur": 2.94,
+   "speech": "这四个例子都在测试里。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 869.69,
+   "dur": 4.14,
+   "speech": "随机游走，一万零一个点，种子四十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 874.38,
+   "dur": 3.61,
+   "speech": "水平方差两千四百五十八点二九。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 878.55,
+   "dur": 2.87,
+   "speech": "差分方差一点零一二七。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 881.97,
+   "dur": 3.45,
+   "speech": "和理论值一，差百分之一点三。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 885.96,
+   "dur": 3.33,
+   "speech": "水平自相关零点九九九八。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 889.84,
+   "dur": 3.21,
+   "speech": "差分自相关零点零零零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 893.6,
+   "dur": 2.25,
+   "speech": "再看真实数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 896.39,
+   "dur": 4.96,
+   "speech": "茅台七百三十天，水平自相关零点九九四一。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 901.9,
+   "dur": 3.09,
+   "speech": "差分之后负的零点零一五二。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 905.54,
+   "dur": 4.57,
+   "speech": "收益均值一点七五元，标准差二十八点二元。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 910.66,
+   "dur": 3.97,
+   "speech": "平安银行二零一五年，水平零点九八。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 915.18,
+   "dur": 2.56,
+   "speech": "差分之后零点零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 918.29,
+   "dur": 2.89,
+   "speech": "两个样本，同一个方向。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 921.74,
+   "dur": 2.73,
+   "speech": "Z-score 的数字更干净。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 925.01,
+   "dur": 3.09,
+   "speech": "均值一千二百五十四点二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 928.65,
+   "dur": 2.97,
+   "speech": "标准差四百零七点一七。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 932.16,
+   "dur": 4.24,
+   "speech": "标准化后求和，二乘十的负十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 936.95,
+   "dur": 4.12,
+   "speech": "平方和，七百三十点零零零零零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 941.62,
+   "dur": 3.61,
+   "speech": "正好等于样本数，因为方差是一。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 945.78,
+   "dur": 4.57,
+   "speech": "反变换最大误差，一点一乘十的负十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 950.91,
+   "dur": 3.18,
+   "speech": "也就是说，这一步完全可逆。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 954.64,
+   "dur": 1.93,
+   "speech": "自相关呢。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 957.12,
+   "dur": 3.76,
+   "speech": "标准化的自相关零点九九四一。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 961.43,
+   "dur": 2.58,
+   "speech": "和原序列一模一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 964.56,
+   "dur": 3.49,
+   "speech": "差是二点四乘十的负十五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 968.61,
+   "dur": 1.69,
+   "speech": "还是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 970.85,
+   "dur": 3.83,
+   "speech": "这三个数字放一起，结论就出来了。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 975.23,
+   "dur": 3.45,
+   "speech": "标准化没有改变任何时间结构。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 979.23,
+   "dur": 5.34,
+   "speech": "对数那边，异方差的相关从零点九四到负的零点三七。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 985.12,
+   "dur": 4.31,
+   "speech": "负号是因为对数压缩了大值，相关方向反了。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 989.98,
+   "dur": 5.03,
+   "speech": "绝对值从零点九四降到零点三七，异方差弱了。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 995.56,
+   "dur": 4.14,
+   "speech": "成交量零值：这只票三年里一个零也没有。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1000.25,
+   "dur": 5.27,
+   "speech": "但长停牌的票有，上一集那只两千四百九十一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1006.07,
+   "dur": 3.78,
+   "speech": "所以保护分支不是为这只票写的。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1010.4,
+   "dur": 2.41,
+   "speech": "是为真实数据写的。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1013.37,
+   "dur": 5.25,
+   "speech": "五天累计收益的方差，比一天的五倍，零点九七六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1019.16,
+   "dur": 3.71,
+   "speech": "小于一，说明有均值回归的成分。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1023.42,
+   "dur": 4.12,
+   "speech": "但这个数接近一，说明接近随机游走。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1028.09,
+   "dur": 3.54,
+   "speech": "证据一共三十一条，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1032.18,
+   "dur": 4.43,
+   "speech": "十六条手算，十条真实数据，五条合成。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1037.16,
+   "dur": 2.89,
+   "speech": "每一条都写进证据文件。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1040.61,
+   "dur": 3.95,
+   "speech": "画面上的每个数字都能回到一条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1045.11,
+   "dur": 2.75,
+   "speech": "这是这一集的验收标准。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1048.41,
+   "dur": 2.89,
+   "speech": "不是看起来对，是能复现。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1051.85,
+   "dur": 2.2,
+   "speech": "这三个数字，分别对应积分阶、方差和坐标。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1054.6,
+   "dur": 3.81,
+   "speech": "它们不是装饰，是三条结论的证据。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1058.96,
+   "dur": 4.72,
+   "speech": "证据文件里还有原始 CSV 和 sha256。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1064.22,
+   "dur": 2.2,
+   "speech": "下一页说边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1069.82,
+   "dur": 2.37,
+   "speech": "四条不能说的话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1072.74,
+   "dur": 2.94,
+   "speech": "第一，差分能提高预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1076.23,
+   "dur": 4.45,
+   "speech": "不一定。差分去掉的是信息，不是噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1081.23,
+   "dur": 3.76,
+   "speech": "第二，差分会把均值变成零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1085.54,
+   "dur": 3.33,
+   "speech": "不会。差分不减均值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1089.42,
+   "dur": 2.82,
+   "speech": "第三，对数能治趋势。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1092.79,
+   "dur": 3.52,
+   "speech": "不能。对数只改变尺度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1096.86,
+   "dur": 3.06,
+   "speech": "第四，Z-score 是平稳化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1100.47,
+   "dur": 3.01,
+   "speech": "不是。它是标准化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1104.03,
+   "dur": 2.56,
+   "speech": "还有三条实现边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1107.14,
+   "dur": 3.09,
+   "speech": "差分放大噪声，方差翻倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1110.78,
+   "dur": 3.52,
+   "speech": "差分丢观测，d 阶丢 d 个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1114.84,
+   "dur": 3.37,
+   "speech": "季节差分要求长度大于周期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1118.77,
+   "dur": 3.01,
+   "speech": "这些不是缺陷，是定义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1122.33,
+   "dur": 4.33,
+   "speech": "你可以接受代价，但不能假装代价不存在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1127.22,
+   "dur": 2.85,
+   "speech": "最后一条，不在公式里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1130.61,
+   "dur": 3.93,
+   "speech": "变换完之后，要检查变换是否成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1135.09,
+   "dur": 4.41,
+   "speech": "对数的定义域，差分的长度，标准化的方差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1140.04,
+   "dur": 3.61,
+   "speech": "三个前置条件，缺一个就报错。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1144.21,
+   "dur": 2.32,
+   "speech": "报错比修数好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1147.08,
+   "dur": 3.45,
+   "speech": "因为修数是猜，报错是事实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1151.07,
+   "dur": 3.33,
+   "speech": "边界说清楚，方法才算完整。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1157.8,
+   "dur": 2.41,
+   "speech": "回到开头三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1160.76,
+   "dur": 3.06,
+   "speech": "水平自相关零点九九四。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1164.38,
+   "dur": 2.97,
+   "speech": "差分之后负的零点零一五。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1167.89,
+   "dur": 3.3,
+   "speech": "Z-score 之后还是零点九九四。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1171.74,
+   "dur": 2.75,
+   "speech": "一个改了，另一个没改。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1175.04,
+   "dur": 2.7,
+   "speech": "这就是三条路的区别。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1178.3,
+   "dur": 2.44,
+   "speech": "如果只记一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1181.28,
+   "dur": 4.69,
+   "speech": "差分改积分阶，对数改方差，标准化改坐标。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1186.53,
+   "dur": 2.34,
+   "speech": "下一集讲分解。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1189.42,
+   "dur": 3.85,
+   "speech": "趋势、季节、残差，怎么拆开。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1193.82,
+   "dur": 3.61,
+   "speech": "拆开之后，每一块都能单独检验。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1197.99,
+   "dur": 4.17,
+   "speech": "这一集的代码、数据、证据都已入库。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1202.7,
+   "dur": 1.81,
+   "speech": "数字都能在证据里查到。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1205.07,
+   "dur": 1.81,
+   "speech": "感谢观看。"
+  }
+ ]
+}
