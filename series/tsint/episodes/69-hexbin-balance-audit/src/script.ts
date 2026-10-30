@@ -353,7 +353,7 @@ const voice = voiceJson as Record<string, number>;
 
 const problems: string[] = [];
 
-type Scene = { id: string; chapter: string; kicker: string; title: string; goal: string; start: number; dur: number };
+type Scene = { id: string; chapter: string; kicker: string; title: string; goal: string; start: number; dur: number; lines: string[] };
 type Line = { scene: string; index: number; start: number; dur: number; speech: string };
 
 const SCENES: Scene[] = [];
@@ -380,7 +380,7 @@ for (const spec of SPEC) {
     LINES.push({ scene: spec.id, index: i, start: round2(t), dur: round2(speech[i]), speech: text });
     t += speech[i] + GAP;
   });
-  SCENES.push({ id: spec.id, chapter: spec.chapter, kicker: spec.kicker, title: spec.title, goal: spec.goal, start: round2(sceneStart), dur });
+  SCENES.push({ id: spec.id, chapter: spec.chapter, kicker: spec.kicker, title: spec.title, goal: spec.goal, start: round2(sceneStart), dur, lines: spec.lines });
   cursor += dur;
 }
 
