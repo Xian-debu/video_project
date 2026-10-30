@@ -10,7 +10,7 @@ import sys
 import wave
 from pathlib import Path
 
-RATE = 24000
+RATE = 48000  # the score bed is 48 kHz; mix refuses mismatched stems
 PACK = Path(__file__).resolve().parent.parent
 
 
