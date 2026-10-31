@@ -136,3 +136,20 @@
 - **可逆性**：高。该集是独立 pack，可整集回退到 90b9287 重做；score 复用 E69 bed，不依赖新生成音频。
 - **返工成本**：TTS 1 轮 351 条（系统 python3 无 edge_tts，改用 `/root/.venvs/tts/bin/python`）；
   3 轮静帧（29 张）；make 1 次 PASS，合计约 3 h。
+
+## A12 承接 E19–E64：续跑授权与记录方式（2026-10-31 20:20）
+
+- **决定**：按用户 2026-10-31 20:20 指令承接上一会话（session-35a4c4cf）的 tsint 工程，从
+  E19 `tsint-19-linear-revival-dlinear-fits` 起，按 `ts-base/plans/series.json` 的
+  `production_order` 逐集生产到 E64 `llm-side-adapters`；每集仍走 `docs/HANDOFF-EVENING.md`
+  §4 的 12 步流水线，验证后提交，film `status` 最多 `ready`，仍不发布 B 站（沿 A4/A5）。
+  本会话不再逐集询问：流水线内的数据口径、视觉语法、score 复用、静帧改版等取舍由执行者决定，
+  并在当集 `plan.md` 与该集提交说明里记录；发现规划内部矛盾只修正落地口径（记 plan.md /
+  `plans/AUDIT.md`），不动 `series.json` 的冻结字段。
+- **依据**：用户原话（2026-10-31 20:20）：「我不限制你的token消耗，我要你高水准完成工程剩下的任务」；
+  「每个视频不可糊弄，视频长度不限，且必须讲清楚内容；依据工程规划，基于方案逐步一集一集生成，
+  经验证后git提交」；「我不会盯着你，你需要无人值守一直跑……你只需在git提交时单独增量提交一个
+  自授权清单即可」；「你可以把上面的内容git提交到video_project、ts-admin、ts-base等的规划中，
+  然后制定一个goal」。已写入 `docs/HANDOFF-EVENING.md` §1.1，ts-base 记 A42、ts-admin 记 A11。
+- **可逆性**：高。每集仍是一个独立 pack + 独立提交，任何一集可单独回退/重做；规划文档可单独回退。
+- **返工成本**：0（纯记录）；单集返工成本见各集条目。
