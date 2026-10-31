@@ -1,0 +1,1849 @@
+{
+ "entry": "src/tsint-20-conv-dilated-fft-2d/script.ts",
+ "fps": 30,
+ "totalSec": 995.24,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 124.48
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 124.48,
+   "dur": 118.1
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 242.58,
+   "dur": 175.27
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 417.85,
+   "dur": 118.91
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 536.76,
+   "dur": 104.05
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 640.81,
+   "dur": 174.07
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 814.88,
+   "dur": 135.29
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 950.17,
+   "dur": 45.07
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.37,
+   "speech": "第 3 章 · 卷积，第二十集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.75,
+   "dur": 5.68,
+   "speech": "卷积看时序：因果空洞卷积、FFT 周期、二维聚合。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.61,
+   "dur": 4.6,
+   "speech": "前面几集先把数据标准化，再把线性层讲透。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 15.39,
+   "dur": 3.42,
+   "speech": "这一集换一个先验：局部形状。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 18.99,
+   "dur": 5.25,
+   "speech": "卷积相信相邻的点有关系，而且这个关系平移不变。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 24.42,
+   "dur": 3.42,
+   "speech": "问题是，时间序列不能随便卷。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 28.02,
+   "dur": 2.49,
+   "speech": "第一，不能看未来。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 30.69,
+   "dur": 3.4,
+   "speech": "第二，局部窗口要有物理尺度。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 34.26,
+   "dur": 3.76,
+   "speech": "第三，多个通道、多个周期怎么合。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.2,
+   "dur": 3.09,
+   "speech": "教材第三节给出了骨架。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 41.47,
+   "dur": 3.57,
+   "speech": "五页纸，五条式子，一张总图。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 45.21,
+   "dur": 3.95,
+   "speech": "输入嵌入，经过卷积，落到预测头。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 49.34,
+   "dur": 5.13,
+   "speech": "但书里没给核宽，没给膨胀因子，没给频率个数。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 54.65,
+   "dur": 4.26,
+   "speech": "也没给通道数、训练配方、预测头公式。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 59.09,
+   "dur": 4.65,
+   "speech": "所以这一集不报误差，不假装复现一个预测器。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 63.92,
+   "dur": 4.05,
+   "speech": "只验证卷积的三个先验能不能被钉死。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 68.14,
+   "dur": 2.61,
+   "speech": "第一根钉子：因果性。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 70.93,
+   "dur": 4.24,
+   "speech": "左边补零，右边不补，输出只能看过去。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 75.35,
+   "dur": 2.65,
+   "speech": "第二根钉子：感受野。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 78.18,
+   "dur": 5.2,
+   "speech": "四层核宽三、膨胀一二四八，正好看到三十一步。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 83.56,
+   "dur": 2.56,
+   "speech": "第三根钉子：周期。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 86.3,
+   "dur": 5.17,
+   "speech": "用 FFT 挑出振幅最大的频率，再折叠成二维。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 91.65,
+   "dur": 4.31,
+   "speech": "三十四项检查，全部来自本地证据程序。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 96.14,
+   "dur": 3.93,
+   "speech": "三件算法模块，七十三个测试套件。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 100.25,
+   "dur": 4.07,
+   "speech": "画面上的每个数都能在 JSON 里找到。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 104.5,
+   "dur": 2.73,
+   "speech": "先说结论，再给反例。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 107.4,
+   "dur": 4.36,
+   "speech": "结论是：因果性可以证明，周期可以测量。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 111.94,
+   "dur": 4.02,
+   "speech": "反例是：周周期在这份样本里不显著。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 116.14,
+   "dur": 2.99,
+   "speech": "这条反例后面会单独讲。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 119.31,
+   "dur": 2.97,
+   "speech": "先看书里给的那张图。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 125.68,
+   "dur": 3.3,
+   "speech": "书里那张图，是一条流水线。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 129.16,
+   "dur": 4.05,
+   "speech": "嵌入、卷积、预测头，三个方框。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 133.39,
+   "dur": 3.88,
+   "speech": "但流水线要跑起来，还缺五个参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 137.45,
+   "dur": 3.3,
+   "speech": "核宽多少，膨胀因子取哪些。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 140.93,
+   "dur": 3.57,
+   "speech": "保留几个频率，折叠的周期怎么定。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 144.67,
+   "dur": 3.78,
+   "speech": "通道数多少，卷积在哪个轴上做。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 148.64,
+   "dur": 3.93,
+   "speech": "训练用什么损失、什么优化器、几轮。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 152.74,
+   "dur": 3.54,
+   "speech": "预测头是线性层还是反卷积。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 156.46,
+   "dur": 2.44,
+   "speech": "书里一条都没写。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 159.08,
+   "dur": 3.83,
+   "speech": "只有一句：依据振幅聚合所有表征。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 163.09,
+   "dur": 4.24,
+   "speech": "所以我们的问题不是复现，而是定口径。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 167.51,
+   "dur": 3.25,
+   "speech": "第一个口径：因果性怎么保证。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 170.94,
+   "dur": 3.95,
+   "speech": "如果两侧都补零，模型会读到未来。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 175.07,
+   "dur": 4.02,
+   "speech": "离线指标可能看不出来，但上线就错。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 179.28,
+   "dur": 3.11,
+   "speech": "第二个口径：感受野怎么数。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 182.57,
+   "dur": 4.5,
+   "speech": "按层累加，还是按膨胀因子相乘，差很远。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 187.25,
+   "dur": 3.11,
+   "speech": "第三个口径：周期从哪来。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 190.54,
+   "dur": 4.26,
+   "speech": "是超参数拍脑袋，还是让 FFT 说话。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 194.98,
+   "dur": 3.76,
+   "speech": "第四个口径：折叠以后哪个轴环形。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 198.92,
+   "dur": 3.33,
+   "speech": "相位轴是环形，周期轴不是。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 202.42,
+   "dur": 3.47,
+   "speech": "第五个口径：聚合权重归一化。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 206.07,
+   "dur": 4.17,
+   "speech": "不归一化，输出尺度会随周期数漂移。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 210.42,
+   "dur": 3.93,
+   "speech": "这五个口径，就是这一集的五条检查。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 214.53,
+   "dur": 3.47,
+   "speech": "数据只用一只股票的五分钟线。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 218.18,
+   "dur": 3.9,
+   "speech": "四千九百九十二根，一百零四个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 222.26,
+   "dur": 4.17,
+   "speech": "每天四十八根，二〇二六年五月到十月。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 226.6,
+   "dur": 2.2,
+   "speech": "为什么不用日线。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 228.98,
+   "dur": 4.12,
+   "speech": "因为日内周期必须用日内数据才看得见。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 233.28,
+   "dur": 3.83,
+   "speech": "下一集回到注意力，那时再换数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 237.29,
+   "dur": 3.09,
+   "speech": "先把这张图上的空格填掉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 243.78,
+   "dur": 2.94,
+   "speech": "定义一：因果空洞卷积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 246.9,
+   "dur": 2.56,
+   "speech": "书里的式三之十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 249.64,
+   "dur": 5.37,
+   "speech": "第 l 层第 t 个位置，是上一层若干抽头的加权和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 255.19,
+   "dur": 5.27,
+   "speech": "抽头的位置是 t 减去核宽减一减 k，再乘膨胀因子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 260.64,
+   "dur": 2.97,
+   "speech": "k 从零数到核宽减一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 263.78,
+   "dur": 3.04,
+   "speech": "k 等于零时，抽头最旧。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 267,
+   "dur": 2.68,
+   "speech": "这个次序很容易写反。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 269.86,
+   "dur": 4.07,
+   "speech": "写反了，因果性还在，但权重对不上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 274.11,
+   "dur": 3.54,
+   "speech": "因果性只靠一件事：左边补零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 277.83,
+   "dur": 4.19,
+   "speech": "补多少？核宽减一，乘膨胀因子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 282.2,
+   "dur": 2.44,
+   "speech": "右边一个都不补。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 284.82,
+   "dur": 4.24,
+   "speech": "所以第 t 个输出最多看到第 t 个输入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 289.24,
+   "dur": 3.18,
+   "speech": "感受野不是核宽，是累加。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 292.6,
+   "dur": 4.48,
+   "speech": "一加，各层核宽减一乘膨胀因子的和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 297.26,
+   "dur": 3.54,
+   "speech": "四层核宽三，膨胀一二四八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 300.98,
+   "dur": 4,
+   "speech": "一加二加四加八，再乘二，等于三十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 305.16,
+   "dur": 2.46,
+   "speech": "再加一，三十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 307.8,
+   "dur": 3.54,
+   "speech": "注意，是按层累加，不是乘起来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 311.52,
+   "dur": 2.32,
+   "speech": "第二件事：频率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 314.02,
+   "dur": 4.19,
+   "speech": "书里式三之十六，对序列做 FFT。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 318.39,
+   "dur": 2.85,
+   "speech": "取振幅最大的 k 个频率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 321.41,
+   "dur": 3.57,
+   "speech": "书里写 k 是预定义的超参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 325.16,
+   "dur": 3.16,
+   "speech": "我们的口径：去掉直流分量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 328.5,
+   "dur": 3.81,
+   "speech": "只取正频率，实部虚部拼成向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 332.48,
+   "dur": 4.29,
+   "speech": "每个峰值的周期，是窗长除以频率序号。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 336.95,
+   "dur": 3.73,
+   "speech": "再四舍五入，夹在二到窗长之间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 340.86,
+   "dur": 2.89,
+   "speech": "四十八根等于一个交易日。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 343.94,
+   "dur": 2.51,
+   "speech": "二十四根等于半天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 346.63,
+   "dur": 3.52,
+   "speech": "这是物理尺度，不是调参调出来的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 350.33,
+   "dur": 3.06,
+   "speech": "第三件事：折叠成二维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 353.57,
+   "dur": 5.01,
+   "speech": "式三之十七，把一维序列折成周期乘相位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 358.75,
+   "dur": 4.17,
+   "speech": "窗长九十六，周期四十八，折成两行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 363.1,
+   "dur": 3.13,
+   "speech": "行是周期序号，列是相位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 366.41,
+   "dur": 4.43,
+   "speech": "列方向是环形：相位走完一圈回到开头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 371.02,
+   "dur": 4.21,
+   "speech": "行方向不是环形：周期轴到头就是边界。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 375.42,
+   "dur": 4.17,
+   "speech": "所以二维卷积只在列方向循环。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 379.76,
+   "dur": 2.56,
+   "speech": "行方向用零填充。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 382.5,
+   "dur": 3.76,
+   "speech": "这一步写错，输出会串到另一个周期。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 386.44,
+   "dur": 2.08,
+   "speech": "最后是聚合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 388.7,
+   "dur": 3.78,
+   "speech": "式三之十八，按振幅加权求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 392.66,
+   "dur": 5.39,
+   "speech": "书里排版写成 A 下标 l，求和项是 A 下标 i。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 398.23,
+   "dur": 3.4,
+   "speech": "我们按语义读成 A 下标 i。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 401.81,
+   "dur": 3.76,
+   "speech": "并且归一化，让权重和等于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 405.75,
+   "dur": 4.33,
+   "speech": "不归一化，周期数一变，输出幅度就变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 410.26,
+   "dur": 3.3,
+   "speech": "这就是三个先验的完整定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 413.74,
+   "dur": 1.91,
+   "speech": "下面看图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 419.05,
+   "dur": 2.63,
+   "speech": "第一张图：感受野。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 421.86,
+   "dur": 4.12,
+   "speech": "取一个真实窗口，在某一行加一个扰动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 426.16,
+   "dur": 3.11,
+   "speech": "看输出的每一行变了多少。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 429.45,
+   "dur": 3.59,
+   "speech": "横轴是扰动位置相对输出的滞后。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 433.22,
+   "dur": 3.28,
+   "speech": "滞后零到三十，输出都变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 436.68,
+   "dur": 3.3,
+   "speech": "滞后三十一之后，曲线贴零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 440.16,
+   "dur": 3.73,
+   "speech": "三十一个抽头，一个不多一个不少。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 444.07,
+   "dur": 2.56,
+   "speech": "第二张图：因果性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 446.81,
+   "dur": 3.78,
+   "speech": "在第九十行加扰动，看前九十行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 450.77,
+   "dur": 3.64,
+   "speech": "前九十行逐位相同，差值是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 454.59,
+   "dur": 3.01,
+   "speech": "第九十行之后才开始变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 457.78,
+   "dur": 3.49,
+   "speech": "第九十五行的差值是零点五六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 461.46,
+   "dur": 2.77,
+   "speech": "这就是左填充的代价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 464.41,
+   "dur": 3.73,
+   "speech": "如果两侧都填，前九十行也会变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 468.33,
+   "dur": 3.52,
+   "speech": "离线误差可能一样，但那是作弊。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 472.02,
+   "dur": 2.49,
+   "speech": "第三张图：周期。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 474.69,
+   "dur": 4.5,
+   "speech": "把五分钟对数收益取绝对值，做 FFT。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 479.37,
+   "dur": 6.66,
+   "speech": "前六个峰：四十八、二十四、四千九百九十一、十二、十六、十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 486.21,
+   "dur": 3.04,
+   "speech": "第一峰四十八，正好一天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 489.43,
+   "dur": 3.06,
+   "speech": "第二峰二十四，正好半天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 492.67,
+   "dur": 3.9,
+   "speech": "第三峰是趋势，周期接近全样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 496.76,
+   "dur": 3.4,
+   "speech": "第四到第六，都是日内谐波。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 500.33,
+   "dur": 4.86,
+   "speech": "诚实地说，第一峰只比第二峰高三点八个百分点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 505.38,
+   "dur": 3.59,
+   "speech": "差得不多，排序会受口径影响。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 509.15,
+   "dur": 3.76,
+   "speech": "周周期呢？二百四十根在哪里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 513.08,
+   "dur": 4.09,
+   "speech": "它排第一百一十九位，振幅零点一八七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 517.36,
+   "dur": 3.3,
+   "speech": "一百零四个交易日，只有二十周。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 520.84,
+   "dur": 3.88,
+   "speech": "样本太短，周周期在这里测不出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 524.9,
+   "dur": 3.57,
+   "speech": "这不是卷积的错，是数据的边界。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 528.64,
+   "dur": 2.92,
+   "speech": "三张图说完，回到实现。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 531.74,
+   "dur": 2.82,
+   "speech": "先看空洞卷积怎么写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 537.96,
+   "dur": 3.28,
+   "speech": "第一个模块，空洞因果卷积。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 541.42,
+   "dur": 4.14,
+   "speech": "核心就是左边补零，再按抽头加权。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 545.74,
+   "dur": 4.17,
+   "speech": "权重按核序号、输入通道、输出通道排。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 550.09,
+   "dur": 3.09,
+   "speech": "行主序，核序号在最外层。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 553.35,
+   "dur": 3.61,
+   "speech": "这样 k 等于零就是最旧的抽头。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 557.15,
+   "dur": 2.97,
+   "speech": "前向是一层一层往下走。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 560.29,
+   "dur": 4.19,
+   "speech": "隐藏层之间加 ReLU，可选批归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 564.66,
+   "dur": 3.52,
+   "speech": "感受野用累加公式算，不靠试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 568.36,
+   "dur": 3.37,
+   "speech": "第二个模块，FFT 定周期。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 571.91,
+   "dur": 3.11,
+   "speech": "先去直流，再取正频率。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 575.2,
+   "dur": 3.9,
+   "speech": "每个峰值的周期等于窗长除以频率。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 579.29,
+   "dur": 3.9,
+   "speech": "周期取整以后，夹在二到窗长之间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 583.37,
+   "dur": 3.23,
+   "speech": "同样的振幅，频率小的优先。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 586.78,
+   "dur": 3.71,
+   "speech": "保证结果确定，不靠排序稳定性。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 590.67,
+   "dur": 3.49,
+   "speech": "第三个模块，二维折叠与聚合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 594.34,
+   "dur": 3.9,
+   "speech": "先补到周期的整数倍，再折成矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 598.42,
+   "dur": 3.52,
+   "speech": "二维卷积只在列方向环形。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 602.12,
+   "dur": 3.4,
+   "speech": "行方向补零，边界就是边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 605.7,
+   "dur": 2.97,
+   "speech": "聚合前把振幅归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 608.85,
+   "dur": 4.17,
+   "speech": "三个模块没有共享参数，也没有互相引用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 613.19,
+   "dur": 3.13,
+   "speech": "它们只依赖核心张量类型。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 616.51,
+   "dur": 4.41,
+   "speech": "这是仓库的纪律：算法模块不许互相导入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 621.09,
+   "dur": 3.4,
+   "speech": "所以每个模块都能单独测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 624.67,
+   "dur": 3.76,
+   "speech": "前向、解析梯度、形状、边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 628.61,
+   "dur": 4.72,
+   "speech": "代码摘要是示意，函数名和参数排布是真的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 633.51,
+   "dur": 2.17,
+   "speech": "下一屏看验证。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 635.86,
+   "dur": 2.75,
+   "speech": "先看结构断言怎么钉。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 642.01,
+   "dur": 3.04,
+   "speech": "三十四项检查，分四组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 645.23,
+   "dur": 5.58,
+   "speech": "数据七项，结构二十一项，梯度三项，真实数据三项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 650.99,
+   "dur": 2.25,
+   "speech": "结构先钉定义。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 653.42,
+   "dur": 4.17,
+   "speech": "参数量、感受野、手算值、边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 657.76,
+   "dur": 4.14,
+   "speech": "手算：核权重三二一，输入一到七。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 662.08,
+   "dur": 5.03,
+   "speech": "前五个输出是一、四、十、十六、二十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 667.29,
+   "dur": 2.99,
+   "speech": "程序算出来完全相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 670.46,
+   "dur": 4.21,
+   "speech": "感受野三十一，滞后三十的扰动还有差。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 674.86,
+   "dur": 3.04,
+   "speech": "滞后三十一，差值是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 678.08,
+   "dur": 3.4,
+   "speech": "因果性：前九十行逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 681.65,
+   "dur": 5.01,
+   "speech": "DFT 和 FFT 对拍，误差八点八乘十的负十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 686.84,
+   "dur": 3.83,
+   "speech": "往返变换误差二点二乘十的负十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 690.85,
+   "dur": 4.38,
+   "speech": "合成序列含周期四十八，挑出来还是四十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 695.41,
+   "dur": 2.94,
+   "speech": "折叠再展开，误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 698.53,
+   "dur": 4.45,
+   "speech": "一乘一核加归一化权重，恒等误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 703.17,
+   "dur": 3.01,
+   "speech": "列方向环形，值是四。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 706.36,
+   "dur": 3.21,
+   "speech": "行方向零填充，值是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 709.75,
+   "dur": 2.2,
+   "speech": "振幅和等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 712.13,
+   "dur": 3.9,
+   "speech": "残差关闭时，整块恒等误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 716.21,
+   "dur": 2.89,
+   "speech": "梯度检查用中心差分。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 719.28,
+   "dur": 3.37,
+   "speech": "权重误差二点七乘十的负十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 722.84,
+   "dur": 3.45,
+   "speech": "偏置误差二点八乘十的负十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 726.46,
+   "dur": 3.42,
+   "speech": "输入误差三点七乘十的负十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 730.06,
+   "dur": 3.64,
+   "speech": "门槛是十的负六，过了四个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 733.88,
+   "dur": 2.94,
+   "speech": "真实数据：第一峰四十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 737,
+   "dur": 4.12,
+   "speech": "第三峰是趋势，周期四千九百九十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 741.3,
+   "dur": 3.18,
+   "speech": "前三个峰里没有二百四十。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 744.66,
+   "dur": 3.35,
+   "speech": "这就是上一屏那条诚实的边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 748.19,
+   "dur": 4.21,
+   "speech": "测试套件七十三个，断言一千零一十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 752.59,
+   "dur": 3.76,
+   "speech": "本集三个模块：八、九、十。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 756.53,
+   "dur": 3.01,
+   "speech": "写测试的时候踩了三个坑。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 759.72,
+   "dur": 3.18,
+   "speech": "第一个坑：一乘一核的中心。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 763.08,
+   "dur": 3.9,
+   "speech": "代码里硬编码了减一，读到上一行。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 767.16,
+   "dur": 3.23,
+   "speech": "改成核宽整除二，才修好。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 770.57,
+   "dur": 2.68,
+   "speech": "第二个坑：权重次序。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 773.43,
+   "dur": 3.93,
+   "speech": "测试以为核序号零是最新抽头。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 777.54,
+   "dur": 3.54,
+   "speech": "其实零是最旧，读的是四步前。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 781.26,
+   "dur": 3.11,
+   "speech": "第三个坑：ReLU 死路径。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 784.55,
+   "dur": 3.57,
+   "speech": "随机初始化以后，扰动传不过去。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 788.3,
+   "dur": 3.45,
+   "speech": "感受野测试误判成不敏感。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 791.92,
+   "dur": 4,
+   "speech": "改用正权重、只看目标行，才稳定。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 796.1,
+   "dur": 3.35,
+   "speech": "这三个坑都写进了模块注释。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 799.63,
+   "dur": 4.17,
+   "speech": "因果性测试必须做扰动，不能只看形状。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 803.98,
+   "dur": 3.13,
+   "speech": "形状对，读未来也照样过。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 807.29,
+   "dur": 3.13,
+   "speech": "这就是为什么先验要钉死。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 810.6,
+   "dur": 2.08,
+   "speech": "下面说边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 816.08,
+   "dur": 3.54,
+   "speech": "第一句不能说：我们复现了书里的模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 819.8,
+   "dur": 3.52,
+   "speech": "书里没有超参数，也没有预测头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 823.5,
+   "dur": 2.92,
+   "speech": "我们只复现了三个结构件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 826.6,
+   "dur": 3.95,
+   "speech": "第二句不能说：在分钟线上赢了基线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 830.73,
+   "dur": 2.99,
+   "speech": "这一集根本没有预测头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 833.9,
+   "dur": 3.88,
+   "speech": "没有预测，就没有误差，也没有胜负。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 837.96,
+   "dur": 3.52,
+   "speech": "计划书里原本有一个对照实验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 841.65,
+   "dur": 4.45,
+   "speech": "折叠卷积对仅相位卷积，比二十四步误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 846.29,
+   "dur": 3.73,
+   "speech": "这个实验没做，因为它需要预测头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 850.2,
+   "dur": 3.69,
+   "speech": "屏幕上写清楚，而不是假装做过。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 854.07,
+   "dur": 3.69,
+   "speech": "第三句不能说：卷积找到了周周期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 857.93,
+   "dur": 3.47,
+   "speech": "二百四十根排第一百一十九位。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 861.58,
+   "dur": 2.56,
+   "speech": "样本二十周，不够。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 864.32,
+   "dur": 3.81,
+   "speech": "第四句不能说：这是全部 A 股的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 868.31,
+   "dur": 3.61,
+   "speech": "一只股票，一段行情，一个频率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 872.1,
+   "dur": 3.69,
+   "speech": "换标的、换年份，排序可能变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 875.97,
+   "dur": 3.3,
+   "speech": "第五句不能说：这是最优结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 879.45,
+   "dur": 3.95,
+   "speech": "核宽三、膨胀一二四八，是我们选的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 883.58,
+   "dur": 3.45,
+   "speech": "书里没给，论文里有别的组合。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 887.21,
+   "dur": 2.13,
+   "speech": "还有两处没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 889.51,
+   "dur": 4.69,
+   "speech": "式三之十五的通道轴空洞卷积，没有单独实现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 894.39,
+   "dur": 4.98,
+   "speech": "我们把通道混进权重布局，等价但没单独测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 899.55,
+   "dur": 3.57,
+   "speech": "频率个数固定三个，没有做消融。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 903.29,
+   "dur": 4.43,
+   "speech": "归一化沿用上一集的实例标准化，没再调。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 907.9,
+   "dur": 3.18,
+   "speech": "数据上的偏离也写进清单。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 911.27,
+   "dur": 3.01,
+   "speech": "一是窗口只有一百零四天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 914.46,
+   "dur": 3.71,
+   "speech": "二是只取绝对值收益，丢掉了符号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 918.35,
+   "dur": 4.26,
+   "speech": "三是周期检测用全样本，不分训练验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 922.79,
+   "dur": 4.17,
+   "speech": "四是聚合权重只测了归一化，不测学习。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 927.14,
+   "dur": 2.97,
+   "speech": "这些都不影响结构断言。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 930.28,
+   "dur": 3.73,
+   "speech": "但影响你能从数字里读出的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 934.2,
+   "dur": 2.51,
+   "speech": "下一集回到注意力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 936.89,
+   "dur": 3.4,
+   "speech": "多头自注意力，分块与掩码。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 940.47,
+   "dur": 3.71,
+   "speech": "那里的先验不是局部，是两两相关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 944.36,
+   "dur": 3.61,
+   "speech": "问题还是同一个：它到底学到了什么。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 951.37,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 953.65,
+   "dur": 4.19,
+   "speech": "第一，因果性靠左填充，不靠损失函数。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 958.02,
+   "dur": 4.33,
+   "speech": "第二，感受野是层次累加，不是核宽相乘。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 962.54,
+   "dur": 4.57,
+   "speech": "四层核宽三，膨胀一二四八，三十一步。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 967.29,
+   "dur": 3.52,
+   "speech": "第三，周期让 FFT 说话。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 970.99,
+   "dur": 3.73,
+   "speech": "四十八根是一天，二十四根是半天。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 974.9,
+   "dur": 3.59,
+   "speech": "周周期没出现，就老实说没出现。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 978.67,
+   "dur": 4.05,
+   "speech": "三个模块，三十四项检查，零失败。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 982.9,
+   "dur": 4.29,
+   "speech": "证据、数据、清单，全部进版本库。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 987.36,
+   "dur": 2.03,
+   "speech": "第 20 集完。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 989.57,
+   "dur": 3.47,
+   "speech": "下一集：注意力，分块与掩码。"
+  }
+ ]
+}
