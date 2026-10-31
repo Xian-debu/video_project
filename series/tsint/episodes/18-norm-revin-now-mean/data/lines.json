@@ -1,0 +1,1618 @@
+{
+ "entry": "src/tsint-18-norm-revin-now-mean/script.ts",
+ "fps": 30,
+ "totalSec": 842.29,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 146.17
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 146.17,
+   "dur": 108.49
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 254.66,
+   "dur": 128.56
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 383.22,
+   "dur": 112.63
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 495.85,
+   "dur": 91.13
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 586.98,
+   "dur": 140.43
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 727.41,
+   "dur": 78.21
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 805.62,
+   "dur": 36.67
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.59,
+   "speech": "第 3 章 · 预测层，第十八集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.97,
+   "dur": 4.69,
+   "speech": "归一化三兄弟：RevIN、NowNorm、MeanNorm。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.84,
+   "dur": 4.17,
+   "speech": "上一集把窗口、指标、选模做完。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 14.19,
+   "dur": 2.53,
+   "speech": "这一集只问一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.9,
+   "dur": 3.81,
+   "speech": "输入进模型之前，要不要先减去什么。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.89,
+   "dur": 3.23,
+   "speech": "书里给了三个名字，三句话。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 24.3,
+   "dur": 4.65,
+   "speech": "可逆实例归一化，先减均值，再除标准差。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 29.13,
+   "dur": 3.76,
+   "speech": "输出之后，按同一组统计量变回来。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 33.06,
+   "dur": 4.6,
+   "speech": "名字里的可逆，说的是这一步能精确还原。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 37.84,
+   "dur": 4.07,
+   "speech": "NowNorm 更简单，只减最后一个观测值。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 42.09,
+   "dur": 3.45,
+   "speech": "MeanNorm 只减均值，不做除法。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 45.72,
+   "dur": 2.87,
+   "speech": "三个人做的是同一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 48.77,
+   "dur": 3.97,
+   "speech": "先减掉一个基准，让模型只看变化。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 52.92,
+   "dur": 2.75,
+   "speech": "差别只在基准是什么。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 55.85,
+   "dur": 1.98,
+   "speech": "先给四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 58.01,
+   "dur": 2.32,
+   "speech": "第一个，量纲差。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 60.51,
+   "dur": 4.57,
+   "speech": "茅台均价五千五百九十六元，工行八点五元。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 65.27,
+   "dur": 2.75,
+   "speech": "差六百五十八点七倍。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 68.2,
+   "dur": 3.57,
+   "speech": "第二个，合成序列上有漂移时。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 71.94,
+   "dur": 4.5,
+   "speech": "二十四步平均绝对误差，NowNorm 零点九七。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 76.62,
+   "dur": 2.53,
+   "speech": "MeanNorm 两点零九。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 79.34,
+   "dur": 2.15,
+   "speech": "差二点一五倍。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 81.67,
+   "dur": 3.23,
+   "speech": "第三个，把趋势去掉再跑。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 85.08,
+   "dur": 2.03,
+   "speech": "排序反过来。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 87.29,
+   "dur": 3.9,
+   "speech": "NowNorm 一点零零，MeanNorm 零点五二。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 91.37,
+   "dur": 2.27,
+   "speech": "差一点九三倍。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 93.82,
+   "dur": 3.16,
+   "speech": "第四个，真实的上证指数。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 97.16,
+   "dur": 3.83,
+   "speech": "二十四步误差，NowNorm 七十六点五五。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 101.17,
+   "dur": 4.55,
+   "speech": "RevIN 八十二点二五，MeanNorm 八十四点八八。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 105.9,
+   "dur": 2.58,
+   "speech": "四个数，两组对照。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 108.66,
+   "dur": 3.59,
+   "speech": "第一组，基准选错，误差差一倍。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 112.43,
+   "dur": 3.9,
+   "speech": "第二组，基准选对，排序还能翻过来。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 116.51,
+   "dur": 2.77,
+   "speech": "所以这一集的论点是。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 119.47,
+   "dur": 3.78,
+   "speech": "归一化不是预处理，是模型的一部分。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 123.43,
+   "dur": 4.05,
+   "speech": "减什么，就是在问模型该对什么不变。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 127.65,
+   "dur": 3.33,
+   "speech": "减均值，模型对平移不变。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 131.16,
+   "dur": 3.52,
+   "speech": "减末值，模型对水平位置不变。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 134.86,
+   "dur": 4.5,
+   "speech": "减去再除以标准差，平移和尺度都不变。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 139.54,
+   "dur": 4.43,
+   "speech": "书里没有这句总结，但三个名字都在回答它。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 147.37,
+   "dur": 3.37,
+   "speech": "书里关于归一化，只有三句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 150.92,
+   "dur": 2.92,
+   "speech": "四十五页，讲 NLinear。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 154.02,
+   "dur": 3.57,
+   "speech": "先用序列的最后一个值减去输入。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 157.77,
+   "dur": 3.09,
+   "speech": "过一个线性层，再加回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 161.03,
+   "dur": 3.45,
+   "speech": "四十六页，讲 SparseTSF。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 164.66,
+   "dur": 4.26,
+   "speech": "减去序列本身的均值，输出之后再加回。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 169.1,
+   "dur": 4.72,
+   "speech": "再加一句，大多数模型采用可逆实例归一化。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 174,
+   "dur": 3.47,
+   "speech": "会引入一个带参数的仿射变换。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 177.65,
+   "dur": 2.03,
+   "speech": "书上就这些。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 179.86,
+   "dur": 2.15,
+   "speech": "书里没有公式。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 182.19,
+   "dur": 5.1,
+   "speech": "减均值，是减整条序列的均值，还是窗口的均值。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 187.47,
+   "dur": 3.25,
+   "speech": "除标准差，标准差是哪一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 190.91,
+   "dur": 4.45,
+   "speech": "方差接近零的时候，除出来是无穷，怎么办。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 195.54,
+   "dur": 3.4,
+   "speech": "仿射的两个参数，初值是什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 199.12,
+   "dur": 4.02,
+   "speech": "可逆的时候，用哪一组统计量反变换。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 203.32,
+   "dur": 3.23,
+   "speech": "五个问题，书里一个都没答。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 206.73,
+   "dur": 4.48,
+   "speech": "表三点一里，六个模型的归一化各不相同。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 211.39,
+   "dur": 5.17,
+   "speech": "TSMixer、RLinear、TimeMixer，用可逆实例归一化。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 216.74,
+   "dur": 2.56,
+   "speech": "NLinear 用 NowNorm。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 219.48,
+   "dur": 2.94,
+   "speech": "SparseTSF 用 MeanNorm。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 222.6,
+   "dur": 2.44,
+   "speech": "DLinear 什么都不用。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 225.22,
+   "dur": 3.71,
+   "speech": "FITS 用实例归一化，但没有仿射。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 229.11,
+   "dur": 2.8,
+   "speech": "六行表格，五种做法。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 232.09,
+   "dur": 3.11,
+   "speech": "书里没有一段文字比较它们。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 235.38,
+   "dur": 3.23,
+   "speech": "所以这一集要补两件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 238.79,
+   "dur": 4.17,
+   "speech": "第一，把三种归一化写成能跑的公式。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 243.13,
+   "dur": 3.61,
+   "speech": "第二，找一个能把它们分开的实验。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 246.93,
+   "dur": 2.77,
+   "speech": "实验的答案不在公式里。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 249.88,
+   "dur": 2.58,
+   "speech": "答案在数据的漂移里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 255.86,
+   "dur": 4.55,
+   "speech": "先写公式。书上没有，按原论文实现。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 260.59,
+   "dur": 3.61,
+   "speech": "RevIN，对窗口里的四十八个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 264.38,
+   "dur": 3.95,
+   "speech": "先减窗口均值，再除窗口标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 268.51,
+   "dur": 4.81,
+   "speech": "标准差里加一个极小值 eps，取一万分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 273.51,
+   "dur": 2.53,
+   "speech": "这里和第二章不一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 276.22,
+   "dur": 5.87,
+   "speech": "第二章是 sigma 加 eps，这里是先平方再开方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 282.27,
+   "dur": 4.48,
+   "speech": "只在方差接近零的时候，两个口径才有区别。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 286.93,
+   "dur": 3.61,
+   "speech": "仿射变换，乘 gamma 加 beta。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 290.72,
+   "dur": 3.78,
+   "speech": "两个参数都可学，本仓默认关掉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 294.69,
+   "dur": 4.17,
+   "speech": "关掉的时候，gamma 等于一，beta 等于零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 299.03,
+   "dur": 4.05,
+   "speech": "反变换，乘回标准差，加回均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 303.26,
+   "dur": 3.37,
+   "speech": "NowNorm，减窗口最后一个值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 306.81,
+   "dur": 2.46,
+   "speech": "一个数，没有除法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 309.45,
+   "dur": 3.06,
+   "speech": "反变换，加回同一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 312.7,
+   "dur": 4.12,
+   "speech": "它假设窗口的水平位置，由末值代表。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 316.99,
+   "dur": 4.5,
+   "speech": "做预测时，这句话等于说：明天从今天出发。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 321.68,
+   "dur": 3.61,
+   "speech": "MeanNorm，减窗口均值，不除。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 325.47,
+   "dur": 3.28,
+   "speech": "反变换，加回同一个均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 328.93,
+   "dur": 3.3,
+   "speech": "它假设窗口的中心是均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 332.41,
+   "dur": 4.05,
+   "speech": "序列往上走的时候，均值在窗口中间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 336.64,
+   "dur": 2.56,
+   "speech": "末值在窗口右端。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 339.37,
+   "dur": 3.88,
+   "speech": "两个基准之间，差半个窗口的漂移量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 343.43,
+   "dur": 4.5,
+   "speech": "骨架统一：减基准，过线性层，再加回。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 348.11,
+   "dur": 4.48,
+   "speech": "线性层共享权重，四十八进，二十四出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 352.77,
+   "dur": 2.73,
+   "speech": "参数一千一百七十六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 355.68,
+   "dur": 3.66,
+   "speech": "一千一百五十二个权重，二十四个偏置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 359.52,
+   "dur": 3.4,
+   "speech": "训练协议书里没有，本仓写死。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 363.1,
+   "dur": 4.09,
+   "speech": "Adam，学习率五千分之一，批三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 367.37,
+   "dur": 2.97,
+   "speech": "四十轮上限，耐心八轮。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 370.52,
+   "dur": 3.33,
+   "speech": "随机种子固定，结果可复跑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 374.02,
+   "dur": 3.06,
+   "speech": "每一窗的基准只用输入段算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 377.27,
+   "dur": 3.76,
+   "speech": "不看标签，这一条是防泄漏的底线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 384.42,
+   "dur": 2.99,
+   "speech": "先看基准在窗口里的位置。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 387.59,
+   "dur": 4.96,
+   "speech": "一条带漂移的序列，输入四十八点，预测二十四点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 392.73,
+   "dur": 3.64,
+   "speech": "窗口均值在中间，像一条水平线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 396.55,
+   "dur": 2.87,
+   "speech": "末值在右端，是一个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 399.6,
+   "dur": 3.78,
+   "speech": "序列往上走，均值落后于末值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 403.56,
+   "dur": 4.5,
+   "speech": "用均值当基准，模型要自己补上这段差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 408.24,
+   "dur": 4,
+   "speech": "用末值当基准，这段差已经减掉了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 412.42,
+   "dur": 5.13,
+   "speech": "合成序列，斜率零点零五，加一个周期，加噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 417.72,
+   "dur": 4.53,
+   "speech": "每一步漂移零点零五，四十八步就是两点四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 422.43,
+   "dur": 3.37,
+   "speech": "二十四步预测的平均绝对误差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 425.98,
+   "dur": 2.51,
+   "speech": "NowNorm 零点九七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 428.67,
+   "dur": 2.53,
+   "speech": "MeanNorm 两点零九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 431.39,
+   "dur": 2.15,
+   "speech": "差二点一五倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 433.72,
+   "dur": 3.81,
+   "speech": "把趋势项去掉，只留周期和噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 437.7,
+   "dur": 3.95,
+   "speech": "同样的两个模型，同一组参数初始化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 441.83,
+   "dur": 2.37,
+   "speech": "NowNorm 一点零零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 444.38,
+   "dur": 2.37,
+   "speech": "MeanNorm 零点五二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 446.93,
+   "dur": 2.27,
+   "speech": "差一点九三倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 449.38,
+   "dur": 2.05,
+   "speech": "排序翻转了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 451.61,
+   "dur": 3.93,
+   "speech": "唯一变的，是基准跟不跟得上序列。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 455.72,
+   "dur": 2.65,
+   "speech": "这就是这一集的核心。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 458.55,
+   "dur": 3.25,
+   "speech": "归一化选的是假设，不是精度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 461.98,
+   "dur": 3.23,
+   "speech": "换成真实数据，上证指数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 465.39,
+   "dur": 3.9,
+   "speech": "三千八百六十七个交易日，切出窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 469.48,
+   "dur": 3.01,
+   "speech": "三条曲线随视野上升。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 472.67,
+   "dur": 2.73,
+   "speech": "第一点，NowNorm 最低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 475.58,
+   "dur": 3.33,
+   "speech": "到第二十四步，七十六点五五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 479.08,
+   "dur": 2.97,
+   "speech": "RevIN 八十二点二五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 482.23,
+   "dur": 2.68,
+   "speech": "MeanNorm 八十四点八八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 485.09,
+   "dur": 4.09,
+   "speech": "顺序是 NowNorm、RevIN、MeanNorm。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 489.36,
+   "dur": 4.29,
+   "speech": "指数比合成序列更平滑，漂移也更持续。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 497.05,
+   "dur": 3.45,
+   "speech": "代码拆成三个文件，骨架一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 500.68,
+   "dur": 3.23,
+   "speech": "Revin.hs，核心三行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 504.09,
+   "dur": 2.92,
+   "speech": "先算窗口均值和方差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 507.18,
+   "dur": 3.57,
+   "speech": "除以根号下方差加 eps。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 510.93,
+   "dur": 3.78,
+   "speech": "反变换，乘标准差，加均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 514.89,
+   "dur": 3.49,
+   "speech": "仿射是可选项，默认 Nothing。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 518.57,
+   "dur": 3.88,
+   "speech": "关闭时 gamma 等于一，beta 等于零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 522.62,
+   "dur": 3.4,
+   "speech": "配置和函数分开，测试好写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 526.2,
+   "dur": 4.6,
+   "speech": "NowNorm.hs 和 MeanNorm.hs 各一个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 530.98,
+   "dur": 3.47,
+   "speech": "减基准，跑线性层，加回来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 534.63,
+   "dur": 2.7,
+   "speech": "差别只有 base 怎么算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 537.51,
+   "dur": 3.01,
+   "speech": "lastBase 取最后一个元素。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 540.71,
+   "dur": 3.01,
+   "speech": "meanBase 就是窗口均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 543.9,
+   "dur": 2.85,
+   "speech": "两行代码，换一个假设。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 546.93,
+   "dur": 3.81,
+   "speech": "训练用上一集的 TrainLoss，没有改。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 550.91,
+   "dur": 4.14,
+   "speech": "线性层共享权重，四十八乘二十四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 555.23,
+   "dur": 2.63,
+   "speech": "参数一千一百七十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 558.04,
+   "dur": 3.78,
+   "speech": "测试六十七组，九百六十五个断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 562.01,
+   "dur": 2.44,
+   "speech": "这一集加了二十个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 564.62,
+   "dur": 4.31,
+   "speech": "RevIN 八条，NowNorm 六条，MeanNorm 六条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 569.11,
+   "dur": 5.01,
+   "speech": "每个模块都测三件事：往返、平移、常数窗。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 574.3,
+   "dur": 2.77,
+   "speech": "往返必须精确到零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 577.25,
+   "dur": 2.97,
+   "speech": "不是小于阈值，是等于零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 580.4,
+   "dur": 4.38,
+   "speech": "因为减掉再加回来，浮点上没有理由留误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 588.18,
+   "dur": 2.8,
+   "speech": "验证第一层，恒等式。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 591.16,
+   "dur": 2.17,
+   "speech": "四个数都是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 593.51,
+   "dur": 2.73,
+   "speech": "RevIN 往返，零。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 596.42,
+   "dur": 2.44,
+   "speech": "仿射往返，零。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 599.04,
+   "dur": 3.61,
+   "speech": "NowNorm 平移零，MeanNorm 单位层零。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 602.83,
+   "dur": 3.54,
+   "speech": "常数窗，五个五，输出全零。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 606.55,
+   "dur": 2.73,
+   "speech": "反变换还原五点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 609.46,
+   "dur": 4.09,
+   "speech": "末值定位，末值三点零，输出三点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 613.73,
+   "dur": 3.11,
+   "speech": "第二层，eps 与仿射。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 617.02,
+   "dur": 4.19,
+   "speech": "方差一，eps 零，还原精确到一。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 621.39,
+   "dur": 4.05,
+   "speech": "eps 一万分之一，差就是一万分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 625.62,
+   "dur": 2.85,
+   "speech": "这个数小到不影响读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 628.64,
+   "dur": 2.8,
+   "speech": "但让零方差不出无穷。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 631.62,
+   "dur": 3.83,
+   "speech": "仿射默认关，gamma 等于零也不炸。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 635.63,
+   "dur": 4.14,
+   "speech": "因为反变换先乘标准差，再乘 gamma。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 639.95,
+   "dur": 2.37,
+   "speech": "第三层，量纲。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 642.5,
+   "dur": 4.21,
+   "speech": "茅台均价五千五百九十六，工行八点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 646.89,
+   "dur": 2.51,
+   "speech": "比六百五十八点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 649.58,
+   "dur": 4.65,
+   "speech": "不归一化，茅台二十四步误差九百六十四元。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 654.41,
+   "dur": 2.99,
+   "speech": "归一化后，四百八十二元。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 657.58,
+   "dur": 3.47,
+   "speech": "工行不归一化，零点九五元。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 661.23,
+   "dur": 2.97,
+   "speech": "归一化后，零点三六元。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 664.38,
+   "dur": 4.79,
+   "speech": "归一化之后，两个序列在模型眼里几乎一样大。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 669.35,
+   "dur": 2.94,
+   "speech": "输入比，零点九九五。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 672.47,
+   "dur": 3.06,
+   "speech": "误差还是差三个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 675.71,
+   "dur": 2.85,
+   "speech": "因为量纲最后被加回来了。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 678.74,
+   "dur": 2.75,
+   "speech": "第四层，合成对比。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 681.67,
+   "dur": 4.84,
+   "speech": "漂移时，NowNorm 零点九七，MeanNorm 两点零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 686.68,
+   "dur": 4.93,
+   "speech": "无趋势时，NowNorm 一点零零，MeanNorm 零点五二。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 691.8,
+   "dur": 2.68,
+   "speech": "两组数，排序相反。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 694.66,
+   "dur": 2.51,
+   "speech": "这不是模型变强了。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 697.35,
+   "dur": 2.61,
+   "speech": "是假设对上了数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 700.13,
+   "dur": 3.13,
+   "speech": "第五层，真实指数和总账。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 703.45,
+   "dur": 6.01,
+   "speech": "指数二十四步，七十六点五五、八十二点二五、八十四点八八。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 709.64,
+   "dur": 4.33,
+   "speech": "成交量上，两种归一化只差百分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 714.15,
+   "dur": 4.21,
+   "speech": "归一化不解决可预测性，只解决尺度。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 718.55,
+   "dur": 2.94,
+   "speech": "二十八项检查，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 721.67,
+   "dur": 3.54,
+   "speech": "六十七组套件，九百六十五个断言。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 728.61,
+   "dur": 2.8,
+   "speech": "边界三条，先说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 731.59,
+   "dur": 3.11,
+   "speech": "第一，归一化不创造信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 734.88,
+   "dur": 4.24,
+   "speech": "减掉基准，也减掉了一部分可预测的信号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 739.3,
+   "dur": 4.33,
+   "speech": "成交量上，两种归一化只差百分之一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 743.81,
+   "dur": 2.53,
+   "speech": "这是最直接的证据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 746.52,
+   "dur": 3.57,
+   "speech": "第二，模型是单变量线性层。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 750.27,
+   "dur": 4.14,
+   "speech": "四十八个输入，二十四个输出，没有非线性。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 754.59,
+   "dur": 3.04,
+   "speech": "结论只在这个容量下成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 757.81,
+   "dur": 3.45,
+   "speech": "第三，四十轮不是收敛保证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 761.44,
+   "dur": 4,
+   "speech": "早停耐心八轮，只说明这份数据够用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 765.61,
+   "dur": 2.58,
+   "speech": "还有两处口径偏差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 768.38,
+   "dur": 4.02,
+   "speech": "简报里的手算例子写四，实际是一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 772.58,
+   "dur": 3.59,
+   "speech": "因为一减三乘一加三，等于一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 776.35,
+   "dur": 3.35,
+   "speech": "简报里的量纲写三百二十倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 779.88,
+   "dur": 4.67,
+   "speech": "那是未复权口径，后复权是六百五十八点七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 784.73,
+   "dur": 3.11,
+   "speech": "两处都记在自授条目里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 788.02,
+   "dur": 2.22,
+   "speech": "最后五条不做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 790.42,
+   "dur": 3.06,
+   "speech": "不做多变量，不做非线性。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 793.66,
+   "dur": 3.21,
+   "speech": "不做多种子，不做超参搜索。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 797.05,
+   "dur": 2.73,
+   "speech": "不拿测试集调归一化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 799.95,
+   "dur": 3.47,
+   "speech": "所有数字都能在证据包里查到。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 806.82,
+   "dur": 2.41,
+   "speech": "收尾，三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 809.41,
+   "dur": 4.19,
+   "speech": "第一，归一化是模型的一部分，不是预处理。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 813.78,
+   "dur": 3.78,
+   "speech": "第二，减什么，就是选什么不变量。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 817.75,
+   "dur": 3.95,
+   "speech": "第三，漂移选末值，平稳选均值。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 821.88,
+   "dur": 3.09,
+   "speech": "下一集，线性模型复兴。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 825.14,
+   "dur": 3.76,
+   "speech": "共享权重线性、DLinear、FITS。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 829.08,
+   "dur": 2.68,
+   "speech": "参数少，结构简单。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 831.94,
+   "dur": 4.05,
+   "speech": "归一化这一层已经铺好，下一集直接用。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 836.16,
+   "dur": 3.93,
+   "speech": "数字、代码、证据，都在仓库里。"
+  }
+ ]
+}
