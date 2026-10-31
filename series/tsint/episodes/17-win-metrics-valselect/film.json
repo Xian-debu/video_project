@@ -44,5 +44,8 @@
     "docs/plan.md"
   ],
   "notes": "unit: ch3-win-metrics-valselect",
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete",
+  "publish": {
+    "coverFrame": 3660
+  }
 }
