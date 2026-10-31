@@ -1,0 +1,1758 @@
+{
+ "entry": "src/tsint-11-rnn-lstm-gru/script.ts",
+ "fps": 30,
+ "totalSec": 1187.06,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 130.03
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 130.03,
+   "dur": 147.74
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 277.77,
+   "dur": 136.05
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 413.82,
+   "dur": 154.28
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 568.1,
+   "dur": 153.39
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 721.49,
+   "dur": 222.01
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 943.5,
+   "dur": 149.98
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1093.48,
+   "dur": 93.58
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.48,
+   "speech": "上一集，注意力让每个位置自己决定看哪里。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 6.23,
+   "dur": 4.26,
+   "speech": "它没有任何状态，每次都要看整条序列。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 11.04,
+   "dur": 4.53,
+   "speech": "这一集换一种做法：把时间压缩进一个向量里。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 16.12,
+   "dur": 5.2,
+   "speech": "每走一步，就把新的输入揉进这个状态，再往下传。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 21.86,
+   "dur": 3.49,
+   "speech": "这就是循环神经网络，r n n。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 25.91,
+   "dur": 4.07,
+   "speech": "它把整段历史压成一个隐藏状态 h。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 30.53,
+   "dur": 4,
+   "speech": "代价是：梯度要沿时间一步一步回传。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 35.08,
+   "dur": 4.74,
+   "speech": "书里给了三个式子，式二点四九到二点六一。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 40.37,
+   "dur": 4.6,
+   "speech": "h t 等于 sigma 乘 w x h 乘 x t，"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 45.52,
+   "dur": 4.84,
+   "speech": "再加 w h h 乘 h t 减一，再加偏置。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 50.9,
+   "dur": 4.14,
+   "speech": "一层就是一次线性变换，加一次非线性。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 55.6,
+   "dur": 5.15,
+   "speech": "LSTM 把这一步拆成四个门，外加一条 cell 通路。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 61.3,
+   "dur": 3.66,
+   "speech": "GRU 拆成两个门，参数更少。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 65.51,
+   "dur": 6.47,
+   "speech": "三个结构，参数量分别是二百六十五、一千零二十一、七百六十九。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 72.53,
+   "dur": 5.63,
+   "speech": "差别不在谁更先进，而在梯度沿时间回传时走哪条路。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 78.71,
+   "dur": 2.94,
+   "speech": "这一集要钉死四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 82.2,
+   "dur": 5.03,
+   "speech": "第一个，零点五的十九次方，一点九乘十的负六次方。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 87.78,
+   "dur": 4.69,
+   "speech": "第二个，零点九九九的二十次方，还有零点九八。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 93.02,
+   "dur": 4.29,
+   "speech": "第三个，两者之比，五十一万三千九百倍。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 97.86,
+   "dur": 6.28,
+   "speech": "第四个，三者的参数量，二百六十五、一千零二十一、七百六十九。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 104.69,
+   "dur": 3.64,
+   "speech": "前三个是解析值，和训练无关。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 108.88,
+   "dur": 2.51,
+   "speech": "第四个标出了代价。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 111.94,
+   "dur": 4.21,
+   "speech": "第四个数字后面还有一个实验：延迟复制。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 116.7,
+   "dur": 3.76,
+   "speech": "三个结构、五个延迟、十五次训练。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 121.01,
+   "dur": 2.7,
+   "speech": "结果比公式难听得多。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 124.26,
+   "dur": 3.57,
+   "speech": "先说梯度为什么会在时间里消失。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 131.23,
+   "dur": 2.34,
+   "speech": "先把梯度写出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 134.12,
+   "dur": 4.09,
+   "speech": "损失对 h 零的导数，是一串偏导连乘。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 138.77,
+   "dur": 5.39,
+   "speech": "每一步贡献一个 w h h，再乘一个激活函数的导数。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 144.71,
+   "dur": 3.45,
+   "speech": "十九步，就是十九个因子连乘。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 148.7,
+   "dur": 4.81,
+   "speech": "取 w h h 等于零点五，导数取上界一。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 154.07,
+   "dur": 4.41,
+   "speech": "零点五乘十九次，一点九乘十的负六次方。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 159.02,
+   "dur": 4.62,
+   "speech": "这意味着：十九步以前的输入，几乎推不动参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 164.19,
+   "dur": 4.89,
+   "speech": "反过来，w h h 大于一，连乘会指数爆炸。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 169.63,
+   "dur": 4.55,
+   "speech": "书里只写了一句话，梯度指数衰减或者爆炸。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 174.73,
+   "dur": 3.83,
+   "speech": "没有任何数字，也没有任何训练配方。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 179.11,
+   "dur": 4.45,
+   "speech": "所以这一集的每个超参，都是我们自己定的。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 184.11,
+   "dur": 2.37,
+   "speech": "第二个问题更麻烦。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 187.03,
+   "dur": 3.35,
+   "speech": "LSTM 加了一条 cell 通路，"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 190.93,
+   "dur": 4.81,
+   "speech": "c t 等于 f 乘 c t 减一，加上 i 乘 c 波浪。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 196.29,
+   "dur": 4,
+   "speech": "只看这条加法路径，梯度不用乘矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 200.84,
+   "dur": 5.1,
+   "speech": "遗忘门取零点九九九，二十步之后还剩零点九八。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 206.49,
+   "dur": 4.69,
+   "speech": "一边是一点九乘十的负六，一边是零点九八。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 211.74,
+   "dur": 2.34,
+   "speech": "相差五十一万倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 214.63,
+   "dur": 2.58,
+   "speech": "公式说到这里就停了。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 217.76,
+   "dur": 5.22,
+   "speech": "它没说：有了这条加法路径，网络就真能记住那么远。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 223.53,
+   "dur": 2.53,
+   "speech": "这才是我要做的实验。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 226.62,
+   "dur": 3.64,
+   "speech": "怎么判断一个循环网络记住了多少？"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 230.81,
+   "dur": 4.12,
+   "speech": "别用损失曲线，它会被短延迟任务带偏。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 235.47,
+   "dur": 3.28,
+   "speech": "我换一个任务，只测记忆本身。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 239.3,
+   "dur": 4.98,
+   "speech": "序列四十一步，每步只给一个符号，正一或者负一。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 244.83,
+   "dur": 4.5,
+   "speech": "标签不是最后一步，而是往回第 d 步的那个符号。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 249.89,
+   "dur": 3.83,
+   "speech": "d 等于一，就是把上一个符号抄下来。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 254.27,
+   "dur": 4.17,
+   "speech": "d 等于四十，就是记住四十步以前的东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 258.98,
+   "dur": 3.93,
+   "speech": "模型要在最后一步，把那个符号报出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 263.46,
+   "dur": 2.8,
+   "speech": "乱猜的概率是零点五。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 266.81,
+   "dur": 5.03,
+   "speech": "三个模型、五个延迟、十五次训练，同一套超参。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 272.39,
+   "dur": 3.18,
+   "speech": "看谁在哪个延迟上掉下来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 278.97,
+   "dur": 2.92,
+   "speech": "先看三条路，不用数字。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 282.44,
+   "dur": 2.34,
+   "speech": "RNN 的路是一条链。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 285.33,
+   "dur": 4.84,
+   "speech": "h 一由 h 零算出，h 二由 h 一算出。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 290.72,
+   "dur": 3.88,
+   "speech": "梯度回去，必须原路穿过每一个环节。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 295.15,
+   "dur": 3.57,
+   "speech": "每一环都乘一个矩阵和一个导数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 299.26,
+   "dur": 2.8,
+   "speech": "链越长，连乘越多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 302.61,
+   "dur": 4.14,
+   "speech": "这就是消失的来源，不是 bug，是结构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 307.3,
+   "dur": 3.23,
+   "speech": "LSTM 的路多了一条辅路。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 311.08,
+   "dur": 5.05,
+   "speech": "cell 状态 c 沿着时间走，只做加法和逐元素乘。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 316.69,
+   "dur": 5.61,
+   "speech": "c t 等于 f t 乘 c t 减一，加上 i t 乘 c 波浪 t。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 322.84,
+   "dur": 3.4,
+   "speech": "梯度沿 c 回去，只乘一个 f。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 326.79,
+   "dur": 3.93,
+   "speech": "f 接近一，信号就能一直传下去。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 331.27,
+   "dur": 4.07,
+   "speech": "门是旋钮：f 管忘多少，i 管记多少。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 335.89,
+   "dur": 3.85,
+   "speech": "输出门 o 再决定，这一刻往外露多少。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 340.29,
+   "dur": 5.13,
+   "speech": "所以 LSTM 的秘密不在门多，而在这条加法路径。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 345.97,
+   "dur": 2.7,
+   "speech": "GRU 是它的简化版。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 349.22,
+   "dur": 3.97,
+   "speech": "它把 cell 和隐藏状态合成一个 h。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 353.74,
+   "dur": 6.18,
+   "speech": "h t 等于一减 z 乘 h t 减一，加上 z 乘 h 波浪 t。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 360.47,
+   "dur": 5.77,
+   "speech": "z 是插值系数：接近零就原样保留，接近一就整段改写。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 366.8,
+   "dur": 4.53,
+   "speech": "r 是重置门，决定用多少旧状态去算候选。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 371.87,
+   "dur": 5.53,
+   "speech": "两个门，一组候选，参数比 LSTM 少四分之一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 377.96,
+   "dur": 3.54,
+   "speech": "三条路放在一起，差别只有一句："
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 382.05,
+   "dur": 5.13,
+   "speech": "梯度回去时，乘的是矩阵，还是乘一个接近一的标量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 387.73,
+   "dur": 3.9,
+   "speech": "这句话解释了公式，但它解释不了训练。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 392.18,
+   "dur": 3.45,
+   "speech": "因为 f 不是给定的，是学出来的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 396.17,
+   "dur": 6.18,
+   "speech": "f 能不能学到零点九九九，要看数据、看预算、看初始化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 402.91,
+   "dur": 4.41,
+   "speech": "所以直觉只能提出假设，判决要靠实验。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 407.86,
+   "dur": 3.76,
+   "speech": "实验之前，先把三个式子摆清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 415.02,
+   "dur": 2.94,
+   "speech": "三个模块共用一套配置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 418.51,
+   "dur": 3.83,
+   "speech": "输入八维，隐藏十二维，输出一维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 422.89,
+   "dur": 5.56,
+   "speech": "激活函数用 tanh，输出层是恒等，初值 h 零等于零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 429,
+   "dur": 2.8,
+   "speech": "RNN 的参数分两块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 432.35,
+   "dur": 4.79,
+   "speech": "循环体：w x h 是十二乘八，九十六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 437.69,
+   "dur": 4.53,
+   "speech": "w h h 是十二乘十二，一百四十四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 442.76,
+   "dur": 3.49,
+   "speech": "偏置十二个，合起来二百五十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 446.81,
+   "dur": 4.65,
+   "speech": "输出头再乘 w h y 和 b y，十三个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 452,
+   "dur": 2.32,
+   "speech": "总共二百六十五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 454.87,
+   "dur": 3.13,
+   "speech": "这是后面所有参数比的基准。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 458.56,
+   "dur": 3.71,
+   "speech": "LSTM 把这一步拆成四个门。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 462.82,
+   "dur": 5.7,
+   "speech": "遗忘门、输入门、输出门、候选，四个都用同一个形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 469.07,
+   "dur": 5.34,
+   "speech": "每个门的权重都是十二乘八，加十二乘十二，再加十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 474.96,
+   "dur": 5.68,
+   "speech": "四个门共享一套四 H 的布局，二百五十二乘四，一千零八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 481.19,
+   "dur": 3.25,
+   "speech": "加上输出头，一千零二十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 484.99,
+   "dur": 2.46,
+   "speech": "这里有个坑要说明。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 488,
+   "dur": 4.38,
+   "speech": "书里的式二点五四，只有编号，式体是空的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 492.94,
+   "dur": 4,
+   "speech": "渲染出来的页面，那一行确实是空白。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 497.48,
+   "dur": 4.86,
+   "speech": "所以四个门的具体写法，是我们按前后文补的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 502.9,
+   "dur": 5.56,
+   "speech": "门顺序取 f、i、o、候选，偏置拼成四段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 509,
+   "dur": 3.81,
+   "speech": "遗忘门的偏置初值取一，其余取零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 513.36,
+   "dur": 3.64,
+   "speech": "这不是书上给的，是本仓的选择。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 517.55,
+   "dur": 3.61,
+   "speech": "SELF-AUTH 第二十四条记录了这件事。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 521.71,
+   "dur": 2.63,
+   "speech": "GRU 只有两个门。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 524.89,
+   "dur": 4.19,
+   "speech": "更新门 z，重置门 r，再加一个候选。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 529.63,
+   "dur": 4.24,
+   "speech": "三组权重，每组二百五十二，七百五十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 534.42,
+   "dur": 3.11,
+   "speech": "加输出头，七百六十九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 538.08,
+   "dur": 4.89,
+   "speech": "注意重置门只乘在旧状态上，不是乘在候选上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 543.52,
+   "dur": 3.4,
+   "speech": "顺序错了，数值会完全不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 547.46,
+   "dur": 4.09,
+   "speech": "三个结构，输出头完全一样，都是十三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 552.11,
+   "dur": 3.83,
+   "speech": "所以参数差别全部在循环体里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 556.49,
+   "dur": 5.73,
+   "speech": "这是画面上 252、1008、756 三个数的来源。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 562.76,
+   "dur": 3.13,
+   "speech": "式子就位，接下来是代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 569.3,
+   "dur": 5.2,
+   "speech": "三个模块都是手写前向和反向，没有用自动微分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 575.05,
+   "dur": 4.84,
+   "speech": "前向很直白：按时间扫一遍，存下每一步的中间量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 580.44,
+   "dur": 4.12,
+   "speech": "反向就是 BPTT，沿时间倒着走。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 585.1,
+   "dur": 3.61,
+   "speech": "每一步，先把输出头的梯度算出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 589.27,
+   "dur": 2.77,
+   "speech": "再把 dh 传回上一步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 592.59,
+   "dur": 2.46,
+   "speech": "这里我踩了第一个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 595.6,
+   "dur": 4.38,
+   "speech": "最后一步的 dh，不该再乘一次 tanh 的导数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 600.54,
+   "dur": 3.73,
+   "speech": "多乘了这一次，梯度整体小一个因子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 604.82,
+   "dur": 3.97,
+   "speech": "一步的时候，解析值和数值差百分之四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 609.34,
+   "dur": 4.98,
+   "speech": "改成从输出头直接取，误差降到十的负九次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 614.88,
+   "dur": 2.46,
+   "speech": "第二个坑在优化器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 617.89,
+   "dur": 4.84,
+   "speech": "Adam 的偏置校正，从第零步开始时是无穷大。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 623.28,
+   "dur": 3.18,
+   "speech": "除下去，参数全变成 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 627.01,
+   "dur": 4.57,
+   "speech": "训练会安静地失败，损失全是十的十八次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 632.13,
+   "dur": 4.14,
+   "speech": "改成从第一步开始计数，训练立刻正常。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 636.82,
+   "dur": 4.79,
+   "speech": "这两个坑，都写进了模块头注释和 SELF-AUTH。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 642.16,
+   "dur": 2.44,
+   "speech": "第三个坑是舍入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 645.15,
+   "dur": 4.72,
+   "speech": "梯度检查用中心差分，步长取十的负六次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 650.42,
+   "dur": 4.45,
+   "speech": "小网络能到十的负九，大网络只能到十的负五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 655.42,
+   "dur": 4.67,
+   "speech": "所以阈值分档：RNN 十的负六，门控十的负四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 660.64,
+   "dur": 8.1,
+   "speech": "实测 RNN 九点一乘十的负八，LSTM 一点八乘十的负五，GRU 五点八乘十的负五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 669.3,
+   "dur": 3.97,
+   "speech": "都在阈值内，而且都记进了证据文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 673.82,
+   "dur": 5.63,
+   "speech": "训练用的是同一套：Adam，学习率零点零一，批量三十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 680,
+   "dur": 4.5,
+   "speech": "最多四十轮，patience 八，随机数种子四十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 685.05,
+   "dur": 5.58,
+   "speech": "初始化用 Xavier，随机数用 splitmix64，可复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 691.18,
+   "dur": 4.14,
+   "speech": "判决实验要跑十五次训练，串行太慢。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 695.88,
+   "dur": 4.65,
+   "speech": "我用 forkIO 开了十二路并行，MVar 收集结果。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 701.07,
+   "dur": 3.76,
+   "speech": "十五次训练，墙钟四分多钟跑完。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 705.38,
+   "dur": 4.67,
+   "speech": "复用性上，三个模块各自独立，不互相 import。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 710.6,
+   "dur": 5.44,
+   "speech": "参数展平、反展平、梯度展平都实现了，测试要用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 716.59,
+   "dur": 2.7,
+   "speech": "写完代码，就是验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 722.69,
+   "dur": 4.57,
+   "speech": "验证分三档：手算、门恒等式、判决实验。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 727.81,
+   "dur": 4.36,
+   "speech": "手算用最小的网络，一维输入、一维隐藏。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 732.72,
+   "dur": 5.15,
+   "speech": "RNN：权重取二，输入取零点三，乘出来零点六。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 738.42,
+   "dur": 5.39,
+   "speech": "h 等于 tanh 零点六，零点五三七零四九五六六九。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 744.36,
+   "dur": 2.85,
+   "speech": "测试里断言到最后一位。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 747.76,
+   "dur": 6.97,
+   "speech": "LSTM：权重全取零，偏置取零点五、负零点三、零点二、零点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 755.28,
+   "dur": 4.24,
+   "speech": "输入也是零，所以只剩偏置在起作用。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 760.07,
+   "dur": 7.45,
+   "speech": "f 是零点六二二四五九，i 是零点四二五五五七，o 是零点五四九八三四。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 768.07,
+   "dur": 3.35,
+   "speech": "候选是零点六零四三六八。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 771.97,
+   "dur": 4.24,
+   "speech": "c 等于 i 乘候选，零点二五七一九三。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 776.76,
+   "dur": 4.45,
+   "speech": "h 等于 o 乘 tanh c，零点一三八三七六。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 781.77,
+   "dur": 4.29,
+   "speech": "GRU：输入取零点五，旧状态取零点四。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 786.6,
+   "dur": 6.16,
+   "speech": "z 是零点五八六六，r 是零点四七零零，候选零点四三二四。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 793.31,
+   "dur": 2.89,
+   "speech": "h 是零点四一八九。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 796.75,
+   "dur": 5.29,
+   "speech": "这些值不是从程序里抄的，是先手算，再让程序对。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 802.6,
+   "dur": 2.63,
+   "speech": "第二条，门恒等式。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 805.78,
+   "dur": 4.38,
+   "speech": "sigmoid z 加 sigmoid 负 z，恒等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 810.71,
+   "dur": 4,
+   "speech": "实测最大偏差，二点二乘十的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 815.26,
+   "dur": 4.31,
+   "speech": "这就是双精度的舍入上限，等于精确成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 820.12,
+   "dur": 2.8,
+   "speech": "第三条，梯度传递率。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 823.47,
+   "dur": 4,
+   "speech": "零点五的十九次方，一点九乘十的负六。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 828.01,
+   "dur": 4.69,
+   "speech": "零点九九九的二十次方，零点九八零一八八八。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 833.26,
+   "dur": 3.16,
+   "speech": "比值五十一万三千九百零一。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 836.97,
+   "dur": 2.53,
+   "speech": "第四条，判决表。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 840.05,
+   "dur": 3.64,
+   "speech": "一步延迟，三个模型都满命中。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 844.24,
+   "dur": 6.4,
+   "speech": "五步延迟，RNN 还是一，两个门控掉到零点六九和零点六三。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 851.19,
+   "dur": 6.18,
+   "speech": "十步，RNN 掉到零点七三，门控还在零点六六、零点六三。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 857.92,
+   "dur": 7.53,
+   "speech": "二十步，RNN 回到随机的零点四八，LSTM 零点六零，GRU 零点六一。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 865.99,
+   "dur": 7.07,
+   "speech": "四十步，RNN 零点五零，LSTM 零点六一七，GRU 零点四五三。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 873.61,
+   "dur": 7.81,
+   "speech": "两个早停点要说明：RNN 在二十步只跑了十轮，LSTM 在四十步停在二十五轮。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 881.98,
+   "dur": 6.47,
+   "speech": "随机基线是零点五，一百二十八条测试的抽样标准差是零点零四四。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 889,
+   "dur": 5.75,
+   "speech": "LSTM 在四十步高出基线二点六个标准差，是弱信号。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 895.3,
+   "dur": 4.45,
+   "speech": "GRU 在四十步，落在基线一个标准差之内。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 900.3,
+   "dur": 3.9,
+   "speech": "所以不是 LSTM 学会了四十步。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 904.75,
+   "dur": 3.93,
+   "speech": "是它在四十步上，比随机稍微好一点。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 909.23,
+   "dur": 2.46,
+   "speech": "最后一步，是计数。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 912.24,
+   "dur": 6.37,
+   "speech": "证据程序二十二项检查，零失败，其中十七项手工、五项数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 919.17,
+   "dur": 6.69,
+   "speech": "本集新增四十一条断言，RNN 十三、LSTM 十五、GRU 十三。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 926.4,
+   "dur": 4.26,
+   "speech": "全仓五十组、七百一十三条断言，全绿。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 931.21,
+   "dur": 4.05,
+   "speech": "三档验证放在一起，结论可以写下来了。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 935.81,
+   "dur": 5.49,
+   "speech": "解析值说明路径对不对，判决表说明这条路径值多少钱。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 944.7,
+   "dur": 3.37,
+   "speech": "先说最后一个实验，真实数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 948.62,
+   "dur": 5.34,
+   "speech": "从行情库里导出 120 只票，最近 250 个交易日。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 954.52,
+   "dur": 3.85,
+   "speech": "前复权，剔掉停牌，一共三万行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 958.92,
+   "dur": 5.32,
+   "speech": "精确等于零的收益，有八百五十五个，占百分之二点八五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 964.79,
+   "dur": 3.06,
+   "speech": "这些是平盘日，不是停牌日。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 968.4,
+   "dur": 3.59,
+   "speech": "停牌那天根本没有行，不是零收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 972.54,
+   "dur": 4.53,
+   "speech": "这句话很重要，处理面板数据时最容易错。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 977.62,
+   "dur": 3.28,
+   "speech": "算滞后一到十阶的自相关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 981.44,
+   "dur": 4.09,
+   "speech": "每只票先算自己的，再取横截面平均。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 986.09,
+   "dur": 4.93,
+   "speech": "十个数字全都很小，最大的是负零点零四七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 991.57,
+   "dur": 3.25,
+   "speech": "平均绝对值零点零一七六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 995.38,
+   "dur": 6.16,
+   "speech": "两百五十个点的抽样带，是二除以根号二百五十，零点一二六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1002.08,
+   "dur": 5.05,
+   "speech": "也就是说，真实日收益几乎没有可被记忆的线性结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1007.69,
+   "dur": 2.85,
+   "speech": "这不是说循环网络没用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1011.08,
+   "dur": 5.41,
+   "speech": "它说的是：在这一类数据上，记忆本身可能没有东西可记。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1017.05,
+   "dur": 3.45,
+   "speech": "边界要说三条，一条一条来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1021.04,
+   "dur": 2.73,
+   "speech": "第一条，是预算问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1024.32,
+   "dur": 5.39,
+   "speech": "一百二十八条训练样本、四十轮上限，是刻意的小预算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1030.26,
+   "dur": 4.91,
+   "speech": "书里没有训练配方，我们只能选一套，并且说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1035.72,
+   "dur": 4.72,
+   "speech": "换成一千条样本、几百轮，判决表可能会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1040.99,
+   "dur": 2.34,
+   "speech": "第二条，是任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1043.88,
+   "dur": 4.6,
+   "speech": "延迟复制是纯记忆任务，没有任何结构可利用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1049.03,
+   "dur": 5.34,
+   "speech": "真实序列有季节、有趋势、有跳跃，比它容易也复杂。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1054.92,
+   "dur": 2.51,
+   "speech": "第三条，是指标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1057.98,
+   "dur": 3.78,
+   "speech": "命中率只说明符号有没有被记住。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1062.31,
+   "dur": 4.67,
+   "speech": "它不说明幅度、不说明时序、不说明预测能力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1067.53,
+   "dur": 4.21,
+   "speech": "所以这一集不能说 LSTM 更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1072.3,
+   "dur": 6.21,
+   "speech": "只能说：同样的预算下，加法路径在长延迟上留住了更多信号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1079.05,
+   "dur": 3.52,
+   "speech": "这是结构的优势，不是训练的保证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1083.12,
+   "dur": 4.38,
+   "speech": "要它变成保证，得靠数据量和训练配方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1088.05,
+   "dur": 3.23,
+   "speech": "这恰恰是书里没写的那部分。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1094.68,
+   "dur": 2.61,
+   "speech": "四个数字，收个尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1097.84,
+   "dur": 4.26,
+   "speech": "一点九乘十的负六，是零点五乘十九次。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1102.65,
+   "dur": 4.09,
+   "speech": "零点九八，是零点九九九乘二十次。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1107.29,
+   "dur": 3.06,
+   "speech": "五十一万倍，是两者之比。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1110.9,
+   "dur": 5.53,
+   "speech": "二百六十五、一千零二十一、七百六十九，是三者参数量。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1116.99,
+   "dur": 4.93,
+   "speech": "判决表补上一句：长延迟上，三者都远没学会。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1122.47,
+   "dur": 3.35,
+   "speech": "这一集真正想说的，是一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1126.37,
+   "dur": 5.2,
+   "speech": "循环结构的差别，在梯度沿时间回传时走哪条路。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1132.12,
+   "dur": 4.24,
+   "speech": "乘法链会衰减，加法路径能保住信号。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1136.91,
+   "dur": 3.35,
+   "speech": "但保住信号，不等于学会记住。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1140.81,
+   "dur": 3.83,
+   "speech": "中间隔着数据、预算和初始化。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1145.19,
+   "dur": 2.8,
+   "speech": "这句话对工程更有用。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1148.54,
+   "dur": 3.35,
+   "speech": "短延迟上，RNN 便宜又快。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1152.44,
+   "dur": 4.48,
+   "speech": "长延迟上，没有谁便宜，只有谁掉得慢一点。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1157.46,
+   "dur": 2.44,
+   "speech": "下一集换一个维度。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1160.45,
+   "dur": 3.3,
+   "speech": "前面十集，时间都是那条线。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1164.3,
+   "dur": 3.73,
+   "speech": "可是很多序列不只有时间，还有空间。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1168.59,
+   "dur": 3.66,
+   "speech": "卷积核能不能定义在图结构上？"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1172.8,
+   "dur": 4.26,
+   "speech": "图卷积，把邻接矩阵变成卷积的骨架。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1177.61,
+   "dur": 3.9,
+   "speech": "下一集，卷积网络与图卷积网络。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1182.06,
+   "dur": 2.8,
+   "speech": "感谢观看，下一集见。"
+  }
+ ]
+}
