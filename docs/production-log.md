@@ -171,4 +171,16 @@
 - 偏差: 计划 23 min，实做 21.65 min（−1.35 min）；37 页；旁白 294 条、语音 1,011 s；证据 55 条
 - 备注: ch02 第六集；下一步 E08 `adf-shifting-transition`（冷门三指标：ADF/漂移性/转移性）。**E04 bed 1560 s 仍够 E08 的 1440 s；超过 1560 s 再重建**
 
+## E08 adf-shifting-transition — 2026-10-31
+- ts-base: 69e2805（Adf/Shifting/Transition 三模块 + 55 断言，总套件 605）→ a4cb74c（`app/Ch08AdfEvidence.hs` + 证据数据，43 条检查 36/7）→ 345c0df（SELF-AUTH A20：ADF 回归式/滞后/Schwert/临界值、Shifting m=9 与 minmax、Transition 分箱与 2/9）
+- ts-admin: bad962c（`inventory/scripts/export_ch02_adf.py`：600519 日线 2188 行 2013-01-04–2021-12-31，ADF 取最后 250 点；002456 725 行 2019-01-02–2021-12-31；两只票的收益率符号各 250）
+- video_project: 441a015（pack/scenes/script/332 行讲稿/narration/plan）→ **f368495**（本次 delivery 提交：cover.png 133,866 B / tsint-08.srt 25,329 B / chapters / film ready + coverFrame 3693）
+- 引擎: 无（a667688；score 复用 `out/e04-score-loop-48k.wav` 1560 s、48 kHz）
+- 成片: 1,343.89 s（22:23.89），−15 LUFS，TP −2 dBFS，40,317 帧，8 场；332 条旁白，语音 1,022.3 s，字幕跨度 1.2→1341.70 s（speaking 1,138.4 s）
+- 流水线: 8 段分开渲染（reused 0 / rendered 8）；musicGain −4.5 dB、ducked 50.8%、peak −1.0 dBFS；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.64、gap_full −30.30、gap_audible −33.13、bed vs speech −9.6；flicker mean|d| 0.0218、p99 0.3902、max 9.73、cuts 7；332 cue 无一换行、最长 27 字（budget 34）；8 章；封面 frame 3693（123.10 s，open 转移性两张矩阵页：完美周期 2/3 与常数 2/9、无字幕）
+- 卡点: ① `film.json` 没写 `publish.coverFrame` 就开 make，publish 阶段按默认 180 帧出封面（纯标题黑场）；补 `coverFrame: 3693` 后单独重跑 `publish.mjs --cover-frame=3693` 再 `cp` 回 delivery；② `films.mjs sync` 会清空引擎 `data/tsint-08-…/`，每次 sync 后必须重跑 `dump_script.mjs` 再 `cp` lines.json 回 pack，否则 TTS 用的是旧时间轴；③ `script_check` 对短句报 cps 3.13–3.40（E07 同样 9 条），是 TTS 固定停顿造成的口径噪声，不是语速错误；④ 讲稿按 CPS 4.5 估 1,372.27 s、实测 1,343.89 s（−28 s），8 个场景起点整体前移，still lint 帧与封面候选全部重算
+- 返工: 讲稿一次成型 332 行；静帧 43 页末帧 lint 一轮 PASS；make 一轮 PASS；封面 8 个页末帧 + 3 个字幕间隙帧实测后取 3693（矩阵页内容最全且无字幕）；publish 重跑一次（补 coverFrame）
+- 偏差: 计划 24 min，实做 22.40 min（−1.60 min）；43 页；旁白 332 条、语音 1,022 s；证据 43 条（36 手算 / 7 数据）；断言 55（AdfSpec 30 / ShiftingSpec 11 / TransitionSpec 14），套件 605
+- 备注: ch02 第七集；下一步 E09 `mlp-and-tcn`（production_order 索引 18：先 MLP 再 TCN，同一个任务换模型）。**E04 bed 1560 s 仍够 E09 的 22–23 min；超过 1560 s 再重建**
+
 

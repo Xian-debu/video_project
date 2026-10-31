@@ -18,9 +18,9 @@
 
 ## 2. 状态（2026-10-30 18:0x 实测）
 
-- 成片 **17 / 74**：E01–E07、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **40 / 190** 模块、**550** 条断言（ch02 17 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E07 交付后）：video_project `09063b4`（delivery；docs 提交紧随）、ts-base `df5f27e`、ts-admin `a021e44`、
+- 成片 **18 / 74**：E01–E08、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **43 / 190** 模块、**605** 条断言（ch02 20 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E08 交付后）：video_project `f368495`（delivery；docs 提交紧随）、ts-base `345c0df`、ts-admin `bad962c`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -28,19 +28,20 @@
 - E05 成片 `1209.03 s / 36,271 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，309 cue、8 章、封面 1519。
 - E06 成片 `1374.73 s / 41,093 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，346 cue、8 章、封面 1450。
 - E07 成片 `1298.73 s / 38,962 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，294 cue、8 章、封面 2259。
+- E08 成片 `1343.89 s / 40,317 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，332 cue、8 章、封面 3693。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E08 `adf-shifting-transition`**（ch02 后段，24 min 以内，登记 1440 s）；
-  score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E08 ≤1560 s 直接 `--score=` 复用）。
+- 下一步入口：**E09 `mlp-and-tcn`**（production_order 索引 18，22–23 min）；score 继续复用
+  `out/e04-score-loop-48k.wav`（1560 s，E09 ≤1560 s 直接 `--score=` 复用）。
 
 ## 3. 授权（增量自授权清单）
 
 本会话新增 **A5**（见 `SELF-AUTH.md`）：按用户 2026-10-30 晚指令，**恢复全系列生产**，
 无人值守逐集推进；仍未发布 B 站、仍只到 `ready`；每集验证后提交，提交说明附本文件与 A5 引用。
-E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A19），提交 body 同时引用对应条目。
+E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A20），提交 body 同时引用对应条目。
 每个仓的每次提交都在 commit body 末尾带一行：
 
 ```
@@ -81,10 +82,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 58 集）
+## 5. 排期（production_order 剩余 56 集）
 
-E01–E07 与 E65–E74 已交付；ch02 前七集成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 min。按 `production_order` 继续：
-**E08 adf-shifting-transition** → E09 mlp-tcn → … → E64 llm-side-adapters。
+E01–E08 与 E65–E74 已交付；ch02 前八集成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 min。按 `production_order` 继续：
+**E09 mlp-and-tcn** → E10 attention-block → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -102,6 +103,11 @@ E07 冻结口径（E08 起复用）：FFT 正变换不归一化、逆变换除 N
 基展开系数书中未给（式 2.39），本仓用最小二乘（正规方程 + Cholesky），坐标先 u=t/n 再 v=2u−1；傅里叶基每谐波成对 sin/cos；错误 `BasisEmpty / Underdetermined n k / SingularDesign`；
 Patch 严格 `N = floor((L−P)/S) + 2`，**切片前末尾填 S 个最后一个值**（不补零），S=P 且截掉填充可逐位还原、S<P 重叠按出现次数平均；
 数据在 `/root/ts-base/data/episodes/07-fft-basis-patch/`（日线 730 行、5 分钟 240 根、图 2.12 合成信号）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s）。
+
+E08 冻结口径（E09 起复用）：ADF 的 τ = γ/se，**服从 DF 非标准分布**，不是 t 值；临界值用 MacKinnon 大样本三档（常数 −3.43/−2.86/−2.57，带趋势 −3.96/−3.41/−3.12），滞后 `p = floor(12(n/100)^(1/4))`（n=500→17；有效观测 234 时落地为 15），SE 用 Householder QR（不用正规方程），秩亏返回 `Left`；
+漂移性 m=9、九个不重叠窗口的中位数，minmax 用九个中位数**自身的 range**（严格单调恰 0.5，单边斜坡实测 0.4977）；
+转移性三状态 floor+clamp 分箱，M′ 行归一化（零行保零）、列方差除以 3，完美周期 2/3、常数 2/9（不是 1/9，单符号 2/9 是零行把列方差拉到 1/9 的结果）；
+数据在 `/root/ts-base/data/episodes/08-adf-shifting-transition/`（600519 2188 行取最后 250、002456 725 行、符号序列各 250）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -154,6 +160,10 @@ Patch 严格 `N = floor((L−P)/S) + 2`，**切片前末尾填 S 个最后一个
 - WSL 冷启动后 Docker 容器不自动起：`docker start haskell-ts`，再 `cabal build all`。
 - 页间淡变必须**重叠**：`Pages` 的退场 `outO` 窗口写 `[b, b+fade]`（不是 `[b−fade, b]`），否则边界帧两页同时透明、flicker 门判 blink（E07 outro frame 37684/38093 depth 5.5/5.2）；outro 等亮页的内容 Build 要早于跨页淡入（E07 提前到 `lf 0.36/0.55`）。
 - 画面标注分析点数与展示点数要分开：E07 CSV 只导合成信号前 1000 点，FFT 实际 4096 点（bin 0.244 Hz），「10 Hz 不在整格」只对 4096 点成立；标题/字幕写「分析 4096 点 · 图中前 1000 点」。
+- `film.json` 没写 `publish.coverFrame` 就开 make：publish 阶段按**默认 180 帧**出封面（纯标题黑场，E08 踩过）；补字段后单独重跑 `publish.mjs --cover-frame=N` 再 `cp` 回 delivery，比整轮 make 便宜。
+- `sync` 会清空引擎 `data/<film-id>/`：每次 sync 后必须重跑 `dump_script.mjs` 再 `cp` lines.json 回 pack，TTS 与 `make_narration.py` 都依赖它。
+- `script_check` 对短句报 cps 3.1–3.4 是 TTS 固定停顿的噪声（E07/E08 各约 9–13 条），不是语速错误，不必改稿。
+- 讲稿按 CPS 4.5 估的时长与 TTS 实测可差 ±30 s（E08：估 1,372.27 s、实测 1,343.89 s）：场景起点整体漂移，still lint 帧号、封面候选、flicker 的 cut-frames 都要按实测 lines.json 重算。
 
 ## 9. 断线恢复（60 秒）
 
