@@ -19,13 +19,20 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-12",
-  "status": "draft",
-  "narration": null,
+  "status": "producing",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_conv_data.py"
+    }
+  ],
+  "derived": [
+    "data/conv.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,9 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete",
+  "notes": "unit: ch2-conv; ch2-gcn",
+  "publish": {
+    "coverFrame": 26490
+  }
 }

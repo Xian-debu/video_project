@@ -1,0 +1,1737 @@
+{
+ "entry": "src/tsint-12-conv-and-gcn/script.ts",
+ "fps": 30,
+ "totalSec": 1117.54,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 124.99
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 124.99,
+   "dur": 152.85
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 277.84,
+   "dur": 131.06
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 408.9,
+   "dur": 139.7
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 548.6,
+   "dur": 149.09
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 697.69,
+   "dur": 186.57
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 884.26,
+   "dur": 141.29
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1025.55,
+   "dur": 91.99
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.4,
+   "speech": "前面九集，时间都是那一条线。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.15,
+   "dur": 4.05,
+   "speech": "位置就是时刻，邻居就是前后那几格。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.74,
+   "dur": 2.61,
+   "speech": "这一集换一个定义域。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.9,
+   "dur": 3.37,
+   "speech": "很多序列不只有时间，还有空间。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.82,
+   "dur": 3.66,
+   "speech": "节点之间连不连边，也是一种结构。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.04,
+   "dur": 4.72,
+   "speech": "卷积说：把邻居的信号按距离加权，加起来。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 26.3,
+   "dur": 5.03,
+   "speech": "图卷积说：邻居不再由距离决定，由邻接矩阵决定。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 31.88,
+   "dur": 2.97,
+   "speech": "同一件事，两种定义域。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 35.4,
+   "dur": 2.37,
+   "speech": "先看顺序这条线。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.32,
+   "dur": 5.05,
+   "speech": "一维核在时间上滑，每滑一格，输出一个加权和。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 43.92,
+   "dur": 3.88,
+   "speech": "核只有三个权重，却在每一个位置复用。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 48.35,
+   "dur": 2.25,
+   "speech": "再看图这张网。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 51.14,
+   "dur": 4.98,
+   "speech": "每个节点取邻居的加权均值，换成自己的新特征。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 56.68,
+   "dur": 3.97,
+   "speech": "谁是谁的邻居，全写在邻接矩阵里。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 61.2,
+   "dur": 2.56,
+   "speech": "这一集要钉四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 64.31,
+   "dur": 3.64,
+   "speech": "第一个，手算的第一个输出，负四。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 68.5,
+   "dur": 4.89,
+   "speech": "第二个，完全图上的传播子，每一行都是三分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 73.93,
+   "dur": 4.29,
+   "speech": "第三个，传播子的谱上界，零点七四三。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 78.77,
+   "dur": 5.15,
+   "speech": "第四个，行和的最大偏差，九点二乘十的负二次方。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 84.47,
+   "dur": 5.13,
+   "speech": "前三个是结构，最后一个是归一化方式留下的痕迹。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 90.14,
+   "dur": 5.97,
+   "speech": "书里给了三个式子，式二点四八，式二点六二，式二点六四。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 96.66,
+   "dur": 5.46,
+   "speech": "步长、补零、通道数、邻接怎么造，书里一个都没给。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 102.67,
+   "dur": 4.45,
+   "speech": "所以这一集的每个超参，都是我们自己定的。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 107.68,
+   "dur": 5.77,
+   "speech": "片子后面有两个实验：五十只票的真图，一组合成环图。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 114,
+   "dur": 3.37,
+   "speech": "先说书里那三个式子的不对劲。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 117.92,
+   "dur": 4.86,
+   "speech": "第一条就不对劲：它叫卷积，算的却是互相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 126.19,
+   "dur": 3.35,
+   "speech": "式二点四八，二维卷积的定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 130.09,
+   "dur": 5.99,
+   "speech": "输出的每个格子，是输入的一个窗口，按位乘核，再全部加起来。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 136.63,
+   "dur": 2.51,
+   "speech": "注意这里没有翻转。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 139.69,
+   "dur": 4.33,
+   "speech": "数学意义下的卷积，核要先转一百八十度。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 144.57,
+   "dur": 2.92,
+   "speech": "不转，得到的是互相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 148.04,
+   "dur": 5.1,
+   "speech": "书里叫它卷积，这是通行叫法，但不是严格定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 153.69,
+   "dur": 2.73,
+   "speech": "深度学习框架也一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 156.97,
+   "dur": 3.59,
+   "speech": "那个卷积层，实现的是互相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 161.11,
+   "dur": 5.41,
+   "speech": "这件事有后果：同一个核，转不转，结果差一个镜像。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 167.07,
+   "dur": 2.49,
+   "speech": "我们手算了两个结果。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 170.11,
+   "dur": 5.34,
+   "speech": "输入三乘三，核两乘二，左上角正一，右下角负一。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 176,
+   "dur": 4.81,
+   "speech": "互相关的输出，四个都是负四：核的和是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 181.37,
+   "dur": 3.45,
+   "speech": "真卷积的输出，每个数都换号。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 185.36,
+   "dur": 3.49,
+   "speech": "第二个不对劲：因果卷积的下标。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 189.41,
+   "dur": 4.53,
+   "speech": "式二点六二写的是从 t 减 K 加一，到 t。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 194.48,
+   "dur": 4.55,
+   "speech": "但求和里写成 x 下标 t 减 K 加 k。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 199.58,
+   "dur": 4.79,
+   "speech": "当 k 等于核长，那一项就是 x t，也就是当刻。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 204.92,
+   "dur": 3.81,
+   "speech": "这么写，核是反过来压在序列上的。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 209.28,
+   "dur": 3.45,
+   "speech": "照抄实现，就会静默泄漏未来。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 213.27,
+   "dur": 4.36,
+   "speech": "第三个不对劲：图卷积的归一化被压成一步。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 218.18,
+   "dur": 6.69,
+   "speech": "式二点六四说，邻接矩阵先加单位矩阵，再按度做对称归一化。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 225.42,
+   "dur": 4.33,
+   "speech": "它没说：原来的邻接矩阵对角线是不是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 230.3,
+   "dur": 5.46,
+   "speech": "如果不为零，再加一次单位矩阵，就等于加了两遍自环。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 236.31,
+   "dur": 2.49,
+   "speech": "传播子的值就变了。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 239.35,
+   "dur": 3.97,
+   "speech": "它也没说：相关图怎么造，阈值取多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 243.87,
+   "dur": 5.29,
+   "speech": "书里自己写了一句：稠密图直接套，会退化成全连接。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 249.72,
+   "dur": 2.8,
+   "speech": "所以我们加了两个实验。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 253.07,
+   "dur": 4.86,
+   "speech": "一个是真实的行情图，阈值从零点六扫到零点三。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 258.48,
+   "dur": 6.13,
+   "speech": "一个是合成任务，环的半径从一放到二十五，看信息能传多远。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 265.16,
+   "dur": 2.97,
+   "speech": "先看卷积到底在做什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 268.68,
+   "dur": 3.01,
+   "speech": "一句话：邻域的加权和。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 272.24,
+   "dur": 3.4,
+   "speech": "换一个定义域，换的只是邻居。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 279.04,
+   "dur": 2.51,
+   "speech": "先看不带图的卷积。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 282.1,
+   "dur": 2.65,
+   "speech": "一维输入，一维核。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 285.3,
+   "dur": 5.53,
+   "speech": "核从左边开始，压在头三个数上，乘加，得到一个输出。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 291.39,
+   "dur": 3.4,
+   "speech": "核往右挪一格，再乘加一次。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 295.34,
+   "dur": 3.69,
+   "speech": "同一个核，在每个位置重复使用。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 299.57,
+   "dur": 4.55,
+   "speech": "这就是参数共享：核的大小不随序列变长。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 304.67,
+   "dur": 4.38,
+   "speech": "每个输出的邻居，就是它前面固定的那几格。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 309.6,
+   "dur": 3.95,
+   "speech": "邻居由距离决定，跟数据内容无关。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 314.1,
+   "dur": 1.79,
+   "speech": "再看图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 316.44,
+   "dur": 3.21,
+   "speech": "图上没有前后，只有连不连。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 320.2,
+   "dur": 4.91,
+   "speech": "邻接矩阵的第 i 行，就是第 i 个节点的邻居名单。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 325.66,
+   "dur": 4.09,
+   "speech": "邻接矩阵通常稀疏，而且不一定对称。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 330.3,
+   "dur": 5.27,
+   "speech": "所以我们先做两件事：加自环，再按度归一化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 336.12,
+   "dur": 5.1,
+   "speech": "加自环，是为了让每个节点把自己也算进邻居。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 341.78,
+   "dur": 5.51,
+   "speech": "按度归一化，是为了让度数不同的节点，输出尺度差不多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 347.84,
+   "dur": 4.43,
+   "speech": "加完自环，孤立节点的度是一，除法不会炸。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 352.82,
+   "dur": 5.49,
+   "speech": "归一化之后，第 i 行第 j 列，是节点 j 给节点 i 的权重。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 358.85,
+   "dur": 5.01,
+   "speech": "乘一次传播子，就是每个节点取邻居的加权均值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 364.41,
+   "dur": 2.63,
+   "speech": "乘两次，就是两跳。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 367.59,
+   "dur": 3.13,
+   "speech": "堆 L 层，就是 L 阶邻域。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 371.27,
+   "dur": 2.2,
+   "speech": "但这里有个问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 374.02,
+   "dur": 4.77,
+   "speech": "传播子多乘几次，所有节点会被拉向同一个方向。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 379.34,
+   "dur": 3.04,
+   "speech": "完全图是最极端的例子。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 382.92,
+   "dur": 4.69,
+   "speech": "每个节点都是别人的邻居，权重全是三分之一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 388.17,
+   "dur": 4.53,
+   "speech": "传播子乘任意向量，结果三行完全相同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 393.24,
+   "dur": 5.22,
+   "speech": "也就是说，一层之后，三个节点的特征就一模一样了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 399.02,
+   "dur": 2.05,
+   "speech": "这叫过平滑。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 401.62,
+   "dur": 5.08,
+   "speech": "环的半径越大，图越接近完全图，节点越同化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 410.1,
+   "dur": 2.87,
+   "speech": "三块零件，三个式号。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 413.52,
+   "dur": 3.66,
+   "speech": "第一块，二维卷积，式二点四八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 417.73,
+   "dur": 5.61,
+   "speech": "输出的行数是 H 减 m 加一，列数是 W 减 n 加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 423.89,
+   "dur": 4.43,
+   "speech": "这是有效卷积：核放不下的位置，不出输出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 428.87,
+   "dur": 3.06,
+   "speech": "步长和补零，书里都没给。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 432.48,
+   "dur": 3.59,
+   "speech": "我们的选择是：步长一，补零零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 436.62,
+   "dur": 4.74,
+   "speech": "步长写成零会报错，补零写成负数也会报错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 441.91,
+   "dur": 3.73,
+   "speech": "第二块，因果卷积，式二点六二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 446.2,
+   "dur": 4.74,
+   "speech": "书里的下标是反的，我们把它改成从 t 往回数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 451.49,
+   "dur": 3.83,
+   "speech": "输出和输入一样长，只在左边补零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 455.87,
+   "dur": 5.44,
+   "speech": "改第五个输入，前四个输出一个都不动，这条钉在测试里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 461.86,
+   "dur": 3.64,
+   "speech": "第三块，图卷积，式二点六四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 466.04,
+   "dur": 4.93,
+   "speech": "邻接矩阵加单位矩阵，再按行求和，得到度数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 471.53,
+   "dur": 4.81,
+   "speech": "度数取负二分之一次方，两边一夹，就是传播子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 476.89,
+   "dur": 5.92,
+   "speech": "一层图卷积是：先平均邻居，再乘权重，再过双曲正切。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 483.36,
+   "dur": 3.54,
+   "speech": "权重所有节点共享，只学一份。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 487.45,
+   "dur": 3.28,
+   "speech": "这一侧的参数，一百四十四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 491.28,
+   "dur": 4.6,
+   "speech": "输入八维，隐藏十六维，每个节点输出一个分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 496.43,
+   "dur": 4.07,
+   "speech": "第一层权重是八乘十六，一百二十八个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 501.05,
+   "dur": 4.05,
+   "speech": "第二层权重是一个十六维向量，十六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 505.64,
+   "dur": 2.99,
+   "speech": "加起来正好一百四十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 509.18,
+   "dur": 3.81,
+   "speech": "传播子是常数矩阵，不参与训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 513.54,
+   "dur": 3.81,
+   "speech": "所以反向传播只对权重求导。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 517.9,
+   "dur": 3.54,
+   "speech": "这就解释了为什么图卷积很便宜。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 521.99,
+   "dur": 2.25,
+   "speech": "便宜不等于有用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 524.78,
+   "dur": 4.89,
+   "speech": "这一集的对抗基线，就是把传播子换成单位矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 530.22,
+   "dur": 4.43,
+   "speech": "同一份代码，同一个参数量，只差一张图。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 535.2,
+   "dur": 4.24,
+   "speech": "这是干净的对照：差出来的只能是图本身。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 539.99,
+   "dur": 2.97,
+   "speech": "下一场看实现，三个坑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 543.5,
+   "dur": 2.89,
+   "speech": "第一个坑，就是核的方向。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 549.8,
+   "dur": 3.71,
+   "speech": "实现分两块：卷积一块，图一块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 554.06,
+   "dur": 3.4,
+   "speech": "卷积是四层循环，没有技巧。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 558.01,
+   "dur": 2.77,
+   "speech": "外层是输出的行和列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 561.33,
+   "dur": 3.88,
+   "speech": "内层是核的每个元素，乘对应的输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 565.76,
+   "dur": 5.68,
+   "speech": "输入下标，是输出下标乘步长，加核下标，再减补零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 571.99,
+   "dur": 3.93,
+   "speech": "越界不取，因为补零的位置本来就是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 576.46,
+   "dur": 5.34,
+   "speech": "但尺寸要先检查：核比补零后的输入还大，直接报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 582.36,
+   "dur": 2.37,
+   "speech": "反向不那么直观。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 585.27,
+   "dur": 5.29,
+   "speech": "输出梯度，要先和核做一次全卷积，才得到输入梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 591.12,
+   "dur": 5.15,
+   "speech": "全卷积就是把核转一百八十度，再正常卷积一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 596.82,
+   "dur": 4.33,
+   "speech": "权重梯度，是输入和输出梯度的互相关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 601.7,
+   "dur": 4.74,
+   "speech": "每个窗口共享同一个核，所以梯度必须累加。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 606.99,
+   "dur": 2.92,
+   "speech": "第一条坑就是核的方向。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 610.46,
+   "dur": 4.69,
+   "speech": "方向翻错，前向照样跑，只有梯度检查会炸。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 615.7,
+   "dur": 5.89,
+   "speech": "我们的卷积梯度检查，相对误差一点六八六乘十的负九次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 622.15,
+   "dur": 2.37,
+   "speech": "图这一块短得多。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 625.06,
+   "dur": 4.57,
+   "speech": "传播子在训练前算一次，之后只做矩阵乘。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 630.19,
+   "dur": 5.2,
+   "speech": "每一层只有一次平均、一次乘权重、一次非线性。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 635.94,
+   "dur": 2.65,
+   "speech": "第二条坑，是自环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 639.14,
+   "dur": 4.81,
+   "speech": "默认实现里，先把对角线清零，再加单位矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 644.5,
+   "dur": 4.29,
+   "speech": "如果不先清零，原来的自环会被算两遍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 649.34,
+   "dur": 5.32,
+   "speech": "我们的测试钉住了：完全图的传播子，每个元素三分之一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 655.21,
+   "dur": 6.4,
+   "speech": "不清理对角的话，对角线会变成二分之一，和三分之一差六分之一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 662.16,
+   "dur": 2.97,
+   "speech": "第三条坑是训练本身。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 665.67,
+   "dur": 4.07,
+   "speech": "十三个模型一起并行，内存直接爆掉。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 670.29,
+   "dur": 4.21,
+   "speech": "改成串行，一百二十轮，十几分钟跑完。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 675.06,
+   "dur": 4.36,
+   "speech": "图网络反向有四层，梯度检查花钱更多。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 679.96,
+   "dur": 3.3,
+   "speech": "所以阈值按网络大小分档。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 683.82,
+   "dur": 3.95,
+   "speech": "卷积是一点六八六乘十的负九次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 688.32,
+   "dur": 3.93,
+   "speech": "图网络是四点九九五乘十的负六次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 692.79,
+   "dur": 2.7,
+   "speech": "写完代码，就是验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 698.89,
+   "dur": 2.2,
+   "speech": "第一档，手算。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 701.64,
+   "dur": 4.79,
+   "speech": "输入三乘三，核两乘二，我们一个数一个数地乘。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 706.98,
+   "dur": 2.87,
+   "speech": "左上角的输出，负四。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 710.4,
+   "dur": 2.39,
+   "speech": "右上角，负四。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 713.34,
+   "dur": 2.37,
+   "speech": "左下角，负四。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 716.25,
+   "dur": 2.41,
+   "speech": "右下角，负四。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 719.22,
+   "dur": 5.94,
+   "speech": "四个都一样：核的和是零，窗口每移一格，四项一起加一。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 725.71,
+   "dur": 3.71,
+   "speech": "真卷积每个数换号，四个都是四。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 729.97,
+   "dur": 3.4,
+   "speech": "测试里钉住的，就是这四个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 733.92,
+   "dur": 2.15,
+   "speech": "第二档，结构。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 736.62,
+   "dur": 3.88,
+   "speech": "完全图的传播子，每个元素三分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 741.05,
+   "dur": 3.37,
+   "speech": "三行完全相同，偏差是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 744.97,
+   "dur": 5.89,
+   "speech": "单个元素的偏差，一点一一乘十的负十六次方，就是双精度的舍入。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 751.41,
+   "dur": 5.85,
+   "speech": "谱上界，我们测了一百个随机方向，最大比值零点七四三。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 757.81,
+   "dur": 4.05,
+   "speech": "这个数小于一，说明传播子不放大信号。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 762.41,
+   "dur": 3.69,
+   "speech": "但对称归一化，不等于行归一化。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 766.64,
+   "dur": 4.93,
+   "speech": "行和的最大偏差，九点一七五乘十的负二次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 772.13,
+   "dur": 3.76,
+   "speech": "所以每一行加起来，并不都是一。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 776.43,
+   "dur": 2.17,
+   "speech": "第三档，梯度。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 779.16,
+   "dur": 3.95,
+   "speech": "卷积是一点六八六乘十的负九次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 783.66,
+   "dur": 3.93,
+   "speech": "图网络是四点九九五乘十的负六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 788.13,
+   "dur": 2.13,
+   "speech": "都在阈值以内。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 790.81,
+   "dur": 2.49,
+   "speech": "第四档，判决表。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 793.85,
+   "dur": 4.41,
+   "speech": "真实数据，五十只票，两百七十九个特征日。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 798.8,
+   "dur": 4.67,
+   "speech": "输入八维技术特征，标签是下一天的涨跌方向。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 804.02,
+   "dur": 4.69,
+   "speech": "先看对抗基线，测试准确率零点五零零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 809.27,
+   "dur": 2.13,
+   "speech": "就是抛硬币。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 811.94,
+   "dur": 6.21,
+   "speech": "图卷积，阈值零点六，图上只有四条边，准确率零点五零三一。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 818.7,
+   "dur": 4.69,
+   "speech": "阈值零点五，三十三条边，零点五零三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 823.94,
+   "dur": 4.69,
+   "speech": "阈值零点四，一百三十九条边，零点五零二一。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 829.19,
+   "dur": 4.81,
+   "speech": "阈值零点三，三百五十七条边，零点四九八一。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 834.55,
+   "dur": 3.13,
+   "speech": "图越密，准确率反而越低。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 838.23,
+   "dur": 2.99,
+   "speech": "但看嵌入的余弦相似度。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 841.77,
+   "dur": 3.33,
+   "speech": "阈值零点六是零点一八三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 845.65,
+   "dur": 3.37,
+   "speech": "阈值零点三是零点六八五九。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 849.57,
+   "dur": 2.99,
+   "speech": "所有节点的特征，越来越像。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 853.11,
+   "dur": 4.93,
+   "speech": "这就是过平滑：传播太多次，节点之间没有区别了。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 858.6,
+   "dur": 2.44,
+   "speech": "合成任务更清楚。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 861.59,
+   "dur": 6.13,
+   "speech": "每个节点有一个固定符号，标签就是这个符号，相邻节点之间没有关系。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 868.27,
+   "dur": 4,
+   "speech": "环的半径是一，准确率零点七七六。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 872.82,
+   "dur": 5.05,
+   "speech": "半径二十五，准确率零点五零五，余弦相似度一。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 878.42,
+   "dur": 3.64,
+   "speech": "对抗基线在同一个任务上，满分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 885.46,
+   "dur": 4.26,
+   "speech": "边界要说三条：数据、任务、指标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 890.27,
+   "dur": 2.08,
+   "speech": "第一条是数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 892.9,
+   "dur": 5.1,
+   "speech": "五十只票，三百个交易日，切出来两百七十九个特征日。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 898.55,
+   "dur": 5.63,
+   "speech": "图是我们造的：两条收益序列的相关系数，过阈值就连边。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 904.73,
+   "dur": 4.17,
+   "speech": "阈值取多少，书里没有，这是我们的选择。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 909.45,
+   "dur": 5.53,
+   "speech": "真实日收益几乎没有线性结构，这一点上一集已经量过。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 915.53,
+   "dur": 4.96,
+   "speech": "所以准确率全在零点五附近，不是图卷积的错。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 921.04,
+   "dur": 2.63,
+   "speech": "它只是没东西可学。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 924.22,
+   "dur": 2.1,
+   "speech": "第二条是任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 926.87,
+   "dur": 3.81,
+   "speech": "合成任务里，每个节点自己就有答案。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 931.23,
+   "dur": 4.33,
+   "speech": "邻居的信息全是噪声，平均进来只有坏处。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 936.11,
+   "dur": 4.33,
+   "speech": "环的半径，就是往你耳朵里掺噪声的旋钮。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 941,
+   "dur": 3.45,
+   "speech": "半径越大，掺进来的邻居越多。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 944.99,
+   "dur": 5.41,
+   "speech": "所以这个任务量的是：结构注入会不会破坏个体信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 950.96,
+   "dur": 4.5,
+   "speech": "它不测幅度，不测时序，也不测预测能力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 956.01,
+   "dur": 2.29,
+   "speech": "第三条是指标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 958.85,
+   "dur": 2.89,
+   "speech": "准确率只说明符号对不对。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 962.3,
+   "dur": 4.98,
+   "speech": "嵌入的余弦相似度，只说明节点同化到什么程度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 967.83,
+   "dur": 4.24,
+   "speech": "两个数都不能说明，模型学到了什么结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 972.62,
+   "dur": 2.39,
+   "speech": "还有一条更根本的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 975.56,
+   "dur": 4.81,
+   "speech": "传播子的谱上界小于一，只保证它不放大误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 980.92,
+   "dur": 3.04,
+   "speech": "不保证它保留有用的信号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 984.51,
+   "dur": 3.35,
+   "speech": "也不保证堆更多层会更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 988.41,
+   "dur": 4.48,
+   "speech": "书里自己写了：层数超过三层，会过平滑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 993.44,
+   "dur": 2.77,
+   "speech": "我们在一层上就看到了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 996.76,
+   "dur": 5.03,
+   "speech": "所以图卷积这个词，容易被读成更聪明的卷积。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1002.34,
+   "dur": 4.65,
+   "speech": "它其实是：把邻居换成任何一张图上的邻居。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1007.54,
+   "dur": 2.99,
+   "speech": "定义域换了，算子没换。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1011.08,
+   "dur": 3.54,
+   "speech": "承诺没有变多，问题也没有变少。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1015.17,
+   "dur": 3.49,
+   "speech": "下一集换一个方向，讲归一化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1019.21,
+   "dur": 4.14,
+   "speech": "归一化也是一句话的事：用谁的统计量。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1026.75,
+   "dur": 2.61,
+   "speech": "四个数字，收个尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1029.91,
+   "dur": 3.76,
+   "speech": "第一个，负四，手算的第一个输出。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1034.21,
+   "dur": 4.74,
+   "speech": "第二个，三分之一，完全图传播子的每个元素。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1039.51,
+   "dur": 4.29,
+   "speech": "第三个，零点七四三，传播子的谱上界。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1044.34,
+   "dur": 5.1,
+   "speech": "第四个，九点二乘十的负二次方，行和的最大偏差。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1049.99,
+   "dur": 4,
+   "speech": "一句话：卷积是固定邻域的加权和。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1054.54,
+   "dur": 4.24,
+   "speech": "图的差别，只在邻居由邻接矩阵决定。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1059.33,
+   "dur": 4.45,
+   "speech": "传播子能保证不放大，但不能保证不磨平。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1064.33,
+   "dur": 3.95,
+   "speech": "完全图上乘一次，所有节点就一样了。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1068.83,
+   "dur": 2.99,
+   "speech": "所以图结构不是免费的。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1072.37,
+   "dur": 4.65,
+   "speech": "它把邻居从一个固定窗口，换成一张任意的图。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1077.57,
+   "dur": 3.88,
+   "speech": "代价是，图越密，越接近全连接。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1082,
+   "dur": 3.9,
+   "speech": "这一集的两个实验，量的是同一件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1086.45,
+   "dur": 5.03,
+   "speech": "真实数据没东西可学，合成任务把这个问题放大了。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1092.03,
+   "dur": 2.94,
+   "speech": "前九集，位置都是时刻。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1095.52,
+   "dur": 2.99,
+   "speech": "这一集，位置变成节点。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1099.06,
+   "dur": 4.07,
+   "speech": "下一集，换一个方向：归一化三兄弟。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1103.68,
+   "dur": 4.07,
+   "speech": "批归一化，层归一化，实例归一化。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1108.3,
+   "dur": 3.69,
+   "speech": "差别只有一句话：用谁的统计量。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1112.54,
+   "dur": 2.8,
+   "speech": "感谢观看，下一集见。"
+  }
+ ]
+}
