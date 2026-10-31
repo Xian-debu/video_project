@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-16",
-  "status": "producing",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
@@ -33,6 +33,9 @@
   "derived": [
     "data/corr.json"
   ],
+  "publish": {
+    "coverFrame": 2892
+  },
   "claims": null,
   "notes": "unit: ch2-corr-stl",
   "paths": {
@@ -44,5 +47,5 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete"
 }
