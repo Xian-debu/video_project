@@ -48,11 +48,11 @@ const P2: React.FC = () => (
           { t: "alpha = Wa . f + ba               -- 权重 3 + 偏置 1" },
           { t: "beta  = Wb . f + bb               -- 权重 3 + 偏置 1" },
           { t: "c     = (x - alpha) / beta", hi: true },
-          { t: "out   = gamma * c + (1 - gamma) * x   -- gamma = sigmoid(.)" },
+          { t: "out   = gamma * c                     -- 门乘在归一化结果上" },
         ]}
       />
       <Body size={FT.meta} color={C.inkFaint} style={{ marginTop: 16 }}>
-        门是原文给的：gamma 由第三个映射产生，把归一化结果整体缩放。3 + 1 = 4 个参数。
+        门是原文给的：gamma 乘在归一化结果上，3 + 1 = 4 个参数。特征扩成 [mu, sd, 末值] 是我们的选择，所以参数才对到十二。
       </Body>
     </div>
     <div style={{ position: "absolute", left: 1120, top: 360, width: 700 }}>
@@ -63,7 +63,7 @@ const P2: React.FC = () => (
         <Row name="b_b" value="1" note="beta 的偏置" />
         <Row name="W_c、b_c" value="4" note="门的映射" />
         <div style={{ height: 1, background: C.panelLine, margin: "16px 0" }} />
-        <Row name="合计" value="12" color={C.violet} note="书里说的 twelve-parameter vector" />
+        <Row name="合计" value="12" color={C.violet} note="3+1+3+1+4，特征扩展的代价" />
       </Card>
       <Card label="桥接参数" accent={C.cyan} style={{ height: 180, marginTop: 20 }}>
         <Body size={FT.meta}>
@@ -99,13 +99,13 @@ const P3: React.FC = () => (
       />
     </div>
     <div style={{ position: "absolute", left: 1120, top: 560, width: 700 }}>
-      <Card label="参数清点" accent={C.amber} style={{ height: 300 }}>
+      <Card label="参数清点" accent={C.amber} style={{ height: 350 }}>
         <Row name="MLP 两层" value="42" note="2×8+8 与 8×2+2" />
         <Row name="逐通道权重" value="2" note="W1、W2" />
         <div style={{ height: 1, background: C.panelLine, margin: "16px 0" }} />
         <Row name="合计" value="44" color={C.amber} />
         <Body size={FT.meta} color={C.inkFaint} style={{ marginTop: 14 }}>
-          这一集只训两阶段里的第一阶段：拿上一片统计量，预测下一片。
+          只训第一阶段：拿上一片统计量猜下一片。书里 (2.11) 还要全局均值与片内均值，我们只用 (mu, sigma)。
         </Body>
       </Card>
     </div>

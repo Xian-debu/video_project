@@ -1,7 +1,7 @@
 {
  "entry": "src/tsint-13-normalization-trio/script.ts",
  "fps": 30,
- "totalSec": 879.44,
+ "totalSec": 879.63,
  "scenes": [
   {
    "id": "open",
@@ -43,12 +43,12 @@
    "id": "boundary",
    "chapter": "边界",
    "start": 716.89,
-   "dur": 113.49
+   "dur": 113.68
   },
   {
    "id": "outro",
    "chapter": "收尾",
-   "start": 830.38,
+   "start": 830.57,
    "dur": 49.06
   }
  ],
@@ -1471,160 +1471,160 @@
    "scene": "boundary",
    "index": 19,
    "start": 788.78,
-   "dur": 2.65,
-   "speech": "停牌段的 sigma 是零。"
+   "dur": 2.85,
+   "speech": "常数序列的 sigma 是零。"
   },
   {
    "scene": "boundary",
    "index": 20,
-   "start": 791.62,
+   "start": 791.81,
    "dur": 4.84,
    "speech": "除零会毁掉整条链，所以 eps 不是可选项。"
   },
   {
    "scene": "boundary",
    "index": 21,
-   "start": 796.64,
+   "start": 796.83,
    "dur": 2.99,
    "speech": "我们另做了两个合成用例。"
   },
   {
    "scene": "boundary",
    "index": 22,
-   "start": 799.81,
+   "start": 800,
    "dur": 4.6,
    "speech": "常数序列的 sigma 是零，直接走 eps 保护。"
   },
   {
    "scene": "boundary",
    "index": 23,
-   "start": 804.58,
+   "start": 804.78,
    "dur": 5.22,
    "speech": "短于 tau 的序列，分片数为零，返回错误而不是崩溃。"
   },
   {
    "scene": "boundary",
    "index": 24,
-   "start": 809.99,
+   "start": 810.18,
    "dur": 3.59,
    "speech": "这两个用例在测试里，不在证据里。"
   },
   {
    "scene": "boundary",
    "index": 25,
-   "start": 813.76,
+   "start": 813.95,
    "dur": 3.66,
    "speech": "另一个边界：归一化不改变信息量。"
   },
   {
    "scene": "boundary",
    "index": 26,
-   "start": 817.6,
+   "start": 817.79,
    "dur": 3.18,
    "speech": "它只做线性变换，秩不变。"
   },
   {
    "scene": "boundary",
    "index": 27,
-   "start": 820.96,
+   "start": 821.15,
    "dur": 3.59,
    "speech": "所以它不能让模型看见新东西。"
   },
   {
    "scene": "boundary",
    "index": 28,
-   "start": 824.73,
+   "start": 824.92,
    "dur": 3.45,
    "speech": "能让模型更稳，不能让它更聪明。"
   },
   {
    "scene": "outro",
    "index": 0,
-   "start": 831.58,
+   "start": 831.77,
    "dur": 3.88,
    "speech": "一句话：三个归一化，只差一件事。"
   },
   {
    "scene": "outro",
    "index": 1,
-   "start": 835.64,
+   "start": 835.83,
    "dur": 2.29,
    "speech": "统计量从哪来。"
   },
   {
    "scene": "outro",
    "index": 2,
-   "start": 838.11,
+   "start": 838.3,
    "dur": 3.01,
    "speech": "算的，学的，还是猜的。"
   },
   {
    "scene": "outro",
    "index": 3,
-   "start": 841.31,
+   "start": 841.5,
    "dur": 2.75,
    "speech": "RevIN 算，零参数。"
   },
   {
    "scene": "outro",
    "index": 4,
-   "start": 844.24,
+   "start": 844.43,
    "dur": 2.63,
    "speech": "DAIN 学，十二参数。"
   },
   {
    "scene": "outro",
    "index": 5,
-   "start": 847.05,
+   "start": 847.24,
    "dur": 3.4,
    "speech": "SAN 分片再猜，四十四参数。"
   },
   {
    "scene": "outro",
    "index": 6,
-   "start": 850.62,
+   "start": 850.81,
    "dur": 6.54,
    "speech": "四个数回扣：一点四乘十的负十四，七十八点七，零，零点三九。"
   },
   {
    "scene": "outro",
    "index": 7,
-   "start": 857.35,
+   "start": 857.54,
    "dur": 3.52,
    "speech": "下一集，非平稳 Transformer。"
   },
   {
    "scene": "outro",
    "index": 8,
-   "start": 861.04,
+   "start": 861.23,
    "dur": 3.57,
    "speech": "它把统计量直接塞进注意力里。"
   },
   {
    "scene": "outro",
    "index": 9,
-   "start": 864.79,
+   "start": 864.98,
    "dur": 3.25,
    "speech": "那一集会用到这一集的 sigma。"
   },
   {
    "scene": "outro",
    "index": 10,
-   "start": 868.22,
+   "start": 868.41,
    "dur": 2.29,
    "speech": "这一集就到这里。"
   },
   {
    "scene": "outro",
    "index": 11,
-   "start": 870.7,
+   "start": 870.89,
    "dur": 4.02,
    "speech": "统计量从哪来，决定了这一层能学什么。"
   },
   {
    "scene": "outro",
    "index": 12,
-   "start": 874.9,
+   "start": 875.09,
    "dur": 2.34,
    "speech": "下一集，再见。"
   }

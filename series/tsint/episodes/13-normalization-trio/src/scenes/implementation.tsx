@@ -53,7 +53,7 @@ const P2: React.FC = () => (
           { t: "beta  = dot wb feats + bb" },
           { t: "den   = max (abs beta) eps           -- 坑：beta 可能正好是 0", hi: true },
           { t: "c     = (x - alpha) / den" },
-          { t: "out   = g * c + (1 - g) * x          -- g = sigmoid(dot wc feats + bc)" },
+          { t: "out   = g * c                         -- g = sigmoid(dot wc feats + bc)" },
         ]}
       />
       <Body size={FT.meta} color={C.inkFaint} style={{ marginTop: 16 }}>
