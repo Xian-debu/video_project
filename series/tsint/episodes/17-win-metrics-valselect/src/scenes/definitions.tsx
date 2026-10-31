@@ -14,13 +14,15 @@ const P1: React.FC = () => (
       </div>
     </div>
     <div style={{ position: "absolute", left: PAD + 1040, top: 340, width: CW - 1040 }}>
-      <Card label="windowCount" accent={C.cyan} style={{ height: 300 }}>
-        <Formula size={19} note="h ≤ 0、f ≤ 0、s ≤ 0 或 t − off &lt; h + f 时返回 0">
+      <Card label="windowCount · T = 3,880，H = 96，F = 24" accent={C.cyan} style={{ height: 320 }}>
+        <Formula size={20} note="h ≤ 0、f ≤ 0、s ≤ 0 或 t − off < h + f 时返回 0">
           (t − off − h − f) div s + 1
         </Formula>
-        <Row name="T = 3,880 · H = 96 · F = 24" value="s=1 → 3,761" color={C.cyan} width={CW - 1040 - 48} />
-        <Row name="同一序列，步长五" value="s=5 → 177" color={C.violet} width={CW - 1040 - 48} />
-        <Row name="简报写的 176" value="漏了 +1" color={C.coral} width={CW - 1040 - 48} />
+        <div style={{ marginTop: 16 }}>
+          <Row name="步长 1" value="3,761 个" color={C.cyan} width={CW - 1040 - 48} />
+          <Row name="步长 5" value="177 个" color={C.violet} width={CW - 1040 - 48} />
+          <Row name="简报写的 176" value="漏了 +1" color={C.coral} width={CW - 1040 - 48} />
+        </div>
       </Card>
     </div>
     <div style={{ position: "absolute", left: PAD, top: 760, width: CW }}>

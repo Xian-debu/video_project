@@ -43,16 +43,16 @@ const P1: React.FC = () => (
 const P2: React.FC = () => (
   <>
     <Head kicker="02 / 问题" title="五个没说，一句笔误" goal="写死五项，登记三处" />
-    <div style={{ position: "absolute", left: PAD, top: 330, width: 830 }}>
+    <div style={{ position: "absolute", left: PAD, top: 330, width: 880 }}>
       <Card label="书上没有的" accent={C.coral} style={{ height: 400 }}>
-        <Row name="滑窗样本怎么切" value="没说" note="按索引还是按日历？" color={C.coral} width={830 - 48} />
-        <Row name="训练、验证、测试怎么分" value="没说" note="比例是多少？" color={C.coral} width={830 - 48} />
-        <Row name="切分边界留不留空" value="没说" note="不留空就是未来泄漏" color={C.coral} width={830 - 48} />
-        <Row name="优化器与学习率" value="没说" note="Adam？SGD？1e-3？" color={C.coral} width={830 - 48} />
-        <Row name="早停怎么停、停在哪一轮" value="没说" note="最后一步还是最优一步？" color={C.coral} width={830 - 48} />
+        <Row name="滑窗怎么切" value="没说" note="按索引还是按日历？" color={C.coral} width={880 - 48} />
+        <Row name="三段怎么分" value="没说" note="训练、验证、测试的比例？" color={C.coral} width={880 - 48} />
+        <Row name="边界留不留空" value="没说" note="不留空就是未来泄漏" color={C.coral} width={880 - 48} />
+        <Row name="优化器与学习率" value="没说" note="Adam？SGD？1e-3？" color={C.coral} width={880 - 48} />
+        <Row name="早停停在哪轮" value="没说" note="最后一步还是最优一步？" color={C.coral} width={880 - 48} />
       </Card>
     </div>
-    <div style={{ position: "absolute", left: PAD + 860, top: 330, width: CW - 860, display: "flex", flexDirection: "column", gap: 22 }}>
+    <div style={{ position: "absolute", left: PAD + 910, top: 330, width: CW - 910, display: "flex", flexDirection: "column", gap: 22 }}>
       <Card label="一句笔误 · p.43" accent={C.amber} style={{ height: 230 }}>
         <Body size={FT.body} color={C.ink}>
           「T^train 是整个测试集的样本数量」。

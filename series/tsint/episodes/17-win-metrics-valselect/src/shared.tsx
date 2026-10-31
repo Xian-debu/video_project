@@ -154,9 +154,10 @@ export const LinePlot: React.FC<{
   series: LineSeries[]; width: number; height: number; at?: number;
   from?: number; to?: number; title?: string; padL?: number; padB?: number; padT?: number;
   zeroLine?: boolean; legend?: boolean; yFmt?: (v: number) => string; stretch?: number;
+  yMin?: number; yMax?: number;
   hlines?: { v: number; color: string; label?: string }[];
   vlines?: { i: number; color: string; label?: string }[];
-}> = ({ series, width, height, at = 0, from, to, title, padL = 92, padB = 54, padT = 40, zeroLine = false, legend = true, yFmt = (v) => v.toFixed(0), stretch = 1, hlines = [], vlines = [] }) => {
+}> = ({ series, width, height, at = 0, from, to, title, padL = 92, padB = 54, padT = 40, zeroLine = false, legend = true, yFmt = (v) => v.toFixed(0), stretch = 1, hlines = [], vlines = [], yMin, yMax }) => {
   const f = useCurrentFrame();
   const p = at > 0 ? pct(f, at, at + 20) : 1;
   const padR = 26;
@@ -171,7 +172,7 @@ export const LinePlot: React.FC<{
   const rawLo = Math.min(...vals);
   const rawHi = Math.max(...vals);
   const dy = (rawHi - rawLo) * 0.08 || 1;
-  const y0 = rawLo - dy, y1 = rawHi + dy;
+  const y0 = yMin ?? rawLo - dy, y1 = yMax ?? rawHi + dy;
   const sx = (i: number) => padL + (i / Math.max(1, n - 1)) * (width - padL - padR);
   const sy = (v: number) => height - padB - ((v - y0) / (y1 - y0)) * (height - padT - padB) * stretch;
   const pathOf = (arr: (number | null)[]) => {
@@ -308,8 +309,8 @@ export const Row: React.FC<{ name: React.ReactNode; value: React.ReactNode; note
   name, value, note, color = C.ink, width = 1720,
 }) => (
   <div style={{ display: "flex", alignItems: "baseline", width: "100%", maxWidth: width, marginTop: 10 }}>
-    <div style={{ flex: "0 0 30%", fontFamily: FONT.sans, fontSize: FT.body, color: C.inkDim }}>{name}</div>
-    <div style={{ flex: "0 1 auto", minWidth: "22%", maxWidth: "44%", fontFamily: FONT.mono, fontSize: FT.body, color, fontVariantNumeric: "tabular-nums" }}>{value}</div>
+    <div style={{ flex: "0 0 36%", minWidth: 0, fontFamily: FONT.sans, fontSize: FT.body, color: C.inkDim }}>{name}</div>
+    <div style={{ flex: "0 1 auto", minWidth: "18%", maxWidth: "44%", whiteSpace: "nowrap", fontFamily: FONT.mono, fontSize: FT.body, color, fontVariantNumeric: "tabular-nums" }}>{value}</div>
     {note ? <div style={{ flex: 1, minWidth: 0, paddingLeft: 18, fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint }}>{note}</div> : null}
   </div>
 );

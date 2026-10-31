@@ -25,13 +25,13 @@ const P1: React.FC = () => (
       />
     </div>
     <div style={{ position: "absolute", left: PAD + 1100, top: 340, width: CW - 1100, display: "flex", flexDirection: "column", gap: 18 }}>
-      <Card label="边界返回 0" accent={C.cyan} style={{ height: 130 }}>
+      <Card label="边界返回 0" accent={C.cyan} style={{ height: 150 }}>
         <Body size={FT.body}>太短、步长非正，返回零个窗口，不死循环。</Body>
       </Card>
-      <Card label="按索引，不按日历" accent={C.violet} style={{ height: 130 }}>
+      <Card label="按索引，不按日历" accent={C.violet} style={{ height: 150 }}>
         <Body size={FT.body}>停牌会留洞；按日历切会把交易日数算错。</Body>
       </Card>
-      <Card label="gap 属于切分" accent={C.amber} style={{ height: 130 }}>
+      <Card label="gap 属于切分" accent={C.amber} style={{ height: 150 }}>
         <Body size={FT.body}>第 4 个参数是分段起点 offset，不是 gap。</Body>
       </Card>
     </div>
@@ -99,14 +99,14 @@ const P3: React.FC = () => (
         ]}
       />
     </div>
-    <div style={{ position: "absolute", left: PAD + 1100, top: 340, width: CW - 1100, display: "flex", flexDirection: "column", gap: 16 }}>
-      <Stat label="测试套件" value={fmtInt(M.meta.tests.suites)} accent={C.cyan} style={{ height: 130 }}
+    <div style={{ position: "absolute", left: PAD + 1100, top: 340, width: CW - 1100, display: "flex", flexDirection: "column", gap: 12 }}>
+      <Stat label="测试套件" value={fmtInt(M.meta.tests.suites)} accent={C.cyan} style={{ height: 150 }}
         sub={<span>全仓 cabal test</span>} />
-      <Stat label="断言" value={fmtInt(M.meta.tests.asserts)} accent={C.violet} style={{ height: 130 }}
+      <Stat label="断言" value={fmtInt(M.meta.tests.asserts)} accent={C.violet} style={{ height: 150 }}
         sub={<span>Window {M.meta.tests.window} · Metrics {M.meta.tests.metrics} · TrainLoss {M.meta.tests.trainloss}</span>} />
-      <Stat label="梯度相对误差" value={fmtE(M.training.gradRelErr)} accent={C.amber} style={{ height: 130 }}
+      <Stat label="梯度相对误差" value={fmtE(M.training.gradRelErr)} accent={C.amber} style={{ height: 150 }}
         sub={<span>中心差分，阈值 1e-6</span>} />
-      <Stat label="早停最优轮" value={String(M.training.earlyStopBest)} accent={C.coral} style={{ height: 130 }}
+      <Stat label="早停最优轮" value={String(M.training.earlyStopBest)} accent={C.coral} style={{ height: 150 }}
         sub={<span>停在 {M.training.epochsRun} 轮</span>} />
     </div>
   </>

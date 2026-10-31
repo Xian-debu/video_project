@@ -19,7 +19,7 @@ const P1: React.FC = () => (
       <Row name="黄金窗口 · 1..10，H=3，F=2" value="6 个，起点 0..5" color={C.cyan} width={CW} />
       <Row name="覆盖不变量" value="每个窗口落在自己段内" color={C.violet} width={CW} />
       <Row name="无泄漏" value="训练与验证无交集" color={C.violet} width={CW} />
-      <Row name="三段之和" value="2,209 + 657 + 609 = 3,475" note="加两道 24 帧和零头，回到 3,761" color={C.inkFaint} width={CW} />
+      <Row name="三段之和" value="2,209 + 657 + 609 = 3,475" note="差 286 个：两道空 48 帧，加跨界的窗口" color={C.inkFaint} width={CW} />
     </div>
     <div style={{ position: "absolute", left: PAD, top: 860, width: CW }}>
       <Body size={FT.lead} color={C.ink}>
@@ -112,14 +112,14 @@ const P4: React.FC = () => (
         vlines={[{ i: Math.max(0, M.training.bestEpoch - 1), color: C.violet, label: "最优第 " + String(M.training.bestEpoch) + " 轮" }]}
       />
     </div>
-    <div style={{ position: "absolute", left: PAD + 1140, top: 340, width: CW - 1140, display: "flex", flexDirection: "column", gap: 16 }}>
-      <Stat label="梯度相对误差" value={"1.41e−11"} accent={C.cyan} style={{ height: 130 }}
+    <div style={{ position: "absolute", left: PAD + 1140, top: 340, width: CW - 1140, display: "flex", flexDirection: "column", gap: 12 }}>
+      <Stat label="梯度相对误差" value={"1.41e−11"} accent={C.cyan} style={{ height: 150 }}
         sub={<span>中心差分，门槛 1e-6</span>} />
-      <Stat label="早停最优轮" value={String(M.training.earlyStopBest)} accent={C.amber} style={{ height: 130 }}
+      <Stat label="早停最优轮" value={String(M.training.earlyStopBest)} accent={C.amber} style={{ height: 150 }}
         sub={<span>单元测试场景，耐心 10</span>} />
-      <Stat label="端到端最优" value={String(M.training.bestEpoch) + " / " + String(M.training.epochsRun)} accent={C.violet} style={{ height: 130 }}
+      <Stat label="端到端最优" value={String(M.training.bestEpoch) + " / " + String(M.training.epochsRun)} accent={C.violet} style={{ height: 150 }}
         sub={<span>恢复这一轮的权重</span>} />
-      <Stat label="参数量" value={String(M.training.params)} accent={C.coral} style={{ height: 130 }}
+      <Stat label="参数量" value={String(M.training.params)} accent={C.coral} style={{ height: 150 }}
         sub={<span>H·F + F = 8·4 + 4</span>} />
     </div>
     <div style={{ position: "absolute", left: PAD, top: 890, width: CW }}>

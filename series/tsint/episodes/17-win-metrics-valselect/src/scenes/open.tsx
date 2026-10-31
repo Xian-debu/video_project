@@ -43,6 +43,8 @@ const P2: React.FC = () => (
         legend={false}
         series={[{ values: M.path.close, color: C.cyan, name: "收盘价" }]}
         yFmt={(v) => fmtInt(v)}
+        yMin={0}
+        yMax={18000}
         title={"茅台后复权收盘价 · 每四个交易日取一点"}
         hlines={[
           { v: M.path.lowT, color: C.cyan, label: "低价段阈值 1,500 元" },

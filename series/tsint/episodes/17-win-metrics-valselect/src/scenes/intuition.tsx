@@ -14,6 +14,8 @@ const P1: React.FC = () => (
           { values: M.horizon.high.mae, color: C.amber, name: "高价段 MAE" },
         ]}
         yFmt={(v) => fmtInt(v)}
+        yMin={0}
+        yMax={760}
         title={"逐视野平均绝对误差（元）· 横轴第 1 到第 24 步"}
       />
       <div style={{ display: "flex", gap: 22, marginTop: 6 }}>
