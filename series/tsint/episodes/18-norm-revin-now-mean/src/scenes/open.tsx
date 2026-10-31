@@ -34,7 +34,7 @@ const P1: React.FC = () => (
 
 const P2: React.FC = () => (
   <>
-    <Head kicker="01 / 开场" title="一条日线，十五年" goal="后复权，二千五百多个交易日" />
+    <Head kicker="01 / 开场" title="一条日线，十六年" goal="后复权，三千八百多个交易日" />
     <div style={{ position: "absolute", left: PAD, top: 336, width: 1180 }}>
       <LinePlot
         width={1180}
