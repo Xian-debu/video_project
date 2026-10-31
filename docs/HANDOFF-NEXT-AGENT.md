@@ -113,12 +113,12 @@ node scripts/make.mjs --film tsint-18-norm-revin-now-mean --score=out/e04-score-
 11. **出片 + 门禁**：`make.mjs --film … --score=out/e04-score-loop-48k.wav`；必须 **PASS**：loudnorm I∈[−16.5,−13]、TP≤−1.5、music gate、flicker、content check、delivery 全件。coverFrame 选**无字幕、场末卡**的帧；publish 只写 `out/export`，**要把 cover.png / srt / chapters / ffmeta 拷回 pack `delivery/`**。
 12. **文档 + 提交 4**：`docs/production-log.md` 加本集条目（ts-base/ts-admin/video_project 提交号、成片秒数/帧数/旁白/门禁数、卡点、返工、偏差、下一集）；`node tools/status.mjs --md` 重新生成 `STATUS.md`；更新 `docs/HANDOFF-EVENING.md` §2 数字与 §5 下一步；四仓 `git status` 干净后进下一集。
 
-## 5. 当前进度（E18 收尾）
+## 5. 当前进度（E18 已交付）
 
 - 成片 28/74：E01–E18（ch01 起）+ E65–E74；均已 `ready`，无 B 站发布。
-- E18 交付物（本轮）：讲稿 223 行、**842.29 s / 25,269 帧**、8 场、−15 LUFS / TP −2 dBFS；证据 28 checks（4 数据 / 4 结构 / 20 行为）；断言 +20（revin 8 / nownorm 6 / meannorm 6）。
+- E18 交付物：讲稿 223 行、**840.87 s / 25,226 帧**、8 场 27 页、−15 LUFS / TP −2 dBFS、223 cue 无换行、8 章、封面 4350；证据 28 checks（4 数据 / 4 结构 / 20 行为）；断言 +20（revin 8 / nownorm 6 / meannorm 6），套件 67 / 总断言 965。
 - E18 关键读数（已冻结，plan.md 与画面一致）：RevIN 往返误差 0、归一化后均值 0 / 方差 1；NowNorm 手算 (1−3)·1+3 = **1**（brief 的 4 是错的）；MeanNorm 与 z-score 逐点最大差 **2.2247**；panel 3,867 行、量纲比 **658.67×**；未归一化 MAE 963.93 / 0.9538 → RevIN 后 481.94 / 0.3625；合成漂移序列 NowNorm **0.9731** vs MeanNorm **2.0931**（2.15×）、去漂移后 **0.5215** vs **1.0045**（1.93×）；指数 76.55 / 82.25 / 84.88。
-- 四仓 HEAD（E18 全部提交后以 git log 为准）：video_project 见 `git log`（本轮有 draft / 版式修 / 交付 / docs 四个提交）；ts-base `d992d5f`（evidence）← `5d617cc`（algos）；ts-admin `f6902e9`；engine `a667688`（冻结，未改）。
+- 四仓 HEAD（E18 全部提交后以 git log 为准）：video_project `8971747`（delivery；docs 提交紧随其后）；ts-base `d992d5f`（evidence）← `5d617cc`（algos）；ts-admin `f6902e9`；engine `a667688`（冻结，未改）。
 - 下一集 E19 `linear-revival-dlinear-fits`：先从系列计划读 `algorithms` 三模块（共享权重线性 / DLinear / FITS），再按上面 12 步走；E18 的 evidence 程序 `app/Ch03NormEvidence.hs` 是最好的模板（H=48/F=24 骨干、Adam/seed 写死、三条曲线导出）。
 
 ## 6. 已冻结口径（写片前必读，详见 HANDOFF-EVENING §5）

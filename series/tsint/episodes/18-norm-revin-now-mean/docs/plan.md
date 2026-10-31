@@ -1,6 +1,6 @@
 # 18-norm-revin-now-mean - 归一化三兄弟：RevIN、NowNorm、MeanNorm
 
-> status: produced | chapter: ch03 | runtime 842.3 s | algorithms: 3 | evidence: 28 checks / 0 failures
+> status: produced | chapter: ch03 | runtime 840.9 s | algorithms: 3 | evidence: 28 checks / 0 failures
 
 ## Thesis
 

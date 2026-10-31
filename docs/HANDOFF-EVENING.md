@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-31 19:24 实测）
+## 2. 状态（2026-10-31 20:16 实测）
 
-- 成片 **27 / 74**：E01–E17、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 成片 **28 / 74**：E01–E18、E65–E74（全部 `status: ready`，**未发布 B 站**）。
 - 算法 **65 / 190** 模块、**945** 条断言（64 组套件；ch02 39 模块；ch03 3；ch08 13；ch09 11）。
-- 四仓 HEAD（E17 交付后）：video_project `a3e74c8`（delivery；docs 提交紧随其后）、ts-base `2229df0`、ts-admin `5e63b2f`、
+- 四仓 HEAD（E18 交付后）：video_project `8971747`（delivery；docs 提交紧随其后）、ts-base `d992d5f`、ts-admin `f6902e9`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -38,12 +38,13 @@
 - E15 成片 `827.47 s / 24,824 帧 / 8 场 26 页 / −15 LUFS / TP −2 dBFS`，238 cue、8 章、封面 3000。
 - E16 成片 `804.8 s / 24,144 帧 / 8 场 22 页 / −15 LUFS / TP −2 dBFS`，211 cue、8 章、封面 2892。
 - E17 成片 `837.2 s / 25,116 帧 / 8 场 27 页 / −15 LUFS / TP −2 dBFS`，225 cue、8 章、封面 3660。
+- E18 成片 `840.9 s / 25,226 帧 / 8 场 27 页 / −15 LUFS / TP −2 dBFS`，223 cue、8 章、封面 4350。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E18 `norm-revin-now-mean`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E17 实测 837.2 s）。
+- 下一步入口：**E19 `linear-revival-dlinear-fits`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E18 实测 840.9 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -93,7 +94,7 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
 ## 5. 排期（production_order 剩余 49 集）
 
 E01–E17 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17（13.95 min）。按 `production_order` 继续：
-**E18 norm-revin-now-mean** → … → E64 llm-side-adapters。
+**E19 linear-revival-dlinear-fits** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
