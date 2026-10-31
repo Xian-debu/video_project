@@ -1,6 +1,6 @@
 import React from "react";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Card, CW, Formula, FT as FTs, Head, K, PAD, Pages, Row } from "../shared";
+import { Body, Card, CW, Head, PAD, Pages, Row } from "../shared";
 
 const P1: React.FC = () => (
   <>
