@@ -42,7 +42,7 @@ const P2: React.FC = () => (
 );
 
 export const SOutro: React.FC = () => (
-  <Pages id="outro" at={[0, 0.52]}>
+  <Pages id="outro" at={[0, 0.33]}>
     <P1 />
     <P2 />
   </Pages>

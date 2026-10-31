@@ -188,7 +188,7 @@ const P4: React.FC = () => (
 );
 
 export const SDefinitions: React.FC = () => (
-  <Pages id="definitions" at={[0, 0.3, 0.58, 0.82]}>
+  <Pages id="definitions" at={[0, 0.47, 0.565, 0.75]}>
     <P1 />
     <P2 />
     <P3 />

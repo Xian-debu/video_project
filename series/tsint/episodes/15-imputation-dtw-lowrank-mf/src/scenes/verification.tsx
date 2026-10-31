@@ -142,7 +142,7 @@ const P4: React.FC = () => (
 );
 
 export const SVerification: React.FC = () => (
-  <Pages id="verification" at={[0, 0.24, 0.48, 0.72]}>
+  <Pages id="verification" at={[0, 0.25, 0.42, 0.76]}>
     <P1 />
     <P2 />
     <P3 />

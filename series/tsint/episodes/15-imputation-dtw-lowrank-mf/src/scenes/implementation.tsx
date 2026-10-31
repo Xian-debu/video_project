@@ -114,7 +114,7 @@ const P3: React.FC = () => (
 );
 
 export const SImplementation: React.FC = () => (
-  <Pages id="implementation" at={[0, 0.42, 0.72]}>
+  <Pages id="implementation" at={[0, 0.385, 0.9]}>
     <P1 />
     <P2 />
     <P3 />

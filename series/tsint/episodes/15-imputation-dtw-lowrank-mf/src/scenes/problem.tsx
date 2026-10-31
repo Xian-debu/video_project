@@ -131,7 +131,7 @@ const P3: React.FC = () => (
 );
 
 export const SProblem: React.FC = () => (
-  <Pages id="problem" at={[0, 0.38, 0.72]}>
+  <Pages id="problem" at={[0, 0.54, 0.75]}>
     <P1 />
     <P2 />
     <P3 />

@@ -124,7 +124,7 @@ const P4: React.FC = () => (
 );
 
 export const SIntuition: React.FC = () => (
-  <Pages id="intuition" at={[0, 0.21, 0.5, 0.75]}>
+  <Pages id="intuition" at={[0, 0.13, 0.4, 0.79]}>
     <P1 />
     <P2 />
     <P3 />

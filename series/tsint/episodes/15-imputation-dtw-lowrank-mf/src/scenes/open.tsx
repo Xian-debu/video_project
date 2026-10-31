@@ -132,7 +132,7 @@ const P4: React.FC = () => (
 );
 
 export const SOpen: React.FC = () => (
-  <Pages id="open" at={[0, 0.28, 0.52, 0.76]}>
+  <Pages id="open" at={[0, 0.31, 0.47, 0.62]}>
     <P1 />
     <P2 />
     <P3 />

@@ -56,7 +56,7 @@ const P2: React.FC = () => (
 );
 
 export const SBoundary: React.FC = () => (
-  <Pages id="boundary" at={[0, 0.5]}>
+  <Pages id="boundary" at={[0, 0.82]}>
     <P1 />
     <P2 />
   </Pages>

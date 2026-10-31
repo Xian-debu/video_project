@@ -132,17 +132,22 @@ export const Stat: React.FC<{
   </Card>
 );
 
-/** 场景内分页：按场景时长的分数硬切（页间不留交叉淡变帧，Lint 规则 overlap 要求画面内只有一页文字）。 */
+/** 场景内分页：按场景时长的分数切页，页间 12 帧交叉淡变（硬切会触发 flicker gate 的 luma jump）。 */
 export const Pages: React.FC<{ id: string; at: number[]; children: React.ReactNode[] }> = ({ id, at, children }) => {
   const f = useCurrentFrame();
   const dur = Math.max(1, sceneFrames(id));
+  const fade = 12;
   return (
     <>
       {children.map((child, i) => {
         const a = (at[i] ?? 0) * dur;
         const b = (i + 1 < at.length ? at[i + 1] : 1) * dur;
-        if (f < a || f >= b) return null;
-        return <div key={i} style={{ position: "absolute", inset: 0 }}>{child}</div>;
+        const last = i === children.length - 1;
+        const inO = interpolate(f, [a, a + fade], [0, 1], clamp);
+        const outO = last ? 1 : interpolate(f, [b, b + fade], [1, 0], clamp);
+        const o = Math.min(inO, outO);
+        if (o <= 0.001) return null;
+        return <div key={i} style={{ position: "absolute", inset: 0, opacity: o }}>{child}</div>;
       })}
     </>
   );
