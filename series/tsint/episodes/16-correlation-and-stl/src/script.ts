@@ -301,7 +301,8 @@ const SPEC: SceneSpec[] = [
       "从一个数，走到一组指标。",
     ],
   },
-;
+];
+
 const LEAD = 1.2;
 const TAIL = 2.2;
 const MAX_CHARS = 34;

@@ -1,0 +1,1534 @@
+{
+ "entry": "src/tsint-16-correlation-and-stl/script.ts",
+ "fps": 30,
+ "totalSec": 804.81,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 97.4
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 97.4,
+   "dur": 111.64
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 209.04,
+   "dur": 125.4
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 334.44,
+   "dur": 122.25
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 456.69,
+   "dur": 110.77
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 567.46,
+   "dur": 119.32
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 686.78,
+   "dur": 84
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 770.78,
+   "dur": 34.03
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.37,
+   "speech": "第 2 章 · 数据层，第十六集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.75,
+   "dur": 2.92,
+   "speech": "相关读数与 STL。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.85,
+   "dur": 4.33,
+   "speech": "一张面板，一百只票，两百五十一个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.37,
+   "dur": 4.26,
+   "speech": "书里给了一个数，把整张面板压成一行。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.81,
+   "dur": 2.89,
+   "speech": "式二点四，相关读数。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.88,
+   "dur": 3.83,
+   "speech": "同一个面板，价格和收益各算一次。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.89,
+   "dur": 4.07,
+   "speech": "一个一点零六八四，一个一点二一八八。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 28.14,
+   "dur": 3.52,
+   "speech": "差得不多，看起来都「快到一个半」。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 31.84,
+   "dur": 3.85,
+   "speech": "但把配对相关系数的方差拆出来看。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 35.87,
+   "dur": 2.85,
+   "speech": "价格是零点一六九三。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 38.9,
+   "dur": 2.7,
+   "speech": "收益是零点零一七七。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 41.78,
+   "dur": 2.22,
+   "speech": "差了九点六倍。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.18,
+   "dur": 2.63,
+   "speech": "读数只差零点一五。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 46.99,
+   "dur": 3.23,
+   "speech": "第三个数，零点一五九六。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 50.4,
+   "dur": 4.45,
+   "speech": "茅台三年的周内季节强度，用 STL 算。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 55.04,
+   "dur": 3.04,
+   "speech": "第四个，零点零零八三。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 58.26,
+   "dur": 4.29,
+   "speech": "同一瓶茅台，同一周期，经典分解算。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 62.72,
+   "dur": 3.25,
+   "speech": "两套分解，强度差十九倍。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 66.16,
+   "dur": 2.73,
+   "speech": "剖面形状却几乎一样。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 69.06,
+   "dur": 2.58,
+   "speech": "四个数，两组对照。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 71.82,
+   "dur": 3.95,
+   "speech": "第一组说，读数被一个饱和项压住了。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 75.95,
+   "dur": 4.84,
+   "speech": "第二组说，强度是相对量，换方法就换量级。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 80.97,
+   "dur": 3.4,
+   "speech": "这一集把这两件事各讲一遍。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 84.55,
+   "dur": 2.89,
+   "speech": "先拆读数，再拆分解。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 87.62,
+   "dur": 3.52,
+   "speech": "最后说这两个数能拿来干什么。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 91.32,
+   "dur": 3.88,
+   "speech": "数据、代码、证据，都在仓库里。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 98.6,
+   "dur": 2.34,
+   "speech": "先说读数这一侧。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 101.12,
+   "dur": 3.3,
+   "speech": "书上对式二点四只有一句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 104.6,
+   "dur": 5.17,
+   "speech": "所有变量对的皮尔逊相关系数，求均值，求方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 109.96,
+   "dur": 2.1,
+   "speech": "书里就这一句。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 112.24,
+   "dur": 2.87,
+   "speech": "缺失值怎么处理，没说。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 115.29,
+   "dur": 3.37,
+   "speech": "方差是总体还是样本，没说。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 118.84,
+   "dur": 4.67,
+   "speech": "常数序列方差为零，相关系数没定义，没说。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 123.69,
+   "dur": 4.55,
+   "speech": "变量对怎么数，对称两半算不算两次，没说。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 128.42,
+   "dur": 3.54,
+   "speech": "四个选择，每一个都能让读数动。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 132.15,
+   "dur": 3.18,
+   "speech": "本仓把四个选择全部写死。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 135.51,
+   "dur": 3.97,
+   "speech": "记在自授条目 A 三十三里，逐条讲。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 139.66,
+   "dur": 3.37,
+   "speech": "但真正的问题不在这些选择上。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 143.22,
+   "dur": 2.63,
+   "speech": "式二点四只有两项。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 146.03,
+   "dur": 2.53,
+   "speech": "一项是平均相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 148.74,
+   "dur": 2.89,
+   "speech": "一项是一加方差分之一。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 151.81,
+   "dur": 3.57,
+   "speech": "第二项永远是零到一之间的数。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 155.56,
+   "dur": 3.04,
+   "speech": "方差越大，它越接近零。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 158.78,
+   "dur": 3.16,
+   "speech": "方差越小，它越接近一。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 162.12,
+   "dur": 2.25,
+   "speech": "这是一个饱和项。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 164.54,
+   "dur": 4.17,
+   "speech": "价格面板的方差是收益面板的九点六倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 168.89,
+   "dur": 4.21,
+   "speech": "饱和项从零点八五五走到零点九八三。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 173.28,
+   "dur": 2.29,
+   "speech": "只走了零点一三。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 175.76,
+   "dur": 3.23,
+   "speech": "剩下的差别，全被压住了。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 179.17,
+   "dur": 4.6,
+   "speech": "这就是第一个问题：均值和离散被压成一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 183.94,
+   "dur": 2.53,
+   "speech": "再说分解这一侧。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 186.66,
+   "dur": 5.01,
+   "speech": "书上说一条序列能拆成趋势、季节、残差。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 191.84,
+   "dur": 3.47,
+   "speech": "季节强度按式二点二的句式定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 195.49,
+   "dur": 3.78,
+   "speech": "分子是季节，分母是季节加残差。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 199.46,
+   "dur": 3.54,
+   "speech": "残差是什么，取决于分解方法。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 203.18,
+   "dur": 3.66,
+   "speech": "换方法，同一句定义给不同的数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 210.24,
+   "dur": 2.73,
+   "speech": "先把读数拆成零件。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 213.15,
+   "dur": 4,
+   "speech": "均值项，所有配对相关的算术平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 217.32,
+   "dur": 3.49,
+   "speech": "本仓价格面板是零点二一三二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 221,
+   "dur": 3.16,
+   "speech": "收益面板是零点二三六一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 224.34,
+   "dur": 3.09,
+   "speech": "两项的差，主要来自这一项。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 227.6,
+   "dur": 3.21,
+   "speech": "饱和项，一加方差分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 230.99,
+   "dur": 3.57,
+   "speech": "价格面板的方差零点一六九三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 234.73,
+   "dur": 2.85,
+   "speech": "饱和项零点八五五一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 237.76,
+   "dur": 3.76,
+   "speech": "收益面板的方差零点零一七六六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 241.7,
+   "dur": 2.87,
+   "speech": "饱和项零点九八二六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 244.75,
+   "dur": 2.68,
+   "speech": "两项一加，就是读数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 247.61,
+   "dur": 4.17,
+   "speech": "价格一点零六八四，收益一点二一八八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 251.95,
+   "dur": 2.01,
+   "speech": "差零点一五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 254.14,
+   "dur": 2.49,
+   "speech": "方差差九点六倍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 256.8,
+   "dur": 3.06,
+   "speech": "读数的分辨率不在方差上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 260.05,
+   "dur": 2.58,
+   "speech": "再看四个口径选择。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 262.81,
+   "dur": 4.38,
+   "speech": "第一，缺失值按配对完整算，不删整行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 267.37,
+   "dur": 4.55,
+   "speech": "第二，变量对上三角枚举，每对只算一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 272.1,
+   "dur": 3.83,
+   "speech": "第三，方差取总体方差，除以对数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 276.11,
+   "dur": 3.93,
+   "speech": "第四，一对都算不出来时，返回错误。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 280.22,
+   "dur": 2.01,
+   "speech": "不是返回零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 282.4,
+   "dur": 3.88,
+   "speech": "这四条写进自授条目 A 三十三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 286.46,
+   "dur": 2.32,
+   "speech": "再看分解怎么做。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 288.96,
+   "dur": 4.57,
+   "speech": "STL 三件事：趋势、相位季节、残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 293.71,
+   "dur": 4.69,
+   "speech": "趋势用 LOESS，季节在相位上用 LOESS。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 298.59,
+   "dur": 2.49,
+   "speech": "剩下的才是残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 301.25,
+   "dur": 4,
+   "speech": "内循环两轮，外循环零轮，这是默认。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 305.43,
+   "dur": 2.15,
+   "speech": "记在 A 三十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 307.76,
+   "dur": 2.89,
+   "speech": "书上没有 STL 的公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 310.83,
+   "dur": 3.35,
+   "speech": "公式取自 Cleveland 一九九零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 314.36,
+   "dur": 4.07,
+   "speech": "窗口、带宽、端点是显式选择。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 318.61,
+   "dur": 4.41,
+   "speech": "季节强度，一减残差方差比去季节方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 323.2,
+   "dur": 2.37,
+   "speech": "小于零截成零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 325.75,
+   "dur": 3.57,
+   "speech": "分母里的残差，看用什么分解方法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 329.49,
+   "dur": 2.75,
+   "speech": "同一个句子，两个分母。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 335.64,
+   "dur": 2.27,
+   "speech": "为什么读数不动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 338.09,
+   "dur": 3.83,
+   "speech": "把四千九百五十对相关系数画出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 342.1,
+   "dur": 4.05,
+   "speech": "价格面板，三百二十对超过零点八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 346.33,
+   "dur": 3.09,
+   "speech": "一千五百三十三对是负的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 349.59,
+   "dur": 3.64,
+   "speech": "收益面板，超过零点八只有四对。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 353.41,
+   "dur": 3.16,
+   "speech": "负相关的只有一百一十三对。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 356.75,
+   "dur": 3.01,
+   "speech": "同一个面板，同一批股票。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 359.94,
+   "dur": 4.48,
+   "speech": "价格里有一大簇强相关，也有一大簇负相关。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 364.6,
+   "dur": 3.4,
+   "speech": "收益里几乎全挤在零点二附近。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 368.18,
+   "dur": 2.2,
+   "speech": "均值几乎一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 370.56,
+   "dur": 2.49,
+   "speech": "方差差九点六倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 373.22,
+   "dur": 2.39,
+   "speech": "读数差零点一五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 375.79,
+   "dur": 3.76,
+   "speech": "所以读数不是在说「相关有多强」。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 379.73,
+   "dur": 3.95,
+   "speech": "它在说，平均相关，加一致的奖励。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 383.86,
+   "dur": 2.85,
+   "speech": "一致，指的是方差小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 386.89,
+   "dur": 3.11,
+   "speech": "方差小，饱和项接近一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 390.18,
+   "dur": 3.88,
+   "speech": "可方差小也可以因为所有相关都为零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 394.23,
+   "dur": 3.71,
+   "speech": "一组零相关的变量，读数接近一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 398.12,
+   "dur": 4.65,
+   "speech": "一组高度相关的变量，方差大，读数反而掉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 402.95,
+   "dur": 3.28,
+   "speech": "这就是式二点四的反直觉处。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 406.41,
+   "dur": 2.29,
+   "speech": "再看分解这一侧。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 408.88,
+   "dur": 3.45,
+   "speech": "茅台三年，七百三十个交易日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 412.51,
+   "dur": 2.75,
+   "speech": "周内周期，长度五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 415.44,
+   "dur": 5.82,
+   "speech": "STL 的相位剖面：负零点二六、零点三九、负三点零五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 421.44,
+   "dur": 3.49,
+   "speech": "接着是零点九九、二点零三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 425.11,
+   "dur": 5.2,
+   "speech": "经典分解：负零点三二、零点三八、负二点八八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 430.49,
+   "dur": 3.45,
+   "speech": "接着是零点九六、一点八六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 434.12,
+   "dur": 3.4,
+   "speech": "逐相位最大差零点一六六元。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 437.7,
+   "dur": 2.15,
+   "speech": "形态一模一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 440.03,
+   "dur": 4.24,
+   "speech": "振幅五点零七元，占均价百分之零点四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 444.44,
+   "dur": 3.85,
+   "speech": "强度一个零点一六，一个零点零零八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 448.48,
+   "dur": 3.01,
+   "speech": "强度不是幅度，是比例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 451.67,
+   "dur": 2.82,
+   "speech": "分母换了，比例就换了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 457.89,
+   "dur": 4.24,
+   "speech": "代码在 ts-base 仓，第 2 章两个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 462.31,
+   "dur": 2.87,
+   "speech": "相关性模块，四个导出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 465.36,
+   "dur": 5.01,
+   "speech": "单对皮尔逊，配对完整面板，统计量，一步到位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 470.54,
+   "dur": 5.65,
+   "speech": "关键三行：上三角枚举、配对完整、均值加饱和项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 476.38,
+   "dur": 3.13,
+   "speech": "缺失哨兵是 NaN 和无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 479.69,
+   "dur": 3.49,
+   "speech": "一对至少两个共同观测才留下。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 483.37,
+   "dur": 3.76,
+   "speech": "两列在共同观测上方差必须为正。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 487.3,
+   "dur": 3.64,
+   "speech": "否则整对丢掉，不当零参与平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 491.12,
+   "dur": 3.16,
+   "speech": "STL 模块，七个导出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 494.46,
+   "dur": 6.18,
+   "speech": "配置、结果、默认、奇数化、三次核、LOESS、分解。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 500.82,
+   "dur": 5.8,
+   "speech": "内循环：趋势 LOESS，减掉，相位 LOESS，减掉。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 506.8,
+   "dur": 2.37,
+   "speech": "剩下的进残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 509.35,
+   "dur": 3.49,
+   "speech": "外循环零轮，稳健权重不开。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 513.02,
+   "dur": 4.05,
+   "speech": "窗口半径三周期，端点用局部线性。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 517.25,
+   "dur": 2.7,
+   "speech": "这些都在 A 三十四里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 520.13,
+   "dur": 4.19,
+   "speech": "测试：相关性二十条，STL 十七条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 524.5,
+   "dur": 4,
+   "speech": "全仓六十一个套件，九百一十七条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 528.68,
+   "dur": 3.4,
+   "speech": "一个坑：合成 STL 的断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 532.25,
+   "dur": 4.62,
+   "speech": "一开始用六十个点，深内点误差二乘十的负三。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 537.06,
+   "dur": 4.89,
+   "speech": "为什么？端点偏差沿相位窗传进了内点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 542.12,
+   "dur": 4.17,
+   "speech": "六十个点时，相位子序列只有十二个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 546.47,
+   "dur": 2.85,
+   "speech": "没有一个点离端点够远。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 549.49,
+   "dur": 4.26,
+   "speech": "改成两百个点，断言六十到一百三十九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 553.94,
+   "dur": 3.37,
+   "speech": "误差降到二点八乘十的负十四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 557.49,
+   "dur": 3.85,
+   "speech": "这不是精度问题，是测试设计问题。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 561.52,
+   "dur": 3.73,
+   "speech": "断言要落在方法真正成立的地方。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 568.66,
+   "dur": 2.17,
+   "speech": "验证分四层。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 571.01,
+   "dur": 3.25,
+   "speech": "第一层，同一个面板四个读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 574.45,
+   "dur": 4.96,
+   "speech": "价格，均值零点二一三二，方差零点一六九三。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 579.59,
+   "dur": 2.58,
+   "speech": "读数一点零六八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 582.35,
+   "dur": 5.41,
+   "speech": "收益，均值零点二三六一，方差零点零一七六六。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 587.94,
+   "dur": 2.53,
+   "speech": "读数一点二一八八。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 590.66,
+   "dur": 5.73,
+   "speech": "STL 去趋势，均值零点二一二四，方差零点零二零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 596.56,
+   "dur": 2.65,
+   "speech": "读数一点一九二七。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 599.4,
+   "dur": 6.21,
+   "speech": "经典分解去趋势，均值零点二四九六，方差零点零一八七九。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 605.78,
+   "dur": 2.61,
+   "speech": "读数一点二三一二。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 608.57,
+   "dur": 3.23,
+   "speech": "第二层，两条去趋势路径。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 611.98,
+   "dur": 4.05,
+   "speech": "两条独立实现，读数差零点零三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 616.2,
+   "dur": 3.04,
+   "speech": "方差都塌到零点零二附近。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 619.42,
+   "dur": 2.87,
+   "speech": "塌缩不是某个实现的毛病。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 622.47,
+   "dur": 2.32,
+   "speech": "第三层，分布。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 624.97,
+   "dur": 3.97,
+   "speech": "价格超过零点八的配对三百二十三对。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 629.12,
+   "dur": 2.56,
+   "speech": "收益面板只有四对。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 631.86,
+   "dur": 4.45,
+   "speech": "负相关从一千五百三十三掉到一百一十三。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 636.5,
+   "dur": 2.68,
+   "speech": "第四层，单只股票。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 639.35,
+   "dur": 4.29,
+   "speech": "茅台 STL 季节强度零点一五九六。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 643.82,
+   "dur": 3.23,
+   "speech": "经典分解零点零零八三。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 647.23,
+   "dur": 2.27,
+   "speech": "强度差十九倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 649.68,
+   "dur": 3.97,
+   "speech": "但剖面逐相位最大差零点一六六元。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 653.83,
+   "dur": 2.61,
+   "speech": "不到振幅的百分之四。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 656.62,
+   "dur": 3.04,
+   "speech": "形状一致，强度不一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 659.84,
+   "dur": 2.75,
+   "speech": "第五层，合成数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 662.77,
+   "dur": 3.73,
+   "speech": "两百点，趋势已知，季节已知。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 666.68,
+   "dur": 3.9,
+   "speech": "深内段趋势误差一点八乘十的负十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 670.76,
+   "dur": 3.47,
+   "speech": "季节误差八点九乘十的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 674.41,
+   "dur": 2.34,
+   "speech": "恒等式误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 676.94,
+   "dur": 3.52,
+   "speech": "二十二条证据检查，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 680.63,
+   "dur": 3.95,
+   "speech": "二十条加十七条单元测试，也在里面。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 687.98,
+   "dur": 2.15,
+   "speech": "边界有三条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 690.31,
+   "dur": 3.69,
+   "speech": "第一，相关读数不能当相关强度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 694.18,
+   "dur": 4.12,
+   "speech": "方差差九点六倍，读数只差零点一五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 698.47,
+   "dur": 3.95,
+   "speech": "读数接近上限，不代表变量一起动。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 702.6,
+   "dur": 2.61,
+   "speech": "它可能只是方差小。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 705.39,
+   "dur": 4.19,
+   "speech": "而方差小，也可能因为全都是零相关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 709.76,
+   "dur": 4.14,
+   "speech": "要判断结构，得看分布，不能只看一行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 714.08,
+   "dur": 3.61,
+   "speech": "第二，季节强度不能跨方法比较。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 717.88,
+   "dur": 4.45,
+   "speech": "零点一五九六和零点零零八三，差十九倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 722.51,
+   "dur": 2.41,
+   "speech": "剖面却是同一条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 725.1,
+   "dur": 3.09,
+   "speech": "报强度必须同时报方法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 728.37,
+   "dur": 3.25,
+   "speech": "跨方法比强度，比的是分母。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 731.8,
+   "dur": 3.18,
+   "speech": "第三，本集的口径是显式的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 735.17,
+   "dur": 4.96,
+   "speech": "配对完整、上三角、总体方差、错误不补零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 740.3,
+   "dur": 4.84,
+   "speech": "STL 的窗口、内循环、端点策略，都写死了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 745.32,
+   "dur": 4.77,
+   "speech": "换数据、换频率、换窗口，这些数都会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 750.27,
+   "dur": 2.65,
+   "speech": "本集没有做全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 753.1,
+   "dur": 4,
+   "speech": "一百只票，只是沪市主板的一个切片。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 757.28,
+   "dur": 2.56,
+   "speech": "也没有做预测检验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 760.02,
+   "dur": 4.19,
+   "speech": "这两个数能不能改进预测，是下一章的事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 764.39,
+   "dur": 4.19,
+   "speech": "能说的只有：读数机制在这里，偏差在这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 771.98,
+   "dur": 3.04,
+   "speech": "收尾，四个数再念一遍。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 775.2,
+   "dur": 3.95,
+   "speech": "读数一点零六八四，对一点二一八八。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 779.33,
+   "dur": 4.53,
+   "speech": "方差零点一六九三，对零点零一七六六。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 784.03,
+   "dur": 4.55,
+   "speech": "季节强度零点一五九六，对零点零零八三。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 788.76,
+   "dur": 3.33,
+   "speech": "第一组，读数被饱和项压住。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 792.27,
+   "dur": 3.04,
+   "speech": "第二组，强度是相对量。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 795.49,
+   "dur": 3.9,
+   "speech": "下一集，窗口指标与验证集选择。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 799.57,
+   "dur": 3.04,
+   "speech": "从一个数，走到一组指标。"
+  }
+ ]
+}
