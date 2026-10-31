@@ -1,0 +1,2381 @@
+{
+ "entry": "src/tsint-08-adf-shifting-transition/script.ts",
+ "fps": 30,
+ "totalSec": 1343.89,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 184.17
+  },
+  {
+   "id": "problem",
+   "chapter": "一件真事",
+   "start": 184.17,
+   "dur": 166.31
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 350.48,
+   "dur": 196.66
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 547.14,
+   "dur": 169.16
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 716.3,
+   "dur": 192.94
+  },
+  {
+   "id": "verification",
+   "chapter": "数字",
+   "start": 909.24,
+   "dur": 200.27
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1109.51,
+   "dur": 165.15
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1274.66,
+   "dur": 69.23
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.09,
+   "speech": "前面七集，讲的都是看得见的东西。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.84,
+   "dur": 3.83,
+   "speech": "缺口、平滑、分解、换坐标。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.22,
+   "dur": 2.99,
+   "speech": "这一集换一类东西：指标。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 13.76,
+   "dur": 3.04,
+   "speech": "三个指标，名字都很朴素。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 17.35,
+   "dur": 3.64,
+   "speech": "ADF 检验，漂移性，转移性。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.54,
+   "dur": 3.59,
+   "speech": "书里在第十三、十四页给了它们。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 25.68,
+   "dur": 3.01,
+   "speech": "每个指标，只压出一个数。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 29.24,
+   "dur": 2.89,
+   "speech": "每个数，都长得像概率。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 32.69,
+   "dur": 2.41,
+   "speech": "但它们都不是概率。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 35.65,
+   "dur": 3.85,
+   "speech": "ADF 那个数是负的，越小越平稳。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 40.06,
+   "dur": 4.89,
+   "speech": "漂移性那个数在零到一之间，但零点五不代表中间。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 45.49,
+   "dur": 4.05,
+   "speech": "转移性更奇怪：完美周期是三分之二。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 50.09,
+   "dur": 3.01,
+   "speech": "常数序列，只有九分之二。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 53.65,
+   "dur": 2.75,
+   "speech": "三个数，三条规矩。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 56.95,
+   "dur": 3.35,
+   "speech": "先说为什么这三个数容易读错。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 60.85,
+   "dur": 5.15,
+   "speech": "书里式二点三，把 ADF 的同一个符号当了两件事。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 66.55,
+   "dur": 3.57,
+   "speech": "一边当统计量，一边当 p 值。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 70.67,
+   "dur": 3.66,
+   "speech": "这两件事之间，差一张临界值表。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 74.88,
+   "dur": 2.89,
+   "speech": "tau 服从的，不是 t 分布。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 78.32,
+   "dur": 4.29,
+   "speech": "按字面实现，就是拿 tau 和零点零五比。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 83.16,
+   "dur": 3.16,
+   "speech": "我们照这个字面写法跑了一遍。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 86.87,
+   "dur": 3.52,
+   "speech": "七条序列，全部被判成平稳。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 90.94,
+   "dur": 2.89,
+   "speech": "其中四条，本来是错的。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 94.38,
+   "dur": 2.85,
+   "speech": "这就是这一集的第一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 97.78,
+   "dur": 3.47,
+   "speech": "第二件事，漂移性测的不是漂移。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 101.8,
+   "dur": 3.78,
+   "speech": "一条单边上涨的直线，它给零点五。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 106.13,
+   "dur": 3.93,
+   "speech": "一条完美的等差数列，它也给零点五。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 110.6,
+   "dur": 3.33,
+   "speech": "它测的是上分位中位数的形状。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 114.48,
+   "dur": 3.71,
+   "speech": "第三件事，转移性测的不是停住。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 118.74,
+   "dur": 4.12,
+   "speech": "完美周期三分之二，常数序列九分之二。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 123.41,
+   "dur": 3.4,
+   "speech": "一个一直在动，一个一动不动。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 127.36,
+   "dur": 3.49,
+   "speech": "数字大小和直觉正好反过来。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 131.4,
+   "dur": 3.61,
+   "speech": "这一集就围着这三个反直觉转。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 135.56,
+   "dur": 2.46,
+   "speech": "先看一段真实数据。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 138.58,
+   "dur": 5.34,
+   "speech": "贵州茅台，2013 到 2021，2188 个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 144.47,
+   "dur": 3.54,
+   "speech": "取最后 250 个点做 ADF。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 148.56,
+   "dur": 3.3,
+   "speech": "另外拿一只小市值票做对照。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 152.41,
+   "dur": 4.89,
+   "speech": "002456，2019 到 2021，725 个点。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 157.85,
+   "dur": 4,
+   "speech": "两条收益率序列，各取 250 个符号。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 162.4,
+   "dur": 4.6,
+   "speech": "一个 ADF 数，一个漂移性数，一个转移性数。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 167.54,
+   "dur": 3.37,
+   "speech": "三个数，三次当场算给你看。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 171.47,
+   "dur": 3.3,
+   "speech": "所有数字都能在证据里查到。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 175.32,
+   "dur": 3.59,
+   "speech": "三条证据文件，四十三条检查。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 179.46,
+   "dur": 2.51,
+   "speech": "先从那句错读开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 185.37,
+   "dur": 4.02,
+   "speech": "先说这件真事，从书页第十三页开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 189.94,
+   "dur": 4.14,
+   "speech": "书里式二点三，写的是 ADF 检验。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 194.63,
+   "dur": 2.41,
+   "speech": "式子里有一个 tau。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 197.6,
+   "dur": 4.67,
+   "speech": "书里的写法，是把 tau 和显著性水平放在一起。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 202.82,
+   "dur": 2.51,
+   "speech": "于是有两种读法。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 205.88,
+   "dur": 3.16,
+   "speech": "第一种读法，tau 是统计量。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 209.59,
+   "dur": 3.88,
+   "speech": "它要拿去和一张专门的临界值表比。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 214.01,
+   "dur": 3.13,
+   "speech": "第二种读法，tau 是 p 值。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 217.7,
+   "dur": 3.13,
+   "speech": "小于零点零五，就判平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 221.38,
+   "dur": 4.12,
+   "speech": "两种读法共用一个符号，含义完全不同。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 226.05,
+   "dur": 3.54,
+   "speech": "按第二种读法写代码，只有一行。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 230.14,
+   "dur": 3.06,
+   "speech": "判断 tau 小于零点零五。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 233.75,
+   "dur": 3.57,
+   "speech": "我们把这行代码跑在七条序列上。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 237.87,
+   "dur": 3.25,
+   "speech": "七条序列，全部返回平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 241.67,
+   "dur": 2.99,
+   "speech": "其中包括一条随机游走。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 245.21,
+   "dur": 3.88,
+   "speech": "随机游走没有均值可回，谈不上平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 249.64,
+   "dur": 3.21,
+   "speech": "也包括茅台收盘价的水平值。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 253.4,
+   "dur": 3.69,
+   "speech": "它从一千二涨到两千多，又跌回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 257.63,
+   "dur": 3.4,
+   "speech": "一眼看过去，就不是平稳序列。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 261.58,
+   "dur": 3.21,
+   "speech": "所以字面实现，错了四条。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 265.34,
+   "dur": 4.29,
+   "speech": "为什么不报错？因为 tau 本来就是负的。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 270.17,
+   "dur": 3.61,
+   "speech": "统计量的分布中心，就在负值区。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 274.34,
+   "dur": 3.18,
+   "speech": "它几乎永远小于零点零五。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 278.07,
+   "dur": 3.18,
+   "speech": "这就是这个错误最危险的地方。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 281.8,
+   "dur": 3.4,
+   "speech": "它不会崩，只会一直说平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 285.75,
+   "dur": 3.69,
+   "speech": "正确的读法，是把 tau 和临界值比。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 289.99,
+   "dur": 5.44,
+   "speech": "只含常数项的回归，百分之五的临界值是负二点八六。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 295.97,
+   "dur": 3.09,
+   "speech": "百分之一，是负三点四三。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 299.61,
+   "dur": 3.09,
+   "speech": "百分之十，是负二点五七。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 303.25,
+   "dur": 3.3,
+   "speech": "越负，越有理由拒绝单位根。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 307.1,
+   "dur": 3.76,
+   "speech": "也就是说，结论要跨过那条线才算。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 311.41,
+   "dur": 3.28,
+   "speech": "茅台的 tau，是负一点七零。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 315.23,
+   "dur": 3.25,
+   "speech": "离负二点八六，还差一截。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 319.04,
+   "dur": 2.85,
+   "speech": "所以水平值不平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 322.43,
+   "dur": 3.88,
+   "speech": "做一次差分，tau 变成负四点零六。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 326.86,
+   "dur": 3.47,
+   "speech": "跨过了负二点八六，判平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 330.88,
+   "dur": 4.33,
+   "speech": "这跟直觉一致：价格不平稳，收益率平稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 335.77,
+   "dur": 3.71,
+   "speech": "同一个符号，两种读法，两个结论。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 340.03,
+   "dur": 3.97,
+   "speech": "这一集的做法，是把这张表写进代码。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 344.55,
+   "dur": 3.73,
+   "speech": "不是把 tau 当概率，而是拿它去查表。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 351.68,
+   "dur": 2.92,
+   "speech": "三个指标，一个一个过。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 355.15,
+   "dur": 3.06,
+   "speech": "先看 ADF 在测什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 358.76,
+   "dur": 3.47,
+   "speech": "它测的是：序列里有没有单位根。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 362.78,
+   "dur": 2.37,
+   "speech": "单位根是什么意思？"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 365.7,
+   "dur": 4.77,
+   "speech": "意思是今天的值，几乎就是昨天的值加噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 371.01,
+   "dur": 3.57,
+   "speech": "这样的序列，冲击永远不会消失。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 375.13,
+   "dur": 3.13,
+   "speech": "所以它没有可以回去的均值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 378.81,
+   "dur": 4.09,
+   "speech": "ADF 的做法，是回归一个系数 gamma。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 383.46,
+   "dur": 3.33,
+   "speech": "如果 gamma 等于零，就有单位根。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 387.33,
+   "dur": 3.54,
+   "speech": "tau 就是 gamma 除以它的标准误。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 391.42,
+   "dur": 4.05,
+   "speech": "关键在分母：这个比值不服从 t 分布。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 396.02,
+   "dur": 4.17,
+   "speech": "因为单位根成立时，回归量本身是随机的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 400.74,
+   "dur": 2.73,
+   "speech": "所以要查专门的表。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 404.01,
+   "dur": 2.56,
+   "speech": "第二个指标，漂移性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 407.12,
+   "dur": 3.76,
+   "speech": "名字叫漂移，但它测的不是漂移。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 411.43,
+   "dur": 3.9,
+   "speech": "它的做法：在序列上画九条水平线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 415.88,
+   "dur": 3.09,
+   "speech": "每条线以上，取一个中位数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 419.52,
+   "dur": 3.23,
+   "speech": "九个中位数，做一次归一化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 423.3,
+   "dur": 2.87,
+   "speech": "再取这九个数的中位数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 426.72,
+   "dur": 2.49,
+   "speech": "就是这个指标的值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 429.75,
+   "dur": 2.77,
+   "speech": "我们拿一条等差数列试。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 433.08,
+   "dur": 2.46,
+   "speech": "一到十，九条线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 436.09,
+   "dur": 2.58,
+   "speech": "结果恰好是零点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 439.22,
+   "dur": 3.18,
+   "speech": "再拿一条单边上涨的直线试。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 442.95,
+   "dur": 2.32,
+   "speech": "结果还是零点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 445.82,
+   "dur": 3.28,
+   "speech": "因为中位数，总落在正中间。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 449.65,
+   "dur": 3.52,
+   "speech": "所以这个数只说明形状对称。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 453.72,
+   "dur": 4.12,
+   "speech": "不说明有没有漂移，也不说明漂移多强。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 458.38,
+   "dur": 2.68,
+   "speech": "第三个指标，转移性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 461.61,
+   "dur": 2.61,
+   "speech": "它的做法，分三步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 464.77,
+   "dur": 3.37,
+   "speech": "第一步，把序列分成三个状态。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 468.69,
+   "dur": 4.89,
+   "speech": "第二步，数状态之间的转移，得到一个三乘三矩阵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 474.13,
+   "dur": 4.57,
+   "speech": "第三步，每行除以这一行的和，得到概率矩阵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 479.25,
+   "dur": 3.42,
+   "speech": "对这个矩阵的三个列，算方差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 483.22,
+   "dur": 3.3,
+   "speech": "三个方差加起来，就是转移性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 487.08,
+   "dur": 2.97,
+   "speech": "拿完美周期一二三来试。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 490.59,
+   "dur": 3.66,
+   "speech": "每一行只有一格是一，其余是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 494.8,
+   "dur": 3.4,
+   "speech": "三行的列方差，各是九分之二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 498.75,
+   "dur": 2.46,
+   "speech": "加起来，三分之二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 501.76,
+   "dur": 2.61,
+   "speech": "再拿常数序列来试。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 504.92,
+   "dur": 3.52,
+   "speech": "它只有一个状态，只有第一行非零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 508.99,
+   "dur": 2.7,
+   "speech": "另外两行，全是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 512.24,
+   "dur": 4.05,
+   "speech": "列方差各是九分之一，加起来九分之二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 43,
+   "start": 516.84,
+   "dur": 2.73,
+   "speech": "一个在动，一个不动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 44,
+   "start": 520.11,
+   "dur": 3.35,
+   "speech": "动的那个数大，不动的那个数小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 45,
+   "start": 524.01,
+   "dur": 3.49,
+   "speech": "所以它测的是动力学的确定性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 46,
+   "start": 528.06,
+   "dur": 2.7,
+   "speech": "不是停在原状态的概率。"
+  },
+  {
+   "scene": "intuition",
+   "index": 47,
+   "start": 531.31,
+   "dur": 2.75,
+   "speech": "三个指标，三句话。"
+  },
+  {
+   "scene": "intuition",
+   "index": 48,
+   "start": 534.61,
+   "dur": 2.73,
+   "speech": "ADF：有没有单位根。"
+  },
+  {
+   "scene": "intuition",
+   "index": 49,
+   "start": 537.88,
+   "dur": 3.25,
+   "speech": "漂移性：上分位中位数的形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 50,
+   "start": 541.69,
+   "dur": 3.25,
+   "speech": "转移性：状态转移有多确定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 548.34,
+   "dur": 2.99,
+   "speech": "三个算法，三条签名。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 551.88,
+   "dur": 2.51,
+   "speech": "第一条，ADF。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 554.94,
+   "dur": 4.43,
+   "speech": "输入是配置和一条序列，输出 Either 和结果。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 559.92,
+   "dur": 2.63,
+   "speech": "配置里有三样东西。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 563.1,
+   "dur": 4.24,
+   "speech": "回归型：无常数、仅常数、带趋势。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 567.89,
+   "dur": 3.57,
+   "speech": "滞后阶：可以给，也可以交给规则。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 572,
+   "dur": 4.41,
+   "speech": "显著性水平：只接受百分之一、五、十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 576.96,
+   "dur": 4.14,
+   "speech": "结果里有 tau，有标准误，有三个临界值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 581.65,
+   "dur": 3.4,
+   "speech": "还有一个布尔值：平稳还是不平稳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 585.6,
+   "dur": 3.59,
+   "speech": "判决不藏在注释里，写在类型里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 589.74,
+   "dur": 2.37,
+   "speech": "第二条，漂移性。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 592.66,
+   "dur": 3.25,
+   "speech": "输入一个整数 m，一条序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 596.46,
+   "dur": 3.16,
+   "speech": "输出一个数，或者一个错误。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 600.17,
+   "dur": 2.65,
+   "speech": "m 是阈值线的条数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 603.37,
+   "dur": 3.52,
+   "speech": "书里没给默认值，我们演示用九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 607.44,
+   "dur": 3.37,
+   "speech": "工程上可以用二十，结论会变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 611.36,
+   "dur": 2.46,
+   "speech": "第三条，转移性。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 614.38,
+   "dur": 3.18,
+   "speech": "输入状态数 k，一条序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 618.11,
+   "dur": 3.18,
+   "speech": "输出指标值，还有一个矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 621.84,
+   "dur": 3.09,
+   "speech": "矩阵是三乘三的转移概率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 625.48,
+   "dur": 3.73,
+   "speech": "书中固定三个符号，这里用 k 表示。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 629.76,
+   "dur": 3.16,
+   "speech": "三条签名，三张错误表。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 633.47,
+   "dur": 3.23,
+   "speech": "ADF 这一条，有五种失败。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 637.25,
+   "dur": 4.09,
+   "speech": "序列太短，有非有限值，滞后不合法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 641.89,
+   "dur": 4.69,
+   "speech": "显著性水平不在三档里，或者设计矩阵秩亏。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 647.14,
+   "dur": 3.16,
+   "speech": "漂移性那一条，有四种失败。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 650.84,
+   "dur": 5.13,
+   "speech": "m 太小，序列太短，有非有限值，或者序列退化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 656.52,
+   "dur": 3.61,
+   "speech": "退化的意思是：整条序列是常数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 660.68,
+   "dur": 3.23,
+   "speech": "转移性那一条，有三种失败。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 664.46,
+   "dur": 4.19,
+   "speech": "状态数太小，序列太短，有非有限值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 669.2,
+   "dur": 4.07,
+   "speech": "加起来十二种失败，每一种都有一条测试。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 673.82,
+   "dur": 3.4,
+   "speech": "没有一种是靠运行时崩出来的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 677.77,
+   "dur": 3.3,
+   "speech": "这是这三条签名的共同约定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 681.62,
+   "dur": 3.59,
+   "speech": "错误用 Either 返回，不抛异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 685.76,
+   "dur": 3.85,
+   "speech": "调用方必须处理，不能假装看不见。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 690.17,
+   "dur": 3.04,
+   "speech": "画面后面每出现一个数字。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 693.76,
+   "dur": 4.43,
+   "speech": "它要么对应一个错误分支，要么对应一条检查。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 698.74,
+   "dur": 3.09,
+   "speech": "三种算法都只做一件事。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 702.37,
+   "dur": 3.13,
+   "speech": "把一条序列，压成一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 706.06,
+   "dur": 3.57,
+   "speech": "压之前是什么，压之后还剩什么。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 710.17,
+   "dur": 3.93,
+   "speech": "这中间的损失，就是后面要讲的事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 717.5,
+   "dur": 3.73,
+   "speech": "先说实现，三种算法三种做法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 721.78,
+   "dur": 2.7,
+   "speech": "先看 ADF 的回归。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 725.04,
+   "dur": 3.28,
+   "speech": "被解释变量，是序列的差分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 728.86,
+   "dur": 3.64,
+   "speech": "解释变量，是滞后一期的水平值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 733.05,
+   "dur": 4.07,
+   "speech": "再加上滞后差分项，用来吸收自相关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 737.67,
+   "dur": 3.69,
+   "speech": "滞后几阶？书里没给规则。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 741.91,
+   "dur": 2.32,
+   "speech": "我们用 Schwert 规则。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 744.78,
+   "dur": 4.38,
+   "speech": "十二乘以样本量除以一百的四分之一次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 749.71,
+   "dur": 2.87,
+   "speech": "这个数，再向下取整。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 753.13,
+   "dur": 3.69,
+   "speech": "250 个点，算出来滞后 15 阶。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 757.36,
+   "dur": 3.04,
+   "speech": "有效观测，234 个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 760.95,
+   "dur": 2.53,
+   "speech": "系数用什么方法解？"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 764.04,
+   "dur": 2.77,
+   "speech": "这里有一个很容易踩的坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 767.36,
+   "dur": 4.19,
+   "speech": "价格量级是一千，方差量级是一百万。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 772.1,
+   "dur": 3.35,
+   "speech": "正规方程会把条件数平方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 776,
+   "dur": 3.49,
+   "speech": "条件数一变大，系数就不稳。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 780.04,
+   "dur": 3.28,
+   "speech": "所以我们用 Householder QR。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 783.87,
+   "dur": 4.93,
+   "speech": "不组正规方程，直接对设计矩阵做正交变换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 789.36,
+   "dur": 4.07,
+   "speech": "残差平方和，从变换后的向量取。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 793.98,
+   "dur": 3.35,
+   "speech": "标准误，从 R 的对角线取。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 797.88,
+   "dur": 3.3,
+   "speech": "tau 就是系数除以标准误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 801.73,
+   "dur": 2.7,
+   "speech": "第二个坑，常数序列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 804.98,
+   "dur": 3.4,
+   "speech": "差分全零，水平值是常数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 808.93,
+   "dur": 3.23,
+   "speech": "设计矩阵秩亏，解不出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 812.71,
+   "dur": 3.42,
+   "speech": "我们不返回 NaN，也不静默给零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 816.68,
+   "dur": 2.8,
+   "speech": "我们返回一个专门的错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 820.03,
+   "dur": 2.75,
+   "speech": "第二种，漂移性的实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 823.33,
+   "dur": 2.53,
+   "speech": "九条线，等距画。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 826.41,
+   "dur": 2.92,
+   "speech": "每条线以上，取中位数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 829.88,
+   "dur": 3.09,
+   "speech": "线本身不参与中位数计算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 833.52,
+   "dur": 2.94,
+   "speech": "只有严格大于线的点才算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 837.01,
+   "dur": 2.92,
+   "speech": "然后归一化九个中位数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 840.48,
+   "dur": 4.14,
+   "speech": "归一化区间，用这九个数自己的范围。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 845.17,
+   "dur": 2.68,
+   "speech": "这一步最容易换口径。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 848.4,
+   "dur": 3.54,
+   "speech": "换成原序列的范围，数就变了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 852.49,
+   "dur": 3.61,
+   "speech": "所以这一条，写进了自授权文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 856.65,
+   "dur": 3.01,
+   "speech": "第三种，转移性的实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 860.22,
+   "dur": 2.85,
+   "speech": "分箱是最容易漏的一步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 863.61,
+   "dur": 2.99,
+   "speech": "等宽分三格，用 floor。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 867.15,
+   "dur": 3.59,
+   "speech": "最大值那一格，floor 会算出三。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 871.29,
+   "dur": 2.7,
+   "speech": "必须把它夹回第二格。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 874.54,
+   "dur": 4.6,
+   "speech": "漏了这个 clamp，最后一点就落到不存在的状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 879.69,
+   "dur": 2.99,
+   "speech": "然后数转移，行归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 883.23,
+   "dur": 3.23,
+   "speech": "零行保持零行，不补均匀。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 887.01,
+   "dur": 3.09,
+   "speech": "最后算列方差，除以三。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 890.65,
+   "dur": 3.4,
+   "speech": "除以二，两个黄金值会翻三倍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 894.6,
+   "dur": 2.99,
+   "speech": "三种实现，三种代价。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 898.14,
+   "dur": 4.57,
+   "speech": "ADF 的代价在回归，漂移性的代价在排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 48,
+   "start": 903.26,
+   "dur": 3.78,
+   "speech": "转移性的代价，在分箱和归一化。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 910.44,
+   "dur": 3.01,
+   "speech": "现在看数字，先看总体。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 914,
+   "dur": 3.01,
+   "speech": "四十三条检查，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 917.57,
+   "dur": 3.59,
+   "speech": "其中三十六条手算，七条数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 921.71,
+   "dur": 2.58,
+   "speech": "断言一共五十五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 924.84,
+   "dur": 4.93,
+   "speech": "ADF 三十条，漂移性十一条，转移性十四条。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 930.32,
+   "dur": 4,
+   "speech": "加上前面几集，套件总数六百零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 934.87,
+   "dur": 3.09,
+   "speech": "先看 ADF 的七条序列。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 938.51,
+   "dur": 3.18,
+   "speech": "白噪声，tau 负五点八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 942.24,
+   "dur": 3.47,
+   "speech": "随机游走，tau 负零点九六。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 946.26,
+   "dur": 3.25,
+   "speech": "两个都是理论上的极端例子。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 950.06,
+   "dur": 3.3,
+   "speech": "白噪声没有单位根，tau 很负。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 953.92,
+   "dur": 3.52,
+   "speech": "随机游走有单位根，tau 接近零。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 957.98,
+   "dur": 2.97,
+   "speech": "这就是这张表该有的样子。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 961.5,
+   "dur": 3.85,
+   "speech": "茅台的收盘价，tau 负一点七零。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 965.9,
+   "dur": 4.33,
+   "speech": "它落在两者之间，但没跨过负二点八六。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 970.79,
+   "dur": 3.83,
+   "speech": "差分之后，负四点零六，跨过去了。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 975.17,
+   "dur": 3.47,
+   "speech": "带趋势的回归，负一点六一。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 979.19,
+   "dur": 3.54,
+   "speech": "换成滞后八阶，负一点九七。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 983.28,
+   "dur": 2.89,
+   "speech": "两个都在临界值右边。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 986.72,
+   "dur": 3.28,
+   "speech": "所以结论，不随滞后阶改变。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 990.55,
+   "dur": 3.73,
+   "speech": "随机游走做一次差分，负五点二三。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 994.84,
+   "dur": 3.69,
+   "speech": "差分把单位根消掉了，tau 变负。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 999.07,
+   "dur": 3.16,
+   "speech": "白噪声的 tau 为什么这么负？"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 1002.78,
+   "dur": 3.42,
+   "speech": "因为它每一点都不记得上一点。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1006.75,
+   "dur": 2.94,
+   "speech": "记性越差，这个数越负。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1010.24,
+   "dur": 2.92,
+   "speech": "再看第二个指标，漂移性。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1013.71,
+   "dur": 2.68,
+   "speech": "等差数列，零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1016.94,
+   "dur": 3.28,
+   "speech": "单边斜坡，零点四九七七。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1020.77,
+   "dur": 3.23,
+   "speech": "随机游走，零点三九二八。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1024.55,
+   "dur": 4.24,
+   "speech": "茅台第一段，二零一三年，零点二五一九。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1029.34,
+   "dur": 4.24,
+   "speech": "茅台第二段，二零一七年，零点六九二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1034.12,
+   "dur": 3.66,
+   "speech": "最后二百五十个点，零点一六四二。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1038.34,
+   "dur": 3.71,
+   "speech": "同一只股票，三个窗口，三个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1042.6,
+   "dur": 4.14,
+   "speech": "从零点一六到零点六九，差了四倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1047.29,
+   "dur": 3.59,
+   "speech": "所以这个数，不能跨窗口直接比。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1051.43,
+   "dur": 3.06,
+   "speech": "再看第三个指标，转移性。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1055.04,
+   "dur": 2.65,
+   "speech": "完美周期，三分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1058.24,
+   "dur": 2.77,
+   "speech": "常数序列，九分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1061.57,
+   "dur": 2.85,
+   "speech": "单一符号，也是九分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1064.96,
+   "dur": 3.11,
+   "speech": "白噪声，零点零零三三六。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1068.62,
+   "dur": 2.99,
+   "speech": "茅台符号，零点一一一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1072.16,
+   "dur": 3.61,
+   "speech": "小市值票符号，零点零零四九六。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1076.33,
+   "dur": 2.41,
+   "speech": "两个数差了二十倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1079.29,
+   "dur": 4.21,
+   "speech": "为什么？因为茅台符号只有两个状态。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1084.06,
+   "dur": 3.06,
+   "speech": "中间那个状态，没出现过。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1087.67,
+   "dur": 3.64,
+   "speech": "那一行是零，拉低了三列方差。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1091.86,
+   "dur": 4.26,
+   "speech": "小市值票三个状态都到过，分布更均匀。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1096.67,
+   "dur": 3.37,
+   "speech": "所以它的数，更接近白噪声。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1100.59,
+   "dur": 3.28,
+   "speech": "每个数字都能回到一条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1104.42,
+   "dur": 2.89,
+   "speech": "不是看起来对，是能复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1110.71,
+   "dur": 3.49,
+   "speech": "最后说边界，五条不能说的话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1114.75,
+   "dur": 2.89,
+   "speech": "第一条，tau 不是 p 值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1118.2,
+   "dur": 3.37,
+   "speech": "临界值表，是大样本渐近的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1122.12,
+   "dur": 2.75,
+   "speech": "小样本的临界值更负。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1125.42,
+   "dur": 2.77,
+   "speech": "我们没做小样本修正。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1128.75,
+   "dur": 3.69,
+   "speech": "第二条，漂移性零点五不是安全。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1132.98,
+   "dur": 2.7,
+   "speech": "单边趋势也是零点五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1136.23,
+   "dur": 4.89,
+   "speech": "同一只股票换窗口，从零点一六到零点六九。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1141.67,
+   "dur": 4.19,
+   "speech": "m 的取值、归一化的区间，书里都没给。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1146.41,
+   "dur": 3.23,
+   "speech": "我们选的口径，换一下数就变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1150.19,
+   "dur": 3.37,
+   "speech": "所以这个数，只能同口径比较。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1154.11,
+   "dur": 3.88,
+   "speech": "第三条，转移性九分之二不是稳定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1158.54,
+   "dur": 2.89,
+   "speech": "它是两行是零行的结果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1161.99,
+   "dur": 3.33,
+   "speech": "零行补成均匀行，数就变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1165.86,
+   "dur": 4.09,
+   "speech": "状态数固定三，换成四，数也变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1170.51,
+   "dur": 2.41,
+   "speech": "分箱边界也很脆。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1173.47,
+   "dur": 2.82,
+   "speech": "我们试过零点一五这个数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1176.84,
+   "dur": 4.81,
+   "speech": "它本该落在第二格，浮点误差让它落回第一格。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1182.21,
+   "dur": 5.03,
+   "speech": "一条序列的值，从三分之一变成了三分之一以下。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1187.79,
+   "dur": 3.4,
+   "speech": "这不是理论上的可能，是实测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1191.73,
+   "dur": 4.21,
+   "speech": "所以分箱规则必须写死，不能顺手改。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1196.5,
+   "dur": 3.37,
+   "speech": "第四条，ADF 的三个假设。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1200.42,
+   "dur": 3.76,
+   "speech": "用滞后项吸收自相关，这是假设。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1204.73,
+   "dur": 3.61,
+   "speech": "异方差和结构突变，我们没处理。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1208.89,
+   "dur": 2.82,
+   "speech": "临界值表也不管这些。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1212.27,
+   "dur": 4.12,
+   "speech": "所以 tau 只能当参考，不能当判决书。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1216.93,
+   "dur": 4.26,
+   "speech": "它给的是一个概率性的说法，不是二值判决。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1221.75,
+   "dur": 3.54,
+   "speech": "第五条，三个指标都不给预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1225.84,
+   "dur": 2.63,
+   "speech": "它们描述序列的性质。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1229.02,
+   "dur": 2.89,
+   "speech": "不告诉你明天涨还是跌。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1232.46,
+   "dur": 3.21,
+   "speech": "这也是这一章反复说的一句话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1236.22,
+   "dur": 2.8,
+   "speech": "描述现状，不给预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1239.57,
+   "dur": 3.25,
+   "speech": "五条边界，其实是一句话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1243.37,
+   "dur": 3.35,
+   "speech": "指标是压缩，压缩就有损。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1247.27,
+   "dur": 2.65,
+   "speech": "五个边界，五条检查。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1250.47,
+   "dur": 4.17,
+   "speech": "画面上的每个数，都带着自己的适用条件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1255.19,
+   "dur": 3.76,
+   "speech": "换个窗口，换个口径，换个状态数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1259.5,
+   "dur": 2.51,
+   "speech": "这三个数就都变了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1262.56,
+   "dur": 2.65,
+   "speech": "这就是指标的代价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1265.76,
+   "dur": 3.25,
+   "speech": "它把一条序列，压成一个数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1269.57,
+   "dur": 2.89,
+   "speech": "压掉的东西，比留下的多。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1275.86,
+   "dur": 2.82,
+   "speech": "三个数，给这一集收尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1279.23,
+   "dur": 5.56,
+   "speech": "一个负一点七零，一个零点一六四二，一个零点一一一四。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1285.34,
+   "dur": 2.94,
+   "speech": "三个指标，三种压缩。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1288.83,
+   "dur": 5.05,
+   "speech": "ADF 压成一次回归的 t 比，但要查非标准的表。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1294.44,
+   "dur": 5.13,
+   "speech": "漂移性压成一个中位数的中位数，但它不测漂移强度。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1300.11,
+   "dur": 4.6,
+   "speech": "转移性压成一个矩阵的迹，但它不测自转移。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1305.26,
+   "dur": 3.06,
+   "speech": "三个数都能算，都能复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1308.87,
+   "dur": 2.77,
+   "speech": "但都不能跨口径比较。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1312.2,
+   "dur": 2.56,
+   "speech": "下一集，换模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1315.3,
+   "dur": 4.07,
+   "speech": "到此为止，八集都在给序列做变换。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1319.92,
+   "dur": 3.25,
+   "speech": "下一集开始，让网络自己学。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1323.73,
+   "dur": 3.83,
+   "speech": "先看多层感知机，再看时间卷积。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1328.11,
+   "dur": 2.41,
+   "speech": "留给下一集的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1331.07,
+   "dur": 4.38,
+   "speech": "同样的输入，换成神经网络，会多学到什么？"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1336,
+   "dur": 2.34,
+   "speech": "又会丢掉什么东西？"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1338.9,
+   "dur": 2.8,
+   "speech": "感谢观看，下一集见。"
+  }
+ ]
+}
