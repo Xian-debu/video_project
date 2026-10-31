@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-11",
-  "status": "draft",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
