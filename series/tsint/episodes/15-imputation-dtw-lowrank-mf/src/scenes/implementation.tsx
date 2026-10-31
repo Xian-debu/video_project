@@ -40,7 +40,7 @@ const P2: React.FC = () => (
     <Head kicker="05 / 实现" title="三个显式选择，都不是默认" goal="退化行为要留出声来" />
     <div style={{ position: "absolute", left: PAD, top: 330, width: 1000 }}>
       <Card label="① 初值：缺失格填该列观测均值" accent={C.violet} style={{ height: 250 }}>
-        <Row name="填 0" value="从很远的地方出发" note="实测收敛慢两个数量级" color={C.coral} />
+        <Row name="填 0" value="从更远的地方出发" note="实测收敛明显更慢" color={C.coral} />
         <Row name="填列均值" value="本仓选择" note="列尺度已经对齐，投影不必先爬坡" color={C.cyan} />
         <Row name="整列全缺" value="均值为 0 / 0" note="于是这一列从 0 出发，也停在 0" color={C.coral} />
       </Card>
