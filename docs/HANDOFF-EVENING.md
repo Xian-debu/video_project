@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-31 18:50 实测）
+## 2. 状态（2026-10-31 19:24 实测）
 
-- 成片 **26 / 74**：E01–E16、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **62 / 190** 模块、**917** 条断言（61 组套件；ch02 39 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E16 交付后）：video_project `2e1e206`（delivery；docs 提交紧随其后）、ts-base `234bee7`、ts-admin `40a8188`、
+- 成片 **27 / 74**：E01–E17、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **65 / 190** 模块、**945** 条断言（64 组套件；ch02 39 模块；ch03 3；ch08 13；ch09 11）。
+- 四仓 HEAD（E17 交付后）：video_project `a3e74c8`（delivery；docs 提交紧随其后）、ts-base `2229df0`、ts-admin `5e63b2f`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -37,12 +37,13 @@
 - E14 成片 `749.07 s / 22,472 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，199 cue、8 章、封面 2880。
 - E15 成片 `827.47 s / 24,824 帧 / 8 场 26 页 / −15 LUFS / TP −2 dBFS`，238 cue、8 章、封面 3000。
 - E16 成片 `804.8 s / 24,144 帧 / 8 场 22 页 / −15 LUFS / TP −2 dBFS`，211 cue、8 章、封面 2892。
+- E17 成片 `837.2 s / 25,116 帧 / 8 场 27 页 / −15 LUFS / TP −2 dBFS`，225 cue、8 章、封面 3660。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E17 `win-metrics-valselect`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E16 实测 804.8 s）。
+- 下一步入口：**E18 `norm-revin-now-mean`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E17 实测 837.2 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -91,8 +92,8 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
 
 ## 5. 排期（production_order 剩余 49 集）
 
-E01–E16 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min。按 `production_order` 继续：
-**E17 win-metrics-valselect** → E18 … → E64 llm-side-adapters。
+E01–E17 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17（13.95 min）。按 `production_order` 继续：
+**E18 norm-revin-now-mean** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -176,6 +177,13 @@ STL 书里没有公式，口径来自 Cleveland 等 1990（SELF-AUTH A34）：`d
 茅台 730 日季节强度 STL `0.1596093732` vs 经典 `0.0083179375772`（19.2×），剖面逐相位最大差 `0.1693263854` 元、季节振幅占均价 `0.4045290481%`——式(2.2) 只有一个式子，换的是 var(R) 里 R 的定义（LOESS 剩下的 vs 移动平均剩下的）；
 两条去趋势路径读数 `1.1927418917` / `1.2311591349`（差 0.0384），合成 n=400 深内段 60..339 趋势 `1.7763568394e−15` / 季节 `8.8817841970e−16` / 恒等 `0`（测试用 n=200、深内段 60–139）；
 数据在 `/root/ts-base/data/episodes/16-correlation-and-stl/`（panel_close.csv 251 行 × 101 列 = 100 只沪市主板 × 251 交易日、2024-12-20..2025-12-31、211,044 B；maotai_daily.csv 730 行 / maotai_stl.csv / maotai_season_profile.csv / summary.json）；证据 22 条检查 0 失败（数据 4 / 结构 4 / 行为 14），断言 37（`corr 20 / stl 17`），ts-base 61 组套件 / 917 断言全绿；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E16 实测 804.8 s）。
+
+E17 冻结口径（E18 起复用）：滑窗窗口数 `(T − off − H − F) div s + 1`（`windowCount`；4th 参数是 **offset** 不是 gap，gap 属于 `chronoSplit`，plan-vs-code 偏差记 A35；h/f/s 非正或 `t − off < h + f` 返回 0）；T=1000/H=96/F=24 时 s=1 → **881**、s=5 → **177**（简报写 176 漏 +1，errata E31）；真实序列 T=3,880/H=96/F=24 → 3,761 窗；
+切分 6:2:2 + 两边界各丢 gap=24 → 2,209 / 657 / 609（`splitRanges [[0,2328],[2352,776],[3152,728]]`，零泄漏；三段之和 3,475 与总窗口差 286 = 48 帧空 + 238 个跨窗口）；
+四指标照式(3.5)–(3.8)：MAE 0.666667 / MSE 0.666667 / RMSE √(2/3)=0.816497 / MAPE 22.2222%（x=[2,4,6]、p=[3,4,5]），恒等时四者精确 0；MAPE 三种口径都实现且都进画面（A36）——默认 `MapeRaw` 照书直除（真值 0 → **Infinity**）、`MapeSkip` 跳过该对（25.0%，metMapeCount 2/3）、`MapeEps 1e-8`（3.33e9），默认绝不悄悄换数；
+真实读数：低价段（均值 937 元、1,411 窗）MAE `47.3317` / MAPE `5.0452%`，高价段（11,061.6 元、1,579 窗）MAE `470.3713` / MAPE `4.2431%` → 绝对量 9.94×、相对量 **0.84×**，两个指标对价段给出相反结论；合成 n=400 候选 add5（MAE 5.00 / MAPE 25.2305%）vs mul1.02（MAE 10.1206 / MAPE 2.0%）→ valSelect 按 MAE 取 add5、按 MAPE 取 mul102；
+训练书里只有式(3.4)：本仓 Adam(1e−3, β 0.9/0.999, bias correction) / batch 32 / ≤200 轮 / patience 10 / min_delta 1e−6 / 固定 seed LCG，早停**恢复 histBestEpoch 权重**（A37）；梯度中心差分相对误差 `1.4126803893e−11`（门 1e−6）；单元场景早停回第 **7** 轮，端到端 21 轮收敛、最优第 **16** 轮、参数量 36（H·F+F = 8·4+4）；`valSelect` = 验证分数升序、同分按标签字典序、测试集不参加选模；
+数据在 `/root/ts-base/data/episodes/17-win-metrics-valselect/`（maotai_hfq.csv 3,880 行 / 88,816 B / 2010-01-04..2025-12-31 / max_gap 11 d @2020-02-03 / 515.429..17,080.588；era_metrics.csv / horizon_metrics.csv 72 行 / train_history.csv 21 行 / forecast_metrics.csv / summary.json）；证据 24 条检查 0 失败（数据 4 / 结构 4 / 行为 16），断言 28（`window 10 / metrics 12 / trainloss 6`），ts-base 64 组套件 / 945 断言全绿；errata：E30 式(3.1) 是预测映射不是滑窗定义、E31 176 漏 +1、E32「T^train 是整个测试集」应为训练集。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
