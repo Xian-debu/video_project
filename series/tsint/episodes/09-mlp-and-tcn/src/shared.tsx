@@ -319,10 +319,10 @@ export const Matrix: React.FC<{
 };
 
 /** 公式块：衬线体，用于把书里的式子原样搬上屏。 */
-export const Formula: React.FC<{ children: React.ReactNode; size?: number; color?: string; note?: React.ReactNode }> = ({
-  children, size = 64, color = C.ink, note,
+export const Formula: React.FC<{ children: React.ReactNode; size?: number; color?: string; note?: React.ReactNode; style?: React.CSSProperties }> = ({
+  children, size = 64, color = C.ink, note, style,
 }) => (
-  <div>
+  <div style={style}>
     <div style={{ fontFamily: FONT.serif, fontSize: size, color, lineHeight: 1.28 }}>{children}</div>
     {note ? <div style={{ fontFamily: FONT.mono, fontSize: FT.micro, color: C.inkFaint, marginTop: 10 }}>{note}</div> : null}
   </div>
@@ -341,10 +341,11 @@ export const Verdict: React.FC<{ ok: boolean; label?: string }> = ({ ok, label }
 export const Row: React.FC<{ name: React.ReactNode; value: React.ReactNode; note?: React.ReactNode; color?: string; width?: number }> = ({
   name, value, note, color = C.ink, width = 1720,
 }) => (
-  <div style={{ display: "flex", alignItems: "baseline", width, marginTop: 10 }}>
-    <div style={{ width: 470, fontFamily: FONT.sans, fontSize: FT.body, color: C.inkDim }}>{name}</div>
-    <div style={{ width: 300, fontFamily: FONT.mono, fontSize: FT.body, color, fontVariantNumeric: "tabular-nums" }}>{value}</div>
-    {note ? <div style={{ flex: 1, fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint }}>{note}</div> : null}
+  // width 只是上限：行永远铺满容器，所以窄卡片里的注释列不会被挤成竖排单字。
+  <div style={{ display: "flex", alignItems: "baseline", width: "100%", maxWidth: width, marginTop: 10 }}>
+    <div style={{ width: "36%", flexShrink: 0, fontFamily: FONT.sans, fontSize: FT.body, color: C.inkDim }}>{name}</div>
+    <div style={{ width: "26%", flexShrink: 0, fontFamily: FONT.mono, fontSize: FT.body, color, fontVariantNumeric: "tabular-nums" }}>{value}</div>
+    {note ? <div style={{ flex: 1, minWidth: 0, paddingLeft: 14, fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint }}>{note}</div> : null}
   </div>
 );
 
