@@ -194,3 +194,15 @@
 - 返工: 讲稿 364 行一次成型；梯度/布局调试 2 轮（MLP 梯度、TCN 布局各一次）；stills 26 页末帧 lint PASS 后因 `Row` 布局重渲染一遍；make 一轮 PASS；TTS 364 条一次过；封面在 7 个交界帧里实测后取 23891
 - 偏差: 计划 23 min，实做 25.11 min（+2.11 min）；34 页；旁白 364 条、语音 1,156 s；证据 31 条（27 手算 / 4 数据）；断言 35（MlpSpec 16 / TcnSpec 19），套件 640
 - 备注: **ch02 八集全部完成**（E02–E09）；下一步 E10 `attention-block`（production_order 索引 19，22–24 min）。**E04 bed 1560 s 仍够 E10；超过再重建**
+
+## E10 attention-block — 2026-10-31
+- ts-base: 3bd9389（Attention 模块 + 32 断言，总套件 672）→ 74b8882（SELF-AUTH A22 + errata E27）→ ccd521e（`app/Ch02AttentionEvidence.hs` 证据程序）→ d2ab717（证据数据：两只票 CSV + 6 个产物 + summary.json + evidence JSON，31 条检查 = 26 手算 + 5 数据）
+- ts-admin: 6a4eabe（`inventory/scripts/export_ch02_attention.py`：600519 5,033 行 / 000001 4,953 行 qfq 日线，manifest 带 max_gap）
+- video_project: 604b8c1（pack/scenes/script/231 行讲稿/数据生成器 + coverFrame 5609）→ **919b7da**（本次 delivery 提交：cover.png 155,731 B / tsint-10.srt 19,321 B / chapters / film ready）
+- 引擎: 无（a667688；score 复用 `out/e04-score-loop-48k.wav` 1560 s、48 kHz）
+- 成片: 1,050.07 s（17:30.07），−15 LUFS，TP −2 dBFS，31,502 帧，8 场；231 条旁白，语音 819.4 s（mean 3.55 s），字幕跨度 1.2→1047.88 s（speaking 900.3 s）
+- 流水线: 8 段分开渲染（reused 0 / rendered 8）；musicGain −4.5 dB、ducked 54.4%、peak −1.23 dBFS；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.72、gap_full −30.47、gap_audible −33.12、bed vs speech −9.4；flicker mean|d| 0.0217、p99 0.4692、max 11.69、cuts 7（3302/7417/11870/16644/20801/25617/29182）；231 cue 中 0 条换行、最长行 34 字（budget 34）；8 章；封面 frame 5609（186.97 s，problem 第二页：16×16 注意力矩阵对角 + 3.31e−2 / 1.46e−3 两张卡，字幕间隙帧）
+- 卡点: ① JSX 属性里直接写 `sub="测试集 " + fmtF(...)` 非法（TS1003/TS1382），必须 `sub={"..." + ...}`；两处（intuition 页一、verification 页二）；② `Matrix` 16×16 用 cell=50/44 纵向溢出（16×(cell+6) 从 top 312 起 >1080），改 36；③ definitions 首页小标题 top 210 与 `SceneHead` 的 goal 行重叠 67%，改 246、公式 268→306；④ verification 真实窗页两行 `Row` 放在 top 560 落在卡片（312..732）内部，改 774；⑤ outro 四个 Stat 432 宽 + gap 24 = 1800 > 可用宽 1776，改 427 + gap 18；⑥ **提交 pack 后 make 的 content check 报 `content HEAD moved …; run sync`**——HEAD 变了 tree 哈希要重算，提交后必须再 sync 一次再 make（E10 首轮就死在这）；⑦ 生成器解析 `attention_softmax.csv` 的朴素版 NaN 写作字符串 `null`（`float('null')` 报错），改 `None if v=="null"`；⑧ 讲稿按 CPS 4.5 估 1112.03 s、实测 1050.08 s（−62 s），八个场景起点整体前移，still lint 帧与封面候选全部按实测时间轴重算
+- 返工: 讲稿 231 行一次成型；stills 28 帧首轮 72 violations（矩阵溢出/标题重叠/卡片内 Row/outro 横向溢出）→ 两轮修完 PASS；make 一轮 PASS（首轮被 content check 挡下）；TTS 231 条一次过；封面在字幕间隙帧里实测取 5609
+- 偏差: 计划 22–24 min，实做 17.50 min（−4.5 ~ −6.5 min）；28 页；旁白 231 条、语音 819.4 s；证据 31 条（26 手算 / 5 数据）；断言 32（AttentionSpec 四个分组），套件 672
+- 备注: **ch02 九集全部完成**（E02–E10）；下一步 E11 `rnn-lstm-gru`。E04 bed 1560 s 仍够 E11（E10 实测 1050 s）

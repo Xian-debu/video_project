@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-31 10:1x 实测）
+## 2. 状态（2026-10-31 10:45 实测）
 
-- 成片 **19 / 74**：E01–E09、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **45 / 190** 模块、**640** 条断言（ch02 22 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E09 交付后）：video_project `489db36`（delivery；docs 提交紧随）、ts-base `e0cb04a`、ts-admin `8e256a2`、
+- 成片 **20 / 74**：E01–E10、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **46 / 190** 模块、**672** 条断言（ch02 23 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E10 交付后）：video_project `919b7da`（delivery；docs 提交紧随）、ts-base `d2ab717`、ts-admin `6a4eabe`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -30,13 +30,13 @@
 - E07 成片 `1298.73 s / 38,962 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，294 cue、8 章、封面 2259。
 - E08 成片 `1343.89 s / 40,317 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，332 cue、8 章、封面 3693。
 - E09 成片 `1506.37 s / 45,191 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，364 cue、8 章、封面 23891。
+- E10 成片 `1050.07 s / 31,502 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，231 cue、8 章、封面 5609。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E10 `attention-block`**（production_order 索引 19，22–24 min）；score 继续复用
-  `out/e04-score-loop-48k.wav`（1560 s，E10 ≤1560 s 直接 `--score=` 复用）。
+- 下一步入口：**E11 `rnn-lstm-gru`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E10 实测 1050.07 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -83,10 +83,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 55 集）
+## 5. 排期（production_order 剩余 54 集）
 
-E01–E09 与 E65–E74 已交付；**ch02 八集全部完成**，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 min。按 `production_order` 继续：
-**E10 attention-block** → E11 rnn-lstm-gru → … → E64 llm-side-adapters。
+E01–E10 与 E65–E74 已交付；**ch02 九集全部完成**，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 min。按 `production_order` 继续：
+**E11 rnn-lstm-gru** → E12 … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -117,6 +117,13 @@ E09 冻结口径（E10 起复用）：MLP/TCN 都只用**严格因果**——卷
 MSE（不除 2、不除 batch）、自写 `splitmix64` 随机源保证同 seed 逐位一致；参数量显式导出：MLP 60→32→1 = **1985**、TCN（1→16、16→16、16→16 + 线性头）= **1649**；
 数据在 `/root/ts-base/data/episodes/09-mlp-and-tcn/`（600519 5,033 行、000001 4,953 行，MLP 窗口 60 / TCN 窗口 12，按行取窗、停牌即无行不补）；
 score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E09 实测 1506.37 s）。
+
+E10 冻结口径（E11 起复用）：式(2.65) 的缩放因子是 **sqrt(d_k)** 不是 d_k（书里文字写「d 是缩放因子」、式子是 sqrt(d_k)，照式子；手算黄金值 (0.6697597, 0.3302403) 锁住这一点）；d_k = **16**；
+softmax 先减每一行的最大值（+1000 平移后朴素版本必 NaN，稳定版逐位一致）；掩码在 softmax 之前设成 **−1e30** 而不是 −Infinity——整行屏蔽时 −Inf 减完最大仍是 −Inf、exp 后 0/0 = NaN，−1e30 下溢成 0，代价是相差 >1e30 会整行变零（接受，比 NaN 好排查）；被屏蔽位置输出精确 0，行和偏差 1.11e−16；
+位置编码 PE[p, 2i] = sin(p / 10000^(2i/d))、PE[p, 2i+1] = cos(同一分母)，**没有可训练参数**（PE 第 0 行 0/1 交替、pe[1][0] = sin 1 = 0.8415）；多头注意力**不实现**（书里只有一句话，没有切分方式也没有 W_o），4d² 只作为对照写进证据；
+复制任务：T = 16、内容 8 维、位置码 16 维 → 输入 24 维；**Q、K 是「输入‖位置码」的线性投影（各 24×16 = 384），V 就是输入本身不投影** → 参数量 **2·16·24 = 768**；复制任务是编码任务不加因果掩码，因果掩码只在 attention 主接口单测；
+训练 recipe 书中一个字没给，全是本仓选择：**Adam(1e-2)、batch 32、300 步、初始化 U(−0.1, 0.1)、seed 42**、256 训练 / 64 测试、自写 splitmix64 同 seed 逐位一致；训练后与单位阵的平均绝对偏差 **3.31e−2**（位置码相加）→ **1.46e−3**（改成拼接），置换等变偏差 0；
+张量布局：矩阵行 = 时间步、列 = 特征，A[t][s] = 第 t 个输出对第 s 个输入的权重；数据在 `/root/ts-base/data/episodes/10-attention-block/`（600519 5,033 行 / 000001 4,953 行，16×8 窗口 197 / 193 个）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E10 实测 1050.07 s）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -180,6 +187,13 @@ score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E09 实测 1506.37 s）�
 - `Row` 组件别写死像素列宽（470+300 最小需 770 px）：窄卡片会把注释列压成 0 宽、每字一行并溢出；改成 `width:100% + maxWidth`、列用百分比、注释 `minWidth:0`。
 - 静帧临时渲染器必须在引擎目录（放 /tmp 会 `ERR_MODULE_NOT_FOUND @remotion/bundler`），且 `process.argv` 传帧号要 `join(",").split(",")`，否则 `frame NaN` 直接 RangeError。
 - 字幕间隙不一定有：E09 全场只有 7 段平台（全是场景交界约 3.4 s），封面只能在交界帧里挑；先按 lines.json 算空隙再选帧，不要凭页末帧猜。
+- **提交 pack 之后必须再 sync 一次才能 make**：`films.mjs check --strict` 比的是内容树哈希，提交改了 HEAD 就报 `content HEAD moved (… -> …); run sync`；E10 首轮 make 死在这一步（同一轮里 `git status` 还是干净的也一样）。
+- JSX 属性里不能裸写字符串拼接：`sub="测试集 " + fmtF(...)` 报 TS1003 Identifier expected / TS1382 Unexpected token，必须 `sub={"测试集 " + fmtF(...)}`；场景写完先 `npx tsc --noEmit` 再渲染。
+- `Matrix` 的高度是算出来的：16×16 用 `cell=50` 是 16×(50+6) = 896，从 top 312 起必然溢出；16 行矩阵安全上限 `cell ≤ 36`（PE 热图同理，cell=44 也溢出）。
+- 页内小标题别写在 top 210：`SceneHead` 的 goal 行占掉那一带，标题与之重叠 67%（still lint 报 overlap）；页内标题改 236–246，下面的公式再顺延（E10 268→306）。
+- 卡片里的第二层内容要量卡片边界：E10 verification 把两行 `Row` 放在 top 560，而卡片是 312..732，Rows 落进卡片内部被判 overlap；先算卡片底边再放下一层（改 774）。
+- 一行四个 `Stat` 放不下别硬塞：432×4 + gap 24 = 1800 > 内容宽 1776，outro 横向溢出；改 427 宽 + gap 18（仍要留边框余量）。
+- 讲稿按 CPS 4.5 估的时长与 TTS 实测可差 −5%～−6%（E10 估 1112.03 s、实测总时长 1050.07 s、语音 819.4 s）：八个场景起点整体前移，still lint 帧号、封面候选、flicker 的 cut-frames 都要按实测 lines.json 重算；E10 的 72 条 still violation 有一半是帧号没跟着重算。
 
 ## 9. 断线恢复（60 秒）
 
