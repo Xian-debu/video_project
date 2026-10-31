@@ -19,14 +19,22 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-14",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_attn_data.py"
+    }
+  ],
+  "derived": [
+    "data/attn.json"
+  ],
   "claims": null,
+  "notes": "unit: ch2-nonstat-attn",
   "paths": {
     "src": "src",
     "data": "data",
@@ -36,5 +44,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete",
+  "publish": {
+    "coverFrame": 2880
+  }
 }

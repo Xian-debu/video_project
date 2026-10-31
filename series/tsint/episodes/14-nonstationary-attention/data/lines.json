@@ -1,0 +1,1450 @@
+{
+ "entry": "src/tsint-14-nonstationary-attention/script.ts",
+ "fps": 30,
+ "totalSec": 749.05,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 96.47
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 96.47,
+   "dur": 95.33
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 191.8,
+   "dur": 116.88
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 308.68,
+   "dur": 95.82
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 404.5,
+   "dur": 99.2
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 503.7,
+   "dur": 108.92
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 612.62,
+   "dur": 86.09
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 698.71,
+   "dur": 50.34
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.4,
+   "speech": "第 2 章 · 数据层，第十四集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.78,
+   "dur": 2.2,
+   "speech": "非平稳注意力。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.16,
+   "dur": 2.92,
+   "speech": "EP9 讲过标准注意力。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.25,
+   "dur": 4.02,
+   "speech": "书里式(2.9) 在它上面拧了两个旋钮。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.46,
+   "dur": 2.58,
+   "speech": "一个标量，叫 tau。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.22,
+   "dur": 2.87,
+   "speech": "一个向量，叫 Delta。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 20.27,
+   "dur": 4.43,
+   "speech": "书里说，两个都从均值和标准差里学出来。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 24.88,
+   "dur": 4.09,
+   "speech": "一个乘在 logits 上，一个加在 logits 上。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.15,
+   "dur": 2.1,
+   "speech": "这一集不训练。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 31.43,
+   "dur": 2.13,
+   "speech": "只问三个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 33.74,
+   "dur": 2.77,
+   "speech": "第一，tau 是新东西吗？"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 36.69,
+   "dur": 3.13,
+   "speech": "第二，Delta 加在哪一维？"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 40.01,
+   "dur": 3.93,
+   "speech": "第三，真实数据上有偏置可纠吗？"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 44.11,
+   "dur": 3.3,
+   "speech": "答案是：不是，按列，没有。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 47.6,
+   "dur": 1.84,
+   "speech": "先说结论。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 49.61,
+   "dur": 3.04,
+   "speech": "tau 就是温度，换了件衣服。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 52.83,
+   "dur": 4.33,
+   "speech": "Delta 只能按列加，按行加是幻觉。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 57.35,
+   "dur": 4.29,
+   "speech": "真实窗口三段几乎均匀，没有可纠的偏置。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 61.81,
+   "dur": 2.56,
+   "speech": "这一集要钉四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 64.55,
+   "dur": 4.81,
+   "speech": "第一个，三点三零七三，合成数据的注意力熵。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 69.54,
+   "dur": 4.48,
+   "speech": "第二个，二点五六八二，tau 等于二时的熵。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 74.2,
+   "dur": 3.73,
+   "speech": "第三个，零点四八二对零点二零八。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 78.12,
+   "dur": 3.06,
+   "speech": "末段和早段的注意力质量。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 81.36,
+   "dur": 3.06,
+   "speech": "第四个，零点零三六三。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 84.6,
+   "dur": 2.8,
+   "speech": "真实窗口三段的极差。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 87.58,
+   "dur": 2.68,
+   "speech": "前三个说明机制存在。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 90.44,
+   "dur": 3.83,
+   "speech": "第四个说明这份数据没有那个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 97.67,
+   "dur": 3.83,
+   "speech": "先看非平稳是怎么偷渡进注意力的。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 101.68,
+   "dur": 3.49,
+   "speech": "一个序列，方差随时间变大。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 105.35,
+   "dur": 3.95,
+   "speech": "每个 token 的值，等于尺度乘一个噪声。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 109.48,
+   "dur": 2.13,
+   "speech": "注意力算内积。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 111.79,
+   "dur": 3.18,
+   "speech": "尺度大的 token，内积也大。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 115.15,
+   "dur": 3.61,
+   "speech": "softmax 只看数值，不看位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 118.95,
+   "dur": 2.58,
+   "speech": "于是晚段被抬高。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 121.71,
+   "dur": 3.81,
+   "speech": "位置没进模型，位置通过方差进来了。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 125.69,
+   "dur": 3.95,
+   "speech": "书里的解法，是给 logits 加两个东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 129.82,
+   "dur": 2.7,
+   "speech": "一个正缩放标量 tau。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 132.71,
+   "dur": 2.75,
+   "speech": "一个偏移向量 Delta。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 135.64,
+   "dur": 5.13,
+   "speech": "式子是，tau 乘 QK 转置，再加 1 乘 Delta 转置。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 140.94,
+   "dur": 3.85,
+   "speech": "除以根号 dk，然后进 softmax。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 144.98,
+   "dur": 2.58,
+   "speech": "书里只说了两句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 147.74,
+   "dur": 4.36,
+   "speech": "tau 是正缩放标量，Delta 是偏移向量。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 152.28,
+   "dur": 4.62,
+   "speech": "二者由 MLP 从均值和标准差里学出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 157.08,
+   "dur": 3.9,
+   "speech": "没有初始化，没有损失，没有训练配方。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 161.16,
+   "dur": 3.59,
+   "speech": "也没说，这两个量各自改了什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 164.93,
+   "dur": 2.85,
+   "speech": "所以这一集不做训练。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 167.96,
+   "dur": 2.37,
+   "speech": "只做前向判决。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 170.5,
+   "dur": 4.19,
+   "speech": "把参数取到极限，看输出退化成什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 174.87,
+   "dur": 5.56,
+   "speech": "第一条，tau 等于一、Delta 等于零，必须退回标准注意力。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 180.61,
+   "dur": 4.26,
+   "speech": "第二条，tau 等于二，必须等于温度零点五。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 185.05,
+   "dur": 4.55,
+   "speech": "第三条，按行加的偏置，梯度必须恰为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 193,
+   "dur": 2.49,
+   "speech": "先把这个式子拆开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 195.67,
+   "dur": 4.19,
+   "speech": "softmax 里面，第一项是 tau 乘 logit。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 200.04,
+   "dur": 3.57,
+   "speech": "第二项是每个 key 自己的 Delta j。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 203.78,
+   "dur": 3.47,
+   "speech": "tau 是标量，整行乘同一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 207.43,
+   "dur": 2.7,
+   "speech": "它改的是分布的尖平。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 210.31,
+   "dur": 2.8,
+   "speech": "不改谁比谁高的顺序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 213.29,
+   "dur": 2.97,
+   "speech": "Delta 是长度 T 的向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 216.44,
+   "dur": 3.54,
+   "speech": "第 j 个 key，被抬高 Delta j。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 220.16,
+   "dur": 3.76,
+   "speech": "每个 key 被抬得不同，顺序才会变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 224.1,
+   "dur": 4.77,
+   "speech": "书里的 1 乘 Delta 转置，是每行同一份 Delta。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 229.04,
+   "dur": 3.59,
+   "speech": "Delta 只跟 key 走，不跟 query 走。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 232.81,
+   "dur": 1.86,
+   "speech": "先看 tau。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 234.86,
+   "dur": 2.05,
+   "speech": "有一个恒等式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 237.09,
+   "dur": 4.55,
+   "speech": "softmax 里面乘 tau，等于温度改成 tau 分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 241.82,
+   "dur": 3.3,
+   "speech": "也就是把温度改成 tau 分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 245.3,
+   "dur": 3.35,
+   "speech": "tau 等于二，就是温度零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 248.83,
+   "dur": 3.33,
+   "speech": "温度是已有注意力里的一个超参。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 252.34,
+   "dur": 2.73,
+   "speech": "tau 没有引入新结构。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 255.24,
+   "dur": 2.44,
+   "speech": "实测最大差是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 257.86,
+   "dur": 3.16,
+   "speech": "两条独立实现，逐位相等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 261.2,
+   "dur": 2.1,
+   "speech": "再看 Delta。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 263.48,
+   "dur": 2.17,
+   "speech": "三乘三的例子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 265.84,
+   "dur": 2.92,
+   "speech": "按列加，每个 key 抬一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 268.93,
+   "dur": 3.66,
+   "speech": "第一行被抬成均匀分布，顺序变了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 272.78,
+   "dur": 3.81,
+   "speech": "按行加，整行常数直接被吃掉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 276.76,
+   "dur": 3.21,
+   "speech": "softmax 的结果逐位不变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 280.15,
+   "dur": 3.13,
+   "speech": "所以 Delta 必须按列加。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 283.46,
+   "dur": 3.76,
+   "speech": "抄成按行，代码能跑，梯度为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 287.4,
+   "dur": 2.05,
+   "speech": "最后说边界。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 289.63,
+   "dur": 4.19,
+   "speech": "书里 tau 和 Delta 是学出来的，我们没有训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 294,
+   "dur": 4.43,
+   "speech": "书里要的是 NSformer 的预测收益，我们没测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 298.61,
+   "dur": 3.83,
+   "speech": "Delta 不用缩放，直接加在 logits 上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 302.62,
+   "dur": 3.85,
+   "speech": "这三条写进自授条目 A31。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 309.88,
+   "dur": 2.32,
+   "speech": "先看合成数据。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 312.38,
+   "dur": 3.13,
+   "speech": "两千条序列，长度六十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 315.69,
+   "dur": 2.53,
+   "speech": "方差从一涨到十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 318.41,
+   "dur": 3.3,
+   "speech": "内积就是 x 乘 x 转置。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 321.89,
+   "dur": 3.73,
+   "speech": "注意力矩阵行是 query，列是 key。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 325.8,
+   "dur": 2.22,
+   "speech": "看平均热图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 328.2,
+   "dur": 3.16,
+   "speech": "合成数据的右下角亮起来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 331.54,
+   "dur": 4.29,
+   "speech": "晚段 token 幅度大，softmax 把它们抬高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 336.01,
+   "dur": 2.94,
+   "speech": "把矩阵横竖各切三段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 339.13,
+   "dur": 5.32,
+   "speech": "合成数据，早段两成，中段三成一，晚段四成八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 344.63,
+   "dur": 5.08,
+   "speech": "真实数据，三段是三五、三三六、三一四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 349.89,
+   "dur": 2.17,
+   "speech": "几乎是均匀的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 352.24,
+   "dur": 2.75,
+   "speech": "极差只有零点零三六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 355.17,
+   "dur": 3.83,
+   "speech": "机制存在，不等于数据里有这个问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 359.18,
+   "dur": 2.13,
+   "speech": "再做一个探针。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 361.49,
+   "dur": 3.28,
+   "speech": "给 Delta 一个线性位置偏置。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 364.94,
+   "dur": 4.48,
+   "speech": "Delta t 等于 a 乘上一减二 t 除以五十九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 369.6,
+   "dur": 2.73,
+   "speech": "a 从负六扫到正六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 372.51,
+   "dur": 5.7,
+   "speech": "a 等于正二时，合成数据的早段质量从零点二抬到零点六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 378.39,
+   "dur": 3.64,
+   "speech": "晚段从零点四八压到零点一三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 382.21,
+   "dur": 4.96,
+   "speech": "真实数据的早段，从零点三五抬到零点七三五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 387.35,
+   "dur": 2.87,
+   "speech": "但它的熵掉了零点四七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 390.4,
+   "dur": 2.82,
+   "speech": "这不是纠偏，是加偏。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 393.4,
+   "dur": 3.16,
+   "speech": "真实窗口本来三段均衡。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 396.74,
+   "dur": 2.37,
+   "speech": "没有那个偏置可修。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 399.28,
+   "dur": 3.01,
+   "speech": "这就是这一集的诚实结论。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 405.7,
+   "dur": 4.43,
+   "speech": "实现放在 Ch02 的 NonstatAttn 模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 410.31,
+   "dur": 3.16,
+   "speech": "一条式子，两条独立实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 413.65,
+   "dur": 4.31,
+   "speech": "第一条，nsAttention 乘 tau 再加 Delta。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 418.14,
+   "dur": 3.37,
+   "speech": "第二条，temperatureAttention 除温度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 421.69,
+   "dur": 4.38,
+   "speech": "还有一条 standardAttention，是 EP9 的那条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 426.25,
+   "dur": 3.73,
+   "speech": "比较用双等号，不用小于某个阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 430.17,
+   "dur": 3.73,
+   "speech": "判决一：tau 等于一，Delta 全零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 434.08,
+   "dur": 3.73,
+   "speech": "输出必须和标准注意力逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 438,
+   "dur": 3.69,
+   "speech": "判决二：tau 等于二，对温度零点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 441.86,
+   "dur": 2.41,
+   "speech": "也必须逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 444.46,
+   "dur": 2.17,
+   "speech": "两个数都是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 446.81,
+   "dur": 3.21,
+   "speech": "不是十的负十六次方，是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 450.2,
+   "dur": 3.3,
+   "speech": "因为两条路径只差一个乘法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 453.68,
+   "dur": 2.46,
+   "speech": "再看 Delta 的坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 456.32,
+   "dur": 3.3,
+   "speech": "按列加，是给每个 key 一个偏置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 459.8,
+   "dur": 3.57,
+   "speech": "按行加，是给每个 query 一个偏置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 463.55,
+   "dur": 3.18,
+   "speech": "按行的写法，我们也留了一份。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 466.91,
+   "dur": 4.19,
+   "speech": "叫 rowBiasAttentionRaw，真的加进 logits。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 471.28,
+   "dur": 4.79,
+   "speech": "它和标准注意力的差，只有一点六七乘十的负十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 476.25,
+   "dur": 3.4,
+   "speech": "但它的有限差分梯度，恰为零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 479.83,
+   "dur": 4.53,
+   "speech": "按列加的梯度，最大分量是零点六零九四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 484.53,
+   "dur": 2.53,
+   "speech": "逐列不同，有符号。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 487.25,
+   "dur": 3.83,
+   "speech": "梯度之和是零，这是它该有的性质。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 491.26,
+   "dur": 3.61,
+   "speech": "按行加能编译，能跑，看不出错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 495.05,
+   "dur": 3.09,
+   "speech": "只有梯度会告诉你，它是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 498.32,
+   "dur": 3.18,
+   "speech": "所以 Delta 只能按列加。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 504.9,
+   "dur": 2.89,
+   "speech": "二十一项检查，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 507.97,
+   "dur": 3.76,
+   "speech": "四条数据，七条结构，十条行为。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 511.91,
+   "dur": 4.67,
+   "speech": "第一条，tau 等于一，Delta 全零，最大差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 516.76,
+   "dur": 4.62,
+   "speech": "第二条，tau 等于二对温度零点五，最大差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 521.56,
+   "dur": 5.53,
+   "speech": "第三条，按行加进 logits，差一点六七乘十的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 527.28,
+   "dur": 2.58,
+   "speech": "舍入级，等于没加。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 530.04,
+   "dur": 4.19,
+   "speech": "第四条，按行偏置的有限差分，恰为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 534.41,
+   "dur": 4.12,
+   "speech": "按列偏置的梯度，最大零点六零九四。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 538.71,
+   "dur": 4.41,
+   "speech": "梯度之和，噪声量级一点三六乘十的负九。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 543.29,
+   "dur": 4.62,
+   "speech": "合成数据上，标准注意力熵三点三零七三。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 548.1,
+   "dur": 3.9,
+   "speech": "tau 等于二时，熵掉到二点五六八二。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 552.18,
+   "dur": 4.67,
+   "speech": "三段质量，早段零点二零八，晚段零点四八二。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 557.03,
+   "dur": 4.31,
+   "speech": "探针 a 等于正二，早段抬到零点五九九。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 561.52,
+   "dur": 3.81,
+   "speech": "熵几乎不动，还是三点三零八七。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 565.5,
+   "dur": 3.76,
+   "speech": "说明偏置只搬质量，不改总量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 569.44,
+   "dur": 3.9,
+   "speech": "真实数据，六十只票，六十个交易日。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 573.52,
+   "dur": 4.05,
+   "speech": "注意力熵三点五五九二，比合成更平。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 577.75,
+   "dur": 4.74,
+   "speech": "三段是三四九九、三三六五、三一三六。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 582.67,
+   "dur": 2.77,
+   "speech": "极差零点零三六三。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 585.63,
+   "dur": 3.73,
+   "speech": "探针 a 等于正二，熵压掉零点四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 589.54,
+   "dur": 3.04,
+   "speech": "早段被抬到零点七三五。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 592.76,
+   "dur": 3.37,
+   "speech": "这不是纠偏，是把均匀变尖。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 596.31,
+   "dur": 3.66,
+   "speech": "真实窗口里，没有可纠的位置偏置。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 600.15,
+   "dur": 2.58,
+   "speech": "这不是说 Delta 没用。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 602.92,
+   "dur": 3.54,
+   "speech": "这是说，这份数据没有那个问题。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 606.64,
+   "dur": 3.78,
+   "speech": "要证明收益，得训完整 NSformer。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 613.82,
+   "dur": 2.58,
+   "speech": "这一集没做三件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 616.58,
+   "dur": 2.22,
+   "speech": "第一，没有训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 618.98,
+   "dur": 5.29,
+   "speech": "书里 tau 和 Delta 由 MLP 从均值和标准差学出。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 624.46,
+   "dur": 3.64,
+   "speech": "没有初始化，没有损失，没有配方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 628.28,
+   "dur": 2.7,
+   "speech": "第二，tau 不是新结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 631.16,
+   "dur": 4.53,
+   "speech": "它等价于温度，训练它等于调一个标量超参。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 635.86,
+   "dur": 3.97,
+   "speech": "它能改尖平，不能让模型看见新东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 640.02,
+   "dur": 3.45,
+   "speech": "第三，Delta 只在 logits 上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 643.64,
+   "dur": 3.23,
+   "speech": "它不改 Q、K、V。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 647.05,
+   "dur": 3.21,
+   "speech": "注意力之外的一切，它都碰不到。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 650.44,
+   "dur": 3.4,
+   "speech": "三条边界合起来，就是一句话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 654.02,
+   "dur": 3.45,
+   "speech": "这一集验证的是机制，不是收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 657.64,
+   "dur": 3.25,
+   "speech": "真实数据也不承诺有偏置。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 661.08,
+   "dur": 4.21,
+   "speech": "三段质量是三五、三三六、三一四。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 665.47,
+   "dur": 2.58,
+   "speech": "极差不到四个百分点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 668.23,
+   "dur": 3.04,
+   "speech": "要证明有用，还差三步。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 671.45,
+   "dur": 4.17,
+   "speech": "把 tau 和 Delta 接进真正的 NSformer。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 675.8,
+   "dur": 3.16,
+   "speech": "在两阶段训练里学出它们。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 679.14,
+   "dur": 3.73,
+   "speech": "看测试集的预测误差，不看热图。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 683.05,
+   "dur": 3.33,
+   "speech": "这三步都不在这一集的范围里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 686.56,
+   "dur": 3.37,
+   "speech": "我们证明了机制，没有证明收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 690.11,
+   "dur": 2.65,
+   "speech": "这两件事不能混着说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 692.94,
+   "dur": 3.57,
+   "speech": "口径已经冻结在自授 A31。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 699.91,
+   "dur": 3.81,
+   "speech": "一句话：tau 是温度，Delta 是偏置。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 703.9,
+   "dur": 2.7,
+   "speech": "加在行上，是幻觉。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 706.78,
+   "dur": 2.1,
+   "speech": "三个问题回扣。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 709.06,
+   "dur": 3.3,
+   "speech": "tau 不是新东西，等价于温度。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 712.54,
+   "dur": 4.17,
+   "speech": "Delta 只能按列加，按行梯度恰为零。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 716.89,
+   "dur": 3.04,
+   "speech": "真实数据没有偏置可纠。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 720.11,
+   "dur": 4.62,
+   "speech": "四个数回扣：三点三零七三，二点五六八二。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 724.91,
+   "dur": 3.11,
+   "speech": "零点四八二对零点二零八。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 728.2,
+   "dur": 3.57,
+   "speech": "真实三段极差零点零三六三。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 731.94,
+   "dur": 2.8,
+   "speech": "机制存在，收益未测。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 734.92,
+   "dur": 3.3,
+   "speech": "下一集，缺失值补全三法。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 738.4,
+   "dur": 3.45,
+   "speech": "DTW、低秩、矩阵分解。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 742.03,
+   "dur": 2.29,
+   "speech": "这一集就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 744.5,
+   "dur": 2.34,
+   "speech": "下一集，再见。"
+  }
+ ]
+}
