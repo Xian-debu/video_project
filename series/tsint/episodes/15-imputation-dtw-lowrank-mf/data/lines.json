@@ -1,0 +1,1723 @@
+{
+ "entry": "src/tsint-15-imputation-dtw-lowrank-mf/script.ts",
+ "fps": 30,
+ "totalSec": 827.47,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 108.52
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 108.52,
+   "dur": 106.19
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 214.71,
+   "dur": 131.51
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 346.22,
+   "dur": 113.23
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 459.45,
+   "dur": 100.67
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 560.12,
+   "dur": 143.53
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 703.65,
+   "dur": 82.37
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 786.02,
+   "dur": 41.45
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.45,
+   "speech": "第 2 章 · 数据层，第十五集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.83,
+   "dur": 2.46,
+   "speech": "缺失值补全三法。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.47,
+   "dur": 3.28,
+   "speech": "一列数据缺了几格，怎么补。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.93,
+   "dur": 3.35,
+   "speech": "书里在同一节给了三个方向。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.46,
+   "dur": 3.33,
+   "speech": "最近邻、低秩、矩阵分解。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.96,
+   "dur": 2.89,
+   "speech": "三个方向，三种相信。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 21.04,
+   "dur": 4.09,
+   "speech": "第一个相信，相似的序列同一时刻也相似。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.31,
+   "dur": 4.33,
+   "speech": "第二个相信，整张面板落在低维子空间里。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.82,
+   "dur": 3.88,
+   "speech": "第三个把同一件事写成两个因子。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.88,
+   "dur": 3.93,
+   "speech": "这一集把它们放在同一张面板上比。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.99,
+   "dur": 3.25,
+   "speech": "一百只票，两百五十个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 41.42,
+   "dur": 2.61,
+   "speech": "随机挖掉五千格。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.21,
+   "dur": 3.35,
+   "speech": "再按整段停牌挖掉五千格。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.74,
+   "dur": 2.73,
+   "speech": "两种挖法，各跑一次。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 50.64,
+   "dur": 1.84,
+   "speech": "先说结论。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 52.66,
+   "dur": 4.55,
+   "speech": "随机缺失，最近邻赢，低秩不如列均值。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 57.39,
+   "dur": 4.26,
+   "speech": "整段停牌，低秩的误差数字看着还行。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 61.83,
+   "dur": 2.46,
+   "speech": "但它补出来的是零。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 64.48,
+   "dur": 2.2,
+   "speech": "相关系数是零。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 66.85,
+   "dur": 2.41,
+   "speech": "这一集钉四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 69.45,
+   "dur": 4.14,
+   "speech": "第一个，零点零一九三对零点零二六一。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 73.77,
+   "dur": 3.95,
+   "speech": "随机缺失上，最近邻和低秩的误差。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 77.9,
+   "dur": 3.13,
+   "speech": "第二个，零对零点三二九。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 81.21,
+   "dur": 3.97,
+   "speech": "整列全缺时，和真实值的相关系数。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 85.37,
+   "dur": 3.35,
+   "speech": "第三个，四点九乘十的负九。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 88.9,
+   "dur": 3.66,
+   "speech": "合成秩三矩阵，低秩补全的误差。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 92.74,
+   "dur": 2.56,
+   "speech": "第四个，四成一。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 95.48,
+   "dur": 4.43,
+   "speech": "真实面板，前五个奇异值只占这么多方差。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 100.09,
+   "dur": 2.13,
+   "speech": "数字先摆上。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 102.39,
+   "dur": 3.93,
+   "speech": "机制、理由、边界，一层一层来。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 109.72,
+   "dur": 1.81,
+   "speech": "先说问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 111.71,
+   "dur": 3.37,
+   "speech": "面板是时刻乘变量的一张表。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 115.27,
+   "dur": 3.16,
+   "speech": "一百只股票，两百五十天。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 118.61,
+   "dur": 2.32,
+   "speech": "大部分格子有数。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 121.1,
+   "dur": 2.46,
+   "speech": "少数格子是空的。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 123.75,
+   "dur": 2.29,
+   "speech": "空有两种来源。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 126.22,
+   "dur": 2.53,
+   "speech": "第一种，随机漏掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 128.93,
+   "dur": 3.35,
+   "speech": "数据商漏传，字段偶尔为空。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 132.46,
+   "dur": 3.23,
+   "speech": "这种空和值本身没有关系。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 135.87,
+   "dur": 2.46,
+   "speech": "第二种，整段没有。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 138.52,
+   "dur": 4.05,
+   "speech": "股票停牌，一整只票几十天没有一行。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 142.74,
+   "dur": 2.56,
+   "speech": "这种空和值有关系。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 145.48,
+   "dur": 3.69,
+   "speech": "停牌的公司，往往正是出事的那批。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 149.35,
+   "dur": 2.94,
+   "speech": "两种空，性质完全不同。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 152.47,
+   "dur": 3.42,
+   "speech": "随机缺失，把格子挖成散点。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 156.07,
+   "dur": 2.92,
+   "speech": "每一列都还剩很多观测。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 159.17,
+   "dur": 3.4,
+   "speech": "整段缺失，挖掉的是一整列。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 162.75,
+   "dur": 2.89,
+   "speech": "这一列一个观测都不剩。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 165.82,
+   "dur": 2.89,
+   "speech": "接下来是最关键的一句。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 168.89,
+   "dur": 4.55,
+   "speech": "低秩补全的目标函数，只在观测格上算残差。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 173.62,
+   "dur": 3.71,
+   "speech": "一列全空的列，目标函数里没有它。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 177.51,
+   "dur": 3.3,
+   "speech": "它没有约束，只能被压成零。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 181,
+   "dur": 3.45,
+   "speech": "这不是实现 bug，是模型性质。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 184.62,
+   "dur": 3.28,
+   "speech": "记住这一条，后面全部对得上。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 188.08,
+   "dur": 2.03,
+   "speech": "书里给了什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 190.29,
+   "dur": 5.05,
+   "speech": "第十六到十八页，一句话列举了 KNN 和 DTW。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 195.52,
+   "dur": 4.17,
+   "speech": "第二十六页，式二点四零给了矩阵分解。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 199.87,
+   "dur": 4.19,
+   "speech": "没有距离公式，没有邻居权重，没有超参。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 204.24,
+   "dur": 4.31,
+   "speech": "没有目标函数，没有迭代式，没有秩的取法。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 208.73,
+   "dur": 3.78,
+   "speech": "这些空白，是这一集要自己填的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 215.91,
+   "dur": 2.03,
+   "speech": "先定义距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 218.12,
+   "dur": 3.04,
+   "speech": "两个序列，长度可以不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 221.34,
+   "dur": 3.18,
+   "speech": "DTW 允许时间轴伸缩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 224.7,
+   "dur": 2.63,
+   "speech": "每个点只做三件事。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 227.51,
+   "dur": 3.49,
+   "speech": "两边各走一步，或者只走一边。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 231.18,
+   "dur": 3.52,
+   "speech": "每一步的代价，是两点的绝对差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 234.88,
+   "dur": 3.66,
+   "speech": "整条路径的代价加起来，取最小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 238.72,
+   "dur": 1.67,
+   "speech": "小例子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 240.57,
+   "dur": 3.35,
+   "speech": "第一个序列一二三，第二个一三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 244.1,
+   "dur": 3.49,
+   "speech": "一配一，二配三，三配三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 247.78,
+   "dur": 2.87,
+   "speech": "代价是零加一加零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 250.83,
+   "dur": 1.96,
+   "speech": "距离等于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 252.97,
+   "dur": 3.93,
+   "speech": "逐点对齐要四，DTW 只要一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 257.07,
+   "dur": 2.17,
+   "speech": "再说一个性质。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 259.43,
+   "dur": 3.3,
+   "speech": "DTW 不满足三角不等式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 262.91,
+   "dur": 2.99,
+   "speech": "距离四，可以大于一加二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 266.08,
+   "dur": 2.94,
+   "speech": "所以不能做三角剪枝。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 269.2,
+   "dur": 2.87,
+   "speech": "每个序列对都要算一遍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 272.25,
+   "dur": 3.73,
+   "speech": "代价是序列数的平方乘长度的平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 276.16,
+   "dur": 2.7,
+   "speech": "接下来是邻居权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 279.05,
+   "dur": 3.01,
+   "speech": "书里没给，本仓用等权。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 282.24,
+   "dur": 3.35,
+   "speech": "距离只用来排序，不参与加权。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 285.77,
+   "dur": 2.97,
+   "speech": "五个邻居，各占五分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 288.92,
+   "dur": 1.84,
+   "speech": "再看低秩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 290.93,
+   "dur": 2.29,
+   "speech": "目标只有一句话。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 293.41,
+   "dur": 4.53,
+   "speech": "只在观测到的格子上，让重建贴近原值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 298.11,
+   "dur": 3.09,
+   "speech": "重建矩阵的秩不超过 k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 301.38,
+   "dur": 2.46,
+   "speech": "解法是交替投影。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 304.02,
+   "dur": 2.85,
+   "speech": "观测格永远保留原值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 307.05,
+   "dur": 2.51,
+   "speech": "缺失格填重建值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 309.74,
+   "dur": 3.06,
+   "speech": "反复投影到秩 k 子空间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 312.98,
+   "dur": 2.41,
+   "speech": "最后是矩阵分解。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 315.57,
+   "dur": 4,
+   "speech": "书里写，X 约等于 F 乘 X hat。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 319.75,
+   "dur": 4.12,
+   "speech": "F 是 k 乘 N，X hat 是 T 乘 k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 324.05,
+   "dur": 2.68,
+   "speech": "这两个矩阵乘不起来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 326.91,
+   "dur": 2.8,
+   "speech": "只有 k 等于 T 才能乘。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 329.89,
+   "dur": 2.58,
+   "speech": "这是勘误 E29。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 332.65,
+   "dur": 3.45,
+   "speech": "本仓按 X hat 乘 F 实现。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 336.27,
+   "dur": 3.69,
+   "speech": "时间那一侧在前，变量那一侧在后。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 340.14,
+   "dur": 3.88,
+   "speech": "只改乘法顺序，不改两个因子的含义。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 347.42,
+   "dur": 2.08,
+   "speech": "先看一个玩具。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 349.68,
+   "dur": 3.11,
+   "speech": "三乘三的表，缺一个格。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 352.97,
+   "dur": 2.85,
+   "speech": "左边两列能同时看到。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 355.99,
+   "dur": 2.27,
+   "speech": "可以用最近邻补。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 358.44,
+   "dur": 2.34,
+   "speech": "也可以用低秩补。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 360.97,
+   "dur": 2.29,
+   "speech": "再看真实面板。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 363.44,
+   "dur": 3.76,
+   "speech": "这张热图是四十天乘三十只票。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 367.38,
+   "dur": 3.01,
+   "speech": "颜色是收益的标准化值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 370.57,
+   "dur": 4,
+   "speech": "暗的那几列，是整段缺失的十只票。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 374.75,
+   "dur": 3.97,
+   "speech": "低秩看这张图，只看到剩下九十列。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 378.9,
+   "dur": 3.3,
+   "speech": "那十列对目标函数没有贡献。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 382.39,
+   "dur": 2.65,
+   "speech": "于是补出来全是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 385.22,
+   "dur": 2.75,
+   "speech": "零在图上是一条直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 388.15,
+   "dur": 2.46,
+   "speech": "参数里这叫退化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 390.79,
+   "dur": 2.27,
+   "speech": "回到真实数字。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 393.24,
+   "dur": 3.25,
+   "speech": "停牌的公司是不是更可能暴跌。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 396.68,
+   "dur": 1.41,
+   "speech": "是。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 398.26,
+   "dur": 4.36,
+   "speech": "截面最负的二十天，平均跌百分之二点零六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 402.8,
+   "dur": 4.45,
+   "speech": "这二十天里，最近邻的误差是零点零二一八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 407.43,
+   "dur": 3.13,
+   "speech": "低秩的误差是零点零二六九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 410.75,
+   "dur": 3.09,
+   "speech": "正好等于真实值的均方根。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 414.01,
+   "dur": 2.53,
+   "speech": "因为低秩预测了零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 416.73,
+   "dur": 2.73,
+   "speech": "最近邻低百分之十九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 419.63,
+   "dur": 2.53,
+   "speech": "为什么最近邻能行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 422.35,
+   "dur": 3.25,
+   "speech": "停牌的那只票自己没有序列。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 425.78,
+   "dur": 3.49,
+   "speech": "但同行业的票在同一时刻在跌。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 429.46,
+   "dur": 3.11,
+   "speech": "跨序列、同一时刻取值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 432.75,
+   "dur": 2.68,
+   "speech": "这就是最近邻的假设。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 435.6,
+   "dur": 3.01,
+   "speech": "再用谱看一眼整张面板。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 438.8,
+   "dur": 3.33,
+   "speech": "前五个奇异值，只占四成一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 442.3,
+   "dur": 2.56,
+   "speech": "前十个，五成四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 445.04,
+   "dur": 4.5,
+   "speech": "真正的秩五矩阵，前五个应该接近百分之百。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 449.72,
+   "dur": 3.4,
+   "speech": "所以这张真实面板不低秩。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 453.3,
+   "dur": 3.95,
+   "speech": "所以低秩在这张表上本来就不该赢。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 460.65,
+   "dur": 3.3,
+   "speech": "三个模块，都在 Ch02。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 464.13,
+   "dur": 3.21,
+   "speech": "DtwKnn，LowRank。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 467.52,
+   "dur": 2.8,
+   "speech": "还有 MatrixFactorization。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 470.5,
+   "dur": 2.08,
+   "speech": "先说最近邻。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 472.75,
+   "dur": 2.7,
+   "speech": "输入是带空格的矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 475.64,
+   "dur": 4.33,
+   "speech": "输出是补全后的矩阵，加一个已知位掩码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 480.15,
+   "dur": 3.54,
+   "speech": "五个邻居，带宽取长度的十分之一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 483.87,
+   "dur": 4,
+   "speech": "整列全缺时，那一列没有自己的序列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 488.05,
+   "dur": 4.55,
+   "speech": "本仓的做法是，按同一时刻其余有观测的列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 492.78,
+   "dur": 1.93,
+   "speech": "等权平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 494.89,
+   "dur": 3.16,
+   "speech": "这是明确的选择，不是默认。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 498.23,
+   "dur": 1.84,
+   "speech": "再说低秩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 500.25,
+   "dur": 4.84,
+   "speech": "硬截断版，迭代三百次，容差十的负十次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 505.27,
+   "dur": 3.97,
+   "speech": "初值把缺失格填成该列的观测均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 509.42,
+   "dur": 3.45,
+   "speech": "填零会让迭代从很远的地方出发。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 513.05,
+   "dur": 3.42,
+   "speech": "这一点实测过，差两个数量级。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 516.65,
+   "dur": 3.37,
+   "speech": "整列全缺，本仓不返回错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 520.2,
+   "dur": 3.28,
+   "speech": "而是显式保留补成零的行为。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 523.66,
+   "dur": 3.59,
+   "speech": "因为这一集要拿它和最近邻对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 527.43,
+   "dur": 2.41,
+   "speech": "最后是矩阵分解。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 530.03,
+   "dur": 2.34,
+   "speech": "交替最小二乘。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 532.55,
+   "dur": 2.97,
+   "speech": "固定一个因子，解另一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 535.69,
+   "dur": 3.49,
+   "speech": "每一步都是带岭项的正规方程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 539.37,
+   "dur": 4.21,
+   "speech": "因子不唯一，所以测试只比重建矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 543.76,
+   "dur": 5.63,
+   "speech": "还钉了一条，F 乘二、X hat 除二，重建逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 549.57,
+   "dur": 3.13,
+   "speech": "三个模块，四十七条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 552.89,
+   "dur": 3.37,
+   "speech": "全仓五十九组，八百八十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 556.44,
+   "dur": 1.48,
+   "speech": "都绿。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 561.32,
+   "dur": 2.17,
+   "speech": "验证分四层。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 563.67,
+   "dur": 2.29,
+   "speech": "第一层，真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 566.15,
+   "dur": 5.29,
+   "speech": "合成秩三矩阵，四十乘三十，挖掉百分之二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 571.62,
+   "dur": 3.9,
+   "speech": "低秩补全误差，四点九乘十的负九。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 575.7,
+   "dur": 4.29,
+   "speech": "同一次缺失，最近邻的误差是一点一七八。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 580.17,
+   "dur": 2.37,
+   "speech": "差了八个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 582.72,
+   "dur": 4.86,
+   "speech": "合成秩二矩阵，三十乘二十，挖掉七分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 587.76,
+   "dur": 3.23,
+   "speech": "低秩误差六点五乘十的负十。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 591.17,
+   "dur": 4.45,
+   "speech": "这两条说明，低秩在它自己的主场上是对的。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 595.8,
+   "dur": 2.63,
+   "speech": "第二层，随机掩码。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 598.61,
+   "dur": 2.77,
+   "speech": "五千格，百分之二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 601.57,
+   "dur": 2.7,
+   "speech": "列均值零点零二一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 604.45,
+   "dur": 2.73,
+   "speech": "最近邻零点零一九三。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 607.35,
+   "dur": 2.53,
+   "speech": "低秩零点零二六一。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 610.07,
+   "dur": 2.87,
+   "speech": "矩阵分解零点零三一二。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 613.12,
+   "dur": 2.58,
+   "speech": "低秩比列均值还差。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 615.88,
+   "dur": 4.14,
+   "speech": "原因就是上一段说的，真实收益不低秩。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 620.2,
+   "dur": 2.68,
+   "speech": "第三层，块状掩码。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 623.06,
+   "dur": 3.23,
+   "speech": "十列整段挖掉，其余随机。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 626.47,
+   "dur": 2.85,
+   "speech": "列均值零点零一九七。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 629.5,
+   "dur": 2.63,
+   "speech": "最近邻零点零一八六。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 632.31,
+   "dur": 2.51,
+   "speech": "低秩零点零二三四。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 635,
+   "dur": 2.89,
+   "speech": "矩阵分解零点零二三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 638.07,
+   "dur": 3.64,
+   "speech": "只看这十列，数字变得很奇怪。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 641.89,
+   "dur": 4.79,
+   "speech": "低秩零点零一七六四，最近邻零点零一七八零。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 646.86,
+   "dur": 2.77,
+   "speech": "低秩好像还赢一点点。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 649.81,
+   "dur": 3.69,
+   "speech": "但相关系数是零对零点三二九。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 653.68,
+   "dur": 2.46,
+   "speech": "低秩补出来的是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 656.32,
+   "dur": 3.9,
+   "speech": "零的均方误差，等于真值的均方根。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 660.4,
+   "dur": 5.39,
+   "speech": "这个数字好看，是因为停牌公司的波动和全市场同量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 665.97,
+   "dur": 2.85,
+   "speech": "所以别只看均方误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 669,
+   "dur": 2.58,
+   "speech": "第四层，暴跌窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 671.76,
+   "dur": 3.54,
+   "speech": "二十天，平均跌百分之二点零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 675.48,
+   "dur": 2.63,
+   "speech": "最近邻零点零二一八。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 678.29,
+   "dur": 3.93,
+   "speech": "低秩和矩阵分解都是零点零二六九。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 682.4,
+   "dur": 5.2,
+   "speech": "前一集说注意力机制存在，但真实数据没有那个问题。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 687.78,
+   "dur": 2.44,
+   "speech": "这一集正好反过来。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 690.39,
+   "dur": 3.64,
+   "speech": "问题真实存在，低秩就是用不上。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 694.21,
+   "dur": 3.47,
+   "speech": "最后，二十四个检查，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 697.86,
+   "dur": 3.59,
+   "speech": "五个数据，六个结构，十三个行为。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 704.85,
+   "dur": 2.56,
+   "speech": "这一集没做六件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 707.59,
+   "dur": 2.94,
+   "speech": "第一，没有换更大的面板。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 710.71,
+   "dur": 3.52,
+   "speech": "一百只票，一年，够说明机制。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 714.41,
+   "dur": 2.41,
+   "speech": "不够代表全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 717,
+   "dur": 2.39,
+   "speech": "第二，没有做下游。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 719.57,
+   "dur": 2.49,
+   "speech": "我们只比补全误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 722.24,
+   "dur": 3.97,
+   "speech": "没有拿补全后的矩阵去训练预测模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 726.39,
+   "dur": 2.85,
+   "speech": "补得准不等于预测准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 729.42,
+   "dur": 2.56,
+   "speech": "第三，没有调超参。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 732.16,
+   "dur": 5.15,
+   "speech": "邻居数、带宽、秩、岭项，都是固定的小值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 737.49,
+   "dur": 4.09,
+   "speech": "调参会改变排序，这一点必须说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 741.76,
+   "dur": 3.06,
+   "speech": "第四，整段缺失的退化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 745,
+   "dur": 3.25,
+   "speech": "低秩补出零，是模型的必然。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 748.44,
+   "dur": 2.17,
+   "speech": "不是我们没实现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 750.79,
+   "dur": 3.16,
+   "speech": "第五，DTW 不是距离。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 754.13,
+   "dur": 3.83,
+   "speech": "它不满足三角不等式，没有度量结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 758.14,
+   "dur": 3.61,
+   "speech": "所以最近邻是暴力两两算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 761.93,
+   "dur": 3.78,
+   "speech": "第六，书里没给的，都是本仓补的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 765.89,
+   "dur": 5.39,
+   "speech": "距离公式、邻居权重、目标函数、迭代式、超参。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 771.46,
+   "dur": 3.04,
+   "speech": "全部登记在自授 A32。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 774.68,
+   "dur": 4.26,
+   "speech": "式二点四零的维度，登记在勘误 E29。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 779.12,
+   "dur": 1.96,
+   "speech": "口径冻结。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 781.26,
+   "dur": 2.56,
+   "speech": "后续集不能悄悄改。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 787.22,
+   "dur": 1.72,
+   "speech": "一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 789.12,
+   "dur": 3.69,
+   "speech": "缺失值的补法，取决于缺失的样子。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 792.98,
+   "dur": 2.73,
+   "speech": "随机缺失，看邻居。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 795.89,
+   "dur": 3.69,
+   "speech": "整段缺失，邻居是唯一有信号的。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 799.76,
+   "dur": 2.08,
+   "speech": "四个数回扣。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 802.01,
+   "dur": 3.52,
+   "speech": "零点零一九三对零点零二六一。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 805.71,
+   "dur": 2.44,
+   "speech": "零对零点三二九。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 808.33,
+   "dur": 2.63,
+   "speech": "四点九乘十的负九。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 811.14,
+   "dur": 1.72,
+   "speech": "四成一。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 813.04,
+   "dur": 3.9,
+   "speech": "下一集，相关性与 STL 分解。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 817.12,
+   "dur": 3.16,
+   "speech": "从补格子，转到拆结构。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 820.46,
+   "dur": 2.29,
+   "speech": "这一集就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 822.93,
+   "dur": 2.34,
+   "speech": "下一集，再见。"
+  }
+ ]
+}
