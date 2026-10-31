@@ -255,3 +255,16 @@
 - 返工: stills 两轮（首轮 18 帧 → 修 3 处 → 复核 PASS）；1 条 clip 重录导致总长 750.58 s 并整体重渲染；make 两轮
 - 偏差: 计划 14 min，实做 12.49 min（−1.51 min）；199 条旁白；证据 21 条（6 数据 / 15 结构）；断言 15，套件 56、总断言 833
 - 备注: ch02 第十三集（tsint 全系列第 24 部成片）；下一步 E15 `imputation-dtw-lowrank-mf`。E14 冻结口径：τ 乘在 QKᵀ 上**逐位等于**把 softmax 温度改成 1/τ（τ=2 vs temp=0.5 实测 maxdiff 0.0，不是近似）；Δ 以 1Δᵀ 按列加才是新自由度，按行加被整行归一化吃掉（raw 版只差 1.665e−16、中心差分恰 0.0）；本仓 Δ 直接加在 logits 上，τ=1 时与书中逐位相同、不用缩放；不训练 τ/Δ。诚实结论：真实 A 股窗口三段本来就均衡（34.99/33.65/31.36%、最大差 3.63 pp），没有合成数据那种位置偏置可纠，Δ 探针只是把均匀变尖（熵 3.5592→3.0885）——「机制存在」不等于「这份数据有那个问题」。
+
+## E15 imputation-dtw-lowrank-mf — 2026-10-31
+
+- ts-base: `1069b9c`（算法 DtwKnn / LowRank / MatrixFactorization）+ `3a3ebfe`（证据 ch2-impute-3ways，SELF-AUTH A32、errata E29）+ `ca0697f`（A32 补记低秩初值与填 0 对照）；断言 47，套件 59，总断言 880
+- ts-admin: `7e041ee`（100 只沪市主板 × 250 交易日面板，panel.csv 251 行 × 101 列、211,044 B、2024-12-20..2025-12-31、sh600000..sh600143）
+- video_project: `516101d`（pack 源）+ `e8b23a3`（派生数据不入 git）+ `42f9d37`（plan 冻结 + outro 导入修复）+ `7cc0f3f`（页硬切 / 玩具表 NaN）+ `0c4bc04`（页重排回旁白 + 恢复交叉淡变）+ `fefcb71`（delivery：cover.png / tsint-15.srt / chapters）；讲稿 238 行、coverFrame 3000
+- 引擎: `a667688`（未变）；score 复用 `out/e04-score-loop-48k.wav`（1560 s 48 kHz）
+- 成片: 827.47 s（13:47.47）/ 24,824 帧 / 8 场 26 页 / −15 LUFS / TP −2 dBFS / 238 条旁白（语音 758.8 s，mean 3.19 s）/ 字幕跨度 00:00:01,200→00:13:45,270 / mp4 39,228,616 B / cover.png 139,424 B / srt 17,071 B / chapters 390 B
+- 流水线: 8 段 rendered 8；musicGain −4.5 dB、ducked 53.4%、peak −1.5 dBFS、rms −26.99；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.75、gap_full −29.86、gap_audible −32.69、bed_contribution 37.3；flicker mean|d| 0.0192、p99 0.3112、max 10.42、cuts 7（3256/6441/10387/13784/16804/21110/23581）；238 cue 无一换行、最长 27 字（budget 34）；8 章；封面 frame 3000（100.00 s，open 末页四数卡、散文句间隙无字幕）
+- 卡点: ① 页间硬切触发 flicker gate（f11101 luma 15.5、f12086 13.7，阈值 12）→ 恢复 12 帧交叉淡变，并把 make 的 still 采样帧（总长 ×0.1/0.45/0.8 = 2482/11171/19859）让到页中段，重排全部 `Pages at` 分数对齐旁白（open 0.31/0.47/0.62、problem 0.54/0.75、definitions 0.47/0.565/0.75、intuition 0.13/0.40/0.79、implementation 0.385/0.90、verification 0.25/0.42/0.76、boundary 0.82、outro 0.33）；② still lint f2482 落在 open P3→P4 淡变里出 11 条 overlap（limit 25%）；③ intuition P1 三乘三玩具表在缺列另两格渲染出 `NaN`（rows 改为 `[[0.62,-0.31,NaN],[0.18,0.44,0.03],[-0.55,0.09,-0.21]]`）；④ verification P3 第四行「矩阵分解」被卡片底边裁掉（Card 300→336、Bars rowH 66→60）；⑤ make 的 derived check 要求 `data/impute.json` 不入 git（`git rm --cached` + `.gitignore` 加 `**/data/impute.json`）；⑥ `outro.tsx` 误从 `shared` 引 `FT`（未导出）→ typecheck TS2459；⑦ implementation P2「收敛慢两个数量级」是未登记数字 → 画面改「明显更慢」，同时给 A32 补记「低秩初值取该列观测均值」这条决定
+- 返工: stills 三轮（4 帧 lint + 8 帧页中段复核）；3 次整体重渲染（硬切 / 页重排 / 文案收敛）；make 4 轮（首轮 still lint 失败、次轮 flicker gate 失败、三轮 PASS 后因文案改一处再跑一轮定稿）
+- 偏差: 计划 27 min，实做 13.79 min（−13.2 min）；238 条旁白；证据 24 条（5 数据 / 6 结构 / 13 行为）；断言 47，套件 59、总断言 880
+- 备注: ch02 第十四集（tsint 全系列第 25 部成片）；下一步 E16 `correlation-and-stl`。E15 冻结口径：三法都是矩阵补全、同一面板同一掩码集合（各恰好 5000 格 = 20%，随机 / 块状 10 列整段 2500 格 + 2500 随机）；DTW 带宽 ⌈0.1T⌉、KNN 等权只排序、低秩只在 Ω 上算残差、MF 按 `X ≈ X̂F` 实现（勘误 E29）；诚实结论：真实收益面板不低秩（随机掩码 KNN 0.0193 < 列均值 0.0213 < 低秩 0.0261 < MF 0.0312；块状 KNN 0.0186 < 列均值 0.0197 < 低秩 0.0234 < MF 0.0238），整列全缺时低秩恒补 0（相关 0.0 vs KNN 0.329），低秩只在合成秩三 / 秩二上精确（4.93e−9 / 6.49e−10）——「问题真实存在，低秩就是用不上」。
