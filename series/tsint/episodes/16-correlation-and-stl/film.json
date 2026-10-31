@@ -19,14 +19,22 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-16",
-  "status": "draft",
-  "narration": null,
+  "status": "producing",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_corr_data.py"
+    }
+  ],
+  "derived": [
+    "data/corr.json"
+  ],
   "claims": null,
+  "notes": "unit: ch2-corr-stl",
   "paths": {
     "src": "src",
     "data": "data",
