@@ -3,8 +3,7 @@ import { C, FONT, FT } from "../../design/tokens";
 import { Body, Card, CellGrid, Chip, CW, Formula, Head, K, KV, M, PAD, Pages, PanelHeat, Row, Verdict, fmtF, fmtP } from "../shared";
 
 const P1: React.FC = () => {
-  const toy = [[0.62, -0.31], [0.18, 0.44], [-0.55, 0.09]];
-  const rows = toy.map((r) => [r[0], r[1], NaN]);
+  const rows = [[0.62, -0.31, NaN], [0.18, 0.44, 0.03], [-0.55, 0.09, -0.21]];
   return (
     <>
       <Head kicker="04 / 直觉" title="三乘三的表，缺最右一列的上半" goal="两种先验在这里都够用" />
@@ -125,7 +124,7 @@ const P4: React.FC = () => (
 );
 
 export const SIntuition: React.FC = () => (
-  <Pages id="intuition" at={[0, 0.24, 0.52, 0.76]}>
+  <Pages id="intuition" at={[0, 0.21, 0.5, 0.75]}>
     <P1 />
     <P2 />
     <P3 />

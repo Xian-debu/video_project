@@ -68,15 +68,15 @@ const P3: React.FC = () => (
   <>
     <Head kicker="06 / 验证" title="第三层：块状掩码，十列整段挖掉" goal="平均误差好看，不等于补对了" />
     <div style={{ position: "absolute", left: PAD, top: 330, width: 960 }}>
-      <Card label="真实面板 · 块状缺失" accent={C.cyan} style={{ height: 300 }}>
-        <Bars width={880} rowH={66} items={[
+      <Card label="真实面板 · 块状缺失" accent={C.cyan} style={{ height: 336 }}>
+        <Bars width={880} rowH={60} items={[
           { label: "列均值", value: M.block.mean, text: fmtF(M.block.mean), color: C.inkDim, dim: true },
           { label: "最近邻", value: M.block.knn, text: fmtF(M.block.knn), color: C.cyan },
           { label: "低秩", value: M.block.lowrank, text: fmtF(M.block.lowrank), color: C.violet },
           { label: "矩阵分解", value: M.block.mf, text: fmtF(M.block.mf), color: C.amber },
         ]} />
       </Card>
-      <Card label="只看那十列" accent={C.coral} style={{ height: 300, marginTop: 24 }}>
+      <Card label="只看那十列" accent={C.coral} style={{ height: 336, marginTop: 16 }}>
         <Row name="最近邻 RMSE" value={fmtF(M.block.blockcol_knn)} note="补出的是真实值" color={C.cyan} />
         <Row name="低秩 RMSE" value={fmtF(M.block.blockcol_lowrank)} note="还小一点点" color={C.coral} />
         <Row name="相关系数 · 最近邻" value={fmtF(M.block.blockcol_corr_knn, 3)} />
