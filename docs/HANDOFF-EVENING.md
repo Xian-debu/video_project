@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-31 12:55 实测）
+## 2. 状态（2026-10-31 14:55 实测）
 
-- 成片 **21 / 74**：E01–E11、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **49 / 190** 模块、**713** 条断言（50 组套件；ch02 26 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E11 交付后）：video_project `ac234fd`（delivery；docs 提交紧随）、ts-base `3d34f22`、ts-admin `f525b10`、
+- 成片 **22 / 74**：E01–E12、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **51 / 190** 模块、**776** 条断言（52 组套件；ch02 28 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E12 交付后）：video_project `e8e0faf`（delivery；docs 提交紧随）、ts-base `b3d45e5`、ts-admin `8b5eb10`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -32,12 +32,13 @@
 - E09 成片 `1506.37 s / 45,191 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，364 cue、8 章、封面 23891。
 - E10 成片 `1050.07 s / 31,502 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，231 cue、8 章、封面 5609。
 - E11 成片 `1187.07 s / 35,612 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，243 cue、8 章、封面 26851。
+- E12 成片 `1117.53 s / 33,526 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，240 cue、8 章、封面 26490。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E12 `conv-and-gcn`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E11 实测 1187.07 s）。
+- 下一步入口：**E13 `normalization-trio`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E12 实测 1117.53 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -86,8 +87,8 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
 
 ## 5. 排期（production_order 剩余 53 集）
 
-E01–E11 与 E65–E74 已交付；**ch02 十集全部完成**，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 min。按 `production_order` 继续：
-**E12 conv-and-gcn** → E13 … → E64 llm-side-adapters。
+E01–E12 与 E65–E74 已交付；ch02 十五集里已出 E02–E12 十一集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 min。按 `production_order` 继续：
+**E13 normalization-trio** → E14 … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -136,6 +137,15 @@ BPTT 三个坑：末步 `dhLast = matTVec (rpWhy p) dy` **不再乘 tanh′**（
 判决表（命中率 / 训练 MSE / 轮数）：d=1 三个都 1.000；d=5 RNN **1.000** 而 LSTM 0.6875 / GRU 0.6328；d=10 0.7344 / 0.6641 / 0.6328；d=20 0.4844 / 0.6016 / **0.6094**；d=40 0.5000 / **0.6172** / 0.4531（RNN d=20 第 10 轮早停、LSTM d=40 第 25 轮早停）；随机基线 0.5、抽样标准差 **0.0442 = 1/(2√128)**；
 真实收益（120 只 × 250 日 = 30,000 行，2024-12-09–2025-12-31，前复权剔停牌，855 个精确零 = 2.85%）；滞后 1–10 阶横截面平均自相关 +0.0188 / −0.0277 / −0.0466 / −0.0010 / +0.0018 / −0.0060 / −0.0346 / +0.0016 / +0.0222 / −0.0161，平均 |ρ| **0.0176**、最大 0.0466，抽样带 **2/√250 = 0.1264911**（十阶只有两阶出带）；
 数据在 `/root/ts-base/data/episodes/11-rnn-lstm-gru/`（returns.csv / delay_sweep.csv / summary.json）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E11 实测 1187.07 s）。
+E12 冻结口径（E13 起复用）：卷积一律按式(2.48) **直读为互相关**（真卷积只在 `conv2dTrue` 对照里出现），`ConvCfg` 默认 stride 1 / pad 0，输出 `floor((H+2p−m)/s)+1`，五种错误 `ConvEmptyInput / ConvNotRectangular / ConvBadStride / ConvBadPad / ConvKernelLargerThanPadded`；
+反向 `conv2dBackward` 返回 **(dX, dW)**：`dX = fullConv(dY, rot180 W)`、`dW = corr(X, dY)`（方向翻错前向照样跑，只有梯度检查会炸）；
+GCN 传播子 `P = D̃^(−1/2) (A+I) D̃^(−1/2)`，**先 `clearDiag` 再加单位阵**（`addSelfLoops` 是对角 +1；不清对角原自环翻倍，链 3 节点实测差 **1/6**）；`graphPropagator` / `gcnLayer` 都吃**原始 A**，P 在内部算；
+参数 **8×16 + 16 = 144**；`defaultGcnCfg` hidden 16 / lr 1e−3 / epochs 30 / seed 42 / patience 5，证据与出片用 **120 轮**；
+MLP 基线 = **同一代码把传播子换成单位阵**（同参数量，只差图）；训练配方书中没有，全是本仓选择：Adam(1e−3)、batch 32、Xavier、seed 42、**串行**（13 路并行 + 300 轮会 thunk OOM，EXIT=137）；
+手算黄金（errata E28 口径）：X=[[1,2,3],[4,5,6],[7,8,9]]、W=[[1,0],[0,−1]] → 互相关 **−4/−4/−4/−4**、真卷积 **+4/+4/+4/+4**（核和为零 → 平移不变）；链图 3 节点 P 对角 1/2 / 1/3 / 1/2、次对角 1/√6 = 0.408248；完全图 P 元素全 1/3、P·[1,2,3] = [2,2,2]；
+判决表：真实 50 票 × 300 日（特征日 279、训练 195 / 测试 84，阈值 0.6/0.5/0.4/0.3 → **4/33/139/357** 边）MLP **0.5005**、GCN **0.5031 / 0.5038 / 0.5021 / 0.4981**，cos 0.1833→0.6859 → 这批数据没有可学图结构；合成 50 节点环图（半径 1/2/3/5/8/12/25）MLP **1.0000**、GCN 0.7760 / 0.7340 / 0.7200 / 0.6883 / 0.6620 / 0.6577 / **0.5053**，cos → **1.0000**（过平滑）；
+梯度检查阈值分档：卷积 **1.685866e−9** < 1e−6、图网络 **4.994841e−6** < 1e−5；谱性质 `‖Px‖≤‖x‖` 最差比值 0.5455、行和偏差 **9.175e−2**（对称归一化不是行归一化）；
+数据在 `/root/ts-base/data/episodes/12-conv-and-gcn/`（node_features.csv 15,000 行 / summary.json / real_sweep.csv / syn_sweep.csv）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E12 实测 1117.53 s）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -212,6 +222,12 @@ BPTT 三个坑：末步 `dhLast = matTVec (rpWhy p) dy` **不再乘 tanh′**（
 - **make 必须显式带 `--score=`**：不带时 `render_music.mjs` 会重渲染整段 bed，E11 1188 s 单核跑 **46 min 仍未写出 score.wav**（OfflineAudioContext + 卷积混响），只能 kill；一律 `--score=out/e04-score-loop-48k.wav`。
 - 用 JS 模板串生成 Haskell/Python 代码时 `` 会变 formfeed、反引号与 `${}` 会提前截断字符串；具名函数替 lambda、脚本落盘成文件再跑，别在模板里拼反斜杠。
 - 训练/探针计时别用惰性绑定：`let outcome = rnnTrain ...` 会让计时恒 0.0，必须在 IO 里 `evaluate (length ls)` 强制求值（E11 的 15 路并行计时全靠这个）。
+
+- 场景里的书页引用必须对 **printed 页**核对：式(2.48) 在 p.31、式(2.64) 在 p.34（PDF 页 ≈ 印刷页 + 8）。E12 曾按 PDF 页写成 p.44 / p.46，open 场三处全错；静帧看不出来，只有回书逐字核对才抓得到。
+- `Chip` 这种极简组件不接受未声明的 prop：场景传 `style={{ marginLeft: 18 }}` 会让 make 的 typecheck 阶段报 TS2322。**remotion still 不做类型检查**，写完场景先 `npx tsc --noEmit`（E10 踩过、E12 又踩）。
+- GCN 训练**不能并行**：13 个模型 `forkIO` + 300 轮会把惰性 thunk 堆到 6.3 GB residency，容器直接 EXIT=137；改串行 + 120 轮（每模型 50 s / 36 s，总共约 11 min）。
+- 证据重跑只该改 `sec` 列：E12 用「判据与准确率逐位一致、只有计时列变化」当确定性自检；如果指标列也变了，说明代码或数据真的动了。
+- `report.json` 的 `content.commit / dirty` 是生成时快照（封面、字幕在内容提交之后才生成 → dirty > 0）；最终以交付提交的 HEAD 为准（E67 起的老问题）。
 
 ## 9. 断线恢复（60 秒）
 
