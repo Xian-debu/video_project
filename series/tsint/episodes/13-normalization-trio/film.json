@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-13",
-  "status": "draft",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
@@ -46,6 +46,6 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete",
+  "assetsStatus": "complete",
   "notes": "unit: ch2-norm"
 }
