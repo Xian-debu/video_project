@@ -1,6 +1,6 @@
 # STATUS — video_project 内容仓状态
 
-> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-10-31T18:42:01+08:00。
+> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-10-31T19:23:17+08:00。
 
 | id | title | status | sec | audio | derived | delivery | BV |
 |---|---|---|---|---|---|---|---|
@@ -36,7 +36,7 @@
 | tsint-14-nonstationary-attention | 非平稳注意力：一个标量 τ 与一个向量 Δ 能改什么 | ready | - | yes | ok | 11 | - |
 | tsint-15-imputation-dtw-lowrank-mf | 缺失值三法：邻域、低秩、因子 | ready | - | yes | ok | 11 | - |
 | tsint-16-correlation-and-stl | 相关性与 STL：一个数说面板，一条分解说序列 | ready | - | yes | ok | 11 | - |
-| tsint-17-win-metrics-valselect | 滑窗、指标与选模：先把「分数」这件事做对 | draft | 1200 | silent | ok | 1 | - |
+| tsint-17-win-metrics-valselect | 滑窗、指标与选模：先把「分数」这件事做对 | ready | - | yes | ok | 11 | - |
 | tsint-18-norm-revin-now-mean | 归一化三兄弟：RevIN、NowNorm、MeanNorm | draft | 1080 | silent | ok | 1 | - |
 | tsint-19-linear-revival-dlinear-fits | 线性模型复兴：共享权重线性、DLinear、FITS | draft | 1320 | silent | ok | 1 | - |
 | tsint-20-conv-dilated-fft-2d | 卷积看时序：因果空洞卷积、FFT 周期、二维聚合 | draft | 1320 | silent | ok | 1 | - |
