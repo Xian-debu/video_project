@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-31 15:56 实测）
+## 2. 状态（2026-10-31 16:58 实测）
 
-- 成片 **23 / 74**：E01–E13、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **54 / 190** 模块、**818** 条断言（55 组套件；ch02 31 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E13 交付后）：video_project `86839ee`（delivery；docs 提交紧随）、ts-base `8dc84ca`、ts-admin `0759d34`、
+- 成片 **24 / 74**：E01–E14、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **57 / 190** 模块、**833** 条断言（56 组套件；ch02 34 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E14 交付后）：video_project `090e56b`（delivery；docs 提交紧随）、ts-base `76d79ea`、ts-admin `cd99f71`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -34,12 +34,13 @@
 - E11 成片 `1187.07 s / 35,612 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，243 cue、8 章、封面 26851。
 - E12 成片 `1117.53 s / 33,526 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，240 cue、8 章、封面 26490。
 - E13 成片 `879.63 s / 26,389 帧 / 8 场 23 页 / −15 LUFS / TP −2 dBFS`，225 cue、8 章、封面 3063。
+- E14 成片 `749.07 s / 22,472 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，199 cue、8 章、封面 2880。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E14 `nonstationary-attention`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E13 实测 879.63 s）。
+- 下一步入口：**E15 `imputation-dtw-lowrank-mf`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E13 实测 879.63 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -86,10 +87,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 53 集）
+## 5. 排期（production_order 剩余 50 集）
 
-E01–E13 与 E65–E74 已交付；ch02 十五集里已出 E02–E13 十二集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 min。按 `production_order` 继续：
-**E14 nonstationary-attention** → E15 … → E64 llm-side-adapters。
+E01–E14 与 E65–E74 已交付；ch02 十五集里已出 E02–E14 十三集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 min。按 `production_order` 继续：
+**E15 imputation-dtw-lowrank-mf** → E16 … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -154,6 +155,14 @@ SAN τ=25、M=T div τ=10、残片直接丢弃；只训第一阶段（(mu,sigma)
 三条桥接逐位 0.0（RevIN@eps=0 vs Z-score、DAIN@alpha=mu/beta=sigma/gate=off vs RevIN、SAN@tau=T vs RevIN）；SAN 第一阶段**输给**「沿用上一片」基线（mu MAE 2.5073 vs 0.6893 = 3.64×、sigma 0.3394 vs 0.2254 = 1.51×），检查口径写「误差同量级」不写「赢」；
 片内 sigma / 整段 sigma 平均 **0.3923**（逐窗 sd_i / whole 再平均：整段 sigma 里混着局部波动与漂移）；
 数据在 `/root/ts-base/data/episodes/13-normalization-trio/`（norm_windows.csv 30,000 行、summary.json、norm_shard_stats.csv 1,200 行、san_pred.csv 270 行）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E13 实测 879.63 s）。
+
+E14 冻结口径（E15 起复用）：式(2.9) 照书写成 `Attn(Q,K,V,τ,Δ) = Softmax(τ QKᵀ/√d_k + 1Δᵀ)V`；τ 乘在 QKᵀ 上**逐位等于**把 softmax 温度改成 1/τ（τ=2 vs temp=0.5 实测 maxdiff **0.0**，不是近似），τ=1/Δ=0 与 EP9 标准注意力也逐位相等（两条独立代码路径）；
+Δ 以 1Δᵀ **按列**加才是新自由度（给每个 key 一个偏置），按行加 δ_i 被整行归一化吃掉（`rowBiasAttention` 返回标准注意力、`rowBiasLogits` 真加进去只差 **1.6653345369e−16**，对 δ 的中心差分**恰为 0.0**）；列偏置梯度非零（最大 **0.6094**，各列和 1.36e−9 是 FD 噪声，阈值 1e−7）；
+本仓实现 Δ **直接加在 logits 上**（τ=1 时与书中逐位相同，不用缩放）；数值口径沿用 EP9（减行最大值再取指数的稳定 softmax，不用 −Infinity），τ 有限且 >0（`NsaBadTau`）、Δ 长度 = T、形状/NaN 显式报错（`NsaBadShape` / `NsaNonFinite`）；
+**不训练** τ/Δ（书中说由 MLP 从 μ、σ 学出，但不给初始化/损失/训练配方；训练它需要第 3 章预测骨架），只做前向判决、两条独立实现与梯度取证；
+合成数据锚点（T=60、2000 条、方差 1→10）：熵 3.3073 / τ=2 熵 2.5682、末段 0.4821 vs 早段 0.2083（差 0.2739），线性 Δ 探针 a=+2 把早段拉到 0.599、熵几乎不动；
+真实 A 股 60 只×60 日（2025-10-09..2025-12-31）三段本来就近均衡（34.99%/33.65%/31.36%，最大差 **0.0363**、熵 3.5592），同一 Δ 探针把早段拉到 0.7347、熵反降到 3.0885（**−0.4706**）——那是把均匀变尖，**不是纠偏**，因为窗口里没有合成数据那种位置偏置可纠；
+数据在 `/root/ts-base/data/episodes/14-nonstationary-attention/`（真实窗口 CSV 105,540 B / 3600 行、summary.json）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E14 实测 749.07 s）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -227,7 +236,7 @@ SAN τ=25、M=T div τ=10、残片直接丢弃；只训第一阶段（(mu,sigma)
 - 讲稿估时也会**偏低**：E11 估约 1100 s、实测 1187.07 s（+7.9%）；方向不定，所以每次都按实测 lines.json 重算帧号（页末帧、封面候选、cut-frames）。
 - `Row` 的固定百分比列宽（name 36% / value 26%）在 570 宽卡片里把值列压到 ~135 px：`0.5 / −0.3 / 0.2 / 0.7`、`σ(W_f x + U_f h + b_f)` 折 2–3 行并顶出卡底。改成柔性列（name 34%、value auto min 24%/max 54%、note flex）并对窄卡片用竖排 `KV` 组件。
 - 页面底部结论条位置要按上方面板高度算：implementation p2 三张 Stat 从 306 起，148 高 ×3 + gap 18×2 = 786 直接压在 top 720 的条上；改 140 高 + gap 14（=754）后条才挪到 776。先算再放。
-- **make 必须显式带 `--score=`**：不带时 `render_music.mjs` 会重渲染整段 bed，E11 1188 s 单核跑 **46 min 仍未写出 score.wav**（OfflineAudioContext + 卷积混响），只能 kill；一律 `--score=out/e04-score-loop-48k.wav`。
+- **make 必须显式带 `--score=`**：不带时 `render_music.mjs` 会重渲染整段 bed，E11 1188 s 单核跑 **46 min 仍未写出 score.wav**（OfflineAudioContext + 卷积混响），只能 kill；一律 `--score=out/e04-score-loop-48k.wav`（E14 又踩一次：750 s bed 单核 20 min 未写出）
 - 用 JS 模板串生成 Haskell/Python 代码时 `` 会变 formfeed、反引号与 `${}` 会提前截断字符串；具名函数替 lambda、脚本落盘成文件再跑，别在模板里拼反斜杠。
 - 训练/探针计时别用惰性绑定：`let outcome = rnnTrain ...` 会让计时恒 0.0，必须在 IO 里 `evaluate (length ls)` 强制求值（E11 的 15 路并行计时全靠这个）。
 
@@ -242,6 +251,11 @@ SAN τ=25、M=T div τ=10、残片直接丢弃；只训第一阶段（(mu,sigma)
 - 停牌 ≠ 零 sigma：数据把停牌剔成无行，只有常数窗口才有 sigma=0；boundary 卡与旁白写「常数序列的 sigma 是零」。
 - 修改讲稿某一行后必须删对应 clip 再重跑 TTS：`tts_narration.py` 对「文件存在且 >800 B」的 clip 直接跳过，改了文本不删旧 mp3 会沿用旧音（E13 重录 boundary#19 后总长 879.44→879.63 s，delivery 需整体重渲染）。
 - 多页场的 `Pages at` 分段要落在旁白切换点上：E13 definitions `at=[0,0.4,0.72,0.775]`，0.775 对应 313.17 s、Z-score 旁白 313.59 s 起，早一页会「新页讲旧话」。
+
+- `Pages` 的 `at` 是**场景时长的分数**，页间是 12 帧交叉淡变：静帧若正好取在 `at` 边界帧，看到的是**上一页**（E14 误判成「页面错位」三次）；复核一律取页中段（本页 at 与下一页 at 之间）。
+- `Pages at` 分数要按**实测 voice.json 时长**重算，不能沿用 CPS 估算：E14 估算 829.24 s / 实测 750.58 s（短 79 s），切页整体前移；TTS 后必须 `sync → dump_script` 重建 lines.json，再回填 at。
+- `films.mjs sync` 会镜像 pack 的 `data/` 目录（把 engine 侧 lines.json 删掉）：正确顺序是 `sync` → `dump_script` → `cp` engine 的 lines.json 回 pack，否则下一轮 sync 又丢。
+- outro 的「回扣卡」高度要按 `Row` 行数算：3 行 Row 需要 ≥200 px（150 只够 2 行），否则第三行被底部「下一集」文字压住；`Row` 的 name 列窄，长标签（`τ=2 vs 温度 0.5`）会折行，改短（`τ=2 vs 减半`）。
 
 ## 9. 断线恢复（60 秒）
 

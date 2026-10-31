@@ -242,3 +242,16 @@
 - 返工: 讲稿 178→210→225 行（每场末追加；超 900 s 预算删 5 行、改写 7 行原地替换并删旧 clip）；stills 18 帧首轮抓 3 处溢出（intuition 三卡 300、verification 中卡 340、boundary 数据卡 300）+ 3 处文案，修正后 3 帧复核 PASS；证据 24 检查 0 失败（重跑一次刷 provenance，18.98 s）；make 两轮（首轮 PASS → 发现门错误 → 修正后二轮 PASS）
 - 偏差: 计划 16 min，实做 14.66 min（−1.34 min）；23 页；旁白 225 条、语音 734.6 s；证据 24 条（6 数据 / 16 结构 / 2 行为）；断言 42（Revin 13 / Dain 15 / San 14），套件 55、总断言 818
 - 备注: ch02 第十二集（tsint 全系列第 23 部成片）；下一步 E14 `nonstationary-attention`。E13 冻结口径：RevIN 存 (mu, sigma)、前向 `(X−mu)/(max |sigma| eps)`、反向用同一份统计量（eps=0 时与 Z-score 逐位相同）；DAIN 三组映射 + 乘法门、eps 取绝对值下界、`dcUseGate=False` 用于桥接；SAN τ=25、M=10、残片丢弃、只训第一阶段（统计量预测），第二阶段留给后续集。诚实结论：SAN 第一阶段**输给**「沿用上一片」基线（mu 3.64×、sigma 1.51×），片内 sigma 平均只有整段 sigma 的 0.3923 —— 画面与检查口径都按「误差同量级」写，不伪装胜利。E04 bed 1560 s 仍够 E14（约 15 min）
+
+## E14 nonstationary-attention — 2026-10-31
+
+- ts-base: `608c181`（算法 NonstatAttn）+ `76d79ea`（证据 ch2-nonstat-attn，SELF-AUTH A31）；断言 15，套件 56，总断言 833
+- ts-admin: `cd99f71`（60 票 × 60 日 attention 窗口，3600 行；CSV 105,540 B；窗口 2025-10-09..2025-12-31）
+- video_project: `085d0c6`（pack 源）+ `090e56b`（delivery：cover.png / tsint-14.srt / chapters）；讲稿 199 行、coverFrame 2880
+- 引擎: `a667688`（未变）；score 复用 `out/e04-score-loop-48k.wav`（1560 s 48 kHz）
+- 成片: 749.07 s（12:29.07）/ 22,472 帧 / 8 场 / −15 LUFS / TP −2 dBFS / 199 条旁白（语音 617.8 s，mean 3.10 s）/ 字幕跨度 00:00:01,200→00:12:26,840（speaking 687.4 s）/ mp4 35,471,621 B / cover.png 146,024 B / srt 15,045 B
+- 流水线: 8 段 rendered 8；musicGain −4.5 dB、ducked 54.8%、peak −1.03 dBFS、rms −26.42；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.14、gap_full −30.7、gap_audible −33.56、bed_contribution 36.4；flicker mean|d| 0.0181、p99 0.2007、max 9.95、cuts 7（2894/5754/9260/12135/15111/18379/20961）；199 cue 无一换行、最长 34 字（budget 34）；8 章；封面 frame 2880（96.00 s，open 末页「四个数，先钉在墙上」四张数字卡、无字幕）
+- 卡点: ① TTS 实测比 CPS 估算短 79 s（829.24→750.58 s），`Pages at` 分数按估算写、实际切页略偏，复核改用页中段帧；② stills 抓到 3 处：outro 回扣卡 150 高装不下 3 行 Row（被「下一集」压住）、implementation P2 标签 `τ=2 vs 温度 0.5` 折行、definitions P4「把 1Δᵀ/√dk 并进 Δ / 吸收根号 dk」是错误等价说法（书里 Δ 就是加在 logits 上，τ=1 逐位相同）→ 改画面 + 重录 1 条 clip；③ make 首轮 `content HEAD moved (864f866 -> 085d0c6); run sync`，提交后必须再 sync；④ 不带 `--score=` 时 render_music 生成 750 s bed 20 min 未出文件 → kill，复用 e04 bed
+- 返工: stills 两轮（首轮 18 帧 → 修 3 处 → 复核 PASS）；1 条 clip 重录导致总长 750.58 s 并整体重渲染；make 两轮
+- 偏差: 计划 14 min，实做 12.49 min（−1.51 min）；199 条旁白；证据 21 条（6 数据 / 15 结构）；断言 15，套件 56、总断言 833
+- 备注: ch02 第十三集（tsint 全系列第 24 部成片）；下一步 E15 `imputation-dtw-lowrank-mf`。E14 冻结口径：τ 乘在 QKᵀ 上**逐位等于**把 softmax 温度改成 1/τ（τ=2 vs temp=0.5 实测 maxdiff 0.0，不是近似）；Δ 以 1Δᵀ 按列加才是新自由度，按行加被整行归一化吃掉（raw 版只差 1.665e−16、中心差分恰 0.0）；本仓 Δ 直接加在 logits 上，τ=1 时与书中逐位相同、不用缩放；不训练 τ/Δ。诚实结论：真实 A 股窗口三段本来就均衡（34.99/33.65/31.36%、最大差 3.63 pp），没有合成数据那种位置偏置可纠，Δ 探针只是把均匀变尖（熵 3.5592→3.0885）——「机制存在」不等于「这份数据有那个问题」。
