@@ -90,7 +90,7 @@ const SPEC: SceneSpec[] = [
       "可逆的时候，用哪一组统计量反变换。",
       "五个问题，书里一个都没答。",
       "表三点一里，六个模型的归一化各不相同。",
-      "TSMixer、RLinear、TimeMixer，用可逆实例归一化。",
+      "前三个模型，用可逆实例归一化。",
       "NLinear 用 NowNorm。",
       "SparseTSF 用 MeanNorm。",
       "DLinear 什么都不用。",
