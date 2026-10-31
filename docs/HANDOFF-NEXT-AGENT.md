@@ -1,8 +1,8 @@
-# HANDOFF — 下一任 agent 接手单（tsint 系列，E18 收尾后）
+# HANDOFF — 下一任 agent 接手单（tsint 系列，E19 收尾后）
 
 > 写于 2026-10-31。本文件写给**下一个接手本工程的 agent**：读完这一份就能继续跑，不必回放旧会话。
 > 真源顺序：本文件 → `docs/HANDOFF-EVENING.md`（长期主入口，§4 流水线、§5 冻结口径、§8 坑）→ `STATUS.md` → 四仓 `git log` → `docs/production-log.md`。
-> 当前用户状态：**无人值守目标已被用户暂停**（goal phase=paused）。不要再自动开启全系列连跑；等用户明确指令再继续下一集。
+> 当前用户状态：**无人值守续跑已恢复**（2026-10-31 20:20 用户指令，A42）：按 production_order 从 E19 做到 E64，逐集验证后提交；**不发布 B 站**、只到 ready。
 
 ## 0. 60 秒接手
 
@@ -20,10 +20,10 @@ docker ps --format '{{.Names}} {{.Status}}' | grep haskell-ts || docker start ha
 node /root/video_project/tools/status.mjs --md | sed -n 1,12p
 ```
 
-- 已交付成片 **28 / 74**：E01–E18 + E65–E74，全部 `status: ready`，**未发布 B 站**。
-- 算法 **68 / 190** 模块、**965** 条断言、**67** 组 cabal suite。
-- 当前最后一集 **E18 `norm-revin-now-mean`**（ch03 第三集，归一化三兄弟：RevIN / NowNorm / MeanNorm），本轮已走完 数据 → 算法 → 测试 → 证据 → pack → TTS → 成片。
-- **下一集 = E19 `linear-revival-dlinear-fits`**（`plans/series.json` production_order 第 29 位、series order 19；“线性模型复兴：共享权重线性、DLinear、FITS”）。E18 的 outro 已经按这个标题写了下一集预告。
+- 已交付成片 **29 / 74**：E01–E19 + E65–E74，全部 `status: ready`，**未发布 B 站**。
+- 算法 **71 / 190** 模块、**987** 条断言、**70** 组 cabal suite。
+- 当前最后一集 **E19 `linear-revival-dlinear-fits`**（ch03 第三集，线性复兴：共享权重线性 / DLinear / FITS），本轮已走完 数据 → 算法 → 测试 → 证据 → pack → TTS → 成片。
+- **下一集 = E20 `conv-dilated-fft-2d`**（`plans/series.json` production_order 第 30 位、series order 20；“卷积看时序：因果空洞卷积、FFT 周期、二维聚合”）。E19 的 outro 已经按这个标题写了下一集预告。
 
 ## 1. 用户目标与授权（不要改口）
 
@@ -34,8 +34,8 @@ node /root/video_project/tools/status.mjs --md | sed -n 1,12p
   ```
   self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HANDOFF-EVENING.md §1/§3
   ```
-  ts-base/ts-admin 的每次提交引用各自的 SELF-AUTH 条目（A38–A41 是 E18 新增）。
-- 用户暂停了 goal，**本接手单只交代现状与做法，不构成自动续跑授权**。
+  ts-base/ts-admin 的每次提交引用各自的 SELF-AUTH 条目（A42–A43 是 E19 新增；A42 是本轮续跑授权）。
+- 用户 2026-10-31 20:20 已恢复无人值守续跑（A42），从 E19 做到 E64；**不发布**与 `status: ready` 两条约束不变。
 
 ## 2. 四仓结构
 
@@ -113,13 +113,13 @@ node scripts/make.mjs --film tsint-18-norm-revin-now-mean --score=out/e04-score-
 11. **出片 + 门禁**：`make.mjs --film … --score=out/e04-score-loop-48k.wav`；必须 **PASS**：loudnorm I∈[−16.5,−13]、TP≤−1.5、music gate、flicker、content check、delivery 全件。coverFrame 选**无字幕、场末卡**的帧；publish 只写 `out/export`，**要把 cover.png / srt / chapters / ffmeta 拷回 pack `delivery/`**。
 12. **文档 + 提交 4**：`docs/production-log.md` 加本集条目（ts-base/ts-admin/video_project 提交号、成片秒数/帧数/旁白/门禁数、卡点、返工、偏差、下一集）；`node tools/status.mjs --md` 重新生成 `STATUS.md`；更新 `docs/HANDOFF-EVENING.md` §2 数字与 §5 下一步；四仓 `git status` 干净后进下一集。
 
-## 5. 当前进度（E18 已交付）
+## 5. 当前进度（E19 已交付）
 
-- 成片 28/74：E01–E18（ch01 起）+ E65–E74；均已 `ready`，无 B 站发布。
-- E18 交付物：讲稿 223 行、**840.87 s / 25,226 帧**、8 场 27 页、−15 LUFS / TP −2 dBFS、223 cue 无换行、8 章、封面 4350；证据 28 checks（4 数据 / 4 结构 / 20 行为）；断言 +20（revin 8 / nownorm 6 / meannorm 6），套件 67 / 总断言 965。
-- E18 关键读数（已冻结，plan.md 与画面一致）：RevIN 往返误差 0、归一化后均值 0 / 方差 1；NowNorm 手算 (1−3)·1+3 = **1**（brief 的 4 是错的）；MeanNorm 与 z-score 逐点最大差 **2.2247**；panel 3,867 行、量纲比 **658.67×**；未归一化 MAE 963.93 / 0.9538 → RevIN 后 481.94 / 0.3625；合成漂移序列 NowNorm **0.9731** vs MeanNorm **2.0931**（2.15×）、去漂移后 **0.5215** vs **1.0045**（1.93×）；指数 76.55 / 82.25 / 84.88。
-- 四仓 HEAD（E18 全部提交后以 git log 为准）：video_project `8971747`（delivery；docs 提交紧随其后）；ts-base `d992d5f`（evidence）← `5d617cc`（algos）；ts-admin `f6902e9`；engine `a667688`（冻结，未改）。
-- 下一集 E19 `linear-revival-dlinear-fits`：先从系列计划读 `algorithms` 三模块（共享权重线性 / DLinear / FITS），再按上面 12 步走；E18 的 evidence 程序 `app/Ch03NormEvidence.hs` 是最好的模板（H=48/F=24 骨干、Adam/seed 写死、三条曲线导出）。
+- 成片 29/74：E01–E19（ch01 起）+ E65–E74；均已 `ready`，无 B 站发布。
+- E19 交付物：讲稿 267 行、**1,263.79 s / 37,914 帧**、8 场 27 页、−15 LUFS / TP −2 dBFS、267 cue 无换行、8 章、封面 5340；证据 30 checks（结构 10 / 梯度 6 / 数据 6 / 指标 8）；断言 +22（shared 5 / dlinear 10 / fits 7），套件 70 / 总断言 987。
+- E19 关键读数（已冻结，plan.md 与画面一致）：参数 2,328（97×24）/ 4,656（2×97×24）/ 2,352（4R²+2R，R=24）；分解恒等 0、k=1 退化 0、FFT 往返 1.53e−14、DC 1.67e−16、解析梯度 ≤5.02e−11；日线 MAE shared 153.716 / DLinear 148.611 / FITS 150.341 / 末值 **142.074**；五分钟 46.2119 / 45.8971 / 45.5850 / 末值 **42.6948**；末值基线 8/8 全胜，DLinear 8 条日线赢 7 条，五分钟三者互差 1.37%；谱峰 k=2 / 48 根 = 一天 / 峰次比 1.2736。
+- 四仓 HEAD（E19 全部提交后以 git log 为准）：video_project `a2cf036`（delivery；docs 提交紧随其后）；ts-base `85e70e4`（evidence 修正）← `9a534c2`（evidence）← `3f37a5a`（algos）；ts-admin `b5b2e23`；engine `a667688`（冻结，未改）。
+- 下一集 E20 `conv-dilated-fft-2d`：先从系列计划读 `algorithms`（因果空洞卷积 / FFT 周期 / 二维聚合），再按上面 12 步走；E19 的 evidence 程序 `app/Ch03LinearEvidence.hs` 是最好的模板（H=96/F=24、Adam/seed 写死、逐序列指标导出）。
 
 ## 6. 已冻结口径（写片前必读，详见 HANDOFF-EVENING §5）
 
@@ -128,6 +128,7 @@ node scripts/make.mjs --film tsint-18-norm-revin-now-mean --score=out/e04-score-
 - E15/E16 读数与 STL：相关系数四口径、配对完整、总体方差 /K；STL 按 Cleveland 1990（L=5 → n_s=7 / n_t=11 / inner=2 / outer=0 / tricube / 端点局部线性）；读数不是数据的属性。
 - E17 滑窗/指标/选模：窗口数 `(T−off−H−F) div s + 1`（第 4 参是 offset，gap 属 chronoSplit，A35/E31）；MAE 与 MAPE 对价段给出相反结论；MAPE 零值三口径都要报计数；Adam(1e−3)+早停回最优轮。
 - E18 归一化：三个都是 `x̂ = f(x−base)+base`，区别只在 base；RevIN eps 用 `sqrt(sigma²+eps)`（与 ch02 的 `sigma+eps` 不同，不能混用）、统计窗只取输入 H、仿射默认关闭；NowNorm 减末值、MeanNorm 只减不除；**漂移决定减谁**，不是谁更先进（A38–A41 / E33）。
+- E19 线性复兴：书 p.46 只有一句话（E34），DLinear / FITS 都按原论文实现并标「非书中给出」；参数量按形状算，表 3.1 只作 C 级旁证；DLinear 的 4,656 参数在无约束最小二乘下与 2,328 同函数空间，+3.32% 归因于优化路径而非容量；FITS 基矩阵必须 **F×2R 行主序**、DC/Nyquist 权重 1/n 其余 2/n；末值基线日线与五分钟全胜，不制造翻盘叙事（A43 / production-log E19）。
 
 ## 7. 坑（按类，都是踩过的）
 
@@ -193,7 +194,7 @@ tail -30 /root/video-pipeline-blueprint/out/e18-make.log
 
 ## 10. 不要做的事
 
-- 不要在用户没发话时自动跑下一集（goal 已暂停）。
+- 当前已授权无人值守续跑至 E64（A42）；仅当 goal 被暂停或用户改口时才停下，且**永远不发布 B 站**。
 - 不要改渲染引擎（生产冻结）、不要重渲染整段 score、不要动 `out/e04-score-loop-48k.wav`。
 - 不要为了让门禁过而改阈值/关检查；门禁红就修内容。
 - 不要在旁白/画面里编造书里没有的归属、页码或数字。

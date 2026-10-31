@@ -192,3 +192,17 @@
   重渲只需 `make --film … --score=out/e04-score-loop-48k.wav`。
 - **返工成本**：make 2 轮（第 1 轮被 content check 挡住：pack 未提交 + sync 后 lines 漂移；
   第 2 轮 PASS，仅封面帧返工一次）。教训：**commit → sync → make** 的顺序不能省。
+
+## A15 E19 收尾：文档回填与下一集交接（2026-10-31 夜）
+
+- **决定**：docs/production-log.md 补 E19 条目（两仓提交号、1,263.79 s / 37,914 帧、267 旁白、
+  全部门禁读数、7 处卡点、两轮静帧、dump 偏差 −92.6 s）；STATUS.md 由 node tools/status.mjs --md
+  重新生成（E19 由 draft/1320 变为 ready，交付 11 件）；docs/HANDOFF-EVENING.md 状态块改为
+  29/74、71 模块 / 987 断言 / 70 套件，并追加 E19 冻结口径；docs/HANDOFF-NEXT-AGENT.md 改为
+  E19 收尾、E20 conv-dilated-fft-2d 起手。
+- **决定**：四仓 HEAD 记为 video_project a2cf036、ts-base 85e70e4、ts-admin b5b2e23、
+  engine a667688；文档提交紧随本条目之后，不重写历史。
+- **依据**：所有数字来自 delivery/report.json、ts-base inventory/evidence/ch3-linear* 与
+  data/episodes/19-linear-revival-dlinear-fits/summary.json；没有为文档好看而改读数或门限。
+- **可逆性**：高（纯文档提交，可整段回退）。
+- **返工成本**：0（一次补齐；日志回填时发现旧读取截断，已按 HEAD 恢复 E15–E18 段再追加 E19）。
