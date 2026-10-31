@@ -30,7 +30,7 @@ const P2: React.FC = () => (
   <>
     <Head kicker="06 / 验证" title="两条去趋势路径，殊途同归" goal="STL 与经典分解都指向 1.2 附近" />
     <div style={{ position: "absolute", left: PAD, top: 336, width: CW, display: "flex", gap: 26 }}>
-      <Card label="STL 去趋势" accent={C.cyan} style={{ flex: 1, height: 380 }}>
+      <Card label="STL 去趋势" accent={C.cyan} style={{ flex: 1, height: 340 }}>
         <div style={{ fontFamily: FONT.mono, fontSize: FT.num, color: C.cyan }}>{fmtF(M.readings.stl.score, 6)}</div>
         <Body size={FT.body} style={{ marginTop: 16 }}>
           LOESS 趋势，周期 5，n_s 7，n_t 11。残差面板的相关方差 {fmtF(M.readings.stl.var, 4)}，
@@ -40,7 +40,7 @@ const P2: React.FC = () => (
           mean 被推到 {fmtF(M.readings.stl.mean, 4)}：LOESS 只拿走低频，相位内的相关还留着。
         </Body>
       </Card>
-      <Card label="经典去趋势" accent={C.coral} style={{ flex: 1, height: 380 }}>
+      <Card label="经典去趋势" accent={C.coral} style={{ flex: 1, height: 340 }}>
         <div style={{ fontFamily: FONT.mono, fontSize: FT.num, color: C.coral }}>{fmtF(M.readings.classic.score, 6)}</div>
         <Body size={FT.body} style={{ marginTop: 16 }}>
           中心化移动平均，周期 5。残差面板的相关方差 {fmtF(M.readings.classic.var, 4)}，
@@ -121,7 +121,7 @@ const P4: React.FC = () => (
         </div>
         <Body size={FT.body} style={{ marginTop: 18 }}>
           比值 {fmtF(M.maotaiStats.stl / M.maotaiStats.classic, 1)} 倍。
-          剖面最大差 {fmtF(M.maotaiStats.gap, 3)} 元，不到均价的 {fmtF(M.maotaiStats.ampPct / 100, 4)}%。
+          剖面最大差 {fmtF(M.maotaiStats.gap, 3)} 元；季节振幅只有均价的 {fmtF(M.maotaiStats.ampPct, 4)}%。
         </Body>
         <Body size={FT.body} style={{ marginTop: 14 }}>
           式(2.2) 只有一个式子，但 var(R) 里的 R 换了定义：LOESS 剩下的 vs 移动平均剩下的。

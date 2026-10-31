@@ -99,7 +99,7 @@ const P2: React.FC = () => (
 
 const P3: React.FC = () => (
   <>
-    <Head kicker="04 / 直觉" title="同一条剖面，两种强度" goal="剖面差 0.166 元，强度差 19 倍" />
+    <Head kicker="04 / 直觉" title="同一条剖面，两种强度" goal="剖面差 0.169 元，强度差 19 倍" />
     <div style={{ position: "absolute", left: PAD, top: 336, width: 1000 }}>
       <LinePlot
         width={1000}
@@ -122,7 +122,7 @@ const P3: React.FC = () => (
         sub={<span>残差是移动平均剩下的</span>} />
       <Card label="比值" accent={C.amber} style={{ height: 150 }} pad={20}>
         <div style={{ fontFamily: FONT.mono, fontSize: FT.num, color: C.ink }}>19.2 ×</div>
-        <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint, marginTop: 8 }}>剖面最大差 {fmtF(M.maotaiStats.gap, 3)} 元，占均价 {fmtF(M.maotaiStats.ampPct, 4)}%</div>
+        <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint, marginTop: 8 }}>剖面最大差 {fmtF(M.maotaiStats.gap, 3)} 元；季节振幅占均价 {fmtF(M.maotaiStats.ampPct, 4)}%</div>
       </Card>
     </div>
     <div style={{ position: "absolute", left: PAD, top: 820, width: CW }}>

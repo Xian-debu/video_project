@@ -105,7 +105,7 @@ const P3: React.FC = () => (
       <Stat label="测试套件" value={fmtInt(M.meta.tests.suites)} accent={C.cyan} style={{ flex: 1, height: 200 }} sub={<span>全仓 cabal test</span>} />
       <Stat label="断言" value={fmtInt(M.meta.tests.asserts)} accent={C.violet} style={{ flex: 1, height: 200 }} sub={<span>Correlation +20 · Stl +17</span>} />
       <Stat label="合成恒等式误差" value={fmtE(M.synthetic.identityErr, 1)} accent={C.amber} style={{ flex: 1, height: 200 }} sub={<span>n = {M.synthetic.n}，逐位 X = T + S + R</span>} />
-      <Stat label="趋势误差" value={fmtE(M.synthetic.trendErr, 1)} accent={C.coral} style={{ flex: 1, height: 200 }} sub={<span>深内段 [60..139]</span>} />
+      <Stat label="趋势误差" value={fmtE(M.synthetic.trendErr, 1)} accent={C.coral} style={{ flex: 1, height: 200 }} sub={<span>n = 400，深内段 [60..339]</span>} />
     </div>
     <div style={{ position: "absolute", left: PAD, top: 600, width: CW }}>
       <Card label="n = 60 那个坑" accent={C.coral} style={{ height: 300 }}>
@@ -114,8 +114,8 @@ const P3: React.FC = () => (
           线性外推本来就有偏。范围也就从端点到不了内点。
         </Body>
         <Body size={FT.body} color={C.ink} style={{ marginTop: 14 }}>
-          改成 n = 200，只测深内段 60 到 139，误差掉到 2.8e−14。
-          边界偏差留在边界页讲，不用测试去「修」它。
+          测试换成两百点、只断言深内段 60 到 139；证据包换成四百点、深内段 60 到 339。
+          误差都在 1e−15 量级。边界偏差留在边界页讲，不用测试去「修」它。
         </Body>
       </Card>
     </div>

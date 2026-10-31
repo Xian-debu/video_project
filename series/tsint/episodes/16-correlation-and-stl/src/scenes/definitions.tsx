@@ -1,6 +1,6 @@
 import React from "react";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Card, Chip, CW, Formula, Head, K, M, PAD, Pages, Row, fmtF } from "../shared";
+import { Body, Card, Chip, CW, Formula, Head, K, M, PAD, Pages, Row, fmtF, fmtInt } from "../shared";
 
 const READINGS: { name: string; tag: string; color: string; st: typeof M.readings.price }[] = [
   { name: "价格面板", tag: "收盘价", color: C.cyan, st: M.readings.price },
@@ -30,7 +30,13 @@ const P1: React.FC = () => (
         </div>
       ))}
     </div>
-    <div style={{ position: "absolute", left: PAD, top: 830, width: CW }}>
+    <div style={{ position: "absolute", left: PAD, top: 700, width: CW, display: "flex", gap: 22, alignItems: "center" }}>
+      <Chip color={C.cyan}>证据 ch2-corr-stl · 22 / 22</Chip>
+      <K>{fmtInt(M.pairs.total)} 对 · 上三角</K>
+      <K>var 除以 K</K>
+      <K>面板 {M.data.codes} × {M.data.days}</K>
+    </div>
+    <div style={{ position: "absolute", left: PAD, top: 760, width: CW }}>
       <Body size={FT.body} color={C.inkDim}>
         价格和收益的 mean 只差 0.023，var 差 9.6 倍。两张表读到最后一行，读数差 0.15。
       </Body>
@@ -65,12 +71,15 @@ const P2: React.FC = () => {
             <g key={mk.label}>
               <line x1={satX(mk.v)} y1={satY(1 / (1 + mk.v))} x2={satX(mk.v)} y2={SAT_H - 60} stroke={mk.color} strokeDasharray="4 4" />
               <circle cx={satX(mk.v)} cy={satY(1 / (1 + mk.v))} r={5} fill={mk.color} />
-              <text x={satX(mk.v) + 12} y={satY(1 / (1 + mk.v)) - 12} fill={mk.color} fontFamily={FONT.mono} fontSize={FT.meta}>{mk.label}</text>
-              <text x={satX(mk.v) + 12} y={satY(1 / (1 + mk.v)) + 12} fill={mk.color} fontFamily={FONT.mono} fontSize={FT.meta}>{fmtF(1 / (1 + mk.v), 4)}</text>
+              <text x={satX(mk.v) + 14} y={satY(1 / (1 + mk.v)) - 14} fill={mk.color} fontFamily={FONT.mono} fontSize={FT.meta}>{mk.label}</text>
+              <text x={satX(mk.v) + 14} y={satY(1 / (1 + mk.v)) + 24} fill={mk.color} fontFamily={FONT.mono} fontSize={FT.meta}>{fmtF(1 / (1 + mk.v), 4)}</text>
             </g>
           ))}
           <text x={SAT_W - 60} y={SAT_H - 30} textAnchor="end" fill={C.inkFaint} fontFamily={FONT.mono} fontSize={FT.micro}>var(p)</text>
         </svg>
+        <div style={{ width: SAT_W, marginTop: 10 }}>
+          <K>曲线是 1/(1+var)，画到 var = 0.35。两个点是本片两张面板的实际位置。</K>
+        </div>
       </div>
       <div style={{ position: "absolute", left: PAD + 1070, top: 340, width: CW - 1070 }}>
         <Card label="为什么压得住" accent={C.amber} style={{ height: 420 }}>
@@ -123,7 +132,7 @@ const P3: React.FC = () => (
         </Body>
       </Card>
     </div>
-    <div style={{ position: "absolute", left: PAD, top: 860, width: CW }}>
+    <div style={{ position: "absolute", left: PAD, top: 890, width: CW }}>
       <Body size={FT.body} color={C.inkDim}>
         四条都写死在 Correlation.hs 里，测试守住边界。
       </Body>

@@ -68,13 +68,13 @@ const P3: React.FC = () => (
   <>
     <Head kicker="01 / 开场" title="四个数，先钉在墙上" goal="两组对照：读数与强度" />
     <div style={{ position: "absolute", left: PAD, top: 366, width: CW, display: "flex", gap: 24 }}>
-      <Stat label="价格面板 · 读数" value={fmtF(M.readings.price.score, 4)} accent={C.cyan} style={{ flex: 1, height: 300 }}
+      <Stat label="价格面板 · 读数" value={fmtF(M.readings.price.score, 4)} accent={C.cyan} style={{ flex: 1, height: 250 }}
         sub={<span>mean {fmtF(M.readings.price.mean, 4)} · var {fmtF(M.readings.price.var, 4)}</span>} />
-      <Stat label="收益面板 · 读数" value={fmtF(M.readings.returns.score, 4)} accent={C.violet} style={{ flex: 1, height: 300 }}
+      <Stat label="收益面板 · 读数" value={fmtF(M.readings.returns.score, 4)} accent={C.violet} style={{ flex: 1, height: 250 }}
         sub={<span>mean {fmtF(M.readings.returns.mean, 4)} · var {fmtF(M.readings.returns.var, 4)}</span>} />
-      <Stat label="配对相关方差" value={fmtF(M.readings.price.var, 4) + " / " + fmtF(M.readings.returns.var, 4)} accent={C.amber} style={{ flex: 1, height: 300 }}
+      <Stat label="配对相关方差" value={fmtF(M.readings.price.var, 4) + " / " + fmtF(M.readings.returns.var, 4)} accent={C.amber} style={{ flex: 1, height: 250 }}
         sub={<span>差 9.6 倍，读数只差 0.15</span>} />
-      <Stat label="茅台 · 季节强度" value={fmtF(M.maotaiStats.stl, 4) + " / " + fmtF(M.maotaiStats.classic, 4)} accent={C.coral} style={{ flex: 1, height: 300 }}
+      <Stat label="茅台 · 季节强度" value={fmtF(M.maotaiStats.stl, 4) + " / " + fmtF(M.maotaiStats.classic, 4)} accent={C.coral} style={{ flex: 1, height: 250 }}
         sub={<span>STL / 经典分解，差 19 倍</span>} />
     </div>
     <div style={{ position: "absolute", left: PAD, top: 740, width: CW }}>
@@ -92,7 +92,7 @@ const P4: React.FC = () => (
   <>
     <Head kicker="01 / 开场" title="两句话，管整集" goal="读数与强度，各有各的毛病" />
     <div style={{ position: "absolute", left: PAD, top: 350, width: CW, display: "flex", gap: 26 }}>
-      <Card label="读数 · 被饱和项压住" accent={C.cyan} style={{ flex: 1, height: 360 }}>
+      <Card label="读数 · 被饱和项压住" accent={C.cyan} style={{ flex: 1, height: 330 }}>
         <Body size={FT.h2} color={C.ink}>方差差 9.6 倍，</Body>
         <Body size={FT.h2} color={C.ink}>读数只差 0.15。</Body>
         <Body size={FT.body} style={{ marginTop: 18 }}>
@@ -100,7 +100,7 @@ const P4: React.FC = () => (
           均值和离散被压成一个数，权重还不对等。
         </Body>
       </Card>
-      <Card label="强度 · 是相对量" accent={C.coral} style={{ flex: 1, height: 360 }}>
+      <Card label="强度 · 是相对量" accent={C.coral} style={{ flex: 1, height: 330 }}>
         <Body size={FT.h2} color={C.ink}>剖面几乎相同，</Body>
         <Body size={FT.h2} color={C.ink}>强度差 19 倍。</Body>
         <Body size={FT.body} style={{ marginTop: 18 }}>
