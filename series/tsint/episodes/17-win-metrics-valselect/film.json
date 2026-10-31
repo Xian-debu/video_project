@@ -19,13 +19,20 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-17",
-  "status": "draft",
-  "narration": null,
+  "status": "producing",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "derive": [
+    {
+      "command": "python3 build/generate_win_data.py"
+    }
+  ],
+  "derived": [
+    "data/win.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +43,6 @@
   "docs": [
     "docs/plan.md"
   ],
+  "notes": "unit: ch3-win-metrics-valselect",
   "assetsStatus": "incomplete"
 }

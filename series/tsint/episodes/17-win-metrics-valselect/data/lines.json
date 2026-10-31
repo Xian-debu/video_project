@@ -1,0 +1,1632 @@
+{
+ "entry": "src/tsint-17-win-metrics-valselect/script.ts",
+ "fps": 30,
+ "totalSec": 837.19,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 123.05
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 123.05,
+   "dur": 119.54
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 242.59,
+   "dur": 144.17
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 386.76,
+   "dur": 109.65
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 496.41,
+   "dur": 107.43
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 603.84,
+   "dur": 121.56
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 725.4,
+   "dur": 75.96
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 801.36,
+   "dur": 35.83
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.57,
+   "speech": "第 3 章 · 预测层，第十七集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.95,
+   "dur": 3.01,
+   "speech": "窗口指标与验证集选择。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.14,
+   "dur": 3.35,
+   "speech": "一条日线，三千八百八十根。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.67,
+   "dur": 4.07,
+   "speech": "茅台，二零一零到二零二五，后复权。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.92,
+   "dur": 4.05,
+   "speech": "切窗、训练、看指标、挑模型。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.15,
+   "dur": 2.85,
+   "speech": "四件事，一层一层来。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.17,
+   "dur": 1.98,
+   "speech": "先给四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.33,
+   "dur": 2.68,
+   "speech": "窗口三千七百六十一。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 28.19,
+   "dur": 5.56,
+   "speech": "训练两千二百零九，验证六百五十七，测试六百零九。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.93,
+   "dur": 3.61,
+   "speech": "第二组，低价段和高价段的误差。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.72,
+   "dur": 5.61,
+   "speech": "平均绝对误差，四十七点三三元，对四百七十点三七元。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 43.51,
+   "dur": 2.32,
+   "speech": "差了九点九倍。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 46.01,
+   "dur": 4.72,
+   "speech": "平均绝对百分比误差，五点零五，对四点二四。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 50.91,
+   "dur": 2.2,
+   "speech": "只差一点二倍。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 53.28,
+   "dur": 2.97,
+   "speech": "同一个模型，两个指标。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 56.43,
+   "dur": 3.37,
+   "speech": "一个说差十倍，一个说差不多。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 59.98,
+   "dur": 3.3,
+   "speech": "第三组，合成数据上的排序。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 63.47,
+   "dur": 4.67,
+   "speech": "加五的预测，误差五块，百分比二十五点二三。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 68.32,
+   "dur": 4.53,
+   "speech": "乘一点零二的预测，误差十点一二，百分比二。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 73.02,
+   "dur": 2.61,
+   "speech": "按误差选，选加五。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 75.81,
+   "dur": 3.37,
+   "speech": "按百分比选，选乘一点零二。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 79.36,
+   "dur": 3.09,
+   "speech": "两个指标，给出两个赢家。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 82.63,
+   "dur": 2.73,
+   "speech": "第四组，真实零值。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 85.53,
+   "dur": 2.92,
+   "speech": "真实值零，预测值一。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 88.63,
+   "dur": 3.13,
+   "speech": "照公式直除，得到无穷大。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 91.95,
+   "dur": 2.82,
+   "speech": "跳过这一对，得二十五。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 94.95,
+   "dur": 3.33,
+   "speech": "加一个极小值，得三十三亿。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 98.45,
+   "dur": 2.75,
+   "speech": "同一处零，三个答案。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 101.38,
+   "dur": 2.77,
+   "speech": "所以这一集的论点是。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 104.34,
+   "dur": 3.76,
+   "speech": "指标不是尺子，是带选择的尺子。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 108.28,
+   "dur": 4.45,
+   "speech": "选哪个指标，和选哪个模型，是同一个决定。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 112.91,
+   "dur": 5.32,
+   "speech": "这一集把滑窗、指标、训练、选模四件事拆开。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 118.41,
+   "dur": 2.44,
+   "speech": "先看问题长什么样。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 124.25,
+   "dur": 4.17,
+   "speech": "第三章很短，从四十一页到四十四页。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 128.6,
+   "dur": 3.13,
+   "speech": "先给式三点一，预测映射。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 131.91,
+   "dur": 4.31,
+   "speech": "一个函数，从输入窗口映射到未来窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 136.4,
+   "dur": 4.05,
+   "speech": "式三点二和三点三，两种训练损失。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 140.63,
+   "dur": 3.78,
+   "speech": "一个均方误差，一个平均绝对误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 144.59,
+   "dur": 2.61,
+   "speech": "式三点四，选模。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 147.37,
+   "dur": 3.85,
+   "speech": "θ 星，是让验证损失最小的参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 151.41,
+   "dur": 4.29,
+   "speech": "然后式三点五到三点八，四个评估指标。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 155.87,
+   "dur": 3.18,
+   "speech": "平均绝对误差、均方误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 159.24,
+   "dur": 3.85,
+   "speech": "平均绝对百分比误差、均方根误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 163.27,
+   "dur": 2.03,
+   "speech": "书上就这些。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 165.48,
+   "dur": 2.53,
+   "speech": "没有说滑窗怎么切。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 168.19,
+   "dur": 4.02,
+   "speech": "没有说训练、验证、测试怎么分。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 172.4,
+   "dur": 3.4,
+   "speech": "没有说切分边界要不要留空。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 175.97,
+   "dur": 3.66,
+   "speech": "没有说优化器用哪个，学习率多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 179.82,
+   "dur": 3.45,
+   "speech": "没有说早停怎么停，停在哪一轮。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 183.44,
+   "dur": 2.73,
+   "speech": "只有一样东西写得清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 186.35,
+   "dur": 3.47,
+   "speech": "验证集只在式三点四里出现。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 190,
+   "dur": 2.73,
+   "speech": "它管选模，不管报数。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 192.9,
+   "dur": 2.49,
+   "speech": "报数在测试集上。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 195.57,
+   "dur": 3.54,
+   "speech": "书里没有这句分工，但必须写死。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 199.29,
+   "dur": 2.94,
+   "speech": "还有一个坑，在四十三页。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 202.41,
+   "dur": 4.57,
+   "speech": "原句说，训练集的样本数量是整个测试集的。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 207.17,
+   "dur": 2.92,
+   "speech": "上下文和下标都对不上。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 210.27,
+   "dur": 3.3,
+   "speech": "显然是笔误，说的是训练集。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 213.75,
+   "dur": 3.52,
+   "speech": "我们按训练集理解，记进勘误。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 217.45,
+   "dur": 2.61,
+   "speech": "最后一处，是零值。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 220.23,
+   "dur": 3.45,
+   "speech": "百分比误差的分母，是真实值。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 223.86,
+   "dur": 3.09,
+   "speech": "真实值为零，式子失效。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 227.12,
+   "dur": 2.41,
+   "speech": "书上就写了这一句。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 229.72,
+   "dur": 2.03,
+   "speech": "没有说怎么办。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 231.93,
+   "dur": 3.73,
+   "speech": "三个缺口，一句笔误，一处失效。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 235.84,
+   "dur": 4.55,
+   "speech": "全部写死，记在自授条目三十五到三十七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 243.79,
+   "dur": 2.49,
+   "speech": "先说滑窗怎么切。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 246.46,
+   "dur": 4.29,
+   "speech": "一个窗口，输入九十六根，标签二十四根。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 250.92,
+   "dur": 2.41,
+   "speech": "起点每步走一格。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 253.52,
+   "dur": 4.84,
+   "speech": "长度三千八百八十，窗口数三千七百六十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 258.53,
+   "dur": 4.69,
+   "speech": "公式是总长减偏移，减输入，减标签。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 263.41,
+   "dur": 2.75,
+   "speech": "整除步长，再加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 266.34,
+   "dur": 3.52,
+   "speech": "加的这个一，是开头那一个窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 270.04,
+   "dur": 3.66,
+   "speech": "简报里写的一百七十六，漏了加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 273.88,
+   "dur": 3.54,
+   "speech": "步长五时，真值是一百七十七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 277.6,
+   "dur": 2.2,
+   "speech": "第二步，切分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 279.98,
+   "dur": 4.09,
+   "speech": "训练、验证、测试，六比二比二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 284.25,
+   "dur": 3.06,
+   "speech": "两个边界各留二十四帧。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 287.49,
+   "dur": 3.35,
+   "speech": "正好一个标签长度，这叫 purge。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 291.02,
+   "dur": 2.27,
+   "speech": "为什么必须留空。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 293.47,
+   "dur": 4.55,
+   "speech": "窗口的标签会跨过边界，落进下一段的输入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 298.2,
+   "dur": 4.38,
+   "speech": "不留空，验证集的答案提前漏进训练集。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 302.77,
+   "dur": 6.23,
+   "speech": "三千八百八十帧，切出两千二百零九、六百五十七、六百零九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 309.18,
+   "dur": 4.12,
+   "speech": "三段加两道空，正好三千七百六十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 313.47,
+   "dur": 2.63,
+   "speech": "第三步，四个指标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 316.28,
+   "dur": 4.29,
+   "speech": "平均绝对误差，残差取绝对值再平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 320.75,
+   "dur": 3.52,
+   "speech": "均方误差，残差平方再平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 324.45,
+   "dur": 4.84,
+   "speech": "均方根误差，均方误差开方，量纲回到原单位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 329.47,
+   "dur": 5.34,
+   "speech": "平均绝对百分比误差，残差除以真实值，再平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 334.99,
+   "dur": 3.81,
+   "speech": "前三个是绝对量，第四个是相对量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 338.97,
+   "dur": 3.61,
+   "speech": "绝对量跟着价格涨，相对量不跟。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 342.77,
+   "dur": 3.21,
+   "speech": "第四步，百分比误差的零值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 346.15,
+   "dur": 3.97,
+   "speech": "照书直除，零作分母，得到无穷大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 350.31,
+   "dur": 4.96,
+   "speech": "本仓默认就照书，返回无穷大，不悄悄改成零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 355.45,
+   "dur": 4.77,
+   "speech": "另给两个显式策略，跳过这一对，或加一个极小值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 360.39,
+   "dur": 4.09,
+   "speech": "三个答案都写进测试，谁也不能偷偷换。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 364.67,
+   "dur": 2.32,
+   "speech": "第五步，选模。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 367.16,
+   "dur": 3.78,
+   "speech": "每个候选在验证集上算一个分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 371.13,
+   "dur": 4.05,
+   "speech": "分数最小的赢，同分按标签字典序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 375.35,
+   "dur": 2.68,
+   "speech": "测试集不参加选模。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 378.21,
+   "dur": 3.47,
+   "speech": "选完才打开测试集，报一次数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 381.86,
+   "dur": 2.7,
+   "speech": "五件事，全部写死。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 387.96,
+   "dur": 2.32,
+   "speech": "看一张图就明白。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 390.46,
+   "dur": 2.85,
+   "speech": "低价段，价格几百块。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 393.48,
+   "dur": 2.65,
+   "speech": "高价段，价格上万。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 396.32,
+   "dur": 3.61,
+   "speech": "同一个模型，误差跟着价格放大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 400.11,
+   "dur": 3.09,
+   "speech": "低价段平均误差四十七块。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 403.38,
+   "dur": 2.53,
+   "speech": "高价段四百七十块。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 406.09,
+   "dur": 2.25,
+   "speech": "正正好好十倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 408.52,
+   "dur": 3.42,
+   "speech": "这是尺度效应，不是模型变差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 412.12,
+   "dur": 3.01,
+   "speech": "百分比误差把价格除掉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 415.31,
+   "dur": 3.83,
+   "speech": "低价段五点零五，高价段四点二四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 419.32,
+   "dur": 2.97,
+   "speech": "高价段反而更准一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 422.47,
+   "dur": 3.88,
+   "speech": "所以绝对误差量的是，错了多少钱。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 426.53,
+   "dur": 3.69,
+   "speech": "百分比误差量的是，错了百分之几。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 430.39,
+   "dur": 3.09,
+   "speech": "两个问题都对，答案不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 433.66,
+   "dur": 2.25,
+   "speech": "再看合成数据。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 436.09,
+   "dur": 2.75,
+   "speech": "真值是一条平滑曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 439.02,
+   "dur": 2.75,
+   "speech": "候选一，每个点加五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 441.95,
+   "dur": 3.25,
+   "speech": "候选二，每个点乘一点零二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 445.38,
+   "dur": 2.49,
+   "speech": "真值均值五十左右。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 448.05,
+   "dur": 2.49,
+   "speech": "加五，误差五块。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 450.71,
+   "dur": 4.12,
+   "speech": "乘一点零二，误差一块，均值五十时。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 455.01,
+   "dur": 2.37,
+   "speech": "但百分比反过来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 457.56,
+   "dur": 2.73,
+   "speech": "加五，百分之二十五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 460.46,
+   "dur": 2.8,
+   "speech": "乘一点零二，百分之二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 463.44,
+   "dur": 2.61,
+   "speech": "按误差选，选加五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 466.23,
+   "dur": 3.37,
+   "speech": "按百分比选，选乘一点零二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 469.78,
+   "dur": 3.04,
+   "speech": "同一个验证集，两个赢家。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 473,
+   "dur": 1.93,
+   "speech": "为什么会这样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 475.11,
+   "dur": 3.78,
+   "speech": "加五是绝对平移，小值上占比大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 479.07,
+   "dur": 3.81,
+   "speech": "乘一点零二是比例缩放，占比恒定。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 483.06,
+   "dur": 4.65,
+   "speech": "指标的选择，等于对哪种错误更不可接受表态。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 487.89,
+   "dur": 2.32,
+   "speech": "没有中立的指标。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 490.38,
+   "dur": 3.83,
+   "speech": "所以下一步，把训练和选模也写死。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 497.61,
+   "dur": 2.94,
+   "speech": "三个模块，各管一件事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 500.73,
+   "dur": 2.73,
+   "speech": "Window 管切窗和切分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 503.64,
+   "dur": 3.61,
+   "speech": "Metrics 管四个指标和零值策略。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 507.43,
+   "dur": 3.66,
+   "speech": "TrainLoss 管训练、早停、选模。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 511.27,
+   "dur": 2.15,
+   "speech": "先看 Window。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 513.6,
+   "dur": 2.61,
+   "speech": "窗口数是一行公式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 516.39,
+   "dur": 4.91,
+   "speech": "总长减偏移减输入减标签，整除步长，加一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 521.48,
+   "dur": 3.69,
+   "speech": "窗口函数按这个公式生成样本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 525.35,
+   "dur": 3.78,
+   "speech": "每个样本带起点、输入、标签。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 529.31,
+   "dur": 5.39,
+   "speech": "切分函数按比例算三段，边界各丢一个标签长度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 534.88,
+   "dur": 2.2,
+   "speech": "再看 Metrics。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 537.26,
+   "dur": 4.5,
+   "speech": "结构体六个字段，四个指标加两个计数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 541.94,
+   "dur": 4.43,
+   "speech": "百分比策略是显式参数，默认照书直除。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 546.55,
+   "dur": 4.24,
+   "speech": "均方根误差不单独算，由均方误差开方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 550.97,
+   "dur": 3.95,
+   "speech": "逐视野的版本，按样本主序取步长。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 555.1,
+   "dur": 2.61,
+   "speech": "最后是 TrainLoss。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 557.88,
+   "dur": 4.72,
+   "speech": "模型是一个线性层，输入乘权重，加偏置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 562.78,
+   "dur": 4.36,
+   "speech": "损失两种，均方误差和平均绝对误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 567.32,
+   "dur": 3.78,
+   "speech": "梯度先算每个样本的残差，再累加。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 571.28,
+   "dur": 3.09,
+   "speech": "这样每个样本只预测一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 574.55,
+   "dur": 5.44,
+   "speech": "优化器是 Adam，固定种子，批次用线性同余生成。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 580.16,
+   "dur": 4.57,
+   "speech": "早停耐心十轮，最小改善一乘十的负六次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 584.92,
+   "dur": 4.14,
+   "speech": "停的时候，恢复到验证误差最低的那一轮。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 589.24,
+   "dur": 2.7,
+   "speech": "选模只看验证分数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 592.12,
+   "dur": 4.79,
+   "speech": "三块代码，测试六十四组、断言九百四十五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 597.09,
+   "dur": 4.55,
+   "speech": "这一集的窗口十组、指标十二组、训练六组。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 605.04,
+   "dur": 3.93,
+   "speech": "证据程序二十四项检查，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 609.15,
+   "dur": 2.25,
+   "speech": "第一组，窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 611.57,
+   "dur": 4,
+   "speech": "一到十，输入三，标签二，步长一。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 615.75,
+   "dur": 2.13,
+   "speech": "得到六个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 618.06,
+   "dur": 3.45,
+   "speech": "起点零一二三四五，一个不差。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 621.68,
+   "dur": 6.23,
+   "speech": "三千八百八十帧，切出两千二百零九、六百五十七、六百零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 628.09,
+   "dur": 4.12,
+   "speech": "三段加两道空，正好三千七百六十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 632.39,
+   "dur": 2.7,
+   "speech": "覆盖不变量也测了。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 635.27,
+   "dur": 3.9,
+   "speech": "每个窗口的帧，都落在自己那一段里。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 639.35,
+   "dur": 3.49,
+   "speech": "没有一帧同时属于训练和验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 643.03,
+   "dur": 2.29,
+   "speech": "第二组，指标。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 645.5,
+   "dur": 3.21,
+   "speech": "真值二四六，预测三四五。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 648.89,
+   "dur": 2.87,
+   "speech": "平均绝对误差三分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 651.94,
+   "dur": 2.41,
+   "speech": "均方误差三分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 654.53,
+   "dur": 4.65,
+   "speech": "均方根误差，根号三分之二，零点八一六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 659.36,
+   "dur": 3.83,
+   "speech": "百分比误差九分之二百，二十二点二二。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 663.37,
+   "dur": 3.21,
+   "speech": "完美预测，四个指标全零。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 666.75,
+   "dur": 3.3,
+   "speech": "整体乘十，百分比误差不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 670.24,
+   "dur": 2.37,
+   "speech": "第三组，零值。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 672.78,
+   "dur": 3.01,
+   "speech": "真值零一二，预测一一一。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 675.98,
+   "dur": 2.7,
+   "speech": "照书直除，无穷大。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 678.86,
+   "dur": 2.27,
+   "speech": "跳过，二十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 681.31,
+   "dur": 2.89,
+   "speech": "加极小值，三十三亿。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 684.38,
+   "dur": 2.8,
+   "speech": "三个数都钉在测试里。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 687.36,
+   "dur": 2.34,
+   "speech": "第四组，训练。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 689.88,
+   "dur": 3.85,
+   "speech": "二次函数在一点五的梯度，解析值六。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 693.92,
+   "dur": 4.41,
+   "speech": "中心差分相对误差，一乘十的负十一次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 698.5,
+   "dur": 3.47,
+   "speech": "早停停在第 7 轮，权重恢复。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 702.15,
+   "dur": 4.74,
+   "speech": "端到端二十一轮，最优十六轮，参数三十六个。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 707.07,
+   "dur": 2.37,
+   "speech": "第五组，选模。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 709.62,
+   "dur": 4.21,
+   "speech": "两个候选，验证分数二十五点二五和二。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 714.01,
+   "dur": 2.41,
+   "speech": "选乘一点零二那个。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 716.61,
+   "dur": 3.83,
+   "speech": "同分时按标签字典序，也测了。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 720.62,
+   "dur": 2.58,
+   "speech": "二十四项，零失败。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 726.6,
+   "dur": 2.03,
+   "speech": "该说不做的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 728.81,
+   "dur": 3.21,
+   "speech": "第一，模型只有一个线性层。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 732.2,
+   "dur": 3.47,
+   "speech": "它不做非线性，也不做多变量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 735.85,
+   "dur": 3.49,
+   "speech": "这一集讲口径，不讲模型容量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 739.52,
+   "dur": 4.33,
+   "speech": "第二，输入参数第四个是偏移，不是间隙。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 744.03,
+   "dur": 4.21,
+   "speech": "间隙属于切分边界，由切分函数承担。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 748.43,
+   "dur": 4.02,
+   "speech": "简报把两者混成一个参数，这里分开。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 752.63,
+   "dur": 3.45,
+   "speech": "第三，百分比误差的零值策略。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 756.26,
+   "dur": 2.94,
+   "speech": "默认照书，得到无穷大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 759.38,
+   "dur": 2.77,
+   "speech": "无穷大不是可用读数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 762.33,
+   "dur": 3.95,
+   "speech": "报数之前，先看参与计算的样本数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 766.46,
+   "dur": 3.52,
+   "speech": "第四，单只股票，单条序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 770.16,
+   "dur": 3.76,
+   "speech": "三千八百八十个交易日，二十四个视野。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 774.1,
+   "dur": 3.47,
+   "speech": "结论不能外推到别的票、别的频率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 777.75,
+   "dur": 3.23,
+   "speech": "第五，验证集只用来选模。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 781.16,
+   "dur": 2.49,
+   "speech": "测试集只用一次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 783.82,
+   "dur": 3.57,
+   "speech": "用测试集调参，这个数就废了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 787.57,
+   "dur": 2.53,
+   "speech": "还有一条，诚实说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 790.28,
+   "dur": 3.21,
+   "speech": "二十一轮收敛，不代表调好了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 793.67,
+   "dur": 2.97,
+   "speech": "只是在这个口径下，够用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 796.82,
+   "dur": 2.34,
+   "speech": "边界说完这几条。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 802.56,
+   "dur": 2.56,
+   "speech": "这一集，四件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 805.3,
+   "dur": 4,
+   "speech": "滑窗、切分、四指标、选模。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 809.48,
+   "dur": 3.09,
+   "speech": "全部写死，全部有测试。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 812.74,
+   "dur": 2.49,
+   "speech": "先把四个选择记住。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 815.41,
+   "dur": 3.18,
+   "speech": "指标带立场，切分带防线。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 818.77,
+   "dur": 3.61,
+   "speech": "选模在验证集，报数在测试集。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 822.56,
+   "dur": 3.95,
+   "speech": "下一集，从一条序列走到多条序列。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 826.69,
+   "dur": 4.19,
+   "speech": "单变量变多变量，口径还要再写一遍。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 831.06,
+   "dur": 3.93,
+   "speech": "数字、代码、证据，都在仓库里。"
+  }
+ ]
+}
