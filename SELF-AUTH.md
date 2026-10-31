@@ -175,3 +175,20 @@
 - **可逆性**：高。本集是独立 pack，可整集回退重做；score 复用 E04 bed（`out/e04-score-loop-48k.wav`），
   不依赖新生成音频；TTS 可用 `build/tts_narration.py` 重跑，voice.json/lines.json 都进版本库。
 - **返工成本**：TTS 1 轮 267 条（约 6 min）；静帧 2 轮（30 张）；make 1 次（待跑）。
+
+## A14 E19 交付：门禁全 PASS，封面改到无字幕帧（2026-10-31 夜）
+
+- **决定**：成片 1,263.8 s（21:03.8）/ 37,914 帧 / 8 场；loudnorm I = −15 LUFS、TP = −2 dBFS；
+  music gate（stem 与 mix）全 PASS；mix 语音 −23.75 dBFS、bed 间隙贡献 36.9 dB、bed/语音 −9.4 dB；
+  flicker mean|d| 0.0158、p99 0.1177、max 10.94、7 个硬切点；still lint 4 帧无越界/无压字/无重叠。
+- **决定**：封面从 5262 改到 5340。5262 落在最后一条旁白的字幕窗口内，封面会带字幕条；
+  5340（178.00 s）在 open 场末 2.2 s 尾窗内，画面是「先说结论：最后一个值赢了」四组柱，
+  无字幕、无动效残影，符合「封面就是本集要记住的数」这条语法。film.json 已同步为 5340。
+- **决定**：字幕 267 条、0 条换行、最长 33 字（预算 34）；字幕跨度 00:00:01,200 → 00:21:01,590，
+  语音覆盖 1,190.0 s；8 章切点与 scene 边界一致。
+- **依据**：make 的 25 个 stage 全 ok、8 段画面 rendered 8（reused 0）；`report.json` 记录
+  content commit 2bcfce6、tree hash 与所有门禁数字。没有为了「更好看」改任何读数或门限。
+- **可逆性**：高。delivery 四件（mp4/srt/chapters/cover）是纯产物，可整集重渲；score 复用 E04，
+  重渲只需 `make --film … --score=out/e04-score-loop-48k.wav`。
+- **返工成本**：make 2 轮（第 1 轮被 content check 挡住：pack 未提交 + sync 后 lines 漂移；
+  第 2 轮 PASS，仅封面帧返工一次）。教训：**commit → sync → make** 的顺序不能省。
