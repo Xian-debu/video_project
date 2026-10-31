@@ -1,0 +1,1632 @@
+{
+ "entry": "src/tsint-13-normalization-trio/script.ts",
+ "fps": 30,
+ "totalSec": 879.44,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 102.71
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 102.71,
+   "dur": 113.87
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 216.58,
+   "dur": 124.63
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 341.21,
+   "dur": 124.94
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 466.15,
+   "dur": 114.88
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 581.03,
+   "dur": 135.86
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 716.89,
+   "dur": 113.49
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 830.38,
+   "dur": 49.06
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.4,
+   "speech": "第 2 章 · 数据层，第十三集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.78,
+   "dur": 2.32,
+   "speech": "归一化三兄弟。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.28,
+   "dur": 4.53,
+   "speech": "书里给了三个名字：RevIN、DAIN、SAN。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.98,
+   "dur": 3.83,
+   "speech": "三个式子摆在一起，形状几乎一样。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.99,
+   "dur": 3.78,
+   "speech": "都是先减一个中心，再除一个尺度。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.95,
+   "dur": 3.59,
+   "speech": "差别只有一件事：统计量从哪来。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.72,
+   "dur": 4.14,
+   "speech": "这一集不是讲三个模型，是讲三个零件。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 28.05,
+   "dur": 4.19,
+   "speech": "它们都嵌在预测模型里，自己不是模型。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 32.42,
+   "dur": 2.75,
+   "speech": "第一个零件，RevIN。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 35.35,
+   "dur": 4.17,
+   "speech": "它用当前这段输入自己的均值和标准差。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 39.69,
+   "dur": 3.09,
+   "speech": "没有参数，算一遍就能用。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 42.96,
+   "dur": 2.25,
+   "speech": "第二个，DAIN。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 45.38,
+   "dur": 4.38,
+   "speech": "统计量不再是算出来的，是两个映射学出来的。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 49.95,
+   "dur": 1.93,
+   "speech": "十二个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 52.06,
+   "dur": 2.32,
+   "speech": "第三个，SAN。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 54.56,
+   "dur": 4.36,
+   "speech": "把窗口切片，每片用自己的一片统计量。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 59.1,
+   "dur": 3.97,
+   "speech": "再用一个小网络，去猜下一片会是什么。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 63.25,
+   "dur": 1.96,
+   "speech": "四十四参数。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 65.39,
+   "dur": 2.56,
+   "speech": "这一集要钉四个数。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 68.13,
+   "dur": 3.61,
+   "speech": "第一个，一点四乘十的负十四次方。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 71.92,
+   "dur": 2.68,
+   "speech": "第二个，七十八点七。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 74.78,
+   "dur": 2.15,
+   "speech": "第三个，零。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 77.11,
+   "dur": 2.68,
+   "speech": "第四个，零点三九。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 79.97,
+   "dur": 3.97,
+   "speech": "前两个是一对，说明原文那个式子有问题。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 84.12,
+   "dur": 4.45,
+   "speech": "第三个是判决，说明三者真的只差统计量。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 88.75,
+   "dur": 3.35,
+   "speech": "最后一个是真实数据上的发现。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 92.28,
+   "dur": 3.83,
+   "speech": "这一集有二十四项检查，全部通过。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 96.29,
+   "dur": 4.21,
+   "speech": "但其中两项的口径是「同量级」，不是「更好」。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 103.91,
+   "dur": 3.57,
+   "speech": "先看原文式二点七，RevIN。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 107.66,
+   "dur": 4.17,
+   "speech": "前三行很干净：减均值，除标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 112,
+   "dur": 3.57,
+   "speech": "第四行：r 等于 X 减 X 撇。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 115.75,
+   "dur": 3.73,
+   "speech": "第五行：X 两撇等于 X 撇加 r。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 119.66,
+   "dur": 2.13,
+   "speech": "把 r 代进去。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 121.97,
+   "dur": 4,
+   "speech": "X 撇加上 X 减 X 撇，还是 X。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 126.15,
+   "dur": 4.98,
+   "speech": "也就是说，照书里的式子写出来，这一层什么也没做。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 131.31,
+   "dur": 2.2,
+   "speech": "它是个恒等层。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 133.69,
+   "dur": 2.94,
+   "speech": "我们照着写了一版，跑了。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 136.81,
+   "dur": 4.84,
+   "speech": "输出和输入的最大差，一点四乘十的负十四次方。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 141.83,
+   "dur": 2.05,
+   "speech": "浮点舍入级。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 144.06,
+   "dur": 4.55,
+   "speech": "但一个正常的归一化，输出应该离输入很远。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 148.79,
+   "dur": 2.65,
+   "speech": "实测，七十八点七。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 151.62,
+   "dur": 5.17,
+   "speech": "一个是一点四乘十的负十四次方，一个是七十八点七。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 156.98,
+   "dur": 2.77,
+   "speech": "差了大约十六个数量级。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 159.93,
+   "dur": 2.85,
+   "speech": "这就是式二点七的问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 162.96,
+   "dur": 3.42,
+   "speech": "它不是算错了，它是没有写完。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 166.56,
+   "dur": 4.72,
+   "speech": "作者想说的，是前向保存统计量、反向拿回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 171.46,
+   "dur": 3.54,
+   "speech": "可式子里没写统计量存在哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 175.18,
+   "dur": 2.73,
+   "speech": "式二点六也有小毛病。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 178.09,
+   "dur": 3.28,
+   "speech": "第一式的撇，第二式也是单撇。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 181.54,
+   "dur": 3.45,
+   "speech": "按上下文，第二个应该是双撇。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 185.17,
+   "dur": 3.95,
+   "speech": "这类排印缺陷不致命，但会让人抄错。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 189.3,
+   "dur": 4.98,
+   "speech": "所以第一课是：照公式实现之前，先问它闭不闭环。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 194.46,
+   "dur": 4.77,
+   "speech": "闭环的意思是：前向的输出，能反变换回输入。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 199.41,
+   "dur": 4.17,
+   "speech": "式二点七当然闭环，只是闭在恒等上。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 203.75,
+   "dur": 5.49,
+   "speech": "所以我们把统计量显式存下来，反变换再显式取回。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 209.42,
+   "dur": 4.96,
+   "speech": "勘误表里这条记为 E04，状态是待文献核实。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 217.78,
+   "dur": 3.04,
+   "speech": "现在把三个式子并排放。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 221,
+   "dur": 4.62,
+   "speech": "RevIN 的统计量：这段输入自己的 mu 和 sigma。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 225.8,
+   "dur": 2.37,
+   "speech": "位置：整个窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 228.35,
+   "dur": 2.77,
+   "speech": "参数：零，不用学。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 231.3,
+   "dur": 3.52,
+   "speech": "DAIN 的统计量：alpha 和 beta。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 235,
+   "dur": 4.98,
+   "speech": "alpha 等于 W_a 乘窗口特征加偏置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 240.16,
+   "dur": 1.84,
+   "speech": "beta 同理。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 242.18,
+   "dur": 4.19,
+   "speech": "特征取三个：均值、标准差、末值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 246.55,
+   "dur": 4.45,
+   "speech": "所以参数是 3 加 1 加 3 加 1，共八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 251.18,
+   "dur": 4.07,
+   "speech": "再加门的三个权重一个偏置，一共十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 255.43,
+   "dur": 3.81,
+   "speech": "SAN 的统计量：每一片的 mu 和 sigma。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 259.42,
+   "dur": 4.29,
+   "speech": "片长 tau，片数 M 等于 T 除以 tau。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 263.88,
+   "dur": 2.56,
+   "speech": "每一片独立归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 266.62,
+   "dur": 4.67,
+   "speech": "再拿一个 MLP，从上一片的统计量猜下一片。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 271.47,
+   "dur": 3.71,
+   "speech": "输入两维，隐层八维，输出两维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 275.36,
+   "dur": 4.57,
+   "speech": "四十二个参数，加两个逐通道权重，四十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 280.12,
+   "dur": 5.03,
+   "speech": "三个零件，三个数字：零、十二、四十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 285.33,
+   "dur": 3.71,
+   "speech": "这就是「用谁的统计量」的全部差别。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 289.22,
+   "dur": 2.68,
+   "speech": "书里还给了两个细节。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 292.07,
+   "dur": 3.21,
+   "speech": "DAIN 的门：gamma 等于 sigmoid。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 295.46,
+   "dur": 4,
+   "speech": "SAN 的两阶段训练：先统计、再预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 299.64,
+   "dur": 2.77,
+   "speech": "细节先记着，等下要用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 302.59,
+   "dur": 3.45,
+   "speech": "先看这三个式子到底哪里一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 306.22,
+   "dur": 2.73,
+   "speech": "把减法和除法抽出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 309.12,
+   "dur": 4.29,
+   "speech": "剩下的只有一件事：那个 mu 和 sigma 是谁。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 313.59,
+   "dur": 4.29,
+   "speech": "还要说清一件事：RevIN 不是 Z-score。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 318.06,
+   "dur": 4.07,
+   "speech": "Z-score 用训练集的统计量，全程固定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 322.31,
+   "dur": 4.21,
+   "speech": "RevIN 用当前这一段输入自己的统计量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 326.7,
+   "dur": 3.9,
+   "speech": "前者是预处理，后者是模型的一部分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 330.78,
+   "dur": 4.38,
+   "speech": "所以 RevIN 必须可逆，Z-score 不需要。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 335.34,
+   "dur": 3.66,
+   "speech": "这也是三条桥接里最基础的一条。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 342.41,
+   "dur": 3.54,
+   "speech": "同一个形状：减中心，除尺度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 346.13,
+   "dur": 2.49,
+   "speech": "为什么是这两个操作？"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 348.8,
+   "dur": 2.63,
+   "speech": "减中心，去掉水平。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 351.61,
+   "dur": 2.61,
+   "speech": "除尺度，去掉大小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 354.39,
+   "dur": 3.11,
+   "speech": "剩下的只有一个东西：形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 357.68,
+   "dur": 3.52,
+   "speech": "不同股票的价格量级差几十倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 361.38,
+   "dur": 3.76,
+   "speech": "归一化之后，它们才在同一个坐标系里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 365.32,
+   "dur": 2.56,
+   "speech": "那三个零件差在哪？"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 368.06,
+   "dur": 3.85,
+   "speech": "第一个问题：统计量是算的，还是学的？"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 372.09,
+   "dur": 4.55,
+   "speech": "RevIN 算，DAIN 学，SAN 学和用各一半。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 376.82,
+   "dur": 3.9,
+   "speech": "第二个问题：统计量的作用范围有多大？"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 380.9,
+   "dur": 2.56,
+   "speech": "整段，还是每一片？"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 383.64,
+   "dur": 3.61,
+   "speech": "第三个问题：反变换用哪一份统计量？"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 387.44,
+   "dur": 2.05,
+   "speech": "这就是可逆性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 389.67,
+   "dur": 3.54,
+   "speech": "我们拿真实数据回答了第二个问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 393.39,
+   "dur": 3.47,
+   "speech": "一百二十只票，每只二百五十天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 397.04,
+   "dur": 3.18,
+   "speech": "切成十片，每片二十五天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 400.4,
+   "dur": 4.98,
+   "speech": "片内 sigma 与整段 sigma 的比，平均是零点三九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 405.57,
+   "dur": 5.25,
+   "speech": "意思是，整段 sigma 里混着局部波动和整段的漂移。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 410.99,
+   "dur": 3.76,
+   "speech": "整段一个 sigma，把这些混成一锅。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 414.93,
+   "dur": 3.95,
+   "speech": "每片一个 sigma，只留下片内那部分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 419.06,
+   "dur": 2.97,
+   "speech": "这就是 SAN 存在的理由。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 422.21,
+   "dur": 4.31,
+   "speech": "粒度不止影响统计量，还影响谁被平均。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 426.7,
+   "dur": 4.98,
+   "speech": "整段统计量把趋势算进方差，片统计量不算。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 431.86,
+   "dur": 4.67,
+   "speech": "这对预测是好处还是坏处，取决于漂移多快。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 436.71,
+   "dur": 5.44,
+   "speech": "漂移慢，整段够用；漂移快，分片更灵敏，也更吵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 442.33,
+   "dur": 2.85,
+   "speech": "为什么分片能代表局部？"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 445.35,
+   "dur": 3.45,
+   "speech": "因为一段里的均值和方差变化慢。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 448.98,
+   "dur": 3.04,
+   "speech": "这句话是假设，不是定理。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 452.2,
+   "dur": 3.57,
+   "speech": "假设不成立，分片统计量就没用。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 455.94,
+   "dur": 4.6,
+   "speech": "所以 SAN 的收益，依赖数据本身的平稳程度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 460.72,
+   "dur": 3.23,
+   "speech": "这一点，下一集会正面处理。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 467.35,
+   "dur": 3.73,
+   "speech": "实现层面，三个模块都是几十行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 471.26,
+   "dur": 2.39,
+   "speech": "RevIN 最干净。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 473.83,
+   "dur": 3.73,
+   "speech": "两遍扫描：第一遍算 mu 和 sigma。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 477.75,
+   "dur": 2.37,
+   "speech": "第二遍减和除。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 480.29,
+   "dur": 3.66,
+   "speech": "反变换用保存下来的那一份统计量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 484.14,
+   "dur": 2.7,
+   "speech": "只许复用，不许重算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 487.02,
+   "dur": 4.14,
+   "speech": "重算就不是同一次变换，往返也对不上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 491.34,
+   "dur": 3.23,
+   "speech": "DAIN 的核心是两个线性映射。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 494.75,
+   "dur": 3.69,
+   "speech": "alpha 等于三个特征的线性组合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 498.62,
+   "dur": 2.65,
+   "speech": "beta 也一样的形状。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 501.45,
+   "dur": 2.2,
+   "speech": "分母要加保护。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 503.83,
+   "dur": 2.75,
+   "speech": "beta 可能正好是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 506.76,
+   "dur": 3.76,
+   "speech": "所以取绝对值再挤一个 eps。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 510.7,
+   "dur": 4.41,
+   "speech": "门是一个 sigmoid，把归一化结果整体缩放。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 515.28,
+   "dur": 2.68,
+   "speech": "书中没有关门的开关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 518.14,
+   "dur": 3.16,
+   "speech": "但做桥接测试必须能关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 521.48,
+   "dur": 2.73,
+   "speech": "我们加了一个显式开关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 524.38,
+   "dur": 2.89,
+   "speech": "SAN 的第一件事是分片。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 527.46,
+   "dur": 5.03,
+   "speech": "片数 M 等于 T 除以 tau，整除不了的部分丢掉。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 532.67,
+   "dur": 3.06,
+   "speech": "这是我们的选择，书里没写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 535.91,
+   "dur": 2.85,
+   "speech": "丢多少行，要打印出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 538.94,
+   "dur": 4.79,
+   "speech": "SAN 的 MLP 是两维进，八维隐，两维出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 543.91,
+   "dur": 4.07,
+   "speech": "训练只做第一阶段：预测下一片的统计量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 548.16,
+   "dur": 4.09,
+   "speech": "第二阶段要完整预测器，那是后面的集。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 552.43,
+   "dur": 2.75,
+   "speech": "三个模块的接口都很小。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 555.36,
+   "dur": 4.12,
+   "speech": "revin 收一个矩阵，返回矩阵加统计量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 559.66,
+   "dur": 4.07,
+   "speech": "revinInv 收那份统计量，返回矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 563.91,
+   "dur": 5.25,
+   "speech": "sanForward 多返回一样东西：分片统计，供下一片预测用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 569.33,
+   "dur": 4.96,
+   "speech": "测试是十三、十五、十四，共四十二条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 574.47,
+   "dur": 4.36,
+   "speech": "整个仓库现在是四百零九条，五十五个套件。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 582.23,
+   "dur": 2.8,
+   "speech": "三条桥接，全部零。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 585.21,
+   "dur": 4.69,
+   "speech": "第一条：eps 归零，RevIN 就是 Z-score。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 590.08,
+   "dur": 5.44,
+   "speech": "第二条：把 alpha、beta 换成真值，就回到 RevIN。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 595.7,
+   "dur": 4.21,
+   "speech": "第三条：SAN 的 tau 取 T，统计量给真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 600.09,
+   "dur": 3.97,
+   "speech": "三个零，都是双精度下的逐位相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 604.25,
+   "dur": 3.81,
+   "speech": "往返误差三点六乘十的负十五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 608.23,
+   "dur": 1.93,
+   "speech": "这就是可逆。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 610.35,
+   "dur": 3.18,
+   "speech": "DAIN 的拟合，闭式解一步到位。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 613.71,
+   "dur": 4.77,
+   "speech": "拟合出来的 W_a，第一维是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 618.66,
+   "dur": 3.4,
+   "speech": "其余两个维度是十的负十一次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 622.23,
+   "dur": 5.75,
+   "speech": "W_b 的第二维是零点九九九九九九九九九七。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 628.16,
+   "dur": 3.42,
+   "speech": "它学到的就是 mu 和 sigma。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 631.77,
+   "dur": 3.23,
+   "speech": "损失九点六乘十的负十次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 635.18,
+   "dur": 4.43,
+   "speech": "alpha 的平均误差三点八乘十的负十一次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 639.79,
+   "dur": 2.49,
+   "speech": "然后是诚实的部分。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 642.45,
+   "dur": 2.77,
+   "speech": "SAN 的第一阶段，输了。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 645.41,
+   "dur": 4.07,
+   "speech": "预测下一片均值，平均误差二点五一。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 649.66,
+   "dur": 3.37,
+   "speech": "直接沿用上一片，零点六九。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 653.21,
+   "dur": 2.39,
+   "speech": "差三点六四倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 655.78,
+   "dur": 3.93,
+   "speech": "预测标准差，零点三四对零点二三。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 659.89,
+   "dur": 2.08,
+   "speech": "差一点五倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 662.14,
+   "dur": 2.94,
+   "speech": "二十四项检查，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 665.27,
+   "dur": 4.33,
+   "speech": "但其中两项检查，写的是「误差同量级」。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 669.78,
+   "dur": 1.96,
+   "speech": "不是「我们赢了」。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 671.92,
+   "dur": 2.97,
+   "speech": "这句话必须留在片子里。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 675.06,
+   "dur": 4.53,
+   "speech": "再说一次：检查全过，结论仍然是没赢。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 679.77,
+   "dur": 4.38,
+   "speech": "因为检查验的是「实现对不对」，不是「模型强不强」。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 684.33,
+   "dur": 3.81,
+   "speech": "这两件事分开说，才不会被数字骗。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 688.32,
+   "dur": 4.05,
+   "speech": "桥接怎么做的：把参数写死，再比较。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 692.54,
+   "dur": 5.29,
+   "speech": "DAIN 的 W_a 换成单位阵，偏置换成零。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 698.02,
+   "dur": 4.33,
+   "speech": "SAN 的 tau 取满一个窗口，旁路掉 MLP。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 702.53,
+   "dur": 4.48,
+   "speech": "三种情况下，输出与 RevIN 的差都是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 707.19,
+   "dur": 3.42,
+   "speech": "零不是误差小，是逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 710.79,
+   "dur": 3.9,
+   "speech": "这说明形状一样，差别真在统计量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 718.09,
+   "dur": 3.23,
+   "speech": "归一化承诺什么，不承诺什么。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 721.5,
+   "dur": 2.63,
+   "speech": "第一，它不创造信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 724.31,
+   "dur": 3.49,
+   "speech": "可逆的归一化，信息原样都在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 727.98,
+   "dur": 2.61,
+   "speech": "它只是换了一套坐标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 730.77,
+   "dur": 2.65,
+   "speech": "第二，它不解决漂移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 733.6,
+   "dur": 5.44,
+   "speech": "分布变了，窗口统计量跟着变，只能跟上，不能预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 739.22,
+   "dur": 4.89,
+   "speech": "预测，是 SAN 想做的事，也是它第一阶段没做成的事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 744.29,
+   "dur": 3.81,
+   "speech": "第三，MSE 小不等于预测更准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 748.27,
+   "dur": 4.05,
+   "speech": "统计量预测得准，不代表下游任务更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 752.5,
+   "dur": 4.14,
+   "speech": "那要训完整模型才知道，那是后面的集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 756.82,
+   "dur": 4.29,
+   "speech": "数据方面，一百二十只票，二百五十个交易日。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 761.29,
+   "dur": 3.54,
+   "speech": "九十个窗口训练，三十个测试。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 765.01,
+   "dur": 2.68,
+   "speech": "全是前复权收盘价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 767.87,
+   "dur": 2.56,
+   "speech": "书里没给训练配方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 770.61,
+   "dur": 4.07,
+   "speech": "优化器、学习率、轮数，一章都没有。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 774.86,
+   "dur": 5.58,
+   "speech": "所以 DAIN 用闭式最小二乘，SAN 用固定步长梯度下降。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 780.62,
+   "dur": 2.46,
+   "speech": "这些都不是书里的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 783.26,
+   "dur": 2.22,
+   "speech": "画面会标出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 785.66,
+   "dur": 2.94,
+   "speech": "还有一件事：常数序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 788.78,
+   "dur": 2.65,
+   "speech": "停牌段的 sigma 是零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 791.62,
+   "dur": 4.84,
+   "speech": "除零会毁掉整条链，所以 eps 不是可选项。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 796.64,
+   "dur": 2.99,
+   "speech": "我们另做了两个合成用例。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 799.81,
+   "dur": 4.6,
+   "speech": "常数序列的 sigma 是零，直接走 eps 保护。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 804.58,
+   "dur": 5.22,
+   "speech": "短于 tau 的序列，分片数为零，返回错误而不是崩溃。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 809.99,
+   "dur": 3.59,
+   "speech": "这两个用例在测试里，不在证据里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 813.76,
+   "dur": 3.66,
+   "speech": "另一个边界：归一化不改变信息量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 817.6,
+   "dur": 3.18,
+   "speech": "它只做线性变换，秩不变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 820.96,
+   "dur": 3.59,
+   "speech": "所以它不能让模型看见新东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 824.73,
+   "dur": 3.45,
+   "speech": "能让模型更稳，不能让它更聪明。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 831.58,
+   "dur": 3.88,
+   "speech": "一句话：三个归一化，只差一件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 835.64,
+   "dur": 2.29,
+   "speech": "统计量从哪来。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 838.11,
+   "dur": 3.01,
+   "speech": "算的，学的，还是猜的。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 841.31,
+   "dur": 2.75,
+   "speech": "RevIN 算，零参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 844.24,
+   "dur": 2.63,
+   "speech": "DAIN 学，十二参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 847.05,
+   "dur": 3.4,
+   "speech": "SAN 分片再猜，四十四参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 850.62,
+   "dur": 6.54,
+   "speech": "四个数回扣：一点四乘十的负十四，七十八点七，零，零点三九。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 857.35,
+   "dur": 3.52,
+   "speech": "下一集，非平稳 Transformer。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 861.04,
+   "dur": 3.57,
+   "speech": "它把统计量直接塞进注意力里。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 864.79,
+   "dur": 3.25,
+   "speech": "那一集会用到这一集的 sigma。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 868.22,
+   "dur": 2.29,
+   "speech": "这一集就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 870.7,
+   "dur": 4.02,
+   "speech": "统计量从哪来，决定了这一层能学什么。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 874.9,
+   "dur": 2.34,
+   "speech": "下一集，再见。"
+  }
+ ]
+}

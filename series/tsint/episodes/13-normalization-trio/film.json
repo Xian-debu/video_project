@@ -20,12 +20,22 @@
   "fps": 30,
   "prefix": "tsint-13",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
-  "derive": [],
-  "derived": [],
+  "publish": {
+    "coverFrame": 3063
+  },
+  "derive": [
+    {
+      "command": "python3 build/generate_norm_data.py"
+    }
+  ],
+  "derived": [
+    "data/norm.json"
+  ],
   "claims": null,
   "paths": {
     "src": "src",
@@ -36,5 +46,6 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "notes": "unit: ch2-norm"
 }
