@@ -1,6 +1,6 @@
 # STATUS — video_project 内容仓状态
 
-> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-10-31T14:48:30+08:00。
+> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-10-31T15:53:44+08:00。
 
 | id | title | status | sec | audio | derived | delivery | BV |
 |---|---|---|---|---|---|---|---|
@@ -32,7 +32,7 @@
 | tsint-10-attention-block | 注意力：一次 softmax 加权，把「对齐」变成可看的矩阵 | ready | - | yes | ok | 11 | - |
 | tsint-11-rnn-lstm-gru | 循环三兄弟：一条梯度路径的三种走法 | ready | - | yes | ok | 11 | - |
 | tsint-12-conv-and-gcn | 卷积与图卷积：同一件事的两种定义域 | ready | - | yes | ok | 11 | - |
-| tsint-13-normalization-trio | 归一化三兄弟：差别只在「用谁的统计量」 | draft | 1500 | silent | ok | 1 | - |
+| tsint-13-normalization-trio | 归一化三兄弟：差别只在「用谁的统计量」 | ready | - | yes | ok | 11 | - |
 | tsint-14-nonstationary-attention | 非平稳注意力：一个标量 τ 与一个向量 Δ 能改什么 | draft | 840 | silent | ok | 1 | - |
 | tsint-15-imputation-dtw-lowrank-mf | 缺失值三法：邻域、低秩、因子 | draft | 1620 | silent | ok | 1 | - |
 | tsint-16-correlation-and-stl | 相关性与 STL：一个数说面板，一条分解说序列 | draft | 1200 | silent | ok | 1 | - |

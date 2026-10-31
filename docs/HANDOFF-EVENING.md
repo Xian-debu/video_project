@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-31 14:55 实测）
+## 2. 状态（2026-10-31 15:56 实测）
 
-- 成片 **22 / 74**：E01–E12、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **51 / 190** 模块、**776** 条断言（52 组套件；ch02 28 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E12 交付后）：video_project `e8e0faf`（delivery；docs 提交紧随）、ts-base `b3d45e5`、ts-admin `8b5eb10`、
+- 成片 **23 / 74**：E01–E13、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **54 / 190** 模块、**818** 条断言（55 组套件；ch02 31 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E13 交付后）：video_project `86839ee`（delivery；docs 提交紧随）、ts-base `8dc84ca`、ts-admin `0759d34`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -33,12 +33,13 @@
 - E10 成片 `1050.07 s / 31,502 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，231 cue、8 章、封面 5609。
 - E11 成片 `1187.07 s / 35,612 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，243 cue、8 章、封面 26851。
 - E12 成片 `1117.53 s / 33,526 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，240 cue、8 章、封面 26490。
+- E13 成片 `879.63 s / 26,389 帧 / 8 场 23 页 / −15 LUFS / TP −2 dBFS`，225 cue、8 章、封面 3063。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E13 `normalization-trio`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E12 实测 1117.53 s）。
+- 下一步入口：**E14 `nonstationary-attention`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s，E13 实测 879.63 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -87,8 +88,8 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
 
 ## 5. 排期（production_order 剩余 53 集）
 
-E01–E12 与 E65–E74 已交付；ch02 十五集里已出 E02–E12 十一集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 min。按 `production_order` 继续：
-**E13 normalization-trio** → E14 … → E64 llm-side-adapters。
+E01–E13 与 E65–E74 已交付；ch02 十五集里已出 E02–E13 十二集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 min。按 `production_order` 继续：
+**E14 nonstationary-attention** → E15 … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -146,6 +147,13 @@ MLP 基线 = **同一代码把传播子换成单位阵**（同参数量，只差
 判决表：真实 50 票 × 300 日（特征日 279、训练 195 / 测试 84，阈值 0.6/0.5/0.4/0.3 → **4/33/139/357** 边）MLP **0.5005**、GCN **0.5031 / 0.5038 / 0.5021 / 0.4981**，cos 0.1833→0.6859 → 这批数据没有可学图结构；合成 50 节点环图（半径 1/2/3/5/8/12/25）MLP **1.0000**、GCN 0.7760 / 0.7340 / 0.7200 / 0.6883 / 0.6620 / 0.6577 / **0.5053**，cos → **1.0000**（过平滑）；
 梯度检查阈值分档：卷积 **1.685866e−9** < 1e−6、图网络 **4.994841e−6** < 1e−5；谱性质 `‖Px‖≤‖x‖` 最差比值 0.5455、行和偏差 **9.175e−2**（对称归一化不是行归一化）；
 数据在 `/root/ts-base/data/episodes/12-conv-and-gcn/`（node_features.csv 15,000 行 / summary.json / real_sweep.csv / syn_sweep.csv）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E12 实测 1117.53 s）。
+E13 冻结口径（E14 起复用）：**书里一个字都没给参数个数**——12 与 44 都是本仓参数化，旁白/画面/SELF-AUTH 一律写「本仓」；式(2.6) 的门是**乘法** `(X^i)'' = (X^i)' ⊙ γ^i`、`γ = sigm(W_c c̄ + d)`、c̄ 是归一化后序列的均值（书里 W_a/W_b/W_c 都是单变量标量，本仓把特征扩成 [mu, sd, 末值] 才得 3+1+3+1+3+1 = 12 参数）；
+RevIN 必须存 (mu, sigma)：前向 `X' = (X − mu) / max |sigma| eps`、反向 `X = mu + (sigma+eps)X'`（同一份统计量）；字面式(2.7)（r = X − X'、X'' = X' + r）是恒等层，实测 1.42e−14 vs 正确实现 78.74（证据里当反例保留，不进接口）；
+DAIN 的 eps 是**正确性**不是防御：`den = max (abs beta) eps`，默认 1e−5；`dcUseGate = False` 用于桥接测试（关掉门才能退化成 RevIN）；
+SAN τ=25、M=T div τ=10、残片直接丢弃；只训第一阶段（(mu,sigma) → 下一片统计量），MLP 2→8→2 = 42 参数 + 2 个逐通道残差权重 = 44（本仓）；第二阶段完整预测器与 (2.11) 的 rho/x̄ 输入留给后续集；
+三条桥接逐位 0.0（RevIN@eps=0 vs Z-score、DAIN@alpha=mu/beta=sigma/gate=off vs RevIN、SAN@tau=T vs RevIN）；SAN 第一阶段**输给**「沿用上一片」基线（mu MAE 2.5073 vs 0.6893 = 3.64×、sigma 0.3394 vs 0.2254 = 1.51×），检查口径写「误差同量级」不写「赢」；
+片内 sigma / 整段 sigma 平均 **0.3923**（逐窗 sd_i / whole 再平均：整段 sigma 里混着局部波动与漂移）；
+数据在 `/root/ts-base/data/episodes/13-normalization-trio/`（norm_windows.csv 30,000 行、summary.json、norm_shard_stats.csv 1,200 行、san_pred.csv 270 行）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E13 实测 879.63 s）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -228,6 +236,12 @@ MLP 基线 = **同一代码把传播子换成单位阵**（同参数量，只差
 - GCN 训练**不能并行**：13 个模型 `forkIO` + 300 轮会把惰性 thunk 堆到 6.3 GB residency，容器直接 EXIT=137；改串行 + 120 轮（每模型 50 s / 36 s，总共约 11 min）。
 - 证据重跑只该改 `sec` 列：E12 用「判据与准确率逐位一致、只有计时列变化」当确定性自检；如果指标列也变了，说明代码或数据真的动了。
 - `report.json` 的 `content.commit / dirty` 是生成时快照（封面、字幕在内容提交之后才生成 → dirty > 0）；最终以交付提交的 HEAD 为准（E67 起的老问题）。
+- 书的页码一律用 **printed 页**（PDF 页 = printed + 8）：式(2.5) p.19、式(2.6)(2.7) p.20、式(2.8)–(2.12) p.21。E12 按 PDF 页写 p.44/p.46、E13 的 SELF-AUTH/errata 又写 p.30，都是错的；`pdftoppm -f 28 -l 28 -r 150 -png` 渲染后逐字核对。
+- 书的公式必须**逐字渲染核对**，不能凭计划摘要：式(2.6) 的门是乘法 ⊙γ（γ 吃归一化后序列的均值 c̄），首版画面写成插值 `g*c + (1−g)*x`；静帧完全看不出来，只有回书对公式才抓得到。改画面要连带改讲稿、plan、SELF-AUTH、errata —— 一处口径错会渗到四处。
+- 不要在旁白里声称「书里说 N 个参数」：book.txt 搜 twelve/十二/四十四 全零命中；参数清点属本仓参数化，必须标注「本仓」或「特征扩展的代价」（E13 因编造归属返工一整轮）。
+- 停牌 ≠ 零 sigma：数据把停牌剔成无行，只有常数窗口才有 sigma=0；boundary 卡与旁白写「常数序列的 sigma 是零」。
+- 修改讲稿某一行后必须删对应 clip 再重跑 TTS：`tts_narration.py` 对「文件存在且 >800 B」的 clip 直接跳过，改了文本不删旧 mp3 会沿用旧音（E13 重录 boundary#19 后总长 879.44→879.63 s，delivery 需整体重渲染）。
+- 多页场的 `Pages at` 分段要落在旁白切换点上：E13 definitions `at=[0,0.4,0.72,0.775]`，0.775 对应 313.17 s、Z-score 旁白 313.59 s 起，早一页会「新页讲旧话」。
 
 ## 9. 断线恢复（60 秒）
 
