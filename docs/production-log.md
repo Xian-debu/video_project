@@ -183,4 +183,14 @@
 - 偏差: 计划 24 min，实做 22.40 min（−1.60 min）；43 页；旁白 332 条、语音 1,022 s；证据 43 条（36 手算 / 7 数据）；断言 55（AdfSpec 30 / ShiftingSpec 11 / TransitionSpec 14），套件 605
 - 备注: ch02 第七集；下一步 E09 `mlp-and-tcn`（production_order 索引 18：先 MLP 再 TCN，同一个任务换模型）。**E04 bed 1560 s 仍够 E09 的 22–23 min；超过 1560 s 再重建**
 
-
+## E09 mlp-and-tcn — 2026-10-31
+- ts-base: af656e2（Mlp/Tcn 两模块 + 35 断言，总套件 640）→ 4e63cc7（SELF-AUTH A21 + errata E26）→ ce8ff1d（`app/Ch02MlpTcnEvidence.hs` 证据程序）→ e0cb04a（证据数据：两只票 CSV + 6 个产物 + summary.json + 2 个 evidence JSON，31 条检查 = 27 手算 + 4 数据）
+- ts-admin: 8e256a2（`inventory/scripts/export_ch02_mlp_tcn.py`：600519 日线 5,033 行 2005-01-04–2025-12-31、000001 4,953 行，qfq、剔停牌，manifest 带 max_gap）
+- video_project: c32c885（pack/scenes/script/364 行讲稿/数据生成器）→ 6970b63（TTS takes + `Row` 布局修复 + coverFrame 23891）→ **489db36**（本次 delivery 提交：cover.png 163,447 B / tsint-09.srt 28,220 B / chapters / film ready）
+- 引擎: 无（a667688；score 复用 `out/e04-score-loop-48k.wav` 1560 s、48 kHz）
+- 成片: 1,506.37 s（25:06.37），−15 LUFS，TP −2 dBFS，45,191 帧，8 场；364 条旁白，语音 1,156.0 s（mean 3.18 s），字幕跨度 1.2→1504.16 s（speaking 1,283.4 s）
+- 流水线: 8 段分开渲染（reused 0 / rendered 8）；musicGain −4.5 dB、ducked 51.2%、peak −1.06 dBFS；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.69、gap_full −30.46、gap_audible −33.18、bed vs speech −9.6；flicker mean|d| 0.0183、p99 0.3425、max 8.98、cuts 7；364 cue 中 1 条换行、最长行 34 字（budget 34）；8 章；封面 frame 23891（796.37 s，definitions 末页：MLP 1985 / TCN 1649 参数量算式 + 感受野公式，无字幕）
+- 卡点: ① 本仓 brief 的卷积黄金值算错（`y=[3,11,14,20,26]`）——按式(2.62) 第二项应为 `2·1+3·2=8`，全仓改 `[3,8,14,20,26]`，登记 errata E26；② 式(2.62) 字面直读是非翻转卷积（会看到未来，错版首值 14 而非 3），本仓实现翻转核 + 左补零，`leakyConv1d` 留作反面教材；③ TCN 数组布局：卷积输出曾用时间主序 `t·C+c`、其余通道主序 `c·T+t`，单通道单层测试全过、多层梯度检查误差 1.29–1.95，改成 `co = idx div t` 后归零；④ MLP 反向两错（δ 列表多算输入层、梯度取用层序反了），单层梯度检查是二分定位的关键；⑤ `Row` 组件列宽写死 470+300，窄卡片把注释压成 0 宽竖排并溢出，改百分比列 + `maxWidth`；⑥ 字幕间隙只有 7 段（全是场景交界），封面只能在交界帧里挑；⑦ Haskell lambda 经 write 工具写入会丢反斜杠（GHC-31244），改用 python 回写。
+- 返工: 讲稿 364 行一次成型；梯度/布局调试 2 轮（MLP 梯度、TCN 布局各一次）；stills 26 页末帧 lint PASS 后因 `Row` 布局重渲染一遍；make 一轮 PASS；TTS 364 条一次过；封面在 7 个交界帧里实测后取 23891
+- 偏差: 计划 23 min，实做 25.11 min（+2.11 min）；34 页；旁白 364 条、语音 1,156 s；证据 31 条（27 手算 / 4 数据）；断言 35（MlpSpec 16 / TcnSpec 19），套件 640
+- 备注: **ch02 八集全部完成**（E02–E09）；下一步 E10 `attention-block`（production_order 索引 19，22–24 min）。**E04 bed 1560 s 仍够 E10；超过再重建**

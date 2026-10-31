@@ -16,11 +16,11 @@
 - 用户不盯着，**全部授权**无人值守跑到底；唯一附加要求：**git 提交时单独增量提交一个自授权清单**。
 - 允许把上述内容提交到 video_project / ts-admin / ts-base 的规划中，并**制定 goal 防断**.
 
-## 2. 状态（2026-10-30 18:0x 实测）
+## 2. 状态（2026-10-31 10:1x 实测）
 
-- 成片 **18 / 74**：E01–E08、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **43 / 190** 模块、**605** 条断言（ch02 20 模块；ch08 13；ch09 11）。
-- 四仓 HEAD（E08 交付后）：video_project `f368495`（delivery；docs 提交紧随）、ts-base `345c0df`、ts-admin `bad962c`、
+- 成片 **19 / 74**：E01–E09、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 **45 / 190** 模块、**640** 条断言（ch02 22 模块；ch08 13；ch09 11）。
+- 四仓 HEAD（E09 交付后）：video_project `489db36`（delivery；docs 提交紧随）、ts-base `e0cb04a`、ts-admin `8e256a2`、
   engine `a667688`；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
@@ -29,19 +29,20 @@
 - E06 成片 `1374.73 s / 41,093 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，346 cue、8 章、封面 1450。
 - E07 成片 `1298.73 s / 38,962 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，294 cue、8 章、封面 2259。
 - E08 成片 `1343.89 s / 40,317 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，332 cue、8 章、封面 3693。
+- E09 成片 `1506.37 s / 45,191 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，364 cue、8 章、封面 23891。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E09 `mlp-and-tcn`**（production_order 索引 18，22–23 min）；score 继续复用
-  `out/e04-score-loop-48k.wav`（1560 s，E09 ≤1560 s 直接 `--score=` 复用）。
+- 下一步入口：**E10 `attention-block`**（production_order 索引 19，22–24 min）；score 继续复用
+  `out/e04-score-loop-48k.wav`（1560 s，E10 ≤1560 s 直接 `--score=` 复用）。
 
 ## 3. 授权（增量自授权清单）
 
 本会话新增 **A5**（见 `SELF-AUTH.md`）：按用户 2026-10-30 晚指令，**恢复全系列生产**，
 无人值守逐集推进；仍未发布 B 站、仍只到 `ready`；每集验证后提交，提交说明附本文件与 A5 引用。
-E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A20），提交 body 同时引用对应条目。
+E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A21），提交 body 同时引用对应条目。
 每个仓的每次提交都在 commit body 末尾带一行：
 
 ```
@@ -82,10 +83,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 56 集）
+## 5. 排期（production_order 剩余 55 集）
 
-E01–E08 与 E65–E74 已交付；ch02 前八集成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 min。按 `production_order` 继续：
-**E09 mlp-and-tcn** → E10 attention-block → … → E64 llm-side-adapters。
+E01–E09 与 E65–E74 已交付；**ch02 八集全部完成**，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 min。按 `production_order` 继续：
+**E10 attention-block** → E11 rnn-lstm-gru → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -108,6 +109,14 @@ E08 冻结口径（E09 起复用）：ADF 的 τ = γ/se，**服从 DF 非标准
 漂移性 m=9、九个不重叠窗口的中位数，minmax 用九个中位数**自身的 range**（严格单调恰 0.5，单边斜坡实测 0.4977）；
 转移性三状态 floor+clamp 分箱，M′ 行归一化（零行保零）、列方差除以 3，完美周期 2/3、常数 2/9（不是 1/9，单符号 2/9 是零行把列方差拉到 1/9 的结果）；
 数据在 `/root/ts-base/data/episodes/08-adf-shifting-transition/`（600519 2188 行取最后 250、002456 725 行、符号序列各 250）；score 继续用 `out/e04-score-loop-48k.wav`（1560 s）。
+
+E09 冻结口径（E10 起复用）：MLP/TCN 都只用**严格因果**——卷积核翻转后左补 `(K−1)·d` 个零，输出长度等于输入长度；
+感受野 `RF = 1 + (K−1)·Σd`（K=3、Σd=7 → 15，用支撑集断言钉住，不依赖训练）；
+数组一律**通道主序** `c·T + t`（卷积输出也是），两层布局黄金 `[0,0,1,2,5,10]` 钉死；残差只在 `C_in == C_out` 时加、加在激活之前；
+训练配方**不是书里的**（书 ch2 §2.4 无训练配方）：Xavier、Adam(1e-3, β=(0.9,0.999), ε=1e-8)、batch 64、patience 5、tanh 隐层 + 线性输出头、
+MSE（不除 2、不除 batch）、自写 `splitmix64` 随机源保证同 seed 逐位一致；参数量显式导出：MLP 60→32→1 = **1985**、TCN（1→16、16→16、16→16 + 线性头）= **1649**；
+数据在 `/root/ts-base/data/episodes/09-mlp-and-tcn/`（600519 5,033 行、000001 4,953 行，MLP 窗口 60 / TCN 窗口 12，按行取窗、停牌即无行不补）；
+score 继续用 `out/e04-score-loop-48k.wav`（1560 s，E09 实测 1506.37 s）。
 
 ## 6. E68 已冻结的设计决定（避免重新发明）
 
@@ -164,6 +173,13 @@ E08 冻结口径（E09 起复用）：ADF 的 τ = γ/se，**服从 DF 非标准
 - `sync` 会清空引擎 `data/<film-id>/`：每次 sync 后必须重跑 `dump_script.mjs` 再 `cp` lines.json 回 pack，TTS 与 `make_narration.py` 都依赖它。
 - `script_check` 对短句报 cps 3.1–3.4 是 TTS 固定停顿的噪声（E07/E08 各约 9–13 条），不是语速错误，不必改稿。
 - 讲稿按 CPS 4.5 估的时长与 TTS 实测可差 ±30 s（E08：估 1,372.27 s、实测 1,343.89 s）：场景起点整体漂移，still lint 帧号、封面候选、flicker 的 cut-frames 都要按实测 lines.json 重算。
+
+- Haskell 源里写 lambda 不要走 write/edit 工具：它们会解释字符串转义，`\k ->` 的反斜杠被吞成 `k ->`（GHC-31244），`\t`/`\n` 变真控制字符；这类文件改用 python 脚本 chr(92) 回写。
+- 卷积数组布局：输出必须通道主序 `c·T+t`（`co = idx div t`）；写成时间主序 `t·C+c` 时单通道单层测试仍全过，多层梯度误差 1.29–1.95；用两层布局黄金 `[0,0,1,2,5,10]` 钉死。
+- 手写反向传播：δ 列表从 `go 1` 起（`go 0` 会多算输入层 δ_0），取梯度按层序（`deltas !! li`）；错序时梯度检查相对误差约 1.96。先跑单层梯度检查（应 <1e-9）再跑多层，可二分「梯度错 vs 训练慢」。
+- `Row` 组件别写死像素列宽（470+300 最小需 770 px）：窄卡片会把注释列压成 0 宽、每字一行并溢出；改成 `width:100% + maxWidth`、列用百分比、注释 `minWidth:0`。
+- 静帧临时渲染器必须在引擎目录（放 /tmp 会 `ERR_MODULE_NOT_FOUND @remotion/bundler`），且 `process.argv` 传帧号要 `join(",").split(",")`，否则 `frame NaN` 直接 RangeError。
+- 字幕间隙不一定有：E09 全场只有 7 段平台（全是场景交界约 3.4 s），封面只能在交界帧里挑；先按 lines.json 算空隙再选帧，不要凭页末帧猜。
 
 ## 9. 断线恢复（60 秒）
 
