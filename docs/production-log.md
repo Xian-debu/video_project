@@ -206,3 +206,15 @@
 - 返工: 讲稿 231 行一次成型；stills 28 帧首轮 72 violations（矩阵溢出/标题重叠/卡片内 Row/outro 横向溢出）→ 两轮修完 PASS；make 一轮 PASS（首轮被 content check 挡下）；TTS 231 条一次过；封面在字幕间隙帧里实测取 5609
 - 偏差: 计划 22–24 min，实做 17.50 min（−4.5 ~ −6.5 min）；28 页；旁白 231 条、语音 819.4 s；证据 31 条（26 手算 / 5 数据）；断言 32（AttentionSpec 四个分组），套件 672
 - 备注: **ch02 九集全部完成**（E02–E10）；下一步 E11 `rnn-lstm-gru`。E04 bed 1560 s 仍够 E11（E10 实测 1050 s）
+
+## E11 rnn-lstm-gru — 2026-10-31
+- ts-base: ec7e3b7（SELF-AUTH A23/A24/A25 + errata E05 改「已核实」）→ 20ed99b（Rnn/Lstm/Gru 三模块 + 三个 Spec，断言 13/15/13 = +41，总套件 713）→ d353ef4（`data/episodes/11-rnn-lstm-gru` 延迟复制 sweep + 滞后自相关 + `app/Ch02RnnEvidence.hs`，22 条检查 = 17 手工 + 5 数据）→ 3d34f22（用含代码的提交重跑证据刷 provenance）
+- ts-admin: f525b10（`inventory/scripts/export_ch11_returns.py`：120 只 × 250 日、30,000 行，2024-12-09–2025-12-31，前复权剔停牌，8 位小数）
+- video_project: 172b60c（pack/scenes/script 243 行讲稿/生成器 + coverFrame 26851）→ **ac234fd**（本次 delivery 提交：cover.png 203,564 B / tsint-11.srt 21,267 B / chapters / film ready）
+- 引擎: 无（a667688；score 复用 `out/e04-score-loop-48k.wav` 1560 s、48 kHz）
+- 成片: 1,187.07 s（19:47.07），−15 LUFS，TP −2 dBFS，35,612 帧，8 场；243 条旁白，语音 945.6 s（mean 3.89 s），字幕跨度 1.2→1184.86 s（speaking 1030.6 s）
+- 流水线: 8 段分开渲染（reused 0 / rendered 8）；musicGain −4.5 dB、ducked 56.3%、peak −1.13 dBFS；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mix 门 speech −23.61、gap_full −30.27、gap_audible −33.18；flicker mean|d| 0.0209、p99 0.4637、max 9.18、cuts 7（3901/8333/12415/17043/21645/28305/32804）；243 cue 中 5 条换行、最长行 34 字（budget 34）；8 章；封面 frame 26851（895.03 s，verification 判决表页：五个延迟 × 三个模型的命中率 + 随机基线/早停两张卡，字幕间隙 894.75–895.30 s）
+- 卡点: ① `Row` 三列固定百分比在 570 宽卡片里把值列压到 135 px，长值（`0.5 / −0.3 / 0.2 / 0.7`、`σ(W_f x + U_f h + b_f)`）折 2–3 行并顶出卡底 → 改成柔性列（name 34%、value auto min 24%/max 54%、note flex），并新增竖排 `KV` 组件给窄卡片；② verification p3 右列两张 200 高卡（526 宽）内容折行压边框、`含义` 行落到卡外 → σ 拆成 LSTM/GRU 两行、卡高 236；③ definitions p2 `每门` 值 `12 × 8 + 12 × 12 + 12` 折行、errata 卡用 `Body`+`K` 层级失衡 → 值改 252（算式进 note）、errata 改 4 行 Row；④ implementation p1 三列 Row 注释被挤成 2–3 行；p2 三张 148 高 Stat（306+3×148+2×18=786）压到底部结论条（top 720）→ 高度 140 + valueSize 54 + 结论条移 776；⑤ intuition p2 LSTM 四门卡 470 高装不下 5 组公式 → 560（右卡同高）；⑥ outro p2 值「数据 / 预算 / 初始化」折三行出卡 → 改「三样都要」、明细进 note；⑦ **make 不带 `--score` 时 `render_music.mjs` 对 1188 s 单核跑 46 min 仍未完成**（卷积混响），kill 后按 E06–E10 惯例 `--score=out/e04-score-loop-48k.wav` 复用 1560 s bed，score 阶段秒过；⑧ 讲稿 CPS 4.5 估约 1100 s、实测 1187.07 s（+87 s），31 帧 lint 帧号与封面候选全部按实测时间轴重算
+- 返工: 讲稿 241→243 行（两条 48 字超限拆分、四条短句加长）；stills 31 帧两轮（首轮 2 处 spill，次轮 6 类构图缺陷共 12 处）；make 两轮（首轮 score 卡死，二轮 PASS）；TTS 243 条一次过；封面在字幕间隙帧里取 26851
+- 偏差: 计划 26 min，实做 19.78 min（−6.2 min）；31 页；旁白 243 条、语音 945.6 s；证据 22 条（17 手工 / 5 数据）；断言 41（Rnn 13 / Lstm 15 / Gru 13），套件 713
+- 备注: **ch02 十集全部完成**（E02–E11）；下一步 E12。判决表口径：T=41、train 128/test 128、Adam(1e−2) batch 32、最多 40 轮、patience 8、seed 42；d=20 GRU 0.6094 略高于 LSTM 0.6016，d=40 LSTM 0.6172 最高、GRU 0.4531 在噪声内。E04 bed 1560 s 仍够 E12（E11 实测 1187 s）
