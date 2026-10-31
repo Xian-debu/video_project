@@ -231,3 +231,25 @@
   五分钟线（4,992 根 / 104 天 / 142 KB / sha256 578d7938ad4a…），证据与 summary 都进 ts-base 版本库。
 - **返工成本**：TTS 1 轮 256 条（约 5 min）；静帧 2 轮（29 张估算 + 29 张实测）；make 待跑。
 
+
+## A17 E20 交付：门禁全 PASS，score 复用 E04 床（2026-10-31 夜）
+
+- **决定**：成片 995.23 s（16:35.23）/ 29,857 帧 / 8 场；loudnorm I = −15 LUFS、TP = −2 dBFS；
+  music gate（stem 与 mix）全 PASS（stem full −25.1 / audible −27.88 dB，audible share 63.1%；
+  mix 语音 −23.72 dBFS、bed 间隙贡献 37.3 dB、bed/语音 −9.0 dB，ducked 56.6%，peak −1.47 dBFS）；
+  flicker mean|d| 0.0174、p99 0.1947、max 10.37、7 个硬切点 [3734, 7277, 12536, 16103, 19224, 24446, 28505]。
+- **决定**：score 不新生成，复用 E04 的 1,560 s loop（`--score=out/e04-score-loop-48k.wav`，
+  seed/energy/bpm/prog 与 E19 相同），music gate 对复用床同样 PASS。首轮 make 让引擎自己
+  生成 996 s score，25 分钟仍未完（E19 的 1,264 s 只要约 7 分钟，属异常慢），于是中止并复用；
+  不为了「新生成」多烧一小时 CPU。
+- **决定**：字幕 256 条、0 条换行、最长 29 字（预算 34）；字幕跨度 00:00:01,200 → 00:16:33,040，
+  语音覆盖 923.5 s；8 章切点与 scene 边界一致（sum 995.24 s）。
+- **决定**：封面帧 3700（123.33 s，开场第 3 页末段 2.2 s 无字幕窗口），画面是 34/34、73 套件、
+  感受野 31、第一周期 48 根；publish 已用该帧重出 cover.png（158,468 B），无字幕条。
+- **依据**：make 的 25 个 stage 全 ok、8 段画面 rendered 8（reused 0）；`report.json` 记录
+  content commit 364b18f、tree hash 与全部门禁数字。没有为「更好看」改任何读数或门限。
+- **可逆性**：高。delivery 四件（mp4/srt/chapters/cover）是纯产物，可整集重渲；score 复用 E04，
+  重渲只需 `make --film tsint-20-conv-dilated-fft-2d --score=out/e04-score-loop-48k.wav`。
+- **返工成本**：make 2 轮（第 1 轮卡在 score 生成，中止；第 2 轮 PASS，仅封面帧预检一次）。
+  教训：**score 生成在长时长上可能异常慢，先看 E04 床够不够长再决定是否重生成**。
+
