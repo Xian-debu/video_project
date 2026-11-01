@@ -1,6 +1,6 @@
 # 30-ad-foundation-window-score - 地基：窗口·指标·评分——异常检测里 80% 的差别不在模型
 
-> status: draft（脚本、画面与旁白已写完，成片待生产）
+> status: ready（成片入库，交付完成 2026-11-01）
 > chapter: ch04 | runtime target: 19 min | algorithms: 3
 > 算法：ts-base be8601e；证据：ts-base 3f047b8；数据：ts-admin 27c92b6
 
@@ -33,3 +33,12 @@ ts-admin 导出的单标的日线：sh600519 贵州茅台，2001-08-27 至 2026-
 - ch4-window - 滑动窗口与窗口级标签折叠 (TsBase.Algos.Ch04.Window)
 - ch4-metrics - 逐点/点调整/范围三种指标口径 (TsBase.Algos.Ch04.Metrics)
 - ch4-score - 重构与预测评分公式 (TsBase.Algos.Ch04.Score)
+
+## Delivery
+
+成片 `out/tsint-30/Tsint30AdFoundationWindowScore.mp4`：1062.17 s（31,865 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 31,865 帧 mean 21.99 / min 14.55 / max 24.19、mean|d| 0.0134、p99 0.1014、最大 8.38、7 个切点，全过；字幕 329 条 / 8 章、0 换行、最长 26 字、跨度 00:00:01,200 → 00:17:39,940（发声 977.3 s），章节合计 1062.15 s。
+
+四件导出在 `delivery/`：cover.png（帧 180，6.00 s，标题页，无字幕条）、tsint-30.srt、tsint-30.chapters.txt、tsint-30.chapters.ffmeta.txt；mp4 按惯例不入库。publish 一轮 PASS，报告 `out/tsint-30/report.json`；分数床复用 E04（scoreReused true），8 段场景分别渲染后拼接，混音 peak −1.03 dBFS、duck 51.0%。
+
+证据 28/28（ts-base 3f047b8 的 Window / Metrics / Score 三个模块，本集新增 47 条断言），测试 102 套 / 1,418 断言；头部钉住 算法 ts-base be8601e / 证据 3f047b8 / 数据 ts-admin 27c92b6。
+

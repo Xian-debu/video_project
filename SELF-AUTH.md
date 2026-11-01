@@ -365,3 +365,13 @@
 - **依据**：publish 输出、report.json 与 luma_blink 读数；读数没有为好看改动，门限没有放宽。
 - **可逆性**：高（四件导出 + 计划文档，可整段回退；分数床仅换渲染路径，音频内容同分布）。
 - **返工成本**：分数床分块渲染约 2.5 分钟（原来的单次渲染白烧四十多分钟）；make 因 content repo dirty（E30 草稿未入库）重启一次，其余一轮 PASS。
+
+## A27 E30 交付：地基三件套成片入库（2026-11-01 傍晚）
+
+- **决定**：delivery 收 mp4 50,001,945 B / 1062.17 s（31,865 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 31,865 帧 mean 21.99 / min 14.55 / max 24.19、mean|d| 0.0134、p99 0.1014、最大 8.38、7 个切点，全过；字幕 329 条 / 8 章、0 换行、最长 26 字、跨度 00:00:01,200 → 00:17:39,940（发声 977.3 s），章节合计 1062.15 s。
+- **决定**：四件导出（srt / chapters / ffmeta / cover）放 pack 的 delivery/，mp4 按惯例不入库；封面帧 180（6.00 s）落在标题页，无字幕条，publish 一次通过。
+- **决定**：证据 28/28（ts-base 3f047b8 的 Window 11 条 / Metrics 9 条 / Score 8 条，本集新增 47 条断言），测试 102 套 / 1,418 断言；plan.md 的 status 从 draft 改为 ready 并补 Delivery，头部钉住 算法 ts-base be8601e / 证据 3f047b8 / 数据 ts-admin 27c92b6。
+- **决定（复用而非重渲）**：分数床复用 E04 的 score.wav（scoreReused true，stem 读数 −25.09 / −27.81 / 0.631 / 0.068 与 E29 同形），8 段场景分别渲染后拼接；混音 peak −1.03 dBFS、duck 51.0%，没有为压 loudness 再动增益。
+- **依据**：publish 输出、report.json 与 luma_blink 读数；读数没有为好看改动，门限没有放宽。
+- **可逆性**：高（四件导出 + 计划文档，可整段回退；成片可整集重渲）。
+- **返工成本**：make 一轮 PASS；唯一状态改动是 film.json 的 status / assetsStatus 与 plan 头部，回退一个提交即可。
