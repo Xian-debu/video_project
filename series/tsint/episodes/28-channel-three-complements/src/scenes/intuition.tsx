@@ -68,13 +68,11 @@ export const SIntuition: React.FC = () => {
           </div>
           <div style={{ position: "absolute", left: 920, top: 470, width: 760 }}>
             <SlotGrid items={pcaItems} cell={88} title={"中心化 PCA 初始化 · 纯度 " + M.router.pcaPurity.toFixed(4)} />
-            <Mono size={FT.tiny} color={C.inkFaint} style={{ display: "block", marginTop: 10 }}>ARI {M.router.pcaARI.toFixed(4)} · 不中心化会塌成一个槽</Mono>
+            <Mono size={FT.tiny} color={C.inkFaint} style={{ display: "block", marginTop: 10 }}>ARI {M.router.pcaARI.toFixed(4)} · 不中心化会塌成一个槽（塌缩 {M.router.collapsedSlots} 个）</Mono>
           </div>
-          <div style={{ position: "absolute", left: PAD, top: 940, width: CW, display: "flex", gap: 20 }}>
-            <Stat label="随机 纯度" value={M.router.randPurity.toFixed(4)} sub="1/64 到 1 的随机基线之上一点点" style={{ width: 520 }} />
-            <Stat label="PCA 纯度" value={M.router.pcaPurity.toFixed(4)} sub={"塌缩槽数 " + M.router.collapsedSlots + "（不中心化时）"} accent={C.violet} style={{ width: 520 }} />
-            <Body size={FT.meta} color={C.inkDim} style={{ width: 660, paddingTop: 26 }}>
-              未训练的路由器没有理由把槽对齐到行业。本集不训练，所以这里只记录容量和可测性。
+          <div style={{ position: "absolute", left: PAD, top: 928, width: 1400 }}>
+            <Body size={FT.meta} color={C.inkDim}>
+              未训练的路由器没有理由把槽对齐到行业；本集不训练，只记录容量与可测性。
             </Body>
           </div>
         </AbsoluteFill>

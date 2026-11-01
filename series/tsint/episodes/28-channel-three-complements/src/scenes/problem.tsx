@@ -13,7 +13,7 @@ export const SProblem: React.FC = () => {
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 290, width: 900 }}>
             <Card label="六十四通道相关矩阵 · 色越亮相关越高" style={{ width: 880 }}>
-              <Heat matrix={M.series.corr64} labels={[]} groups={M.series.groups64} cell={10} gap={1} min={0} max={1} />
+              <Heat matrix={M.series.corr64} labels={[]} groups={M.series.groups64} cell={9} gap={1} min={0} max={1} />
               <div style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}>
                 {M.industryNames.map((nm, i) => (
                   <span key={nm} style={{ fontFamily: FONT.sans, fontSize: FT.tiny, color: gcol[i % 4] }}>{nm}</span>

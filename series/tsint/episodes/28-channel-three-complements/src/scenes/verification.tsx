@@ -83,7 +83,8 @@ export const SVerification: React.FC = () => {
               <Row name="合成恢复纯度" value={cl.synPurity.toFixed(4)} note="三簇十二通道，允许一次标签置换，阈值 0.99" color={C.cyan} width={980} />
               <Row name="十簇真实纯度" value={cl.rawPurity.toFixed(4)} note="最后一个窗口，行业标签对照" color={C.violet} width={980} />
               <Row name="原始 / 减共模 ARI" value={cl.rawARI.toFixed(4) + " / " + cl.residARIMean.toFixed(4)} note="五个窗口，聚类在同一套余弦特征上" color={C.cyan} width={980} />
-              <Row name="同 / 跨行业相关" value={cl.withinRaw.toFixed(4) + " / " + cl.acrossRaw.toFixed(4) + " → " + cl.withinResid.toFixed(4) + " / " + cl.acrossResid.toFixed(4)} note="六十四通道，训练段，减共模前后" width={980} />
+              <Row name="同 / 跨行业相关" value={cl.withinRaw.toFixed(4) + " / " + cl.acrossRaw.toFixed(4)} note="减共模前，六十四通道训练段" width={980} />
+              <Row name="同 / 跨 · 减共模" value={cl.withinResid.toFixed(4) + " / " + cl.acrossResid.toFixed(4)} note="减共模后，符号分开" color={C.cyan} width={980} />
             </Card>
           </div>
           <div style={{ position: "absolute", left: 1240, top: 300, width: 640 }}>
