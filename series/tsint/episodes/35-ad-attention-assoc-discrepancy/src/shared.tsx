@@ -8,7 +8,7 @@ import attnJson from "../../data/tsint-35-ad-attention-assoc-discrepancy/attn.js
 /* 本片共用件：E35 的数据形状 + 与前后集同一套排版零件。 */
 
 export type UnitKey = "assoc" | "sat" | "tranad";
-export type CurveTriple = [number, number, number];
+export type CurvePoint = { q: number; p: number; r: number };
 export type CurvePt = { r: number; p: number };
 export type CheckRow = { name: string; ok: boolean; detail: string };
 export type Mat = number[][];
@@ -59,7 +59,7 @@ export type AttnData = {
     outMassClean: number; outMassSpike: number; outMassShape: number;
     entClean: number; entSpike: number; entShape: number;
   };
-  curves: Record<UnitKey, CurveTriple[]>;
+  curves: Record<UnitKey, CurvePoint[]>;
   series: { tranadLoss: number[]; tranadEpochs: number[] };
   golden: {
     symKlSelf: number; rowSumMaxDev: number; priorRowSumMaxDev: number; gradRel: number;
@@ -84,9 +84,8 @@ export const curveOf = (k: UnitKey) => M.curves[k];
 /** 原始点命中（不做点调整）：两种注入加起来。 */
 export const rawHits = (k: UnitKey) => M.byKind[k].spike.hit + M.byKind[k].shape.hit;
 
-/** 证据里的曲线是 [tau, recall, f1] 三元组；精度由 F1 = 2PR/(P+R) 反解，是精确等式。 */
-export const prOf = (triples: CurveTriple[]): CurvePt[] =>
-  triples.map(([, r, f1]) => ({ r, p: 2 * r - f1 > 1e-9 ? (f1 * r) / (2 * r - f1) : 1 }));
+/** 证据里的曲线点直接带 q/精度/召回（生成器算好），这里只做形状转换。 */
+export const prOf = (points: CurvePoint[]): CurvePt[] => points.map((d) => ({ r: d.r, p: d.p }));
 
 export const checksLike = (p: string): CheckRow[] => M.checks.filter((c) => c.name.startsWith(p));
 export const fmtRate = (v: number, d = 1) => (v * 100).toFixed(d) + "%";
