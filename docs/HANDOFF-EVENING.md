@@ -29,7 +29,7 @@
 
 - 成片 **46 / 74**：E01–E36、E65–E74（全部 `status: ready`，**未发布 B 站**）。
 - 算法 118 个模块文件（ch02 37 / ch03 39 / ch04 19 / ch08 12 / ch09 11），**118 组测试套件 / 1,602 条断言**全绿。
-- 四仓 HEAD（E36 交付后）：video_project `e0503e5`（ep36 内容，publish report 钉住的 content commit）+ 一个交付/docs 提交紧随其后、ts-base `b815f6b`（证据 b815f6b + 清单）、ts-admin `97f7091`、
+- 四仓 HEAD（E36 交付后）：video_project `02eb497`（ep36 内容 `e0503e5` 是 report 钉住的 content commit，交付 `4d78f30`、docs `02eb497`）、ts-base `b815f6b`（证据 + 清单）、ts-admin `97f7091`、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
   必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
