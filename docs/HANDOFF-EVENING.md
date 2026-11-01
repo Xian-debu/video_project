@@ -25,12 +25,14 @@
 允许把指令写入三仓规划并建 goal 防断。执行时沿用本文件 §4 的 12 步流水线与 §5 的冻结口径：
 仍只到 `ready`、不发布 B 站、不改引擎、score 复用 `out/e04-score-loop-48k.wav`。
 
-## 2. 状态（2026-11-01 10:45 实测）
+## 2. 状态（2026-11-01 17:50 实测）
 
-- 成片 **33 / 74**：E01–E23、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 **80 / 190** 模块、**1,097** 条断言（82 组套件；ch02 39 模块；ch03 18；ch08 13；ch09 11）。
-- 四仓 HEAD（E23 交付后）：video_project `857d2ef`（delivery）+ 一个 docs 提交紧随其后、ts-base `c53d331`（evidence+A52）、ts-admin `a7a3a22`、
+- 成片 **41 / 74**：E01–E31、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 105 个模块文件（ch02 37 / ch03 39 / ch04 6 / ch08 12 / ch09 11），**105 组测试套件 / 1,473 条断言**全绿。
+- 四仓 HEAD（E31 交付后）：video_project `9c75230`（delivery）+ 一个 docs 提交紧随其后、ts-base `7258483`（evidence 修正）、ts-admin `27c92b6`、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
+- **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
+  必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
 - E02 成片 `1105.01 s / 33,150 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，298 cue、8 章、封面 4480。
 - E03 成片 `1299.93 s / 38,998 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，343 cue、8 章、封面 5610。
 - E04 成片 `1480.90 s / 44,427 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，351 cue、8 章、封面 6860。
@@ -53,12 +55,20 @@
 - E21 成片 `855.9 s / 25,678 帧 / 8 场 33 页 / −15 LUFS / TP −2 dBFS`，256 cue、8 章、封面 21010。
 - E22 成片 `906.3 s / 27,189 帧 / 8 场 33 页 / −15 LUFS / TP −2 dBFS`，277 cue、8 章、封面 2868。
 - E23 成片 `874.1 s / 26,222 帧 / 8 场 37 页 / −15 LUFS / TP −2 dBFS`，240 cue、8 章、封面 1935。
+- E24 成片 `806.1 s / 24,183 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，223 cue、8 章、封面 9300。
+- E25 成片 `773.0 s / 23,191 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，242 cue、8 章、封面 10414。
+- E26 成片 `694.93 s / 20,848 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，221 cue、8 章、封面 9307。
+- E27 成片 `708.27 s / 21,248 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，235 cue、8 章、封面 9300。
+- E28 成片 `841.90 s / 25,257 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，274 cue、8 章、封面 1365。
+- E29 成片 `883.03 s / 26,491 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，264 cue、8 章、封面 1341。
+- E30 成片 `1062.17 s / 31,865 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，329 cue、8 章、封面 180。
+- E31 成片 `995.67 s / 29,870 帧 / 8 场 20 页 / −15 LUFS / TP −2 dBFS`，312 cue、8 章、封面 2985。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E24 `chan-mix-itrans-graph`**；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；E23 实测 874.1 s）。
+- 下一步入口：**E32 `ad-classic-unsupervised`**（ch04 第 3 集：K-means / LOF / 隔离森林）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；E31 实测 995.7 s）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -105,10 +115,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 41 集）
+## 5. 排期（production_order 剩余 33 集）
 
-E01–E23 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E23（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 min）。按 `production_order` 继续：
-**E23 prob-crps-picp-vae 已交付；下一集 E24 chan-mix-itrans-graph** → … → E64 llm-side-adapters。
+E01–E31 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E31（17.70 / 16.59 min）。按 `production_order` 继续：
+**E31 ad-threshold-and-baselines 已交付；下一集 E32 ad-classic-unsupervised** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；

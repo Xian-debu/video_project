@@ -1,6 +1,6 @@
 # STATUS — video_project 内容仓状态
 
-> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-11-01T10:39:49+08:00。
+> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-11-01T17:50:19+08:00。
 
 | id | title | status | sec | audio | derived | delivery | BV |
 |---|---|---|---|---|---|---|---|
@@ -43,14 +43,14 @@
 | tsint-21-attn-mhsa-block-masked | 注意力三件套：多头自注意力、Transformer 块、因果掩码 | ready | - | yes | ok | 11 | - |
 | tsint-22-prob-nll-quantile-eval | 概率预测入门：高斯 NLL、分位数损失、分位数指标 | ready | - | yes | ok | 11 | - |
 | tsint-23-prob-crps-picp-vae | 概率预测进阶：CRPS、区间覆盖率、VAE 的 ELBO | ready | - | yes | ok | 11 | - |
-| tsint-24-chan-mix-itrans-graph | 通道关系三法：混合 MLP、iTransformer、图通道 | draft | 1440 | silent | ok | 1 | - |
-| tsint-25-rnn-recurrence-vs-segments | 递归与分段：RNN 的两条生成路 | draft | 1200 | silent | ok | 1 | - |
-| tsint-26-seq-compress-three-ways | 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩 | draft | 1320 | silent | ok | 1 | - |
-| tsint-27-patch-embed-and-two-attn | 块嵌入与两种注意力架构：PatchTST 与交叉注意力解码器 | draft | 1440 | silent | ok | 1 | - |
-| tsint-28-channel-three-complements | 通道三补集：混合 MLP、路由注意力、动态聚类 | draft | 1320 | silent | ok | 1 | - |
-| tsint-29-prob-copula-ddpm-flow | 概率生成补集：Copula、扩散损失、连续流 | draft | 1560 | silent | ok | 1 | - |
-| tsint-30-ad-foundation-window-score | 地基：窗口·指标·评分——异常检测里 80% 的差别不在模型 | draft | 1200 | silent | ok | 1 | - |
-| tsint-31-ad-threshold-and-baselines | 分数怎么变成 0/1：阈值、分类器，与最笨的基线 | draft | 1320 | silent | ok | 1 | - |
+| tsint-24-chan-mix-itrans-graph | 通道关系三法：混合 MLP、iTransformer、图通道 | ready | - | yes | ok | 11 | - |
+| tsint-25-rnn-recurrence-vs-segments | 递归与分段：RNN 的两条生成路 | ready | - | yes | ok | 11 | - |
+| tsint-26-seq-compress-three-ways | 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩 | ready | - | yes | ok | 11 | - |
+| tsint-27-patch-embed-and-two-attn | 块嵌入与两种注意力架构：PatchTST 与交叉注意力解码器 | ready | - | yes | ok | 11 | - |
+| tsint-28-channel-three-complements | 通道三补集：混合 MLP、路由注意力、动态聚类 | ready | - | yes | ok | 11 | - |
+| tsint-29-prob-copula-ddpm-flow | 概率生成补集：Copula、扩散损失、连续流 | ready | - | yes | ok | 11 | - |
+| tsint-30-ad-foundation-window-score | 地基：窗口·指标·评分——异常检测里 80% 的差别不在模型 | ready | - | yes | ok | 11 | - |
+| tsint-31-ad-threshold-and-baselines | 分数怎么变成 0/1：阈值、分类器，与最笨的基线 | ready | - | yes | ok | 11 | - |
 | tsint-32-ad-classic-unsupervised | 三种几何直觉：距离、密度、随机分割 | draft | 1200 | silent | ok | 1 | - |
 | tsint-33-ad-causal-dilated-conv | 卷积看见了未来：因果卷积、膨胀核与 TCN | draft | 1680 | silent | ok | 1 | - |
 | tsint-34-ad-gru-lstm-predictor | 预测未来，误差就是分数：GRU 单元与 LSTM 预测器 | draft | 1440 | silent | ok | 1 | - |
