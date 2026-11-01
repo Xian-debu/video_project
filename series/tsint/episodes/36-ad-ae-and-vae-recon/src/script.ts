@@ -381,7 +381,7 @@ const SPEC: SceneSpec[] = [
 
 /** 分页起点：每页第一句在该场景 lines 里的下标。 */
 export const PAGES_INDEX: Record<string, number[]> = {
-  open: [0, 12, 24, 33],
+  open: [0, 12, 28, 33],
   problem: [0, 10, 21],
   definitions: [0, 9, 20, 32],
   intuition: [0, 10, 21],
