@@ -25,11 +25,11 @@
 允许把指令写入三仓规划并建 goal 防断。执行时沿用本文件 §4 的 12 步流水线与 §5 的冻结口径：
 仍只到 `ready`、不发布 B 站、不改引擎、score 复用 `out/e04-score-loop-48k.wav`。
 
-## 2. 状态（2026-11-02 04:45 实测）
+## 2. 状态（2026-11-02 05:50 实测）
 
-- 成片 **48 / 74**：E01–E38、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 122 个模块文件（ch02 37 / ch03 39 / ch04 23 / ch08 12 / ch09 11），**122 组测试套件 / 1,645 条断言**全绿。
-- 四仓 HEAD（E38 交付后）：video_project `cfa26a2`（ep38 内容 `817911b` 是 report 钉住的 content commit，交付 `cfa26a2`、docs 紧随其后）、ts-base `beb0a57`（算法 `1bae41d` + 证据 + 清单）、ts-admin `d1cce83`（ep38 导出脚本）、
+- 成片 **49 / 74**：E01–E39、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 124 个模块文件（ch02 37 / ch03 39 / ch04 25 / ch08 12 / ch09 11），**124 组测试套件 / 1,663 条断言**全绿。
+- 四仓 HEAD（E39 交付后）：video_project `73374b8`（ep39 内容 `eb310bc` 是 report 钉住的 content commit，交付 `73374b8`、docs 紧随其后）、ts-base `b1f07ea`（算法 + 证据 + 清单）、ts-admin `7065608`（ep39 导出脚本）、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
   必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
@@ -69,19 +69,21 @@
 - E35 成片 `1,342.67 s / 40,280 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，314 cue、8 章、封面 20。
 - E36 成片 `1,250.97 s / 37,529 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，278 cue、8 章、封面 20。
 - E37 成片 `1,161.87 s / 34,856 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，296 cue、8 章、封面 20。
+- E38 成片 `1,087.07 s / 32,612 帧 / 8 场 28 页 / −15 LUFS / TP −2 dBFS`，281 cue、8 章、封面 20。
+- E39 成片 `1,149.83 s / 34,495 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，310 cue、8 章、封面 20。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E39 `ad-classic-arima-matrixprofile`**（ch04 第 10 集：经典基线——ARIMA 残差与矩阵轮廓，runtime target 20 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，不必重渲长床）。
+- 下一步入口：**E40 `ad-adversarial-dual-decoder`**（ch04 第 11 集：USAD 对抗、DAGMM 能量与多 AE 中位数，runtime target 30 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，不必重渲长床）。
 
 ## 3. 授权（增量自授权清单）
 
 本会话新增 **A5**（见 `SELF-AUTH.md`）：按用户 2026-10-30 晚指令，**恢复全系列生产**，
 无人值守逐集推进；仍未发布 B 站、仍只到 `ready`；每集验证后提交，提交说明附本文件与 A5 引用。
 E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A21），提交 body 同时引用对应条目；
-E33 起算法侧的授权增量改记在 `video_project/SELF-AUTH.md`（A30–A35，E33–E38），ts-base 的账停在 A74（E32），两边不重复记。
+E33 起算法侧的授权增量改记在 `video_project/SELF-AUTH.md`（A30–A36，E33–E39），ts-base 的账停在 A74（E32），两边不重复记。
 每个仓的每次提交都在 commit body 末尾带一行：
 
 ```
@@ -122,10 +124,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 28 集）
+## 5. 排期（production_order 剩余 27 集）
 
-E01–E38 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E38（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 / 19.36 / 18.12 min）。按 `production_order` 继续：
-**E38 ad-graph-contrastive 已交付；下一集 E39 ad-classic-arima-matrixprofile** → … → E64 llm-side-adapters。
+E01–E39 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E39（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 / 19.36 / 18.12 / 19.16 min）。按 `production_order` 继续：
+**E39 ad-classic-arima-matrixprofile 已交付；下一集 E40 ad-adversarial-dual-decoder** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -373,6 +375,11 @@ VAE：ELBO = ½‖x−x̂‖² + KL，KL 手算 ½(1+4−1−log 4) = **1.306852
 - 派生数据要在 `.gitignore` **逐模式**登记并验证：E38 的 `**/data/graph.json` 漏了，make 首轮被 content check（dirty）拦下；用 python 的 `str.replace` 改 `.gitignore` 曾静默失败（模式没写进去），append 后必须 `git check-ignore -v <path>` 确认。
 - `film.json` 的 `assetsStatus` 只认 `complete|incomplete`：E38 写成 `pending` 让 `status.mjs` 全仓 errors、整张状态表退回旧值；且 `status.mjs --md` 只打印，更新 `STATUS.md` 必须 `node tools/status.mjs --md > STATUS.md`。
 - 名单类 `Row` 不要往姓名列塞长串：E38 数据页把四只票名写进 name 列，被折成「泸州老 / 窖」「今世 / 缘」「重庆 / 啤酒」；改成「分组 + 只数」在值列、票名进 note 列。`names()` 这类 helper 用完即删，避免 lint 抓 unused。
+- TTS 只改一句时别重跑全量：删该条的 mp3/时长、`build/tts_narration.py --only outro#15` 只补一句，再 `dump_script` 取新时长、`make_narration.py` 重建整轨；E39 实测 1,149.71 → 1,149.83 s，其余 309 句不动。
+- 渲染字体里没有「§」：E39 的「§4.4.1–4.4.2」在成片里 fallback 成「S 4.4.1-4.4.2」；出处这类行改写成「第 4.4.1–4.4.2 节」，别指望字形回退。
+- 提交 pack 内容后 make 会报 `content HEAD moved (877af12 -> eb310bc); run sync`：make 的 content check 钉的是 sync 时的 commit，commit 之后必须再 `node scripts/films.mjs sync` 一次再 make；这不是内容错误，不要回退提交。
+- 数值防御要写进算法本身而不是证据脚本：E39 真实收益把 Hannan-Rissanen 的 θ 推出可逆域，修前 2,667 个残差里 1,912 个 Infinity；θ 夹 ±0.98、φ 夹 ±0.99、非有限值写 0 之后 49/49，阈值才不会是 NaN。
+- 注入配方要既去重又控顺序：E39 的 `genStarts` 不看间距会产生重叠起点、相位窗口在尖峰之后重铺会整段覆盖已注入的尖峰（40 个尖峰点只活下 15 个）；改成带间距去重 + 顺序「相位→尖峰→常值」后 truth 才稳定在 661 点。扁平对照段长度这类常量在画面与注入两处各写一份，必然漂（120 vs 240），只留一个来源。
 - 证据读数三类坑先自查：`V.maximum (V.indexed v)` 先比索引（argmax 恒 99）、`evaluate` 只 force 到 WHNF（计时恒 0.0，要 `mapM_ evaluate` 每个 Double）、InfoNCE 断言把方向写反（损失应随 τ 变小而变小）；数值类证据先全跑一遍再拿读数写画面。
 ## 9. 断线恢复（60 秒）
 
