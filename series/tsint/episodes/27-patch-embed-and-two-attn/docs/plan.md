@@ -1,6 +1,6 @@
 # 27-patch-embed-and-two-attn - 块嵌入与两种注意力架构：PatchTST 与交叉注意力解码器
 
-> status: draft（脚本与画面已写完，成片待生产）
+> status: ready（成片入库，交付完成 2026-11-01）
 > chapter: ch03 | runtime target: 24 min | algorithms: 3
 > 算法：ts-base 2002c94；证据：ts-base 69d4ed0；数据：ts-admin 68f6e3e
 
@@ -33,3 +33,11 @@ ts-admin 日线 8 通道面板（白酒 sh600519/sz000596/sh600809、银行 sh60
 - ch3-patch-embed - 块嵌入 Patch Embedding (TsBase.Algos.Ch03.PatchEmbed)
 - ch3-patchtst - 通道独立 Patch 编码器 PatchTST (TsBase.Algos.Ch03.PatchTst)
 - ch3-cross-attn-decoder - 交叉注意力解码器 (TsBase.Algos.Ch03.CrossAttnDecoder)
+
+## Delivery
+
+成片 `out/tsint-27/Tsint27PatchEmbedAndTwoAttn.mp4`：708.27 s（21,248 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 21,248 帧 mean 22.09 / min 14.49 / max 33.34、mean|d| 0.0188、p99 0.3099、最大 18.24、7 个切点，全过；字幕 235 条 / 8 章、0 换行、最长 22 字、跨度 00:00:01,200 → 00:11:46,080（发声 640.2 s），章节合计 708.28 s。
+
+四件导出在 `delivery/`：cover.png（帧 9300，310.00 s，无字幕条）、tsint-27.srt、tsint-27.chapters.txt、tsint-27.chapters.ffmeta.txt；mp4 按惯例不入库。publish 一轮 PASS，报告 `out/tsint-27/report.json`。
+
+证据 31/31（ch3-patch-embed 20 条 / ch3-patchtst 20 条 / ch3-cross-attn-decoder 16 条断言，31 项检查），测试 92 套 / 1,251 断言；头部钉住 算法 ts-base 2002c94 / 证据 69d4ed0 / 数据 ts-admin 68f6e3e。边界四条与三笔欠账写在本集 script 的 boundary 场景里，与 plan 一致。
