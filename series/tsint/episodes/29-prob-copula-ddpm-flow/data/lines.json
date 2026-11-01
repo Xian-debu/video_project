@@ -1,0 +1,1905 @@
+{
+ "entry": "src/tsint-29-prob-copula-ddpm-flow/script.ts",
+ "fps": 30,
+ "totalSec": 883.02,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 102.14
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 102.14,
+   "dur": 87.8
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 189.94,
+   "dur": 143.77
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 333.71,
+   "dur": 108.48
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 442.19,
+   "dur": 144.81
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 587,
+   "dur": 144.62
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 731.62,
+   "dur": 98.61
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 830.23,
+   "dur": 52.79
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.94,
+   "speech": "第三篇章，第二十九集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.32,
+   "dur": 2.39,
+   "speech": "前两集在处理轴。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 6.89,
+   "dur": 3.25,
+   "speech": "先压时间轴，再切通道轴。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.33,
+   "dur": 2.29,
+   "speech": "这一集处理分布。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 12.8,
+   "dur": 2.68,
+   "speech": "概率生成有三条路。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 15.66,
+   "dur": 3.42,
+   "speech": "Copula，扩散损失，连续流。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 19.26,
+   "dur": 2.49,
+   "speech": "看上去是三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 21.93,
+   "dur": 2.37,
+   "speech": "其实是同一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 24.47,
+   "dur": 3.54,
+   "speech": "把简单随机源，搬成目标分布。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 28.19,
+   "dur": 2.97,
+   "speech": "Copula 用秩变换搬边缘。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 31.34,
+   "dur": 3.57,
+   "speech": "扩散用一千步加噪，再退火。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 35.09,
+   "dur": 3.78,
+   "speech": "连续流用可逆映射，搬整条密度。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 39.05,
+   "dur": 2.99,
+   "speech": "三个模块，本集都实现。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 42.22,
+   "dur": 2.39,
+   "speech": "而且都测过了。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 44.79,
+   "dur": 3.3,
+   "speech": "二十四个检查点，全部通过。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 48.27,
+   "dur": 3.64,
+   "speech": "断言九十九套，一千三百七十一条。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 52.09,
+   "dur": 2.46,
+   "speech": "屏幕上会有三个数。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 54.73,
+   "dur": 2.46,
+   "speech": "第一个，三分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 57.37,
+   "dur": 3.01,
+   "speech": "高斯 Copula 的闭式值。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 60.57,
+   "dur": 2.68,
+   "speech": "ρ 等于零点五的时候。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 63.42,
+   "dur": 3.88,
+   "speech": "书里的计划，写零点五八三三三三。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 67.48,
+   "dur": 2.49,
+   "speech": "那个值违反上界。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 70.15,
+   "dur": 2.41,
+   "speech": "上界是二分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 72.74,
+   "dur": 2.56,
+   "speech": "正确值是三分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 75.48,
+   "dur": 2.89,
+   "speech": "这件事，我们钉进了测试。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 78.55,
+   "dur": 3.35,
+   "speech": "第二个数，一点四一四二一四。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 82.08,
+   "dur": 4.38,
+   "speech": "扩散前向，t 等于五百时的 x_t。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 86.65,
+   "dur": 3.57,
+   "speech": "第三个数，零点六九三一四七。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 90.39,
+   "dur": 3.76,
+   "speech": "仿射流的对数行列式，就是 log 2。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 94.33,
+   "dur": 2.89,
+   "speech": "三个数，三条证据链。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 97.4,
+   "dur": 2.53,
+   "speech": "先说为什么需要它们。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 103.34,
+   "dur": 2.29,
+   "speech": "先说问题本身。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 105.81,
+   "dur": 3.25,
+   "speech": "序列模型通常给的是点预测。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 109.25,
+   "dur": 2.2,
+   "speech": "或者几个分位数。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 111.63,
+   "dur": 4.21,
+   "speech": "CRPS 和 PICP，评的都是边缘。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 116.02,
+   "dur": 3.06,
+   "speech": "边缘对了，联合不一定对。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 119.26,
+   "dur": 3.09,
+   "speech": "两个变量都是标准正态。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 122.53,
+   "dur": 4.33,
+   "speech": "相关系数零点九的时候，联合分布完全不同。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 127.04,
+   "dur": 3.49,
+   "speech": "要交付的，是整条联合分布。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 130.72,
+   "dur": 2.8,
+   "speech": "真实面板给了一个例子。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 133.69,
+   "dur": 3.57,
+   "speech": "八个通道，两千六百五十七个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 137.44,
+   "dur": 3.18,
+   "speech": "一千个窗口，每个九十六步。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 140.8,
+   "dur": 3.64,
+   "speech": "同组相关的均值是零点六七六。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 144.62,
+   "dur": 2.7,
+   "speech": "跨组是零点三八五。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 147.5,
+   "dur": 2.32,
+   "speech": "差值零点二九。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 150,
+   "dur": 2.89,
+   "speech": "看起来行业结构很清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 153.07,
+   "dur": 2.32,
+   "speech": "换一个口径再看。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 155.57,
+   "dur": 2.97,
+   "speech": "把窗长缩到九十六步以内。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 158.72,
+   "dur": 2.58,
+   "speech": "同组零点六九九。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 161.48,
+   "dur": 2.44,
+   "speech": "跨组零点五五二。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 164.1,
+   "dur": 2.73,
+   "speech": "差值只剩零点一五。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 167,
+   "dur": 2.97,
+   "speech": "同一个面板，同一批通道。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 170.15,
+   "dur": 2.73,
+   "speech": "窗长一变，结论减半。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 173.06,
+   "dur": 2.99,
+   "speech": "所以问题不是有没有行业。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 176.23,
+   "dur": 2.99,
+   "speech": "问题是联合分布怎么估。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 179.4,
+   "dur": 3.59,
+   "speech": "三种生成式做法，各搬一种东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 183.17,
+   "dur": 2.37,
+   "speech": "也都各留一笔账。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 185.71,
+   "dur": 2.03,
+   "speech": "往下看定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 191.14,
+   "dur": 2.32,
+   "speech": "定义一，Copula。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 193.64,
+   "dur": 3.21,
+   "speech": "先把每条通道拉到零到一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 197.02,
+   "dur": 3.33,
+   "speech": "用经验分布做概率积分变换。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 200.53,
+   "dur": 2.97,
+   "speech": "u 是平均秩除以样本数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 203.68,
+   "dur": 2.51,
+   "speech": "再拉进高斯空间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 206.37,
+   "dur": 2.32,
+   "speech": "z 等于 Φ 逆 u。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 208.86,
+   "dur": 3.78,
+   "speech": "联合分布写成 Φ_Σ。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 212.83,
+   "dur": 2.68,
+   "speech": "Σ 是相关矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 215.68,
+   "dur": 3.66,
+   "speech": "边缘用经验分布，不用高斯假设。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 219.53,
+   "dur": 4.19,
+   "speech": "这是 Copula 和直接多元高斯的唯一差别。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 223.9,
+   "dur": 2.53,
+   "speech": "定义二，扩散损失。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 226.61,
+   "dur": 2.56,
+   "speech": "前向是马尔可夫链。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 229.35,
+   "dur": 8.01,
+   "speech": "x_t 等于根号 ᾱ_t 乘 x0，加根号一减 ᾱ_t 乘 ε。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 237.53,
+   "dur": 2.8,
+   "speech": "训练目标是预测噪声。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 240.51,
+   "dur": 5.05,
+   "speech": "损失是 ε 与 ε_θ 的差的平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 245.75,
+   "dur": 2.92,
+   "speech": "时间步必须编码进模型。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 248.84,
+   "dur": 3.57,
+   "speech": "不然只学得到一个平均噪声水平。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 252.59,
+   "dur": 3.11,
+   "speech": "定义三，连续归一化流。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 255.88,
+   "dur": 4.36,
+   "speech": "dz 比 dt，等于 f(z,t)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 260.42,
+   "dur": 2.39,
+   "speech": "密度用迹积分搬。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 262.99,
+   "dur": 4.33,
+   "speech": "log p 等于 log p(z)，减去积分项。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 267.5,
+   "dur": 4.79,
+   "speech": "仿射流的对数行列式，是 Σ log 绝对值 s。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 272.47,
+   "dur": 2.85,
+   "speech": "三条定义，三个接口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 275.5,
+   "dur": 2.32,
+   "speech": "原文都只有一句。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 278,
+   "dur": 4,
+   "speech": "书里 p.67 到 p.68，只点名。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 282.17,
+   "dur": 3.54,
+   "speech": "公式是标准结果，文献待核。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 285.9,
+   "dur": 2.99,
+   "speech": "所以口径要自己钉死。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 289.07,
+   "dur": 3.52,
+   "speech": "Copula 的边缘做经验 CDF。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 292.76,
+   "dur": 3.85,
+   "speech": "正态分数裁到 1e-6。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 296.8,
+   "dur": 4.12,
+   "speech": "相关矩阵加 1e-6 抖动。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 301.1,
+   "dur": 5.58,
+   "speech": "扩散用线性 beta，从 1e-4 到 0.02。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 306.86,
+   "dur": 3.16,
+   "speech": "T 等于一千，d 等于三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 310.2,
+   "dur": 3.57,
+   "speech": "流用两层仿射，softplus 保正。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 313.94,
+   "dur": 3.49,
+   "speech": "RK4，二十步，d 等于八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 317.62,
+   "dur": 3.25,
+   "speech": "三个实现，三个测试文件。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 321.05,
+   "dur": 3.49,
+   "speech": "二十二条，二十一条，十五条。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 324.72,
+   "dur": 2.89,
+   "speech": "加起来五十八条新断言。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 327.8,
+   "dur": 3.71,
+   "speech": "全仓一千三百七十一条，零失败。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 334.91,
+   "dur": 2.25,
+   "speech": "先给一层直觉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 337.34,
+   "dur": 3.23,
+   "speech": "三种做法都在搬同一个东西。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 340.75,
+   "dur": 2.94,
+   "speech": "从一个简单随机源开始。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 343.87,
+   "dur": 2.7,
+   "speech": "标准正态，最简单。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 346.75,
+   "dur": 2.7,
+   "speech": "Copula 的搬法是三段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 349.63,
+   "dur": 3.61,
+   "speech": "原空间，均匀空间，高斯空间。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 353.43,
+   "dur": 2.39,
+   "speech": "散点变形三次。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 356,
+   "dur": 2.92,
+   "speech": "秩变换把边缘压平。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 359.09,
+   "dur": 3.35,
+   "speech": "相关矩阵把散点拉成椭圆。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 362.62,
+   "dur": 3.04,
+   "speech": "再逆变换，回到原空间。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 365.84,
+   "dur": 2.77,
+   "speech": "扩散的搬法是一千步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 368.8,
+   "dur": 3.42,
+   "speech": "ᾱ_t 从一衰减到零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 372.4,
+   "dur": 3.64,
+   "speech": "t 等于五百时，ᾱ 是零点零七八六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 376.22,
+   "dur": 4,
+   "speech": "t 等于一千时，是四乘十的负五次方。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 380.39,
+   "dur": 2.37,
+   "speech": "信号项越来越小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 382.94,
+   "dur": 2.34,
+   "speech": "噪声项越来越大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 385.46,
+   "dur": 2.65,
+   "speech": "训练时只学一件事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 388.3,
+   "dur": 3.18,
+   "speech": "给定噪声输入，预测噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 391.66,
+   "dur": 2.17,
+   "speech": "推理时反过来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 394.01,
+   "dur": 2.85,
+   "speech": "从纯噪声开始退火。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 397.04,
+   "dur": 2.51,
+   "speech": "连续流是第三段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 399.73,
+   "dur": 3.52,
+   "speech": "不迭代，解一个常微分方程。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 403.43,
+   "dur": 2.65,
+   "speech": "可逆，所以密度能算。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 406.26,
+   "dur": 2.68,
+   "speech": "同维数，双向映射。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 409.12,
+   "dur": 2.87,
+   "speech": "三个搬法，一个共同点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 412.17,
+   "dur": 2.39,
+   "speech": "都不直接拟合密度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 414.74,
+   "dur": 2.44,
+   "speech": "都从简单源出发。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 417.36,
+   "dur": 3.13,
+   "speech": "一步搬不完的，用一千步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 420.67,
+   "dur": 3.59,
+   "speech": "一千步也不行的，用可逆映射。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 424.44,
+   "dur": 2.29,
+   "speech": "代价依次上升。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 426.91,
+   "dur": 2.15,
+   "speech": "Copula 最便宜。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 429.24,
+   "dur": 2.25,
+   "speech": "扩散最费算力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 431.67,
+   "dur": 2.15,
+   "speech": "连续流居中。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 434,
+   "dur": 2.44,
+   "speech": "本集不训练预测器。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 436.62,
+   "dur": 3.37,
+   "speech": "只把三种搬法，各实现一遍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 443.39,
+   "dur": 2.41,
+   "speech": "实现，四个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 445.98,
+   "dur": 2.94,
+   "speech": "第一个坑，在扩散的梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 449.11,
+   "dur": 2.61,
+   "speech": "损失下降得很正常。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 451.89,
+   "dur": 2.39,
+   "speech": "但梯度是转置的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 454.46,
+   "dur": 3.09,
+   "speech": "写成 k j，应该是 j k。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 457.73,
+   "dur": 3.37,
+   "speech": "loss 一直降，没人看得出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 461.28,
+   "dur": 2.34,
+   "speech": "发现靠两件事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 463.8,
+   "dur": 3.21,
+   "speech": "固定 seed，两次逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 467.19,
+   "dur": 2.53,
+   "speech": "和有限差分对不上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 469.9,
+   "dur": 6.78,
+   "speech": "改回 jt k，等于 Σ resid_j 乘 x_t,k。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 476.87,
+   "dur": 3.25,
+   "speech": "第二个坑，在 RK4 的系数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 480.3,
+   "dur": 4.31,
+   "speech": "第一版写成 k3 加两倍 k4，除以六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 484.79,
+   "dur": 2.01,
+   "speech": "对称性没错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 486.98,
+   "dur": 2.29,
+   "speech": "但不再是四阶。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 489.45,
+   "dur": 3.18,
+   "speech": "步数减半，误差只降两倍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 492.81,
+   "dur": 4.81,
+   "speech": "改成 k1 加两倍 k2，加两倍 k3 加 k4。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 497.81,
+   "dur": 2.77,
+   "speech": "比值变成十六点八九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 500.76,
+   "dur": 2.01,
+   "speech": "理论是十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 502.95,
+   "dur": 2.99,
+   "speech": "第三个坑，在矩阵指数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 506.12,
+   "dur": 3.18,
+   "speech": "scaling 加 squaring 的泰勒项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 509.48,
+   "dur": 3.47,
+   "speech": "除以固定 n，而不是当前阶 k。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 513.13,
+   "dur": 2.92,
+   "speech": "二乘二的例子上就偏了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 516.23,
+   "dur": 3.45,
+   "speech": "改成除以 k 之后，对上解析解。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 519.85,
+   "dur": 2.65,
+   "speech": "第四个坑，在 PIT。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 522.69,
+   "dur": 3.81,
+   "speech": "均匀分布取 Φ 逆，端点会发散。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 526.67,
+   "dur": 3.01,
+   "speech": "u 等于零和一，都不能碰。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 529.87,
+   "dur": 5.37,
+   "speech": "裁到 1e-6 到 1 减 1e-6。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 535.41,
+   "dur": 2.8,
+   "speech": "相关矩阵必须加抖动。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 538.39,
+   "dur": 3.06,
+   "speech": "不加，Cholesky 直接崩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 541.63,
+   "dur": 2.85,
+   "speech": "崩出来是 NaN，不是报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 544.66,
+   "dur": 2.68,
+   "speech": "四个坑，三种表现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 547.52,
+   "dur": 2.17,
+   "speech": "都是静默错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 549.87,
+   "dur": 2.97,
+   "speech": "所以每条都配了测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 553.02,
+   "dur": 2.92,
+   "speech": "梯度有有限差分对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 556.11,
+   "dur": 2.73,
+   "speech": "RK4 有误差比区间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 559.02,
+   "dur": 2.77,
+   "speech": "矩阵指数有解析解。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 561.97,
+   "dur": 2.82,
+   "speech": "PIT 有 KS 统计量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 564.98,
+   "dur": 2.58,
+   "speech": "时间步也是可复现的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 567.74,
+   "dur": 3.64,
+   "speech": "t 等于一加 floor(u 乘 T 减一)。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 571.56,
+   "dur": 2.7,
+   "speech": "u 来自 seed 加十七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 574.44,
+   "dur": 3.64,
+   "speech": "同一个 seed，t 和 ε 都一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 578.26,
+   "dur": 3.57,
+   "speech": "所以同 seed 损失，逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 582,
+   "dur": 2.8,
+   "speech": "这不是巧合，是设计。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 588.2,
+   "dur": 2.53,
+   "speech": "验证放在第三层。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 590.91,
+   "dur": 3.3,
+   "speech": "二十四个检查点，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 594.4,
+   "dur": 2.2,
+   "speech": "跑了八点七秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 596.77,
+   "dur": 2.15,
+   "speech": "先看 Copula。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 599.1,
+   "dur": 3.76,
+   "speech": "PIT 的 KS 距离，零点零一零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 603.04,
+   "dur": 2.37,
+   "speech": "阈值是零点零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 605.59,
+   "dur": 3.76,
+   "speech": "独立退化，秩相关零点零零三五。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 609.53,
+   "dur": 2.61,
+   "speech": "皮尔逊零点零零六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 612.31,
+   "dur": 2.61,
+   "speech": "闭式值是三分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 615.1,
+   "dur": 3.52,
+   "speech": "计划里那个零点五八三三三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 618.8,
+   "dur": 2.68,
+   "speech": "写成了一条失败断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 621.65,
+   "dur": 3.47,
+   "speech": "抽样来回，误差零点零一四二。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 625.3,
+   "dur": 2.7,
+   "speech": "拟合误差零点零五二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 628.19,
+   "dur": 2.29,
+   "speech": "再看真实面板。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 630.66,
+   "dur": 2.77,
+   "speech": "八乘八的秩相关矩阵。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 633.61,
+   "dur": 2.87,
+   "speech": "白酒三只，亮成一块。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 636.66,
+   "dur": 2.44,
+   "speech": "银行三只，一块。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 639.28,
+   "dur": 2.53,
+   "speech": "指数两只，一块。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 642,
+   "dur": 2.7,
+   "speech": "块结构，肉眼可见。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 644.88,
+   "dur": 2.1,
+   "speech": "然后看扩散。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 647.16,
+   "dur": 3.66,
+   "speech": "前向闭式，一点四一四二一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 651,
+   "dur": 2.2,
+   "speech": "刚好是根号二。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 653.38,
+   "dur": 2.85,
+   "speech": "完美去噪器，损失零。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 656.41,
+   "dur": 2.73,
+   "speech": "零去噪器，损失一。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 659.31,
+   "dur": 4.19,
+   "speech": "同 seed 两次，零点九五八八八三五。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 663.68,
+   "dur": 3.76,
+   "speech": "换 seed，一点一零二五二七五五。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 667.62,
+   "dur": 4.93,
+   "speech": "训练四百步，零点九九八六到零点七六四九。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 672.73,
+   "dur": 3.73,
+   "speech": "二十条 DDIM 路径，全部有限。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 676.65,
+   "dur": 2.27,
+   "speech": "最后看连续流。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 679.1,
+   "dur": 3.93,
+   "speech": "仿射对数行列式，零点六九三一四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 683.2,
+   "dur": 4.6,
+   "speech": "三层流往返误差，二点二二乘十的负十六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 687.98,
+   "dur": 3.59,
+   "speech": "一维高斯积分，一点零零零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 691.75,
+   "dur": 3.64,
+   "speech": "RK4 误差比，十六点八八九。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 695.57,
+   "dur": 3.52,
+   "speech": "主成分解释率，零点七九五三。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 699.27,
+   "dur": 3.78,
+   "speech": "特征值五点一二七和一点二三五。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 703.23,
+   "dur": 3.33,
+   "speech": "密度网格四十一乘四十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 706.74,
+   "dur": 2.25,
+   "speech": "网格全部有限。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 709.16,
+   "dur": 3.01,
+   "speech": "三个模块，三条证据链。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 712.36,
+   "dur": 2.61,
+   "speech": "数据来自同一个面板。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 715.14,
+   "dur": 2.82,
+   "speech": "两千六百五十七个交易日。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 718.14,
+   "dur": 1.98,
+   "speech": "一千个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 720.31,
+   "dur": 3.33,
+   "speech": "三份 evidence JSON，落盘。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 723.81,
+   "dur": 3.13,
+   "speech": "summary 里是二十四项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 727.13,
+   "dur": 2.29,
+   "speech": "每一项都能重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 732.82,
+   "dur": 2.27,
+   "speech": "边界，四条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 735.27,
+   "dur": 2.92,
+   "speech": "第一，没有训练成预测器。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 738.37,
+   "dur": 2.73,
+   "speech": "Copula 用经验边缘。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 741.27,
+   "dur": 2.63,
+   "speech": "扩散只训了四百步。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 744.08,
+   "dur": 2.77,
+   "speech": "连续流是小维度小场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 747.04,
+   "dur": 3.04,
+   "speech": "所以本集不报生成质量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 750.26,
+   "dur": 3.21,
+   "speech": "不报 FID，不报 CRPS。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 753.64,
+   "dur": 3.28,
+   "speech": "第二，DDIM 的二十条路径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 757.1,
+   "dur": 2.97,
+   "speech": "样本标准差六十二点七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 760.25,
+   "dur": 2.7,
+   "speech": "数据标准差二点三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 763.13,
+   "dur": 2.53,
+   "speech": "均值差十二点四六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 765.84,
+   "dur": 3.01,
+   "speech": "标准差比六十四点八七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 769.04,
+   "dur": 3.21,
+   "speech": "这个配置不构成生成声明。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 772.42,
+   "dur": 2.89,
+   "speech": "只验证损失与可复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 775.5,
+   "dur": 3.23,
+   "speech": "第三，行业结构随窗长变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 778.91,
+   "dur": 2.7,
+   "speech": "整段差值零点二九。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 781.79,
+   "dur": 2.75,
+   "speech": "窗口内差值零点一五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 784.72,
+   "dur": 4.53,
+   "speech": "所以行业在哪，不能从单一窗长下结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 789.42,
+   "dur": 2.65,
+   "speech": "相关，也不等于因果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 792.26,
+   "dur": 2.53,
+   "speech": "第四，原文缺口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 794.97,
+   "dur": 2.97,
+   "speech": "书里只有点名，没有公式。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 798.12,
+   "dur": 3.52,
+   "speech": "文献编号，要回 PDF 核。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 801.82,
+   "dur": 3.21,
+   "speech": "计划里的闭式值，也写错了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 805.2,
+   "dur": 3.59,
+   "speech": "我们双登记，画面同时给两个数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 808.97,
+   "dur": 2.63,
+   "speech": "三笔债，写在账上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 811.78,
+   "dur": 2.08,
+   "speech": "算法卡没写。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 814.04,
+   "dur": 2.49,
+   "speech": "demo 子命令没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 816.71,
+   "dur": 2.44,
+   "speech": "端到端训练没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 819.32,
+   "dur": 2.56,
+   "speech": "三笔都记在账上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 822.06,
+   "dur": 2.82,
+   "speech": "但没有影响本集的交付。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 825.06,
+   "dur": 2.97,
+   "speech": "所以这一集，仍算 ready。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 831.43,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 833.71,
+   "dur": 3.35,
+   "speech": "生成式概率预测，都在搬分布。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 837.24,
+   "dur": 4.24,
+   "speech": "Copula 搬边缘，扩散搬噪声，流搬密度。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 841.66,
+   "dur": 4,
+   "speech": "第一条，简单随机源是共同起点。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 845.84,
+   "dur": 3.11,
+   "speech": "第二条，闭式值要自己验。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 849.13,
+   "dur": 3.85,
+   "speech": "书里的零点五八三三三三，是错的。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 853.16,
+   "dur": 2.56,
+   "speech": "正确值是三分之一。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 855.9,
+   "dur": 3.81,
+   "speech": "第三条，静默错误比崩溃更贵。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 859.89,
+   "dur": 3.42,
+   "speech": "转置的梯度，除以错的泰勒项。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 863.49,
+   "dur": 2.15,
+   "speech": "都写得像对的。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 865.82,
+   "dur": 3.13,
+   "speech": "下一集，异常检测的地基。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 869.13,
+   "dur": 2.85,
+   "speech": "窗口，指标，评分。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 872.16,
+   "dur": 2.99,
+   "speech": "同一组输出，三种口径。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 875.33,
+   "dur": 2.73,
+   "speech": "F1 的排序会翻转。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 878.23,
+   "dur": 2.58,
+   "speech": "第 29 集，完。"
+  }
+ ]
+}
