@@ -30,7 +30,10 @@
 - `narration`：入股的 `assets/audio/narration.wav`，或 `null`（静音片）。TTS 中间件在
   `assets/audio/clips/`，永不入库。
 - `delivery`：交付目录。`*.mp4` 不入库，`*.srt / *.chapters.txt / *.ffmeta.txt / cover.png /
-  report.json` 入库（体积小、可审计）。
+  report.json` 入库（体积小、可审计）。**出片后必须把引擎 `out/<id>/` 里的全部产物搬回这里**：
+  成片 mp4、`programme_unnorm.mp4`、`raw_video.mp4`、`mix.wav`、`score.wav`、`score.meta.json`、
+  `report.json`、`scenes/`、`stills/`。引擎仓 `out/<id>/` 只是临时工作区，搬完即删，不得留存
+  片名相关产物（§0：引擎不知道任何片名）。漏搬 = 该集未交付。
 - `status`：`draft → ready → published`（`retired` 为下架）。`published` 必须有 `bili.bv`。
 
 ## 2. 路径与命名空间

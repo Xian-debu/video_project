@@ -371,3 +371,11 @@
 - 返工: 静帧复核 37 帧（首轮全渲 → 修 12 页 → 重渲 9 帧：382/5769/7135/8529/3876/5228/13855/15720/20979）；TTS 一轮 240 条（narration 874.08 s）；make 两轮（首轮派生检查失败 → 修后第二轮 PASS）；封面预检两轮（默认 180 带字幕 → 1935）
 - 偏差: dump 估算 878.96 s → 实测 874.08 s（−0.55%）；240 条旁白；证据 41 条（数据 7 / CRPS 11 / 覆盖率 7 / ELBO 9 / 真实 7），断言 38，套件 82、总断言 1,097
 - 备注: ch03 第七集（tsint 全系列第 33 部成片）；下一步 E24 `chan-mix-itrans-graph`。E23 冻结口径见 HANDOFF-EVENING §5 末。算法/证据阶段的两处硬伤：VAE 的 `dlv` 漏 `dz`（W1/b1/Wlv/blv 偏 3–30%，1 维黄金值 dL/dblv=0.067848）；12 GB OOM（惰性 thunk 累积，exit 137）用 forceVec/forceW 修掉，修后 80 s 跑完、常驻内存平稳。CRPS 采样估计的 0.56419/S 偏差用 1000 个种子的均值报告（单种子 S=10 可低到 0.2225，低于闭式真值）。
+
+## 归档修复 E24–E30 — 2026-11-01 傍晚
+
+- 问题: E24 起交付只把 cover/srt/chapters 拷回 pack `delivery/`，成片 mp4、`programme_unnorm.mp4`、`raw_video.mp4`、`mix.wav`、`score.wav`、`score.meta.json`、`report.json`、`scenes/`、`stills/` 一直留在引擎 `out/tsint-<N>/`（E24–E30 共 7 集、约 2.9 GB），违反 §0「引擎不知道任何片名」与交付合同。
+- 修复: 逐集把 `out/tsint-<N>/*` 搬回 `series/tsint/episodes/<dir>/delivery/`（同名文件先 sha256 比对，相同才删源；不同名/不同大小停下人工判）；搬空后删 `out/tsint-<N>/`。E01–E23 的 delivery 已完整（14 项含 `.gitkeep`），作为基准。
+- E25 另清: 引擎 publish 曾用长名 `tsint-25-rnn-recurrence-vs-segments.{srt,chapters.txt,chapters.ffmeta.txt}`，与交付短名 `tsint-25.*` 内容逐字节相同；删长名三件，避免 `git status` 长期脏。
+- 约束落地: `CONVENTIONS.md` §1 delivery 条款补写「出片后必须搬回全部产物，`out/<id>/` 临时、搬完即删」；此后每集 make 结束后立即执行归档，再写 plan Delivery。
+- 影响: 引擎 `out/` 从 7.1 GB 降到 4.3 GB，且不再有任何 `tsint-*` 目录；`git status` 干净。
