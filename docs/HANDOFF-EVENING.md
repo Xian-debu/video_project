@@ -25,11 +25,11 @@
 允许把指令写入三仓规划并建 goal 防断。执行时沿用本文件 §4 的 12 步流水线与 §5 的冻结口径：
 仍只到 `ready`、不发布 B 站、不改引擎、score 复用 `out/e04-score-loop-48k.wav`。
 
-## 2. 状态（2026-11-02 03:00 实测）
+## 2. 状态（2026-11-02 04:45 实测）
 
-- 成片 **47 / 74**：E01–E37、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 119 个模块文件（ch02 37 / ch03 39 / ch04 20 / ch08 12 / ch09 11），**119 组测试套件 / 1,621 条断言**全绿。
-- 四仓 HEAD（E37 交付后）：video_project `8dbc01d`（ep37 内容 `b4f9f97` 是 report 钉住的 content commit，交付 `63b6788`、docs `8dbc01d`；本行 pins 的提交紧随其后）、ts-base `41f5879`（算法 + 证据 + 清单）、ts-admin `591f2f5`（ep37 导出脚本）、
+- 成片 **48 / 74**：E01–E38、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 122 个模块文件（ch02 37 / ch03 39 / ch04 23 / ch08 12 / ch09 11），**122 组测试套件 / 1,645 条断言**全绿。
+- 四仓 HEAD（E38 交付后）：video_project `cfa26a2`（ep38 内容 `817911b` 是 report 钉住的 content commit，交付 `cfa26a2`、docs 紧随其后）、ts-base `beb0a57`（算法 `1bae41d` + 证据 + 清单）、ts-admin `d1cce83`（ep38 导出脚本）、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
   必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
@@ -74,13 +74,14 @@
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E38 `ad-graph-contrastive`**（ch04 第 9 集：图上的异常——增强、对比损失与 TopK 邻接，runtime target 20 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，E38 不必重渲长床）。
+- 下一步入口：**E39 `ad-classic-arima-matrixprofile`**（ch04 第 10 集：经典基线——ARIMA 残差与矩阵轮廓，runtime target 20 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，不必重渲长床）。
 
 ## 3. 授权（增量自授权清单）
 
 本会话新增 **A5**（见 `SELF-AUTH.md`）：按用户 2026-10-30 晚指令，**恢复全系列生产**，
 无人值守逐集推进；仍未发布 B 站、仍只到 `ready`；每集验证后提交，提交说明附本文件与 A5 引用。
-E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A21），提交 body 同时引用对应条目。
+E05 起逐集增量授权记在 `ts-base/SELF-AUTH.md`（A12–A21），提交 body 同时引用对应条目；
+E33 起算法侧的授权增量改记在 `video_project/SELF-AUTH.md`（A30–A35，E33–E38），ts-base 的账停在 A74（E32），两边不重复记。
 每个仓的每次提交都在 commit body 末尾带一行：
 
 ```
@@ -121,10 +122,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 29 集）
+## 5. 排期（production_order 剩余 28 集）
 
-E01–E37 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E37（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 / 19.36 min）。按 `production_order` 继续：
-**E37 ad-gmm-vae-mixture-prior 已交付；下一集 E38 ad-graph-contrastive** → … → E64 llm-side-adapters。
+E01–E38 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E38（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 / 19.36 / 18.12 min）。按 `production_order` 继续：
+**E38 ad-graph-contrastive 已交付；下一集 E39 ad-classic-arima-matrixprofile** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -367,6 +368,12 @@ VAE：ELBO = ½‖x−x̂‖² + KL，KL 手算 ½(1+4−1−log 4) = **1.306852
 - 联合训练（EM + 梯度）在 2,032 参数的小模型上一步就塌：不加正则平均对数密度从 −0.5252 跳到 18.108（协方差被压到零），加正则也只到 −0.5261；主线改「冻结编码器 + 在潜码上跑 EM 六十步」并在证据里同时保留联合训练作为「能跑、学不到」的诊断。k-means 起点是必须的：对称初始化会把两个分量并到全局均值。
 - 手写线性代数必须用有限差分对账，且**相对 1e-4 + 绝对 1e-7** 双阈值：E37 的 `backSolve` 把解向量整条反转，只有逐维梯度对账能抓到（维度 0/2 的值互换、维度 1 恰好居中）；`cholInvQuad` 写成 `|Σ⁻¹b|²` 而不是 `bᵀΣ⁻¹b` 则让 EM 整体塌缩，单测全绿也看不出来。
 - K=1 等价的「逐位一致」只能走冻结标准正态路径（解析 KL）；一般 K 的 ELBO 用 MC KL，与上一集 VAE 只在期望意义相等 —— 这条偏差写进 SELF-AUTH 与画面，不要声称逐位一致。
+- `PairBar` 的 `height` 是**两行合计**：E38 传 16/18 时每行 8/9 px，20 px 的条与 ~15 px 的标签互相压住，静帧上两行文字叠成一团；两行对照用 ≥ 64，E38 最终 84。这类轻量重叠 still lint 不报，必须全尺寸看图。
+- **make 不带 `--score` 会现渲一份和成片等长的分数床**：E38 的 `render_music.mjs` 单核 100%、1,088 s 跑了 26 分钟没出字节，只能中止；每集一律 `--score=out/e04-score-loop-48k.wav`。`report.json` 的 `scoreReused=false` 不代表没复用——只有 make 自己的 meta-reuse 路径才置 true，`score.meta.json` 的 `source` 才是凭据。
+- 派生数据要在 `.gitignore` **逐模式**登记并验证：E38 的 `**/data/graph.json` 漏了，make 首轮被 content check（dirty）拦下；用 python 的 `str.replace` 改 `.gitignore` 曾静默失败（模式没写进去），append 后必须 `git check-ignore -v <path>` 确认。
+- `film.json` 的 `assetsStatus` 只认 `complete|incomplete`：E38 写成 `pending` 让 `status.mjs` 全仓 errors、整张状态表退回旧值；且 `status.mjs --md` 只打印，更新 `STATUS.md` 必须 `node tools/status.mjs --md > STATUS.md`。
+- 名单类 `Row` 不要往姓名列塞长串：E38 数据页把四只票名写进 name 列，被折成「泸州老 / 窖」「今世 / 缘」「重庆 / 啤酒」；改成「分组 + 只数」在值列、票名进 note 列。`names()` 这类 helper 用完即删，避免 lint 抓 unused。
+- 证据读数三类坑先自查：`V.maximum (V.indexed v)` 先比索引（argmax 恒 99）、`evaluate` 只 force 到 WHNF（计时恒 0.0，要 `mapM_ evaluate` 每个 Double）、InfoNCE 断言把方向写反（损失应随 τ 变小而变小）；数值类证据先全跑一遍再拿读数写画面。
 ## 9. 断线恢复（60 秒）
 
 ```bash

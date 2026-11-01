@@ -392,3 +392,15 @@
 - 返工: 静帧复核三轮（26 帧 → 改 6 页 → 全量重渲仍 lint 失败 → 改 spread → 三轮 make PASS）；TTS 两轮（296 条，9 条重录后重测 1,161.87 s）
 - 偏差: 书没给 w 的推断网络 → 两段式（冻结编码器 + 潜码 EM）为主、联合训练只当诊断；「逐位一致」只在冻结标准正态 K=1 路径成立（解析 KL），一般 K 的 ELBO 用 MC KL，与上一集 VAE 只在期望意义相等（写进 SELF-AUTH A34）；分数 −log Σπ_k p(x|z,w=k) 是 p.102 判据的口语化、非书公式；K 固定 4 未学习
 - 备注: ch04 第八集（tsint 全系列第 47 部成片）；实测无提升：prior1 F1 0.2756（R 0.3947 / 报警 31.57%）vs mix4 0.2918（R 0.9023 / 报警 85.93%）；漂移窗最小分量 NLL 5.535 低于正常窗 5.968 → 混合把趋势收编成「又一个正常模式」；2020-02-01..04-30 疫情段 mix 5.12 vs prior 9.88、两者均 0% 报警（机制方向对）。下一步 E38 `ad-graph-contrastive`。
+## E38 ad-graph-contrastive — 2026-11-02 凌晨
+
+- ts-base: `1bae41d`（算法 Ch04/GNN.hs 229 行 / Augment.hs 133 行 / InfoNCE.hs 50 行 + 3 套件 21 断言）+ `beb0a57`（证据 ch4-graph 48/48，156.1 s）；套件 122，总断言 1,645
+- ts-admin: `d1cce83`（`inventory/scripts/export_ch04_graph.py`；12 只票（白酒 7 / 啤酒 3 / 其他 2）hfq 日线对齐 2,673 行，max gap 96 天 2015-07-29..2015-11-02；sha256 0a1c77322edc737a…）
+- video_project: `817911b`（pack 源 + 静帧修：PairBar 行高、名单行）+ `cfa26a2`（delivery：cover.png / tsint-38.srt / chapters / ffmeta）；讲稿 281 行、coverFrame 20
+- 引擎: `a667688`（未变）；score 复用 `out/e04-score-loop-48k.wav`（1560 s 48 kHz，scoreReused false）
+- 成片: 1,087.07 s（18:07.07）/ 32,612 帧 / 8 场 28 页 / −15 LUFS / TP −2 dBFS / 281 条旁白（发声 912.4 s，mean 3.25 s）/ 字幕跨度 00:00:01,200→00:18:04,880 / mp4 51,994,244 B / cover.png 65,943 B（帧 20）/ srt 21,000 B / chapters 438 B / ffmeta 817 B
+- 流水线: 23 个 stage 全 ok、8 段 rendered 8（reused 0，tree 6a7cfd19eb0effb8）；mix 48 kHz / 1,088.28 s、peak −1.26 dBFS、RMS −26.64 dBFS、ducked 57.1%（4.5 dB）、musicGain −4.5、fade 1.5/2.5；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.52、gap_full −30.44、gap_audible −33.28、bed_contribution 36.7；flicker mean|d| 0.0135、p99 0.1038、max 9.05、cuts 7（3158/6908/11513/15686/19556/26709/30216）；281 cue 无一换行、最长 28 字（budget 34）、8 章合计 1,087.07 s
+- 卡点: ① make 首轮被内容检查拦（派生 data/graph.json 未 gitignore）→ 根 `.gitignore` 加 `**/data/graph.json`（python replace 静默失败，printf append + `git check-ignore -v` 确认）；② 二轮没带 `--score`，make 现渲 1,088 s 分数（单核 100%、>26 min 无输出）→ 中止，改惯例 `--score=out/e04-score-loop-48k.wav`；③ PairBar 行高 16/18 让两行标签与数值互压（直觉页、验证页）→ 改 84；④ 名单列塞四只票名被折成「泸州老/窖」「今世/缘」→ 改分组 + 只数、票名进备注列；⑤ `film.json` 的 assetsStatus 写成 pending → status.mjs 全仓报错，改 complete；⑥ 证据 app 三个 bug：`V.maximum (V.indexed v)` 先比索引（argmax 恒 99）、`evaluate` 只 force WHNF（elapsed 0.0）、InfoNCE 断言方向反（改成 τ 越小损失越小）
+- 返工: 静帧复核三轮（make 4 帧 + 28 页全量；修 2 页 + 重渲 3 页）；make 三轮 PASS；TTS 一轮 281 条
+- 偏差: 计划判据「图让检测变好」落空：图/无图读数逐位相同（F1 0.1110、P 0.0588、R 1.0000、报警 95.29%、τ 0.9799 vs 0.9729）；结构确实学到（组内精度 0.586 vs 随机 0.379、出度 3.0、对称 53.8%），但干净日中位 1.398 > τ → 两个模型一起退化成「每天报警」；对照期图 100.0% / 无图 74.6% 报警。结论改为「结构学得到、读数接不上」，两条负向断言（余弦非对角必须非零 0.2839、F1 不许为 1）写进检查
+- 备注: ch04 第九集（tsint 全系列第 48 部成片）；证据 48 条（数据 6 / 窗口 4 / 特征 2 / 训练 5 / 邻接 4 / 余弦 3 / 对比 3 / 增强 7 / 注入 4 / 读数 6 / 对照 2 / 切分 1 / 负向 1）48/48、156.1 s；参数 3,844（编码器 1,616 + W_s 256 + W_n 256 + b 16 + 解码器 1,700）；下一步 E39 `ad-classic-arima-matrixprofile`。

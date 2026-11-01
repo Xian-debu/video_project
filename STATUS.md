@@ -53,7 +53,7 @@
 | tsint-35-ad-attention-assoc-discrepancy | 注意力矩阵里的异常：关联差异、两阶段焦点与次邻域遮罩 | ready | - | yes | ok | 11 | - |
 | tsint-36-ad-ae-and-vae-recon | 从重构到概率：AE 与 VAE 的潜空间 | ready | - | yes | ok | 11 | - |
 | tsint-37-ad-gmm-vae-mixture-prior | 混合先验：GMM-VAE 与『多个正常模式』 | ready | - | yes | ok | 11 | - |
-| tsint-38-ad-graph-contrastive | 图上的异常：增强、对比损失与 TopK 邻接 | draft | 1680 | silent | ok | 1 | - |
+| tsint-38-ad-graph-contrastive | 图上的异常：增强、对比损失与 TopK 邻接 | ready | - | yes | ok | 11 | - |
 | tsint-39-ad-classic-arima-matrixprofile | 残差与邻居：ARIMA 残差检测与 Matrix Profile discord | draft | 1560 | silent | ok | 1 | - |
 | tsint-40-ad-adversarial-dual-decoder | 两个解码器，一个说谎：USAD 对抗、DAGMM 能量与多 AE 中位数 | draft | 1800 | silent | ok | 1 | - |
 | tsint-41-ad-sparse-prior-dual-attention | 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力 | draft | 1740 | silent | ok | 1 | - |
