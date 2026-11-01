@@ -25,11 +25,11 @@
 允许把指令写入三仓规划并建 goal 防断。执行时沿用本文件 §4 的 12 步流水线与 §5 的冻结口径：
 仍只到 `ready`、不发布 B 站、不改引擎、score 复用 `out/e04-score-loop-48k.wav`。
 
-## 2. 状态（2026-11-01 23:55 实测）
+## 2. 状态（2026-11-02 01:30 实测）
 
-- 成片 **45 / 74**：E01–E35、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 116 个模块文件（ch02 37 / ch03 39 / ch04 17 / ch08 12 / ch09 11），**116 组测试套件 / 1,573 条断言**全绿。
-- 四仓 HEAD（E35 交付后）：video_project `5f3a0732`（ep35 内容 + 交付导出，publish report 钉住的 content commit）+ 一个 docs 提交紧随其后、ts-base `882ab6a`（证据 ec2f014 + 清单）、ts-admin `c6f682b`、
+- 成片 **46 / 74**：E01–E36、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 118 个模块文件（ch02 37 / ch03 39 / ch04 19 / ch08 12 / ch09 11），**118 组测试套件 / 1,602 条断言**全绿。
+- 四仓 HEAD（E36 交付后）：video_project `e0503e5`（ep36 内容，publish report 钉住的 content commit）+ 一个交付/docs 提交紧随其后、ts-base `b815f6b`（证据 b815f6b + 清单）、ts-admin `97f7091`、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
   必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
@@ -67,12 +67,13 @@
 - E33 成片 `1,009.70 s / 30,291 帧 / 8 场 23 页 / −15 LUFS / TP −2 dBFS`，319 cue、8 章、封面 20。
 - E34 成片 `1,128.07 s / 33,842 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，372 cue、8 章、封面 20。
 - E35 成片 `1,342.67 s / 40,280 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，314 cue、8 章、封面 20。
+- E36 成片 `1,250.97 s / 37,529 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，278 cue、8 章、封面 20。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E35 `ad-attention-assoc-discrepancy`**（ch04 第 6 集：关联差异、两阶段焦点与次邻域遮罩，runtime target 30 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，E35 不必重渲长床）。
+- 下一步入口：**E37 `ad-gmm-vae-mixture-prior`**（ch04 第 8 集：混合先验 GMM-VAE 与多个正常模式，runtime target 20 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，E37 不必重渲长床）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -119,10 +120,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 31 集）
+## 5. 排期（production_order 剩余 30 集）
 
-E01–E35 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E35（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 min）。按 `production_order` 继续：
-**E35 ad-attention-assoc-discrepancy 已交付；下一集 E36 ad-ae-and-vae-recon** → … → E64 llm-side-adapters。
+E01–E36 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E36（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 min）。按 `production_order` 继续：
+**E36 ad-ae-and-vae-recon 已交付；下一集 E37 ad-gmm-vae-mixture-prior** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -353,6 +354,11 @@ VAE：ELBO = ½‖x−x̂‖² + KL，KL 手算 ½(1+4−1−log 4) = **1.306852
 - 画面读数必须回头改**旁白与计划**再重录：E34 学习率千分之五→千分之一、裁剪范数一→五、注入 1–5 点→1–3 点、相位窗「均值方差都正常」→「分数只抬了一点」，四处改完删旧 clip 重 TTS、重测时间轴（1,128.07 s）并整集重渲；只改画面不改讲稿会让旁白与证据对不上。
 - 图注里的尺寸是**读数**，必须回数据文件核对：E35 热力图数据是 40×40 降采样（窗长 100 点），初稿图注写成「100 × 100 注意力」，静帧复核比对 `data/attn.json` 的 `heat.dim` 才抓到；量纲类图注（点数 × 窗长、降采样倍数、log 压缩）一律以 data 文件为准。
 - 曲线读入先查结构：E35 的 PR 曲线是 `{q, p, r}` 记录，`shared.tsx` 的 `prOf` 早期按三元组解构，render 直接崩 `object is not iterable (cannot read property Symbol(Symbol.iterator))`；改成 `points.map((d) => ({ r: d.r, p: d.p }))`。但曲线只落在 recall 0.85–1.0、图上只见右缘细线是**真实读数**，不扩域、不美化。
+- **新集复用旧集场景时必须逐页换掉旧集的坑**：E36 的 verification 页整段沿用了 E35 的三坑卡（温度尺度 / 漏了回传 / 曲线倒序），静帧复核才发现旁白讲的是本集的注入绝对值 / 注入窗重叠 / 梯度相对误差；每集改完 scenes 先对照本集 evidence 的检查项与坑逐页读一遍，再进 make。
+- 负向检查的 detail 会很长，不能塞进固定宽度 `Row`：E36 的「报警率 70.26%；测试期干净点中位 0.607 vs 训练阈值 0.420」（715 px）与「注入窗半径 2.546 vs 正常窗 2.637…」（923 px）在 still lint 里溢出 271 px / 18 px；改成可换行的 `div`（fontSize FT.body、lineHeight 1.5），日期类长值（2015-07-29..2015-11-02）改用 `KV` 的 note 行。
+- **delivery/stills 不会在 make 轮次间清空**：E36 复核时直接用 `ls frame_*.png` 拼 contact sheet，混进前几轮的旧帧，页与帧的对应关系看起来「错位」。拼图必须只取本次 `--still-frames` 清单里的 29 个帧号（或先清目录）。
+- 证据脚本里的注入必须写成**相对偏移**、窗口必须**两两不重叠**：E36 曾把振幅按绝对值写进对数价格面板（收盘价被换掉），又因拒绝采样让 20 段并成 18 段；改成等距取窗后才回到 20 段。梯度检查除相对误差外要加**绝对下限**（1e-9），否则近零梯度会报 1.4e-5 的假警。
+- VAE/AE 这类小模型全批量训练会欠拟合到「解码器输出≈0、分数恒定」：E36 240 轮只有 240 次更新（VAE 分数恒 1.0134），改逐窗 SGD（385 窗/轮、固定顺序、每窗 L2 裁剪）后才收敛；报 F1 之前先看分数分布有没有变化。
 
 ## 9. 断线恢复（60 秒）
 
