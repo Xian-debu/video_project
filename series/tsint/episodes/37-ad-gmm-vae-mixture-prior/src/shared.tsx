@@ -21,7 +21,7 @@ export type KindRead = { n: number; hit: number };
 export type GmmData = {
   meta: {
     episode: number; slug: string; chapter: string; book: string; runtimeTarget: number;
-    title: string; subtitle: string; checks: string; elapsedSec: number;
+    title: string; subtitle: string; checks: string; checkCount: number; elapsedSec: number;
     tests: { suites: number; asserts: number; newSuites: number; newAsserts: number };
     commits: { units: string; evidence: string; data: string };
     repro: string; generatedAt: string;
@@ -82,8 +82,6 @@ export type GmmData = {
   modules: { name: string; lines: number; cases: number }[];
   next: { slug: string; title: string };
   progress: { delivered: number; total: number };
-  nPass: number;
-  nChecks: number;
 };
 
 export const M = gmmJson as unknown as GmmData;

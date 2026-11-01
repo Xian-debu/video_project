@@ -12,7 +12,7 @@ export const SProblem: React.FC = () => {
         {/* 页一：分数只是一个离心距离 */}
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 288, width: 980 }}>
-            <Formula size={58} color={C.cyan} note="单高斯先验的负对数密度，等于二分之一乘潜变量平方和，加常数">
+            <Formula size={44} color={C.cyan} note="单高斯先验的负对数密度，等于二分之一乘潜变量平方和，加常数">
               score(z) = −log N(z; 0, I) = ½‖z‖² + C
             </Formula>
             <Body style={{ marginTop: 24, width: 940 }}>

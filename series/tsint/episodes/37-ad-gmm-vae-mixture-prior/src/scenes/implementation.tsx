@@ -16,7 +16,7 @@ export const SImplementation: React.FC = () => {
             <Card label="模块 · Ch04 / GMMVAE.hs" accent={C.violet}>
               <Row name="行数" value={mod.lines + " 行"} note={mod.cases + " 条单元测试，全部纯函数"} width={930} />
               <Row name="复用" value="上一集的编码器与两个头" note="新增的是先验那一侧" width={930} />
-              <Row name="新增" value="混合密度 · 分量后验 · EM 一步 · k-means 起点" note="梯度手写" width={930} />
+              <Row name="新增" value="混合密度 · 分量后验 · EM" width={930} />
               <Row name="训练循环" value="每二十轮一次 EM" note="六十轮后启用 k-means 重新初始化" width={930} />
             </Card>
             <Body style={{ marginTop: 20, width: 930 }}>
@@ -63,7 +63,7 @@ export const SImplementation: React.FC = () => {
               yFmt={(v) => v.toFixed(0)}
             />
             <Card label="两段式 · 冻结编码器再 EM 六十步" accent={C.violet} style={{ marginTop: 14 }}>
-              <Row name="权重轨迹" value={"均分 → " + M.fit.pi.map((p) => p.toFixed(2)).join(" / ")} note="一直是一个主分量" width={730} />
+              <Row name="权重轨迹" value={M.fit.pi.map((p) => p.toFixed(2)).join(" / ")} width={730} />
               <Row name="最大分量" value={M.fit.piMax.toFixed(3)} note="真实数据没有四个清晰模式" width={730} />
             </Card>
           </div>

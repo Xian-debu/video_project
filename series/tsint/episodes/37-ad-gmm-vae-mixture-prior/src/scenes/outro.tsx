@@ -24,8 +24,8 @@ export const SOutro: React.FC = () => {
             </Body>
           </div>
           <div style={{ position: "absolute", left: 1180, top: 300, width: 660 }}>
-            <Card label="书的判据" accent={C.amber}>
-              <Row name="任何分量都解释不了" value="才算异常" note="需要一个清晰边界" width={610} />
+            <Card label="判据与真实数据" accent={C.amber}>
+              <Row name="书的判据" value="任何分量都解释不了" note="才算异常" width={610} />
               <Row name="真实数据" value="边界很模糊" note="趋势段被某个分量收下" width={610} />
             </Card>
             <div style={{ marginTop: 16 }}>
@@ -45,8 +45,10 @@ export const SOutro: React.FC = () => {
               title="一条命令重跑全部数字"
               width={1000}
               lines={[
-                { t: M.meta.repro, hi: true },
-                { t: "  // 证据在 ts-base 的 inventory 下" , dim: true},
+                { t: "cabal run -v0 tsbase -- evidence-ch04-gmm-vae", hi: true },
+                { t: "  --data data/episodes/37-ad-gmm-vae-mixture-prior" },
+                { t: "  --out  data/episodes/37-ad-gmm-vae-mixture-prior" },
+                { t: "  --evidence inventory/evidence", dim: true },
                 { t: "  // 数据与清单在数据目录，导出脚本在 ts-admin", dim: true },
               ]}
             />
@@ -55,7 +57,7 @@ export const SOutro: React.FC = () => {
             <Card label="这一集的账本" accent={C.violet}>
               <Row name="新增测试" value={M.meta.tests.newAsserts + " 条"} note={"GMMVAE.hs " + M.modules[0].cases + " 条"} width={590} />
               <Row name="仓库合计" value={M.meta.tests.asserts.toLocaleString("en-US") + " 条"} note={M.meta.tests.suites + " 个套件"} width={590} />
-              <Row name="证据检查" value={M.nPass + " / " + M.nChecks} note={M.meta.elapsedSec.toFixed(1) + " 秒"} width={590} />
+              <Row name="证据检查" value={M.meta.checks} note={M.meta.elapsedSec.toFixed(1) + " 秒"} width={590} />
               <Row name="片长" value={M.progress.delivered + " / " + M.progress.total + " 集"} note={"本集第 " + M.meta.episode + " 集"} width={590} />
             </Card>
             <K style={{ display: "block", marginTop: 18 }}>这一集到这里，我们下次见。</K>

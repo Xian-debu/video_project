@@ -47,6 +47,8 @@ groups = [
     {"label": "跨票", "n": 1},
     {"label": "计数", "n": 1},
 ]
+# 证据生成器只有在 47/47 全过时才写出 JSON，所以每组的通过数就是它的条数。
+groups = [{**g, "pass": g["n"]} for g in groups]
 
 out = {
   "meta": {

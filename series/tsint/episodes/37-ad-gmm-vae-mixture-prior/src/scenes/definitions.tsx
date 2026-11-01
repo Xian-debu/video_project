@@ -18,7 +18,7 @@ export const SDefinitions: React.FC = () => {
             <Body style={{ marginTop: 14, width: 940 }}>
               权重非负，和为一。每个分量有自己的均值与协方差。
             </Body>
-            <Formula size={54} color={C.violet} note="式(4.27) · 重构项减去对混合先验的 KL" style={{ marginTop: 26 }}>
+            <Formula size={40} color={C.violet} note="式(4.27) · 重构项减去对混合先验的 KL" style={{ marginTop: 26 }}>
               L = E<sub>q(z|x)</sub>[log p(x|z)] − KL(q(z|x) ‖ p(z))
             </Formula>
           </div>
@@ -49,14 +49,14 @@ export const SDefinitions: React.FC = () => {
               片子主要报两段式。分数写成负的混合对数密度——这是 p.102 判据的口语化，不是书上的公式，屏幕会标「非书中」。
             </Body>
           </div>
-          <div style={{ position: "absolute", left: 1180, top: 288, width: 660 }}>
+          <div style={{ position: "absolute", left: 1180, top: 288, width: 700 }}>
             <Chip color={C.coral}>非书中 · 分数定义</Chip>
-            <Formula size={40} color={C.ink} note="p.102 判据的口语化：任何分量都解释不了" style={{ marginTop: 16 }}>
+            <Formula size={34} color={C.ink} note="p.102 判据的口语化：任何分量都解释不了" style={{ marginTop: 16 }}>
               score(x) = −log Σ<sub>k</sub> π<sub>k</sub> p(x | z, w=k)
             </Formula>
             <Card label="对 K=1 的要求" accent={C.cyan} style={{ marginTop: 24 }}>
-              <Row name="退化" value="退回式(4.23)" note="一个分量、权重一、标准正态" width={600} />
-              <Row name="判据" value="逐位相同" note="不是近似，是相等" width={600} />
+              <Row name="退化" value="退回式(4.23)" note="一个分量、权重一、标准正态" width={650} />
+              <Row name="判据" value="逐位相同" note="不是近似，是相等" width={650} />
             </Card>
           </div>
         </AbsoluteFill>
@@ -75,11 +75,11 @@ export const SDefinitions: React.FC = () => {
               都很小。正因为小，每个数都能手核，也才敢把它当证据。
             </Body>
           </div>
-          <div style={{ position: "absolute", left: 1180, top: 288, width: 660 }}>
+          <div style={{ position: "absolute", left: 1180, top: 288, width: 700 }}>
             <Card label="合成数据先验一次 · 两团各两百点" accent={C.violet}>
               <Stat label="中心恢复误差" value={M.blob.err.toFixed(3)} sub={"两团中心隔 " + M.blob.sep.toFixed(2) + " 个标准差"} valueSize={48} valueColor={C.violet} />
-              <Row name="权重" value={M.blob.pi.map((p) => p.toFixed(2)).join(" / ")} note="K=2，从 k-means 起点 EM 六十步" width={600} />
-              <Row name="后验置信点" value={M.blob.confident + "%"} note="最大后验超过 0.9 的点" width={600} />
+              <Row name="权重" value={M.blob.pi.map((p) => p.toFixed(2)).join(" / ")} note="K=2 · 六十步" width={650} />
+              <Row name="后验置信点" value={M.blob.confident + "%"} note="最大后验超过 0.9 的点" width={650} />
             </Card>
             <div style={{ marginTop: 16 }}>
               <Verdict ok label="EM 本身没写错" />

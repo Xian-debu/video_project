@@ -46,8 +46,9 @@ export const SIntuition: React.FC = () => {
           </div>
           <div style={{ position: "absolute", left: 1150, top: 288, width: 700 }}>
             <Card label="四个分量 · 四个中心" accent={C.violet}>
-              <Row name="权重" value={M.latent.pi.map((p) => p.toFixed(2)).join(" / ")} note="最大一个占六成四" width={640} />
-              <Row name="中心" value={M.latent.centers.map((p) => "(" + p[0].toFixed(1) + "," + p[1].toFixed(1) + ")").join(" ")} note="不是一个均分市场" width={640} />
+              <Row name="权重" value={M.latent.pi.map((p) => p.toFixed(2)).join(" / ")} width={640} />
+              <Row name="中心 1 / 2" value={M.latent.centers.slice(0, 2).map((p) => "(" + p[0].toFixed(2) + ", " + p[1].toFixed(2) + ")").join("  ")} width={640} />
+              <Row name="中心 3 / 4" value={M.latent.centers.slice(2).map((p) => "(" + p[0].toFixed(2) + ", " + p[1].toFixed(2) + ")").join("  ")} width={640} />
             </Card>
             <Card label="半径中位数 · 离分量中心的距离" accent={C.cyan} style={{ marginTop: 18 }}>
               <Row name="正常窗" value={M.latent.normMedian.toFixed(3)} note={M.latent.normal.length + " 点"} width={640} />
@@ -55,6 +56,9 @@ export const SIntuition: React.FC = () => {
               <Row name="尖峰" value={M.latent.spikeMedian.toFixed(3)} note="稍远，但没飞出去" color={C.coral} width={640} />
               <Row name="斜坡" value={M.latent.driftMedian.toFixed(3)} note="比正常更靠近中心" color={C.amber} width={640} />
             </Card>
+            <Body size={FT.small} color={C.inkDim} style={{ marginTop: 16, width: 660, lineHeight: 1.65 }}>
+              四个中心几乎排在一条对角线上：真实潜空间里并没有四个清晰的模式，权重也不均分，最大的一个占六成四。
+            </Body>
           </div>
         </AbsoluteFill>
 
@@ -67,7 +71,7 @@ export const SIntuition: React.FC = () => {
               <Row name="尖峰窗" value={arr(M.components.spikeMean)} note={"min 中位 " + M.components.spikeMinMedian.toFixed(3)} color={C.coral} width={950} />
             </Card>
             <Body style={{ marginTop: 20, width: 950 }}>
-              每个窗取四个分量里最小的那个：最相信它的分量有多不信它。漂移窗的最小值比正常窗还低——趋势段被某个分量完整解释了。
+              每个窗取四个分量里最小的那个，也就是最相信它的分量，用它有多不信它当分数。漂移窗的最小值比正常窗还低：趋势段被某个分量完整解释了。
             </Body>
           </div>
           <div style={{ position: "absolute", left: 1180, top: 288, width: 660 }}>
