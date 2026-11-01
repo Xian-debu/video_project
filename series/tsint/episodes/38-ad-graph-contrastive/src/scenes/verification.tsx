@@ -79,7 +79,7 @@ export const SVerification: React.FC = () => {
               b={{ label: "无图 · F1", value: U("flat").f1, text: U("flat").f1.toFixed(4) }}
               width={960}
               max={0.2}
-              height={18}
+              height={84}
               colorA={C.cyan}
               colorB={C.inkFaint}
             />

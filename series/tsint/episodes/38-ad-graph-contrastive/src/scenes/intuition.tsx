@@ -71,7 +71,7 @@ export const SIntuition: React.FC = () => {
               b={{ label: "随机基线", value: M.gnn.baseline, text: M.gnn.baseline.toFixed(4) }}
               width={640}
               max={1}
-              height={16}
+              height={84}
               at={0}
             />
             <Body size={FT.body} color={C.inkDim} style={{ marginTop: 20, width: 660, lineHeight: 1.65 }}>

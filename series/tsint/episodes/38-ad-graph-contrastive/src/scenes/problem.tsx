@@ -1,11 +1,10 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, M, pagesOf, Pages, Scene, SceneHead, Card, Row, Body, Verdict, Chip, K, Formula, fmtInt, names } from "../shared";
+import { PAD, M, pagesOf, Pages, Scene, SceneHead, Card, Row, Body, Verdict, Chip, K, Formula, fmtInt } from "../shared";
 
 export const SProblem: React.FC = () => {
   const at = pagesOf("problem");
-  const n = names();
   return (
     <Scene id="problem">
       <SceneHead id="problem" />
@@ -63,10 +62,10 @@ export const SProblem: React.FC = () => {
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 288, width: 1010 }}>
             <Card label="数据 · 十二只票" accent={C.cyan}>
-              <Row name={n.slice(0, 4).join(" · ")} value="白酒四只" note={M.data.subgroupNames[0] + " 组共 7 只"} width={960} />
-              <Row name={n.slice(4, 7).join(" · ")} value="白酒三只" note="与上一组同行业，不同价位段" width={960} />
-              <Row name={n.slice(7, 10).join(" · ")} value="啤酒三只" note={M.data.subgroupNames[1] + " 组"} width={960} />
-              <Row name={n.slice(10).join(" · ")} value="其他两只" note={M.data.subgroupNames[2] + " 组"} width={960} />
+              <Row name="白酒 · 龙头" value="4 只" note="贵州茅台、五粮液、泸州老窖、山西汾酒" width={960} />
+              <Row name="白酒 · 次高端" value="3 只" note="洋河股份、古井贡酒、今世缘" width={960} />
+              <Row name="啤酒" value="3 只" note="青岛啤酒、燕京啤酒、重庆啤酒" width={960} />
+              <Row name="其他" value="2 只" note="海天味业、伊利股份" width={960} />
               <Row name="对齐后" value={fmtInt(M.data.rows) + " 行"} note={M.data.start + " 至 " + M.data.end} width={960} />
               <Row name="最大间隔" value={M.data.maxGap.days + " 天"} note={M.data.maxGap.pair + "，整段缺数据"} color={C.coral} width={960} />
             </Card>
