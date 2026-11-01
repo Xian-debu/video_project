@@ -37,7 +37,7 @@ export const SVerification: React.FC = () => {
               <Row name="尖峰" value={String(M.inject.count) + " 处"} note={M.inject.spike.amp + " · " + M.inject.spike.span} width={590} />
               <Row name="相位" value={String(M.inject.count) + " 处"} note={M.inject.phase.lag + " · " + M.inject.phase.how} width={590} />
               <Row name="占比" value={pctOf(M.inject.rate)} note={"seed " + M.inject.seed} width={590} />
-              <Row name="真值" value={M.inject.truthLevel} note="只改未来窗" width={590} />
+              <Row name="真值" value="窗口级" note={M.inject.truthLevel} width={590} />
             </Card>
             <div style={{ marginTop: 18, display: "flex", gap: 12 }}>
               <Chip color={C.cyan}>F = 1</Chip>

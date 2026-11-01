@@ -92,7 +92,7 @@ export const SProblem: React.FC = () => {
           </div>
           <div style={{ position: "absolute", left: 1180, top: 300, width: 640 }}>
             <Card label="量什么" accent={C.cyan}>
-              <Row name="尖峰" value={M.inject.spike.span} note={M.inject.spike.amp} width={590} />
+              <Row name="尖峰" value={M.inject.spike.amp} note={M.inject.spike.span} width={590} />
               <Row name="相位" value={M.inject.phase.lag} note={M.inject.phase.how} width={590} />
               <Row name="个数" value={M.inject.count + " + " + M.inject.count} note={"占测试窗 " + pctOf(M.inject.rate)} width={590} />
             </Card>
