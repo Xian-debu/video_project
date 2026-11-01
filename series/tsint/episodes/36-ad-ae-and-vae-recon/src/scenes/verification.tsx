@@ -150,11 +150,6 @@ export const SVerification: React.FC = () => {
                 { label: M.units[k].short + " 斜坡", value: M.byKind[k].drift.hit, text: M.byKind[k].drift.hit + " / " + M.byKind[k].drift.n, color: C.cyan, dim: true },
               ])}
             />
-            <Card label="路上踩到的三个坑" accent={C.amber} style={{ marginTop: 15 }}>
-              <Row name="温度尺度" value="F1 归零" note="拿方差量纲去算距离" width={860} />
-              <Row name="漏了回传" value="梯度小两个量级" note="重参数化路径断在采样" width={860} />
-              <Row name="曲线倒序" value="误判成发散" note="日志索引反了，数没问题" width={860} />
-            </Card>
           </div>
         </AbsoluteFill>
 
@@ -180,6 +175,11 @@ export const SVerification: React.FC = () => {
               一条说阈值不迁移：七成干净点被误报，干净点中位高于训练阈值。
               一条说异常没有飞出去：注入窗半径与正常窗之比在 0.8 到 1.2 之间。
             </Body>
+            <Card label="路上踩到的三个坑" accent={C.amber} style={{ marginTop: 18 }}>
+              <Row name="注入绝对值" value="分数失真" note="收盘价被换掉" width={580} />
+              <Row name="注入窗重叠" value="20 段 → 18 段" note="真值被并段" width={580} />
+              <Row name="相对误差" value="近零误报" note="绝对容限 1e-9" width={580} />
+            </Card>
             <Chip color={C.amber} style={{ marginTop: 16 }}>下一集：多个正常模式</Chip>
           </div>
         </AbsoluteFill>
