@@ -1,0 +1,2185 @@
+{
+ "entry": "src/tsint-32-ad-classic-unsupervised/script.ts",
+ "fps": 30,
+ "totalSec": 971,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 106.25
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 106.25,
+   "dur": 126.18
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 232.43,
+   "dur": 150.84
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 383.27,
+   "dur": 129.86
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 513.13,
+   "dur": 143.66
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 656.79,
+   "dur": 159.46
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 816.25,
+   "dur": 115.8
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 932.05,
+   "dur": 38.95
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.01,
+   "speech": "上一集给分数配了尺子。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.39,
+   "dur": 2.32,
+   "speech": "尺子只负责切。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 6.89,
+   "dur": 3.57,
+   "speech": "分数本身从哪来，那是另一回事。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.64,
+   "dur": 2.53,
+   "speech": "如果根本没有标签呢。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.35,
+   "dur": 2.77,
+   "speech": "没有标签，什么叫异常。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.31,
+   "dur": 3.35,
+   "speech": "这一集不学边界，只量几何。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 19.84,
+   "dur": 2.99,
+   "speech": "同一份数据，三种几何。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 23.01,
+   "dur": 3.04,
+   "speech": "距离，密度，随机分割。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 26.22,
+   "dur": 3.28,
+   "speech": "K 均值看谁离簇心远。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 29.68,
+   "dur": 2.8,
+   "speech": "LOF 看谁的邻居稀疏。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 32.66,
+   "dur": 3.33,
+   "speech": "孤立森林看谁被切开得早。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 36.17,
+   "dur": 2.8,
+   "speech": "三种方法都不用真值。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 39.14,
+   "dur": 3.01,
+   "speech": "那怎么知道谁抓得准。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 42.34,
+   "dur": 2.44,
+   "speech": "靠注入，再对答案。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 44.96,
+   "dur": 2.37,
+   "speech": "先把结论放前面。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 47.5,
+   "dur": 3.18,
+   "speech": "尖峰注入下的三个 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 50.86,
+   "dur": 2.2,
+   "speech": "零点五四五五。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 53.24,
+   "dur": 2.2,
+   "speech": "零点三二〇九。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 55.62,
+   "dur": 2.22,
+   "speech": "零点〇八五六。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 58.02,
+   "dur": 3.06,
+   "speech": "同一批异常，同一批数据。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 61.26,
+   "dur": 2.22,
+   "speech": "差距不是一点。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 63.67,
+   "dur": 2.39,
+   "speech": "换一种异常再看。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 66.24,
+   "dur": 3.04,
+   "speech": "形态替换，三个都趴下。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 69.45,
+   "dur": 3.28,
+   "speech": "零点零一，零点零二，零。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 72.91,
+   "dur": 2.51,
+   "speech": "没有最准的无监督。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 75.6,
+   "dur": 3.16,
+   "speech": "只有和异常形状最配的那个。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 78.94,
+   "dur": 2.68,
+   "speech": "数据是八只白酒股。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 81.8,
+   "dur": 2.82,
+   "speech": "九年训练，五年半测试。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 84.8,
+   "dur": 2.46,
+   "speech": "两万零六百个样本。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 87.44,
+   "dur": 2.13,
+   "speech": "一百六十个注入。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 89.75,
+   "dur": 3.23,
+   "speech": "三个模块，二十条新断言。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 93.16,
+   "dur": 2.32,
+   "speech": "三十四个检查点。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 95.66,
+   "dur": 2.56,
+   "speech": "这一集回答一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 98.39,
+   "dur": 3.61,
+   "speech": "没有标签，几何能不能看见异常。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 102.19,
+   "dur": 1.86,
+   "speech": "先看问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 107.45,
+   "dur": 2.56,
+   "speech": "上一集留了一句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 110.19,
+   "dur": 2.53,
+   "speech": "阈值救不了瞎分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 112.9,
+   "dur": 2.27,
+   "speech": "这句话反过来问。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 115.35,
+   "dur": 2.61,
+   "speech": "什么样的分数算不瞎。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 118.14,
+   "dur": 2.92,
+   "speech": "有标签的时候答案简单。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 121.24,
+   "dur": 2.25,
+   "speech": "学一个边界就行。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 123.66,
+   "dur": 2.27,
+   "speech": "现在标签没了。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 126.11,
+   "dur": 3.13,
+   "speech": "异常是什么，得自己定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 129.43,
+   "dur": 2.34,
+   "speech": "定义一，离群。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 131.95,
+   "dur": 3.9,
+   "speech": "大多数点聚在一起，远的就是异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 136.03,
+   "dur": 2.27,
+   "speech": "定义二，密度低。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 138.48,
+   "dur": 3.28,
+   "speech": "邻居少的点，看起来像异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 141.94,
+   "dur": 2.61,
+   "speech": "定义三，容易被孤立。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 144.72,
+   "dur": 4.24,
+   "speech": "随机切几刀就单独成组的，像异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 149.14,
+   "dur": 3.23,
+   "speech": "三种定义对应三种几何。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 152.55,
+   "dur": 3.04,
+   "speech": "距离，密度，随机分割。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 155.77,
+   "dur": 2.75,
+   "speech": "先把比较的口径写死。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 158.7,
+   "dur": 2.13,
+   "speech": "这一集怎么比。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 161.01,
+   "dur": 3.47,
+   "speech": "样本是一只股票的二十四天收益。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 164.66,
+   "dur": 3.42,
+   "speech": "八只股票，两千五百七十五个窗。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 168.26,
+   "dur": 2.46,
+   "speech": "两万零六百个样本。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 170.9,
+   "dur": 3.4,
+   "speech": "训练段九年，测试段五年半。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 174.48,
+   "dur": 2.58,
+   "speech": "标准化只用训练段。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 177.24,
+   "dur": 2.41,
+   "speech": "注入只落测试段。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 179.83,
+   "dur": 3.88,
+   "speech": "尖峰，一到三天，五到十个 sigma。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 183.89,
+   "dur": 3.73,
+   "speech": "形态替换，整段换成另一只股票。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 187.81,
+   "dur": 2.03,
+   "speech": "每种八十个。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 190.02,
+   "dur": 2.25,
+   "speech": "真值逐点已知。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 192.44,
+   "dur": 3.21,
+   "speech": "三种方法都在测试段定阈。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 195.83,
+   "dur": 3.06,
+   "speech": "取九十九分位，不看标签。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 199.07,
+   "dur": 3.09,
+   "speech": "每个方法都判一百零七个。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 202.34,
+   "dur": 2.99,
+   "speech": "这样比，比的才是几何。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 205.51,
+   "dur": 2.77,
+   "speech": "不是比谁的阈值调得好。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 208.46,
+   "dur": 2.49,
+   "speech": "还有一条要说清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 211.13,
+   "dur": 3.83,
+   "speech": "无监督的 F1 是注入题的 F1。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 215.14,
+   "dur": 2.97,
+   "speech": "真实市场没有逐点标注。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 218.28,
+   "dur": 3.21,
+   "speech": "所以这些数只说明一件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 221.67,
+   "dur": 3.45,
+   "speech": "谁的分数更接近异常的方向。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 225.29,
+   "dur": 2.92,
+   "speech": "第一个问题，分数怎么造。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 228.39,
+   "dur": 1.84,
+   "speech": "去看定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 233.63,
+   "dur": 2.53,
+   "speech": "第一种，K 均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 236.34,
+   "dur": 3.33,
+   "speech": "它把训练样本分成 K 个簇。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 239.85,
+   "dur": 2.39,
+   "speech": "每个簇有一个中心。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 242.42,
+   "dur": 3.71,
+   "speech": "点到最近中心的距离，就是分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 246.31,
+   "dur": 2.2,
+   "speech": "公式只有一行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 248.69,
+   "dur": 3.54,
+   "speech": "分数等于到最近簇心的欧氏距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 252.41,
+   "dur": 2.92,
+   "speech": "簇心是簇内点的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 255.51,
+   "dur": 2.99,
+   "speech": "K 取八，和股票数一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 258.68,
+   "dur": 3.06,
+   "speech": "一百轮迭代，种子四十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 261.92,
+   "dur": 2.56,
+   "speech": "训练段里没有标签。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 264.66,
+   "dur": 3.09,
+   "speech": "簇心是数据自己长出来的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 267.92,
+   "dur": 2.34,
+   "speech": "第二种，LOF。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 270.45,
+   "dur": 2.32,
+   "speech": "先定义可达距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 272.94,
+   "dur": 4.55,
+   "speech": "可达距离取真实距离和邻居距离的较大者。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 277.67,
+   "dur": 4.19,
+   "speech": "局部可达密度是互达距离倒数的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 282.04,
+   "dur": 3.76,
+   "speech": "LOF 是邻居密度比自己密度的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 285.98,
+   "dur": 3.76,
+   "speech": "比值大于一，说明自己比邻居稀。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 289.92,
+   "dur": 3.35,
+   "speech": "K 取十，看一眼十个邻居。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 293.45,
+   "dur": 3.45,
+   "speech": "密度用倒数表示，是因为距离近。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 297.08,
+   "dur": 3.49,
+   "speech": "距离近，密度高，L 值大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 300.75,
+   "dur": 2.99,
+   "speech": "一相除，量纲就消掉了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 303.92,
+   "dur": 2.73,
+   "speech": "第三种，孤立森林。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 306.83,
+   "dur": 2.99,
+   "speech": "它不量距离，只切数据。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 310,
+   "dur": 3.66,
+   "speech": "每次随机选一维，随机选切点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 313.84,
+   "dur": 2.75,
+   "speech": "切到点单独成组为止。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 316.77,
+   "dur": 3.06,
+   "speech": "路径越短，越容易被孤立。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 320.01,
+   "dur": 2.27,
+   "speech": "分数要归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 322.46,
+   "dur": 2.32,
+   "speech": "分母是 c 函数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 324.96,
+   "dur": 3.69,
+   "speech": "样本量 n 时 c 等于调和数组合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 328.82,
+   "dur": 4.14,
+   "speech": "平均路径除以 c，再取二为底的负指数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 333.15,
+   "dur": 2.92,
+   "speech": "分数越接近一越异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 336.24,
+   "dur": 3.9,
+   "speech": "树取一百棵，每棵抽样二百五十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 340.33,
+   "dur": 1.89,
+   "speech": "为什么抽样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 342.39,
+   "dur": 3.49,
+   "speech": "因为异常是少数，抽样放大它。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 346.07,
+   "dur": 2.85,
+   "speech": "三个分数，三种单位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 349.09,
+   "dur": 2.01,
+   "speech": "距离是长度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 351.28,
+   "dur": 2.15,
+   "speech": "LOF 是比值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 353.61,
+   "dur": 2.61,
+   "speech": "孤立森林是零到一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 356.39,
+   "dur": 3.4,
+   "speech": "所以最后都要定一个操作点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 359.97,
+   "dur": 3.49,
+   "speech": "看谁在同一个操作点上抓得多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 363.65,
+   "dur": 3.09,
+   "speech": "三种方法还有一个共同点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 366.91,
+   "dur": 2.65,
+   "speech": "它们都不优化 F1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 369.75,
+   "dur": 3.54,
+   "speech": "只在训练段上定义什么叫正常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 373.47,
+   "dur": 2.89,
+   "speech": "然后等异常自己冒出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 376.54,
+   "dur": 2.22,
+   "speech": "下一节看数据。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 378.94,
+   "dur": 2.13,
+   "speech": "先看一张图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 384.47,
+   "dur": 2.13,
+   "speech": "先看一张图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 386.78,
+   "dur": 2.97,
+   "speech": "二十四维样本投到两维。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 389.92,
+   "dur": 3.35,
+   "speech": "训练样本五百个，测试五百个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 393.45,
+   "dur": 3.3,
+   "speech": "蓝灰是训练，浅蓝是测试。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 396.93,
+   "dur": 3.76,
+   "speech": "红色是尖峰，紫色是形态替换。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 400.87,
+   "dur": 2.46,
+   "speech": "黄色是八个簇心。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 403.51,
+   "dur": 3.49,
+   "speech": "第一主成分只解释百分之五点三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 407.19,
+   "dur": 2.39,
+   "speech": "第二也是五点三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 409.76,
+   "dur": 2.94,
+   "speech": "前十累计百分之四十五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 412.88,
+   "dur": 1.93,
+   "speech": "这说明什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 414.99,
+   "dur": 4.14,
+   "speech": "二十四维收益轨迹几乎是各向同性的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 419.32,
+   "dur": 2.68,
+   "speech": "没有几个方向特别重要。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 422.17,
+   "dur": 3.47,
+   "speech": "所以八个簇心不是波动状态。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 425.82,
+   "dur": 2.25,
+   "speech": "更像八个锚点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 428.25,
+   "dur": 2.44,
+   "speech": "把空间大致均分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 430.87,
+   "dur": 3.01,
+   "speech": "尖峰来了，点离锚点远。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 434.06,
+   "dur": 2.56,
+   "speech": "距离分数立刻变大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 436.8,
+   "dur": 4,
+   "speech": "尖峰样本的分数增量均值是六点四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 440.98,
+   "dur": 3.47,
+   "speech": "这就是 K 均值抓得住的理由。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 444.63,
+   "dur": 2.56,
+   "speech": "LOF 也能看到一部分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 447.37,
+   "dur": 3.21,
+   "speech": "因为邻居变远，密度变低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 450.75,
+   "dur": 2.87,
+   "speech": "但它的分母是邻居密度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 453.8,
+   "dur": 2.63,
+   "speech": "邻居自己也被拉远。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 456.61,
+   "dur": 2.03,
+   "speech": "比值被稀释。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 458.82,
+   "dur": 4.74,
+   "speech": "所以 LOF 的 F1 只有 K 均值的一半多一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 463.74,
+   "dur": 1.96,
+   "speech": "孤立森林呢。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 465.88,
+   "dur": 2.82,
+   "speech": "它的树在训练集上切。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 468.88,
+   "dur": 2.99,
+   "speech": "尖峰只动一到三个维度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 472.05,
+   "dur": 3.95,
+   "speech": "随机切割很难恰好切到那几个维度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 476.18,
+   "dur": 2.8,
+   "speech": "所以分数升得不多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 479.16,
+   "dur": 2.44,
+   "speech": "平均分只有零点四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 481.78,
+   "dur": 2.37,
+   "speech": "形态替换更惨。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 484.33,
+   "dur": 2.53,
+   "speech": "换的是整段形态。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 487.04,
+   "dur": 2.87,
+   "speech": "总幅度没变，距离也不大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 490.09,
+   "dur": 2.13,
+   "speech": "密度几乎不变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 492.4,
+   "dur": 2.92,
+   "speech": "随机切割的路径也没变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 495.49,
+   "dur": 2.8,
+   "speech": "三种几何都看不见。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 498.47,
+   "dur": 2.41,
+   "speech": "这不是实现问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 501.07,
+   "dur": 2.56,
+   "speech": "是几何本身的盲区。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 503.8,
+   "dur": 1.72,
+   "speech": "一句话。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 505.7,
+   "dur": 2.97,
+   "speech": "分数只对一种形状敏感。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 508.85,
+   "dur": 2.08,
+   "speech": "下面去实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 514.33,
+   "dur": 2.51,
+   "speech": "实现只有三个文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 517.02,
+   "dur": 2.53,
+   "speech": "每个模块一个主函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 519.73,
+   "dur": 3.09,
+   "speech": "K 均值返回簇心和标签。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 523,
+   "dur": 2.53,
+   "speech": "分数单独一个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 525.71,
+   "dur": 2.77,
+   "speech": "LOF 返回每个点的 LOF。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 528.67,
+   "dur": 2.51,
+   "speech": "孤立森林返回分数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 531.36,
+   "dur": 3.33,
+   "speech": "训练和查询分成两个矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 534.86,
+   "dur": 3.01,
+   "speech": "这样阈值才能训练定一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 538.06,
+   "dur": 2.25,
+   "speech": "测试段只读。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 540.48,
+   "dur": 2.34,
+   "speech": "四个坑，第一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 543.01,
+   "dur": 3.04,
+   "speech": "K 均值初始化不能随便。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 546.22,
+   "dur": 3.04,
+   "speech": "随机选点会让结果不稳。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 549.44,
+   "dur": 3.59,
+   "speech": "K 均值加加按距离平方加权。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 553.21,
+   "dur": 3.45,
+   "speech": "种子固定，标签才能逐位复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 556.84,
+   "dur": 2.32,
+   "speech": "第二个坑，空簇。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 559.34,
+   "dur": 2.97,
+   "speech": "某一轮可能有簇没分到点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 562.48,
+   "dur": 2.8,
+   "speech": "直接丢掉会少一个簇。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 565.46,
+   "dur": 2.82,
+   "speech": "实现里保留旧簇心。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 568.46,
+   "dur": 3.04,
+   "speech": "第三个坑，LOF 的复杂度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 571.68,
+   "dur": 2.37,
+   "speech": "它是平方复杂度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 574.23,
+   "dur": 3.25,
+   "speech": "两万样本就是两亿次距离。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 577.66,
+   "dur": 2.8,
+   "speech": "拆成每只股票单独算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 580.64,
+   "dur": 2.85,
+   "speech": "一只股票一个转导块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 583.66,
+   "dur": 2.56,
+   "speech": "距离矩阵只在块内。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 586.4,
+   "dur": 3.28,
+   "speech": "第四个坑，孤立森林的归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 589.86,
+   "dur": 2.82,
+   "speech": "路径长度要除以 c。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 592.86,
+   "dur": 3.45,
+   "speech": "c 用精确调和数，不用近似。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 596.49,
+   "dur": 4.05,
+   "speech": "深度上限是 log 二 psi 向上取整。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 600.71,
+   "dur": 3.11,
+   "speech": "符号写反是最常见的错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 604,
+   "dur": 3.23,
+   "speech": "平均路径越长，分数越高。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 607.41,
+   "dur": 2.34,
+   "speech": "还有一个口径的坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 609.94,
+   "dur": 3.23,
+   "speech": "计划书写一百九十二维整窗。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 613.35,
+   "dur": 3.16,
+   "speech": "实测尖峰在整窗里被稀释。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 616.68,
+   "dur": 3.11,
+   "speech": "最好 F1 只有零点一八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 619.97,
+   "dur": 3.09,
+   "speech": "降到十维做 PCA 更差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 623.24,
+   "dur": 2.2,
+   "speech": "只有零点零九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 625.62,
+   "dur": 3.16,
+   "speech": "所以样本拆成二十四维。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 628.96,
+   "dur": 2.56,
+   "speech": "这条偏差写进证据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 631.69,
+   "dur": 2.73,
+   "speech": "三个模块都是纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 634.6,
+   "dur": 2.63,
+   "speech": "形状不对，返回错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 637.41,
+   "dur": 2.41,
+   "speech": "不截断，不广播。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 640,
+   "dur": 3.45,
+   "speech": "训练，打分，定阈三步分开。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 643.63,
+   "dur": 3.09,
+   "speech": "二十条新断言钉住这些。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 646.9,
+   "dur": 2.92,
+   "speech": "全量一千四百九十三条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 649.99,
+   "dur": 2.27,
+   "speech": "下一节看读数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 652.44,
+   "dur": 2.15,
+   "speech": "三十四个检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 657.99,
+   "dur": 3.01,
+   "speech": "三十四个检查，一次跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 661.18,
+   "dur": 1.81,
+   "speech": "二十七秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 663.18,
+   "dur": 3.25,
+   "speech": "数据，样本，注入先对齐。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 666.61,
+   "dur": 3.61,
+   "speech": "三种检测器在同一批样本上打分。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 670.41,
+   "dur": 3.49,
+   "speech": "操作点取测试分数九十九分位。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 674.08,
+   "dur": 2.85,
+   "speech": "每个都判一百零七个。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 677.11,
+   "dur": 2.39,
+   "speech": "尖峰的读数先看。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 679.68,
+   "dur": 3.61,
+   "speech": "K 均值，F1 零点五四五五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 683.47,
+   "dur": 4.36,
+   "speech": "精度零点四七六六，召回零点六三七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 688.01,
+   "dur": 3.42,
+   "speech": "LOF，F1 零点三二〇九。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 691.61,
+   "dur": 3.21,
+   "speech": "孤立森林，零点〇八五六。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 695,
+   "dur": 2.49,
+   "speech": "同一批八十个尖峰。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 697.66,
+   "dur": 2.97,
+   "speech": "三种几何差了三倍多。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 700.81,
+   "dur": 2.68,
+   "speech": "曲线也是同一个排序。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 703.67,
+   "dur": 4.96,
+   "speech": "平均精度，零点三五，零点一七，零点零三。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 708.8,
+   "dur": 2.27,
+   "speech": "再看形态替换。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 711.25,
+   "dur": 2.87,
+   "speech": "K 均值零点零一零七。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 714.3,
+   "dur": 2.46,
+   "speech": "LOF 零点零二一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 716.95,
+   "dur": 2.49,
+   "speech": "孤立森林直接零。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 719.61,
+   "dur": 4.09,
+   "speech": "三条曲线的最好点也过不了零点零四。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 723.89,
+   "dur": 2.46,
+   "speech": "这就是共同盲区。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 726.53,
+   "dur": 2.49,
+   "speech": "还有一条边界读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 729.19,
+   "dur": 2.75,
+   "speech": "训练段九十九分位定阈。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 732.12,
+   "dur": 3.13,
+   "speech": "在测试段只报三十四个。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 735.44,
+   "dur": 2.22,
+   "speech": "百分之零点三二。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 737.84,
+   "dur": 2.68,
+   "speech": "分数分布整体下移了。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 740.7,
+   "dur": 3.28,
+   "speech": "训练段 q99 是十点八一。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 744.16,
+   "dur": 3.71,
+   "speech": "测试段干净样本只有八点六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 748.05,
+   "dur": 3.16,
+   "speech": "按真实注入率重新定阈。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 751.38,
+   "dur": 3.73,
+   "speech": "八十个报警，F1 零点五七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 755.3,
+   "dur": 4.21,
+   "speech": "排序只把百分之五十七的尖峰送进前八十。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 759.69,
+   "dur": 2.77,
+   "speech": "检查清单里还有几条。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 762.65,
+   "dur": 3.25,
+   "speech": "两团点云的簇心误差是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 766.08,
+   "dur": 3.64,
+   "speech": "五边形远点的 LOF 是八十四点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 769.9,
+   "dur": 4.05,
+   "speech": "孤立森林在均匀点上均分零点四。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 774.12,
+   "dur": 2.92,
+   "speech": "簇心到数据一一对应。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 777.22,
+   "dur": 3.04,
+   "speech": "这些都是算法层的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 780.44,
+   "dur": 3.06,
+   "speech": "真实数据上的结论更简单。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 783.68,
+   "dur": 2.7,
+   "speech": "尖峰，K 均值赢。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 786.56,
+   "dur": 2.63,
+   "speech": "形态替换，全输。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 789.37,
+   "dur": 1.77,
+   "speech": "为什么输。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 791.32,
+   "dur": 3.88,
+   "speech": "因为误差的方向和分数的方向不一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 795.38,
+   "dur": 2.65,
+   "speech": "这一集比的是检测器。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 798.21,
+   "dur": 2.37,
+   "speech": "不是比模型容量。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 800.76,
+   "dur": 3.28,
+   "speech": "三个检测器都没有参数可学。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 804.22,
+   "dur": 3.04,
+   "speech": "最多一个 K，一个邻居数。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 807.43,
+   "dur": 3.3,
+   "speech": "所以差距全部来自几何。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 810.92,
+   "dur": 3.13,
+   "speech": "下一节说这些几何的边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 817.45,
+   "dur": 1.96,
+   "speech": "四条边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 819.59,
+   "dur": 3.13,
+   "speech": "第一，无监督没有最准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 822.9,
+   "dur": 3.18,
+   "speech": "同一批尖峰，三个 F1。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 826.26,
+   "dur": 3.16,
+   "speech": "换个异常形状排序就全变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 829.6,
+   "dur": 3.42,
+   "speech": "第二，形态替换是共同盲区。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 833.2,
+   "dur": 2.63,
+   "speech": "换形态不换尺度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 836.01,
+   "dur": 3.78,
+   "speech": "距离，密度，随机切割都看不见。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 839.98,
+   "dur": 2.46,
+   "speech": "要抓得先换表示。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 842.62,
+   "dur": 3.33,
+   "speech": "第三，高维会让距离失效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 846.12,
+   "dur": 4,
+   "speech": "整窗一百九十二维上最好只有零点一八。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 850.3,
+   "dur": 2.85,
+   "speech": "降到十维反而更差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 853.33,
+   "dur": 3.18,
+   "speech": "单日尖峰只动一两个坐标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 856.69,
+   "dur": 3.01,
+   "speech": "淹没在高维的距离集中里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 859.88,
+   "dur": 3.49,
+   "speech": "第四，阈值口径决定 F1。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 863.56,
+   "dur": 3.18,
+   "speech": "训练段分位只报三十四个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 866.92,
+   "dur": 3.13,
+   "speech": "测试段分位报一百零七个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 870.23,
+   "dur": 3.54,
+   "speech": "报 F1 必须报分位在哪段取的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 873.96,
+   "dur": 1.72,
+   "speech": "三笔债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 875.85,
+   "dur": 3.35,
+   "speech": "第一笔，标签很少的时候怎么办。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 879.38,
+   "dur": 2.89,
+   "speech": "第二笔，时间结构还没用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 882.46,
+   "dur": 3.18,
+   "speech": "第三笔，阈值还在打补丁。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 885.82,
+   "dur": 2.53,
+   "speech": "这一集证明了一件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 888.53,
+   "dur": 2.61,
+   "speech": "无监督能给出分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 891.32,
+   "dur": 3.49,
+   "speech": "但分数只对一种异常形状有效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 894.99,
+   "dur": 2.85,
+   "speech": "它没有告诉你哪种形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 898.02,
+   "dur": 3.13,
+   "speech": "要回答这个，得先换表示。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 901.33,
+   "dur": 3.23,
+   "speech": "把二十四天拆回时间序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 904.74,
+   "dur": 2.89,
+   "speech": "让模型知道先后顺序。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 907.82,
+   "dur": 2.65,
+   "speech": "下一集，序列模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 910.65,
+   "dur": 2.73,
+   "speech": "自回归和状态空间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 913.56,
+   "dur": 2.94,
+   "speech": "预测下一段，再看残差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 916.68,
+   "dur": 3.09,
+   "speech": "残差大的地方，就是异常。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 919.95,
+   "dur": 3.23,
+   "speech": "这条线比几何更接近真实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 923.36,
+   "dur": 1.72,
+   "speech": "也更贵。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 925.25,
+   "dur": 2.61,
+   "speech": "第 32 集就到这里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 928.04,
+   "dur": 1.81,
+   "speech": "下一集见。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 933.25,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 935.53,
+   "dur": 3.13,
+   "speech": "第一，无监督没有最准。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 938.85,
+   "dur": 3.18,
+   "speech": "同一批尖峰，三个 F1。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 942.21,
+   "dur": 2.63,
+   "speech": "换个形状排序全变。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 945.02,
+   "dur": 3.42,
+   "speech": "第二，形态替换是共同盲区。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 948.62,
+   "dur": 3.81,
+   "speech": "三种几何全部低于零点零二五。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 952.61,
+   "dur": 3.33,
+   "speech": "第三，高维会让距离失效。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 956.11,
+   "dur": 3.61,
+   "speech": "想抓单点尖峰，先把维度拆开。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 959.91,
+   "dur": 3.28,
+   "speech": "下一集，把时间结构用起来。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 963.36,
+   "dur": 2.73,
+   "speech": "自回归和状态空间。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 966.27,
+   "dur": 2.53,
+   "speech": "第 32 集，完。"
+  }
+ ]
+}
