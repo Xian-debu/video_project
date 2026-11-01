@@ -1,0 +1,1849 @@
+{
+ "entry": "src/tsint-21-attn-mhsa-block-masked/script.ts",
+ "fps": 30,
+ "totalSec": 855.92,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 96.09
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 96.09,
+   "dur": 98.58
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 194.67,
+   "dur": 164.16
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 358.83,
+   "dur": 98.97
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 457.8,
+   "dur": 94.11
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 551.91,
+   "dur": 148.94
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 700.85,
+   "dur": 115.23
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 816.08,
+   "dur": 39.84
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.49,
+   "speech": "第 3 章 · 注意力，第二十一集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.87,
+   "dur": 2.89,
+   "speech": "这一集讲注意力三件套。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.95,
+   "dur": 2.73,
+   "speech": "书里给它三行式子。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.85,
+   "dur": 2.82,
+   "speech": "剩下的全要自己补。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.86,
+   "dur": 2.53,
+   "speech": "第三件套是掩码。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.57,
+   "dur": 3.16,
+   "speech": "先说清三件事各管什么。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 19.91,
+   "dur": 3.52,
+   "speech": "多头自注意力，管信息混合。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 23.61,
+   "dur": 3.47,
+   "speech": "Transformer 块，管深度与残差。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 27.26,
+   "dur": 3.35,
+   "speech": "因果掩码，管不许偷看未来。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 30.79,
+   "dur": 3.49,
+   "speech": "书在印刷版五十三到五十六页。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 34.46,
+   "dur": 3.81,
+   "speech": "式三·一九到三·二一给了骨架。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 38.45,
+   "dur": 3.18,
+   "speech": "骨架之外，一个参数都没给。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 41.81,
+   "dur": 3.83,
+   "speech": "头数、维度、初始化、位置编码。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 45.82,
+   "dur": 3.09,
+   "speech": "还有 dropout 和训练配方。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 49.08,
+   "dur": 2.85,
+   "speech": "这些空缺，本仓自己定。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 52.11,
+   "dur": 2.27,
+   "speech": "定完还要能验证。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 54.56,
+   "dur": 2.7,
+   "speech": "所以我们交两样东西。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 57.44,
+   "dur": 2.97,
+   "speech": "一份能跑的 Haskell 实现。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 60.59,
+   "dur": 3.06,
+   "speech": "一份三十五项的证据清单。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 63.83,
+   "dur": 2.8,
+   "speech": "证据里每一项都能复跑。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 66.81,
+   "dur": 2.8,
+   "speech": "先看这条式子长什么样。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 69.79,
+   "dur": 2.77,
+   "speech": "它只有三次矩阵乘法。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 72.74,
+   "dur": 3.37,
+   "speech": "乘完做一次按行的 softmax。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 76.29,
+   "dur": 2.77,
+   "speech": "再乘值矩阵，就完了。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 79.25,
+   "dur": 2.44,
+   "speech": "简单得让人怀疑。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 81.87,
+   "dur": 2.8,
+   "speech": "但简单不等于没有坑。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 84.84,
+   "dur": 2.58,
+   "speech": "本集就讲这几个坑。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 87.61,
+   "dur": 3.37,
+   "speech": "以及我们怎么证明没掉进去。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 91.16,
+   "dur": 2.73,
+   "speech": "先说书的骨架缺了什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 97.29,
+   "dur": 2.92,
+   "speech": "书上的注意力只写了一行。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 100.39,
+   "dur": 4.38,
+   "speech": "softmax 除以根号 d_k，再乘 V。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 104.95,
+   "dur": 3.76,
+   "speech": "Q、K、V 从哪来，没写。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 108.89,
+   "dur": 3.04,
+   "speech": "多头怎么拼回去，也没写。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 112.11,
+   "dur": 3.52,
+   "speech": "残差和层归一化，在下一节。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 115.8,
+   "dur": 2.34,
+   "speech": "掩码只有半句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 118.33,
+   "dur": 2.89,
+   "speech": "这些空白不是书的错。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 121.4,
+   "dur": 3.01,
+   "speech": "它是教材，不是施工图。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 124.59,
+   "dur": 2.56,
+   "speech": "施工图得我们自己画。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 127.33,
+   "dur": 2.34,
+   "speech": "第一个空白是缩放。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 129.85,
+   "dur": 3.37,
+   "speech": "不除根号 d_k 会怎样。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 133.41,
+   "dur": 3.37,
+   "speech": "点积的方差随维度线性增长。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 136.96,
+   "dur": 2.97,
+   "speech": "维度越大，logit 越大。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 140.11,
+   "dur": 3.37,
+   "speech": "softmax 就越接近 one-hot。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 143.66,
+   "dur": 2.97,
+   "speech": "梯度被压平，训练变慢。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 146.81,
+   "dur": 2.46,
+   "speech": "我们实测了这个效应。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 149.45,
+   "dur": 3.06,
+   "speech": "别急，验证环节给数字。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 152.69,
+   "dur": 2.92,
+   "speech": "第二个空白是拼接顺序。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 155.79,
+   "dur": 2.7,
+   "speech": "四个头各算一份输出。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 158.67,
+   "dur": 3.42,
+   "speech": "拼回 64 维时按什么顺序。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 162.27,
+   "dur": 3.37,
+   "speech": "按头拼，还是按时间步交错。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 165.83,
+   "dur": 2.63,
+   "speech": "两种拼法都说得通。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 168.64,
+   "dur": 2.99,
+   "speech": "但必须和前向保持一致。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 171.81,
+   "dur": 2.32,
+   "speech": "这里我们摔过一次。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 174.31,
+   "dur": 3.06,
+   "speech": "而且是测试没抓住的那种。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 177.55,
+   "dur": 2.56,
+   "speech": "第三个空白是掩码。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 180.29,
+   "dur": 3.4,
+   "speech": "掩码写错，模型会看到未来。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 183.86,
+   "dur": 2.92,
+   "speech": "训练时分数好看得离谱。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 186.96,
+   "dur": 2.44,
+   "speech": "上线就原形毕露。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 189.58,
+   "dur": 2.89,
+   "speech": "所以掩码要单独验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 195.87,
+   "dur": 2.25,
+   "speech": "先把符号钉死。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 198.3,
+   "dur": 3.28,
+   "speech": "输入是一个 96 乘 8 的窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 201.75,
+   "dur": 3.01,
+   "speech": "96 个交易日，8 条序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 204.95,
+   "dur": 3.28,
+   "speech": "每条序列先做列内 z 分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 208.41,
+   "dur": 2.7,
+   "speech": "这一步只为数值稳定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 211.29,
+   "dur": 3.09,
+   "speech": "然后线性映射到 64 维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 214.55,
+   "dur": 2.37,
+   "speech": "记这个矩阵为 Z。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 217.1,
+   "dur": 3.4,
+   "speech": "Z 的形状是 96 乘 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 220.68,
+   "dur": 3.45,
+   "speech": "Q 是 Z 乘 W_q。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 224.3,
+   "dur": 5.75,
+   "speech": "K 是 Z 乘 W_k，V 是 Z 乘 W_v。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 230.23,
+   "dur": 3.47,
+   "speech": "三个权重都是 64 乘 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 233.88,
+   "dur": 3.35,
+   "speech": "打分矩阵是 Q 乘 K 转置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 237.41,
+   "dur": 2.75,
+   "speech": "形状 96 乘 96。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 240.34,
+   "dur": 4.21,
+   "speech": "第 i 行第 j 列，是第 i 天问第 j 天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 244.74,
+   "dur": 4.41,
+   "speech": "除以根号 d_k，再按行 softmax。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 249.32,
+   "dur": 3.4,
+   "speech": "d_k 是每个头的宽度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 252.9,
+   "dur": 3.37,
+   "speech": "本仓设 4 个头，每头 16 维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 256.46,
+   "dur": 2.99,
+   "speech": "四乘十六，正好六十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 259.63,
+   "dur": 2.87,
+   "speech": "每个头独立算一份注意力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 262.68,
+   "dur": 3.47,
+   "speech": "四份输出并排拼回 64 维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 266.33,
+   "dur": 3.57,
+   "speech": "再乘输出矩阵 W_o。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 270.07,
+   "dur": 2.8,
+   "speech": "这就是多头自注意力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 273.05,
+   "dur": 2.97,
+   "speech": "块的第二半是前馈网络。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 276.2,
+   "dur": 3.83,
+   "speech": "先层归一化，再注意力，加残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 280.21,
+   "dur": 3.73,
+   "speech": "再层归一化，再前馈，加残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 284.12,
+   "dur": 2.97,
+   "speech": "前馈隐层 256 维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 287.27,
+   "dur": 2.65,
+   "speech": "激活用 GELU。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 290.1,
+   "dur": 4.05,
+   "speech": "层归一化的 eps 是十的负五次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 294.33,
+   "dur": 2.03,
+   "speech": "现在数参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 296.54,
+   "dur": 4.24,
+   "speech": "本仓把四个头合成一个 64 乘 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 300.95,
+   "dur": 5.01,
+   "speech": "所以 Q、K、V、O 一共四个矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 306.14,
+   "dur": 4.36,
+   "speech": "四乘四千零九十六，一万六千三百八十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 310.68,
+   "dur": 2.68,
+   "speech": "这是注意力部分的参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 313.54,
+   "dur": 2.85,
+   "speech": "块里另外两个线性层。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 316.56,
+   "dur": 4.26,
+   "speech": "64 到 256，256 回 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 321,
+   "dur": 3.66,
+   "speech": "加偏置，共四万九千一百五十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 324.85,
+   "dur": 3.61,
+   "speech": "两项相加，四万九千九百二十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 328.64,
+   "dur": 2.68,
+   "speech": "和证据里的数字一致。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 331.5,
+   "dur": 2.05,
+   "speech": "最后是掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 333.73,
+   "dur": 3.13,
+   "speech": "位置 i 只能看 j 小于等于 i。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 337.05,
+   "dur": 3.59,
+   "speech": "j 大于 i 的位置，打分设负无穷。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 340.82,
+   "dur": 3.42,
+   "speech": "softmax 之后权重恰好为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 344.42,
+   "dur": 2.94,
+   "speech": "第一个 token 只能看自己。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 347.54,
+   "dur": 2.39,
+   "speech": "这就是因果掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 350.11,
+   "dur": 2.89,
+   "speech": "它把矩阵的上三角抹掉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 353.18,
+   "dur": 3.45,
+   "speech": "抹掉不是置零，是置负无穷。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 360.03,
+   "dur": 2.44,
+   "speech": "先建立三个直觉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 362.65,
+   "dur": 3.13,
+   "speech": "第一，注意力是一次软查表。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 365.96,
+   "dur": 3.83,
+   "speech": "每个位置拿自己的问题去问所有位置。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 369.97,
+   "dur": 3.01,
+   "speech": "答案按相关度加权求和。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 373.17,
+   "dur": 2.8,
+   "speech": "相关度高，权重就大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 376.14,
+   "dur": 2.89,
+   "speech": "这就是 Q 和 K 的分工。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 379.22,
+   "dur": 2.92,
+   "speech": "第二，缩放是在调温度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 382.32,
+   "dur": 2.99,
+   "speech": "不缩放，softmax 太尖。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 385.49,
+   "dur": 2.8,
+   "speech": "缩放之后，分布更平。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 388.46,
+   "dur": 3.61,
+   "speech": "第三，多头是并行看几种关系。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 392.26,
+   "dur": 4.05,
+   "speech": "每个头有自己的 Q、K、V。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 396.48,
+   "dur": 2.27,
+   "speech": "理论上可以分工。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 398.93,
+   "dur": 2.92,
+   "speech": "但分工不是自动发生的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 402.03,
+   "dur": 2.46,
+   "speech": "要训练才会分化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 404.67,
+   "dur": 2.17,
+   "speech": "这一点很关键。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 407.03,
+   "dur": 2.99,
+   "speech": "我们的权重是初始化值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 410.2,
+   "dur": 2.15,
+   "speech": "没有训练过一步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 412.53,
+   "dur": 3.06,
+   "speech": "所以四个头长得差不多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 415.77,
+   "dur": 2.56,
+   "speech": "熵都在六比特附近。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 418.51,
+   "dur": 3.49,
+   "speech": "均匀分布的上限是六点五八五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 422.18,
+   "dur": 2.94,
+   "speech": "head0 是五点九八七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 425.3,
+   "dur": 2.7,
+   "speech": "head1 是六点二七二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 428.19,
+   "dur": 2.85,
+   "speech": "head2 是六点一六五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 431.21,
+   "dur": 2.87,
+   "speech": "head3 是六点二零六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 434.26,
+   "dur": 2.73,
+   "speech": "都很平，接近均匀。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 437.17,
+   "dur": 4.53,
+   "speech": "最后一天那一行，最大权重只有百分之四点七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 441.87,
+   "dur": 2.41,
+   "speech": "它没有学到日周期。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 444.47,
+   "dur": 2.51,
+   "speech": "也没学到任何结构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 447.16,
+   "dur": 2.92,
+   "speech": "这是事实，得说在前面。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 450.26,
+   "dur": 2.58,
+   "speech": "那这一集还验什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 453.02,
+   "dur": 2.58,
+   "speech": "验机制，不验效果。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 459,
+   "dur": 2.68,
+   "speech": "实现拆成三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 461.86,
+   "dur": 2.8,
+   "speech": "Mhsa 管多头自注意力。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 464.84,
+   "dur": 3.45,
+   "speech": "TransformerBlock 管残差与归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 468.46,
+   "dur": 3.04,
+   "speech": "MaskedAttn 管因果掩码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 471.68,
+   "dur": 2.58,
+   "speech": "先看前向的形状链。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 474.44,
+   "dur": 4.05,
+   "speech": "96 乘 8，映射成 96 乘 64。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 478.67,
+   "dur": 3.93,
+   "speech": "四个头各得 96 乘 96 的权重。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 482.77,
+   "dur": 4.55,
+   "speech": "拼回 96 乘 64，再过 W_o。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 487.5,
+   "dur": 3.35,
+   "speech": "块输出还是 96 乘 64。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 491.03,
+   "dur": 2.29,
+   "speech": "三处容易写错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 493.51,
+   "dur": 4,
+   "speech": "第一处，softmax 要按行减最大值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 497.69,
+   "dur": 2.87,
+   "speech": "不然 exp 会溢出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 500.74,
+   "dur": 3.9,
+   "speech": "第二处，缩放要乘在 softmax 之前。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 504.82,
+   "dur": 3.18,
+   "speech": "除根号 d_k，别忘。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 508.18,
+   "dur": 3.4,
+   "speech": "第三处，拼接顺序必须固定。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 511.76,
+   "dur": 1.98,
+   "speech": "我们改过一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 513.92,
+   "dur": 3.04,
+   "speech": "前向先按时间步交错拼。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 517.14,
+   "dur": 2.61,
+   "speech": "求导那边还按头拼。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 519.92,
+   "dur": 3.78,
+   "speech": "两边各自自洽，梯度检查照样过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 523.89,
+   "dur": 3.04,
+   "speech": "但和整体前向对，对不上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 527.1,
+   "dur": 3.25,
+   "speech": "第一次跑，误差是三点九六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 530.54,
+   "dur": 3.52,
+   "speech": "改完降到二点六乘十的负十次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 534.24,
+   "dur": 2.63,
+   "speech": "这是本集最值钱的坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 537.05,
+   "dur": 3.06,
+   "speech": "测试自洽，不等于实现对。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 540.29,
+   "dur": 2.22,
+   "speech": "掩码那边也一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 542.69,
+   "dur": 3.45,
+   "speech": "上三角设负无穷，不是设零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 546.32,
+   "dur": 3.4,
+   "speech": "设零，softmax 会给它权重。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 553.11,
+   "dur": 3.47,
+   "speech": "证据程序跑出三十五项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 556.76,
+   "dur": 3.42,
+   "speech": "六项查数据，十九项查结构。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 560.36,
+   "dur": 3.59,
+   "speech": "两项查梯度，八项查真实窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 564.13,
+   "dur": 2.7,
+   "speech": "全部通过，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 567.01,
+   "dur": 2.25,
+   "speech": "先说数据本身。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 569.44,
+   "dur": 2.75,
+   "speech": "窗口九十六行，八列。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 572.37,
+   "dur": 2.82,
+   "speech": "从二零二五年八月十二日。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 575.37,
+   "dur": 2.44,
+   "speech": "到十二月三十一日。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 577.99,
+   "dur": 4.17,
+   "speech": "sha256 是 19a81d77 开头。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 582.34,
+   "dur": 3.01,
+   "speech": "文件九千五百六十五字节。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 585.53,
+   "dur": 2.8,
+   "speech": "六只股票加两个指数。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 588.51,
+   "dur": 3.52,
+   "speech": "内连接后取最后九十六个交易日。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 592.21,
+   "dur": 2.77,
+   "speech": "结构检查先看行和。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 595.16,
+   "dur": 3.47,
+   "speech": "每行 softmax 权重和等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 598.81,
+   "dur": 3.16,
+   "speech": "误差在十的负十二次方以内。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 602.15,
+   "dur": 2.29,
+   "speech": "再看置换等变。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 604.62,
+   "dur": 3.37,
+   "speech": "把输入行打乱，输出同样打乱。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 608.18,
+   "dur": 2.32,
+   "speech": "误差精确是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 610.67,
+   "dur": 3.23,
+   "speech": "这是没有位置编码的必然结果。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 614.08,
+   "dur": 2.03,
+   "speech": "然后看零块。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 616.29,
+   "dur": 3.52,
+   "speech": "把注意力和前馈权重全设零。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 619.99,
+   "dur": 3.21,
+   "speech": "块退化成两次层归一化。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 623.38,
+   "dur": 2.25,
+   "speech": "逐行误差是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 625.8,
+   "dur": 2.32,
+   "speech": "参数计数也要对。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 628.3,
+   "dur": 3.18,
+   "speech": "注意力一万六千三百八十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 631.66,
+   "dur": 3.4,
+   "speech": "块矩阵四万九千一百五十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 635.24,
+   "dur": 3.06,
+   "speech": "合计四万九千九百二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 638.48,
+   "dur": 2.68,
+   "speech": "三项都和公式对上。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 641.34,
+   "dur": 2.29,
+   "speech": "掩码检查三项。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 643.82,
+   "dur": 3.69,
+   "speech": "严格上三角，权重和恰为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 647.68,
+   "dur": 2.89,
+   "speech": "前三个 token 的输出不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 650.76,
+   "dur": 2.99,
+   "speech": "第一个 token 只 attend 自己。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 653.93,
+   "dur": 3.49,
+   "speech": "梯度检查用了二百五十六个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 657.6,
+   "dur": 3.33,
+   "speech": "中心差分，步长十的负五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 661.11,
+   "dur": 3.73,
+   "speech": "最大误差二点六二乘十的负十次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 665.02,
+   "dur": 2.68,
+   "speech": "门槛是十的负六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 667.88,
+   "dur": 2.73,
+   "speech": "还做了五步梯度下降。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 670.78,
+   "dur": 3.64,
+   "speech": "损失从五点八三降到零点六八。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 674.6,
+   "dur": 2.32,
+   "speech": "学习率零点零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 677.1,
+   "dur": 2.39,
+   "speech": "最后是缩放消融。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 679.67,
+   "dur": 3.83,
+   "speech": "缩放后的最大 logit 是五点七一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 683.68,
+   "dur": 2.99,
+   "speech": "不缩放是二十二点八五八。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 686.85,
+   "dur": 2.75,
+   "speech": "熵是六点一五八比特。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 689.78,
+   "dur": 3.18,
+   "speech": "不缩放掉到四点一一七比特。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 693.14,
+   "dur": 2.56,
+   "speech": "注意，没有出现 NaN。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 695.88,
+   "dur": 2.77,
+   "speech": "双精度下它只是变尖。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 702.05,
+   "dur": 2.08,
+   "speech": "现在划边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 704.31,
+   "dur": 2.22,
+   "speech": "第一，没有训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 706.71,
+   "dur": 2.87,
+   "speech": "所有头都是初始化权重。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 709.76,
+   "dur": 3.16,
+   "speech": "注意力接近均匀，这很正常。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 713.1,
+   "dur": 2.87,
+   "speech": "不能说它学到了日周期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 716.15,
+   "dur": 2.56,
+   "speech": "也不能拿它做预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 718.89,
+   "dur": 2.7,
+   "speech": "第二，块没有解析梯度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 721.77,
+   "dur": 3.35,
+   "speech": "只有多头注意力写了反向传播。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 725.3,
+   "dur": 3.04,
+   "speech": "块的梯度检查，本集不做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 728.52,
+   "dur": 3.13,
+   "speech": "这是明确的空白，不是遗漏。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 731.83,
+   "dur": 2.49,
+   "speech": "第三，没有预测头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 734.5,
+   "dur": 2.75,
+   "speech": "没有回测，没有准确率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 737.43,
+   "dur": 2.82,
+   "speech": "本集只回答机制对不对。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 740.43,
+   "dur": 2.63,
+   "speech": "第四，只有一个窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 743.24,
+   "dur": 2.68,
+   "speech": "九十六天，八条序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 746.1,
+   "dur": 3.06,
+   "speech": "换个市场，结论要重验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 749.34,
+   "dur": 2.75,
+   "speech": "第五，没有位置编码。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 752.27,
+   "dur": 2.89,
+   "speech": "置换等变是设计性质。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 755.34,
+   "dur": 3.06,
+   "speech": "要顺序信息，得另外加。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 758.58,
+   "dur": 3.59,
+   "speech": "第六，书里没有的部分，我们补了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 762.35,
+   "dur": 2.92,
+   "speech": "补的部分是本仓的选择。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 765.45,
+   "dur": 2.41,
+   "speech": "不是书的标准答案。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 768.05,
+   "dur": 3.06,
+   "speech": "第七，双精度不会 NaN。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 771.29,
+   "dur": 3.61,
+   "speech": "计划草稿里写的会炸，是错的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 775.08,
+   "dur": 3.23,
+   "speech": "真实效应是饱和与熵塌缩。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 778.49,
+   "dur": 3.01,
+   "speech": "这个错误已经写进勘误表。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 781.69,
+   "dur": 4.65,
+   "speech": "第八，证据里的 commit 是 b1f9322。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 786.51,
+   "dur": 2.58,
+   "speech": "那是证据提交本身。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 789.27,
+   "dur": 4.93,
+   "speech": "summary.json 里写的是 19ba447。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 794.39,
+   "dur": 3.06,
+   "speech": "因为二进制在那之前编好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 797.63,
+   "dur": 2.92,
+   "speech": "这个差异也写在文档里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 800.73,
+   "dur": 3.16,
+   "speech": "第九，A7 卡片还没写。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 804.07,
+   "dur": 2.99,
+   "speech": "留到 W 阶段统一补。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 807.24,
+   "dur": 3.9,
+   "speech": "第十，演示 CLI 还是规划中。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 811.32,
+   "dur": 2.56,
+   "speech": "现在只有证据子命令。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 817.28,
+   "dur": 2.25,
+   "speech": "三件套讲完了。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 819.71,
+   "dur": 2.46,
+   "speech": "一句话各记一句。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 822.35,
+   "dur": 3.59,
+   "speech": "多头自注意力，软查表加并行。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 826.12,
+   "dur": 3.57,
+   "speech": "块，残差加深，归一化稳住。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 829.86,
+   "dur": 3.28,
+   "speech": "掩码，把未来从打分里删掉。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 833.32,
+   "dur": 3.06,
+   "speech": "验证的核心是互相对照。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 836.56,
+   "dur": 3.42,
+   "speech": "自洽的测试救不了错的实现。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 840.17,
+   "dur": 2.77,
+   "speech": "所以证据要跨层对。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 843.12,
+   "dur": 2.39,
+   "speech": "下一集换到概率。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 845.69,
+   "dur": 3.81,
+   "speech": "负对数似然、分位数、CRPS。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 849.68,
+   "dur": 1.89,
+   "speech": "我们下集见。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 851.74,
+   "dur": 1.98,
+   "speech": "就讲到这里。"
+  }
+ ]
+}
