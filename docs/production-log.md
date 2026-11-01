@@ -379,3 +379,16 @@
 - E25 另清: 引擎 publish 曾用长名 `tsint-25-rnn-recurrence-vs-segments.{srt,chapters.txt,chapters.ffmeta.txt}`，与交付短名 `tsint-25.*` 内容逐字节相同；删长名三件，避免 `git status` 长期脏。
 - 约束落地: `CONVENTIONS.md` §1 delivery 条款补写「出片后必须搬回全部产物，`out/<id>/` 临时、搬完即删」；此后每集 make 结束后立即执行归档，再写 plan Delivery。
 - 影响: 引擎 `out/` 从 7.1 GB 降到 4.3 GB，且不再有任何 `tsint-*` 目录；`git status` 干净。
+
+## E37 ad-gmm-vae-mixture-prior — 2026-11-02 凌晨
+
+- ts-base: `b4ba09e`（算法 GMMVAE.hs 559 行 + GMMVAESpec 19 条）+ `88d8426`（8 股白酒面板导出）+ `047ad2e`（k-means 起点、精确 EM 诊断、两段式证据程序）+ `41f5879`（证据 ch4-gmm-vae 47/47）；套件 119，总断言 1,621
+- ts-admin: `591f2f5`（`inventory/scripts/export_ch04_gmm_vae.py`；8 只白酒股 hfq 日线 2015-01-01..2026-06-30，共同交易日对齐 2,694 行，max gap 96 天 2015-07-29..2015-11-02；sha256 ec92beadd0008f9e…）
+- video_project: `b4f9f97`（pack 源：script/shared/scenes/composition/film.json/build + lines/voice/clips + .gitignore）+ `63b6788`（delivery：cover.png / tsint-37.srt / chapters / ffmeta）；讲稿 296 行、coverFrame 20
+- 引擎: `a667688`（未变）；score 复用 `out/e04-score-loop-48k.wav`（1560 s 48 kHz，scoreReused false）
+- 成片: 1,161.87 s（19:21.87）/ 34,856 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS / 296 条旁白（发声 1,082.9 s）/ 字幕跨度 00:00:01,200→00:19:19,670 / mp4 55,698,043 B / cover.png 63,252 B（帧 20）/ srt 22,522 B / chapters 404 B / ffmeta 783 B
+- 流水线: 全 stage ok、8 段 rendered 8（reused 0，tree 72c5bc737ffeceae）；mix 48 kHz / 1,163.07 s、peak −1.23 dBFS、RMS −26.70 dBFS、ducked 57.8%（4.5 dB）、musicGain −4.5；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.58、gap_full −30.18、gap_audible −32.89、bed_contribution 37.1；flicker mean 20.55、min 14.50、max 24.45、mean|d| 0.0127、p99 0.1065、max 9.01、cuts 7（4025/7831/12804/16846/21297/28876/32675）；296 cue 无一换行、最长 31 字（budget 34）、8 章合计 1,161.87 s
+- 卡点: ① make 内容检查两次失败（首轮 dirty、次轮 content HEAD moved）→ 固定 `git commit` → `films.mjs sync` → make；② still lint 七处值列溢出（Row 值列固定 44%）→ Row 加 `spread`（62%）；③ 画面渲染出 undefined / undefined（gmm.json 缺 nPass/nChecks）→ builder 补 `meta.checkCount` 与每组 `pass`；④ 联合训练（EM+梯度）一步塌缩（平均对数密度 −0.5252→18.108）→ 主线改两段式 + k-means 起点（对称初始化会把两分量并到全局均值）；⑤ `backSolve` 解向量整条反转、`cholInvQuad` 写成 |Σ⁻¹b|²，均由有限差分对账抓到（相对 1e−4 + 绝对 1e−7）；⑥ 近奇异协方差 log-det −Infinity、远端点密度 −Infinity → Cholesky+jitter 1e−6 / log-sum-exp；⑦ 9 条旁白 cps 越界（<3.2）重录
+- 返工: 静帧复核三轮（26 帧 → 改 6 页 → 全量重渲仍 lint 失败 → 改 spread → 三轮 make PASS）；TTS 两轮（296 条，9 条重录后重测 1,161.87 s）
+- 偏差: 书没给 w 的推断网络 → 两段式（冻结编码器 + 潜码 EM）为主、联合训练只当诊断；「逐位一致」只在冻结标准正态 K=1 路径成立（解析 KL），一般 K 的 ELBO 用 MC KL，与上一集 VAE 只在期望意义相等（写进 SELF-AUTH A34）；分数 −log Σπ_k p(x|z,w=k) 是 p.102 判据的口语化、非书公式；K 固定 4 未学习
+- 备注: ch04 第八集（tsint 全系列第 47 部成片）；实测无提升：prior1 F1 0.2756（R 0.3947 / 报警 31.57%）vs mix4 0.2918（R 0.9023 / 报警 85.93%）；漂移窗最小分量 NLL 5.535 低于正常窗 5.968 → 混合把趋势收编成「又一个正常模式」；2020-02-01..04-30 疫情段 mix 5.12 vs prior 9.88、两者均 0% 报警（机制方向对）。下一步 E38 `ad-graph-contrastive`。
