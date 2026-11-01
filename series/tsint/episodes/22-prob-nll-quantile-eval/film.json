@@ -44,5 +44,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "publish": {
+    "coverFrame": 2868
+  },
+  "assetsStatus": "complete"
 }
