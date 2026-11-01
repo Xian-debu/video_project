@@ -417,12 +417,12 @@ export const Verdict: React.FC<{ ok: boolean; label?: string }> = ({ ok, label }
 );
 
 /** 一条「名字 · 数值 · 备注」的行。 */
-export const Row: React.FC<{ name: React.ReactNode; value: React.ReactNode; note?: React.ReactNode; color?: string; width?: number }> = ({
-  name, value, note, color = C.ink, width = 1720,
+export const Row: React.FC<{ name: React.ReactNode; value: React.ReactNode; note?: React.ReactNode; color?: string; width?: number; spread?: boolean }> = ({
+  name, value, note, color = C.ink, width = 1720, spread = false,
 }) => (
   <div style={{ display: "flex", alignItems: "baseline", width: "100%", maxWidth: width, marginTop: 10 }}>
     <div style={{ flex: "0 0 36%", minWidth: 0, fontFamily: FONT.sans, fontSize: FT.body, color: C.inkDim }}>{name}</div>
-    <div style={{ flex: "0 1 auto", minWidth: "18%", maxWidth: "44%", whiteSpace: "nowrap", fontFamily: FONT.mono, fontSize: FT.body, color, fontVariantNumeric: "tabular-nums" }}>{value}</div>
+    <div style={{ flex: "0 1 auto", minWidth: "18%", maxWidth: spread ? "62%" : "44%", whiteSpace: "nowrap", fontFamily: FONT.mono, fontSize: FT.body, color, fontVariantNumeric: "tabular-nums" }}>{value}</div>
     {note ? <div style={{ flex: 1, minWidth: 0, paddingLeft: 18, fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint }}>{note}</div> : null}
   </div>
 );

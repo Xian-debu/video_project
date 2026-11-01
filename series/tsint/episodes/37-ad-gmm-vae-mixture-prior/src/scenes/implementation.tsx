@@ -63,7 +63,7 @@ export const SImplementation: React.FC = () => {
               yFmt={(v) => v.toFixed(0)}
             />
             <Card label="两段式 · 冻结编码器再 EM 六十步" accent={C.violet} style={{ marginTop: 14 }}>
-              <Row name="权重轨迹" value={M.fit.pi.map((p) => p.toFixed(2)).join(" / ")} width={730} />
+              <Row name="权重轨迹" value={M.fit.pi.map((p) => p.toFixed(2)).join(" / ")} width={730} spread />
               <Row name="最大分量" value={M.fit.piMax.toFixed(3)} note="真实数据没有四个清晰模式" width={730} />
             </Card>
           </div>

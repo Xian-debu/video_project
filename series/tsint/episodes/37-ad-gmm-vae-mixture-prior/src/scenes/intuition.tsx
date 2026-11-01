@@ -18,7 +18,7 @@ export const SIntuition: React.FC = () => {
             </Body>
             <Card label="真值与恢复值" accent={C.violet} style={{ marginTop: 26 }}>
               <Row name="真值中心" value={M.blob.true.map((p) => "(" + p[0] + ", " + p[1] + ")").join("  ")} note="两团各两百点" width={890} />
-              <Row name="恢复中心" value={M.blob.est.map((p) => "(" + p[0].toFixed(3) + ", " + p[1].toFixed(3) + ")").join("  ")} note={"误差 " + M.blob.err.toFixed(3)} color={C.violet} width={890} />
+              <Row name="恢复中心" value={M.blob.est.map((p) => "(" + p[0].toFixed(3) + ", " + p[1].toFixed(3) + ")").join("  ")} note={"误差 " + M.blob.err.toFixed(3)} color={C.violet} width={890} spread />
               <Row name="权重" value={M.blob.pi.map((p) => p.toFixed(2)).join(" / ")} note="一半一半，没有骑墙的点" width={890} />
               <Row name="后验置信点" value={M.blob.confident + "%"} note="最大后验超过 0.9" width={890} />
             </Card>
@@ -46,9 +46,9 @@ export const SIntuition: React.FC = () => {
           </div>
           <div style={{ position: "absolute", left: 1150, top: 288, width: 700 }}>
             <Card label="四个分量 · 四个中心" accent={C.violet}>
-              <Row name="权重" value={M.latent.pi.map((p) => p.toFixed(2)).join(" / ")} width={640} />
-              <Row name="中心 1 / 2" value={M.latent.centers.slice(0, 2).map((p) => "(" + p[0].toFixed(2) + ", " + p[1].toFixed(2) + ")").join("  ")} width={640} />
-              <Row name="中心 3 / 4" value={M.latent.centers.slice(2).map((p) => "(" + p[0].toFixed(2) + ", " + p[1].toFixed(2) + ")").join("  ")} width={640} />
+              <Row name="权重" value={M.latent.pi.map((p) => p.toFixed(2)).join(" / ")} width={640} spread />
+              <Row name="中心 1 / 2" value={M.latent.centers.slice(0, 2).map((p) => "(" + p[0].toFixed(2) + ", " + p[1].toFixed(2) + ")").join("  ")} width={640} spread />
+              <Row name="中心 3 / 4" value={M.latent.centers.slice(2).map((p) => "(" + p[0].toFixed(2) + ", " + p[1].toFixed(2) + ")").join("  ")} width={640} spread />
             </Card>
             <Card label="半径中位数 · 离分量中心的距离" accent={C.cyan} style={{ marginTop: 18 }}>
               <Row name="正常窗" value={M.latent.normMedian.toFixed(3)} note={M.latent.normal.length + " 点"} width={640} />

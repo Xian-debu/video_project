@@ -17,8 +17,8 @@ export const SVerification: React.FC = () => {
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 288, width: 1000 }}>
             <Card label="数据 · 八只白酒股" accent={C.cyan}>
-              <Row name="标的 · 上" value={names().split(" · ").slice(0, 4).join(" · ")} width={950} />
-              <Row name="标的 · 下" value={names().split(" · ").slice(4).join(" · ")} width={950} />
+              <Row name="标的 · 上" value={names().split(" · ").slice(0, 4).join(" · ")} width={950} spread />
+              <Row name="标的 · 下" value={names().split(" · ").slice(4).join(" · ")} width={950} spread />
               <Row name="对齐后" value={M.data.rows + " 行"} note={M.data.start + " 至 " + M.data.end} width={950} />
               <Row name="最大间隔" value={M.data.maxGap.days + " 天"} note={M.data.maxGap.pair + "，整段缺数据"} color={C.coral} width={950} />
               <Row name="窗长 / 步长" value={M.windows.C + " 天 / 1"} note="窗内跨度超过 20 天就丢" width={950} />
