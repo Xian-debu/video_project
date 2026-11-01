@@ -1,6 +1,6 @@
 # 第 36 集 · 从重构到概率：AE 与 VAE 的潜空间
 
-> status: ready（成片待跑）
+> status: ready（2026-11-02 凌晨 交付）
 > chapter: ch04 异常检测 | target 26 min | 2 algorithms
 > 算法 ts-base `4857cb1` | 证据 `b815f6b` | 数据 ts-admin `97f7091`
 
@@ -72,4 +72,8 @@ KL：β=0.1 每窗 13.496，β=1 压到 5.964；重构 MSE 0.1321 → 0.1572；F
 
 ## Delivery
 
-（待补：make 通过后填成片时长、响度、章节与导出清单。）
+成片 delivery/Tsint36AdAeAndVaeRecon.mp4：1,250.97 s（37,529 帧），60,508,932 B，−15 LUFS、TP −2 dBFS；亮度闪烁 37,529 帧 mean 21.23 / min 14.47 / max 24.18、mean|d| 0.0136、p99 0.1111、最大 8.66、7 个切点（5336 / 10104 / 15504 / 19764 / 23411 / 31696 / 35502）；字幕 278 条 / 8 章、0 换行、最长 34 字、跨度 00:00:01,200 → 00:20:48,760（发声 1,175.2 s），章节合计 1,250.96 s（首 00:00:00 / 末 00:19:43）。四件导出：cover.png（帧 20，0.67 s，开场标题页，无字幕条）、tsint-36.srt、tsint-36.chapters.txt、tsint-36.chapters.ffmeta.txt；mp4 按惯例不入库。
+
+分数床用 E04 的 1560 s 循环（--score=out/e04-score-loop-48k.wav；report 的 scoreReused 记 false）；8 段场景全部重渲后拼接（tree 4031f34217a068ba），混音 48 kHz / 1,252.16 s，峰值 −1.03 dBFS，RMS −26.51 dBFS，duck 60.7%（4.5 dB），音乐增益 −4.5 dB，stem 可听中位 −27.88 dB、可听占比 63.1%、低频占比 6.8%；混音门 speech −23.55 dB、gap full −30.6 dB / audible −33.3 dB、bed contribution 36.7 dB。make 跑过五轮：首轮停在内容仓 dirty（派生数据 ae.json 已 gitignore，四个导出文件未提交）；二轮停在 still lint（验证页负向检查的 detail 与边界页日期两处塞进固定宽度 Row，溢出 271 px / 18 px），改成可换行 div 与 KV 位置卡；三轮、四轮在渲染中被我中止——静帧复核发现验证页仍带着 E35 的三个坑、三项负向断言与页面切分都对不上旁白，按内容改了必须重渲；五轮 PASS，report 记 reused 0 / rendered 8，交付版 content commit e0503e5。按归档约束 make 的全部产物直接落 pack delivery/：成片 mp4 60,508,932 B、programme_unnorm.mp4 60,226,599 B、raw_video.mp4 28,410,237 B、mix.wav 240,414,764 B、score.wav 299,520,078 B、score.meta.json、report.json、scenes/（8 段）、stills/（29 帧），引擎 out/<本集 id> 无残留。
+
+证据 40/40（315.5 s）、118 套测试 / 1,602 条断言（本集新增 29 条：ch4-ae 14 / ch4-vae 15）；算法 ts-base 4857cb1、证据 ts-base b815f6b（40/40 摘要）、数据 ts-admin 97f7091。
