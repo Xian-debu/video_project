@@ -79,4 +79,8 @@
 
 ## Delivery
 
-（待 make 完成后填：成片时长/字节、字幕/章节、混音门、静帧复核、导出四件）
+成片 delivery/Tsint37AdGmmVaeMixturePrior.mp4：1,161.87 s（34,856 帧），55,698,043 B，−15 LUFS、TP −2 dBFS；亮度闪烁 34,856 帧 mean 20.55 / min 14.50 / max 24.45、mean|d| 0.0127、p99 0.1065、最大 9.01、7 个切点（4025 / 7831 / 12804 / 16846 / 21297 / 28876 / 32675）；字幕 296 条 / 8 章、0 换行、最长 31 字、跨度 00:00:01,200 → 00:19:19,670（发声 1,082.9 s），章节合计 1,161.87 s（首 00:00:00 / 末 00:18:09）。四件导出：cover.png（帧 20，0.67 s，开场标题页，无字幕条）、tsint-37.srt、tsint-37.chapters.txt、tsint-37.chapters.ffmeta.txt；mp4 按惯例不入库。
+
+分数床用 E04 的 1560 s 循环（--score=out/e04-score-loop-48k.wav；report 的 scoreReused 记 false）；8 段场景全部重渲后拼接（tree 72c5bc737ffeceae），混音 48 kHz / 1,163.07 s，峰值 −1.23 dBFS，RMS −26.70 dBFS，duck 57.8%（4.5 dB），音乐增益 −4.5 dB，stem 可听中位 −27.88 dB、可听占比 63.1%、低频占比 6.8%；混音门 speech −23.58 dB、gap full −30.18 dB / audible −32.89 dB、bed contribution 37.1 dB。make 跑过三轮：首轮停在内容仓 HEAD 移动（改完内容 commit 6045a32 后没重新 sync）；二轮渲染完成后停在 still lint，七处值列溢出（两团恢复中心、潜空间权重与两排中心、权重轨迹、两排标的，溢出 4–128 px），给 Row 加 spread 让长值列可占 62% 而不压 note，改完 b4f9f97；三轮 PASS，report 记 reused 0 / rendered 8。静帧复核另改过几处：验证页 checks 计数读到 undefined（gmm.json 没有顶层 nPass/nChecks，builder 补 meta.checkCount 与每组 pass）、outro 的 130 字重跑命令被裁（拆五行）、outro「书的判据」卡名与行名重复（卡名改「判据与真实数据」）、注入卡与权重轨迹的长 note 删去（信息移到正文）。按归档约束 make 的全部产物直接落 pack delivery/：成片 mp4 55,698,043 B、programme_unnorm.mp4 55,404,203 B、raw_video.mp4 25,837,635 B、mix.wav 223,309,484 B、score.wav 299,520,078 B、score.meta.json、report.json、scenes/（8 段）、stills/（26 帧），引擎 out/<本集 id> 无残留。
+
+证据 47/47（37.9 s）、119 套测试 / 1,621 条断言（本集新增 19 条：ch4-gmm-vae）；算法 ts-base 047ad2e、证据 ts-base 41f5879（47/47 摘要）、数据 ts-admin 97f7091。
