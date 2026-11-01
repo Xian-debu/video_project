@@ -1,7 +1,7 @@
 # 23-prob-crps-picp-vae - 概率预测进阶：CRPS、区间覆盖率、VAE 的 ELBO
 
-> status: draft (scaffolded, not produced)
-> chapter: ch03 | runtime target: 24 min | algorithms: 3
+> status: produced (2026-11-01) · 成片 874.08 s / 240 句
+> chapter: ch03 | runtime target: 24 min (实际 14.6 min) | algorithms: 3
 
 ## Thesis
 
@@ -9,14 +9,22 @@
 
 ## Verification
 
-两套数据并行：合成断言——高斯 CRPS 闭式 vs 采样差 <1e-3、排序恒等式差 <1e-9、S=1 退化为 |x-y|、PICP 在已知高斯区间下 ∈[0.89,0.91]、KL 闭式 1.806853、重参数化梯度差 <1e-6；A 股演示——CRPS 与 MAE 同量纲对照表、80%/95% 区间的覆盖率与平均宽度、VAE 隐空间散点。屏幕上必须出现 4 个数字：1e-3（闭式对齐误差）、1.806853（KL 手算）、0.90（PICP 目标）、1e-9（排序恒等式差）。
+两套数据并行。合成断言（实际读数）：高斯 CRPS 闭式 vs 两万样本相对误差 7.05e-4（<1e-3）；排序恒等式相对误差 8.17e-16（<1e-9）；直接式与样本式相对误差 1.83e-15；S=1 退化为 |x−y|；PICP 一万个标准正态样本在 80%/95% 区间内 0.8023 / 0.9486；KL 闭式手算 1.3068528194（μ=1、σ²=4。计划书的 1.806853 少乘了系数，两者正好差 0.5，已在证据与画面勘误）；重参数化梯度 vs 中心差分 4.42e-10（<1e-6）；VAE 全批量 60 轮 loss 1318.00 → 1095.83（−16.9%）。A 股演示：8 通道 240 个交易日，CRPS 均值 0.0096 vs MAE 0.0126（低 24.1%），80%/95% 覆盖率 0.8534 / 0.9439（区间宽，尾部厚），潜变量范数与窗口活跃度相关 0.7807。屏幕上出现的数字：41/41 检查、0.2337（y=μ 黄金值 1/√π）、1.3069（KL 手算）、0.5642/S（采样估计偏差）。
 
 ## Data
 
-ts-admin 8 通道 panel 1000 个 96 步窗口；合成：固定 seed 标准正态样本做闭式断言，高斯生成器做 CRPS 采样对齐
+ts-admin 8 通道 panel 2,669 行 / 1,000 个 96 步窗口（768 维），sha256 8753bcd8…；合成：固定 seed 标准正态样本做闭式断言，高斯生成器做 CRPS 采样对齐
 
 ## Algorithms
 
 - ch3-crps - 连续排序概率分数 CRPS (TsBase.Algos.Ch03.Crps)
 - ch3-picp - 预测区间覆盖率 PICP (TsBase.Algos.Ch03.Picp)
 - ch3-vae-elbo - VAE 的 ELBO 损失（概率预测生成器） (TsBase.Algos.Ch03.VaeElbo)
+
+## 交付状态
+
+- 实现：ts-base 9755816（3 模块 + 3 测试套件 38 断言）
+- 证据：ts-base c53d331（41 项检查，79 秒可重跑，app/Ch03Prob2Evidence.hs）
+- 导出：ts-admin a7a3a22（8 通道日频面板，2,669 行）
+- 本包：240 句讲稿、8 场、874.08 s；narration.wav 83.9 MB
+- 已知欠账：A7 算法卡、演示 CLI（W 阶段统一补）
