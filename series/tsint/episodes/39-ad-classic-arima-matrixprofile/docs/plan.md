@@ -1,6 +1,7 @@
 # 39-ad-classic-arima-matrixprofile - 残差与邻居：ARIMA 残差检测与 Matrix Profile discord
 
-> status: produced（成片待 make 归档） · chapter: ch04 · runtime: 19 min 10 s · algorithms: 2
+> status: ready（2026-11-02 凌晨 成片入库） · chapter: ch04 · runtime: 19 min 10 s · 2 algorithms
+> 算法 ts-base `b1f07ea` | 数据 ts-admin `7065608`
 
 ## Thesis
 
@@ -50,9 +51,32 @@ ts-admin `export_ch04_classic.py`：600519.SH 日线，hfq，2010-01-04 至 2026
 
 ## 时间轴（实测 voice.json）
 
-310 句、8 场 29 页、1149.71 s / 34,491 帧 @30fps。分页一律落在句首（`PAGES_INDEX` 按实测行起点换算），页间 12 帧交叉淡变。
+310 句、8 场 29 页、1149.83 s / 34,495 帧 @30fps。分页一律落在句首（`PAGES_INDEX` 按实测行起点换算），页间 12 帧交叉淡变。
 
 ## 证据提交
 
 - ts-base `b1f07ea`：ARIMA / MatrixProfile 模块、测试、证据程序与 evidence JSON（49/49，3.3 s；测试 124 套件 / 1,663 断言，本集新增 18）。
 - ts-admin `7065608`：600519 日线导出与 manifest。
+
+## Delivery
+
+- 成片 `delivery/Tsint39AdClassicArimaMatrixprofile.mp4`：1,149.83 s / 34,495 帧 / 8 场 29 页 / 55,031,821 B
+  （programme_unnorm 54,753,970 B、raw_video 25,477,963 B）；−15 LUFS、TP −2 dBFS、LRA 2.6；树哈希
+  `fb5982fdb03a6a70`，八段全重渲（reused 0 / rendered 8），23 个 stage 全 ok（渲染前 15 项 + 音频/画面/导出）。
+- 四件导出在 `delivery/`：`tsint-39.srt` 310 条（发声 1,068.2 s；0 换行、最长 32 字、跨度
+  00:00:01,200 → 00:19:07,640）、`tsint-39.chapters.txt` 8 章（首 00:00:00 / 末 00:17:56，合计 1,149.83 s）、
+  `tsint-39.chapters.ffmeta.txt`、`cover.png`（帧 20 = 0.67 s，开场标题页，无字幕条）；mp4 按惯例不入库。
+- 混音：48 kHz / 1,151.03 s，峰 −1.00 dBFS、RMS −26.96 dBFS，duck 4.5 dB 覆盖 56.0%，preGain 0.9576，
+  musicGain −4.5、淡入 1.5 s / 淡出 2.5 s；stem 门 full −25.1 / audible −27.88（share 63.1% / sub 6.8%，
+  高通差 2.8 dB），mix 门 speech −23.72 / gap_full −30.91 / gap_audible −33.67 / bed 36.3 全过。
+- 闪烁门：34,495 帧 mean 19.57 / min 14.50 / max 23.51、mean|Δ| 0.0126、p99 0.1029、最大 7.86、
+  7 个切点（3728 / 7448 / 14069 / 17690 / 21956 / 29346 / 32301），全过。
+- make 两轮：首轮停在内容仓 HEAD 移动（commit 后未重新 `films.mjs sync`），sync 后二轮 PASS；
+  `report.json` 的 content commit `eb310bc`（dirty 4：交付产物、`delivery/` 入库前的生成件）、
+  src hash `4c5fa44a1adcbfe2`、data hash `4470df2c42c39959`、scripts `46f9d90af99ba82b`。
+- 静帧复核：29 页全部按页中点渲出并逐页看过（成片时间轴，不是 scaffold），只改了一处——开场 p2
+  「出处」行的「§」在渲染字体里 fallback 成「S」，改成「第 4.4.1–4.4.2 节 · p.85」；另把收尾旁白
+  「片长四十集」改成「片长十九分钟」，重录该句并把 narration.wav 重建（110,383,724 B / 1,149.83 s）。
+- 证据 49/49、3.3 s（ts-base `b1f07ea`：Ch04/ARIMA.hs 338 行 / 10 条、Ch04/MatrixProfile.hs 129 行 / 8 条），
+  测试 124 套 / 1,663 断言；pin 算法 `b1f07ea` / 数据 `7065608`。
+
