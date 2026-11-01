@@ -1,0 +1,2129 @@
+{
+ "entry": "src/tsint-37-ad-gmm-vae-mixture-prior/script.ts",
+ "fps": 30,
+ "totalSec": 1161.87,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 134.16
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 134.16,
+   "dur": 126.86
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 261.02,
+   "dur": 165.78
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 426.8,
+   "dur": 134.73
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 561.53,
+   "dur": 148.37
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 709.9,
+   "dur": 252.64
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 962.54,
+   "dur": 126.62
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1089.16,
+   "dur": 72.71
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.9,
+   "speech": "上一集把潜空间钉在标准正态上。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.28,
+   "dur": 3.66,
+   "speech": "一个先验，一个下界，一条 KL。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.12,
+   "dur": 3.18,
+   "speech": "这一集问：如果一个高斯不够呢。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.49,
+   "dur": 3.09,
+   "speech": "书给的办法是混合先验。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.75,
+   "dur": 3.37,
+   "speech": "用 K 个高斯拼成一个先验。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.31,
+   "dur": 2.92,
+   "speech": "每个高斯是一个「正常模式」。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.4,
+   "dur": 3.13,
+   "speech": "状态切换就不再是异常。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.72,
+   "dur": 3.4,
+   "speech": "异常留给谁都解释不了的点。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.3,
+   "dur": 3.71,
+   "speech": "这个想法很漂亮，实测却不漂亮。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.19,
+   "dur": 3.21,
+   "speech": "同一个编码器，只换先验。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 36.57,
+   "dur": 3.9,
+   "speech": "单高斯先验，F1 0.2756。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 40.65,
+   "dur": 3.73,
+   "speech": "混合先验，F1 0.2918。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.57,
+   "dur": 2.44,
+   "speech": "F1 几乎没动。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.19,
+   "dur": 5.46,
+   "speech": "报警率从 31.57% 涨到 85.93%。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 52.83,
+   "dur": 3.18,
+   "speech": "这一集讲它为什么没抬起来。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 56.19,
+   "dur": 2.56,
+   "speech": "先把两个读数并排。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 58.93,
+   "dur": 5.85,
+   "speech": "单高斯先验：召回 0.3947，报警 31.57%。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 64.95,
+   "dur": 5.75,
+   "speech": "混合先验：召回 0.9023，报警 85.93%。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 70.88,
+   "dur": 4.19,
+   "speech": "召回涨了一倍多，F1 只涨 0.016。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 75.25,
+   "dur": 3.28,
+   "speech": "因为多出来的召回全是误报。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 78.71,
+   "dur": 3.73,
+   "speech": "阈值从 14.35 掉到 10.07。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 82.63,
+   "dur": 4.48,
+   "speech": "混合分数整体变低，训练段的尺子又松了。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 87.28,
+   "dur": 2.39,
+   "speech": "先摆出三个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 89.85,
+   "dur": 3.83,
+   "speech": "第一，多个模式怎么写进一条损失。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 93.86,
+   "dur": 3.78,
+   "speech": "第二，EM 和梯度能不能一起训。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 97.83,
+   "dur": 3.85,
+   "speech": "第三，混合有没有把趋势段当异常。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 101.86,
+   "dur": 4.19,
+   "speech": "数据是八只白酒股，2015 到 2026。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 106.23,
+   "dur": 3.18,
+   "speech": "两千六百九十四个对齐交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 109.59,
+   "dur": 4.57,
+   "speech": "训练八百二十六窗，测试一千四百七十二窗。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 114.35,
+   "dur": 3.83,
+   "speech": "注入二十段，点级真值二百六十六点。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 118.36,
+   "dur": 3.06,
+   "speech": "四十七项检查，一次跑完。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 121.6,
+   "dur": 6.93,
+   "speech": "八页：开场、问题、定义、直觉、实现、验证、边界、收尾。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 128.7,
+   "dur": 3.25,
+   "speech": "先看单高斯为什么只认「远」。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 135.36,
+   "dur": 3.21,
+   "speech": "单高斯先验的分数只有一项。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 138.75,
+   "dur": 3.59,
+   "speech": "负对数密度，零均值单位协方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 142.52,
+   "dur": 4.45,
+   "speech": "它等于二分之一乘潜变量平方和，加常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 147.15,
+   "dur": 3.54,
+   "speech": "分数只量一个东西：离原点多远。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 150.87,
+   "dur": 3.83,
+   "speech": "正常样本被 KL 压在原点附近。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 154.88,
+   "dur": 4.05,
+   "speech": "异常如果也落在原点附近，就量不到。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 159.11,
+   "dur": 3.4,
+   "speech": "训练段阈值 14.3471。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 162.69,
+   "dur": 3.33,
+   "speech": "测试段召回 0.3947。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 166.19,
+   "dur": 2.63,
+   "speech": "二十段只抓到七段。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 169,
+   "dur": 2.73,
+   "speech": "精确率 0.2117。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 171.91,
+   "dur": 3.25,
+   "speech": "报警率 31.57%。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 175.34,
+   "dur": 4.84,
+   "speech": "干净点中位 13.79，紧贴阈值 14.35。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 180.36,
+   "dur": 3.01,
+   "speech": "分数挤在一起，没有余量。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 183.55,
+   "dur": 3.9,
+   "speech": "书里说，混合先验能救状态切换。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 187.64,
+   "dur": 2.68,
+   "speech": "我们专门留了一段对照。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 190.49,
+   "dur": 3.49,
+   "speech": "二零二零年二月到四月，疫情段。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 194.17,
+   "dur": 3.35,
+   "speech": "六十三个测试点，没有任何注入。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 197.7,
+   "dur": 3.88,
+   "speech": "单高斯在这段的平均分是 9.88。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 201.76,
+   "dur": 2.77,
+   "speech": "混合先验是 5.12。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 204.71,
+   "dur": 2.17,
+   "speech": "两个都没报警。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 207.06,
+   "dur": 3.66,
+   "speech": "混合把整段读成「另一个正常模式」。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 210.91,
+   "dur": 2.97,
+   "speech": "这正是书里想要的方向。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 214.05,
+   "dur": 4.36,
+   "speech": "机制是对的：状态切换不再被当成异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 218.59,
+   "dur": 3.28,
+   "speech": "但机制对，不等于检测变好。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 222.05,
+   "dur": 4.69,
+   "speech": "书的判据是：任何分量都解释不了，才算异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 226.92,
+   "dur": 4.21,
+   "speech": "我们对每个漂移窗算四个分量的负对数似然。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 231.32,
+   "dur": 4.41,
+   "speech": "取最小，就是最相信它的分量有多不信。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 235.9,
+   "dur": 3.54,
+   "speech": "漂移窗最小值中位 5.535。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 239.62,
+   "dur": 2.89,
+   "speech": "正常窗是 5.968。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 242.7,
+   "dur": 2.87,
+   "speech": "尖峰窗是 5.578。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 245.75,
+   "dur": 2.29,
+   "speech": "三个数几乎一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 248.22,
+   "dur": 3.45,
+   "speech": "混合把趋势段收进了某个分量。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 251.85,
+   "dur": 2.99,
+   "speech": "它不区分「趋势」和「正常」。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 255.02,
+   "dur": 3.81,
+   "speech": "召回是这么来的，误报也是这么来的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 262.22,
+   "dur": 3.35,
+   "speech": "混合先验，式(4.26)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 265.75,
+   "dur": 3.97,
+   "speech": "p(z) 等于 K 个高斯加权求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 269.9,
+   "dur": 3.76,
+   "speech": "权重 pi_k 非负，和为一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 273.84,
+   "dur": 6.18,
+   "speech": "每个分量有自己的均值 mu_k 和协方差 Sigma_k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 280.2,
+   "dur": 3.4,
+   "speech": "式(4.27) 是它的下界。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 283.78,
+   "dur": 4.55,
+   "speech": "重构项减去 KL，KL 对混合先验算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 288.51,
+   "dur": 2.99,
+   "speech": "三个数值要点，先钉住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 291.68,
+   "dur": 3.88,
+   "speech": "第一，混合似然要用 log-sum-exp。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 295.74,
+   "dur": 4.29,
+   "speech": "四个分量直接 log(sum) 会下溢成负无穷。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 300.21,
+   "dur": 3.25,
+   "speech": "第二，协方差要做 Cholesky。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 303.64,
+   "dur": 3.81,
+   "speech": "再加一个 jitter，1e-6。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 307.63,
+   "dur": 3.13,
+   "speech": "A 股横盘段的方差接近零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 310.94,
+   "dur": 3.78,
+   "speech": "不处理，log-det 直接是负无穷。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 314.9,
+   "dur": 4.43,
+   "speech": "第三，每次更新后权重夹紧再归一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 319.51,
+   "dur": 4.67,
+   "speech": "夹到 1e-8 到 1，和永远是一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 324.36,
+   "dur": 3.18,
+   "speech": "书里没给 w 的推断网络。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 327.72,
+   "dur": 4.41,
+   "speech": "式(4.27) 里的 w 是离散隐变量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 332.31,
+   "dur": 3.21,
+   "speech": "它只引了一篇文献，没有展开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 335.7,
+   "dur": 2.87,
+   "speech": "这是这一集最大的自由度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 338.75,
+   "dur": 2.49,
+   "speech": "我们做了两种实现。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 341.41,
+   "dur": 5.15,
+   "speech": "第一种，联合训练：EM 更新先验，梯度更新网络。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 346.74,
+   "dur": 5.61,
+   "speech": "第二种，两段式：冻结编码器，再用 EM 拟合混合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 352.53,
+   "dur": 2.58,
+   "speech": "片子主要报两段式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 355.29,
+   "dur": 4.17,
+   "speech": "因为它和上一集的 VAE 共用同一个编码器。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 359.64,
+   "dur": 2.41,
+   "speech": "两个读数才可比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 362.23,
+   "dur": 4.26,
+   "speech": "联合训练只当诊断，后面会看到为什么。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 366.67,
+   "dur": 3.37,
+   "speech": "分数写成负的混合对数密度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 370.23,
+   "dur": 4.48,
+   "speech": "这是 p.102 判据的口语化，不是书上的公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 374.88,
+   "dur": 2.49,
+   "speech": "屏幕会标「非书中」。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 377.55,
+   "dur": 2.58,
+   "speech": "最后是这本参数账。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 380.31,
+   "dur": 3.73,
+   "speech": "编码器加两个头，一千八百五十二个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 384.23,
+   "dur": 3.97,
+   "speech": "四个分量，每个八维均值，三十二个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 388.38,
+   "dur": 2.46,
+   "speech": "四个权重，四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 391.02,
+   "dur": 4.36,
+   "speech": "四个八乘八的下三角协方差，一百四十四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 395.56,
+   "dur": 2.75,
+   "speech": "合计两千零三十二个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 398.49,
+   "dur": 3.13,
+   "speech": "都很小，每个数都能手核。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 401.8,
+   "dur": 2.8,
+   "speech": "合成数据上先验一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 404.78,
+   "dur": 4.41,
+   "speech": "两团点，各两百个，中心隔六个标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 409.37,
+   "dur": 4.05,
+   "speech": "K 等于二，中心恢复误差 0.023。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 413.59,
+   "dur": 3.81,
+   "speech": "权重一半一半，后验置信点占满。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 417.58,
+   "dur": 3.16,
+   "speech": "这说明 EM 本身没写错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 420.92,
+   "dur": 3.69,
+   "speech": "再看它在真实潜空间里学到了什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 428,
+   "dur": 2.68,
+   "speech": "先看这两团合成点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 430.86,
+   "dur": 4.45,
+   "speech": "散点里两团分得很开，中心隔六个标准差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 435.49,
+   "dur": 4.74,
+   "speech": "K 等于二的混合，从 k-means 起点开始 EM。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 440.41,
+   "dur": 3.81,
+   "speech": "六十步后，两个中心都收回到真值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 444.4,
+   "dur": 4.29,
+   "speech": "误差 0.023，权重 0.5 对 0.5。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 448.87,
+   "dur": 3.35,
+   "speech": "后验也很干净，没有骑墙的点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 452.4,
+   "dur": 3.9,
+   "speech": "这一步证明：多个模式确实能被拟合。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 456.48,
+   "dur": 2.34,
+   "speech": "问题不在优化器。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 459,
+   "dur": 2.41,
+   "speech": "再看真实潜空间。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 461.59,
+   "dur": 3.25,
+   "speech": "八维编码器压到二维画出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 465.03,
+   "dur": 2.8,
+   "speech": "四个分量，四个中心。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 468.01,
+   "dur": 5.77,
+   "speech": "权重是 0.09、0.10、0.64、0.17。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 473.96,
+   "dur": 2.61,
+   "speech": "最大一个占六成四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 476.75,
+   "dur": 4.36,
+   "speech": "不是一个均分市场，是一个主团加三个卫星。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 481.28,
+   "dur": 3.81,
+   "speech": "半径中位数：正常窗 1.394。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 485.27,
+   "dur": 2.56,
+   "speech": "注入窗 1.374。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 488.01,
+   "dur": 3.95,
+   "speech": "尖峰 2.462，斜坡 1.278。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 492.14,
+   "dur": 3.49,
+   "speech": "斜坡甚至比正常更靠近中心。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 495.81,
+   "dur": 3.61,
+   "speech": "尖峰稍微远一点，但没飞出去。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 499.61,
+   "dur": 4.53,
+   "speech": "和上一集一样：重构类不把异常推到远处。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 504.31,
+   "dur": 2.73,
+   "speech": "混合也没改变这一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 507.22,
+   "dur": 2.75,
+   "speech": "分量层面更直接一些。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 510.15,
+   "dur": 4.05,
+   "speech": "四个分量对漂移窗的平均负对数似然。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 514.37,
+   "dur": 5.39,
+   "speech": "分别是 25.6、13.2、15.5、22.8。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 519.94,
+   "dur": 5.49,
+   "speech": "正常窗是 18.1、9.9、27.1、60.0。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 525.61,
+   "dur": 5.97,
+   "speech": "尖峰窗是 15.4、13.8、17.9、58.1。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 531.76,
+   "dur": 3.47,
+   "speech": "每个窗取四个分量里最小的那个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 535.41,
+   "dur": 6.11,
+   "speech": "中位数：正常 5.968，漂移 5.535，尖峰 5.578。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 541.7,
+   "dur": 2.41,
+   "speech": "漂移比正常还低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 544.29,
+   "dur": 3.4,
+   "speech": "趋势段被某个分量完整解释了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 547.87,
+   "dur": 2.68,
+   "speech": "它成了「另一个正常模式」。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 550.73,
+   "dur": 4.55,
+   "speech": "书说多个模式能救状态切换，这就是代价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 555.46,
+   "dur": 3.88,
+   "speech": "救的方式，是把不该放过的也放过了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 562.73,
+   "dur": 4.19,
+   "speech": "模块在 Ch04 下，五百五十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 567.1,
+   "dur": 3.59,
+   "speech": "复用上一集的编码器和两个头。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 570.87,
+   "dur": 2.85,
+   "speech": "新增的是先验那一侧。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 573.9,
+   "dur": 4.93,
+   "speech": "混合密度、分量后验、EM 一步、k-means 起点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 579.01,
+   "dur": 3.01,
+   "speech": "全部纯函数，没有随机数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 582.2,
+   "dur": 4.84,
+   "speech": "梯度手写，有限差分对到 1e-4。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 587.22,
+   "dur": 3.59,
+   "speech": "训练循环每二十轮做一次 EM。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 590.99,
+   "dur": 3.81,
+   "speech": "六十轮后启用 k-means 重新初始化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 594.98,
+   "dur": 3.57,
+   "speech": "顺序固定，同种子逐位可复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 598.72,
+   "dur": 3.4,
+   "speech": "联合训练这一路，值得单独说。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 602.3,
+   "dur": 4.5,
+   "speech": "不加正则，EM 一步就能把协方差压到零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 606.98,
+   "dur": 4.69,
+   "speech": "平均对数密度从 -0.5252 跳到 18.108。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 611.86,
+   "dur": 2.97,
+   "speech": "数字变大了，模型死了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 615,
+   "dur": 3.23,
+   "speech": "这是一个塌缩，不是一个改进。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 618.41,
+   "dur": 4.17,
+   "speech": "加正则，协方差对角线加 0.05。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 622.76,
+   "dur": 4.09,
+   "speech": "权重加一个 0.02 的下限，再归一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 627.03,
+   "dur": 3.06,
+   "speech": "密度稳定在 -0.5261。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 630.28,
+   "dur": 4.84,
+   "speech": "但也没变好：从 -0.5252 到 -0.5261。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 635.29,
+   "dur": 3.13,
+   "speech": "联合训练能跑，学不到东西。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 638.61,
+   "dur": 2.13,
+   "speech": "两段式不一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 640.91,
+   "dur": 3.37,
+   "speech": "冻结编码器，EM 六十步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 644.47,
+   "dur": 6.13,
+   "speech": "权重从均分走到 0.11、0.13、0.15、0.62。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 650.78,
+   "dur": 2.49,
+   "speech": "一直是一个主分量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 653.45,
+   "dur": 4.21,
+   "speech": "这就是真实数据的形状：没有四个清晰模式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 657.84,
+   "dur": 3.21,
+   "speech": "最后一条硬测试：K 等于一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 661.23,
+   "dur": 5.63,
+   "speech": "一个分量，权重一，均值和协方差固定成标准正态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 667.04,
+   "dur": 4.6,
+   "speech": "这时混合下界退化成单个高斯下界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 671.82,
+   "dur": 3.88,
+   "speech": "单元的损失和上一集的 VAE 逐位相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 675.87,
+   "dur": 2.8,
+   "speech": "参数也是逐位相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 678.85,
+   "dur": 2.51,
+   "speech": "不是近似，是相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 681.54,
+   "dur": 4.24,
+   "speech": "这条测试保证两条路径没有偷偷分叉。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 685.96,
+   "dur": 2.32,
+   "speech": "数值兜底也测了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 688.46,
+   "dur": 4.5,
+   "speech": "近奇异协方差，直接算 log-det 是负无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 693.14,
+   "dur": 2.97,
+   "speech": "加 jitter 后密度是有限的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 696.29,
+   "dur": 4.86,
+   "speech": "一个远点，八维都是一百，log-sum-exp 有限。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 701.33,
+   "dur": 3.28,
+   "speech": "朴素写法同样是负无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 704.79,
+   "dur": 2.92,
+   "speech": "这两个坑都写成了检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 711.1,
+   "dur": 2.65,
+   "speech": "验证页先交代数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 713.93,
+   "dur": 3.88,
+   "speech": "八只白酒股，同一行业，同一市场。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 717.99,
+   "dur": 3.16,
+   "speech": "两千六百九十四行对齐数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 721.33,
+   "dur": 3.49,
+   "speech": "二零一五年一月到二零二六年六月。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 725,
+   "dur": 3.45,
+   "speech": "最大间隔九十六天，一五年的洞。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 728.63,
+   "dur": 2.8,
+   "speech": "窗长一百天，步长一。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 731.61,
+   "dur": 4.57,
+   "speech": "训练八百二十六窗，测试一千四百七十二窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 736.36,
+   "dur": 4.05,
+   "speech": "训练段每四个取一个，用了二百零七窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 740.59,
+   "dur": 3.11,
+   "speech": "注入十段尖峰、十段斜坡。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 743.88,
+   "dur": 3.57,
+   "speech": "全是点级真值，二百六十六个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 747.62,
+   "dur": 2.56,
+   "speech": "种子三千七百零一。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 750.36,
+   "dur": 3.16,
+   "speech": "疫情段不注入，只做对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 753.7,
+   "dur": 4,
+   "speech": "两个模型吃同一套窗、同一套真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 757.88,
+   "dur": 2.17,
+   "speech": "只有先验不同。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 760.23,
+   "dur": 2.87,
+   "speech": "第一个读数：单高斯先验。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 763.28,
+   "dur": 2.7,
+   "speech": "阈值 14.3471。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 766.16,
+   "dur": 6.3,
+   "speech": "F1 0.2756，精确率 0.2117，召回 0.3947。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 772.65,
+   "dur": 2.41,
+   "speech": "二十段抓到七段。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 775.24,
+   "dur": 3.59,
+   "speech": "干净点报警 31.57%。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 779.01,
+   "dur": 3.01,
+   "speech": "平均精度 0.1798。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 782.2,
+   "dur": 2.46,
+   "speech": "曲线贴着左下角。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 784.85,
+   "dur": 2.89,
+   "speech": "它只抓离原点远的点。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 787.92,
+   "dur": 3.25,
+   "speech": "这是上一集 VAE 的同一个分数。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 791.35,
+   "dur": 2.82,
+   "speech": "第二个读数：混合先验。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 794.36,
+   "dur": 2.58,
+   "speech": "阈值 10.0736。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 797.12,
+   "dur": 6.23,
+   "speech": "F1 0.2918，精确率 0.1740，召回 0.9023。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 803.53,
+   "dur": 2.51,
+   "speech": "二十段抓到十八段。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 806.22,
+   "dur": 3.64,
+   "speech": "干净点报警 85.93%。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 810.04,
+   "dur": 3.06,
+   "speech": "平均精度 0.1663。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 813.28,
+   "dur": 2.68,
+   "speech": "平均精度反而更低。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 816.14,
+   "dur": 2.73,
+   "speech": "曲线整体上往右推。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 819.04,
+   "dur": 4.65,
+   "speech": "召回是买来的，代价是几乎每一段都报警。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 823.87,
+   "dur": 5.08,
+   "speech": "阈值从 14.35 掉到 10.07，分数整体变低。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 829.13,
+   "dur": 3.73,
+   "speech": "训练段的尺子在新数据上更松。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 833.04,
+   "dur": 2.49,
+   "speech": "再按类型分开看。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 835.71,
+   "dur": 3.76,
+   "speech": "尖峰二十二个点，单高斯中七个。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 839.64,
+   "dur": 2.44,
+   "speech": "混合中二十一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 842.26,
+   "dur": 4.26,
+   "speech": "斜坡二百四十四个点，单高斯中九十八个。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 846.7,
+   "dur": 2.65,
+   "speech": "混合中一百九十个。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 849.54,
+   "dur": 2.65,
+   "speech": "斜坡段的命中大涨。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 852.37,
+   "dur": 3.4,
+   "speech": "但误报也是在这类窗上堆起来的。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 855.95,
+   "dur": 4.43,
+   "speech": "混合把趋势窗当成了某个分量的正常样本。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 860.56,
+   "dur": 4.14,
+   "speech": "这是一个方向明确的交换：召回换精确率。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 864.88,
+   "dur": 3.33,
+   "speech": "两个 F1 都没过 0.30。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 868.39,
+   "dur": 3.93,
+   "speech": "分量解释这一段，是这一集的核心证据。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 872.49,
+   "dur": 4.5,
+   "speech": "每个漂移窗，四个分量各给一个负对数似然。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 877.18,
+   "dur": 4,
+   "speech": "取最小的那个，代表最相信它的分量。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 881.35,
+   "dur": 3.54,
+   "speech": "漂移窗最小值中位 5.535。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 885.08,
+   "dur": 2.73,
+   "speech": "正常窗 5.968。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 887.98,
+   "dur": 2.63,
+   "speech": "尖峰窗 5.578。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 890.79,
+   "dur": 4.62,
+   "speech": "如果混合能区分趋势，漂移应该显著更高。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 895.59,
+   "dur": 2.68,
+   "speech": "实际它比正常还低。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 898.45,
+   "dur": 3.9,
+   "speech": "「任何分量都解释不了」在趋势段失效了。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 902.53,
+   "dur": 3.23,
+   "speech": "我们把这条写成负向检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 905.94,
+   "dur": 3.81,
+   "speech": "检查成立的意思是：这个失败可复现。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 909.93,
+   "dur": 3.66,
+   "speech": "两条负向断言，钉住两个失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 913.77,
+   "dur": 3.83,
+   "speech": "第一条：最大分量权重 0.618。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 917.78,
+   "dur": 3.37,
+   "speech": "四个分量都在用，但有一个偏大。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 921.34,
+   "dur": 3.4,
+   "speech": "真实潜空间不是四个均分模式。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 924.91,
+   "dur": 5.41,
+   "speech": "第二条：漂移最小分量 NLL 与正常差 0.43。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 930.51,
+   "dur": 4.05,
+   "speech": "差得比噪声还小，混合不区分趋势。"
+  },
+  {
+   "scene": "verification",
+   "index": 61,
+   "start": 934.73,
+   "dur": 4.33,
+   "speech": "四十七项检查全过，用时三十七点九秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 62,
+   "start": 939.25,
+   "dur": 3.37,
+   "speech": "路上踩到的三个坑也记下来。"
+  },
+  {
+   "scene": "verification",
+   "index": 63,
+   "start": 942.8,
+   "dur": 4.74,
+   "speech": "联合 EM 一步塌缩，正则只能保命不能提升。"
+  },
+  {
+   "scene": "verification",
+   "index": 64,
+   "start": 947.72,
+   "dur": 3.64,
+   "speech": "阈值不迁移，混合继承了这个问题。"
+  },
+  {
+   "scene": "verification",
+   "index": 65,
+   "start": 951.54,
+   "dur": 4.69,
+   "speech": "朴素 log-sum-exp 在远点下溢成负无穷。"
+  },
+  {
+   "scene": "verification",
+   "index": 66,
+   "start": 956.42,
+   "dur": 3.93,
+   "speech": "这三条都写进了证据，不藏在备注里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 963.74,
+   "dur": 3.69,
+   "speech": "这套数字管不到的地方，先说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 967.61,
+   "dur": 4,
+   "speech": "八只票，全是白酒，同行业同市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 971.78,
+   "dur": 3.69,
+   "speech": "换行业、换市场，结论要重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 975.65,
+   "dur": 3.64,
+   "speech": "K 等于四，固定，没有学习模态数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 979.47,
+   "dur": 3.33,
+   "speech": "真值只有两类：尖峰和斜坡。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 982.97,
+   "dur": 3.88,
+   "speech": "形状、周期、结构性断点都没试。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 987.03,
+   "dur": 3.64,
+   "speech": "阈值全局一个数，不随季节重估。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 990.85,
+   "dur": 3.3,
+   "speech": "这正是报警率高的直接原因。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 994.33,
+   "dur": 3.83,
+   "speech": "w 的推断书里没写，我们选了两段式。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 998.34,
+   "dur": 3.06,
+   "speech": "换一种推断，数字会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1001.58,
+   "dur": 2.49,
+   "speech": "先说两笔口径债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1004.25,
+   "dur": 4.65,
+   "speech": "第一笔：阈值按训练段定，测试段一个数不进。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1009.08,
+   "dur": 4.41,
+   "speech": "如果按测试段自己的分数重估，数字会好看。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1013.66,
+   "dur": 3.59,
+   "speech": "但那就不是同一个实验，我们不做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1017.43,
+   "dur": 3.64,
+   "speech": "第二笔：训练段只用了二百零七窗。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1021.25,
+   "dur": 3.13,
+   "speech": "为了控时间，每四个取一个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1024.56,
+   "dur": 3.76,
+   "speech": "换全量训练，分量形状可能不同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1028.5,
+   "dur": 3.83,
+   "speech": "混合先验的分数整体比单高斯低。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1032.51,
+   "dur": 3.33,
+   "speech": "阈值跟着低，报警率就高。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1036.02,
+   "dur": 3.76,
+   "speech": "这是同一个阈值迁移问题，不是新问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1039.96,
+   "dur": 3.73,
+   "speech": "它只是换了一个分数，没有解决迁移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1043.87,
+   "dur": 3.18,
+   "speech": "不声称的事，列成一张表。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1047.23,
+   "dur": 3.57,
+   "speech": "不声称 SOTA，没有公开基准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1050.98,
+   "dur": 3.28,
+   "speech": "不声称通用，只给两类异常。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1054.44,
+   "dur": 4.36,
+   "speech": "不声称实时，窗口要满一百天才打分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1058.97,
+   "dur": 5.85,
+   "speech": "不声称混合提升检测，实测 0.2918 对 0.2756。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1065,
+   "dur": 3.18,
+   "speech": "不声称四个模式都是真的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1068.36,
+   "dur": 3.64,
+   "speech": "数据里只有一个主分量占六成。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1072.18,
+   "dur": 2.7,
+   "speech": "这一集能带走两件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1075.06,
+   "dur": 4.21,
+   "speech": "一个可复现的失败对照：混合不区分趋势。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1079.46,
+   "dur": 4.29,
+   "speech": "一条口径：先证明模型没死，再谈分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1083.92,
+   "dur": 3.04,
+   "speech": "下一集换一种关系：图。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1090.36,
+   "dur": 2.44,
+   "speech": "一集只有一个读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1092.98,
+   "dur": 3.9,
+   "speech": "单高斯先验，F1 0.2756。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1097.06,
+   "dur": 3.73,
+   "speech": "混合先验，F1 0.2918。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1100.97,
+   "dur": 4.29,
+   "speech": "召回从 0.3947 到 0.9023。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1105.44,
+   "dur": 5.2,
+   "speech": "报警率从 31.57% 到 85.93%。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1110.82,
+   "dur": 2.49,
+   "speech": "混合没有提高检测。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1113.48,
+   "dur": 2.32,
+   "speech": "它证明了两件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1115.98,
+   "dur": 2.97,
+   "speech": "多个正常模式可以被拟合。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1119.13,
+   "dur": 4.26,
+   "speech": "但拟合出来的模式会把趋势吸收进去。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1123.57,
+   "dur": 3.76,
+   "speech": "书上的判据需要一个「都不解释」的边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1127.51,
+   "dur": 3.54,
+   "speech": "这个边界在真实数据里很模糊。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1131.23,
+   "dur": 4.05,
+   "speech": "下一集，第 38 集，图上的异常。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1135.46,
+   "dur": 4.93,
+   "speech": "把每只票当节点，用图神经网络做对比学习。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1140.57,
+   "dur": 3.66,
+   "speech": "增强、对比损失、TopK 邻接。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1144.41,
+   "dur": 3.52,
+   "speech": "证据在 ts-base 的 inventory 下。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1148.11,
+   "dur": 3.09,
+   "speech": "一条命令重跑全部数字。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1151.38,
+   "dur": 5.08,
+   "speech": "数据与清单在数据目录，导出脚本在 ts-admin。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1156.63,
+   "dur": 3.04,
+   "speech": "这一集到这里，我们下次见。"
+  }
+ ]
+}
