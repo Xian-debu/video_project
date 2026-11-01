@@ -74,6 +74,9 @@ export const SDefinitions: React.FC = () => {
                 {"s_SAT = Σ_i [ KL(P_i‖Ā_i) + KL(Ā_i‖P_i) ]"}
               </Formula>
             </Card>
+            <Body size={FT.meta} color={C.inkDim} style={{ marginTop: 22, width: 940 }}>
+              池化把左右 k 个邻居的权重摊进带内：形状替换外散的权重因此被拉回来，KL 才抓得住；单点尖峰本来就把邻居拉平，池化抹不掉。环形边界省掉补零带来的边缘假异常，代价是误报变多——这正是它比关联差异吵的原因。
+            </Body>
           </div>
           <div style={{ position: "absolute", left: 1100, top: 292, width: 750 }}>
             <Card label="为什么池化能补召回" accent={C.cyan}>

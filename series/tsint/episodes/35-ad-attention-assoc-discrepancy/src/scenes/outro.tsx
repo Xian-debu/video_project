@@ -24,7 +24,7 @@ export const SOutro: React.FC = () => {
                 <div key={u.k} style={{ width: 574 }}>
                   <Card label={u.k} accent={u.c}>
                     <div style={{ fontFamily: FONT.mono, fontSize: 76, color: u.c, lineHeight: 1.1 }}>{u.f1.toFixed(4)}</div>
-                    <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkDim, marginTop: 8 }}>F1（同一套 injected 真值）</div>
+                    <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkDim, marginTop: 8 }}>F1（同一套注入真值）</div>
                     <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint, marginTop: 10 }}>{u.note}</div>
                   </Card>
                 </div>

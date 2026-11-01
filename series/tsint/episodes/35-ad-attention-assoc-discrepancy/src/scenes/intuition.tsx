@@ -13,7 +13,7 @@ export const SIntuition: React.FC = () => {
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 288 }}>
             <Heat matrix={M.heat.pixClean} labels={[]} cell={15} gap={2} labelW={0} min={0} max={1} />
-            <div style={{ marginTop: 12, fontFamily: FONT.sans, fontSize: FT.label, color: C.cyan }}>干净窗 · 100 × 100 注意力</div>
+            <div style={{ marginTop: 12, fontFamily: FONT.sans, fontSize: FT.label, color: C.cyan }}>干净窗 · 40 × 40 抽样</div>
           </div>
           <div style={{ position: "absolute", left: 830, top: 288, width: 1010 }}>
             <Card label="一条斜带" accent={C.cyan}>
@@ -23,7 +23,7 @@ export const SIntuition: React.FC = () => {
               <Row name="行熵" value={M.heat.entClean.toFixed(3)} note="每行都摊开，不是针" width={960} />
             </Card>
             <Body style={{ marginTop: 18, width: 980 }}>
-              正常窗口的注意力像一条斜带：每个点主要看自己附近。先验 P 画的也是这条带，所以两者的对称 KL 很小。
+              正常窗口的注意力像一条斜带：每个点主要看自己附近。先验 P 画的也是这条带，所以两者的对称 KL 很小。图是 40 × 40 抽样（窗长 100 点），颜色按 log10 压缩。
             </Body>
             <SigBars w={980} h={230} at={8} />
           </div>
@@ -33,7 +33,7 @@ export const SIntuition: React.FC = () => {
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 288 }}>
             <Heat matrix={M.heat.pixSpike} labels={[]} cell={15} gap={2} labelW={0} min={0} max={1} />
-            <div style={{ marginTop: 12, fontFamily: FONT.sans, fontSize: FT.label, color: C.coral }}>尖峰窗 · 第 {M.heat.spikeRow} 行被注入</div>
+            <div style={{ marginTop: 12, fontFamily: FONT.sans, fontSize: FT.label, color: C.coral }}>尖峰窗 · 点 {M.heat.spikeRow} 被注入</div>
           </div>
           <div style={{ position: "absolute", left: 830, top: 288, width: 1010 }}>
             <Card label="一根针" accent={C.coral}>
@@ -52,7 +52,7 @@ export const SIntuition: React.FC = () => {
         <AbsoluteFill>
           <div style={{ position: "absolute", left: PAD, top: 288 }}>
             <Heat matrix={M.heat.pixShape} labels={[]} cell={15} gap={2} labelW={0} min={0} max={1} />
-            <div style={{ marginTop: 12, fontFamily: FONT.sans, fontSize: FT.label, color: C.violet }}>形状窗 · 第 {M.heat.shapeRow} 行附近整段替换</div>
+            <div style={{ marginTop: 12, fontFamily: FONT.sans, fontSize: FT.label, color: C.violet }}>形状窗 · 点 {M.heat.shapeRow} 起整段替换</div>
           </div>
           <div style={{ position: "absolute", left: 830, top: 288, width: 1010 }}>
             <Card label="一片糊" accent={C.violet}>
