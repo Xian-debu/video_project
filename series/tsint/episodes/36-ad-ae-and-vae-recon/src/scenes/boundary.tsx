@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, M, U, pagesOf, Pages, Scene, SceneHead, Card, Row, Body, Verdict, Chip, K, Stat } from "../shared";
+import { PAD, M, U, pagesOf, Pages, Scene, SceneHead, Card, Row, KV, Body, Verdict, Chip, K, Stat } from "../shared";
 
 export const SBoundary: React.FC = () => {
   const at = pagesOf("boundary");
@@ -21,7 +21,7 @@ export const SBoundary: React.FC = () => {
           </div>
           <div style={{ position: "absolute", left: 1180, top: 288, width: 670 }}>
             <Card label="那个洞" accent={C.amber}>
-              <Row name="位置" value={M.data.maxGap.pair} note="2015 年三季度" width={610} />
+              <KV k="位置与长度" v={M.data.maxGap.days + " 天"} note={M.data.maxGap.pair} />
               <Row name="处理" value="丢窗，不补" note="窗内跨度超过十天就丢" width={610} />
             </Card>
             <Body size={FT.meta} color={C.inkFaint} style={{ width: 640, marginTop: 16 }}>

@@ -169,7 +169,8 @@ export const SVerification: React.FC = () => {
               .filter((c) => c.name.startsWith("ae.alert") || c.name.startsWith("latent."))
               .map((c) => (
                 <Card key={c.name} label={c.name} accent={c.ok ? C.amber : C.coral} style={{ marginTop: 16 }}>
-                  <Row name={c.ok ? "成立" : "失败"} value={c.detail} note="写进证据，不藏" width={1010} />
+                  <div style={{ fontFamily: FONT.sans, fontSize: FT.body, color: C.inkDim, marginTop: 8, lineHeight: 1.5 }}>{c.detail}</div>
+                  <div style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint, marginTop: 6 }}>{c.ok ? "成立" : "失败"} · 写进证据，不藏</div>
                 </Card>
               ))}
           </div>
