@@ -1,6 +1,6 @@
 # 33-ad-causal-dilated-conv - 卷积看见了未来：因果卷积、膨胀核与 TCN
 
-> status: draft（制作中 2026-11-01 晚）
+> status: ready（2026-11-01 晚上 交付）
 > chapter: ch04 | runtime target: 20 min | algorithms: 3
 > 算法：ts-base f0b120d（修正 cd5d7f0）；证据：ts-base b956147；数据：ts-admin b81b487
 
@@ -37,3 +37,12 @@ ts-admin 导出（inventory/scripts/export_ch04_causal.py，commit b81b487）：
 - ch4-causal-dilated - 因果卷积、左填充与膨胀感受野 (TsBase.Algos.Ch04.CausalConv)
 - ch4-dual-conv - 双重卷积的两种读法（取最大 / 取均值） (TsBase.Algos.Ch04.DualConv)
 - ch4-tcn - 残差 TCN、梯度检查与阈值比较 (TsBase.Algos.Ch04.TCN)
+
+## Delivery
+
+成片 delivery/Tsint33AdCausalDilatedConv.mp4：1,009.70 s（30,291 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 30,291 帧 mean 22.35 / min 14.59 / max 25.64、mean|d| 0.0138、p99 0.1006、最大 8.63、7 个切点（2957 / 6346 / 10117 / 13575 / 17590 / 25412 / 29123）；字幕 319 条 / 8 章、0 换行、最长 21 字、跨度 00:00:01,200 → 00:16:47,490（发声 926.5 s），章节合计 1,009.69 s（首 00:00:00 / 末 00:16:10）。四件导出：cover.png（帧 20，0.67 s，开场标题页，无字幕条）、tsint-33.srt、tsint-33.chapters.txt、tsint-33.chapters.ffmeta.txt；mp4 按惯例不入库。
+
+分数床用 E04 的 1560 s 循环（--score=out/e04-score-loop-48k.wav；report 的 scoreReused 记 false）；8 段场景分别渲染后拼接（tree 1ca9a2d21896c486），混音 48 kHz / 1,010.89 s，峰值 −1.02 dBFS（限幅前 −1.02），RMS −27.02 dBFS，duck 51.7%（4.5 dB），音乐增益 −4.5 dB，stem 可听中位 −27.88 dB、可听占比 63.1%、低频占比 6.8%。首跑 make 在混音音乐门上差 0.14 dB 失败（bed full-band −25.75 dBFS，门限要求 ≤ 语音 −3 dB = −25.89），把 film.json 的 audio.musicGainDb 定为 −4.5（与 E31/E32 同值）后二跑 PASS；二跑 report 记场景 reused 8 / rendered 0，交付场景来自同一代码 commit 7c2efc9 的首轮渲染。按归档约束 make 的全部产物直接落在 pack delivery/：成片 mp4 48,457,187 B、programme_unnorm.mp4、raw_video.mp4、mix.wav、score.wav、score.meta.json、report.json、scenes/（8 段 + concat.txt + manifest.json）、stills/（23 帧），引擎 out/ 无本集残留。
+
+证据 40/40（111.5 s）、111 套测试 / 1,513 条断言；算法 ts-base f0b120d（修正 cd5d7f0）、证据 ts-base b956147、数据 ts-admin b81b487。
+
