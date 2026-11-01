@@ -25,11 +25,11 @@
 允许把指令写入三仓规划并建 goal 防断。执行时沿用本文件 §4 的 12 步流水线与 §5 的冻结口径：
 仍只到 `ready`、不发布 B 站、不改引擎、score 复用 `out/e04-score-loop-48k.wav`。
 
-## 2. 状态（2026-11-02 01:30 实测）
+## 2. 状态（2026-11-02 03:00 实测）
 
-- 成片 **46 / 74**：E01–E36、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 118 个模块文件（ch02 37 / ch03 39 / ch04 19 / ch08 12 / ch09 11），**118 组测试套件 / 1,602 条断言**全绿。
-- 四仓 HEAD（E36 交付后）：video_project `02eb497`（ep36 内容 `e0503e5` 是 report 钉住的 content commit，交付 `4d78f30`、docs `02eb497`）、ts-base `b815f6b`（证据 + 清单）、ts-admin `97f7091`、
+- 成片 **47 / 74**：E01–E37、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 119 个模块文件（ch02 37 / ch03 39 / ch04 20 / ch08 12 / ch09 11），**119 组测试套件 / 1,621 条断言**全绿。
+- 四仓 HEAD（E37 交付后）：video_project `8dbc01d`（ep37 内容 `b4f9f97` 是 report 钉住的 content commit，交付 `63b6788`、docs `8dbc01d`；本行 pins 的提交紧随其后）、ts-base `41f5879`（算法 + 证据 + 清单）、ts-admin `591f2f5`（ep37 导出脚本）、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
   必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
@@ -68,12 +68,13 @@
 - E34 成片 `1,128.07 s / 33,842 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，372 cue、8 章、封面 20。
 - E35 成片 `1,342.67 s / 40,280 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，314 cue、8 章、封面 20。
 - E36 成片 `1,250.97 s / 37,529 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，278 cue、8 章、封面 20。
+- E37 成片 `1,161.87 s / 34,856 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，296 cue、8 章、封面 20。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E37 `ad-gmm-vae-mixture-prior`**（ch04 第 8 集：混合先验 GMM-VAE 与多个正常模式，runtime target 20 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，E37 不必重渲长床）。
+- 下一步入口：**E38 `ad-graph-contrastive`**（ch04 第 9 集：图上的异常——增强、对比损失与 TopK 邻接，runtime target 20 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，E38 不必重渲长床）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -120,10 +121,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 30 集）
+## 5. 排期（production_order 剩余 29 集）
 
-E01–E36 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E36（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 min）。按 `production_order` 继续：
-**E36 ad-ae-and-vae-recon 已交付；下一集 E37 ad-gmm-vae-mixture-prior** → … → E64 llm-side-adapters。
+E01–E37 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E37（17.70 / 16.59 / 16.18 / 16.83 / 18.80 / 22.38 / 20.85 / 19.36 min）。按 `production_order` 继续：
+**E37 ad-gmm-vae-mixture-prior 已交付；下一集 E38 ad-graph-contrastive** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -360,6 +361,12 @@ VAE：ELBO = ½‖x−x̂‖² + KL，KL 手算 ½(1+4−1−log 4) = **1.306852
 - 证据脚本里的注入必须写成**相对偏移**、窗口必须**两两不重叠**：E36 曾把振幅按绝对值写进对数价格面板（收盘价被换掉），又因拒绝采样让 20 段并成 18 段；改成等距取窗后才回到 20 段。梯度检查除相对误差外要加**绝对下限**（1e-9），否则近零梯度会报 1.4e-5 的假警。
 - VAE/AE 这类小模型全批量训练会欠拟合到「解码器输出≈0、分数恒定」：E36 240 轮只有 240 次更新（VAE 分数恒 1.0134），改逐窗 SGD（385 窗/轮、固定顺序、每窗 L2 裁剪）后才收敛；报 F1 之前先看分数分布有没有变化。
 
+- `Row` 的值列宽度是 `width` 的 44%，加宽卡片救不了长值：E37 的八个股票名（546/520 px）、两组中心坐标（416/351 px）、四权重串（325 px）全被 still lint 抓出；`Row` 加 `spread` prop（值列 62%）逐个开，仍不要靠缩字号硬塞。
+- 派生数据的字段名必须与画面读取处逐字对齐：E37 的 `data/gmm.json` 一度没有 `nPass/nChecks`，verification 与 outro 直接渲染出「undefined / undefined」，而 still lint 不查内容；静帧复核每页都要扫一眼有没有 undefined/NaN/空括号。
+- 证据 JSON 只在检查全过时才写，builder 里的 `groups` 计数就要自带 `pass`（等于 `n`）；否则画面要么显示 0/N，要么得在 TS 里猜。
+- 联合训练（EM + 梯度）在 2,032 参数的小模型上一步就塌：不加正则平均对数密度从 −0.5252 跳到 18.108（协方差被压到零），加正则也只到 −0.5261；主线改「冻结编码器 + 在潜码上跑 EM 六十步」并在证据里同时保留联合训练作为「能跑、学不到」的诊断。k-means 起点是必须的：对称初始化会把两个分量并到全局均值。
+- 手写线性代数必须用有限差分对账，且**相对 1e-4 + 绝对 1e-7** 双阈值：E37 的 `backSolve` 把解向量整条反转，只有逐维梯度对账能抓到（维度 0/2 的值互换、维度 1 恰好居中）；`cholInvQuad` 写成 `|Σ⁻¹b|²` 而不是 `bᵀΣ⁻¹b` 则让 EM 整体塌缩，单测全绿也看不出来。
+- K=1 等价的「逐位一致」只能走冻结标准正态路径（解析 KL）；一般 K 的 ELBO 用 MC KL，与上一集 VAE 只在期望意义相等 —— 这条偏差写进 SELF-AUTH 与画面，不要声称逐位一致。
 ## 9. 断线恢复（60 秒）
 
 ```bash
