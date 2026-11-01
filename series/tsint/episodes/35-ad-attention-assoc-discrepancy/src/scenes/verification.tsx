@@ -18,7 +18,7 @@ export const SVerification: React.FC = () => {
             <Card label="数据" accent={C.cyan}>
               <Row name="两票交集" value={M.data.rows + " 行"} note={M.data.start + " 至 " + M.data.end} width={850} />
               <Row name="长缺口" value={M.data.maxGap.days + " 天"} note={M.data.gapNote} width={850} />
-              <Row name="训练 / 测试" value={M.windows.train + " / " + M.windows.test + " 窗"} note="窗长 " + M.windows.C + " 天，步长 1" width={850} />
+              <Row name="训练 / 测试" value={M.windows.train + " / " + M.windows.test + " 窗"} note={"窗长 " + M.windows.C + " 天，步长 1"} width={850} />
               <Row name="sha256" value={M.data.sha} note="数据文件逐字节锁死" width={850} />
             </Card>
           </div>

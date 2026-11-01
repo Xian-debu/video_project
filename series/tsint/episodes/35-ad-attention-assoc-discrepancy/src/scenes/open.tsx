@@ -70,7 +70,7 @@ export const SOpen: React.FC = () => {
             </Card>
             <Card label="数据" accent={C.cyan} style={{ marginTop: 18 }}>
               <Row name="两票交集" value={M.data.rows + " 行"} note="2015-01 至 2026-06" width={560} />
-              <Row name="训练/测试窗" value={M.windows.train + " / " + M.windows.test} note="窗长 " + M.windows.C + " 天" width={560} />
+              <Row name="训练/测试窗" value={M.windows.train + " / " + M.windows.test} note={"窗长 " + M.windows.C + " 天"} width={560} />
               <Row name="注入" value={"10 + 10 窗"} note={M.inject.truthPts + " 个真值点"} width={560} />
             </Card>
           </div>

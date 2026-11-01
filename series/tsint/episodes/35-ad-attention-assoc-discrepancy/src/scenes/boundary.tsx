@@ -36,7 +36,7 @@ export const SBoundary: React.FC = () => {
           <div style={{ position: "absolute", left: PAD, top: 292, width: 1010 }}>
             <Card label="第一笔：真值点去的重" accent={C.amber}>
               <Row name="原始真值" value={M.inject.rawLen + " 点"} note="两个注入窗重叠时同一个点会被算两次" width={960} />
-              <Row name="去重之后" value={M.inject.truthPts + " 点"} note="TP + FN = " + (M.units.assoc.tp + M.units.assoc.fn) + " 点，与关联差异的 FP/FN 对齐" width={960} color={C.cyan} />
+              <Row name="去重之后" value={M.inject.truthPts + " 点"} note={"TP + FN = " + (M.units.assoc.tp + M.units.assoc.fn) + " 点，与关联差异的 FP/FN 对齐"} width={960} color={C.cyan} />
               <Row name="屏幕口径" value="只用去重值" note={"所以是 " + M.inject.truthRuns + " 段 " + M.inject.truthPts + " 点"} width={960} />
             </Card>
             <Card label="第二笔：计划书里的 KL" accent={C.violet} style={{ marginTop: 20 }}>
