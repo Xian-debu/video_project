@@ -1,6 +1,6 @@
 # 28-channel-three-complements - 通道三补集：混合 MLP、路由注意力、动态聚类
 
-> status: draft（脚本、画面与旁白已写完，成片待生产）
+> status: ready（成片入库，交付完成 2026-11-01）
 > chapter: ch03 | runtime target: 22 min | algorithms: 3
 > 算法：ts-base 436718a；证据：ts-base d7b3457；数据：ts-admin ff2bd2e
 
@@ -32,3 +32,11 @@ ts-admin 日线 64 只 × 10 行业面板（电子、专用设备、化工、医
 - ch3-tsmixer - 完整 TSMixer 块（双轴混合 + 仿射分支） (TsBase.Algos.Ch03.TSMixer)
 - ch3-channel-router-attn - 通道路由注意力（软聚类） (TsBase.Algos.Ch03.ChannelRouterAttn)
 - ch3-channel-cluster - 动态硬聚类通道建模 (TsBase.Algos.Ch03.ChannelCluster)
+
+## Delivery
+
+成片 `out/tsint-28/Tsint28ChannelThreeComplements.mp4`：841.90 s（25,257 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 25,257 帧 mean 23.05 / min 14.49 / max 38.79、mean|d| 0.0163、p99 0.1128、最大 9.41、7 个切点，全过；字幕 274 条 / 8 章、0 换行、最长 23 字、跨度 00:00:01,200 → 00:13:59,690（发声 766.8 s），章节合计 841.90 s。
+
+四件导出在 `delivery/`：cover.png（帧 1365，45.50 s，无字幕条）、tsint-28.srt、tsint-28.chapters.txt、tsint-28.chapters.ffmeta.txt；mp4 按惯例不入库。publish 一轮 PASS，报告 `out/tsint-28/report.json`。
+
+证据 38/38（tsmixer 20 条 / router 21 条 / cluster 21 条断言，38 项检查），测试 95 套 / 1,313 断言；头部钉住 算法 ts-base 436718a / 证据 d7b3457 / 数据 ts-admin ff2bd2e。边界四条与三笔欠账写在本集 script 的 boundary 场景里，与 plan 一致。
