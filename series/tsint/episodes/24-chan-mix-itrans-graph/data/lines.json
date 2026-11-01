@@ -1,0 +1,1618 @@
+{
+ "entry": "src/tsint-24-chan-mix-itrans-graph/script.ts",
+ "fps": 30,
+ "totalSec": 806.11,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 77.01
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 77.01,
+   "dur": 100.48
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 177.49,
+   "dur": 128.06
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 305.55,
+   "dur": 109.53
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 415.08,
+   "dur": 126.79
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 541.87,
+   "dur": 123.87
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 665.74,
+   "dur": 97.91
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 763.65,
+   "dur": 42.46
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.89,
+   "speech": "第三篇章，第二十四集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.27,
+   "dur": 3.37,
+   "speech": "上一集把预测做成了分布。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.83,
+   "dur": 2.39,
+   "speech": "这一集换一个轴。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.4,
+   "dur": 3.88,
+   "speech": "前面十几集，注意力都放在时间轴上。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.46,
+   "dur": 3.23,
+   "speech": "这一集把它翻到通道轴上。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.87,
+   "dur": 2.99,
+   "speech": "八个通道，谁跟谁有关系。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 21.04,
+   "dur": 2.44,
+   "speech": "这就是本集的问题。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 23.65,
+   "dur": 3.47,
+   "speech": "书在印刷版五十五到六十二页。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 27.3,
+   "dur": 2.61,
+   "speech": "书里给了三种做法。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 30.09,
+   "dur": 3.28,
+   "speech": "一种用 MLP 混合通道。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 33.55,
+   "dur": 3.61,
+   "speech": "一种把变量当成 token 做注意力。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 37.34,
+   "dur": 3.9,
+   "speech": "还有一种先建一张图，再做卷积。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 41.42,
+   "dur": 3.06,
+   "speech": "三个模块，四十四项证据。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 44.67,
+   "dur": 3.97,
+   "speech": "八十五组测试，一千一百三十三条断言。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 48.82,
+   "dur": 2.44,
+   "speech": "三个数字先记住。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 51.44,
+   "dur": 4.05,
+   "speech": "一百四十四，是八个通道混合的参数量。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 55.66,
+   "dur": 4.53,
+   "speech": "六十四对九千二百一十六，是两种注意力规模。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 60.37,
+   "dur": 3.47,
+   "speech": "零点五，是两节点图的手算值。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 64.02,
+   "dur": 3.23,
+   "speech": "真实数据上还有一个数：三。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 67.43,
+   "dur": 3.81,
+   "speech": "八通道的图，恰好分成三个行业块。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 71.42,
+   "dur": 3.4,
+   "speech": "这一集证明的是结构，不是精度。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 78.21,
+   "dur": 2.08,
+   "speech": "先算一笔账。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 80.47,
+   "dur": 3.97,
+   "speech": "时间轴上，九十六个时间步两两比较。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 84.62,
+   "dur": 5.01,
+   "speech": "注意力矩阵是九十六乘九十六，九千二百一十六格。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 89.81,
+   "dur": 2.92,
+   "speech": "通道轴上只有八个变量。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 92.91,
+   "dur": 2.63,
+   "speech": "八乘八，六十四格。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 95.72,
+   "dur": 2.58,
+   "speech": "相差一百四十四倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 98.48,
+   "dur": 2.25,
+   "speech": "便宜不等于有用。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 100.9,
+   "dur": 3.4,
+   "speech": "关键是通道之间真的有关系。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 104.48,
+   "dur": 3.78,
+   "speech": "同一块面板，行业内外差得很明显。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 108.44,
+   "dur": 3.33,
+   "speech": "行业内平均相关 0.694。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 111.95,
+   "dur": 2.89,
+   "speech": "行业间只有 0.437。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 115.02,
+   "dur": 2.97,
+   "speech": "二十只票的面板更清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 118.17,
+   "dur": 4.14,
+   "speech": "行业内 0.505，行业间 0.194。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 122.49,
+   "dur": 2.17,
+   "speech": "差了 2.6 倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 124.85,
+   "dur": 3.78,
+   "speech": "这层关系，时间轴上的注意力看不见。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 128.81,
+   "dur": 4.09,
+   "speech": "因为时间轴比的是同一条序列的不同时刻。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 133.08,
+   "dur": 3.76,
+   "speech": "通道轴比的是不同标的的同一个时刻。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 137.02,
+   "dur": 3.4,
+   "speech": "所以这一集要回答三件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 140.6,
+   "dur": 3.71,
+   "speech": "第一，怎么用最少的参数混合通道。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 144.49,
+   "dur": 3.97,
+   "speech": "第二，怎么让注意力直接作用在变量上。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 148.64,
+   "dur": 3.59,
+   "speech": "第三，怎么把关系画成一张图。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 152.41,
+   "dur": 3.45,
+   "speech": "三种做法对应书里的三种策略。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 156.04,
+   "dur": 3.66,
+   "speech": "完全依赖、完全依赖、部分依赖。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 159.88,
+   "dur": 2.63,
+   "speech": "第一种是稠密混合。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 162.69,
+   "dur": 2.65,
+   "speech": "第二种是稠密注意力。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 165.52,
+   "dur": 2.58,
+   "speech": "第三种是稀疏图。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 168.29,
+   "dur": 3.64,
+   "speech": "稠密和稀疏，是这一集的分水岭。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 172.1,
+   "dur": 3.18,
+   "speech": "后面每一页都会回到这条线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 178.69,
+   "dur": 2.63,
+   "speech": "先把三种做法钉住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 181.5,
+   "dur": 2.56,
+   "speech": "输入都是一块面板。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 184.24,
+   "dur": 3.16,
+   "speech": "T 行是时间，N 列是通道。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 187.58,
+   "dur": 3.37,
+   "speech": "第一种，通道混合 MLP。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 191.13,
+   "dur": 4.77,
+   "speech": "先把每个时刻的 N 个通道，乘一个 N×N 矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 196.08,
+   "dur": 5.27,
+   "speech": "Z 一撇，等于 Z 加 W2 乘激活 W1 乘 Z。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 201.53,
+   "dur": 3.18,
+   "speech": "这一步只混通道，不动时间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 204.89,
+   "dur": 2.97,
+   "speech": "再换一个方向，混时间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 208.03,
+   "dur": 4.5,
+   "speech": "Z 两撇，等于 Z 一撇加激活后的时间混合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 212.72,
+   "dur": 4.33,
+   "speech": "两个方向交错，就是 TSMixer 的结构。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 217.23,
+   "dur": 4.26,
+   "speech": "参数量是二 N 平方加 N，N 等于八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 221.67,
+   "dur": 1.91,
+   "speech": "一百四十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 223.76,
+   "dur": 2.7,
+   "speech": "第二种，iTransformer。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 226.64,
+   "dur": 4.05,
+   "speech": "它把面板转置，每一列变成一个 token。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 230.87,
+   "dur": 3.01,
+   "speech": "八个变量，就是八个 token。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 234.06,
+   "dur": 3.88,
+   "speech": "Z 等于 Embed，作用在 X 的转置上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 238.12,
+   "dur": 2.94,
+   "speech": "注意力在八个 token 之间算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 241.24,
+   "dur": 5.39,
+   "speech": "A 等于 softmax，Z WQ 乘 Z WK 的转置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 246.81,
+   "dur": 2.58,
+   "speech": "再除以根号 dk。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 249.58,
+   "dur": 4.67,
+   "speech": "复杂度是 N 平方加 N 乘 H，不是 T 平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 254.43,
+   "dur": 2.51,
+   "speech": "第三种，图通道。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 257.12,
+   "dur": 4.67,
+   "speech": "先算两两相关，每个节点取最近的 k 个邻居。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 261.97,
+   "dur": 4.6,
+   "speech": "得到邻接矩阵 A，加上自环，变成 A 波浪。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 266.74,
+   "dur": 2.03,
+   "speech": "再做归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 268.95,
+   "dur": 4.29,
+   "speech": "H 一撇，等于激活，乘 D 负二分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 273.42,
+   "dur": 5.39,
+   "speech": "再乘 A 波浪，再乘 D 负二分之一，乘 H 乘 W。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 278.99,
+   "dur": 2.51,
+   "speech": "这一步是消息传递。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 281.68,
+   "dur": 2.8,
+   "speech": "图建错了，后面全错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 284.66,
+   "dur": 5.82,
+   "speech": "书在 3.3.6、3.4.3、3.4.4 三节。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 290.66,
+   "dur": 4.6,
+   "speech": "表 3.4 在五十五页，三种策略一张表。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 295.44,
+   "dur": 3.28,
+   "speech": "独立、完全依赖、部分依赖。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 298.9,
+   "dur": 4.45,
+   "speech": "这一集三个模块，就是后两种的三个代表。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 306.75,
+   "dur": 2.27,
+   "speech": "先看数据本身。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 309.2,
+   "dur": 4,
+   "speech": "面板 A，八通道，二千六百五十七行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 313.38,
+   "dur": 4.41,
+   "speech": "三只白酒，三只银行，两只宽基指数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 317.96,
+   "dur": 3.69,
+   "speech": "白酒三只，平均相关 0.654。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 321.83,
+   "dur": 3.06,
+   "speech": "银行三只，0.659。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 325.07,
+   "dur": 3.13,
+   "speech": "两只指数，0.923。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 328.39,
+   "dur": 3.23,
+   "speech": "指数跟个股之间，也不低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 331.8,
+   "dur": 3.47,
+   "speech": "因为指数就是这些票加权出来的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 335.45,
+   "dur": 4,
+   "speech": "所以相关矩阵上，有两个明显的块。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 339.62,
+   "dur": 3.09,
+   "speech": "左上角白酒，中间银行。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 342.89,
+   "dur": 3.25,
+   "speech": "右边两格指数，几乎全亮。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 346.32,
+   "dur": 4.6,
+   "speech": "把相关按行做 softmax，得到一张注意力图。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 351.1,
+   "dur": 2.89,
+   "speech": "行业内平均 0.143。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 354.18,
+   "dur": 2.92,
+   "speech": "行业间只有 0.060。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 357.27,
+   "dur": 2.13,
+   "speech": "差 2.4 倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 359.58,
+   "dur": 3.21,
+   "speech": "注意，这张图是解析探针。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 362.97,
+   "dur": 2.56,
+   "speech": "不是训练出来的权重。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 365.7,
+   "dur": 4.45,
+   "speech": "它只能说明结构存在，不能说明模型学到了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 370.34,
+   "dur": 2.01,
+   "speech": "再看稳定性。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 372.52,
+   "dur": 2.85,
+   "speech": "把收益切成前后两半。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 375.55,
+   "dur": 2.8,
+   "speech": "各自算一套相关矩阵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 378.53,
+   "dur": 4.81,
+   "speech": "二十八个非对角元素，跨半段相关 0.819。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 383.52,
+   "dur": 2.73,
+   "speech": "结构不是某一段的噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 386.43,
+   "dur": 2.58,
+   "speech": "最后看混合能量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 389.19,
+   "dur": 3.78,
+   "speech": "同行业的相关之和，占全部的比例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 393.15,
+   "dur": 2.49,
+   "speech": "平均 0.358。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 395.82,
+   "dur": 3.49,
+   "speech": "银行三只最高，0.495。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 399.49,
+   "dur": 3.49,
+   "speech": "两只指数最低，只有 0.205。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 403.17,
+   "dur": 3.35,
+   "speech": "因为指数没有第三个同类伙伴。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 406.7,
+   "dur": 2.37,
+   "speech": "这组数说明一件事："
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 409.24,
+   "dur": 3.64,
+   "speech": "行业是这组数据里最粗的那层结构。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 416.28,
+   "dur": 3.13,
+   "speech": "三个模块都在算法库里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 419.59,
+   "dur": 3.4,
+   "speech": "混合、变量注意力、图卷积。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 423.17,
+   "dur": 2.49,
+   "speech": "三个都不互相引用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 425.84,
+   "dur": 3.66,
+   "speech": "每个模块自带张量，不共享内部。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 429.68,
+   "dur": 2.08,
+   "speech": "先看参数量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 431.94,
+   "dur": 3.95,
+   "speech": "通道混合，N 等于八，一百四十四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 436.07,
+   "dur": 4.98,
+   "speech": "时间混合，T 等于九十六，一万八千六百二十四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 441.23,
+   "dur": 3.42,
+   "speech": "合起来一个块，一千七百八十四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 444.83,
+   "dur": 4.79,
+   "speech": "iTransformer，D 等于三十二，五万三千二百四十八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 449.8,
+   "dur": 2.82,
+   "speech": "这些数都写成了断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 452.8,
+   "dur": 2.92,
+   "speech": "第一组结构断言是残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 455.9,
+   "dur": 4.14,
+   "speech": "把混合权重清零，输出必须等于输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 460.22,
+   "dur": 3.09,
+   "speech": "误差小于十的负十五次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 463.49,
+   "dur": 2.58,
+   "speech": "第二组是置换等变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 466.25,
+   "dur": 4.07,
+   "speech": "把通道顺序换一下，输出也该跟着换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 470.5,
+   "dur": 2.27,
+   "speech": "这里踩过一个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 472.95,
+   "dur": 4.02,
+   "speech": "只换输入，不换权重，等变不成立。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 477.15,
+   "dur": 4.07,
+   "speech": "必须同时换 W1 的列、W2 的行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 481.4,
+   "dur": 3.93,
+   "speech": "修正之后，误差小于十的负十二次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 485.51,
+   "dur": 3.45,
+   "speech": "iTransformer 这边，重点在转置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 489.14,
+   "dur": 4.12,
+   "speech": "先对每行做层归一化，再把列当 token。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 493.43,
+   "dur": 4.14,
+   "speech": "手写的八乘八注意力，跟模块逐元素一致。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 497.76,
+   "dur": 3.28,
+   "speech": "时间顺序打乱，输出必须变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 501.21,
+   "dur": 3.35,
+   "speech": "因为 token 是变量，不是时间步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 504.74,
+   "dur": 2.97,
+   "speech": "图这边，重点是归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 507.89,
+   "dur": 3.52,
+   "speech": "两节点、一条边，加上自环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 511.59,
+   "dur": 3.76,
+   "speech": "归一化后每行是 0.5 和 0.5。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 515.53,
+   "dur": 3.9,
+   "speech": "输入 h 等于 1，输出精确等于 1。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 519.61,
+   "dur": 2.99,
+   "speech": "孤立节点靠自环保恒等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 522.78,
+   "dur": 2.41,
+   "speech": "还有一个实现纪律。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 525.37,
+   "dur": 3.45,
+   "speech": "前向路径里不用 unsafeSlice。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 529,
+   "dur": 3.13,
+   "speech": "上一版用它，直接段错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 532.31,
+   "dur": 4.36,
+   "speech": "全改成安全切片之后，四十四项一次跑通。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 536.85,
+   "dur": 2.82,
+   "speech": "跑一遍只要 0.3 秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 543.07,
+   "dur": 2.15,
+   "speech": "证据分五组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 545.4,
+   "dur": 2.97,
+   "speech": "数据七项，混合九项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 548.55,
+   "dur": 2.41,
+   "speech": "iTransformer 九项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 551.14,
+   "dur": 3.13,
+   "speech": "图八项，真实读数十一项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 554.45,
+   "dur": 3.25,
+   "speech": "合计四十四项，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 557.89,
+   "dur": 2.99,
+   "speech": "先证明输入没被换过。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 561.06,
+   "dur": 4.14,
+   "speech": "面板 A 的 sha256，跟 manifest 对上。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 565.38,
+   "dur": 2.97,
+   "speech": "二千六百五十七行，八列。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 568.53,
+   "dur": 3.47,
+   "speech": "面板 B 二百四十行，二十列。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 572.18,
+   "dur": 2.89,
+   "speech": "起止日期也逐字对上。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 575.25,
+   "dur": 2.75,
+   "speech": "再看混合模块的三条。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 578.18,
+   "dur": 3.97,
+   "speech": "清零后恒等，误差十的负十六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 582.33,
+   "dur": 3.4,
+   "speech": "线性情形，跟右乘矩阵一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 585.91,
+   "dur": 3.4,
+   "speech": "置换等变，十的负十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 589.49,
+   "dur": 3.01,
+   "speech": "iTransformer 这边，四条。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 592.68,
+   "dur": 4,
+   "speech": "手写注意力对模块，十的负十三次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 596.86,
+   "dur": 2.1,
+   "speech": "每行和为 1。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 599.14,
+   "dur": 2.27,
+   "speech": "变量置换等变。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 601.59,
+   "dur": 3.28,
+   "speech": "时间打乱后，输出差 3.8。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 605.05,
+   "dur": 2.29,
+   "speech": "图这边，五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 607.53,
+   "dur": 3.01,
+   "speech": "两节点金例，精确到 1。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 610.72,
+   "dur": 3.78,
+   "speech": "三节点、一条边，度数和等于 5。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 614.68,
+   "dur": 4.43,
+   "speech": "合成四块，1-NN 图恰好四个分量。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 619.29,
+   "dur": 2.27,
+   "speech": "然后是真实图。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 621.74,
+   "dur": 2.77,
+   "speech": "八通道，最近邻取 1。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 624.7,
+   "dur": 2.49,
+   "speech": "恰好三个连通分量。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 627.36,
+   "dur": 4,
+   "speech": "跟白酒、银行、指数，逐一对应。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 631.54,
+   "dur": 3.01,
+   "speech": "这是本集最强的一条读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 634.73,
+   "dur": 2.92,
+   "speech": "二十只票，最近邻取 2。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 637.83,
+   "dur": 2.94,
+   "speech": "三个分量，二十九条边。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 640.95,
+   "dur": 5.01,
+   "speech": "边纯度 0.862，调整兰德指数 0.519。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 646.14,
+   "dur": 3.61,
+   "speech": "换成 3 个邻居，只剩两个分量。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 649.93,
+   "dur": 3.61,
+   "speech": "调整兰德指数掉到 0.296。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 653.73,
+   "dur": 3.09,
+   "speech": "所以证据固定 k 等于 2。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 656.99,
+   "dur": 2.97,
+   "speech": "换数据集，k 要重选。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 660.14,
+   "dur": 3.4,
+   "speech": "这就是四十四项里的关键几条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 666.94,
+   "dur": 3.25,
+   "speech": "第一条，注意力是解析探针。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 670.37,
+   "dur": 4.12,
+   "speech": "相关矩阵做 softmax，不是训练出来的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 674.67,
+   "dur": 3.85,
+   "speech": "它证明结构存在，不证明模型可用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 678.71,
+   "dur": 3.33,
+   "speech": "第二条，图是静态相关图。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 682.21,
+   "dur": 4.67,
+   "speech": "书里 3.4.3 还讲了动态图和时变图。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 687.06,
+   "dur": 2.34,
+   "speech": "这一集没有实现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 689.58,
+   "dur": 3.06,
+   "speech": "第三条，没有端到端训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 692.83,
+   "dur": 3.42,
+   "speech": "验证的是实现，不是预测精度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 696.43,
+   "dur": 3.37,
+   "speech": "八通道的误差，不等于模型能力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 699.98,
+   "dur": 2.92,
+   "speech": "第四条，k 是选过的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 703.08,
+   "dur": 3.47,
+   "speech": "k 等于 2 是看了结果之后定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 706.73,
+   "dur": 3.23,
+   "speech": "这不是作弊，但必须报出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 710.14,
+   "dur": 3.54,
+   "speech": "换市场，换行业，k 要重选。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 713.86,
+   "dur": 2.94,
+   "speech": "第五条，数据有缺口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 716.98,
+   "dur": 2.89,
+   "speech": "面板 A 最大缺口十七天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 720.06,
+   "dur": 2.63,
+   "speech": "二〇一八年春节附近。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 722.87,
+   "dur": 3.01,
+   "speech": "面板 B 最大缺口九天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 726.06,
+   "dur": 3.71,
+   "speech": "窗口按行连续切，不剔除缺口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 729.95,
+   "dur": 2.58,
+   "speech": "所以读数是近似。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 732.71,
+   "dur": 2.17,
+   "speech": "还有两项欠账。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 735.07,
+   "dur": 2.25,
+   "speech": "算法卡还欠着。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 737.49,
+   "dur": 2.75,
+   "speech": "演示命令行也还欠着。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 740.42,
+   "dur": 2.61,
+   "speech": "这两项留到统一补。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 743.21,
+   "dur": 2.27,
+   "speech": "这些都不是 bug。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 745.66,
+   "dur": 3.01,
+   "speech": "是口径必须一起报的东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 748.85,
+   "dur": 3.16,
+   "speech": "账都记在证据里，不藏着。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 752.19,
+   "dur": 2.92,
+   "speech": "所以这一集仍算 ready。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 755.29,
+   "dur": 3.28,
+   "speech": "ready 说的是内容可交付。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 758.75,
+   "dur": 2.7,
+   "speech": "不是整个项目没有缺口。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 764.85,
+   "dur": 2.89,
+   "speech": "第一句，通道轴更便宜。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 767.92,
+   "dur": 3.52,
+   "speech": "六十四格对九千二百一十六格。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 771.62,
+   "dur": 2.77,
+   "speech": "第二句，通道关系能测。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 774.58,
+   "dur": 4.38,
+   "speech": "行业内外差 1.6 倍，面板 B 差 2.6 倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 779.14,
+   "dur": 3.76,
+   "speech": "图能把这层结构，还原成三个分量。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 783.08,
+   "dur": 3.95,
+   "speech": "第三句，图是建模选择，不是事实。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 787.21,
+   "dur": 2.58,
+   "speech": "k 变了，分块就变。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 789.97,
+   "dur": 2.97,
+   "speech": "下一集，递归与分段。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 793.11,
+   "dur": 2.61,
+   "speech": "RNN 的两条生成路。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 795.9,
+   "dur": 2.15,
+   "speech": "这一集的证词是："
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 798.23,
+   "dur": 3.35,
+   "speech": "结构能测，不等于模型能赢。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 801.76,
+   "dur": 2.15,
+   "speech": "第 24 集完。"
+  }
+ ]
+}
