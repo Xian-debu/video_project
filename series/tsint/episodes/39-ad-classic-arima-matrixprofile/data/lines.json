@@ -1,0 +1,2227 @@
+{
+ "entry": "src/tsint-39-ad-classic-arima-matrixprofile/script.ts",
+ "fps": 30,
+ "totalSec": 1149.83,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 124.25
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 124.25,
+   "dur": 124.01
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 248.26,
+   "dur": 220.7
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 468.96,
+   "dur": 120.7
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 589.66,
+   "dur": 142.21
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 731.87,
+   "dur": 246.33
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 978.2,
+   "dur": 98.51
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1076.71,
+   "dur": 73.12
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.97,
+   "speech": "上一集把十二只票画成一张图。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.35,
+   "dur": 3.06,
+   "speech": "结构学到了，读数没接上。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.6,
+   "dur": 3.73,
+   "speech": "这一集退回去，看两种经典写法。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.51,
+   "dur": 3.01,
+   "speech": "一个看残差，一个看邻居。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.7,
+   "dur": 3.66,
+   "speech": "ARIMA：模型解释不了的，当异常。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.55,
+   "dur": 2.65,
+   "speech": "残差大，就是异常。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.38,
+   "dur": 4.29,
+   "speech": "Matrix Profile：找不到相似邻居的，当异常。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 26.85,
+   "dur": 2.61,
+   "speech": "邻居远，就是异常。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.63,
+   "dur": 3.16,
+   "speech": "两句定义，书里各一句话。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 32.97,
+   "dur": 2.92,
+   "speech": "没有公式，也没有超参数。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 36.07,
+   "dur": 3.3,
+   "speech": "我们把公式补上，标「非书中」。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 39.55,
+   "dur": 2.87,
+   "speech": "先给结论：两个都不好看。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 42.6,
+   "dur": 3.35,
+   "speech": "ARIMA 原始 F1 零点一二。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 46.13,
+   "dur": 4,
+   "speech": "精确率零点九六，召回零点零六五。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 50.31,
+   "dur": 4.07,
+   "speech": "它抓住四十三个点，漏掉六百一十八个。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 54.56,
+   "dur": 3.13,
+   "speech": "Matrix Profile 一次都没报警。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 57.87,
+   "dur": 3.25,
+   "speech": "F1 是零，召回也是零。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 61.31,
+   "dur": 4.21,
+   "speech": "但点级调整后，ARIMA 到零点九九八。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 65.7,
+   "dur": 3.25,
+   "speech": "这个数字很好听，也很危险。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 69.13,
+   "dur": 5.51,
+   "speech": "规则是：一个真值段里报过一次警，整段都算命中。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 74.82,
+   "dur": 3.76,
+   "speech": "停牌对照两百四十天，两个都露馅。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 78.76,
+   "dur": 4.09,
+   "speech": "ARIMA 一天都不报，MP 报四十二天。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 83.04,
+   "dur": 3.06,
+   "speech": "三个问题：残差怎么定义。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 86.28,
+   "dur": 2.15,
+   "speech": "邻居怎么定义。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 88.61,
+   "dur": 3.04,
+   "speech": "停牌为什么把两个都打穿。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 91.83,
+   "dur": 2.58,
+   "speech": "数据是茅台一只票。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 94.59,
+   "dur": 3.85,
+   "speech": "三千九百九十六行，一零年到二六年。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 98.62,
+   "dur": 3.01,
+   "speech": "训练两千六百六十七个收益。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 101.82,
+   "dur": 2.92,
+   "speech": "测试一千三百二十八个。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 104.91,
+   "dur": 3.25,
+   "speech": "注入二十段尖峰、二十段相位。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 108.35,
+   "dur": 3.81,
+   "speech": "真值六百六十一点，占测试段一半。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 112.33,
+   "dur": 3.33,
+   "speech": "加了二百四十天停牌，当对照。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 115.84,
+   "dur": 3.45,
+   "speech": "四十九项检查，三秒三跑完。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 119.47,
+   "dur": 2.58,
+   "speech": "八页，从问题开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 125.45,
+   "dur": 4.12,
+   "speech": "先说清楚，残差为什么能当异常分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 129.75,
+   "dur": 3.04,
+   "speech": "任何预测模型都能这么用。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 132.97,
+   "dur": 4.05,
+   "speech": "拿模型预测下一天，再减掉真实值。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 137.19,
+   "dur": 2.65,
+   "speech": "差得越大，越异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 140.03,
+   "dur": 2.37,
+   "speech": "书里就是这么一句。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 142.57,
+   "dur": 2.92,
+   "speech": "但残差有个隐藏前提。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 145.67,
+   "dur": 3.21,
+   "speech": "模型的误差要在整段上可比。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 149.06,
+   "dur": 3.3,
+   "speech": "波动大的年份，误差天然大。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 152.54,
+   "dur": 3.66,
+   "speech": "不标准化，阈值就跟着波动走。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 156.38,
+   "dur": 4.45,
+   "speech": "所以分数写成残差除以训练段标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 161.01,
+   "dur": 3.64,
+   "speech": "第二个前提：模型别把异常学进去。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 164.83,
+   "dur": 3.49,
+   "speech": "拟合得越乖，越容易吃掉尖峰。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 168.51,
+   "dur": 2.61,
+   "speech": "邻居的定义更直接。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 171.29,
+   "dur": 2.99,
+   "speech": "取一个长度一百的子序列。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 174.46,
+   "dur": 3.13,
+   "speech": "找整段里最像它的另一段。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 177.78,
+   "dur": 3.69,
+   "speech": "像不像，用 z 归一化欧氏距离。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 181.64,
+   "dur": 2.77,
+   "speech": "距离越大，越没有同伴。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 184.6,
+   "dur": 3.37,
+   "speech": "没有同伴的子序列，叫 discord。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 188.15,
+   "dur": 2.29,
+   "speech": "书里就这一个词。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 190.62,
+   "dur": 3.09,
+   "speech": "三个隐含选择，书没写。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 193.89,
+   "dur": 1.98,
+   "speech": "窗口多长。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 196.05,
+   "dur": 3.45,
+   "speech": "多近的邻居算「自己」，要排除。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 199.68,
+   "dur": 3.33,
+   "speech": "子序列分数怎么落到某一天。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 203.18,
+   "dur": 3.37,
+   "speech": "这三个选择，后面都会咬人。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 206.74,
+   "dur": 1.81,
+   "speech": "再看数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 208.73,
+   "dur": 3.76,
+   "speech": "茅台的复权收盘，一零年到二六年。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 212.67,
+   "dur": 3.95,
+   "speech": "三千九百九十六行，最大间隔十一天。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 216.8,
+   "dur": 3.35,
+   "speech": "训练到二零二零年底，测试之后。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 220.33,
+   "dur": 3.3,
+   "speech": "测试从二一年一月四日开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 223.81,
+   "dur": 5.17,
+   "speech": "二十段尖峰，单点或连续三点，五到十个标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 229.17,
+   "dur": 4.53,
+   "speech": "二十段相位，把六十点窗口前后两半对调。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 233.87,
+   "dur": 4.48,
+   "speech": "真值共六百六十一点，占测试段四成九。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 238.53,
+   "dur": 4.17,
+   "speech": "再加二百四十天收益置零，模拟停牌。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 242.88,
+   "dur": 3.18,
+   "speech": "这段停牌，是这一集的判官。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 249.46,
+   "dur": 4.33,
+   "speech": "先写 ARIMA，式(4.41) 的位置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 253.97,
+   "dur": 3.83,
+   "speech": "非书中：书只写了「ARIMA」三个字母。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 257.98,
+   "dur": 5.77,
+   "speech": "phi(B) 乘 (1-B) 的 d 次方，再乘 y_t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 263.94,
+   "dur": 4.45,
+   "speech": "等于 c 加 theta(B) 乘 eps_t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 268.57,
+   "dur": 4,
+   "speech": "B 是滞后算子，eps 是白噪声。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 272.75,
+   "dur": 3.4,
+   "speech": "d 是差分阶数，把趋势磨平。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 276.33,
+   "dur": 2.85,
+   "speech": "残差从拟合里递推出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 279.35,
+   "dur": 4.05,
+   "speech": "分数取绝对值，除以训练段 sigma。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 283.58,
+   "dur": 3.16,
+   "speech": "阶数怎么定：AIC 网格。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 286.92,
+   "dur": 4.84,
+   "speech": "p 从零到三，d 取零或一，q 从零到二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 291.94,
+   "dur": 4.55,
+   "speech": "最后选中的是 ARIMA(0,0,2)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 296.67,
+   "dur": 3.49,
+   "speech": "两阶移动平均，没有自回归项。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 300.34,
+   "dur": 4.26,
+   "speech": "为什么不是 ARIMA(1,0,1)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 304.78,
+   "dur": 3.95,
+   "speech": "AIC 差在这里很小，选谁都能跑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 308.91,
+   "dur": 3.13,
+   "speech": "我们固定这套选择，不再调。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 312.23,
+   "dur": 4.57,
+   "speech": "参数一共四个：c、两个 theta、sigma。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 316.98,
+   "dur": 3.57,
+   "speech": "c 是漂移，theta 是移动平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 320.73,
+   "dur": 3.45,
+   "speech": "拟合分两步，叫 Hannan-Rissanen。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 324.35,
+   "dur": 3.13,
+   "speech": "第一步：先拟合一个高阶 AR。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 327.67,
+   "dur": 3.47,
+   "speech": "拿它的残差，当 MA 项的替身。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 331.32,
+   "dur": 4.19,
+   "speech": "第二步：把 y 的滞后和残差滞后拼起来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 335.69,
+   "dur": 4.6,
+   "speech": "做一次最小二乘，解出 phi、theta、c。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 340.46,
+   "dur": 3.81,
+   "speech": "最小二乘用 Householder QR，手写。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 344.45,
+   "dur": 2.94,
+   "speech": "因为环境里没有 LAPACK。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 347.57,
+   "dur": 3.57,
+   "speech": "AR 那一步用 Levinson-Durbin 递推。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 351.32,
+   "dur": 3.52,
+   "speech": "复杂度是阶数的平方，不解矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 355.02,
+   "dur": 3.37,
+   "speech": "两步法不是最优，但足够稳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 358.57,
+   "dur": 3.59,
+   "speech": "真实数据上，它的 theta 会越界。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 362.34,
+   "dur": 2.56,
+   "speech": "这个坑后面专门讲。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 365.08,
+   "dur": 2.7,
+   "speech": "再写 Matrix Profile。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 367.96,
+   "dur": 4.17,
+   "speech": "非书中：书只有一句「全局最近邻距离」。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 372.31,
+   "dur": 4.5,
+   "speech": "P(i) 等于 i 之外所有子序列的距离最小值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 376.99,
+   "dur": 2.87,
+   "speech": "排除区里的子序列不算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 380.04,
+   "dur": 3.13,
+   "speech": "距离用 z 归一化欧氏距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 383.35,
+   "dur": 4,
+   "speech": "式(4.42) 的写法是平方展开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 387.53,
+   "dur": 4.6,
+   "speech": "两段的点积，减均值乘积，再除标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 392.31,
+   "dur": 2.65,
+   "speech": "外面乘二 m 的一减。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 395.14,
+   "dur": 4.17,
+   "speech": "这一展开把复杂度从三次降到平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 399.49,
+   "dur": 2.7,
+   "speech": "三个选择，我们这样定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 402.37,
+   "dur": 4.29,
+   "speech": "窗口一百，排除区二十五，取前五名。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 406.84,
+   "dur": 2.73,
+   "speech": "数值四条，先钉住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 409.74,
+   "dur": 3.18,
+   "speech": "第一，常数段的标准差是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 413.1,
+   "dur": 2.94,
+   "speech": "零方差除零，会出 NaN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 416.23,
+   "dur": 4.86,
+   "speech": "所以常数子序列的距离记为正无穷，跳过。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 421.27,
+   "dur": 2.7,
+   "speech": "第二，排除区不能省。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 424.15,
+   "dur": 3.57,
+   "speech": "省了，最近的邻居就是它自己。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 427.9,
+   "dur": 3.28,
+   "speech": "每个距离都是零，profile 全灭。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 431.35,
+   "dur": 3.04,
+   "speech": "排除区取窗口的四分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 434.57,
+   "dur": 3.49,
+   "speech": "第三，前缀和算方差会消去。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 438.25,
+   "dur": 4.6,
+   "speech": "常值段上，均方减平方均值会掉到噪声里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 443.02,
+   "dur": 4.69,
+   "speech": "这也是仿射不变性只在有限距离上成立的原因。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 447.9,
+   "dur": 3.97,
+   "speech": "第四，子序列分数怎么变成日分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 52,
+   "start": 452.05,
+   "dur": 4.05,
+   "speech": "一个点被多个窗口覆盖，取最小距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 53,
+   "start": 456.28,
+   "dur": 4,
+   "speech": "取最小，就是「最像它的邻居有多近」。"
+  },
+  {
+   "scene": "definitions",
+   "index": 54,
+   "start": 460.46,
+   "dur": 3.13,
+   "speech": "一个靠拟合，一个靠距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 55,
+   "start": 463.77,
+   "dur": 2.99,
+   "speech": "两条完全不同的问题路径。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 470.16,
+   "dur": 3.42,
+   "speech": "先看 ARIMA 在测试段的分数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 473.76,
+   "dur": 4.81,
+   "speech": "一千三百二十八个点，干净日中位零点零九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 478.76,
+   "dur": 3.52,
+   "speech": "阈值三点零六，画成一条虚线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 482.45,
+   "dur": 3.18,
+   "speech": "绝大多数点趴在阈值下面。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 485.82,
+   "dur": 3.35,
+   "speech": "尖峰注入的地方，分数跳起来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 489.35,
+   "dur": 3.33,
+   "speech": "最高十点四，三倍于阈值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 492.85,
+   "dur": 3.52,
+   "speech": "四十五个点过线，报警四十五天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 496.55,
+   "dur": 3.01,
+   "speech": "四十个尖峰点，一个不落。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 499.74,
+   "dur": 3.3,
+   "speech": "再加三个相位点，两个误报。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 503.23,
+   "dur": 4.09,
+   "speech": "精确率零点九六，这是它唯一好看的数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 507.5,
+   "dur": 3.16,
+   "speech": "但真值有六百六十一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 510.84,
+   "dur": 2.68,
+   "speech": "召回只有零点零六五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 513.7,
+   "dur": 2.75,
+   "speech": "它只认得「点」上的异常。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 516.63,
+   "dur": 2.61,
+   "speech": "再看 Matrix Profile。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 519.41,
+   "dur": 3.52,
+   "speech": "测试段干净日中位六点八六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 523.11,
+   "dur": 3.61,
+   "speech": "阈值十一点四，训练段九十九分位。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 526.9,
+   "dur": 2.92,
+   "speech": "评估段最大值十一点零二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 530,
+   "dur": 2.77,
+   "speech": "离阈值还差零点三八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 532.96,
+   "dur": 3.09,
+   "speech": "一个都没过线，报警是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 536.22,
+   "dur": 3.18,
+   "speech": "两个 F1 都不到零点一三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 539.58,
+   "dur": 3.23,
+   "speech": "为什么最大的 discord 不是异常。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 542.99,
+   "dur": 4.17,
+   "speech": "前五名在第三十四、九百零七、第六段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 547.34,
+   "dur": 2.39,
+   "speech": "这些位置没有注入。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 549.91,
+   "dur": 3.25,
+   "speech": "它们是行情自己的重复结构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 553.34,
+   "dur": 2.46,
+   "speech": "停牌段更有意思。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 555.99,
+   "dur": 4.43,
+   "speech": "二百四十天收益置零，价格走成一条直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 560.6,
+   "dur": 3.04,
+   "speech": "ARIMA 的残差在这里是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 563.81,
+   "dur": 3.13,
+   "speech": "零除 sigma，分数还是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 567.13,
+   "dur": 2.39,
+   "speech": "它一天都不报警。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 569.7,
+   "dur": 3.09,
+   "speech": "Matrix Profile 的距离是无穷。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 572.96,
+   "dur": 4.19,
+   "speech": "无穷大于阈值，严格口径报四十二天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 577.33,
+   "dur": 3.95,
+   "speech": "把无穷改成零的宽松口径，报零天。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 581.46,
+   "dur": 2.99,
+   "speech": "同一段停牌，两种极端。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 584.63,
+   "dur": 2.82,
+   "speech": "这就是两个方法的边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 590.86,
+   "dur": 3.69,
+   "speech": "模块在 Ch04 下，两个文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 594.73,
+   "dur": 4.48,
+   "speech": "ARIMA.hs 三百三十八行，十个单测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 599.38,
+   "dur": 5.13,
+   "speech": "MatrixProfile.hs 一百二十九行，八个单测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 604.69,
+   "dur": 3.57,
+   "speech": "合计四百六十七行，十八个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 608.44,
+   "dur": 3.01,
+   "speech": "全部纯函数，没有随机数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 611.63,
+   "dur": 2.97,
+   "speech": "种子只决定注入落在哪。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 614.78,
+   "dur": 3.28,
+   "speech": "三个难点，都用递推替代库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 618.23,
+   "dur": 3.13,
+   "speech": "Householder QR 解最小二乘。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 621.55,
+   "dur": 3.25,
+   "speech": "Levinson-Durbin 递推 AR 系数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 624.98,
+   "dur": 4.05,
+   "speech": "前缀和加对角递推，算完全部距离。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 629.21,
+   "dur": 1.84,
+   "speech": "签名很短。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 631.23,
+   "dur": 3.54,
+   "speech": "arimaResidualScore 收阶数和序列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 634.95,
+   "dur": 2.27,
+   "speech": "返回逐点分数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 637.4,
+   "dur": 3.57,
+   "speech": "matrixProfile 收窗口和排除区。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 641.14,
+   "dur": 3.61,
+   "speech": "返回长度 n 减 m 加一的 profile。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 644.94,
+   "dur": 3.57,
+   "speech": "两个都是纯函数，可逐位复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 648.68,
+   "dur": 2.61,
+   "speech": "没有梯度，只有递推。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 651.47,
+   "dur": 3.49,
+   "speech": "顺序固定，同种子逐位相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 655.14,
+   "dur": 3.66,
+   "speech": "第一个坑：theta 越界，残差发散。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 658.99,
+   "dur": 3.85,
+   "speech": "Hannan-Rissanen 解出的 theta 可能不可逆。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 663.02,
+   "dur": 2.85,
+   "speech": "递推一步就冲到无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 666.05,
+   "dur": 5.32,
+   "speech": "实测两千六百六十七个残差，一千九百一十二个是无穷。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 671.54,
+   "dur": 3.71,
+   "speech": "修法：theta 夹到正负零点九八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 675.43,
+   "dur": 2.99,
+   "speech": "phi 夹到正负零点九九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 678.6,
+   "dur": 2.73,
+   "speech": "非有限值一律写零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 681.51,
+   "dur": 2.56,
+   "speech": "第二个坑：排除区。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 684.25,
+   "dur": 4.09,
+   "speech": "省掉它，每个窗口最近的邻居是自己。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 688.52,
+   "dur": 2.94,
+   "speech": "距离全零，分数全零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 691.64,
+   "dur": 4.07,
+   "speech": "第三个坑：点级调整会把读数吹起来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 695.89,
+   "dur": 4.21,
+   "speech": "规则是：一个真值段里只要报过一次警。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 700.29,
+   "dur": 2.32,
+   "speech": "整段都算命中。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 702.79,
+   "dur": 4.33,
+   "speech": "ARIMA 的四十三个命中，摊成六百六十一点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 707.3,
+   "dur": 3.93,
+   "speech": "F1 从零点一二跳到零点九九八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 711.41,
+   "dur": 3.66,
+   "speech": "这不是模型变好，是口径变宽。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 715.25,
+   "dur": 3.25,
+   "speech": "所以这一集同时报两个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 718.68,
+   "dur": 2.44,
+   "speech": "一个严，一个宽。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 721.3,
+   "dur": 2.34,
+   "speech": "宽的只用来对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 723.82,
+   "dur": 2.29,
+   "speech": "严的才算结论。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 726.3,
+   "dur": 3.37,
+   "speech": "两条命令可以复现全部数字。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 733.07,
+   "dur": 2.68,
+   "speech": "先对口径，再读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 735.93,
+   "dur": 3.23,
+   "speech": "一只票，日频，复权收盘。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 739.34,
+   "dur": 3.76,
+   "speech": "训练二零一零到二零二零，测试之后。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 743.28,
+   "dur": 3.95,
+   "speech": "最大间隔十一天，中间没有停牌缺口。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 747.41,
+   "dur": 3.49,
+   "speech": "ARIMA 用对数收益，不用价格。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 751.08,
+   "dur": 3.85,
+   "speech": "价格是非平稳的，收益才近似平稳。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 755.11,
+   "dur": 2.85,
+   "speech": "差分阶数最后选在零。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 758.14,
+   "dur": 3.16,
+   "speech": "Matrix Profile 也用同一份收益。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 761.48,
+   "dur": 3.97,
+   "speech": "两个模型吃同一段测试，同一套真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 765.63,
+   "dur": 3.21,
+   "speech": "阈值都取训练段九十九分位。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 769.02,
+   "dur": 3.16,
+   "speech": "测试段一个数都不进阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 772.36,
+   "dur": 3.71,
+   "speech": "停牌对照二百四十天，不参与调参。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 776.25,
+   "dur": 4,
+   "speech": "第一个读数：ARIMA(0,0,2)。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 780.42,
+   "dur": 3.3,
+   "speech": "AIC 负两万一千零二十三。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 783.91,
+   "dur": 4.48,
+   "speech": "sigma 零点零一九四，c 零点零零一一。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 788.56,
+   "dur": 4.77,
+   "speech": "两个 theta：零点零一四七和负零点零三六六。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 793.51,
+   "dur": 4.05,
+   "speech": "阈值三点零六四，F1 零点一二二。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 797.74,
+   "dur": 4.14,
+   "speech": "精确率零点九五六，召回零点零六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 802.06,
+   "dur": 4.55,
+   "speech": "TP 四十三，FP 二，FN 六百一十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 806.79,
+   "dur": 4.38,
+   "speech": "报警四十五天，占测试段百分之三点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 811.35,
+   "dur": 3.04,
+   "speech": "第二个读数：Matrix Profile。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 814.57,
+   "dur": 3.3,
+   "speech": "窗口一百，排除区二十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 818.05,
+   "dur": 3.59,
+   "speech": "阈值十一点四零，F1 是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 821.82,
+   "dur": 3.49,
+   "speech": "一次报警都没有，召回也是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 825.49,
+   "dur": 2.8,
+   "speech": "ARIMA 为什么只抓点。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 828.47,
+   "dur": 4.62,
+   "speech": "尖峰点的分数中位七点五四，过半在阈值上。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 833.27,
+   "dur": 3.4,
+   "speech": "相位点的分数中位零点四三。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 836.85,
+   "dur": 2.87,
+   "speech": "干净日中位零点零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 839.9,
+   "dur": 3.28,
+   "speech": "相位点只比干净点高一点。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 843.36,
+   "dur": 3.71,
+   "speech": "因为重排一段窗口，不改边际分布。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 847.25,
+   "dur": 3.21,
+   "speech": "残差看的是相邻两天的关系。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 850.64,
+   "dur": 4.02,
+   "speech": "把窗口前后两半对调，只有接缝变了。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 854.84,
+   "dur": 3.88,
+   "speech": "接缝只有两个点，被淹没在六百个点里。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 858.9,
+   "dur": 3.23,
+   "speech": "所以召回只有百分之六点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 862.31,
+   "dur": 3.52,
+   "speech": "这不是实现错，是方法看不见。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 866,
+   "dur": 2.75,
+   "speech": "MP 为什么也只抓点。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 868.93,
+   "dur": 3.3,
+   "speech": "尖峰点的距离中位八点五三。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 872.42,
+   "dur": 3.3,
+   "speech": "相位点的距离中位七点八三。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 875.9,
+   "dur": 2.89,
+   "speech": "干净日中位六点八六。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 878.97,
+   "dur": 4.07,
+   "speech": "三类分不开，阈值一划，全在下面。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 883.22,
+   "dur": 3.78,
+   "speech": "窗口一百，比相位的六十点点还长。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 887.18,
+   "dur": 4.53,
+   "speech": "一个窗口跨过整个相位段，形状被平均掉。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 891.89,
+   "dur": 3.76,
+   "speech": "前五名 discord 里，有两个在热身段。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 895.83,
+   "dur": 3.83,
+   "speech": "剩下三个在真实行情里，不是注入。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 899.84,
+   "dur": 3.23,
+   "speech": "停牌对照是最干净的对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 903.25,
+   "dur": 3.25,
+   "speech": "ARIMA 分数最高零点零六八。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 906.68,
+   "dur": 3.06,
+   "speech": "阈值三点零六，差五十倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 909.92,
+   "dur": 3.06,
+   "speech": "残差恒为零，方法静默。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 913.17,
+   "dur": 3.3,
+   "speech": "MP 严格口径四十二天报警。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 916.65,
+   "dur": 2.65,
+   "speech": "宽松口径零天报警。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 919.48,
+   "dur": 3.9,
+   "speech": "两个口径差四十二天，边界就在这里。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 923.56,
+   "dur": 2.97,
+   "speech": "常值窗口一百四十一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 926.71,
+   "dur": 3.13,
+   "speech": "profile 长度一千二百二十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 930.02,
+   "dur": 3.78,
+   "speech": "四十九项检查，一次跑完，三秒三。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 933.99,
+   "dur": 4.14,
+   "speech": "数据六项、收益三项、ARIMA 十一项。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 938.31,
+   "dur": 3.81,
+   "speech": "MP 八项、盲区四项、注入五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 942.29,
+   "dur": 2.89,
+   "speech": "读数八项、类型四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 945.37,
+   "dur": 3.37,
+   "speech": "三条负向断言也写进证据。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 948.92,
+   "dur": 4.41,
+   "speech": "第一：训练残差 ACF 超出白噪声带。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 953.51,
+   "dur": 4.05,
+   "speech": "实测零点零八十，带宽零点零三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 957.73,
+   "dur": 3.66,
+   "speech": "真实收益有自相关，这不是 bug。"
+  },
+  {
+   "scene": "verification",
+   "index": 61,
+   "start": 961.58,
+   "dur": 3.61,
+   "speech": "第二：仿射变换后有限距离不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 62,
+   "start": 965.37,
+   "dur": 3.42,
+   "speech": "最大差四点三乘十的负五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 63,
+   "start": 968.97,
+   "dur": 3.01,
+   "speech": "第三：F1 不许满分。"
+  },
+  {
+   "scene": "verification",
+   "index": 64,
+   "start": 972.17,
+   "dur": 3.83,
+   "speech": "四十九项全过，才算这张片子有据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 979.4,
+   "dur": 2.87,
+   "speech": "不声称的事，先摆出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 982.45,
+   "dur": 2.37,
+   "speech": "不声称 SOTA。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 985,
+   "dur": 3.16,
+   "speech": "没有公开基准，只有一只票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 988.33,
+   "dur": 1.96,
+   "speech": "不声称通用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 990.47,
+   "dur": 3.16,
+   "speech": "只验证了 A 股一只白酒股。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 993.81,
+   "dur": 3.47,
+   "speech": "换市场、换品种，要重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 997.46,
+   "dur": 2.01,
+   "speech": "不声称实时。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 999.65,
+   "dur": 3.25,
+   "speech": "批处理，日频，收盘后算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1003.08,
+   "dur": 3.25,
+   "speech": "不声称 MP 更好或更差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1006.51,
+   "dur": 2.63,
+   "speech": "它只是另一种看不见。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1009.32,
+   "dur": 3.09,
+   "speech": "不声称停牌结论能推广。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1012.59,
+   "dur": 3.37,
+   "speech": "二百四十天是人工构造的极端。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1016.14,
+   "dur": 2.94,
+   "speech": "三条债，这一集没还。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1019.27,
+   "dur": 2.94,
+   "speech": "第一，阈值仍然不迁移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1022.39,
+   "dur": 4.17,
+   "speech": "训练九十九分位，测试段分布已经变了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1026.73,
+   "dur": 3.3,
+   "speech": "两个方法都栽在同一个地方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1030.22,
+   "dur": 4.38,
+   "speech": "第二，MP 的窗口和排除区是自由参数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1034.78,
+   "dur": 3.11,
+   "speech": "换一个 m，前五名会换人。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1038.07,
+   "dur": 3.76,
+   "speech": "第三，点级调整会把读数吹起来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1042.01,
+   "dur": 3.06,
+   "speech": "零点九九八不是检测能力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1045.25,
+   "dur": 3.54,
+   "speech": "下一集换一种关系：两个解码器。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1048.97,
+   "dur": 4.96,
+   "speech": "USAD 用对抗训练，一个编码器两个解码器。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1054.11,
+   "dur": 4.31,
+   "speech": "DAGMM 用能量分数，在高斯混合里算密度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1058.6,
+   "dur": 4.09,
+   "speech": "再加一个多 AE 中位数，做稳健集成。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1062.87,
+   "dur": 2.97,
+   "speech": "三个都不是经典统计。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1066.02,
+   "dur": 3.06,
+   "speech": "但它们都要回答同一个问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1069.26,
+   "dur": 2.99,
+   "speech": "分数在测试段还可比吗。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1072.43,
+   "dur": 2.08,
+   "speech": "这一集到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1077.91,
+   "dur": 3.06,
+   "speech": "两个读数，收在一张图上。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1081.15,
+   "dur": 3.25,
+   "speech": "ARIMA：F1 零点一二二。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1084.59,
+   "dur": 4.14,
+   "speech": "精确率零点九五六，召回零点零六五。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1088.91,
+   "dur": 2.85,
+   "speech": "Matrix Profile：F1 零。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1091.93,
+   "dur": 2.34,
+   "speech": "一次报警都没有。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1094.46,
+   "dur": 3.66,
+   "speech": "书里的判据是「残差或显著偏离」。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1098.3,
+   "dur": 4.31,
+   "speech": "实测下来，残差只认点，距离只认形。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1102.79,
+   "dur": 3.16,
+   "speech": "点与形都不是异常的全部。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1106.13,
+   "dur": 4.02,
+   "speech": "停牌二百四十天，一个静默，一个爆炸。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1110.33,
+   "dur": 2.87,
+   "speech": "这就是经典基线的边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1113.38,
+   "dur": 2.53,
+   "speech": "也是下一集的起点。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1116.09,
+   "dur": 2.1,
+   "speech": "这一集的账本。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1118.37,
+   "dur": 3.45,
+   "speech": "新增测试十八条，两个模块。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1122,
+   "dur": 3.33,
+   "speech": "仓库合计一千六百六十三条。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1125.51,
+   "dur": 3.35,
+   "speech": "证据检查四十九项，三秒三。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1129.04,
+   "dur": 3.97,
+   "speech": "片长十九分钟，全系列第四十九部。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1133.19,
+   "dur": 3.61,
+   "speech": "下一集：两个解码器，一个说谎。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1136.98,
+   "dur": 3.97,
+   "speech": "USAD、DAGMM、多 AE 中位数。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1141.14,
+   "dur": 3.28,
+   "speech": "把分数从「距离」换成「密度」。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1144.6,
+   "dur": 3.04,
+   "speech": "这一集到这里，我们下次见。"
+  }
+ ]
+}
