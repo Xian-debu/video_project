@@ -1,6 +1,6 @@
 # 26-seq-compress-three-ways — 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩
 
-> status: draft (scaffolded, not produced)
+> status: ready（证据 31/31；画面与旁白已按实测语音对齐）
 > chapter: ch03 · 序列模型 | 书 p.46–52（印刷页） | units: ch3-scinet / ch3-sparse-tsf / ch3-last-step-compress
 > 算法：ts-base a70a28d；证据：ts-base 3cc95ab；数据：ts-admin cf9f63e
 
@@ -49,4 +49,13 @@ build/generate_compress_data.py 把 summary 与五张 CSV 折叠成 data/compres
 
 ## Delivery
 
-（生产完成后补实测时长、封面帧、闸门读数。）
+## Delivery
+
+2026-11-01 生产完成：694.93 s / 20,848 帧，−15 LUFS（真峰 −2 dBFS），mp4 32,681,877 B；
+封面帧 9307（310.23 s，无字幕条）。221 条字幕 / 8 章，0 条换行、最长 24 字，跨度
+00:00:01,200 → 00:11:32,740（发声 629.3 s），章节合计 694.94 s（首 00:00:00、末 00:10:52）。
+闸门：亮度闪烁 20,848 帧 mean 21.57 / min 14.49 / max 34.38，mean|d| 0.0175、p99 0.2831、
+最大 7.35、7 个切点，全过；I −15 / TP −2；music stem full −25.09 / audible −27.86
+（audible share 63.1% / sub 6.8%），mix speech −23.17 / gap_full −30.04 / gap_audible −32.84 /
+bed 37.2 dB。证据 31/31（ch3-scinet 12 / ch3-sparse-tsf 12 / ch3-last-step-compress 10 条断言，
+31 项检查），测试 90 套 / 1,195 断言。
