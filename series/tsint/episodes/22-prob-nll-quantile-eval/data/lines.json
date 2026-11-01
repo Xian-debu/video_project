@@ -1,0 +1,1996 @@
+{
+ "entry": "src/tsint-22-prob-nll-quantile-eval/script.ts",
+ "fps": 30,
+ "totalSec": 906.29,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 96.13
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 96.13,
+   "dur": 94.65
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 190.78,
+   "dur": 146.08
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 336.86,
+   "dur": 103.07
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 439.93,
+   "dur": 131.99
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 571.92,
+   "dur": 171.16
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 743.08,
+   "dur": 111.65
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 854.73,
+   "dur": 51.56
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.85,
+   "speech": "第 3 章 · 概率与损失，第二十二集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.23,
+   "dur": 3.21,
+   "speech": "上一集注意力只混合信息。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.62,
+   "dur": 3.13,
+   "speech": "这一集给它一个打分的出口。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.93,
+   "dur": 3.59,
+   "speech": "书在印刷版六十七到六十九页。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.7,
+   "dur": 3.85,
+   "speech": "式三·二八到三·三二讲损失。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.74,
+   "dur": 3.61,
+   "speech": "还有式三·四一和三·四二。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.53,
+   "dur": 2.7,
+   "speech": "两个损失，一个指标。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 26.41,
+   "dur": 3.4,
+   "speech": "高斯负对数似然，分位数损失。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.99,
+   "dur": 3.3,
+   "speech": "指标就是分位数损失 QL。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.47,
+   "dur": 3.88,
+   "speech": "式子短，但书里埋了三个口径问题。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.53,
+   "dur": 2.25,
+   "speech": "还漏了一个常数。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 39.96,
+   "dur": 2.8,
+   "speech": "计划书也抄错了一个数。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 42.94,
+   "dur": 2.41,
+   "speech": "这一集全部摊开。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 45.53,
+   "dur": 2.49,
+   "speech": "先说为什么要打分。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 48.2,
+   "dur": 2.77,
+   "speech": "注意力只回答「怎么混合」。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 51.15,
+   "dur": 2.56,
+   "speech": "它不回答「混得好不好」。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 53.89,
+   "dur": 3.23,
+   "speech": "损失函数才回答后一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 57.3,
+   "dur": 2.61,
+   "speech": "概率预测还要多一层。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 60.08,
+   "dur": 3.21,
+   "speech": "不是给一个点，是给一个分布。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 63.47,
+   "dur": 2.39,
+   "speech": "或者给几个分位数。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 66.04,
+   "dur": 3.3,
+   "speech": "分布好不好，要用概率口径评。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 69.52,
+   "dur": 2.61,
+   "speech": "本集就讲这三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 72.31,
+   "dur": 3.3,
+   "speech": "高斯 NLL，分位数损失。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 75.79,
+   "dur": 2.99,
+   "speech": "以及 QL 指标的算法。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 78.96,
+   "dur": 2.44,
+   "speech": "交付仍然是两样。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 81.58,
+   "dur": 2.65,
+   "speech": "能跑的 Haskell 实现。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 84.41,
+   "dur": 2.92,
+   "speech": "和四十一项可复跑证据。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 87.51,
+   "dur": 2.94,
+   "speech": "还有一个必须坦白的边界。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 90.63,
+   "dur": 3.3,
+   "speech": "这些读数没有预测业绩的意思。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 97.33,
+   "dur": 2.27,
+   "speech": "先看问题在哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 99.78,
+   "dur": 3.3,
+   "speech": "上一集的注意力输出一个矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 103.26,
+   "dur": 2.82,
+   "speech": "形状九十六乘六十四。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 106.26,
+   "dur": 2.87,
+   "speech": "每行是一个时间步的表示。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 109.31,
+   "dur": 2.87,
+   "speech": "可是它没有和答案比过。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 112.36,
+   "dur": 2.8,
+   "speech": "没有比较，就没有梯度。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 115.34,
+   "dur": 2.85,
+   "speech": "没有梯度，就没法训练。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 118.37,
+   "dur": 2.63,
+   "speech": "所以需要损失函数。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 121.18,
+   "dur": 3.57,
+   "speech": "损失把预测和真值压成一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 124.92,
+   "dur": 2.99,
+   "speech": "这个数越小，模型越好。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 128.09,
+   "dur": 4.38,
+   "speech": "听起来简单，第一个坑在高斯 NLL。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 132.66,
+   "dur": 3.3,
+   "speech": "书里式三·三零少一个常数。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 136.14,
+   "dur": 3.3,
+   "speech": "每元素少二分之一 log 二 pi。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 139.62,
+   "dur": 2.92,
+   "speech": "数值是零点九一八九。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 142.72,
+   "dur": 2.03,
+   "speech": "这不是小事。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 144.93,
+   "dur": 2.77,
+   "speech": "它会让损失出现负值。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 147.88,
+   "dur": 2.53,
+   "speech": "还好它不影响梯度。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 150.6,
+   "dur": 3.21,
+   "speech": "但报数时必须说清口径。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 153.98,
+   "dur": 2.77,
+   "speech": "第二个坑在分位数损失。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 156.94,
+   "dur": 3.69,
+   "speech": "同一个误差，方向不同价钱不同。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 160.8,
+   "dur": 3.59,
+   "speech": "tau 零点九时，低估罚一点八。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 164.57,
+   "dur": 2.44,
+   "speech": "高估只罚零点二。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 167.19,
+   "dur": 2.75,
+   "speech": "一比九，非常不对称。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 170.12,
+   "dur": 3.01,
+   "speech": "第三个坑在 QL 指标。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 173.31,
+   "dur": 3.18,
+   "speech": "书里式三·四二没有系数二。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 176.68,
+   "dur": 2.97,
+   "speech": "所以 tau 等于零点五时。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 179.82,
+   "dur": 2.41,
+   "speech": "QL 是 MAE 的一半。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 182.42,
+   "dur": 2.89,
+   "speech": "计划书却写成等于 MAE。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 185.49,
+   "dur": 3.09,
+   "speech": "三个坑都要在画面里说清。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 191.98,
+   "dur": 2.49,
+   "speech": "先把三个定义钉住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 194.65,
+   "dur": 2.63,
+   "speech": "点预测只给一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 197.46,
+   "dur": 2.68,
+   "speech": "概率预测给一个分布。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 200.31,
+   "dur": 2.39,
+   "speech": "或者给几个分位数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 202.88,
+   "dur": 3.9,
+   "speech": "似然是「在这个参数下看到数据的概率」。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 206.97,
+   "dur": 2.49,
+   "speech": "连续变量用密度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 209.63,
+   "dur": 2.25,
+   "speech": "密度可以大于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 212.06,
+   "dur": 3.45,
+   "speech": "所以负对数似然可以是负数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 215.68,
+   "dur": 2.51,
+   "speech": "这点后面会再遇到。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 218.37,
+   "dur": 3.09,
+   "speech": "tau 分位数让左边占 tau。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 221.64,
+   "dur": 3.23,
+   "speech": "中位数是 tau 等于零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 225.05,
+   "dur": 3.16,
+   "speech": "定义清楚了，看第一个式子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 228.39,
+   "dur": 2.41,
+   "speech": "高斯负对数似然。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 230.98,
+   "dur": 4.24,
+   "speech": "假设 y 服从均值 mu、标准差 sigma。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 235.4,
+   "dur": 3.69,
+   "speech": "取负对数，保留与参数有关的项。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 239.27,
+   "dur": 3.28,
+   "speech": "得到二分之一 log sigma 平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 242.72,
+   "dur": 3.71,
+   "speech": "加上残差平方除以 sigma 平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 246.61,
+   "dur": 3.3,
+   "speech": "书里式三·三零只写到这里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 250.1,
+   "dur": 3.42,
+   "speech": "本仓补上二分之一 log 二 pi。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 253.7,
+   "dur": 3.33,
+   "speech": "这样它才是完整的 NLL。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 257.2,
+   "dur": 2.05,
+   "speech": "手算一组数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 259.44,
+   "dur": 4.09,
+   "speech": "mu 等于一，sigma 等于二，y 等于三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 263.71,
+   "dur": 3.21,
+   "speech": "书版得到一点一九三一四七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 267.1,
+   "dur": 3.37,
+   "speech": "标准版得到二点一一二零八六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 270.65,
+   "dur": 3.21,
+   "speech": "差值零点九一八九三八五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 274.04,
+   "dur": 3.3,
+   "speech": "正好是二分之一 log 二 pi。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 277.52,
+   "dur": 2.53,
+   "speech": "第二个式子，pinball。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 280.23,
+   "dur": 4,
+   "speech": "tau 零点九时，低估一块钱罚一点八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 284.41,
+   "dur": 2.94,
+   "speech": "高估一块钱只罚零点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 287.53,
+   "dur": 2.7,
+   "speech": "零点一的分位数反过来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 290.42,
+   "dur": 3.49,
+   "speech": "低估罚零点二，高估罚一点八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 294.09,
+   "dur": 3.57,
+   "speech": "tau 零点五时，两边都是零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 297.84,
+   "dur": 3.47,
+   "speech": "所以它等于零点五倍绝对误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 301.49,
+   "dur": 3.88,
+   "speech": "这就是为什么 QL 里有个二分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 305.54,
+   "dur": 2.8,
+   "speech": "第三个式子，多分位数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 308.52,
+   "dur": 3.16,
+   "speech": "五个 tau 各算一次，取平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 311.86,
+   "dur": 2.32,
+   "speech": "书里式三·四二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 314.36,
+   "dur": 3.18,
+   "speech": "就是每个 tau 的平均 QL。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 317.72,
+   "dur": 2.29,
+   "speech": "注意它没有系数二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 320.19,
+   "dur": 2.97,
+   "speech": "所以 tau 等于零点五时。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 323.34,
+   "dur": 2.41,
+   "speech": "QL 是 MAE 的一半。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 325.93,
+   "dur": 3.47,
+   "speech": "想直接和 MAE 比，就乘二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 329.58,
+   "dur": 2.49,
+   "speech": "本仓两种都提供。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 332.25,
+   "dur": 2.41,
+   "speech": "口径写在证据里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 338.06,
+   "dur": 3.01,
+   "speech": "换个直觉看这三个东西。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 341.25,
+   "dur": 3.25,
+   "speech": "横轴是误差，纵轴是罚款。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 344.69,
+   "dur": 2.68,
+   "speech": "tau 零点九的线很陡。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 347.55,
+   "dur": 3.18,
+   "speech": "低估方向斜率是零点九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 350.91,
+   "dur": 3.25,
+   "speech": "高估方向斜率只有零点一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 354.34,
+   "dur": 3.09,
+   "speech": "所以模型宁可高估一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 357.61,
+   "dur": 2.97,
+   "speech": "这就是九十分位数的性格。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 360.75,
+   "dur": 3.85,
+   "speech": "tau 零点五时两边对称，像一个 V。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 364.79,
+   "dur": 2.65,
+   "speech": "再看最优常数预测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 367.62,
+   "dur": 3.76,
+   "speech": "如果只能用同一个数预测所有样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 371.56,
+   "dur": 2.73,
+   "speech": "什么数让 pinball 最小？"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 374.47,
+   "dur": 2.27,
+   "speech": "对 tau 零点五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 376.92,
+   "dur": 3.06,
+   "speech": "答案是中位数，不是均值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 380.16,
+   "dur": 2.53,
+   "speech": "对一加到十的样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 382.87,
+   "dur": 2.2,
+   "speech": "经验分位取五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 385.25,
+   "dur": 2.29,
+   "speech": "五和六并列最优。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 387.72,
+   "dur": 3.3,
+   "speech": "这就是分位数回归的名字来源。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 391.21,
+   "dur": 2.8,
+   "speech": "真实收益上再看一次。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 394.18,
+   "dur": 2.32,
+   "speech": "二百四十个交易日。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 396.68,
+   "dur": 2.92,
+   "speech": "十个分位和九十个分位。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 399.78,
+   "dur": 3.88,
+   "speech": "实际覆盖率正好零点一和零点九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 403.84,
+   "dur": 3.52,
+   "speech": "十到九十的区间覆盖零点八零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 407.54,
+   "dur": 2.85,
+   "speech": "这是分位数预测的校准。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 410.56,
+   "dur": 3.47,
+   "speech": "最后看高斯 NLL 的性格。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 414.21,
+   "dur": 3.35,
+   "speech": "sigma 太小时，残差项爆炸。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 417.74,
+   "dur": 3.78,
+   "speech": "sigma 太大时，log sigma 项变大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 421.7,
+   "dur": 3.33,
+   "speech": "最优 sigma 是残差绝对值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 425.21,
+   "dur": 4.45,
+   "speech": "所以高斯 NLL 学的是均值和尺度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 429.84,
+   "dur": 4.02,
+   "speech": "真实收益上，八十区间覆盖零点八四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 434.05,
+   "dur": 3.69,
+   "speech": "比名义的零点八略高，尾部更厚。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 441.13,
+   "dur": 2.75,
+   "speech": "看实现，三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 444.06,
+   "dur": 2.97,
+   "speech": "GaussNll 管高斯损失。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 447.21,
+   "dur": 2.53,
+   "speech": "QuantileLoss 管 pinball。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 449.92,
+   "dur": 2.94,
+   "speech": "EvalQl 管评估口径。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 453.04,
+   "dur": 3.04,
+   "speech": "sigma 不能直接当参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 456.26,
+   "dur": 3.4,
+   "speech": "我们参数化 raw，再 softplus。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 459.84,
+   "dur": 3.88,
+   "speech": "再加一个极小值 1e-6。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 463.9,
+   "dur": 2.85,
+   "speech": "保证 sigma 永远为正。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 466.92,
+   "dur": 2.63,
+   "speech": "为什么不用 exp？"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 469.73,
+   "dur": 2.97,
+   "speech": "exp 太容易冲出去。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 472.88,
+   "dur": 3.35,
+   "speech": "softplus 在零点附近更稳。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 476.41,
+   "dur": 3.33,
+   "speech": "解析梯度对 mu 和 raw 各一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 479.91,
+   "dur": 2.77,
+   "speech": "数值梯度只用来对账。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 482.87,
+   "dur": 2.97,
+   "speech": "拟合用固定步长梯度下降。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 486.01,
+   "dur": 3.35,
+   "speech": "两千步，mu 学习率零点零五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 489.54,
+   "dur": 2.92,
+   "speech": "sigma 学习率零点零二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 492.64,
+   "dur": 3.61,
+   "speech": "合成样本上损失从二十八点八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 496.44,
+   "dur": 2.39,
+   "speech": "降到一点七七四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 499.01,
+   "dur": 3.97,
+   "speech": "均值五点零一一，标准差一点四二六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 503.16,
+   "dur": 2.53,
+   "speech": "第二个模块，pinball。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 505.87,
+   "dur": 2.49,
+   "speech": "代码只有一行分支。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 508.54,
+   "dur": 2.61,
+   "speech": "两个方向要分开写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 511.33,
+   "dur": 2.63,
+   "speech": "然后对元素取平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 514.14,
+   "dur": 2.77,
+   "speech": "多分位数就是循环 tau。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 517.09,
+   "dur": 3.21,
+   "speech": "经验分位数用 type-1 定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 520.48,
+   "dur": 3.25,
+   "speech": "排序后取第 ceil(tau n) 个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 523.91,
+   "dur": 3.11,
+   "speech": "对小样本这是最稳的定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 527.2,
+   "dur": 2.63,
+   "speech": "第三个模块，评估。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 530.01,
+   "dur": 3.06,
+   "speech": "输入是预测矩阵和真值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 533.25,
+   "dur": 2.99,
+   "speech": "预测列数是 tau 的个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 536.42,
+   "dur": 3.59,
+   "speech": "evalQl 按书里口径，不乘二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 540.19,
+   "dur": 3.64,
+   "speech": "evalQl2 乘二，方便和 MAE 比。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 544.01,
+   "dur": 2.41,
+   "speech": "另外算一个交叉率。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 546.6,
+   "dur": 3.23,
+   "speech": "分位数预测应该随 tau 单调。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 550.01,
+   "dur": 3.23,
+   "speech": "交叉了就说明模型有问题。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 553.42,
+   "dur": 2.73,
+   "speech": "还有一个必须说的边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 556.33,
+   "dur": 2.92,
+   "speech": "真实日收益量级太小。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 559.43,
+   "dur": 3.3,
+   "speech": "固定步长梯度下降几乎不动。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 562.91,
+   "dur": 3.76,
+   "speech": "所以真实数据用闭式矩估计。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 566.85,
+   "dur": 2.87,
+   "speech": "证据里写明了这个限制。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 573.12,
+   "dur": 2.85,
+   "speech": "验证环节，四十一项。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 576.15,
+   "dur": 2.94,
+   "speech": "数据八项，高斯十一项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 579.27,
+   "dur": 3.64,
+   "speech": "分位数八项，QL 指标七项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 583.09,
+   "dur": 2.37,
+   "speech": "真实读数七项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 585.63,
+   "dur": 2.7,
+   "speech": "全部通过，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 588.51,
+   "dur": 2.51,
+   "speech": "再加七十九套测试。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 591.2,
+   "dur": 2.65,
+   "speech": "一千零五十九条断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 594.04,
+   "dur": 2.27,
+   "speech": "先看数据本身。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 596.49,
+   "dur": 2.63,
+   "speech": "合成样本三百个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 599.3,
+   "dur": 3.97,
+   "speech": "均值五点零一一，标准差一点四二六。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 603.45,
+   "dur": 2.73,
+   "speech": "真实收益二百四十天。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 606.36,
+   "dur": 2.99,
+   "speech": "sha256 都记在证据里。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 609.53,
+   "dur": 2.7,
+   "speech": "再看高斯的黄金值。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 612.41,
+   "dur": 2.87,
+   "speech": "书版一点一九三一四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 615.46,
+   "dur": 3.09,
+   "speech": "标准版二点一一二零八六。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 618.73,
+   "dur": 2.8,
+   "speech": "差零点九一八九三九。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 621.7,
+   "dur": 2.73,
+   "speech": "再看分位数的黄金值。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 624.61,
+   "dur": 3.93,
+   "speech": "tau 零点九，低估一块，罚一点八。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 628.72,
+   "dur": 3.85,
+   "speech": "tau 零点一，同样误差，罚零点二。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 632.75,
+   "dur": 2.13,
+   "speech": "比值正好九。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 635.06,
+   "dur": 2.41,
+   "speech": "tau 零点五的损失。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 637.65,
+   "dur": 2.37,
+   "speech": "等于零点五倍 MAE。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 640.2,
+   "dur": 3.4,
+   "speech": "合成样本上是零点五七二六。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 643.77,
+   "dur": 2.89,
+   "speech": "除以 MAE 一点一四五一。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 646.85,
+   "dur": 2.25,
+   "speech": "正好是零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 649.27,
+   "dur": 2.92,
+   "speech": "再看 QL 的两套口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 652.37,
+   "dur": 3.23,
+   "speech": "书版在 tau 零点五给零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 655.78,
+   "dur": 3.28,
+   "speech": "乘二版给一点零，也就是 MAE。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 659.24,
+   "dur": 2.53,
+   "speech": "混合 tau 的黄金例。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 661.95,
+   "dur": 3.52,
+   "speech": "书版零点九，乘二版一点八。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 665.65,
+   "dur": 2.32,
+   "speech": "交叉率三个例子。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 668.15,
+   "dur": 4.45,
+   "speech": "单调零，全反一，四分之一是零点二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 672.78,
+   "dur": 2.39,
+   "speech": "最后看真实读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 675.35,
+   "dur": 2.7,
+   "speech": "十个分位覆盖零点一。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 678.24,
+   "dur": 3.04,
+   "speech": "九十个分位覆盖零点九。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 681.45,
+   "dur": 3.69,
+   "speech": "十分位到九十分位覆盖零点八零。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 685.32,
+   "dur": 3.47,
+   "speech": "高斯八十区间覆盖零点八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 688.97,
+   "dur": 3.49,
+   "speech": "经验分位 QL 是零点零零五五。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 692.64,
+   "dur": 3.93,
+   "speech": "常数中位数 QL 是零点零零七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 696.75,
+   "dur": 2.44,
+   "speech": "分位数预测更好。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 699.37,
+   "dur": 2.08,
+   "speech": "交叉率是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 701.63,
+   "dur": 4.07,
+   "speech": "高斯 NLL 是负三点一三六九。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 705.88,
+   "dur": 1.98,
+   "speech": "这不是 bug。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 708.04,
+   "dur": 2.8,
+   "speech": "连续密度可以大于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 711.02,
+   "dur": 3.11,
+   "speech": "所以负对数可以是负数。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 714.31,
+   "dur": 2.89,
+   "speech": "证据里专门解释了这一点。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 717.38,
+   "dur": 2.2,
+   "speech": "再看拟合轨迹。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 719.76,
+   "dur": 3.13,
+   "speech": "两百步时损失还有二点一。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 723.07,
+   "dur": 3.18,
+   "speech": "两千步收敛到一点七七四。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 726.43,
+   "dur": 3.52,
+   "speech": "梯度最大误差二乘十的负九次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 730.13,
+   "dur": 2.1,
+   "speech": "这个精度足够。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 732.41,
+   "dur": 3.64,
+   "speech": "检查只能证明实现和定义一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 736.23,
+   "dur": 2.46,
+   "speech": "不能证明模型有用。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 738.87,
+   "dur": 2.01,
+   "speech": "这就是边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 744.28,
+   "dur": 2.15,
+   "speech": "边界有五条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 746.61,
+   "dur": 2.94,
+   "speech": "第一条，没有训练预测头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 749.73,
+   "dur": 2.39,
+   "speech": "损失函数验证了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 752.3,
+   "dur": 3.57,
+   "speech": "但没有接回模型做端到端训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 756.05,
+   "dur": 2.7,
+   "speech": "所以不报预测精度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 758.93,
+   "dur": 2.8,
+   "speech": "第二条，只有一个标的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 761.91,
+   "dur": 3.09,
+   "speech": "六百五十九，二百四十天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 765.17,
+   "dur": 3.52,
+   "speech": "换市场换标的，结论要重验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 768.87,
+   "dur": 3.11,
+   "speech": "第三条，高斯假设太强。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 772.16,
+   "dur": 2.49,
+   "speech": "真实收益有肥尾。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 774.83,
+   "dur": 3.04,
+   "speech": "八十区间覆盖零点八四。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 778.05,
+   "dur": 3.13,
+   "speech": "看起来还行，但尾部不够。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 781.36,
+   "dur": 3.13,
+   "speech": "第四条，书里的常数问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 784.67,
+   "dur": 3.81,
+   "speech": "式三·三零少二分之一 log 二 pi。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 788.66,
+   "dur": 2.85,
+   "speech": "式三·四二没有系数二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 791.69,
+   "dur": 2.85,
+   "speech": "计划书的手算值也错了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 794.71,
+   "dur": 2.51,
+   "speech": "都记在勘误 E37。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 797.4,
+   "dur": 2.92,
+   "speech": "第五条，brief 里的数字。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 800.5,
+   "dur": 2.49,
+   "speech": "一点七六五五一二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 803.17,
+   "dur": 2.13,
+   "speech": "这个数是错的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 805.47,
+   "dur": 3.49,
+   "speech": "正确书版是一点一九三一四七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 809.15,
+   "dur": 3.23,
+   "speech": "标准版是二点一一二零八六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 812.56,
+   "dur": 2.29,
+   "speech": "我们不沿用错数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 815.03,
+   "dur": 2.94,
+   "speech": "还有一条关于负 NLL。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 818.15,
+   "dur": 2.2,
+   "speech": "负值不是错误。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 820.53,
+   "dur": 2.89,
+   "speech": "是连续密度的正常现象。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 823.6,
+   "dur": 2.97,
+   "speech": "两个 commit 号也说明一下。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 826.75,
+   "dur": 3.61,
+   "speech": "算法提交 eb61a30。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 830.54,
+   "dur": 3.09,
+   "speech": "证据提交 f46bdca。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 833.81,
+   "dur": 2.7,
+   "speech": "两个号不同不是笔误。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 836.69,
+   "dur": 2.89,
+   "speech": "A7 算法卡仍然欠着。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 839.77,
+   "dur": 2.99,
+   "speech": "留到 W 阶段统一补。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 842.94,
+   "dur": 3.52,
+   "speech": "演示 CLI 也还在规划中。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 846.63,
+   "dur": 2.65,
+   "speech": "这两项不假装完成。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 849.47,
+   "dur": 3.06,
+   "speech": "都说清了才敢说 ready。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 855.93,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 858.21,
+   "dur": 3.64,
+   "speech": "高斯 NLL 学均值和尺度。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 862.03,
+   "dur": 3.06,
+   "speech": "别忘了二分之一 log 二 pi。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 865.27,
+   "dur": 2.44,
+   "speech": "分位数损失不对称。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 867.89,
+   "dur": 3.37,
+   "speech": "tau 零点九时，低估罚九倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 871.44,
+   "dur": 3.64,
+   "speech": "QL 指标按书口径没有系数二。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 875.26,
+   "dur": 2.97,
+   "speech": "tau 零点五时是半个 MAE。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 878.41,
+   "dur": 2.75,
+   "speech": "验证的关键是对口径。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 881.34,
+   "dur": 3.04,
+   "speech": "书里的式子、brief 的数字。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 884.56,
+   "dur": 2.77,
+   "speech": "都要逐条对过才敢用。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 887.51,
+   "dur": 2.99,
+   "speech": "这一集最值钱的不是公式。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 890.68,
+   "dur": 3.11,
+   "speech": "是三个被抓住的口径错误。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 893.97,
+   "dur": 2.87,
+   "speech": "下一集讲 CRPS。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 897.02,
+   "dur": 2.73,
+   "speech": "把整个分布拿来打分。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 899.93,
+   "dur": 2.01,
+   "speech": "下一集再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 902.11,
+   "dur": 1.98,
+   "speech": "就讲到这里。"
+  }
+ ]
+}
