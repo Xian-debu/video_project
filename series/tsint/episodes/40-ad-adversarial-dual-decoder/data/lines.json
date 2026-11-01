@@ -1,0 +1,1884 @@
+{
+ "entry": "src/tsint-40-ad-adversarial-dual-decoder/script.ts",
+ "fps": 30,
+ "totalSec": 1012.96,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 124.87
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 124.87,
+   "dur": 120.45
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 245.32,
+   "dur": 144.03
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 389.35,
+   "dur": 120.4
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 509.75,
+   "dur": 121.84
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 631.59,
+   "dur": 209.6
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 841.19,
+   "dur": 107.34
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 948.53,
+   "dur": 64.43
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.21,
+   "speech": "上一集是两条经典基线。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.59,
+   "dur": 2.97,
+   "speech": "残差抓点，距离抓形。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.73,
+   "dur": 3.61,
+   "speech": "这一集换成三个神经网络方法。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.53,
+   "dur": 2.8,
+   "speech": "三个思路，同一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.5,
+   "dur": 4.53,
+   "speech": "训练里学到的正常，到测试段还迁移得动吗。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.21,
+   "dur": 3.76,
+   "speech": "USAD：两个解码器互相挑错。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.15,
+   "dur": 3.45,
+   "speech": "一个负责重建，一个负责伪造。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 26.77,
+   "dur": 3.61,
+   "speech": "编码器要学会骗过第二个解码器。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 30.57,
+   "dur": 3.45,
+   "speech": "DAGMM：把潜空间当分布来读。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 34.19,
+   "dur": 3.28,
+   "speech": "高斯混合给每个潜码算能量。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.65,
+   "dur": 3.33,
+   "speech": "越偏离正常分布，能量越高。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 41.16,
+   "dur": 3.25,
+   "speech": "多 AE：五个模型取中位数。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.59,
+   "dur": 3.49,
+   "speech": "单个模型会抽风，中位数不会。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 48.27,
+   "dur": 2.87,
+   "speech": "对抗、密度、集成。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 51.32,
+   "dur": 3.9,
+   "speech": "三个名字，三种让分数更稳的思路。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 55.4,
+   "dur": 4.12,
+   "speech": "先给结论：四个 F1，都不到零点二五。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 59.7,
+   "dur": 4.17,
+   "speech": "USAD 零点二四，DAGMM 零点二四。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 64.04,
+   "dur": 2.97,
+   "speech": "多 AE 中位数零点零六。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 67.19,
+   "dur": 2.97,
+   "speech": "单 AE 基线，零点二二。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 70.33,
+   "dur": 3.06,
+   "speech": "注意第四个数：基线不输。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 73.58,
+   "dur": 4.62,
+   "speech": "USAD 召回零点九八，精确率零点一四。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 78.38,
+   "dur": 4.41,
+   "speech": "它几乎天天报警，一天报一千零四十三个。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 82.96,
+   "dur": 3.93,
+   "speech": "多 AE 在测试段只报了一百零六次。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 87.07,
+   "dur": 2.89,
+   "speech": "验证段它还有零点二八。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 90.14,
+   "dur": 3.4,
+   "speech": "迁移到测试段，掉到零点零六。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 93.72,
+   "dur": 2.87,
+   "speech": "三个方法，三种失败。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 96.77,
+   "dur": 2.73,
+   "speech": "这一集只回答一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 99.68,
+   "dur": 2.46,
+   "speech": "分数会不会迁移。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 102.32,
+   "dur": 4.26,
+   "speech": "数据是茅台一只票，三千九百九十六行。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 106.76,
+   "dur": 4.74,
+   "speech": "训练两千一百八十天，测试一千三百二十八天。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 111.68,
+   "dur": 3.13,
+   "speech": "注入八段尖峰、八段漂移。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 115,
+   "dur": 3.83,
+   "speech": "真值一百六十八个窗口，占一成四。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 119.01,
+   "dur": 3.66,
+   "speech": "五十七项检查，一百四十三秒跑完。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 126.07,
+   "dur": 3.64,
+   "speech": "三个方法都把「正常」学成一个分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 129.89,
+   "dur": 3.47,
+   "speech": "分数定一条阈值，超过就报警。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 133.54,
+   "dur": 3.47,
+   "speech": "这里藏着三个前提，书上没写。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 137.19,
+   "dur": 3.33,
+   "speech": "前提一：训练和测试同分布。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 140.69,
+   "dur": 3.49,
+   "speech": "真实行情里，这个前提最先碎。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 144.37,
+   "dur": 3.81,
+   "speech": "前提二：阈值可以从验证段搬过去。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 148.35,
+   "dur": 3.01,
+   "speech": "验证段是一九年到二零年。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 151.55,
+   "dur": 3.04,
+   "speech": "测试段从二零二一年开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 154.77,
+   "dur": 3.95,
+   "speech": "茅台在测试段的波动，和之前不一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 158.9,
+   "dur": 2.94,
+   "speech": "前提三：集成一定更稳。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 162.02,
+   "dur": 4.14,
+   "speech": "五个模型取中位数，压得住单个抽风。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 166.34,
+   "dur": 2.68,
+   "speech": "但压不住五个一起偏。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 169.2,
+   "dur": 2.97,
+   "speech": "三个方法各有各的偏法。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 172.34,
+   "dur": 4.07,
+   "speech": "USAD 的分数被对抗训练整体抬高。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 176.59,
+   "dur": 4.24,
+   "speech": "DAGMM 的能量被高斯混合的整体尺度带走。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 181.01,
+   "dur": 4.29,
+   "speech": "多 AE 的中位数，在测试段反而更保守。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 185.48,
+   "dur": 2.94,
+   "speech": "看起来是三个算法问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 188.6,
+   "dur": 2.65,
+   "speech": "其实是一个统计问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 191.43,
+   "dur": 3.64,
+   "speech": "分数是相对的，阈值是绝对的。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 195.25,
+   "dur": 4.21,
+   "speech": "训练段的分位数，到测试段就换了位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 199.65,
+   "dur": 3.06,
+   "speech": "这一集要看的不是谁更准。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 202.89,
+   "dur": 2.92,
+   "speech": "是谁的读数更早失效。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 205.99,
+   "dur": 4.17,
+   "speech": "验证段四个 F1 都在零点二八附近。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 210.33,
+   "dur": 3.73,
+   "speech": "测试段掉到零点零六到零点二五。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 214.25,
+   "dur": 3.78,
+   "speech": "掉得最狠的，是那个最有道理的集成。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 218.21,
+   "dur": 4,
+   "speech": "三个问题：对抗训练为什么抬高分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 222.39,
+   "dur": 3.49,
+   "speech": "能量分数为什么不能跨模型比较。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 226.06,
+   "dur": 3.66,
+   "speech": "中位数集成为什么会集体偏保守。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 229.9,
+   "dur": 2.97,
+   "speech": "数据先摆出来，再回答。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 233.05,
+   "dur": 4.53,
+   "speech": "六百六十六个尖峰窗口、一千零二个漂移窗口？"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 237.75,
+   "dur": 5.37,
+   "speech": "不，尖峰七十三、漂移一百六十五、干净九百六十三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 246.52,
+   "dur": 2.85,
+   "speech": "先写 USAD 的损失。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 249.55,
+   "dur": 3.35,
+   "speech": "编码器把窗口压到潜码 z。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 253.08,
+   "dur": 3.61,
+   "speech": "第一个解码器重建出原来的窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 256.87,
+   "dur": 3.93,
+   "speech": "第二个解码器重建「第一个解码器的输出」。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 260.98,
+   "dur": 3.57,
+   "speech": "第一阶段，两个解码器都学重建。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 264.72,
+   "dur": 3.09,
+   "speech": "第二阶段，训练变成对抗。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 267.99,
+   "dur": 3.81,
+   "speech": "第一个解码器要最小化重建误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 271.97,
+   "dur": 3.18,
+   "speech": "第二个解码器要最大化它。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 275.34,
+   "dur": 3.16,
+   "speech": "编码器跟着第二个解码器走。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 278.67,
+   "dur": 4.53,
+   "speech": "两阶段损失，权重是三分之一和三分之二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 283.38,
+   "dur": 2.73,
+   "speech": "书里没给这两条公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 286.29,
+   "dur": 4.17,
+   "speech": "我们按原文的对抗结构补上，标非书中。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 290.63,
+   "dur": 2.1,
+   "speech": "DAGMM 用能量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 292.91,
+   "dur": 5.15,
+   "speech": "潜码 z 加两维：重建误差的相对值、余弦相似度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 298.24,
+   "dur": 4.24,
+   "speech": "高斯混合给这个三维向量算负对数似然。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 302.66,
+   "dur": 3.28,
+   "speech": "负对数似然越小，越正常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 306.12,
+   "dur": 2.99,
+   "speech": "所以 DAGMM 的能量是负的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 309.29,
+   "dur": 3.28,
+   "speech": "阈值也是负的，负七点四八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 312.75,
+   "dur": 3.88,
+   "speech": "多 AE 只有一句话：五个分数的中位数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 316.81,
+   "dur": 2.89,
+   "speech": "中位数比均值抗离群。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 319.88,
+   "dur": 3.42,
+   "speech": "五个成员，奇数，不用取平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 323.48,
+   "dur": 3.88,
+   "speech": "偶数成员时要取中间两个的均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 327.54,
+   "dur": 3.52,
+   "speech": "这时候集成的稳健性就打了折。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 331.24,
+   "dur": 3.11,
+   "speech": "四组超参数，全部固定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 334.53,
+   "dur": 4.19,
+   "speech": "USAD：潜码八维，暖启动二十轮。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 338.9,
+   "dur": 3.49,
+   "speech": "对抗二十轮，学习率零点零一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 342.57,
+   "dur": 3.28,
+   "speech": "DAGMM：潜码一维，四个组件。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 346.03,
+   "dur": 2.92,
+   "speech": "八轮训练，十轮 EM。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 349.13,
+   "dur": 3.61,
+   "speech": "多 AE：五个成员，潜码十六维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 352.92,
+   "dur": 3.54,
+   "speech": "每个成员十轮，学习率零点零二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 356.64,
+   "dur": 2.56,
+   "speech": "参数量的差距很大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 359.38,
+   "dur": 4.72,
+   "speech": "USAD 两千六百零八，DAGMM 三百五十三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 364.28,
+   "dur": 3.18,
+   "speech": "单个 AE 三千三百一十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 367.64,
+   "dur": 4.14,
+   "speech": "三个模型加起来，六千二百七十七个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 371.96,
+   "dur": 3.09,
+   "speech": "比上一集的矩阵轮廓还少。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 375.23,
+   "dur": 2.73,
+   "speech": "但读数反而更不稳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 378.14,
+   "dur": 2.34,
+   "speech": "这不是参数不够。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 380.66,
+   "dur": 3.4,
+   "speech": "是分数的尺度和阈值脱了钩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 384.24,
+   "dur": 2.92,
+   "speech": "先看直觉，再看实现。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 390.55,
+   "dur": 3.76,
+   "speech": "USAD 的训练曲线最能说明问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 394.49,
+   "dur": 5.03,
+   "speech": "暖启动二十轮，重建损失从九十五降到八十九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 399.7,
+   "dur": 3.3,
+   "speech": "下降百分之五点八，很温和。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 403.18,
+   "dur": 4.43,
+   "speech": "进入对抗阶段，损失在两个解码器之间拉锯。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 407.79,
+   "dur": 4,
+   "speech": "第二轮一百三十，第六轮三百二十四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 411.97,
+   "dur": 4.43,
+   "speech": "最后两轮，两千零一十和两千三百七十六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 416.58,
+   "dur": 4.84,
+   "speech": "损失不是发散，是在两个解码器之间来回拉锯。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 421.6,
+   "dur": 3.09,
+   "speech": "第二个解码器越来越会伪造。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 424.86,
+   "dur": 3.42,
+   "speech": "第一个解码器的重建误差被推高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 428.46,
+   "dur": 3.57,
+   "speech": "但分数的排序没有被完全破坏。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 432.21,
+   "dur": 3.4,
+   "speech": "测试段 F1 还有零点二四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 435.79,
+   "dur": 4.36,
+   "speech": "所以对抗训练换来的是不稳定，不是无效。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 440.33,
+   "dur": 4.24,
+   "speech": "DAGMM 的能量曲线几乎是一条带噪声的直线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 444.74,
+   "dur": 3.64,
+   "speech": "干净日的中位数是负六点九一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 448.56,
+   "dur": 3.83,
+   "speech": "尖峰窗口是负七点零二，反而更低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 452.57,
+   "dur": 3.21,
+   "speech": "能量没有把异常和正常分开。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 455.96,
+   "dur": 2.41,
+   "speech": "因为潜码只有一维。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 458.55,
+   "dur": 4.21,
+   "speech": "重建误差那两维，也没能提供额外信息。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 462.95,
+   "dur": 3.57,
+   "speech": "多 AE 的中位数在验证段很稳。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 466.69,
+   "dur": 3.16,
+   "speech": "到测试段，它整体抬高了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 470.03,
+   "dur": 4.65,
+   "speech": "干净窗中位数零点八四，尖峰窗零点八三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 474.86,
+   "dur": 2.37,
+   "speech": "尖峰反而更低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 477.4,
+   "dur": 3.97,
+   "speech": "三个方法，都没有真正分开三类窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 481.56,
+   "dur": 2.8,
+   "speech": "这就是迁移失败的样子。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 484.53,
+   "dur": 4.02,
+   "speech": "不是分数乱跳，是分数和真值脱钩。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 488.74,
+   "dur": 3.23,
+   "speech": "验证段能选出一条好阈值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 492.15,
+   "dur": 3.23,
+   "speech": "测试段同一套分数换了位置。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 495.56,
+   "dur": 2.73,
+   "speech": "曲线只告诉我们一件事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 498.46,
+   "dur": 2.85,
+   "speech": "训练在收敛，分布没有。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 501.49,
+   "dur": 3.11,
+   "speech": "下一段看三个模块怎么实现。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 504.78,
+   "dur": 2.77,
+   "speech": "以及我们踩过的三个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 510.95,
+   "dur": 3.06,
+   "speech": "三个模块，全部纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 514.19,
+   "dur": 4.36,
+   "speech": "USAD 三百五十四行，九个单元测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 518.73,
+   "dur": 3.45,
+   "speech": "DAGMM 四百五十六行，十个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 522.36,
+   "dur": 4.09,
+   "speech": "AEEnsemble 二百一十一行，七个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 526.63,
+   "dur": 4.05,
+   "speech": "合计一千零二十一行，二十六个新测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 530.86,
+   "dur": 4.02,
+   "speech": "没有深度学习框架，全手写反向传播。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 535.06,
+   "dur": 4.72,
+   "speech": "梯度用中心差分对拍，误差小于一e负六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 539.96,
+   "dur": 3.76,
+   "speech": "第一个坑，也是最大的坑：惰性求值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 543.89,
+   "dur": 4.84,
+   "speech": "模型参数用向量更新，每一步都建一个新向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 548.91,
+   "dur": 5.27,
+   "speech": "如果不强制求值，八万三千步的更新会连成一条链。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 554.36,
+   "dur": 4.05,
+   "speech": "第一次跑证据，容器直接被内存杀了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 558.59,
+   "dur": 4.26,
+   "speech": "十二个 G 的限额，进程挂在检查阶段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 563.03,
+   "dur": 3.25,
+   "speech": "堆里六点二个 G 是活数据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 566.46,
+   "dur": 4.26,
+   "speech": "修法很土：每一步都用 force 把向量压平。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 570.91,
+   "dur": 4.72,
+   "speech": "改完之后，峰值内存从八点二 G 降到四百兆。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 575.8,
+   "dur": 4.14,
+   "speech": "第二个坑：USAD 第二阶段损失的符号。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 580.13,
+   "dur": 4.69,
+   "speech": "第二个解码器要最大化误差，所以损失取负。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 585,
+   "dur": 3.83,
+   "speech": "符号写反，方向性检查立刻失败。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 589.01,
+   "dur": 4.69,
+   "speech": "我们加了一条反向对照，训练一个符号写反的版本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 593.88,
+   "dur": 4.72,
+   "speech": "它的 s3 大于等于 s2，正好和正版相反。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 598.78,
+   "dur": 3.33,
+   "speech": "第三个坑：中位数的偶数成员。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 602.29,
+   "dur": 3.16,
+   "speech": "五个成员取中位数，没问题。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 605.63,
+   "dur": 4.26,
+   "speech": "成员数是偶数时，要取中间两个的平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 610.07,
+   "dur": 3.45,
+   "speech": "代码里必须显式返回一个警告。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 613.69,
+   "dur": 3.85,
+   "speech": "否则调用方会以为集成还是稳健的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 617.73,
+   "dur": 2.7,
+   "speech": "三个坑都不在公式里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 620.61,
+   "dur": 2.77,
+   "speech": "都在公式和机器之间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 623.56,
+   "dur": 2.73,
+   "speech": "这也是这一集的工程账。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 626.47,
+   "dur": 2.92,
+   "speech": "下一段看五十七项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 632.79,
+   "dur": 2.68,
+   "speech": "先对口径，再读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 635.65,
+   "dur": 3.49,
+   "speech": "一只票，日频，前复权收盘。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 639.32,
+   "dur": 4.33,
+   "speech": "训练两千一百八十天，验证四百八十七天。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 643.84,
+   "dur": 2.99,
+   "speech": "测试一千三百二十八天。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 647.01,
+   "dur": 2.99,
+   "speech": "窗口一百天，步长一天。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 650.18,
+   "dur": 4.07,
+   "speech": "三个模型吃同一批窗口、同一套真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 654.43,
+   "dur": 3.81,
+   "speech": "阈值都在验证段上取 F1 最优。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 658.41,
+   "dur": 3.16,
+   "speech": "测试段一个数都不进阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 661.75,
+   "dur": 3.13,
+   "speech": "注入八段尖峰、八段漂移。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 665.06,
+   "dur": 4.69,
+   "speech": "真值按窗口算，共一百六十八个，占一成四。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 669.94,
+   "dur": 4.24,
+   "speech": "USAD 的测试 F1 是零点二三九八。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 674.36,
+   "dur": 4.38,
+   "speech": "精确率零点一三六六，召回零点九八二一。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 678.92,
+   "dur": 4.86,
+   "speech": "命中一百六十五，误报一千零四十三，漏报三个。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 683.96,
+   "dur": 4.53,
+   "speech": "阈值一百一十一，分数中位数比阈值还高。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 688.67,
+   "dur": 4.17,
+   "speech": "它不是在找异常，是在给所有窗口打分。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 693.01,
+   "dur": 3.76,
+   "speech": "DAGMM 的测试 F1 是零点二四零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 696.95,
+   "dur": 4.29,
+   "speech": "精确率零点一三八三，召回零点九二二六。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 701.42,
+   "dur": 4.81,
+   "speech": "命中一百五十五，误报九百六十六，漏报十三个。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 706.41,
+   "dur": 2.73,
+   "speech": "能量阈值负七点四八。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 709.32,
+   "dur": 4.72,
+   "speech": "评估段最大能量负六点八一，全部超过阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 714.21,
+   "dur": 3.93,
+   "speech": "多 AE 的测试 F1 是零点零五八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 718.32,
+   "dur": 4.41,
+   "speech": "精确率零点零七五五，召回零点零四七六。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 722.91,
+   "dur": 4.09,
+   "speech": "命中八，误报九十八，漏报一百六十。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 727.18,
+   "dur": 2.89,
+   "speech": "验证段它还有零点二八。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 730.25,
+   "dur": 3.35,
+   "speech": "从验证到测试，掉了零点二二。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 733.78,
+   "dur": 3.97,
+   "speech": "这是四个模型里唯一明确迁移失败的。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 737.94,
+   "dur": 4.36,
+   "speech": "单 AE 基线，测试 F1 零点二二一九。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 742.48,
+   "dur": 4.19,
+   "speech": "验证段零点三零九六，掉零点零八八。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 746.85,
+   "dur": 3.28,
+   "speech": "基线掉得最少，这说明什么。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 750.3,
+   "dur": 3.93,
+   "speech": "说明对抗和密度都没带来稳定增益。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 754.41,
+   "dur": 2.75,
+   "speech": "再按三类窗口拆开看。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 757.34,
+   "dur": 4.74,
+   "speech": "尖峰窗口的中位数：USAD 一八四六点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 762.26,
+   "dur": 3.11,
+   "speech": "漂移窗口：一八四六点四。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 765.55,
+   "dur": 3.16,
+   "speech": "干净窗口：一八三零点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 768.89,
+   "dur": 3.11,
+   "speech": "三类窗口差不到百分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 772.18,
+   "dur": 5.92,
+   "speech": "DAGMM 三类分别是负七点零二、负六点九一、负六点九一。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 778.28,
+   "dur": 5.03,
+   "speech": "多 AE 三类是零点八三、零点八三、零点八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 783.49,
+   "dur": 2.27,
+   "speech": "尖峰反而最低。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 785.94,
+   "dur": 3.3,
+   "speech": "三个方法都没分开三类窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 789.42,
+   "dur": 2.89,
+   "speech": "五十七项检查，全过。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 792.49,
+   "dur": 4.81,
+   "speech": "分组：数据六项、窗口五项、USAD 九项。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 797.49,
+   "dur": 3.93,
+   "speech": "AE 三项、DAGMM 十项、集成六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 801.59,
+   "dur": 3.88,
+   "speech": "注入六项、分数八项、盲区四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 805.65,
+   "dur": 3.23,
+   "speech": "三条负向断言必须写清。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 809.06,
+   "dur": 3.47,
+   "speech": "第一，四个 F1 都不许满分。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 812.71,
+   "dur": 4,
+   "speech": "第二，集成迁移损失必须超过零点二。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 816.89,
+   "dur": 4.57,
+   "speech": "第三，验证段召回不许低于单模型最小值。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 821.64,
+   "dur": 2.39,
+   "speech": "这三条不是装饰。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 824.21,
+   "dur": 4.91,
+   "speech": "没有它们，一张全绿的检查表可能只是检查写松了。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 829.3,
+   "dur": 3.3,
+   "speech": "一百四十三秒跑完，一次运行。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 832.79,
+   "dur": 3.35,
+   "speech": "种子固定，结果逐位可复现。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 836.32,
+   "dur": 2.68,
+   "speech": "这就是这一集的读数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 842.39,
+   "dur": 2.87,
+   "speech": "不声称的事，先摆出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 845.44,
+   "dur": 4.36,
+   "speech": "这一集只回答三个方法在日频单票上的表现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 849.98,
+   "dur": 2.73,
+   "speech": "不回答哪个方法更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 852.88,
+   "dur": 3.57,
+   "speech": "不声称 SOTA，没有公开基准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 856.63,
+   "dur": 4.07,
+   "speech": "只有一只票、一套注入、五十七项检查。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 860.88,
+   "dur": 1.96,
+   "speech": "不声称通用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 863.02,
+   "dur": 3.81,
+   "speech": "换市场、换品种，全部要重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 867,
+   "dur": 2.01,
+   "speech": "不声称实时。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 869.19,
+   "dur": 3.78,
+   "speech": "日频收盘后批处理，不是在线检测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 873.15,
+   "dur": 3.37,
+   "speech": "不声称对抗训练能稳定提升。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 876.71,
+   "dur": 4.43,
+   "speech": "损失曲线从九十五涨到两千三百七十六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 881.32,
+   "dur": 2.68,
+   "speech": "它有效，但没稳定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 884.17,
+   "dur": 3.64,
+   "speech": "不声称能量分数可跨模型比较。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 887.99,
+   "dur": 4.57,
+   "speech": "DAGMM 的能量是负的，尺度由高斯混合决定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 892.75,
+   "dur": 3.4,
+   "speech": "换一个 K，阈值就换一个位置。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 896.32,
+   "dur": 2.94,
+   "speech": "三条债，这一集没还。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 899.45,
+   "dur": 2.75,
+   "speech": "第一，阈值在线更新。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 902.38,
+   "dur": 3.93,
+   "speech": "验证段的分位数搬到测试段，会漂。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 906.48,
+   "dur": 2.99,
+   "speech": "第二，对抗训练的正则化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 909.65,
+   "dur": 3.49,
+   "speech": "两阶段损失的权重是手工定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 913.33,
+   "dur": 3.76,
+   "speech": "第三，集成的成员数与相关性。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 917.26,
+   "dur": 3.4,
+   "speech": "五个同构的 AE，错误是相关的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 920.84,
+   "dur": 4.55,
+   "speech": "中位数压得住单个抽风，压不住集体偏移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 925.57,
+   "dur": 2.56,
+   "speech": "下一集换一个方向。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 928.31,
+   "dur": 2.94,
+   "speech": "稀疏先验与双注意力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 931.43,
+   "dur": 3.66,
+   "speech": "SPADE 用少样本正常样本建参考。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 935.27,
+   "dur": 3.47,
+   "speech": "DualAttention 同时看特征和时间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 938.92,
+   "dur": 2.58,
+   "speech": "不变的问题还是那个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 941.69,
+   "dur": 4.65,
+   "speech": "训练里学到的正常，到测试段还算不算正常。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 949.73,
+   "dur": 3.18,
+   "speech": "四个分数，都不到零点二五。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 953.09,
+   "dur": 4.81,
+   "speech": "USAD 零点二三九八，DAGMM 零点二四零五。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 958.09,
+   "dur": 4.74,
+   "speech": "多 AE 零点零五八四，单 AE 零点二二一九。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 963.01,
+   "dur": 4.02,
+   "speech": "三个神经网络方法，没赢过一条基线。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 967.21,
+   "dur": 2.8,
+   "speech": "结论不是神经网络不行。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 970.19,
+   "dur": 4.29,
+   "speech": "是分数与阈值的分离，在测试段失效了。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 974.65,
+   "dur": 4.05,
+   "speech": "对抗把分数抬高，密度把尺度换掉。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 978.88,
+   "dur": 4,
+   "speech": "集成把分数压低，压到报警线以下。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 983.06,
+   "dur": 2.89,
+   "speech": "三种失败，同一个原因。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 986.13,
+   "dur": 3.52,
+   "speech": "阈值是绝对的，分数是相对的。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 989.83,
+   "dur": 2.1,
+   "speech": "这一集的账本。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 992.11,
+   "dur": 2.61,
+   "speech": "新增测试二十六条。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 994.9,
+   "dur": 3.4,
+   "speech": "仓库合计一千六百八十九条。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 998.48,
+   "dur": 2.56,
+   "speech": "证据检查五十七项。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1001.21,
+   "dur": 2.8,
+   "speech": "本集进度五十 / 七十四。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1004.19,
+   "dur": 3.69,
+   "speech": "下一集：稀疏先验与双注意力。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1008.06,
+   "dur": 2.7,
+   "speech": "两个解码器，说到这里。"
+  }
+ ]
+}
