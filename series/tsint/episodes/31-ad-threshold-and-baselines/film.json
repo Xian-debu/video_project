@@ -20,9 +20,10 @@
   "fps": 30,
   "prefix": "tsint-31",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [],
   "derived": [],
@@ -36,5 +37,6 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "incomplete",
+  "notes": "units: ch4-thresh, ch4-sup-cls, ch4-ma-es"
 }

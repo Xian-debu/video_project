@@ -1,0 +1,478 @@
+{
+ "meta": {
+  "film": "31-ad-threshold-and-baselines",
+  "checks": 28,
+  "checkTotal": 28,
+  "runtimeSec": 1.55,
+  "tests": {
+   "suites": 105,
+   "asserts": 1473,
+   "new": 55
+  },
+  "algoCommit": "e4e0813",
+  "evidenceCommit": "7258483",
+  "dataCommit": "fd593cc"
+ },
+ "data": {
+  "file": "threshold_600519.csv",
+  "rows": 5950,
+  "start": "2001-08-27",
+  "end": "2026-06-30",
+  "bytes": 180803,
+  "sha": "95a11d956e23567d7d7841096f248a56db6ece5d95dc4a0a5f3a9f51f5e74c11",
+  "split": {
+   "train": "2010-01-01..2020-12-31",
+   "test": "2021-01-01..2026-06-30"
+  }
+ },
+ "params": {
+  "fixedTau": 3.0,
+  "qRate": 0.01,
+  "altRates": [
+   0.005,
+   0.01,
+   0.02
+  ],
+  "alphaRange": 0.2,
+  "maK": 20,
+  "maAlpha": 0.3,
+  "clsWin": 100,
+  "clsEpochs": 200,
+  "clsLr": 0.1
+ },
+ "inject": {
+  "seed": 42,
+  "spike": {
+   "points": 60,
+   "segments": 44,
+   "ratePct": 1.008,
+   "sigmaMin": 5,
+   "sigmaMax": 10,
+   "testTruth": 16
+  },
+  "medium": {
+   "points": 60,
+   "segments": 60,
+   "sigmaMin": 2,
+   "sigmaMax": 4,
+   "testTruth": 24,
+   "lowVolPool": 1667
+  }
+ },
+ "taus": {
+  "fixed": 3.0,
+  "trainQuantile": 3.0844,
+  "testQuantile": 3.0182,
+  "spot": 4.7922
+ },
+ "spot": {
+  "xi": -0.456,
+  "beta": 3.5416,
+  "u": 2.6568,
+  "q": 0.02,
+  "risk": 0.01,
+  "tailMin": 50,
+  "synTau": 12.2589,
+  "synRate": 0.0002
+ },
+ "routes": [
+  {
+   "key": "fixed",
+   "label": "固定 3σ",
+   "variant": "spike",
+   "tau": 3.0,
+   "pos": 30,
+   "p": 0.5333,
+   "r": 1.0,
+   "f1": 0.6957,
+   "padj": 0.6957,
+   "rf1": 0.6842
+  },
+  {
+   "key": "quantile",
+   "label": "训练段 1% 分位",
+   "variant": "spike",
+   "tau": 3.0844,
+   "pos": 28,
+   "p": 0.5714,
+   "r": 1.0,
+   "f1": 0.7273,
+   "padj": 0.7273,
+   "rf1": 0.7222
+  },
+  {
+   "key": "spot",
+   "label": "SPOT",
+   "variant": "spike",
+   "tau": 4.7922,
+   "pos": 16,
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0,
+   "padj": 1.0,
+   "rf1": 1.0
+  },
+  {
+   "key": "fixed",
+   "label": "固定 3σ",
+   "variant": "medium",
+   "tau": 3.0,
+   "pos": 15,
+   "p": 0.0667,
+   "r": 0.0417,
+   "f1": 0.0513,
+   "padj": 0.0513,
+   "rf1": 0.0556
+  },
+  {
+   "key": "quantile",
+   "label": "训练段 1% 分位",
+   "variant": "medium",
+   "tau": 3.0844,
+   "pos": 13,
+   "p": 0.0769,
+   "r": 0.0417,
+   "f1": 0.0541,
+   "padj": 0.0541,
+   "rf1": 0.0588
+  },
+  {
+   "key": "spot",
+   "label": "SPOT",
+   "variant": "medium",
+   "tau": 4.7922,
+   "pos": 0,
+   "p": 0.0,
+   "r": 0.0,
+   "f1": 0.0,
+   "padj": 0.0,
+   "rf1": 0.0
+  }
+ ],
+ "sweep": [
+  {
+   "variant": "spike",
+   "rate": 0.005,
+   "route": "fixed",
+   "f1": 0.5625
+  },
+  {
+   "variant": "spike",
+   "rate": 0.005,
+   "route": "quantile",
+   "f1": 0.6
+  },
+  {
+   "variant": "spike",
+   "rate": 0.005,
+   "route": "spot",
+   "f1": 1.0
+  },
+  {
+   "variant": "spike",
+   "rate": 0.01,
+   "route": "fixed",
+   "f1": 0.6957
+  },
+  {
+   "variant": "spike",
+   "rate": 0.01,
+   "route": "quantile",
+   "f1": 0.7273
+  },
+  {
+   "variant": "spike",
+   "rate": 0.01,
+   "route": "spot",
+   "f1": 1.0
+  },
+  {
+   "variant": "spike",
+   "rate": 0.02,
+   "route": "fixed",
+   "f1": 0.8116
+  },
+  {
+   "variant": "spike",
+   "rate": 0.02,
+   "route": "quantile",
+   "f1": 0.8358
+  },
+  {
+   "variant": "spike",
+   "rate": 0.02,
+   "route": "spot",
+   "f1": 1.0
+  },
+  {
+   "variant": "medium",
+   "rate": 0.005,
+   "route": "fixed",
+   "f1": 0.0
+  },
+  {
+   "variant": "medium",
+   "rate": 0.005,
+   "route": "quantile",
+   "f1": 0.0
+  },
+  {
+   "variant": "medium",
+   "rate": 0.005,
+   "route": "spot",
+   "f1": 0.0
+  },
+  {
+   "variant": "medium",
+   "rate": 0.01,
+   "route": "fixed",
+   "f1": 0.0513
+  },
+  {
+   "variant": "medium",
+   "rate": 0.01,
+   "route": "quantile",
+   "f1": 0.0541
+  },
+  {
+   "variant": "medium",
+   "rate": 0.01,
+   "route": "spot",
+   "f1": 0.0
+  },
+  {
+   "variant": "medium",
+   "rate": 0.02,
+   "route": "fixed",
+   "f1": 0.0625
+  },
+  {
+   "variant": "medium",
+   "rate": 0.02,
+   "route": "quantile",
+   "f1": 0.0328
+  },
+  {
+   "variant": "medium",
+   "rate": 0.02,
+   "route": "spot",
+   "f1": 0.0
+  }
+ ],
+ "detectors": [
+  {
+   "key": "hand",
+   "name": "手打 |z|",
+   "f1": 0.7143,
+   "rf1": 0.6667,
+   "pos": 9
+  },
+  {
+   "key": "ma",
+   "name": "MA 残差",
+   "f1": 0.5882,
+   "rf1": 0.4762,
+   "pos": 12
+  },
+  {
+   "key": "cls",
+   "name": "监督分类器",
+   "f1": 0.12,
+   "rf1": 0.0918,
+   "pos": 45
+  }
+ ],
+ "classifier": {
+  "window": 100,
+  "epochs": 200,
+  "lr": 0.1,
+  "posWeight": 126.05,
+  "trainWindows": 2668,
+  "testWindows": 1328
+ },
+ "golden": {
+  "quantile025Tau": 1.75,
+  "quantile025Pred": "[False,True,True,True]",
+  "quantile0Pred": "[False,True,True,True]",
+  "quantile1Pred": "[False,False,False,False]",
+  "qCount": 27,
+  "qExpect": 26.68,
+  "smallSpotTau": 3.961,
+  "oneStepW": 0.5,
+  "sepF1": 1.0,
+  "bigLoss": 0.0,
+  "maGold": "[NaN,NaN,1.5,1.5,1.5]",
+  "esDiff": "[NaN,1.0,1.0,1.0,1.0]",
+  "esPred": "[NaN,1.0,0.7000000000000002]"
+ },
+ "checks": [
+  {
+   "unit": "ch4-thresh",
+   "name": "分位阈值黄金值 1.75 且严格大于",
+   "ok": true,
+   "detail": "tau=1.750000 pred=[False,True,True,True]"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "q=0 时 tau=min，只有最小点算正常",
+   "ok": true,
+   "detail": "[False,True,True,True]"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "q=1 时 tau=max 且无点超过",
+   "ok": true,
+   "detail": "[False,False,False,False]"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "训练段正例数约等于 q*n（误差 <=1）",
+   "ok": true,
+   "detail": "pred=27 expect=26.68"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "q 增大时 tau 不减",
+   "ok": true,
+   "detail": "[\"0.000\",\"0.013\",\"0.020\",\"0.029\",\"0.037\"]"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "等于 tau 的点算正常（严格大于）",
+   "ok": true,
+   "detail": "applyThreshold (FixedThreshold 2.0) [2] = False"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "训练段与测试段分位不同（用测试分位=泄漏）",
+   "ok": true,
+   "detail": "train 3.084418 test 3.018219"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "SPOT 尾部不足 50 点时回退分位阈值",
+   "ok": true,
+   "detail": "Right (QuantileThreshold 3.961)"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "SPOT 在 GPD 样本上给出有限阈值，超过率与 risk 同量级",
+   "ok": true,
+   "detail": "tau=12.2589 u=2.2905 rate=0.00020"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "A 股：注入尖峰时 SPOT 的 F1 高于固定阈值",
+   "ok": true,
+   "detail": "spot 1.0000 vs fixed 0.6957"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "A 股：固定 3 sigma 与训练段 1% 分位几乎同分（差 <= 0.1）",
+   "ok": true,
+   "detail": "fixed 0.6957 vs quantile 0.7273"
+  },
+  {
+   "unit": "ch4-thresh",
+   "name": "A 股：2-4 个局部 sigma 的中等偏移，三条路线 F1 都 <= 0.1（全局 z 看不见局部尺度）",
+   "ok": true,
+   "detail": "fixed 0.0513 / quantile 0.0541 / spot 0.0000"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "单步梯度黄金值 w=0.5",
+   "ok": true,
+   "detail": "w=0.500000"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "可分数据训练 200 轮后训练集 F1=1.0",
+   "ok": true,
+   "detail": "f1=1.000000"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "z=100 时损失有限且一轮更新不产生 NaN",
+   "ok": true,
+   "detail": "loss=0.0000 finite=True"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "概率在 [0,1] 且随 z 单调",
+   "ok": true,
+   "detail": "[1.9287498479639178e-22,0.2689414213699951,0.5,0.7310585786300049,1.0]"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "空训练集返回 Left EmptyTraining",
+   "ok": true,
+   "detail": "Left EmptyTraining"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "维度不一致返回 Left DimMismatch 3",
+   "ok": true,
+   "detail": "Left (DimMismatch 2 3)"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "正类权重按负/正比计算",
+   "ok": true,
+   "detail": "posWeight(1:2)=2.000"
+  },
+  {
+   "unit": "ch4-sup-cls",
+   "name": "测试段：1% 正例率下分类器不如 MA 残差基线",
+   "ok": true,
+   "detail": "cls 0.1200 vs ma 0.5882"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "MA 黄金值 [NaN,NaN,1.5,1.5,1.5]",
+   "ok": true,
+   "detail": "[NaN,NaN,1.5,1.5,1.5]"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "alpha=1 的 ES 退化为 x[t-1]，残差=一阶差分",
+   "ok": true,
+   "detail": "[NaN,1.0,1.0,1.0,1.0]"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "常数序列在 k 之后残差为 0",
+   "ok": true,
+   "detail": "[NaN,NaN,NaN]"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "n<k 时残差全 NaN（不崩）",
+   "ok": true,
+   "detail": "[NaN,NaN,NaN]"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "residualZ 在 sigma=0 处为 NaN",
+   "ok": true,
+   "detail": "[NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "ES 初值取 x0（阶跃序列第一拍可手算）",
+   "ok": true,
+   "detail": "[NaN,1.0,0.7000000000000002]"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "测试段：MA 残差点调整 F1 低于手打分数",
+   "ok": true,
+   "detail": "ma 0.5882 vs hand 0.7143"
+  },
+  {
+   "unit": "ch4-ma-es",
+   "name": "测试段：MA 残差范围 F1 也低于手打分数",
+   "ok": true,
+   "detail": "ma 0.4762 vs hand 0.6667"
+  }
+ ]
+}

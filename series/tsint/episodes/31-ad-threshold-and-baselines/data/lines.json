@@ -1,0 +1,2241 @@
+{
+ "entry": "src/tsint-31-ad-threshold-and-baselines/script.ts",
+ "fps": 30,
+ "totalSec": 996.9,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 101.01
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 101.01,
+   "dur": 137.39
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 238.4,
+   "dur": 135.83
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 374.23,
+   "dur": 137.22
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 511.45,
+   "dur": 146.23
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 657.68,
+   "dur": 161.58
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 819.26,
+   "dur": 130.67
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 949.93,
+   "dur": 46.97
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.32,
+   "speech": "上一集讲地基。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 3.7,
+   "dur": 2.85,
+   "speech": "窗口，指标，评分。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 6.72,
+   "dur": 3.04,
+   "speech": "但那些分数还是连续的数。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 9.94,
+   "dur": 3.28,
+   "speech": "零点八，一点二，三点五。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.4,
+   "dur": 2.37,
+   "speech": "交易要的是判断。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 15.95,
+   "dur": 2.32,
+   "speech": "买，还是不买。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 18.44,
+   "dur": 2.8,
+   "speech": "分数怎么变成零和一。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 21.42,
+   "dur": 2.01,
+   "speech": "这就是阈值。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 23.61,
+   "dur": 2.99,
+   "speech": "同一串分数，三种切法。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 26.78,
+   "dur": 1.98,
+   "speech": "先给三个数。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 28.94,
+   "dur": 3.04,
+   "speech": "第一个，零点六九五七。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 32.16,
+   "dur": 3.13,
+   "speech": "固定三倍标准差的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 35.47,
+   "dur": 2.92,
+   "speech": "第二个，零点七二七三。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 38.57,
+   "dur": 3.4,
+   "speech": "训练段百分之一分位的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 42.15,
+   "dur": 2.34,
+   "speech": "第三个，一点零。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 44.67,
+   "dur": 2.22,
+   "speech": "SPOT 的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 47.07,
+   "dur": 3.09,
+   "speech": "同一批异常，同一串分数。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 50.34,
+   "dur": 4.02,
+   "speech": "切法不同，F1 从零点六九到一。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 54.54,
+   "dur": 3.33,
+   "speech": "先说清楚，这不是模型变强。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 58.05,
+   "dur": 3.28,
+   "speech": "三种切法用的是同一个分数。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 61.5,
+   "dur": 2.63,
+   "speech": "这一集只有三块零件。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 64.31,
+   "dur": 3.06,
+   "speech": "阈值，分类器，基线。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 67.56,
+   "dur": 2.7,
+   "speech": "一只股票，二十五年。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 70.44,
+   "dur": 2.65,
+   "speech": "五千九百五十个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 73.27,
+   "dur": 3.59,
+   "speech": "训练段十年，测试段五年半。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 77.04,
+   "dur": 3.3,
+   "speech": "注入六十个尖峰，占百分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 80.52,
+   "dur": 2.65,
+   "speech": "还有六十个中等偏移。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 83.36,
+   "dur": 2.17,
+   "speech": "那是另一道题。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 85.71,
+   "dur": 2.68,
+   "speech": "三个模块，四个坑。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 88.57,
+   "dur": 2.39,
+   "speech": "五十五条新断言。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 91.14,
+   "dur": 3.04,
+   "speech": "二十八个检查点，全过。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 94.36,
+   "dur": 2.41,
+   "speech": "SPOT 凭什么到一。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 96.95,
+   "dur": 1.86,
+   "speech": "先看问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 102.21,
+   "dur": 2.08,
+   "speech": "问题很朴素。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 104.47,
+   "dur": 2.68,
+   "speech": "每天算一个异常分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 107.33,
+   "dur": 2.8,
+   "speech": "分数越大，越像异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 110.3,
+   "dur": 3.18,
+   "speech": "现在要在某个地方切一刀。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 113.67,
+   "dur": 2.8,
+   "speech": "左边正常，右边异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 116.64,
+   "dur": 2.65,
+   "speech": "切在哪，谁说了算。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 119.48,
+   "dur": 2.94,
+   "speech": "最直接的办法，拍一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 122.6,
+   "dur": 2.1,
+   "speech": "三倍标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 124.88,
+   "dur": 2.56,
+   "speech": "教科书写了三十年。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 127.62,
+   "dur": 2.75,
+   "speech": "它的问题是不看数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 130.55,
+   "dur": 3.16,
+   "speech": "波动大的市场，三倍太少。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 133.89,
+   "dur": 3.21,
+   "speech": "波动小的市场，三倍太多。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 137.27,
+   "dur": 2.7,
+   "speech": "第二种办法，看分位。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 140.16,
+   "dur": 2.75,
+   "speech": "取训练段百分之一分位。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 143.09,
+   "dur": 3.18,
+   "speech": "让百分之一的点被判异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 146.45,
+   "dur": 2.37,
+   "speech": "这里有个口径的坑。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 148.99,
+   "dur": 3.33,
+   "speech": "分位是分位水平，不是超限率。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 152.5,
+   "dur": 4.09,
+   "speech": "要百分之一超限，就得取百分之九十九。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 156.77,
+   "dur": 3.61,
+   "speech": "方向弄反，阈值掉到零点零一。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 160.57,
+   "dur": 2.77,
+   "speech": "第三种办法，SPOT。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 163.52,
+   "dur": 1.89,
+   "speech": "它看尾巴。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 165.59,
+   "dur": 3.81,
+   "speech": "它假设尾部服从广义帕累托分布。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 169.57,
+   "dur": 2.73,
+   "speech": "再从风险反推阈值。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 172.48,
+   "dur": 3.35,
+   "speech": "不是拍一个数，是解一个方程。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 176.01,
+   "dur": 2.85,
+   "speech": "三种切法，三个切点。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 179.04,
+   "dur": 3.28,
+   "speech": "三倍标准差，切在三点零。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 182.49,
+   "dur": 3.28,
+   "speech": "百分之一分位，切在三点零八。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 185.95,
+   "dur": 2.97,
+   "speech": "SPOT，切在四点七九。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 189.1,
+   "dur": 2.89,
+   "speech": "为什么 SPOT 切得最高。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 192.17,
+   "dur": 3.28,
+   "speech": "因为它算的是尾部，不是主体。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 195.63,
+   "dur": 3.28,
+   "speech": "切点差一点八，结果差多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 199.09,
+   "dur": 2.7,
+   "speech": "固定阈值判三十个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 201.97,
+   "dur": 2.39,
+   "speech": "分位判二十八个。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 204.54,
+   "dur": 2.17,
+   "speech": "SPOT 判十六个。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 206.89,
+   "dur": 2.56,
+   "speech": "真值也正好十六个。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 209.63,
+   "dur": 3.97,
+   "speech": "所以 SPOT 的精度和召回都是一。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 213.79,
+   "dur": 3.61,
+   "speech": "但等等，固定阈值召回也是一。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 217.58,
+   "dur": 2.94,
+   "speech": "它多抓了十四个假阳性。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 220.7,
+   "dur": 2.34,
+   "speech": "分位多抓十二个。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 223.22,
+   "dur": 3.09,
+   "speech": "这就是精度和召回的交换。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 226.49,
+   "dur": 3.97,
+   "speech": "同一串分数，切一刀，换一个平衡点。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 230.64,
+   "dur": 2.61,
+   "speech": "那是不是越严越好。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 233.43,
+   "dur": 2.77,
+   "speech": "不是，下一节就翻车。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 239.6,
+   "dur": 2.75,
+   "speech": "三条判据，写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 242.53,
+   "dur": 2.58,
+   "speech": "第一条，固定阈值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 245.29,
+   "dur": 3.35,
+   "speech": "阈值等于均值加 k 倍标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 248.82,
+   "dur": 2.17,
+   "speech": "这里 k 取三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 251.18,
+   "dur": 2.94,
+   "speech": "这条判据没有参数可学。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 254.3,
+   "dur": 3.04,
+   "speech": "它只是把常识写成了公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 257.52,
+   "dur": 2.37,
+   "speech": "第二条，分位数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 260.06,
+   "dur": 2.94,
+   "speech": "取训练段分数的 q 分位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 263.18,
+   "dur": 2.58,
+   "speech": "q 等于零点九九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 265.95,
+   "dur": 3.45,
+   "speech": "判据是分数严格大于阈值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 269.57,
+   "dur": 3.21,
+   "speech": "严格大于这四个字很重要。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 272.96,
+   "dur": 2.44,
+   "speech": "等于阈值算正常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 275.58,
+   "dur": 2.89,
+   "speech": "否则边界点会多算一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 278.65,
+   "dur": 2.44,
+   "speech": "第三条，SPOT。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 281.27,
+   "dur": 3.01,
+   "speech": "先把尾部拟合成帕累托。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 284.46,
+   "dur": 2.7,
+   "speech": "参数是 xi 和 beta。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 287.34,
+   "dur": 3.45,
+   "speech": "xi 是尾指数，beta 是尺度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 290.97,
+   "dur": 3.81,
+   "speech": "这个数据上，xi 是负零点四五六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 294.96,
+   "dur": 3.16,
+   "speech": "beta 是三点五四一六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 298.29,
+   "dur": 3.47,
+   "speech": "u 是尾部门槛，二点六五六八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 301.94,
+   "dur": 3.76,
+   "speech": "阈值公式是 u 加 beta 除以 xi。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 305.88,
+   "dur": 2.15,
+   "speech": "再乘以一个幂。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 308.21,
+   "dur": 3.18,
+   "speech": "幂里是样本数乘以风险率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 311.57,
+   "dur": 3.18,
+   "speech": "除以尾部点数的负 xi 次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 314.94,
+   "dur": 2.49,
+   "speech": "风险率取百分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 317.6,
+   "dur": 3.52,
+   "speech": "算出来，阈值是四点七九二二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 321.3,
+   "dur": 3.59,
+   "speech": "尾部点不够五十个，就退回分位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 325.07,
+   "dur": 2.68,
+   "speech": "这是防御，不是近似。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 327.93,
+   "dur": 2.97,
+   "speech": "三个判据，三种性格。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 331.07,
+   "dur": 3.09,
+   "speech": "固定阈值，是人的经验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 334.34,
+   "dur": 2.89,
+   "speech": "分位数，是数据的形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 337.41,
+   "dur": 2.89,
+   "speech": "SPOT，是风险的定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 340.49,
+   "dur": 3.49,
+   "speech": "验证用的是手算得出来的例子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 344.16,
+   "dur": 2.63,
+   "speech": "四个数，一二三四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 346.97,
+   "dur": 2.2,
+   "speech": "取零点二五分位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 349.35,
+   "dur": 2.44,
+   "speech": "阈值是一点七五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 351.97,
+   "dur": 2.85,
+   "speech": "判据输出，假真真真。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 354.99,
+   "dur": 3.23,
+   "speech": "取零分位，阈值是最小值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 358.4,
+   "dur": 2.61,
+   "speech": "只有最小值算正常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 361.19,
+   "dur": 3.23,
+   "speech": "取一分位，阈值是最大值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 364.6,
+   "dur": 2.17,
+   "speech": "没有点超过它。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 366.95,
+   "dur": 1.93,
+   "speech": "输出全假。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 369.07,
+   "dur": 2.97,
+   "speech": "这几个数，纸上就能算。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 375.43,
+   "dur": 2.37,
+   "speech": "直觉只有一句话。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 377.98,
+   "dur": 2.87,
+   "speech": "阈值的位置，由尾巴决定。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 381.03,
+   "dur": 2.15,
+   "speech": "主体是正态的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 383.36,
+   "dur": 1.79,
+   "speech": "尾部不是。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 385.33,
+   "dur": 3.09,
+   "speech": "金融收益的尾巴，比正态厚。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 388.59,
+   "dur": 2.94,
+   "speech": "厚尾意味着极端值更多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 391.71,
+   "dur": 2.99,
+   "speech": "固定阈值看不见这件事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 394.88,
+   "dur": 3.18,
+   "speech": "它按正态算三倍标准差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 398.25,
+   "dur": 4.02,
+   "speech": "厚尾数据里，三倍之外的点比想象多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 402.45,
+   "dur": 2.89,
+   "speech": "所以固定阈值会多抓。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 405.52,
+   "dur": 2.53,
+   "speech": "分位数看见了一部分。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 408.24,
+   "dur": 3.09,
+   "speech": "它知道百分之一的点在哪。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 411.5,
+   "dur": 3.45,
+   "speech": "但它不知道百分之一以外的形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 415.13,
+   "dur": 2.94,
+   "speech": "SPOT 把尾巴单独建模。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 418.25,
+   "dur": 3.33,
+   "speech": "帕累托分布只有一个形状参数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 421.76,
+   "dur": 3.47,
+   "speech": "xi 是负的，说明尾部有上界。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 425.41,
+   "dur": 2.92,
+   "speech": "这个上界不是物理上界。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 428.5,
+   "dur": 2.99,
+   "speech": "是拟合出来的渐近行为。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 431.67,
+   "dur": 3.16,
+   "speech": "风险率一改，阈值跟着改。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 435.01,
+   "dur": 2.29,
+   "speech": "这就是它的好处。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 437.49,
+   "dur": 3.49,
+   "speech": "不用重训，换个风险率就重算。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 441.16,
+   "dur": 3.01,
+   "speech": "但 SPOT 也有失效的时候。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 444.35,
+   "dur": 3.13,
+   "speech": "尾部不是帕累托，它就偏。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 447.67,
+   "dur": 3.3,
+   "speech": "尾部点太少，它就退回分位。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 451.15,
+   "dur": 2.89,
+   "speech": "更麻烦的是局部波动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 454.22,
+   "dur": 3.21,
+   "speech": "这一集专门做了第二个实验。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 457.61,
+   "dur": 2.41,
+   "speech": "六十个中等偏移。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 460.2,
+   "dur": 4.14,
+   "speech": "每个只在当天算两到四个局部标准差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 464.53,
+   "dur": 3.4,
+   "speech": "放在全局尺度里，它们不够高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 468.1,
+   "dur": 3.97,
+   "speech": "三种切法，F1 全部低于零点一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 472.26,
+   "dur": 2.61,
+   "speech": "SPOT 一个都没抓到。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 475.04,
+   "dur": 3.49,
+   "speech": "固定阈值抓十五个，全是误报。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 478.72,
+   "dur": 2.94,
+   "speech": "分位抓十三个，也是误报。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 481.84,
+   "dur": 2.49,
+   "speech": "这不是阈值的问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 484.51,
+   "dur": 2.13,
+   "speech": "是分数的问题。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 486.81,
+   "dur": 3.61,
+   "speech": "全局 z 分数，看不见局部尺度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 490.61,
+   "dur": 3.21,
+   "speech": "要抓这种异常，得换分数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 493.99,
+   "dur": 2.85,
+   "speech": "比如滚动窗口的标准差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 497.02,
+   "dur": 2.37,
+   "speech": "那是后面几集的事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 499.56,
+   "dur": 2.77,
+   "speech": "这一集先把话说死。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 502.52,
+   "dur": 3.28,
+   "speech": "阈值只能切分数，不能造分数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 505.98,
+   "dur": 3.28,
+   "speech": "分数瞎了，切法再准也没用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 512.65,
+   "dur": 1.89,
+   "speech": "三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 514.72,
+   "dur": 2.8,
+   "speech": "Threshold，三种阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 517.69,
+   "dur": 4.09,
+   "speech": "SupCls，一个逻辑回归分类器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 521.97,
+   "dur": 3.61,
+   "speech": "Smoothing，移动平均和指数平滑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 525.76,
+   "dur": 2.8,
+   "speech": "四个坑，都是静默错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 528.74,
+   "dur": 2.82,
+   "speech": "第一个坑，分位数的方向。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 531.74,
+   "dur": 2.85,
+   "speech": "接口里 q 是分位水平。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 534.77,
+   "dur": 3.76,
+   "speech": "要百分之一超限，传零点九九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 538.71,
+   "dur": 2.41,
+   "speech": "如果传零点零一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 541.3,
+   "dur": 2.99,
+   "speech": "阈值会落到零点零一二七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 544.47,
+   "dur": 3.4,
+   "speech": "两千六百四十一个点被判异常。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 548.05,
+   "dur": 2.08,
+   "speech": "程序不报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 550.31,
+   "dur": 2.41,
+   "speech": "F1 也还能算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 552.9,
+   "dur": 1.89,
+   "speech": "只是全错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 554.97,
+   "dur": 2.92,
+   "speech": "第二个坑，帕累托的方程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 558.06,
+   "dur": 2.87,
+   "speech": "极大似然有两个方程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 561.11,
+   "dur": 4.09,
+   "speech": "第二个方程在 xi 接近零时会退化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 565.39,
+   "dur": 2.7,
+   "speech": "直接牛顿迭代会发散。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 568.27,
+   "dur": 2.53,
+   "speech": "所以改成剖面似然。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 570.98,
+   "dur": 3.97,
+   "speech": "在 xi 网格上扫，每个点解第一个方程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 575.14,
+   "dur": 2.08,
+   "speech": "再三分细化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 577.4,
+   "dur": 4.57,
+   "speech": "xi 绝对值小于十的负六次方，走指数极限。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 582.15,
+   "dur": 3.09,
+   "speech": "这条路径不优雅，但稳。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 585.42,
+   "dur": 3.45,
+   "speech": "第三个坑，移动平均的初始值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 589.04,
+   "dur": 4.98,
+   "speech": "计划里手算的黄金值是 NaN NaN 一 一 一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 594.2,
+   "dur": 2.34,
+   "speech": "实际是一点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 596.73,
+   "dur": 3.42,
+   "speech": "因为前 k 个位置没有完整窗口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 600.33,
+   "dur": 2.97,
+   "speech": "窗口内的均值是一点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 603.47,
+   "dur": 3.35,
+   "speech": "计划写错了，断言把它钉住。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 607,
+   "dur": 2.94,
+   "speech": "第四个坑，维度不匹配。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 610.13,
+   "dur": 3.61,
+   "speech": "分类器训练时样本长度不一致。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 613.92,
+   "dur": 3.42,
+   "speech": "报错必须指出是第几个样本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 617.52,
+   "dur": 3.09,
+   "speech": "只说维度不对，等于没说。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 620.79,
+   "dur": 2.97,
+   "speech": "三个模块都有 Checked 版本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 623.93,
+   "dur": 2.75,
+   "speech": "形状不对，返回 Left。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 626.86,
+   "dur": 3.04,
+   "speech": "不静默截断，不静默广播。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 630.08,
+   "dur": 2.85,
+   "speech": "这是上一集留下的规矩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 633.11,
+   "dur": 2.08,
+   "speech": "这一集继续用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 635.37,
+   "dur": 2.13,
+   "speech": "分类器的参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 637.67,
+   "dur": 3.25,
+   "speech": "窗口一百天，训练两百轮。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 641.11,
+   "dur": 2.2,
+   "speech": "学习率零点一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 643.48,
+   "dur": 2.99,
+   "speech": "正样本权重一百二十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 646.65,
+   "dur": 2.22,
+   "speech": "因为异常太少了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 649.06,
+   "dur": 3.16,
+   "speech": "两千六百六十八个训练窗口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 652.39,
+   "dur": 3.09,
+   "speech": "一千三百二十八个测试窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 658.88,
+   "dur": 2.15,
+   "speech": "二十八个检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 661.21,
+   "dur": 4.17,
+   "speech": "阈值十二项，分类器八项，平滑八项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 665.56,
+   "dur": 2.99,
+   "speech": "断言语料库一百零五套。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 668.73,
+   "dur": 2.46,
+   "speech": "一千四百七十三条。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 671.37,
+   "dur": 2.63,
+   "speech": "本集新增五十五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 674.18,
+   "dur": 1.69,
+   "speech": "零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 676.05,
+   "dur": 2.51,
+   "speech": "黄金值先看几条。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 678.74,
+   "dur": 3.45,
+   "speech": "分位零点二五，阈值一点七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 682.37,
+   "dur": 2.27,
+   "speech": "输出假真真真。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 684.82,
+   "dur": 3.13,
+   "speech": "零分位，阈值取最小值。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 688.13,
+   "dur": 2.58,
+   "speech": "一分位，输出全假。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 690.89,
+   "dur": 2.75,
+   "speech": "训练段正例数二十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 693.82,
+   "dur": 2.68,
+   "speech": "理论值二十六点六八。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 696.68,
+   "dur": 2.08,
+   "speech": "差不到一个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 698.94,
+   "dur": 3.16,
+   "speech": "小样本时 SPOT 退回分位。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 702.28,
+   "dur": 2.73,
+   "speech": "返回值三点九六一。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 705.18,
+   "dur": 3.81,
+   "speech": "分类器在可分数据上 F1 是一。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 709.17,
+   "dur": 2.65,
+   "speech": "这些都是手算能验的。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 712,
+   "dur": 2.27,
+   "speech": "再看真实读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 714.45,
+   "dur": 2.87,
+   "speech": "尖峰实验，三种切法。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 717.5,
+   "dur": 3.85,
+   "speech": "固定阈值，F1 零点六九五七。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 721.54,
+   "dur": 2.77,
+   "speech": "分位，零点七二七三。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 724.49,
+   "dur": 2.39,
+   "speech": "SPOT，一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 727.06,
+   "dur": 3.06,
+   "speech": "为什么固定和分位这么接近。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 730.3,
+   "dur": 3.4,
+   "speech": "因为两个阈值只差零点零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 733.88,
+   "dur": 2.65,
+   "speech": "三点零和三点零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 736.72,
+   "dur": 3.47,
+   "speech": "切点几乎一样，结果自然接近。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 740.37,
+   "dur": 3.06,
+   "speech": "扫参实验，三档风险率。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 743.61,
+   "dur": 3.73,
+   "speech": "百分之零点五，百分之一，百分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 747.52,
+   "dur": 2.61,
+   "speech": "SPOT 三档全是一。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 750.31,
+   "dur": 4.53,
+   "speech": "固定阈值，零点五六二五到零点八一一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 755.01,
+   "dur": 3.61,
+   "speech": "分位，零点六到零点八三五八。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 758.81,
+   "dur": 3.09,
+   "speech": "宽松一点，F1 就上来。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 762.07,
+   "dur": 2.87,
+   "speech": "这是异常检测的老规矩。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 765.12,
+   "dur": 4.79,
+   "speech": "异常少的时候，放宽阈值几乎总是提升 F1。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 770.09,
+   "dur": 2.65,
+   "speech": "然后是三基线对比。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 772.93,
+   "dur": 2.08,
+   "speech": "同一批测试点。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 775.19,
+   "dur": 4.77,
+   "speech": "手写 z 分数，点调整 F1 零点七一四三。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 780.13,
+   "dur": 3.52,
+   "speech": "移动平均残差，零点五八八二。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 783.83,
+   "dur": 3.33,
+   "speech": "逻辑回归分类器，零点一二。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 787.34,
+   "dur": 2.05,
+   "speech": "分类器最差。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 789.57,
+   "dur": 1.6,
+   "speech": "为什么。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 791.35,
+   "dur": 3.21,
+   "speech": "因为训练段只有几十个正样本。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 794.73,
+   "dur": 2.13,
+   "speech": "它学不到东西。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 797.04,
+   "dur": 2.77,
+   "speech": "这是下一集要展开的。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 799.99,
+   "dur": 2.2,
+   "speech": "中等偏移实验。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 802.37,
+   "dur": 3.73,
+   "speech": "三种切法，F1 全低于零点一。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 806.29,
+   "dur": 2.61,
+   "speech": "SPOT 一个都没抓到。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 809.07,
+   "dur": 2.53,
+   "speech": "这条读数不是失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 811.79,
+   "dur": 1.69,
+   "speech": "是边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 813.66,
+   "dur": 3.4,
+   "speech": "全局分数，看不见局部尺度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 820.46,
+   "dur": 1.96,
+   "speech": "四条边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 822.6,
+   "dur": 2.89,
+   "speech": "第一，阈值不是超参数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 825.67,
+   "dur": 2.37,
+   "speech": "它是口径的一部分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 828.22,
+   "dur": 3.9,
+   "speech": "同一串分数，换阈值就换 F1。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 832.3,
+   "dur": 3.25,
+   "speech": "所以报 F1 必须报阈值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 835.73,
+   "dur": 3.37,
+   "speech": "第二，SPOT 只在厚尾上赢。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 839.29,
+   "dur": 3.23,
+   "speech": "尾部不是帕累托，它就会偏。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 842.7,
+   "dur": 2.8,
+   "speech": "这个数据是股票日收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 845.68,
+   "dur": 2.8,
+   "speech": "厚尾是它的产业结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 848.65,
+   "dur": 3.06,
+   "speech": "换个市场，结论要重测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 851.9,
+   "dur": 4.05,
+   "speech": "第三，全局 z 分数看不见局部波动。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 856.12,
+   "dur": 2.89,
+   "speech": "中等偏移实验已经证明。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 859.2,
+   "dur": 2.92,
+   "speech": "三种切法，全军覆没。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 862.29,
+   "dur": 3.49,
+   "speech": "要抓这种异常，得先换分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 865.97,
+   "dur": 3.3,
+   "speech": "分数换了，阈值才有意义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 869.45,
+   "dur": 3.78,
+   "speech": "第四，分类器的上限是样本量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 873.41,
+   "dur": 2.73,
+   "speech": "训练段几十个正样本。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 876.32,
+   "dur": 2.49,
+   "speech": "学不出稳定的边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 878.98,
+   "dur": 3.83,
+   "speech": "它在这组数据上输给手写 z 分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 882.99,
+   "dur": 2.51,
+   "speech": "不是逻辑回归不行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 885.68,
+   "dur": 2.56,
+   "speech": "是数据不给它机会。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 888.42,
+   "dur": 1.72,
+   "speech": "三笔债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 890.32,
+   "dur": 2.75,
+   "speech": "第一笔，无监督方法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 893.25,
+   "dur": 3.45,
+   "speech": "K 均值，LOF，孤立森林。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 896.88,
+   "dur": 2.15,
+   "speech": "它们不用标签。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 899.21,
+   "dur": 2.51,
+   "speech": "第二笔，序列模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 901.9,
+   "dur": 2.63,
+   "speech": "自回归，状态空间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 904.71,
+   "dur": 2.15,
+   "speech": "它们建模时间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 907.04,
+   "dur": 2.77,
+   "speech": "第三笔，阈值怎么选。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 909.99,
+   "dur": 2.87,
+   "speech": "今天固定，明天自适应。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 913.04,
+   "dur": 2.25,
+   "speech": "这笔债还没还。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 915.47,
+   "dur": 3.23,
+   "speech": "所以这一集只回答一个问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 918.88,
+   "dur": 2.8,
+   "speech": "分数怎么变成零和一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 921.85,
+   "dur": 2.34,
+   "speech": "答案是一把尺子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 924.38,
+   "dur": 2.8,
+   "speech": "尺子准不准，看分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 927.35,
+   "dur": 3.01,
+   "speech": "分数瞎不瞎，看下一集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 930.55,
+   "dur": 2.53,
+   "speech": "下一集，无监督。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 933.26,
+   "dur": 3.09,
+   "speech": "没有标签的时候，怎么找异常。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 936.53,
+   "dur": 3.45,
+   "speech": "K 均值，LOF，孤立森林。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 940.15,
+   "dur": 2.44,
+   "speech": "三个都不用真值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 942.77,
+   "dur": 2.53,
+   "speech": "它们的 F1 怎么算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 945.49,
+   "dur": 2.25,
+   "speech": "那才是真问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 951.13,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 953.41,
+   "dur": 3.97,
+   "speech": "第一，阈值决定 F1，和模型无关。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 957.57,
+   "dur": 3.83,
+   "speech": "同一串分数，三种切法，三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 961.58,
+   "dur": 3.09,
+   "speech": "报指标之前，先报切点。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 964.84,
+   "dur": 3.3,
+   "speech": "第二，SPOT 强在尾部建模。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 968.32,
+   "dur": 2.61,
+   "speech": "它把风险写进公式。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 971.11,
+   "dur": 2.92,
+   "speech": "但它只认帕累托的尾巴。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 974.21,
+   "dur": 3.11,
+   "speech": "第三，阈值救不了瞎分数。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 977.5,
+   "dur": 3.21,
+   "speech": "全局 z 看不见局部波动。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 980.88,
+   "dur": 4.45,
+   "speech": "中等偏移，三种切法全部低于零点一。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 985.52,
+   "dur": 3.28,
+   "speech": "下一集，无监督异常检测。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 988.98,
+   "dur": 2.97,
+   "speech": "没有标签，怎么定义异常。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 992.12,
+   "dur": 2.58,
+   "speech": "第 31 集，完。"
+  }
+ ]
+}
