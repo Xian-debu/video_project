@@ -2,7 +2,7 @@
 
 > status: ready（2026-11-01 晚上 交付）
 > chapter: ch04 | runtime target: 24 min | algorithms: 2
-> 算法：ts-base 3311303；证据：ts-base 8367f77（父 b5fbf51）；数据：ts-admin c7f2e85
+> 算法：ts-base 3311303；证据：ts-base 8367f77（30/30 摘要 8d7b9be，父 b5fbf51）；数据：ts-admin c7f2e85
 
 ## Thesis
 
@@ -41,6 +41,8 @@ ts-admin 导出（inventory/scripts/export_ch04_gru.py，commit c7f2e85）：600
 
 ## Delivery
 
-成片 delivery/Tsint34AdGruLstmPredictor.mp4：待渲染，本节读数在 make PASS 后回填。
+成片 delivery/Tsint34AdGruLstmPredictor.mp4：1,128.07 s（33,842 帧），49,974,341 B，−15 LUFS、TP −2 dBFS；亮度闪烁 33,842 帧 mean 21.07 / min 14.47 / max 24.09、mean|d| 0.0128、p99 0.0997、最大 8.14、7 个切点（3784 / 7674 / 11621 / 15384 / 19452 / 29247 / 32527）；字幕 372 条 / 8 章、0 换行、最长 20 字、跨度 00:00:01,200 → 00:18:45,880（发声 1,035.4 s），章节合计 1,128.07 s（首 00:00:00 / 末 00:18:04）。四件导出：cover.png（帧 20，0.67 s，开场标题页，无字幕条）、tsint-34.srt、tsint-34.chapters.txt、tsint-34.chapters.ffmeta.txt；mp4 按惯例不入库。
 
-证据 30/30（185.3 s）、113 套测试 / 1,537 条断言；算法 ts-base 3311303、证据 ts-base 8367f77、数据 ts-admin c7f2e85。
+分数床用 E04 的 1560 s 循环（--score=out/e04-score-loop-48k.wav；report 的 scoreReused 记 false）；8 段场景全部重渲后拼接（tree aec8694b00b9f2ed），混音 48 kHz / 1,129.27 s，峰值 −1.03 dBFS（限幅前 −1.03），RMS −26.72 dBFS，duck 50.8%（4.5 dB），音乐增益 −4.5 dB，stem 可听中位 −27.88 dB、可听占比 63.1%、低频占比 6.8%；混音门 speech −23.23 dB、gap full −30.35 dB / audible −33.09 dB、bed contribution 36.9 dB。make 三轮：首轮停在 still lint —— open 页四「比例」行把 15 字长句塞进 260 px 值列，溢出 26 px，改用 pctOf 只取百分比；二轮又抓出两处同类溢出（尖峰形态 19 字、真值 18 字），改为值列只放短读数、长描述进可换行的 note 列；三轮 PASS，report 记场景 reused 0 / rendered 8。静帧复核按 29 个页面中点取帧（不再是 4 张默认采样）。按归档约束 make 的全部产物直接落 pack delivery/：成片 mp4 49,974,341 B、programme_unnorm.mp4 49,726,543 B、raw_video.mp4 20,984,937 B、mix.wav 216,819,884 B、score.wav 299,520,078 B、score.meta.json、report.json、scenes/（8 段 + concat.txt + manifest.json）、stills/（29 帧），引擎 out/<本集 id> 无残留。
+
+证据 30/30（185.3 s）、113 套测试 / 1,537 条断言；算法 ts-base 3311303、证据 ts-base 8367f77（30/30 摘要 8d7b9be）、数据 ts-admin c7f2e85。
