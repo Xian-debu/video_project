@@ -1,6 +1,6 @@
 # 32-ad-classic-unsupervised - 三种几何直觉：距离、密度、随机分割
 
-> status: draft（制作中 2026-11-01）
+> status: ready（2026-11-01 傍晚 交付）
 > chapter: ch04 | runtime target: 20 min | algorithms: 3
 > 算法：ts-base 7dbbce0；证据：ts-base 8fe4791；数据：ts-admin 6ddf78b
 
@@ -34,3 +34,11 @@ ts-admin 导出（inventory/scripts/export_ch04_unsup.py，commit 6ddf78b）：8
 - ch4-kmeans - k-means 距离打分与 k-means++ 初始化 (TsBase.Algos.Ch04.KMeans)
 - ch4-lof - 局部离群因子与可达距离 (TsBase.Algos.Ch04.Lof)
 - ch4-iforest - 孤立森林与路径长度归一化 (TsBase.Algos.Ch04.IForest)
+
+## Delivery
+
+成片 delivery/Tsint32AdClassicUnsupervised.mp4：971.00 s（29,130 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 29,130 帧 mean 21.40 / min 14.57 / max 24.31、mean|d| 0.0132、p99 0.0998、最大 9.13、7 个切点（3188 / 6973 / 11498 / 15394 / 19704 / 24488 / 27962）；字幕 304 条 / 8 章、0 换行、最长 26 字、跨度 00:00:01,200 → 00:16:08,800（发声 890.6 s），章节合计 971.00 s（首 00:00:00 / 末 00:15:32）。四件导出：cover.png（帧 20，0.67 s，开场标题页，无字幕条）、tsint-32.srt、tsint-32.chapters.txt、tsint-32.chapters.ffmeta.txt；mp4 按惯例不入库。
+
+分数床用 E04 的 1560 s 循环（--score=out/e04-score-loop-48k.wav；report 的 scoreReused 记 false）；8 段场景分别渲染后拼接（tree 7908d70fd8d91d02），混音 48 kHz / 972.2 s，峰值 −1.00 dBFS（限幅前 −0.75），RMS −27.15 dBFS，duck 51.6%（4.5 dB），音乐增益 −4.5 dB，stem 可听中位 −27.88 dB、可听占比 63.1%、低频占比 6.8%。按归档约束 make 的全部产物直接落在 pack delivery/：成片 mp4、programme_unnorm.mp4、raw_video.mp4、mix.wav、score.wav、score.meta.json、report.json、scenes/（8 段 + concat.txt + manifest.json）、stills/（4 帧），引擎 out/ 无本集残留。
+
+证据 34/34（27.22 s）、108 套测试 / 1,493 条断言；算法 ts-base 7dbbce0、证据 ts-base 8fe4791、数据 ts-admin 6ddf78b。
