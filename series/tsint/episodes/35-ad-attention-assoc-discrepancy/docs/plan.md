@@ -40,3 +40,11 @@ ts-admin 导出（inventory/scripts/export_ch04_attention.py，commit c6f682b）
 - ch4-assoc-diff - Anomaly Transformer 关联差异 (TsBase.Algos.Ch04.AssocDiff)
 - ch4-sat - SAT 次邻域注意力 (TsBase.Algos.Ch04.SAT)
 - ch4-tranad - TranAD 两阶段自条件推理 (TsBase.Algos.Ch04.TranAD)
+
+## Delivery
+
+成片 delivery/Tsint35AdAttentionAssocDiscrepancy.mp4：1,342.67 s（40,280 帧），67,927,405 B，−15 LUFS、TP −2 dBFS；亮度闪烁 40,280 帧 mean 22.95 / min 14.47 / max 34.93、mean|d| 0.0150、p99 0.1130、最大 10.10、7 个切点（5988 / 9992 / 15432 / 19545 / 24918 / 33863 / 37850）；字幕 314 条 / 8 章、0 换行、最长 32 字、跨度 00:00:01,200 → 00:22:20,470（发声 1,260.5 s），章节合计 1,342.67 s（首 00:00:00 / 末 00:21:01）。四件导出：cover.png（帧 20，0.67 s，开场标题页，无字幕条）、tsint-35.srt、tsint-35.chapters.txt、tsint-35.chapters.ffmeta.txt；mp4 按惯例不入库。
+
+分数床用 E04 的 1560 s 循环（--score=out/e04-score-loop-48k.wav；report 的 scoreReused 记 false）；8 段场景全部重渲后拼接（tree e11c902fe43d7278），混音 48 kHz / 1,343.87 s，峰值 −1 dBFS（限幅前 −0.86），RMS −26.77 dBFS，duck 59.9%（4.5 dB），音乐增益 −4.5 dB，stem 可听中位 −27.88 dB、可听占比 63.1%、低频占比 6.8%；混音门 speech −23.79 dB、gap full −30.5 dB / audible −33.37 dB、bed contribution 36.6 dB。make 跑过四轮：首轮渲染崩在 PR 曲线数据（attn.json 的 curves 是 {q,p,r} 记录，shared.tsx 按三元组解构）；二轮停在 still lint —— implementation 页把「文件路径 · 算法名」拼进 385 px 的 name 列（关联差异 430 px、两阶段 408 px），改为 name 只放算法名、路径与单元测试数进 note；三轮 PASS，静帧复核（29 个页面中点）又抓出三处画面口径/排版问题（热力图是 40×40 降采样却标成「100 × 100 注意力」、definitions 第三页下半页空、outro 写 injected 真值），改完以 content commit 5f3a0732 重渲第四轮才是交付版，final report 记 reused 0 / rendered 8。按归档约束 make 的全部产物直接落 pack delivery/：成片 mp4 67,927,405 B、programme_unnorm.mp4 67,603,110 B、raw_video.mp4 33,461,011 B、mix.wav 258,023,084 B、score.wav 299,520,078 B、score.meta.json、report.json、scenes/（8 段）、stills/（29 帧），引擎 out/<本集 id> 无残留。
+
+证据 34/34（68.9 s）、116 套测试 / 1,573 条断言（本集新增 36 条：ch4-assoc-diff 14 / ch4-sat 13 / ch4-tranad 9）；算法 ts-base 49dec25、证据 ts-base ec2f014（34/34 摘要）、数据 ts-admin c6f682b。
