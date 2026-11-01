@@ -18,23 +18,31 @@
   "width": 1920,
   "height": 1080,
   "fps": 30,
-  "prefix": "tsint-25",
-  "status": "draft",
-  "narration": null,
-  "audio": {
-    "music": null
-  },
+  "prefix": "tsint-25-rnn-recurrence-vs-segments",
+  "status": "ready",
+  "paper": null,
+  "claims": null,
   "derive": [],
   "derived": [],
-  "claims": null,
-  "paths": {
-    "src": "src",
-    "data": "data",
-    "public": "assets/public"
+  "derivedNote": "无派生文件",
+  "narration": "assets/audio/narration.wav",
+  "audio": {
+    "music": null,
+    "musicGainDb": -4.5
+  },
+  "publish": {
+    "coverFrame": 10414
   },
   "delivery": "delivery",
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "bili": null,
+  "assetsStatus": "complete",
+  "notes": "units: ch3-rnn, ch3-segrnn",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  }
 }

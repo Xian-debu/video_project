@@ -1,0 +1,1751 @@
+{
+ "entry": "src/tsint-25-rnn-recurrence-vs-segments/script.ts",
+ "fps": 30,
+ "totalSec": 773.04,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 74.74
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 74.74,
+   "dur": 91.38
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 166.12,
+   "dur": 110.49
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 276.61,
+   "dur": 103.41
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 380.02,
+   "dur": 126.37
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 506.39,
+   "dur": 112.92
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 619.31,
+   "dur": 112.42
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 731.73,
+   "dur": 41.31
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.92,
+   "speech": "第三篇章，第二十五集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.3,
+   "dur": 3.16,
+   "speech": "上一集把通道关系讲完了。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.64,
+   "dur": 2.58,
+   "speech": "这一集回到时间轴。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.4,
+   "dur": 2.37,
+   "speech": "给定九十六步历史。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 12.94,
+   "dur": 3.13,
+   "speech": "要一次预测未来二十四步。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.26,
+   "dur": 2.7,
+   "speech": "这件事有两种做法。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 19.14,
+   "dur": 2.61,
+   "speech": "第一种，逐点递归。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 21.93,
+   "dur": 2.8,
+   "speech": "把历史读成一个状态。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 24.9,
+   "dur": 2.51,
+   "speech": "再一步一步往外推。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 27.59,
+   "dur": 2.53,
+   "speech": "第二种，分段并行。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 30.31,
+   "dur": 2.41,
+   "speech": "历史切成十二块。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 32.9,
+   "dur": 2.39,
+   "speech": "生成切成三块。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 35.47,
+   "dur": 2.7,
+   "speech": "两条路，同一份数据。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 38.35,
+   "dur": 2.22,
+   "speech": "同一把尺子量。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 40.76,
+   "dur": 3.33,
+   "speech": "逐点递归要调用一百二十次。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 44.26,
+   "dur": 2.39,
+   "speech": "分段只要十五次。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 46.83,
+   "dur": 2.13,
+   "speech": "八倍的速度差。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 49.14,
+   "dur": 2.27,
+   "speech": "但快的未必准。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 51.59,
+   "dur": 2.87,
+   "speech": "第 24 步的平均误差。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 54.64,
+   "dur": 2.77,
+   "speech": "递归是 0.4135。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 57.59,
+   "dur": 2.73,
+   "speech": "分段是 0.3972。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 60.5,
+   "dur": 2.44,
+   "speech": "分段还更准一点。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 63.12,
+   "dur": 2.68,
+   "speech": "那故事是不是很简单。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 65.97,
+   "dur": 1.45,
+   "speech": "不是。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 67.61,
+   "dur": 2.46,
+   "speech": "有一个读数反过来了。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 70.25,
+   "dur": 2.29,
+   "speech": "看完代码再说。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 75.94,
+   "dur": 2.53,
+   "speech": "先说递归为什么慢。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 78.65,
+   "dur": 2.49,
+   "speech": "因为它是自回归的。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 81.32,
+   "dur": 4.14,
+   "speech": "第 t 步的输出，是第 t+1 步的输入。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 85.64,
+   "dur": 2.41,
+   "speech": "要预测二十四步。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 88.24,
+   "dur": 3.16,
+   "speech": "模型得把自己喂二十四次。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 91.57,
+   "dur": 3.13,
+   "speech": "每一步都要更新隐藏状态。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 94.89,
+   "dur": 3.54,
+   "speech": "九十六步历史加二十四步生成。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 98.61,
+   "dur": 3.11,
+   "speech": "一共一百二十次单元前向。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 101.9,
+   "dur": 2.49,
+   "speech": "这是数学上的下限。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 104.57,
+   "dur": 1.96,
+   "speech": "没法并行。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 106.7,
+   "dur": 2.82,
+   "speech": "误差也是从这条路来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 109.71,
+   "dur": 3.47,
+   "speech": "预测错了，就把错的值当输入。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 113.36,
+   "dur": 3.47,
+   "speech": "一步的偏差，变成下一步的起点。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 117.01,
+   "dur": 2.29,
+   "speech": "误差因此累积。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 119.48,
+   "dur": 2.46,
+   "speech": "我们量了这条曲线。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 122.12,
+   "dur": 3.23,
+   "speech": "第 1 步，误差 0.3758。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 125.53,
+   "dur": 3.37,
+   "speech": "第 24 步，0.4135。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 129.09,
+   "dur": 2.39,
+   "speech": "膨胀了 1.10 倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 131.66,
+   "dur": 2.2,
+   "speech": "看起来不夸张。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 134.03,
+   "dur": 2.77,
+   "speech": "这是在标准化收益上的。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 136.99,
+   "dur": 2.73,
+   "speech": "换成价格，会放大。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 139.89,
+   "dur": 2.63,
+   "speech": "分段的动机就在这里。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 142.7,
+   "dur": 3.76,
+   "speech": "既然必须串行，能不能少串几次。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 146.64,
+   "dur": 2.2,
+   "speech": "把时间轴切开。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 149.02,
+   "dur": 2.37,
+   "speech": "每段只算一次。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 151.57,
+   "dur": 2.34,
+   "speech": "块与块之间并行。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 154.09,
+   "dur": 2.92,
+   "speech": "这就是 SegRNN 的想法。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 157.19,
+   "dur": 1.98,
+   "speech": "速度换来了。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 159.35,
+   "dur": 2.15,
+   "speech": "代价也带来了。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 161.68,
+   "dur": 2.25,
+   "speech": "后面一个一个看。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 167.32,
+   "dur": 2.58,
+   "speech": "先把两条路写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 170.08,
+   "dur": 3.45,
+   "speech": "循环网络的一步，是式 3.12。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 173.71,
+   "dur": 4.45,
+   "speech": "h_t 等于 g，作用于三项之和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 178.34,
+   "dur": 3.45,
+   "speech": "第一项是输入项，W 乘 z。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 181.97,
+   "dur": 3.73,
+   "speech": "第二项是循环项，U 乘上一时刻。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 185.88,
+   "dur": 2.51,
+   "speech": "第三项是偏置 b。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 188.57,
+   "dur": 2.46,
+   "speech": "g 在本集取 tanh。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 191.21,
+   "dur": 3.64,
+   "speech": "多层的层间输入，是上一层的输出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 195.03,
+   "dur": 2.77,
+   "speech": "输出头是式 3.13。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 197.99,
+   "dur": 3.3,
+   "speech": "x hat 等于 Head 作用于 h。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 201.47,
+   "dur": 3.33,
+   "speech": "把一步按时间串起来，就是网络。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 204.97,
+   "dur": 3.3,
+   "speech": "我们的口径，写在模块注释里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 208.46,
+   "dur": 2.29,
+   "speech": "隐藏维 32。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 210.93,
+   "dur": 2.15,
+   "speech": "一层，tanh。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 213.26,
+   "dur": 2.97,
+   "speech": "截断反向传播 48 步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 216.41,
+   "dur": 2.49,
+   "speech": "梯度裁剪 1.0。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 219.07,
+   "dur": 3.23,
+   "speech": "学习率 1e-3。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 222.48,
+   "dur": 2.92,
+   "speech": "自回归生成 24 步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 225.58,
+   "dur": 3.45,
+   "speech": "加历史，一共 120 次调用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 229.21,
+   "dur": 3.11,
+   "speech": "手算金例，输入两个 1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 232.5,
+   "dur": 3.85,
+   "speech": "权重全 1，偏置 0，激活取恒等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 236.53,
+   "dur": 2.65,
+   "speech": "第一步 h1 等于 1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 239.36,
+   "dur": 2.65,
+   "speech": "第二步 h2 等于 2。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 242.2,
+   "dur": 3.01,
+   "speech": "精确等于 2，不是约等于。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 245.39,
+   "dur": 2.99,
+   "speech": "分段网络换了一种参数化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 248.56,
+   "dur": 2.53,
+   "speech": "历史切成 m 段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 251.28,
+   "dur": 3.06,
+   "speech": "m 等于 ceil(H 除以 s)。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 254.52,
+   "dur": 3.18,
+   "speech": "每段用同一个单元读一遍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 257.88,
+   "dur": 3.81,
+   "speech": "96 步，s 等于 8，就是 12 段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 261.87,
+   "dur": 2.22,
+   "speech": "生成切三块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 264.27,
+   "dur": 3.47,
+   "speech": "前向调用 12 加 3，等于 15。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 267.92,
+   "dur": 2.92,
+   "speech": "参数 1832 个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 271.02,
+   "dur": 3.4,
+   "speech": "比递归的 1121 个还多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 277.81,
+   "dur": 3.54,
+   "speech": "直觉上，递归像一个滚动的摘要。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 281.53,
+   "dur": 3.81,
+   "speech": "每读一步，就把历史压进 32 维。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 285.52,
+   "dur": 3.83,
+   "speech": "读到最后，96 步只剩一个向量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 289.53,
+   "dur": 3.57,
+   "speech": "再靠这个向量往外吐 24 步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 293.27,
+   "dur": 2.68,
+   "speech": "信息在这里被压掉了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 296.13,
+   "dur": 2.37,
+   "speech": "分段看得更宽。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 298.68,
+   "dur": 3.66,
+   "speech": "每一块单独编码，保留块内形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 302.52,
+   "dur": 3.47,
+   "speech": "块与块之间，靠解码器融合。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 306.17,
+   "dur": 2.56,
+   "speech": "左边是误差曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 308.91,
+   "dur": 3.45,
+   "speech": "横轴是预测步数，1 到 24。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 312.53,
+   "dur": 2.61,
+   "speech": "青色是逐点递归。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 315.32,
+   "dur": 2.87,
+   "speech": "珊瑚色是直接多步头。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 318.37,
+   "dur": 2.53,
+   "speech": "灰色是朴素基线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 321.08,
+   "dur": 4.29,
+   "speech": "递归从 0.3758 涨到 0.4135。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 325.55,
+   "dur": 2.94,
+   "speech": "直接多步头基本是平的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 328.67,
+   "dur": 3.81,
+   "speech": "0.3684 到 0.3731。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 332.66,
+   "dur": 3.52,
+   "speech": "朴素基线一直在 0.42 以上。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 336.36,
+   "dur": 1.69,
+   "speech": "分段呢。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 338.23,
+   "dur": 3.61,
+   "speech": "第 1 步 0.4438，不如递归。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 342.02,
+   "dur": 3.73,
+   "speech": "第 24 步 0.3972，反超。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 345.94,
+   "dur": 2.41,
+   "speech": "曲线是往下走的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 348.53,
+   "dur": 2.46,
+   "speech": "看起来分段更稳。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 351.17,
+   "dur": 2.58,
+   "speech": "我们还想验证一件事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 353.94,
+   "dur": 2.99,
+   "speech": "分段生成应该更平滑。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 357.11,
+   "dur": 2.7,
+   "speech": "因为块内是一起生成的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 359.99,
+   "dur": 3.54,
+   "speech": "用二阶差分的平均绝对值衡量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 363.71,
+   "dur": 3.04,
+   "speech": "逐点递归 0.4435。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 366.93,
+   "dur": 2.68,
+   "speech": "分段 0.6353。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 369.79,
+   "dur": 2.65,
+   "speech": "分段抖了 1.43 倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 372.62,
+   "dur": 2.15,
+   "speech": "和直觉相反。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 374.95,
+   "dur": 2.87,
+   "speech": "为什么，边界那页再说。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 381.22,
+   "dur": 3.01,
+   "speech": "两个模块，一个文件一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 384.41,
+   "dur": 2.34,
+   "speech": "先看逐点递归。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 386.94,
+   "dur": 2.85,
+   "speech": "step 函数只做一件事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 389.96,
+   "dur": 3.83,
+   "speech": "把输入项、循环项、偏置加起来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 393.97,
+   "dur": 2.2,
+   "speech": "再过激活函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 396.35,
+   "dur": 3.61,
+   "speech": "我们的实现把激活函数当参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 400.14,
+   "dur": 3.3,
+   "speech": "这样金例才能用恒等函数验。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 403.63,
+   "dur": 2.63,
+   "speech": "预测用 arForecast。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 406.44,
+   "dur": 3.37,
+   "speech": "先跑完历史，拿到最后的状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 409.99,
+   "dur": 3.4,
+   "speech": "然后循环，把输出喂回输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 413.57,
+   "dur": 3.16,
+   "speech": "循环次数就是 horizon。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 416.91,
+   "dur": 2.56,
+   "speech": "梯度用 BPTT。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 419.64,
+   "dur": 2.34,
+   "speech": "反向遍历时间步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 422.17,
+   "dur": 2.8,
+   "speech": "截断参数默认 48。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 425.14,
+   "dur": 3.71,
+   "speech": "截断小于序列长度，结果会不同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 429.03,
+   "dur": 2.34,
+   "speech": "这一点专门测了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 431.56,
+   "dur": 3.54,
+   "speech": "截断 100 和全长一致，差 0。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 435.28,
+   "dur": 3.4,
+   "speech": "截断 3 和全长差 6.84。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 438.86,
+   "dur": 3.4,
+   "speech": "这两个数就是截断语义的证据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 442.43,
+   "dur": 2.77,
+   "speech": "梯度校验用中心差分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 445.39,
+   "dur": 3.81,
+   "speech": "相对误差 9.05e-9。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 449.37,
+   "dur": 3.33,
+   "speech": "门限是 1e-6。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 452.88,
+   "dur": 2.32,
+   "speech": "过了四个数量级。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 455.38,
+   "dur": 2.68,
+   "speech": "分段模块的结构不同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 458.24,
+   "dur": 3.61,
+   "speech": "编码器是矩阵，H 乘 s。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 462.03,
+   "dur": 3.06,
+   "speech": "把一段 8 步读成一个向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 465.27,
+   "dur": 3.64,
+   "speech": "生成器再把这个向量变回 8 步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 469.09,
+   "dur": 3.18,
+   "speech": "解码器融合已经生成的块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 472.45,
+   "dur": 2.08,
+   "speech": "一块一次调用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 474.71,
+   "dur": 2.92,
+   "speech": "参数 1832 个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 477.81,
+   "dur": 3.35,
+   "speech": "书里表 3.2 只给三条性质。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 481.34,
+   "dur": 3.54,
+   "speech": "块嵌入、并行生成、训练目标。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 485.06,
+   "dur": 3.09,
+   "speech": "具体前向是我们自己定的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 488.33,
+   "dur": 2.44,
+   "speech": "证据等级标成 B。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 490.94,
+   "dur": 2.32,
+   "speech": "两个坑也记一下。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 493.44,
+   "dur": 2.85,
+   "speech": "梯度函数只吃一条序列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 496.47,
+   "dur": 3.37,
+   "speech": "传一个批次进去，会报形状错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 500.02,
+   "dur": 4.17,
+   "speech": "单字母大写的局部变量，会被当成构造器。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 507.59,
+   "dur": 2.17,
+   "speech": "验证分四组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 509.94,
+   "dur": 1.93,
+   "speech": "数据 7 项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 512.06,
+   "dur": 2.05,
+   "speech": "递归 13 项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 514.29,
+   "dur": 1.98,
+   "speech": "分段 11 项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 516.45,
+   "dur": 2.97,
+   "speech": "一共 31 项，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 519.6,
+   "dur": 1.86,
+   "speech": "先说数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 521.64,
+   "dur": 2.75,
+   "speech": "2674 行日线。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 524.57,
+   "dur": 2.97,
+   "speech": "2673 个对数收益。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 527.72,
+   "dur": 3.69,
+   "speech": "2015 年 1 月到 2025 年 12 月。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 531.58,
+   "dur": 4.38,
+   "speech": "sha256 是 06019e23 开头。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 536.15,
+   "dur": 4.36,
+   "speech": "96 加 24 的窗口，2554 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 540.68,
+   "dur": 2.87,
+   "speech": "训练用 224 个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 543.73,
+   "dur": 2.65,
+   "speech": "测试用最后 80 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 546.57,
+   "dur": 2.63,
+   "speech": "参数量手算对上了。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 549.38,
+   "dur": 2.73,
+   "speech": "递归 1121 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 552.28,
+   "dur": 2.89,
+   "speech": "分段 1832 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 555.36,
+   "dur": 2.1,
+   "speech": "梯度门限过了。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 557.64,
+   "dur": 2.65,
+   "speech": "截断语义两项都过。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 560.47,
+   "dur": 3.16,
+   "speech": "调用次数 15 对 120。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 563.81,
+   "dur": 2.05,
+   "speech": "比值正好 8。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 566.05,
+   "dur": 4.45,
+   "speech": "训练 loss 从 1.032 降到 0.954。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 570.68,
+   "dur": 4.07,
+   "speech": "分段从 1.167 降到 0.843。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 574.93,
+   "dur": 2.73,
+   "speech": "两条曲线都在下降。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 577.84,
+   "dur": 1.81,
+   "speech": "没有发散。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 579.83,
+   "dur": 3.06,
+   "speech": "四张表都在数据目录里。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 583.07,
+   "dur": 4.5,
+   "speech": "误差曲线，分段曲线，训练曲线，样本。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 587.75,
+   "dur": 3.21,
+   "speech": "测试套件现在 87 组。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 591.14,
+   "dur": 2.68,
+   "speech": "1161 条断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 594,
+   "dur": 3.47,
+   "speech": "新增 13 条递归，15 条分段。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 597.65,
+   "dur": 1.91,
+   "speech": "全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 599.74,
+   "dur": 2.46,
+   "speech": "复现只要一条命令。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 602.38,
+   "dur": 2.44,
+   "speech": "种子固定 25。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 605,
+   "dur": 2.92,
+   "speech": "同样的数据，同样的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 608.1,
+   "dur": 2.29,
+   "speech": "证据等级是 A。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 610.57,
+   "dur": 3.18,
+   "speech": "因为每条断言都能判真假。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 613.93,
+   "dur": 3.18,
+   "speech": "这一集不是演示，是可复查。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 620.51,
+   "dur": 2.05,
+   "speech": "现在说边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 622.74,
+   "dur": 3.47,
+   "speech": "第一件，平滑度那个反直觉结果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 626.39,
+   "dur": 3.21,
+   "speech": "我们原本以为分段更平滑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 629.78,
+   "dur": 4.21,
+   "speech": "实测 0.6353 对 0.4435。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 634.17,
+   "dur": 2.65,
+   "speech": "分段抖了 1.43 倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 637.01,
+   "dur": 2.03,
+   "speech": "原因不复杂。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 639.22,
+   "dur": 2.51,
+   "speech": "块内是独立生成的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 641.91,
+   "dur": 3.16,
+   "speech": "我们没有在块内加平滑约束。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 645.25,
+   "dur": 2.94,
+   "speech": "块内每一步的误差不共享。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 648.37,
+   "dur": 2.46,
+   "speech": "所以拼接处会跳。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 651.01,
+   "dur": 2.97,
+   "speech": "这是这个变体的真实性质。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 654.16,
+   "dur": 2.13,
+   "speech": "不是实现错误。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 656.46,
+   "dur": 3.76,
+   "speech": "第二件，分段前向是自定变体。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 660.4,
+   "dur": 3.04,
+   "speech": "书里只给三条定性描述。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 663.62,
+   "dur": 3.54,
+   "speech": "块嵌入、并行生成、训练目标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 667.34,
+   "dur": 2.77,
+   "speech": "怎么融合，书里没写。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 670.29,
+   "dur": 2.73,
+   "speech": "所以证据等级标 B。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 673.2,
+   "dur": 2.77,
+   "speech": "第三件，只有一个标的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 676.15,
+   "dur": 2.49,
+   "speech": "一个指数，十年。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 678.82,
+   "dur": 2.39,
+   "speech": "不能代表全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 681.39,
+   "dur": 3.23,
+   "speech": "第四件，没做端到端回测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 684.8,
+   "dur": 2.49,
+   "speech": "我们只量预测误差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 687.47,
+   "dur": 2.63,
+   "speech": "误差小不等于赚钱。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 690.28,
+   "dur": 3.33,
+   "speech": "第五件，膨胀只有 1.10 倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 693.78,
+   "dur": 2.58,
+   "speech": "这不是夸张的数字。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 696.54,
+   "dur": 2.97,
+   "speech": "标准化收益上的 10%。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 699.69,
+   "dur": 2.46,
+   "speech": "换成价格会放大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 702.33,
+   "dur": 2.61,
+   "speech": "但别把它说成爆炸。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 705.12,
+   "dur": 2.87,
+   "speech": "第六件，数据有缺口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 708.17,
+   "dur": 3.35,
+   "speech": "2020 年春节，断了 11 天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 711.7,
+   "dur": 3.47,
+   "speech": "窗口按行连续切，不剔除。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 715.35,
+   "dur": 2.1,
+   "speech": "读数是近似。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 717.63,
+   "dur": 2.27,
+   "speech": "这些都不是 bug。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 720.08,
+   "dur": 3.01,
+   "speech": "是口径必须一起报的东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 723.27,
+   "dur": 3.16,
+   "speech": "账都记在证据里，不藏着。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 726.61,
+   "dur": 2.92,
+   "speech": "所以这一集仍算 ready。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 732.93,
+   "dur": 1.77,
+   "speech": "三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 734.88,
+   "dur": 3.3,
+   "speech": "逐点递归，用串行换稳定。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 738.36,
+   "dur": 3.18,
+   "speech": "分段并行，用切块换速度。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 741.72,
+   "dur": 3.37,
+   "speech": "快的未必准，准的未必平滑。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 745.27,
+   "dur": 4.41,
+   "speech": "第 24 步分段反超，只差 0.016。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 749.86,
+   "dur": 2.58,
+   "speech": "不是碾压，是一条路。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 752.62,
+   "dur": 2.97,
+   "speech": "下一集，序列压缩三法。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 755.77,
+   "dur": 2.89,
+   "speech": "池化、卷积、补丁。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 758.84,
+   "dur": 3.42,
+   "speech": "把长序列压短，是另一条路。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 762.44,
+   "dur": 2.53,
+   "speech": "第 25 集的证词是："
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 765.16,
+   "dur": 2.92,
+   "speech": "两条路各有各的代价。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 768.26,
+   "dur": 2.58,
+   "speech": "第 25 集，完。"
+  }
+ ]
+}
