@@ -36,7 +36,7 @@ export const SImplementation: React.FC = () => {
             <Card label="约定" accent={C.amber}>
               <Row name="窗长 C" value="100" width={520} />
               <Row name="步长 s" value="10" note="训练 1，推理 10" width={520} />
-              <Row name="风险率" value={M.spot.risk} note="三档扫参：0.5% / 1% / 2%" width={520} />
+              <Row name="风险率" value={M.spot.risk} note="SPOT 唯一的参数" width={520} />
               <Row name="尾部最小点" value={M.spot.tailMin} note="不足退回分位" width={520} />
               <Row name="分类器窗口" value={M.classifier.window + " 天"} width={520} />
               <Row name="训练轮数" value={M.classifier.epochs + " 轮"} note={"学习率 " + M.classifier.lr} width={520} />

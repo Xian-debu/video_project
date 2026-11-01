@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, CW, M, fmtF, pageAt, Pages, Scene, SceneHead, Card, Row, KV, Body, Mono, CodeBlock, Formula, Chip } from "../shared";
+import { PAD, CW, M, fmtF, predText, pageAt, Pages, Scene, SceneHead, Card, Row, KV, Body, Mono, CodeBlock, Formula, Chip } from "../shared";
 
 export const SDefinitions: React.FC = () => {
   const at = [0, pageAt("definitions", 13), pageAt("definitions", 32)];
@@ -91,9 +91,9 @@ export const SDefinitions: React.FC = () => {
             <Card label="验证 · 四个数，纸上一分钟">
               <Row name="数据" value="[1, 2, 3, 4]" width={1000} />
               <Row name="0.25 分位" value={fmtF(M.golden.quantile025Tau, 4)} note="线性插值：1 + 0.25·(4−1)" width={1000} />
-              <Row name="判据输出" value={M.golden.quantile025Pred} note="严格大于 1.75" width={1000} />
-              <Row name="q = 0" value={M.golden.quantile0Pred} note="τ 取最小值，只有最小点正常" width={1000} />
-              <Row name="q = 1" value={M.golden.quantile1Pred} note="τ 取最大值，没有点超过" width={1000} />
+              <Row name="判据输出" value={predText(M.golden.quantile025Pred)} note="严格大于 1.75" width={1000} />
+              <Row name="q = 0" value={predText(M.golden.quantile0Pred)} note="τ 取最小值，只有最小点正常" width={1000} />
+              <Row name="q = 1" value={predText(M.golden.quantile1Pred)} note="τ 取最大值，没有点超过" width={1000} />
               <Row name="正例数" value={M.golden.qCount + " 个"} note={"理论值 " + M.golden.qExpect + "，差不到一个点"} width={1000} />
               <Row name="小样本 SPOT" value={fmtF(M.golden.smallSpotTau, 3)} note="尾部不足，退回分位" width={1000} />
             </Card>

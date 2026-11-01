@@ -87,6 +87,9 @@ export const pageAt = (id: string, k: number): number => {
   return Math.max(0, Math.min(1, (l.start - s.start) / s.dur));
 };
 
+export const predText = (s: string): string =>
+  s.replaceAll("False", "假").replaceAll("True", "真").replaceAll(",", "");
+
 export const sceneFrames = (id: string): number => {
   const s = SCENES.find((x) => x.id === id);
   return s ? Math.round(s.dur * FPS) : 900;

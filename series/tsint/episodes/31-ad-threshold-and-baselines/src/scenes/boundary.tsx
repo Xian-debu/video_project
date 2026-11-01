@@ -61,7 +61,7 @@ export const SBoundary: React.FC = () => {
           <div style={{ position: "absolute", left: 1240, top: 300, width: 580 }}>
             <Card label="留给观众的判断" accent={C.cyan}>
               <Body size={FT.body} color={C.ink}>
-                下次看到一篇异常检测论文报 F1，先问三件事：阈值怎么定的？扫过风险率吗？有没有和移动平均比？三个问题里有两个没答，那个 F1 就没法复现。
+                下次看到一篇异常检测论文报 F1，先问三件事：阈值怎么定的？换过异常密度吗？有没有和移动平均比？三个问题里有两个没答，那个 F1 就没法复现。
               </Body>
             </Card>
             <Card label="这一集的尺子" accent={C.amber} style={{ marginTop: 18 }}>

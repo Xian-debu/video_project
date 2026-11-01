@@ -1,7 +1,7 @@
 {
  "entry": "src/tsint-31-ad-threshold-and-baselines/script.ts",
  "fps": 30,
- "totalSec": 996.9,
+ "totalSec": 995.67,
  "scenes": [
   {
    "id": "open",
@@ -37,18 +37,18 @@
    "id": "verification",
    "chapter": "验证",
    "start": 657.68,
-   "dur": 161.58
+   "dur": 160.35
   },
   {
    "id": "boundary",
    "chapter": "边界",
-   "start": 819.26,
+   "start": 818.03,
    "dur": 130.67
   },
   {
    "id": "outro",
    "chapter": "收尾",
-   "start": 949.93,
+   "start": 948.7,
    "dur": 46.97
   }
  ],
@@ -1688,552 +1688,552 @@
    "scene": "verification",
    "index": 27,
    "start": 740.37,
-   "dur": 3.06,
-   "speech": "扫参实验，三档风险率。"
+   "dur": 3.01,
+   "speech": "扫参实验，三档注入率。"
   },
   {
    "scene": "verification",
    "index": 28,
-   "start": 743.61,
+   "start": 743.56,
    "dur": 3.73,
    "speech": "百分之零点五，百分之一，百分之二。"
   },
   {
    "scene": "verification",
    "index": 29,
-   "start": 747.52,
+   "start": 747.47,
    "dur": 2.61,
    "speech": "SPOT 三档全是一。"
   },
   {
    "scene": "verification",
    "index": 30,
-   "start": 750.31,
+   "start": 750.26,
    "dur": 4.53,
    "speech": "固定阈值，零点五六二五到零点八一一六。"
   },
   {
    "scene": "verification",
    "index": 31,
-   "start": 755.01,
+   "start": 754.97,
    "dur": 3.61,
    "speech": "分位，零点六到零点八三五八。"
   },
   {
    "scene": "verification",
    "index": 32,
-   "start": 758.81,
-   "dur": 3.09,
-   "speech": "宽松一点，F1 就上来。"
+   "start": 758.76,
+   "dur": 3.23,
+   "speech": "注入越密，固定和分位越高。"
   },
   {
    "scene": "verification",
    "index": 33,
-   "start": 762.07,
-   "dur": 2.87,
-   "speech": "这是异常检测的老规矩。"
+   "start": 762.17,
+   "dur": 3.04,
+   "speech": "真异常多了，误报被稀释。"
   },
   {
    "scene": "verification",
    "index": 34,
-   "start": 765.12,
-   "dur": 4.79,
-   "speech": "异常少的时候，放宽阈值几乎总是提升 F1。"
+   "start": 765.39,
+   "dur": 3.3,
+   "speech": "报 F1，得一起报异常率。"
   },
   {
    "scene": "verification",
    "index": 35,
-   "start": 770.09,
+   "start": 768.87,
    "dur": 2.65,
    "speech": "然后是三基线对比。"
   },
   {
    "scene": "verification",
    "index": 36,
-   "start": 772.93,
+   "start": 771.7,
    "dur": 2.08,
    "speech": "同一批测试点。"
   },
   {
    "scene": "verification",
    "index": 37,
-   "start": 775.19,
+   "start": 773.96,
    "dur": 4.77,
    "speech": "手写 z 分数，点调整 F1 零点七一四三。"
   },
   {
    "scene": "verification",
    "index": 38,
-   "start": 780.13,
+   "start": 778.91,
    "dur": 3.52,
    "speech": "移动平均残差，零点五八八二。"
   },
   {
    "scene": "verification",
    "index": 39,
-   "start": 783.83,
+   "start": 782.61,
    "dur": 3.33,
    "speech": "逻辑回归分类器，零点一二。"
   },
   {
    "scene": "verification",
    "index": 40,
-   "start": 787.34,
+   "start": 786.11,
    "dur": 2.05,
    "speech": "分类器最差。"
   },
   {
    "scene": "verification",
    "index": 41,
-   "start": 789.57,
+   "start": 788.35,
    "dur": 1.6,
    "speech": "为什么。"
   },
   {
    "scene": "verification",
    "index": 42,
-   "start": 791.35,
+   "start": 790.12,
    "dur": 3.21,
    "speech": "因为训练段只有几十个正样本。"
   },
   {
    "scene": "verification",
    "index": 43,
-   "start": 794.73,
+   "start": 793.51,
    "dur": 2.13,
    "speech": "它学不到东西。"
   },
   {
    "scene": "verification",
    "index": 44,
-   "start": 797.04,
+   "start": 795.82,
    "dur": 2.77,
    "speech": "这是下一集要展开的。"
   },
   {
    "scene": "verification",
    "index": 45,
-   "start": 799.99,
+   "start": 798.77,
    "dur": 2.2,
    "speech": "中等偏移实验。"
   },
   {
    "scene": "verification",
    "index": 46,
-   "start": 802.37,
+   "start": 801.15,
    "dur": 3.73,
    "speech": "三种切法，F1 全低于零点一。"
   },
   {
    "scene": "verification",
    "index": 47,
-   "start": 806.29,
+   "start": 805.06,
    "dur": 2.61,
    "speech": "SPOT 一个都没抓到。"
   },
   {
    "scene": "verification",
    "index": 48,
-   "start": 809.07,
+   "start": 807.85,
    "dur": 2.53,
    "speech": "这条读数不是失败。"
   },
   {
    "scene": "verification",
    "index": 49,
-   "start": 811.79,
+   "start": 810.56,
    "dur": 1.69,
    "speech": "是边界。"
   },
   {
    "scene": "verification",
    "index": 50,
-   "start": 813.66,
+   "start": 812.44,
    "dur": 3.4,
    "speech": "全局分数，看不见局部尺度。"
   },
   {
    "scene": "boundary",
    "index": 0,
-   "start": 820.46,
+   "start": 819.23,
    "dur": 1.96,
    "speech": "四条边界。"
   },
   {
    "scene": "boundary",
    "index": 1,
-   "start": 822.6,
+   "start": 821.37,
    "dur": 2.89,
    "speech": "第一，阈值不是超参数。"
   },
   {
    "scene": "boundary",
    "index": 2,
-   "start": 825.67,
+   "start": 824.44,
    "dur": 2.37,
    "speech": "它是口径的一部分。"
   },
   {
    "scene": "boundary",
    "index": 3,
-   "start": 828.22,
+   "start": 826.99,
    "dur": 3.9,
    "speech": "同一串分数，换阈值就换 F1。"
   },
   {
    "scene": "boundary",
    "index": 4,
-   "start": 832.3,
+   "start": 831.07,
    "dur": 3.25,
    "speech": "所以报 F1 必须报阈值。"
   },
   {
    "scene": "boundary",
    "index": 5,
-   "start": 835.73,
+   "start": 834.5,
    "dur": 3.37,
    "speech": "第二，SPOT 只在厚尾上赢。"
   },
   {
    "scene": "boundary",
    "index": 6,
-   "start": 839.29,
+   "start": 838.06,
    "dur": 3.23,
    "speech": "尾部不是帕累托，它就会偏。"
   },
   {
    "scene": "boundary",
    "index": 7,
-   "start": 842.7,
+   "start": 841.47,
    "dur": 2.8,
    "speech": "这个数据是股票日收益。"
   },
   {
    "scene": "boundary",
    "index": 8,
-   "start": 845.68,
+   "start": 844.45,
    "dur": 2.8,
    "speech": "厚尾是它的产业结构。"
   },
   {
    "scene": "boundary",
    "index": 9,
-   "start": 848.65,
+   "start": 847.42,
    "dur": 3.06,
    "speech": "换个市场，结论要重测。"
   },
   {
    "scene": "boundary",
    "index": 10,
-   "start": 851.9,
+   "start": 850.67,
    "dur": 4.05,
    "speech": "第三，全局 z 分数看不见局部波动。"
   },
   {
    "scene": "boundary",
    "index": 11,
-   "start": 856.12,
+   "start": 854.89,
    "dur": 2.89,
    "speech": "中等偏移实验已经证明。"
   },
   {
    "scene": "boundary",
    "index": 12,
-   "start": 859.2,
+   "start": 857.97,
    "dur": 2.92,
    "speech": "三种切法，全军覆没。"
   },
   {
    "scene": "boundary",
    "index": 13,
-   "start": 862.29,
+   "start": 861.06,
    "dur": 3.49,
    "speech": "要抓这种异常，得先换分数。"
   },
   {
    "scene": "boundary",
    "index": 14,
-   "start": 865.97,
+   "start": 864.74,
    "dur": 3.3,
    "speech": "分数换了，阈值才有意义。"
   },
   {
    "scene": "boundary",
    "index": 15,
-   "start": 869.45,
+   "start": 868.22,
    "dur": 3.78,
    "speech": "第四，分类器的上限是样本量。"
   },
   {
    "scene": "boundary",
    "index": 16,
-   "start": 873.41,
+   "start": 872.18,
    "dur": 2.73,
    "speech": "训练段几十个正样本。"
   },
   {
    "scene": "boundary",
    "index": 17,
-   "start": 876.32,
+   "start": 875.09,
    "dur": 2.49,
    "speech": "学不出稳定的边界。"
   },
   {
    "scene": "boundary",
    "index": 18,
-   "start": 878.98,
+   "start": 877.75,
    "dur": 3.83,
    "speech": "它在这组数据上输给手写 z 分数。"
   },
   {
    "scene": "boundary",
    "index": 19,
-   "start": 882.99,
+   "start": 881.76,
    "dur": 2.51,
    "speech": "不是逻辑回归不行。"
   },
   {
    "scene": "boundary",
    "index": 20,
-   "start": 885.68,
+   "start": 884.45,
    "dur": 2.56,
    "speech": "是数据不给它机会。"
   },
   {
    "scene": "boundary",
    "index": 21,
-   "start": 888.42,
+   "start": 887.19,
    "dur": 1.72,
    "speech": "三笔债。"
   },
   {
    "scene": "boundary",
    "index": 22,
-   "start": 890.32,
+   "start": 889.09,
    "dur": 2.75,
    "speech": "第一笔，无监督方法。"
   },
   {
    "scene": "boundary",
    "index": 23,
-   "start": 893.25,
+   "start": 892.02,
    "dur": 3.45,
    "speech": "K 均值，LOF，孤立森林。"
   },
   {
    "scene": "boundary",
    "index": 24,
-   "start": 896.88,
+   "start": 895.65,
    "dur": 2.15,
    "speech": "它们不用标签。"
   },
   {
    "scene": "boundary",
    "index": 25,
-   "start": 899.21,
+   "start": 897.98,
    "dur": 2.51,
    "speech": "第二笔，序列模型。"
   },
   {
    "scene": "boundary",
    "index": 26,
-   "start": 901.9,
+   "start": 900.67,
    "dur": 2.63,
    "speech": "自回归，状态空间。"
   },
   {
    "scene": "boundary",
    "index": 27,
-   "start": 904.71,
+   "start": 903.48,
    "dur": 2.15,
    "speech": "它们建模时间。"
   },
   {
    "scene": "boundary",
    "index": 28,
-   "start": 907.04,
+   "start": 905.81,
    "dur": 2.77,
    "speech": "第三笔，阈值怎么选。"
   },
   {
    "scene": "boundary",
    "index": 29,
-   "start": 909.99,
+   "start": 908.76,
    "dur": 2.87,
    "speech": "今天固定，明天自适应。"
   },
   {
    "scene": "boundary",
    "index": 30,
-   "start": 913.04,
+   "start": 911.81,
    "dur": 2.25,
    "speech": "这笔债还没还。"
   },
   {
    "scene": "boundary",
    "index": 31,
-   "start": 915.47,
+   "start": 914.24,
    "dur": 3.23,
    "speech": "所以这一集只回答一个问题。"
   },
   {
    "scene": "boundary",
    "index": 32,
-   "start": 918.88,
+   "start": 917.65,
    "dur": 2.8,
    "speech": "分数怎么变成零和一。"
   },
   {
    "scene": "boundary",
    "index": 33,
-   "start": 921.85,
+   "start": 920.62,
    "dur": 2.34,
    "speech": "答案是一把尺子。"
   },
   {
    "scene": "boundary",
    "index": 34,
-   "start": 924.38,
+   "start": 923.15,
    "dur": 2.8,
    "speech": "尺子准不准，看分数。"
   },
   {
    "scene": "boundary",
    "index": 35,
-   "start": 927.35,
+   "start": 926.12,
    "dur": 3.01,
    "speech": "分数瞎不瞎，看下一集。"
   },
   {
    "scene": "boundary",
    "index": 36,
-   "start": 930.55,
+   "start": 929.32,
    "dur": 2.53,
    "speech": "下一集，无监督。"
   },
   {
    "scene": "boundary",
    "index": 37,
-   "start": 933.26,
+   "start": 932.03,
    "dur": 3.09,
    "speech": "没有标签的时候，怎么找异常。"
   },
   {
    "scene": "boundary",
    "index": 38,
-   "start": 936.53,
+   "start": 935.3,
    "dur": 3.45,
    "speech": "K 均值，LOF，孤立森林。"
   },
   {
    "scene": "boundary",
    "index": 39,
-   "start": 940.15,
+   "start": 938.92,
    "dur": 2.44,
    "speech": "三个都不用真值。"
   },
   {
    "scene": "boundary",
    "index": 40,
-   "start": 942.77,
+   "start": 941.54,
    "dur": 2.53,
    "speech": "它们的 F1 怎么算。"
   },
   {
    "scene": "boundary",
    "index": 41,
-   "start": 945.49,
+   "start": 944.26,
    "dur": 2.25,
    "speech": "那才是真问题。"
   },
   {
    "scene": "outro",
    "index": 0,
-   "start": 951.13,
+   "start": 949.9,
    "dur": 2.1,
    "speech": "三句话带走。"
   },
   {
    "scene": "outro",
    "index": 1,
-   "start": 953.41,
+   "start": 952.18,
    "dur": 3.97,
    "speech": "第一，阈值决定 F1，和模型无关。"
   },
   {
    "scene": "outro",
    "index": 2,
-   "start": 957.57,
+   "start": 956.34,
    "dur": 3.83,
    "speech": "同一串分数，三种切法，三个数。"
   },
   {
    "scene": "outro",
    "index": 3,
-   "start": 961.58,
+   "start": 960.35,
    "dur": 3.09,
    "speech": "报指标之前，先报切点。"
   },
   {
    "scene": "outro",
    "index": 4,
-   "start": 964.84,
+   "start": 963.61,
    "dur": 3.3,
    "speech": "第二，SPOT 强在尾部建模。"
   },
   {
    "scene": "outro",
    "index": 5,
-   "start": 968.32,
+   "start": 967.09,
    "dur": 2.61,
    "speech": "它把风险写进公式。"
   },
   {
    "scene": "outro",
    "index": 6,
-   "start": 971.11,
+   "start": 969.88,
    "dur": 2.92,
    "speech": "但它只认帕累托的尾巴。"
   },
   {
    "scene": "outro",
    "index": 7,
-   "start": 974.21,
+   "start": 972.98,
    "dur": 3.11,
    "speech": "第三，阈值救不了瞎分数。"
   },
   {
    "scene": "outro",
    "index": 8,
-   "start": 977.5,
+   "start": 976.27,
    "dur": 3.21,
    "speech": "全局 z 看不见局部波动。"
   },
   {
    "scene": "outro",
    "index": 9,
-   "start": 980.88,
+   "start": 979.65,
    "dur": 4.45,
    "speech": "中等偏移，三种切法全部低于零点一。"
   },
   {
    "scene": "outro",
    "index": 10,
-   "start": 985.52,
+   "start": 984.29,
    "dur": 3.28,
    "speech": "下一集，无监督异常检测。"
   },
   {
    "scene": "outro",
    "index": 11,
-   "start": 988.98,
+   "start": 987.75,
    "dur": 2.97,
    "speech": "没有标签，怎么定义异常。"
   },
   {
    "scene": "outro",
    "index": 12,
-   "start": 992.12,
+   "start": 990.89,
    "dur": 2.58,
    "speech": "第 31 集，完。"
   }

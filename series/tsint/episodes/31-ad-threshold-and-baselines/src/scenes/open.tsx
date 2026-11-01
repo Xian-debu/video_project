@@ -97,7 +97,8 @@ export const SOpen: React.FC = () => {
             <Card label="数据 · 一只股票，二十五年">
               <Row name="区间" value={M.data.start + " → " + M.data.end} width={1010} />
               <Row name="交易日" value={M.data.rows.toLocaleString("en-US")} note="复权日线，去掉停牌与零价" width={1010} />
-              <Row name="切分" value={M.data.split.train + " → " + M.data.split.test} note="训练段定阈值，测试段只读" width={1010} />
+              <Row name="训练段" value={M.data.split.train} note="定阈值与尾部拟合" width={1010} />
+              <Row name="测试段" value={M.data.split.test} note="只读，不参与任何拟合" width={1010} />
               <Row name="尖峰注入" value={M.inject.spike.points + " 点 / " + M.inject.spike.segments + " 段"} note={"1% 比例，seed " + M.inject.seed + "，5–10 sigma"} width={1010} />
               <Row name="中等偏移" value={M.inject.medium.points + " 点 / " + M.inject.medium.segments + " 段"} note="2–4 个局部 sigma，全局 z 看不见" width={1010} />
               <Row name="sha256" value={M.data.sha.slice(0, 12) + "…"} note="ts-admin 导出，逐字节校验" width={1010} />

@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, CW, M, fmtF, fmtP, pageAt, Pages, Scene, SceneHead, Card, Row, KV, Body, Mono, Chip, Bars, Verdict } from "../shared";
+import { PAD, CW, M, fmtF, fmtP, predText, pageAt, Pages, Scene, SceneHead, Card, Row, KV, Body, Mono, Chip, Bars, Verdict } from "../shared";
 
 const spike = M.routes.filter((r) => r.variant === "spike");
 const S = (key: string) => spike.find((r) => r.key === key)!;
@@ -30,7 +30,7 @@ export const SVerification: React.FC = () => {
           <div style={{ position: "absolute", left: 1210, top: 300, width: 610 }}>
             <Card label="黄金值" accent={C.amber}>
               <Row name="0.25 分位 → τ" value={fmtF(M.golden.quantile025Tau, 4)} width={570} />
-              <Row name="判据输出" value={M.golden.quantile025Pred} width={570} />
+              <Row name="判据输出" value={predText(M.golden.quantile025Pred)} width={570} />
               <Row name="q=0 / q=1" value="取端点" width={570} />
               <Row name="正例数" value={M.golden.qCount + " vs " + M.golden.qExpect} width={570} />
               <Row name="小样本 SPOT" value={fmtF(M.golden.smallSpotTau, 3)} note="退回分位" width={570} />
@@ -55,21 +55,21 @@ export const SVerification: React.FC = () => {
                 固定与分位这么近，是因为两个阈值只差 0.08：3.0000 和 3.0844。切点几乎一样，结果自然接近。
               </Body>
             </Card>
-            <Card label="扫参 · 三档风险率下的 F1" accent={C.amber} style={{ marginTop: 20 }}>
+            <Card label="扫参 · 三档注入率下的 F1" accent={C.amber} style={{ marginTop: 20 }}>
               <Bars
                 items={[
-                  { label: "固定 0.5%", value: sweepOf("fixed")[0].f1, text: fmtF(sweepOf("fixed")[0].f1, 4), color: C.cyan },
-                  { label: "固定 1%", value: sweepOf("fixed")[1].f1, text: fmtF(sweepOf("fixed")[1].f1, 4), color: C.cyan },
-                  { label: "固定 2%", value: sweepOf("fixed")[2].f1, text: fmtF(sweepOf("fixed")[2].f1, 4), color: C.cyan },
-                  { label: "分位 0.5%", value: sweepOf("quantile")[0].f1, text: fmtF(sweepOf("quantile")[0].f1, 4), color: C.amber },
-                  { label: "分位 1%", value: sweepOf("quantile")[1].f1, text: fmtF(sweepOf("quantile")[1].f1, 4), color: C.amber },
-                  { label: "分位 2%", value: sweepOf("quantile")[2].f1, text: fmtF(sweepOf("quantile")[2].f1, 4), color: C.amber },
-                  { label: "SPOT 全档", value: sweepOf("spot")[0].f1, text: "1.0000 ×3", color: C.violet },
+                  { label: "固定 · 0.5%", value: sweepOf("fixed")[0].f1, text: fmtF(sweepOf("fixed")[0].f1, 4), color: C.cyan },
+                  { label: "固定 · 1%", value: sweepOf("fixed")[1].f1, text: fmtF(sweepOf("fixed")[1].f1, 4), color: C.cyan },
+                  { label: "固定 · 2%", value: sweepOf("fixed")[2].f1, text: fmtF(sweepOf("fixed")[2].f1, 4), color: C.cyan },
+                  { label: "分位 · 0.5%", value: sweepOf("quantile")[0].f1, text: fmtF(sweepOf("quantile")[0].f1, 4), color: C.amber },
+                  { label: "分位 · 1%", value: sweepOf("quantile")[1].f1, text: fmtF(sweepOf("quantile")[1].f1, 4), color: C.amber },
+                  { label: "分位 · 2%", value: sweepOf("quantile")[2].f1, text: fmtF(sweepOf("quantile")[2].f1, 4), color: C.amber },
+                  { label: "SPOT · 全档", value: sweepOf("spot")[0].f1, text: "1.0000 ×3", color: C.violet },
                 ]}
                 width={880} rowH={40} max={1.05}
               />
               <Body size={FT.meta} color={C.inkFaint} style={{ marginTop: 10 }}>
-                风险率越大，固定与分位的 F1 越高 —— 异常少时，放宽阈值几乎总是提升 F1。SPOT 三档全是一。
+                注入越密，固定与分位的 F1 越高 —— 真异常多了，误报被稀释。SPOT 三档全是一。
               </Body>
             </Card>
           </div>
@@ -82,12 +82,12 @@ export const SVerification: React.FC = () => {
             </Card>
             <Card label="为什么扫参要跑" accent={C.cyan} style={{ marginTop: 18 }}>
               <Body size={FT.body} color={C.ink}>
-                单点读数会被阈值碰巧选对骗过去。扫一遍才知道：宽松时谁都能变好，收紧时谁先掉。
+                单点读数会被阈值碰巧选对骗过去。扫一遍才知道：F1 不只取决于尺子，还取决于数据里异常有多密。
               </Body>
             </Card>
             <Card label="分数相同，F1 相同" accent={C.amber} style={{ marginTop: 18 }}>
               <Body size={FT.meta} color={C.inkDim}>
-                固定与分位切点只差 0.08，所以三个数几乎一致 —— 不是巧合，是算术。
+                固定与分位的切点只差 0.08。同一个注入率下，两者的 F1 几乎一样 —— 不是巧合，是算术。
               </Body>
             </Card>
           </div>
