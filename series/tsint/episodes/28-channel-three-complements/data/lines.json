@@ -1,0 +1,1975 @@
+{
+ "entry": "src/tsint-28-channel-three-complements/script.ts",
+ "fps": 30,
+ "totalSec": 841.9,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 80.31
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 80.31,
+   "dur": 89.06
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 169.37,
+   "dur": 132.23
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 301.6,
+   "dur": 138.62
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 440.22,
+   "dur": 129.76
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 569.98,
+   "dur": 149.79
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 719.77,
+   "dur": 79.88
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 799.65,
+   "dur": 42.25
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.92,
+   "speech": "第三篇章，第二十八集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.3,
+   "dur": 2.65,
+   "speech": "前两集先压时间轴。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.13,
+   "dur": 3.21,
+   "speech": "再切成块，换成块注意力。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.52,
+   "dur": 2.46,
+   "speech": "这一集换一根轴。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.16,
+   "dur": 2.29,
+   "speech": "换的是通道轴。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 15.63,
+   "dur": 2.27,
+   "speech": "八个通道怎么混。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 18.08,
+   "dur": 2.49,
+   "speech": "六十四个通道怎么混。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 20.75,
+   "dur": 2.92,
+   "speech": "三种做法，三种代价。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 23.85,
+   "dur": 3.47,
+   "speech": "第一种，双轴混合 MLP。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 27.5,
+   "dur": 2.2,
+   "speech": "时间轴混一次。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 29.88,
+   "dur": 2.15,
+   "speech": "通道轴混一次。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 32.21,
+   "dur": 2.92,
+   "speech": "一共一万零四十八个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 35.3,
+   "dur": 2.65,
+   "speech": "第二种，路由注意力。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 38.14,
+   "dur": 3.13,
+   "speech": "四个槽去看六十四个通道。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 41.45,
+   "dur": 3.97,
+   "speech": "交互从四千零九十六降到二百五十六。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 45.61,
+   "dur": 1.96,
+   "speech": "少了十六倍。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 47.74,
+   "dur": 2.68,
+   "speech": "第三种，动态聚类。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 50.6,
+   "dur": 2.32,
+   "speech": "每个簇一套权重。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 53.1,
+   "dur": 3.54,
+   "speech": "四个簇，九千三百一十二个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 56.82,
+   "dur": 2.99,
+   "speech": "三个模块，本集都实现。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 59.99,
+   "dur": 2.39,
+   "speech": "而且都测过了。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 62.56,
+   "dur": 2.94,
+   "speech": "三十八项检查，零失败。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 65.68,
+   "dur": 3.64,
+   "speech": "断言九十五套，一千三百一十三条。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 69.5,
+   "dur": 2.08,
+   "speech": "但先说清楚。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 71.76,
+   "dur": 2.51,
+   "speech": "这一集也没有训练。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 74.45,
+   "dur": 3.66,
+   "speech": "只报容量，和真实数据上的结构。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 81.51,
+   "dur": 2.65,
+   "speech": "为什么不再看时间轴。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 84.34,
+   "dur": 2.85,
+   "speech": "九十六步，九十六个位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 87.37,
+   "dur": 3.47,
+   "speech": "逐点注意力是九千二百一十六对。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 91.02,
+   "dur": 3.4,
+   "speech": "上一集，把它压到一百二十一。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 94.6,
+   "dur": 2.89,
+   "speech": "剩下的平方，在通道上。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 97.67,
+   "dur": 1.98,
+   "speech": "六十四个通道。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 99.83,
+   "dur": 3.21,
+   "speech": "两两相关，四千零九十六对。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 103.22,
+   "dur": 2.13,
+   "speech": "三百个通道呢。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 105.53,
+   "dur": 2.08,
+   "speech": "九万对交互。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 107.78,
+   "dur": 2.32,
+   "speech": "这是下一个平方。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 110.28,
+   "dur": 2.53,
+   "speech": "通道之间有什么关系。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 113,
+   "dur": 3.35,
+   "speech": "同一行业的股票，应该更同步。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 116.53,
+   "dur": 2.75,
+   "speech": "不同行业，应该更独立。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 119.46,
+   "dur": 2.1,
+   "speech": "实测是多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 121.74,
+   "dur": 2.75,
+   "speech": "六十四只，十个行业。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 124.67,
+   "dur": 3.78,
+   "speech": "同行业平均相关，零点四六六七。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 128.63,
+   "dur": 2.97,
+   "speech": "跨行业，零点四一六二。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 131.78,
+   "dur": 2.29,
+   "speech": "只差零点零五。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 134.25,
+   "dur": 2.01,
+   "speech": "为什么这么小。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 136.44,
+   "dur": 2.46,
+   "speech": "因为有一个共同因子。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 139.08,
+   "dur": 2.89,
+   "speech": "第一主成分，占四成三。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 142.15,
+   "dur": 2.89,
+   "speech": "市场一起涨，一起跌。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 145.23,
+   "dur": 2.75,
+   "speech": "行业信号被压在下面。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 148.16,
+   "dur": 2.1,
+   "speech": "把共模减掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 150.44,
+   "dur": 2.89,
+   "speech": "同行业，零点零六四。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 153.51,
+   "dur": 3.01,
+   "speech": "跨行业，负零点零二三。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 156.71,
+   "dur": 1.98,
+   "speech": "符号分开了。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 158.87,
+   "dur": 3.23,
+   "speech": "所以通道建模的第一个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 162.28,
+   "dur": 2.29,
+   "speech": "不是模型不够大。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 164.75,
+   "dur": 2.41,
+   "speech": "是共同因子太响。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 170.57,
+   "dur": 2.94,
+   "speech": "定义一，TSMixer 块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 173.69,
+   "dur": 3.21,
+   "speech": "输入是一张时间乘通道的表。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 177.08,
+   "dur": 2.03,
+   "speech": "先混时间轴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 179.29,
+   "dur": 2.17,
+   "speech": "再混通道轴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 181.64,
+   "dur": 2.7,
+   "speech": "两个混合都是线性的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 184.52,
+   "dur": 2.49,
+   "speech": "外面套修正线性。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 187.19,
+   "dur": 4.14,
+   "speech": "z 一等于 z，加上两段混合的激活。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 191.51,
+   "dur": 3.04,
+   "speech": "一段沿时间，一段沿通道。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 194.73,
+   "dur": 2.85,
+   "speech": "然后过一道逐元素的门。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 197.76,
+   "dur": 3.83,
+   "speech": "输出等于 z，加门控后的 z 一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 201.77,
+   "dur": 3.09,
+   "speech": "w 一是九十六乘九十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 205.03,
+   "dur": 2.85,
+   "speech": "w 三是八乘八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 208.06,
+   "dur": 2.34,
+   "speech": "门是九十六乘八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 210.58,
+   "dur": 2.08,
+   "speech": "参数怎么算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 212.84,
+   "dur": 3.35,
+   "speech": "九十六的平方，九千二百一十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 216.37,
+   "dur": 2.56,
+   "speech": "八的平方，六十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 219.11,
+   "dur": 3.16,
+   "speech": "时间乘通道，七百六十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 222.44,
+   "dur": 2.63,
+   "speech": "合计一万零四十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 225.25,
+   "dur": 2.56,
+   "speech": "定义二，路由注意力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 227.99,
+   "dur": 3.3,
+   "speech": "输入是通道矩阵，六十四行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 231.47,
+   "dur": 2.75,
+   "speech": "每行是一个相关画像。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 234.4,
+   "dur": 2.46,
+   "speech": "先投影到四个槽。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 237.05,
+   "dur": 3.06,
+   "speech": "投影矩阵只有四乘六十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 240.29,
+   "dur": 2.94,
+   "speech": "拿槽去和通道做内积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 243.41,
+   "dur": 2.15,
+   "speech": "除以根号 d。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 245.74,
+   "dur": 3.54,
+   "speech": "过 softmax，得到六十四乘四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 249.46,
+   "dur": 2.13,
+   "speech": "每行和是一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 251.77,
+   "dur": 2.94,
+   "speech": "输出是槽的加权平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 254.89,
+   "dur": 3.25,
+   "speech": "再和原来的通道做凸组合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 258.32,
+   "dur": 2.46,
+   "speech": "参数二百五十六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 260.97,
+   "dur": 3.73,
+   "speech": "书里按三十二维算，是一百二十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 264.88,
+   "dur": 2.53,
+   "speech": "定义三，动态聚类。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 267.59,
+   "dur": 2.53,
+   "speech": "把通道聚成 k 簇。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 270.31,
+   "dur": 2.58,
+   "speech": "每簇一套线性权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 273.07,
+   "dur": 3.04,
+   "speech": "分配规则是余弦最近。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 276.29,
+   "dur": 2.58,
+   "speech": "簇心是簇内均值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 279.05,
+   "dur": 4.12,
+   "speech": "参数量 k 乘，h 加一，乘 f。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 283.35,
+   "dur": 3.73,
+   "speech": "四簇，九十六步，二十四步预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 287.26,
+   "dur": 3.16,
+   "speech": "四乘九十七乘二十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 290.6,
+   "dur": 2.32,
+   "speech": "九千三百一十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 293.1,
+   "dur": 3.45,
+   "speech": "三种做法的参数不在一个量级。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 296.72,
+   "dur": 2.68,
+   "speech": "这就是它们的三笔账。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 302.8,
+   "dur": 2.39,
+   "speech": "先看双轴混合。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 305.37,
+   "dur": 3.21,
+   "speech": "w 一是随机初始化的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 308.76,
+   "dur": 2.82,
+   "speech": "九十六乘九十六的方阵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 311.76,
+   "dur": 3.28,
+   "speech": "如果学好了，应该有一条对角带。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 315.22,
+   "dur": 2.85,
+   "speech": "因为相邻时间点最相关。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 318.24,
+   "dur": 2.08,
+   "speech": "测带宽质量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 320.5,
+   "dur": 3.64,
+   "speech": "带宽八以内，一共一千五百六十对。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 324.32,
+   "dur": 3.57,
+   "speech": "占九千二百一十六的零点一六九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 328.06,
+   "dur": 2.37,
+   "speech": "实测零点一七二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 330.61,
+   "dur": 2.68,
+   "speech": "和均匀基线几乎一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 333.47,
+   "dur": 2.92,
+   "speech": "随机初始化没有对角带。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 336.57,
+   "dur": 2.46,
+   "speech": "它得靠训练长出来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 339.21,
+   "dur": 2.15,
+   "speech": "w 三怎么样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 341.54,
+   "dur": 2.63,
+   "speech": "八乘八，行业块质量。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 344.35,
+   "dur": 2.53,
+   "speech": "实测零点二一七三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 347.06,
+   "dur": 4.14,
+   "speech": "均匀基线是七除以二十八，零点二五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 351.38,
+   "dur": 2.13,
+   "speech": "也在均匀附近。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 353.69,
+   "dur": 2.82,
+   "speech": "随机权重没有行业结构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 356.69,
+   "dur": 2.27,
+   "speech": "再看真实相关。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 359.14,
+   "dur": 3.21,
+   "speech": "六十四乘六十四的相关矩阵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 362.53,
+   "dur": 2.97,
+   "speech": "行业块质量零点三四三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 365.67,
+   "dur": 3.4,
+   "speech": "比随机高，说明行业真的存在。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 369.25,
+   "dur": 2.2,
+   "speech": "但只高三成。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 371.63,
+   "dur": 2.22,
+   "speech": "再看路由的槽。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 374.03,
+   "dur": 2.85,
+   "speech": "四个槽，随机初始化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 377.06,
+   "dur": 2.65,
+   "speech": "按槽给通道贴标签。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 379.89,
+   "dur": 3.83,
+   "speech": "和行业标签比，纯度零点一五六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 383.9,
+   "dur": 3.3,
+   "speech": "调整兰德指数零点零零七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 387.38,
+   "dur": 2.77,
+   "speech": "换成主成分初始化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 390.34,
+   "dur": 3.11,
+   "speech": "每个相关画像先去均值。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 393.63,
+   "dur": 2.41,
+   "speech": "纯度零点二零三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 396.22,
+   "dur": 2.15,
+   "speech": "比随机好一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 398.55,
+   "dur": 2.03,
+   "speech": "不去均值呢。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 400.76,
+   "dur": 2.7,
+   "speech": "所有通道挤进一个槽。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 403.64,
+   "dur": 2.92,
+   "speech": "市场共模把槽吃掉了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 406.74,
+   "dur": 2.03,
+   "speech": "最后看聚类。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 408.95,
+   "dur": 2.73,
+   "speech": "k 等于十，五个窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 411.86,
+   "dur": 4.5,
+   "speech": "原始纯度零点三四四，指数零点零五七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 416.54,
+   "dur": 2.27,
+   "speech": "减掉市场共模。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 418.99,
+   "dur": 4.24,
+   "speech": "指数均值从零点零五七到零点零九六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 423.41,
+   "dur": 2.01,
+   "speech": "差不多翻倍。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 425.59,
+   "dur": 2.32,
+   "speech": "但离一还很远。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 428.09,
+   "dur": 2.63,
+   "speech": "所以结论很直白。"
+  },
+  {
+   "scene": "intuition",
+   "index": 43,
+   "start": 430.9,
+   "dur": 3.66,
+   "speech": "不训练，三种模块都抓不到行业。"
+  },
+  {
+   "scene": "intuition",
+   "index": 44,
+   "start": 434.74,
+   "dur": 3.28,
+   "speech": "这一集量的是容量，不是效果。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 441.42,
+   "dur": 2.77,
+   "speech": "三个模块，三个文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 444.37,
+   "dur": 2.68,
+   "speech": "TSMixer 点 hs。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 447.23,
+   "dur": 3.01,
+   "speech": "ChannelRouterAttn 点 hs。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 450.43,
+   "dur": 2.63,
+   "speech": "ChannelCluster 点 hs。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 453.24,
+   "dur": 1.93,
+   "speech": "同一个约定。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 455.35,
+   "dur": 3.3,
+   "speech": "显式权重，入口返回 Either。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 458.83,
+   "dur": 2.63,
+   "speech": "第一个坑，置换等变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 461.64,
+   "dur": 2.61,
+   "speech": "轴分离是设计目标。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 464.43,
+   "dur": 3.61,
+   "speech": "时间轴置换，只该影响时间轴。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 468.22,
+   "dur": 3.69,
+   "speech": "通道轴置换，只该影响通道轴。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 472.09,
+   "dur": 2.41,
+   "speech": "一开始测试失败。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 474.68,
+   "dur": 3.33,
+   "speech": "通道置换后差三百三十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 478.19,
+   "dur": 3.49,
+   "speech": "时间置换后差一千九百四十。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 481.86,
+   "dur": 1.89,
+   "speech": "为什么失败。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 483.93,
+   "dur": 2.17,
+   "speech": "门是逐元素的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 486.28,
+   "dur": 2.99,
+   "speech": "每个时间通道对一个门值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 489.45,
+   "dur": 2.61,
+   "speech": "通道置换后门对不上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 492.24,
+   "dur": 2.34,
+   "speech": "把门换成全一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 494.76,
+   "dur": 3.18,
+   "speech": "通道差二点二乘十的负十三。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 498.12,
+   "dur": 3.13,
+   "speech": "时间差一点四乘十的负十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 501.44,
+   "dur": 2.92,
+   "speech": "阈值放到十的负十一次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 504.53,
+   "dur": 3.06,
+   "speech": "不是放水，是浮点重排。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 507.78,
+   "dur": 3.01,
+   "speech": "第二个坑，argmax 的符号。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 510.97,
+   "dur": 3.04,
+   "speech": "取最大值时下标取了负。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 514.19,
+   "dur": 2.01,
+   "speech": "忘了取反号。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 516.37,
+   "dur": 2.85,
+   "speech": "证据表里的槽号是负的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 519.4,
+   "dur": 2.25,
+   "speech": "纯度不受影响。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 521.83,
+   "dur": 2.13,
+   "speech": "标签可以重排。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 524.13,
+   "dur": 2.32,
+   "speech": "但产物是错的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 526.63,
+   "dur": 2.58,
+   "speech": "改回来，加一个负号。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 529.39,
+   "dur": 2.46,
+   "speech": "第三个坑，空簇。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 532.03,
+   "dur": 2.99,
+   "speech": "余弦分配之后可能没有点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 535.2,
+   "dur": 2.61,
+   "speech": "空簇的均值没有定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 537.99,
+   "dur": 3.47,
+   "speech": "做法是从最大簇里搬一个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 541.64,
+   "dur": 2.1,
+   "speech": "搬最远的那个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 543.92,
+   "dur": 2.34,
+   "speech": "搬完再算均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 546.44,
+   "dur": 2.7,
+   "speech": "没有空簇，才没有 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 549.33,
+   "dur": 2.99,
+   "speech": "第四个坑，余弦对尺度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 552.5,
+   "dur": 3.28,
+   "speech": "整行放大一百倍，归属不变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 555.95,
+   "dur": 2.39,
+   "speech": "只放大一部分行呢。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 558.52,
+   "dur": 3.11,
+   "speech": "均值先变，归属就变了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 561.81,
+   "dur": 2.75,
+   "speech": "测试写的是整体缩放。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 564.74,
+   "dur": 3.04,
+   "speech": "这才是余弦真正的不变性。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 571.18,
+   "dur": 2.94,
+   "speech": "三十八项检查，四组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 574.3,
+   "dur": 2.68,
+   "speech": "混合 MLP 十项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 577.16,
+   "dur": 2.13,
+   "speech": "路由部分十项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 579.47,
+   "dur": 2.17,
+   "speech": "聚类部分十项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 581.82,
+   "dur": 2.2,
+   "speech": "数据部分五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 584.2,
+   "dur": 2.25,
+   "speech": "一项都没失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 586.62,
+   "dur": 3.83,
+   "speech": "断言，九十五套，一千三百一十三。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 590.63,
+   "dur": 2.53,
+   "speech": "本轮新增六十二条。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 593.35,
+   "dur": 2.15,
+   "speech": "读数一条条看。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 595.68,
+   "dur": 2.32,
+   "speech": "混合 MLP。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 598.18,
+   "dur": 2.53,
+   "speech": "参数一万零四十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 600.89,
+   "dur": 2.17,
+   "speech": "恒等误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 603.24,
+   "dur": 2.89,
+   "speech": "手算矩阵积，误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 606.32,
+   "dur": 4.02,
+   "speech": "通道置换等变，一点八乘十的负十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 610.52,
+   "dur": 4.05,
+   "speech": "时间置换等变，七点一乘十的负十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 614.75,
+   "dur": 2.77,
+   "speech": "对角带宽零点一七二。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 617.7,
+   "dur": 2.49,
+   "speech": "行业块零点二一七。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 620.37,
+   "dur": 2.56,
+   "speech": "均匀基线零点二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 623.1,
+   "dur": 3.16,
+   "speech": "市场模式占比零点四三二。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 626.44,
+   "dur": 3.35,
+   "speech": "八通道同组相关零点六九六。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 629.97,
+   "dur": 2.56,
+   "speech": "跨组零点四四四。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 632.71,
+   "dur": 1.96,
+   "speech": "路由的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 634.85,
+   "dur": 3.04,
+   "speech": "书口径参数一百二十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 638.07,
+   "dur": 2.97,
+   "speech": "本证据口径，二百五十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 641.21,
+   "dur": 3.23,
+   "speech": "稠密混合，四千零九十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 644.62,
+   "dur": 3.33,
+   "speech": "复杂度二百五十六，比值十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 648.13,
+   "dur": 3.49,
+   "speech": "行和误差二点二乘十的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 651.8,
+   "dur": 3.45,
+   "speech": "c 等于一，全一，误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 655.43,
+   "dur": 2.87,
+   "speech": "手算输出二，误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 658.48,
+   "dur": 3.25,
+   "speech": "置换差二点二乘十的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 661.91,
+   "dur": 3.09,
+   "speech": "随机槽纯度零点一五六。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 665.18,
+   "dur": 3.81,
+   "speech": "去均值 PCA 槽，零点二零三。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 669.16,
+   "dur": 1.98,
+   "speech": "聚类的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 671.33,
+   "dur": 3.06,
+   "speech": "四个簇，九千三百一十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 674.57,
+   "dur": 3.33,
+   "speech": "十个簇，二万三千二百八十。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 678.07,
+   "dur": 3.25,
+   "speech": "合成三簇，纯度一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 681.51,
+   "dur": 3.49,
+   "speech": "真实单窗，纯度零点三四四。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 685.18,
+   "dur": 2.49,
+   "speech": "指数零点零五七。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 687.85,
+   "dur": 3.66,
+   "speech": "去共模，窗口均值零点零九六。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 691.69,
+   "dur": 2.56,
+   "speech": "同行业零点零六四。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 694.43,
+   "dur": 2.8,
+   "speech": "跨行业负零点零二三。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 697.41,
+   "dur": 2.05,
+   "speech": "空簇是零个。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 699.64,
+   "dur": 2.01,
+   "speech": "最后是数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 701.83,
+   "dur": 3.01,
+   "speech": "八通道二千六百五十七行。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 705.02,
+   "dur": 3.45,
+   "speech": "六十四通道二千六百五十九行。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 708.65,
+   "dur": 2.75,
+   "speech": "通道六十四，行业十。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 711.58,
+   "dur": 2.8,
+   "speech": "收益二千六百五十八个。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 714.55,
+   "dur": 3.01,
+   "speech": "两个哈希，都写进产物。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 720.97,
+   "dur": 2.34,
+   "speech": "先说边界四条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 723.49,
+   "dur": 2.22,
+   "speech": "第一，没有训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 725.89,
+   "dur": 3.81,
+   "speech": "所有读数都是结构与初始化的性质。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 729.88,
+   "dur": 2.8,
+   "speech": "没有拟合，就没有精度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 732.86,
+   "dur": 2.27,
+   "speech": "不能说哪个更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 735.31,
+   "dur": 3.33,
+   "speech": "第二，行业对比只有零点零五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 738.81,
+   "dur": 2.97,
+   "speech": "市场共模占四成三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 741.96,
+   "dur": 3.18,
+   "speech": "这个面板里，行业信号很弱。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 745.32,
+   "dur": 2.73,
+   "speech": "换样本，结论可能变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 748.23,
+   "dur": 2.73,
+   "speech": "第三，相关不是因果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 751.13,
+   "dur": 2.25,
+   "speech": "两个通道同步。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 753.56,
+   "dur": 2.37,
+   "speech": "可能是同一个因子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 756.11,
+   "dur": 2.34,
+   "speech": "也可能是上下游。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 758.63,
+   "dur": 2.51,
+   "speech": "相关矩阵分不出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 761.32,
+   "dur": 3.23,
+   "speech": "第四，一个市场，一段样本。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 764.73,
+   "dur": 2.92,
+   "speech": "二零一五年到二零二五年。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 767.83,
+   "dur": 2.75,
+   "speech": "六十四只，十个行业。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 770.76,
+   "dur": 2.44,
+   "speech": "不外推到全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 773.37,
+   "dur": 2.58,
+   "speech": "也不外推到别的频率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 776.14,
+   "dur": 2.77,
+   "speech": "日频，不等于分钟频。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 779.09,
+   "dur": 1.98,
+   "speech": "还有三笔债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 781.25,
+   "dur": 2.08,
+   "speech": "算法卡没写。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 783.51,
+   "dur": 2.49,
+   "speech": "demo 子命令没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 786.18,
+   "dur": 2.44,
+   "speech": "端到端训练没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 788.79,
+   "dur": 2.56,
+   "speech": "三笔都记在账上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 791.53,
+   "dur": 2.82,
+   "speech": "但没有影响本集的交付。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 794.53,
+   "dur": 2.92,
+   "speech": "所以这一集仍算 ready。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 800.85,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 803.13,
+   "dur": 2.75,
+   "speech": "通道轴有三种代价。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 806.06,
+   "dur": 3.33,
+   "speech": "混合 MLP 一万零四十八。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 809.57,
+   "dur": 2.27,
+   "speech": "路由二百五十六。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 812.02,
+   "dur": 2.58,
+   "speech": "聚类九千三百一十二。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 814.78,
+   "dur": 3.45,
+   "speech": "不训练，三种都抓不到行业。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 818.41,
+   "dur": 2.82,
+   "speech": "共模是第一个要处理的。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 821.41,
+   "dur": 3.13,
+   "speech": "下一集，概率生成补集。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 824.72,
+   "dur": 3.42,
+   "speech": "Copula，扩散损失，连续流。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 828.32,
+   "dur": 2.53,
+   "speech": "第 28 集的证词是："
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 831.04,
+   "dur": 2.17,
+   "speech": "通道不是空的。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 833.39,
+   "dur": 3.54,
+   "speech": "但通道信号要先把共模拿走。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 837.11,
+   "dur": 2.58,
+   "speech": "第 28 集，完。"
+  }
+ ]
+}

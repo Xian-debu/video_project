@@ -19,10 +19,11 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-28",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [],
   "derived": [],
@@ -36,5 +37,9 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete",
+  "publish": {
+    "coverFrame": 1365
+  },
+  "notes": "units: ch3-tsmixer, ch3-channel-router-attn, ch3-channel-cluster"
 }
