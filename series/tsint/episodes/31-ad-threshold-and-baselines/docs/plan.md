@@ -1,6 +1,6 @@
 # 31-ad-threshold-and-baselines - 分数怎么变成 0/1：阈值、分类器，与最笨的基线
 
-> status: draft（脚本、画面与旁白已写完，成片待生产）
+> status: ready（成片入库，交付完成 2026-11-01）
 > chapter: ch04 | runtime target: 22 min | algorithms: 3
 > 算法：ts-base e4e0813；证据：ts-base 7258483；数据：ts-admin 27c92b6
 
@@ -36,3 +36,13 @@
 - ch4-thresh - 固定/分位/SPOT 三种阈值与拟合 (TsBase.Algos.Ch04.Threshold)
 - ch4-sup-cls - 逻辑回归分类器与损失 (TsBase.Algos.Ch04.SupCls)
 - ch4-ma-es - 移动平均与指数平滑残差 (TsBase.Algos.Ch04.Smoothing)
+
+## Delivery
+
+成片 `delivery/Tsint31AdThresholdAndBaselines.mp4`：995.67 s（29,870 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 29,870 帧 mean 22.52 / min 14.61 / max 28.72、mean|d| 0.0138、p99 0.0980、最大 9.81、7 个切点，全过；字幕 312 条 / 8 章、0 换行、最长 25 字、跨度 00:00:01,200 → 00:16:33,470（发声 913.8 s），章节合计 995.67 s（首 00:00:00 / 末 00:15:48）。
+
+四件导出在 `delivery/`：cover.png（帧 2985，99.50 s，开场末页数据卡，无字幕条）、tsint-31.srt、tsint-31.chapters.txt、tsint-31.chapters.ffmeta.txt；mp4 按惯例不入库。publish 一轮 PASS，make 报告 `delivery/report.json`；分数床用 E04 的 1560 s 循环（`--score=out/e04-score-loop-48k.wav`，sha256 94587e80… 与 `delivery/score.wav` 逐字节相同；report 的 scoreReused 记 false，因为分数是显式传入而非 `out/<id>/` 缓存命中），8 段场景分别渲染后拼接，混音峰值 −1.02 dBFS、duck 51.2%。
+
+按归档约束，make 的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）直接落在 pack `delivery/`，引擎 `out/` 无本集残留。
+
+证据 28/28（ts-base 7258483 的 Threshold 12 条 / SupCls 8 条 / Smoothing 8 条，本集新增 55 条断言），测试 105 套 / 1,473 断言；头部钉住 算法 ts-base e4e0813 / 证据 7258483 / 数据 ts-admin 27c92b6。

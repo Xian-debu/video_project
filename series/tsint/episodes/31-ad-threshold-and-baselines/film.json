@@ -19,7 +19,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-31",
-  "status": "draft",
+  "status": "ready",
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,
@@ -33,10 +33,13 @@
     "data": "data",
     "public": "assets/public"
   },
+  "publish": {
+    "coverFrame": 2985
+  },
   "delivery": "delivery",
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete",
+  "assetsStatus": "complete",
   "notes": "units: ch4-thresh, ch4-sup-cls, ch4-ma-es"
 }

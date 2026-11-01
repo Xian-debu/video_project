@@ -375,3 +375,14 @@
 - **依据**：publish 输出、report.json 与 luma_blink 读数；读数没有为好看改动，门限没有放宽。
 - **可逆性**：高（四件导出 + 计划文档，可整段回退；成片可整集重渲）。
 - **返工成本**：make 一轮 PASS；唯一状态改动是 film.json 的 status / assetsStatus 与 plan 头部，回退一个提交即可。
+
+## A28 E31 交付：阈值与基线成片入库（2026-11-01 傍晚）
+
+- **决定**：delivery 收 mp4 48,166,819 B / 995.67 s（29,870 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 29,870 帧 mean 22.52 / min 14.61 / max 28.72、mean|d| 0.0138、p99 0.0980、最大 9.81、7 个切点，全过；字幕 312 条 / 8 章、0 换行、最长 25 字、跨度 00:00:01,200 → 00:16:33,470（发声 913.8 s），章节合计 995.67 s。
+- **决定**：四件导出（srt / chapters / ffmeta / cover）放 pack 的 delivery/，mp4 按惯例不入库；封面帧 2985（99.50 s）落在开场末页数据卡，位于最后一条旁白（止 98.81 s）之后、场景结束（101.01 s）之前，无字幕条；make 内置 publish 默认帧 180 带字幕，重跑一次 publish 换帧，film.json 记 publish.coverFrame=2985。
+- **决定**：证据 28/28（ts-base 7258483 的 Threshold 12 条 / SupCls 8 条 / Smoothing 8 条，本集新增 55 条断言），测试 105 套 / 1,473 断言；plan.md 的 status 从 draft 改为 ready 并补 Delivery，头部钉住 算法 ts-base e4e0813 / 证据 7258483 / 数据 ts-admin 27c92b6。
+- **决定（归档纪律）**：分数床复用 E04 的 1560 s 循环（sha256 94587e80… 与 delivery/score.wav 逐字节相同；report 的 scoreReused 记 false，因分数显式传入而非 out/<id>/ 缓存命中）；make 的全部产物直接落 pack delivery/，引擎 out/ 零残留——这是用户就「资源堆在引擎 out/」提出归档问题后的第一集，按新补的 CONVENTIONS §1 执行。
+- **依据**：publish 输出、report.json 与 luma_blink 读数；读数没有为好看改动，门限没有放宽。
+- **可逆性**：高（四件导出 + 计划文档，可整段回退；成片可整集重渲）。
+- **返工成本**：一次发布换封面帧（不重渲）；其余 make 一轮 PASS。
+
