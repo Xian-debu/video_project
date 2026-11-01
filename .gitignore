@@ -25,5 +25,6 @@
 **/data/norm.json
 **/data/linear.json
 **/data/attn.json
+**/data/ae.json
 **/data/prob.json
 **/data/crps.json
