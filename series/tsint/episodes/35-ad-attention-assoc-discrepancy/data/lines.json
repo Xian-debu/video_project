@@ -1,0 +1,2255 @@
+{
+ "entry": "src/tsint-35-ad-attention-assoc-discrepancy/script.ts",
+ "fps": 30,
+ "totalSec": 1342.67,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 199.59
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 199.59,
+   "dur": 133.46
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 333.05,
+   "dur": 181.36
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 514.41,
+   "dur": 137.09
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 651.5,
+   "dur": 179.1
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 830.6,
+   "dur": 298.17
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1128.77,
+   "dur": 132.88
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1261.65,
+   "dur": 81.02
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.77,
+   "speech": "上一集，我们把一整段历史压进了一个隐状态。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 6.15,
+   "dur": 3.69,
+   "speech": "然后让它预测未来几步的收盘价。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.01,
+   "dur": 2.39,
+   "speech": "这一集换一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.58,
+   "dur": 3.76,
+   "speech": "不看预测值，只看变量之间的关系。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.52,
+   "dur": 4.86,
+   "speech": "两只票，或者同一段行情的不同片段，谁和谁像。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.56,
+   "dur": 5.65,
+   "speech": "如果一整个窗口的关系结构被换掉，距离类的分数看得见吗。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 27.4,
+   "dur": 2.8,
+   "speech": "答案是，常常看不见。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 30.37,
+   "dur": 4.48,
+   "speech": "因为距离只量数值差，不量差在哪、像不像。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 35.03,
+   "dur": 3.28,
+   "speech": "能看见的是注意力矩阵的形状。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 38.49,
+   "dur": 4.57,
+   "speech": "正常窗口的注意力，是贴着对角线的一条斜带。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 43.24,
+   "dur": 4.72,
+   "speech": "被注入尖峰的窗口，那一行坍缩成一个针尖。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 48.14,
+   "dur": 5.68,
+   "speech": "被换成另一只票形状的窗口，带子被抹平，能量散到四周。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 54,
+   "dur": 5.08,
+   "speech": "这一集就讲这三种形状，和读得懂它们的三个单元。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 59.26,
+   "dur": 4.17,
+   "speech": "最后在同一套注入上，比一比检出成绩。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 63.6,
+   "dur": 2.97,
+   "speech": "先交代这一集的三个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 66.75,
+   "dur": 4.38,
+   "speech": "第一，为什么重构误差看不见关系被换掉。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 71.31,
+   "dur": 3.35,
+   "speech": "第二，关联差异到底在比什么。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 74.84,
+   "dur": 5.53,
+   "speech": "第三，次邻域遮罩和两阶段焦点，各自补了哪个洞。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 80.56,
+   "dur": 3.09,
+   "speech": "三个问题，对应三个模块。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 83.82,
+   "dur": 3.45,
+   "speech": "关联差异打分，一百四十一行。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 87.45,
+   "dur": 3.13,
+   "speech": "次邻域遮罩，一百零九行。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 90.76,
+   "dur": 3.23,
+   "speech": "两阶段焦点，二百四十八行。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 94.17,
+   "dur": 4.69,
+   "speech": "一共四百九十八行 Haskell，三十六个新测试。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 99.05,
+   "dur": 4.19,
+   "speech": "证据程序跑三十四项检查，全部通过。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 103.42,
+   "dur": 3.73,
+   "speech": "数据是两只白酒股，十一年日线。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 107.33,
+   "dur": 2.39,
+   "speech": "下面从问题开始。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 109.9,
+   "dur": 4.33,
+   "speech": "先把边界说清楚，免得后面的数字被听岔。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 114.41,
+   "dur": 4.17,
+   "speech": "这一集的分数打在点上，不是打在窗口上。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 118.76,
+   "dur": 4.89,
+   "speech": "一个点被多少窗口覆盖，就取这些窗口里的最大分。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 123.83,
+   "dur": 5.37,
+   "speech": "命中判定用点调整口径，验证那一段会专门说明。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 129.37,
+   "dur": 3.88,
+   "speech": "训练段定阈值，测试段只做预测。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 133.43,
+   "dur": 3.45,
+   "speech": "阈值取训练段分数的九十九分位。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 137.06,
+   "dur": 4.07,
+   "speech": "所有注入由固定种子确定性生成。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 141.31,
+   "dur": 4.96,
+   "speech": "换台机器、换一天重跑，注入的点和位置都一样。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 146.44,
+   "dur": 4.67,
+   "speech": "热力图是同一套注意力矩阵的四十乘四十降采样。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 151.29,
+   "dur": 4.81,
+   "speech": "概率跨了一百多个数量级，屏幕上按对数压缩。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 156.29,
+   "dur": 4.12,
+   "speech": "这个压缩只影响颜色，不影响任何分数。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 160.59,
+   "dur": 2.13,
+   "speech": "现在进正题。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 162.89,
+   "dur": 2.27,
+   "speech": "整集路线是这样。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 165.34,
+   "dur": 3.45,
+   "speech": "问题，为什么距离看不见关系。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 168.97,
+   "dur": 3.35,
+   "speech": "定义，三个单元各自的公式。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 172.5,
+   "dur": 3.61,
+   "speech": "直觉，三种形状分别长什么样。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 176.29,
+   "dur": 2.97,
+   "speech": "实现，代码结构和参数。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 179.44,
+   "dur": 4.14,
+   "speech": "验证，三十四项检查，和三条曲线。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 183.76,
+   "dur": 3.61,
+   "speech": "边界，这套东西什么时候会失灵。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 187.55,
+   "dur": 3.57,
+   "speech": "最后一句总结，加下一集的预告。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 191.3,
+   "dur": 2.7,
+   "speech": "每一段都能单独看懂。"
+  },
+  {
+   "scene": "open",
+   "index": 47,
+   "start": 194.18,
+   "dur": 3.21,
+   "speech": "连起来，是一条完整的证据链。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 200.79,
+   "dur": 3.85,
+   "speech": "回到最朴素的做法，自编码器重构。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 204.82,
+   "dur": 4.12,
+   "speech": "输入一个窗口，压到低维，再还原回去。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 209.12,
+   "dur": 4.12,
+   "speech": "正常窗口能还原，异常窗口还原不了。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 213.42,
+   "dur": 3.57,
+   "speech": "所以重构误差就是异常分。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 217.17,
+   "dur": 2.94,
+   "speech": "问题是，它只量数值差。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 220.29,
+   "dur": 5.13,
+   "speech": "把一段窗口换成另一只票的形状，均值方差都没变。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 225.59,
+   "dur": 3.13,
+   "speech": "重构网络完全能还原它。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 228.91,
+   "dur": 4.05,
+   "speech": "误差很小，分数很低，异常被放过。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 233.13,
+   "dur": 4.31,
+   "speech": "这不是网络不够大，是目标函数里没这一项。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 237.62,
+   "dur": 4.33,
+   "speech": "重构损失里，根本没有谁和谁像这件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 242.14,
+   "dur": 3.23,
+   "speech": "注意力矩阵里恰好有这个东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 245.55,
+   "dur": 4.79,
+   "speech": "每一行是一次查询，每个格子是它给别人的权重。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 250.52,
+   "dur": 5.13,
+   "speech": "正常窗口，权重沿着对角线铺开，形成一条斜带。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 255.82,
+   "dur": 3.13,
+   "speech": "因为相邻的点，本来就相似。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 259.14,
+   "dur": 4.74,
+   "speech": "被注入一个尖峰，那一行的权重全压到尖峰上。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 264.06,
+   "dur": 3.33,
+   "speech": "行变成一根针，熵接近零。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 267.57,
+   "dur": 4.62,
+   "speech": "被换成另一只票的形状，权重不再贴对角线。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 272.37,
+   "dur": 3.73,
+   "speech": "带子被抹平，能量散到矩阵四周。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 276.28,
+   "dur": 2.97,
+   "speech": "三种形状，三种签名。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 279.43,
+   "dur": 3.04,
+   "speech": "这就是这一集要读的东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 282.65,
+   "dur": 3.47,
+   "speech": "那为什么不直接看注意力矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 286.3,
+   "dur": 3.59,
+   "speech": "矩阵是模型内部的东西，不是分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 290.07,
+   "dur": 4.72,
+   "speech": "要拿它做检测，得先定义正常应该长什么样。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 294.96,
+   "dur": 4.6,
+   "speech": "关联差异的做法，是拿一个高斯先验当参照。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 299.74,
+   "dur": 3.81,
+   "speech": "先验说，近的点应该有更高的权重。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 303.73,
+   "dur": 3.73,
+   "speech": "再把实际注意力和先验逐行比。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 307.64,
+   "dur": 2.89,
+   "speech": "差得越远，分数越高。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 310.72,
+   "dur": 3.25,
+   "speech": "次邻域遮罩补的是另一件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 314.15,
+   "dur": 4,
+   "speech": "只跟先验比，会漏掉局部的整体移位。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 318.33,
+   "dur": 3.4,
+   "speech": "两阶段焦点补的是第三件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 321.91,
+   "dur": 4.69,
+   "speech": "单看一行不够，要看整个窗口重建得有多难。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 326.78,
+   "dur": 4.07,
+   "speech": "三个单元，三个角度，下面逐个展开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 334.25,
+   "dur": 2.32,
+   "speech": "先写关联差异。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 336.75,
+   "dur": 4.19,
+   "speech": "一个窗口一百个点，逐窗标准化成 u。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 341.12,
+   "dur": 5.32,
+   "speech": "第 i 行对第 j 列的注意力，是负平方距离的 softmax。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 346.62,
+   "dur": 4.26,
+   "speech": "距离用内积展开算，省掉显式的减法矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 351.06,
+   "dur": 3.93,
+   "speech": "温度取 0.1 的平方，也就是 0.01。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 355.16,
+   "dur": 3.88,
+   "speech": "这一步很关键，温度决定带子有多宽。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 359.22,
+   "dur": 4.77,
+   "speech": "先验是高斯核，带宽 3.0，行内归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 364.17,
+   "dur": 4.93,
+   "speech": "于是每一行有两个分布，先验 p，注意力 s。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 369.28,
+   "dur": 3.23,
+   "speech": "两者都归一，才能逐行比较。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 372.69,
+   "dur": 2.65,
+   "speech": "比较用 KL 散度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 375.53,
+   "dur": 4.77,
+   "speech": "KL 不对称，所以两个方向都算一次，再相加。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 380.47,
+   "dur": 2.61,
+   "speech": "这就是对称 KL。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 383.26,
+   "dur": 3.85,
+   "speech": "每一行得到一个数，一个窗口一百行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 387.29,
+   "dur": 3.61,
+   "speech": "取平均，就是窗口的关联差异分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 391.09,
+   "dur": 2.85,
+   "speech": "测试里锁了一个黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 394.11,
+   "dur": 4.38,
+   "speech": "先验自己对自己的对称 KL，必须是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 398.67,
+   "dur": 5.65,
+   "speech": "一行五点、带宽一的例子，总和 1.75777966。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 404.51,
+   "dur": 6.57,
+   "speech": "每点 0.8788898309，误差在 1e-16 量级。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 411.25,
+   "dur": 4.93,
+   "speech": "这两个数进了单元测试，改代码必须先过它们。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 416.37,
+   "dur": 3.04,
+   "speech": "第二个单元，次邻域遮罩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 419.59,
+   "dur": 3.4,
+   "speech": "思路是行内先做环形平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 423.16,
+   "dur": 4.05,
+   "speech": "每个位置，把自己和左右邻域混一下。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 427.39,
+   "dur": 3.45,
+   "speech": "再做一次 softmax 形状的池化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 431.02,
+   "dur": 4.55,
+   "speech": "然后看对角线附近的次邻域占了多少质量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 435.75,
+   "dur": 3.25,
+   "speech": "正常窗口，这条带占大头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 439.18,
+   "dur": 3.13,
+   "speech": "异常窗口，质量跑出带外。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 442.49,
+   "dur": 4.19,
+   "speech": "最后把池化后的分布，和同一个先验比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 446.86,
+   "dur": 3.45,
+   "speech": "这就是次邻域版的对称 KL。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 450.49,
+   "dur": 4.33,
+   "speech": "参数只有两个，邻域半宽一，池化半宽五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 455,
+   "dur": 3.73,
+   "speech": "它比关联差异更钝，但召回更高。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 458.92,
+   "dur": 2.85,
+   "speech": "验证段会看到这个取舍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 461.94,
+   "dur": 3.06,
+   "speech": "第三个单元，两阶段焦点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 465.19,
+   "dur": 3.73,
+   "speech": "第一阶段，把窗口压成一个隐向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 469.1,
+   "dur": 4.29,
+   "speech": "第二阶段，用隐向量重建整个窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 473.57,
+   "dur": 2.56,
+   "speech": "重建误差就是分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 476.3,
+   "dur": 3.57,
+   "speech": "它和普通自编码器的区别在焦点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 480.05,
+   "dur": 4.48,
+   "speech": "焦点是逐点重建误差归一化后的权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 484.71,
+   "dur": 2.97,
+   "speech": "误差大的点，权重高。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 487.85,
+   "dur": 4.84,
+   "speech": "第二阶段的输入不只是隐向量，还带着这份焦点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 492.87,
+   "dur": 4.62,
+   "speech": "所以它先找哪里难重建，再重点重建那里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 497.67,
+   "dur": 3.16,
+   "speech": "参数两万五千八百九十六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 501.01,
+   "dur": 5.08,
+   "speech": "训练四十个 epoch，批大小十六，学习率千分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 506.27,
+   "dur": 5.94,
+   "speech": "梯度用有限差分核对，相对误差 7.75e-11。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 515.61,
+   "dur": 2.44,
+   "speech": "先把正常看清楚。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 518.23,
+   "dur": 2.8,
+   "speech": "这条带子贴着对角线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 521.21,
+   "dur": 2.7,
+   "speech": "带宽大约五到十个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 524.09,
+   "dur": 4.41,
+   "speech": "离得远的格子，权重小到屏幕上都看不见。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 528.67,
+   "dur": 4.53,
+   "speech": "一百个点的窗口，降采样成四十乘四十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 533.38,
+   "dur": 4.6,
+   "speech": "对角线上的格子，平均权重约百分之三到五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 538.16,
+   "dur": 3.25,
+   "speech": "带内质量占比 0.329。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 541.59,
+   "dur": 2.77,
+   "speech": "带外质量 0.473。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 544.55,
+   "dur": 6.71,
+   "speech": "行熵平均 2.715；作为参照，一行一百格的熵上限是 4.61。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 551.44,
+   "dur": 4.09,
+   "speech": "权重铺得比较开，但还是贴着对角线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 555.71,
+   "dur": 3.47,
+   "speech": "集中是相对的，要跟异常窗比。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 559.36,
+   "dur": 2.13,
+   "speech": "再看尖峰窗。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 561.67,
+   "dur": 3.4,
+   "speech": "第 81 行被注入了一个尖峰。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 565.24,
+   "dur": 4.41,
+   "speech": "这一行的权重，几乎全给了尖峰那一个格子。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 569.83,
+   "dur": 2.77,
+   "speech": "行熵掉到 0.000。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 572.78,
+   "dur": 4.67,
+   "speech": "带内质量 0.080，带外质量 0.000。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 577.63,
+   "dur": 3.45,
+   "speech": "能量既不在带内，也不在带外。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 581.26,
+   "dur": 2.15,
+   "speech": "全在一个点上。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 583.59,
+   "dur": 2.49,
+   "speech": "这就是针尖签名。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 586.26,
+   "dur": 3.64,
+   "speech": "注意，带外质量是零，不是变大。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 590.07,
+   "dur": 4.74,
+   "speech": "所以用带外质量上升判异常，会漏掉尖峰。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 595,
+   "dur": 3.97,
+   "speech": "这一条是我们自己在实现里踩过的坑。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 599.15,
+   "dur": 4.65,
+   "speech": "最后检查改成了，带质量下降加行熵下降。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 603.98,
+   "dur": 2.92,
+   "speech": "第三种，形状替换窗。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 607.07,
+   "dur": 5.32,
+   "speech": "把窗口里一段二十到六十个点，换成另一只票的片段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 612.57,
+   "dur": 4.93,
+   "speech": "均值方差都重新标准化过，数值上看不出突变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 617.69,
+   "dur": 3.16,
+   "speech": "注意力矩阵的反应完全不同。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 621.02,
+   "dur": 4.36,
+   "speech": "带内质量 0.354，和干净窗差不多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 625.56,
+   "dur": 3.85,
+   "speech": "带外质量 0.682，比干净窗高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 629.6,
+   "dur": 3.73,
+   "speech": "行熵 3.105，比干净窗还高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 633.51,
+   "dur": 3.47,
+   "speech": "也就是，权重更平、更散。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 637.16,
+   "dur": 3.25,
+   "speech": "它不是坍缩，是失去结构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 640.59,
+   "dur": 4.53,
+   "speech": "三种窗，三种签名，各自需要不同的判据。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 645.3,
+   "dur": 4,
+   "speech": "这就是为什么要三个单元，而不是一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 652.7,
+   "dur": 4.72,
+   "speech": "实现分三块，都是纯函数，外加一个证据程序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 657.6,
+   "dur": 3.11,
+   "speech": "关联差异，一百四十一行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 660.89,
+   "dur": 3.23,
+   "speech": "两阶段焦点，二百四十八行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 664.3,
+   "dur": 3.13,
+   "speech": "次邻域遮罩，一百零九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 667.61,
+   "dur": 4.79,
+   "speech": "矩阵用行主序的嵌套向量，不引线性代数库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 672.58,
+   "dur": 3.78,
+   "speech": "随机数用项目自己的确定性生成器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 676.54,
+   "dur": 3.09,
+   "speech": "测试一共三十六个新用例。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 679.81,
+   "dur": 3.9,
+   "speech": "整个仓库现在一百一十六个测试套件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 683.89,
+   "dur": 3.35,
+   "speech": "一千五百七十三个断言，全绿。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 687.42,
+   "dur": 2.65,
+   "speech": "关联差异的接口很小。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 690.26,
+   "dur": 5.73,
+   "speech": "配置三个字段，窗口一百，带宽 3.0，温度 0.1。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 696.16,
+   "dur": 3.4,
+   "speech": "先验构造一次，行内归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 699.74,
+   "dur": 5.01,
+   "speech": "注意力用内积展开，避免一百乘一百的显式距离矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 704.93,
+   "dur": 4.07,
+   "speech": "每一行做 softmax，温度平方做缩放。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 709.18,
+   "dur": 4.81,
+   "speech": "对称 KL 逐行算，两个方向都做 log 比值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 714.17,
+   "dur": 5.27,
+   "speech": "零概率用 1e-8 截断，保证不出现 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 719.62,
+   "dur": 3.47,
+   "speech": "证据程序里还查了三个不变量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 723.27,
+   "dur": 5.75,
+   "speech": "每一行的行和是 1，最大误差 8.88e-16。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 729.2,
+   "dur": 5.94,
+   "speech": "先验的行和也是 1，最大误差 4.44e-16。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 735.32,
+   "dur": 3.21,
+   "speech": "两阶段焦点是一个小网络。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 738.71,
+   "dur": 3.97,
+   "speech": "第一阶段，一百维输入，三十二维隐层。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 742.86,
+   "dur": 5.58,
+   "speech": "第二阶段，三十二维隐层，六十四维隐层，再回一百维。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 748.62,
+   "dur": 3.23,
+   "speech": "焦点在中间算，不进参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 752.03,
+   "dur": 2.99,
+   "speech": "梯度手写，逐层反传。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 755.2,
+   "dur": 2.92,
+   "speech": "这里踩过一个坑，值得讲。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 758.3,
+   "dur": 4.86,
+   "speech": "焦点是误差的函数，误差又依赖第一阶段的输出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 763.34,
+   "dur": 4.07,
+   "speech": "第一版把焦点当成常数，梯度漏了一项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 767.59,
+   "dur": 5.25,
+   "speech": "有限差分立刻报错，相对误差 1.9e-2。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 773.02,
+   "dur": 5.99,
+   "speech": "补上焦点对输出的导数，误差掉到 7.75e-11。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 779.19,
+   "dur": 4.38,
+   "speech": "所以梯度核对不是形式，它抓到了真 bug。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 783.75,
+   "dur": 2.32,
+   "speech": "第二个坑是训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 786.25,
+   "dur": 4.45,
+   "speech": "单样本 Adam，学习率千分之一，四十轮。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 790.88,
+   "dur": 4.53,
+   "speech": "损失从 0.95 掉到 0.06 之后开始反弹。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 795.59,
+   "dur": 3.85,
+   "speech": "反弹到几百，再后来直接发散。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 799.62,
+   "dur": 3.3,
+   "speech": "原因是单样本梯度噪声太大。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 803.11,
+   "dur": 3.97,
+   "speech": "改成批大小十六，同一套超参就稳了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 807.26,
+   "dur": 5.03,
+   "speech": "损失 0.9536 到 0.0644，单调下降。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 812.47,
+   "dur": 4.6,
+   "speech": "训练窗口只取每四个里的一个，共二百七十六个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 817.25,
+   "dur": 3.52,
+   "speech": "这不是省事，是控制单轮时间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 820.95,
+   "dur": 3.61,
+   "speech": "证据程序整体跑 68.9 秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 824.74,
+   "dur": 3.66,
+   "speech": "大部分时间，花在这四十轮训练上。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 831.8,
+   "dur": 2.46,
+   "speech": "验证从数据开始。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 834.44,
+   "dur": 3.45,
+   "speech": "两只票，贵州茅台和五粮液。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 838.07,
+   "dur": 5.27,
+   "speech": "二零一五年一月到二零二六年六月，两千七百三十个交易日。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 843.52,
+   "dur": 4.24,
+   "speech": "取交集，向前复权收盘价，再取对数。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 847.94,
+   "dur": 3.01,
+   "speech": "中间有一段九十六天的缺口。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 851.13,
+   "dur": 5.49,
+   "speech": "源数据里，五粮液 2015 年 7 月底到 10 月底整段缺失。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 856.8,
+   "dur": 4.81,
+   "speech": "所以窗口内部跨度超过十天，就整窗丢掉。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 861.79,
+   "dur": 4.84,
+   "speech": "剩下训练一千一百零五个窗，测试九百五十六个窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 866.81,
+   "dur": 2.85,
+   "speech": "注入两类，各十个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 869.83,
+   "dur": 5.41,
+   "speech": "尖峰，窗内一个点或三个连续点，加五到十个 sigma。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 875.43,
+   "dur": 5.49,
+   "speech": "形状，二十到六十个点，整段换成五粮液的标准化片段。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 881.09,
+   "dur": 6.47,
+   "speech": "真值去重后三百八十一个点，十四段，占测试窗的 1.05%。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 887.74,
+   "dur": 2.68,
+   "speech": "第一个单元，关联差异。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 890.6,
+   "dur": 4.19,
+   "speech": "阈值 22.96，取训练段九十九分位。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 894.97,
+   "dur": 6.42,
+   "speech": "精确率 0.8617，召回 0.9160，F1 0.8880。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 901.57,
+   "dur": 2.73,
+   "speech": "十四段里检出八段。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 904.48,
+   "dur": 3.09,
+   "speech": "平均精度 0.8724。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 907.75,
+   "dur": 4.55,
+   "speech": "误报率 3.19%，每一百个点里报三个。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 912.48,
+   "dur": 3.57,
+   "speech": "这个成绩不是靠调阈值挑出来的。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 916.22,
+   "dur": 4.69,
+   "speech": "曲线是扫出来的，平均精度用整条曲线算。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 921.1,
+   "dur": 5.13,
+   "speech": "真值点的分数中位数 15.01，最大 27.92。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 926.4,
+   "dur": 4.79,
+   "speech": "阈值之上才报警，所以中位点其实没报警。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 931.37,
+   "dur": 4.41,
+   "speech": "能检出八段，靠的是每段里最尖的那几个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 935.96,
+   "dur": 4.05,
+   "speech": "点调整把命中一次，记成整段命中。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 940.18,
+   "dur": 3.04,
+   "speech": "第二个单元，次邻域遮罩。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 943.4,
+   "dur": 3.49,
+   "speech": "阈值 4.93 乘十的负四次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 947.08,
+   "dur": 6.25,
+   "speech": "精确率 0.3635，召回 0.9921，F1 0.5320。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 953.51,
+   "dur": 2.58,
+   "speech": "十四段检出十三段。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 956.27,
+   "dur": 3.04,
+   "speech": "平均精度 0.3706。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 959.49,
+   "dur": 4.45,
+   "speech": "误报率 34.54%，每三个点报一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 964.12,
+   "dur": 3.06,
+   "speech": "它几乎不漏，但报得太多。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 967.37,
+   "dur": 4.45,
+   "speech": "为什么，因为它把整行的质量池化之后再比。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 972,
+   "dur": 3.71,
+   "speech": "尖峰的行坍缩，池化后依然异常。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 975.89,
+   "dur": 4.93,
+   "speech": "但正常窗里行与行差别小，池化把差异抹平了。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 981,
+   "dur": 4.57,
+   "speech": "所以它更适合一定要抓住，不适合不要打扰。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 985.76,
+   "dur": 3.4,
+   "speech": "这是一个明确的取舍，不是缺陷。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 989.34,
+   "dur": 3.06,
+   "speech": "第三个单元，两阶段焦点。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 992.58,
+   "dur": 2.34,
+   "speech": "阈值 20.01。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 995.1,
+   "dur": 6.23,
+   "speech": "精确率 0.7056，召回 1.0000，F1 0.8274。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1001.51,
+   "dur": 2.46,
+   "speech": "十四段全部检出。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1004.15,
+   "dur": 4.07,
+   "speech": "平均精度 0.6910，三家里最高。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1008.4,
+   "dur": 2.99,
+   "speech": "误报率 8.90%。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1011.57,
+   "dur": 5.94,
+   "speech": "真值点的分数中位数 12.24，最大 2273.98。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1017.69,
+   "dur": 3.16,
+   "speech": "最大分来自形状替换窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1021.03,
+   "dur": 3.45,
+   "speech": "重建一个别人的形状，误差会爆。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1024.66,
+   "dur": 5.03,
+   "speech": "代价是训练，四十轮，两万五千八百九十六个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1029.87,
+   "dur": 2.73,
+   "speech": "关联差异不需要训练。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1032.77,
+   "dur": 3.64,
+   "speech": "所以它的 F1 更高，但贵得多。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1036.59,
+   "dur": 3.01,
+   "speech": "把三条曲线放在一起看。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1039.79,
+   "dur": 2.92,
+   "speech": "横轴召回，纵轴精度。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1042.88,
+   "dur": 5.01,
+   "speech": "关联差异的曲线最靠上，中段还压在 0.85 以上。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1048.07,
+   "dur": 4.17,
+   "speech": "两阶段的曲线起步高，但很快往下走。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1052.42,
+   "dur": 3.73,
+   "speech": "次邻域整条曲线贴在 0.4 附近。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1056.33,
+   "dur": 6.04,
+   "speech": "平均精度差得更清楚，0.87 对 0.69 对 0.37。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1062.55,
+   "dur": 2.27,
+   "speech": "但别只看平均。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1065,
+   "dur": 6.04,
+   "speech": "如果业务要求一段都不能漏，次邻域召回 0.992 反而是首选。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1071.22,
+   "dur": 2.92,
+   "speech": "没有单一最优，只有口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 1074.31,
+   "dur": 3.37,
+   "speech": "这就是为什么三个单元都留着。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 1077.87,
+   "dur": 3.23,
+   "speech": "证据程序跑三十四项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 1081.28,
+   "dur": 6.33,
+   "speech": "数据五项，行数、日期范围、哈希、最大缺口、双票对齐。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 1087.78,
+   "dur": 5.2,
+   "speech": "样本四项，无泄漏、窗数、无缺口、训练段干净。"
+  },
+  {
+   "scene": "verification",
+   "index": 61,
+   "start": 1093.16,
+   "dur": 5.94,
+   "speech": "注入五项，两类各十窗、真值段数、注入比例、窗不重叠。"
+  },
+  {
+   "scene": "verification",
+   "index": 62,
+   "start": 1099.28,
+   "dur": 6.28,
+   "speech": "关联差异八项，行和、先验行和、自 KL，再加上带质量。"
+  },
+  {
+   "scene": "verification",
+   "index": 63,
+   "start": 1105.74,
+   "dur": 4.79,
+   "speech": "还有形状平坦度、F1、检出段数、误报率。"
+  },
+  {
+   "scene": "verification",
+   "index": 64,
+   "start": 1110.71,
+   "dur": 5.01,
+   "speech": "次邻域四项，两阶段五项，对比两项，计数一项。"
+  },
+  {
+   "scene": "verification",
+   "index": 65,
+   "start": 1115.9,
+   "dur": 2.87,
+   "speech": "三十四项，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 66,
+   "start": 1118.95,
+   "dur": 4.41,
+   "speech": "报告里每个数，都能回到一个 JSON 字段。"
+  },
+  {
+   "scene": "verification",
+   "index": 67,
+   "start": 1123.53,
+   "dur": 3.04,
+   "speech": "这也是这一集能复现的原因。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1129.97,
+   "dur": 3.23,
+   "speech": "先说清楚这套方法不做什么。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1133.38,
+   "dur": 2.87,
+   "speech": "第一，它不做秒级检测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1136.43,
+   "dur": 5.87,
+   "speech": "窗口一百个交易日，最短的异常也要两三天才在矩阵里显形。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1142.48,
+   "dur": 2.85,
+   "speech": "第二，它只用了两只票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1145.51,
+   "dur": 5.53,
+   "speech": "跨股票的形状替换能造出来，是因为我们恰好有另一只票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1151.22,
+   "dur": 3.66,
+   "speech": "第三，所有阈值都在一个市场上定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1155.06,
+   "dur": 4.57,
+   "speech": "换市场、换频率，九十九分位要重新算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1159.82,
+   "dur": 4.6,
+   "speech": "第四，书上的 SWaT 和 WADI 数字，我们不复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1164.59,
+   "dur": 4.45,
+   "speech": "那些是文献结果，口径不同，不能拿来对比。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1169.23,
+   "dur": 3.33,
+   "speech": "第二件要说清楚的，是点调整。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1172.73,
+   "dur": 5.92,
+   "speech": "规则是，一段真值里只要有一个点报警，整段都算命中。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1178.83,
+   "dur": 3.54,
+   "speech": "这让 F1 好看，也让 F1 失真。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1182.55,
+   "dur": 6.21,
+   "speech": "我们的关联差异，原始点命中只有三十一个点，真值三百八十一个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1188.94,
+   "dur": 3.95,
+   "speech": "点调整之后，三百四十九个点算命中。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1193.07,
+   "dur": 5.87,
+   "speech": "所以 0.8880 是段级可用的证据，不是点级准确的证据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1199.12,
+   "dur": 6.09,
+   "speech": "两阶段更极端，原始命中八十四个点，点调整后三百八十一个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1205.39,
+   "dur": 3.66,
+   "speech": "次邻域原始命中二百八十六个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1209.23,
+   "dur": 4.02,
+   "speech": "报数的时候两个口径都给，才诚实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1213.43,
+   "dur": 3.93,
+   "speech": "这也是我们不拿它跟文献数字比的原因。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1217.54,
+   "dur": 3.35,
+   "speech": "第三个边界，什么时候会失灵。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1221.07,
+   "dur": 5.34,
+   "speech": "如果异常只改数值、不改关系，关联差异的分数不会动。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1226.59,
+   "dur": 3.97,
+   "speech": "比如整段平移，标准化之后完全一样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1230.74,
+   "dur": 2.8,
+   "speech": "这是归一化带来的盲区。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1233.72,
+   "dur": 5.97,
+   "speech": "如果异常很短，短到只影响一两行，池化类方法可能看不出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1239.87,
+   "dur": 5.92,
+   "speech": "如果异常恰好长得像另一只票的正常形状，形状替换也无效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1245.96,
+   "dur": 3.76,
+   "speech": "这些不是实现问题，是方法的上限。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1249.9,
+   "dur": 3.95,
+   "speech": "知道上限，才知道什么时候该换方法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1254.03,
+   "dur": 2.68,
+   "speech": "下一集换的就是方法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1256.89,
+   "dur": 2.56,
+   "speech": "从重构，走到概率。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1262.85,
+   "dur": 2.58,
+   "speech": "这一集讲的是关系。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1265.61,
+   "dur": 3.97,
+   "speech": "重构误差量数值，注意力矩阵量关系。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1269.77,
+   "dur": 2.97,
+   "speech": "关系变了，数值可以不变。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1272.91,
+   "dur": 5.41,
+   "speech": "关联差异用高斯先验当参照，对称 KL 当尺子。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1278.51,
+   "dur": 4,
+   "speech": "次邻域遮罩，把局部结构池化后再比。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1282.68,
+   "dur": 4.02,
+   "speech": "两阶段焦点，用重建难度当焦点。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1286.89,
+   "dur": 4.05,
+   "speech": "三个单元，同一套注入，三种取舍。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1291.11,
+   "dur": 4.31,
+   "speech": "关联差异 F1 0.8880，最准。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1295.6,
+   "dur": 3.85,
+   "speech": "次邻域召回 0.9921，最全。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1299.64,
+   "dur": 4.19,
+   "speech": "两阶段平均精度 0.6910，最稳。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1304.01,
+   "dur": 3.21,
+   "speech": "三十四项检查，全部通过。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1307.39,
+   "dur": 3.21,
+   "speech": "下一集，从重构走到概率。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1310.78,
+   "dur": 5.73,
+   "speech": "自编码器只会说像不像，变分自编码器会说有多可能。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1316.68,
+   "dur": 3.71,
+   "speech": "潜空间里，正常样本聚成一团。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1320.57,
+   "dur": 2.77,
+   "speech": "异常样本被推到团外。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1323.53,
+   "dur": 3.83,
+   "speech": "我们要在二维平面上把这件事画出来。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1327.54,
+   "dur": 4.93,
+   "speech": "还要回答一个问题，潜空间维度选十六还是一百。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1332.65,
+   "dur": 5.01,
+   "speech": "选错了，模型学会恒等映射，异常分全是零。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1337.84,
+   "dur": 2.63,
+   "speech": "第 35 集，完。"
+  }
+ ]
+}
