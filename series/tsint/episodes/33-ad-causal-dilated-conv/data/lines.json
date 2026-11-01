@@ -1,0 +1,2290 @@
+{
+ "entry": "src/tsint-33-ad-causal-dilated-conv/script.ts",
+ "fps": 30,
+ "totalSec": 1009.69,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 98.57
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 98.57,
+   "dur": 112.95
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 211.52,
+   "dur": 125.7
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 337.22,
+   "dur": 115.27
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 452.49,
+   "dur": 133.84
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 586.33,
+   "dur": 260.72
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 847.05,
+   "dur": 123.71
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 970.76,
+   "dur": 38.93
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.42,
+   "speech": "上一集说，几何看不见形状。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.8,
+   "dur": 2.61,
+   "speech": "这一集换一把工具。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.59,
+   "dur": 2.05,
+   "speech": "换成卷积。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 9.82,
+   "dur": 2.44,
+   "speech": "卷积默认看两边。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 12.44,
+   "dur": 3.78,
+   "speech": "重构一个点时，它把未来也读进去。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.4,
+   "dur": 2.34,
+   "speech": "训练时没人发现。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 18.92,
+   "dur": 3.28,
+   "speech": "因为离线验证也看得到未来。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 22.38,
+   "dur": 2.63,
+   "speech": "上线以后只剩过去。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 25.19,
+   "dur": 2.13,
+   "speech": "分数就换了。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 27.5,
+   "dur": 2.58,
+   "speech": "这一集只办一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 30.26,
+   "dur": 2.68,
+   "speech": "把卷积改成因果的。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 33.12,
+   "dur": 2.08,
+   "speech": "再把它堆深。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 35.38,
+   "dur": 2.08,
+   "speech": "先看一个数字。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 37.63,
+   "dur": 4.19,
+   "speech": "因果卷积，测试 F1 零点五零五五。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 42,
+   "dur": 3.16,
+   "speech": "对称卷积，零点五零零零。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 45.34,
+   "dur": 2.58,
+   "speech": "只差零点零零五五。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 48.1,
+   "dur": 1.65,
+   "speech": "差不多。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 49.93,
+   "dur": 2.37,
+   "speech": "但把它们放上线。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 52.48,
+   "dur": 2.56,
+   "speech": "因果模型逐位不变。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 55.21,
+   "dur": 3.35,
+   "speech": "对称模型有两个百分点翻转。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 58.74,
+   "dur": 2.41,
+   "speech": "数字变成另一个。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 61.34,
+   "dur": 3.35,
+   "speech": "这一集报的不是更高的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 64.87,
+   "dur": 2.87,
+   "speech": "报的是一个能验证的承诺。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 67.92,
+   "dur": 1.84,
+   "speech": "零件三个。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 69.94,
+   "dur": 2.8,
+   "speech": "因果卷积，只看过去。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 72.91,
+   "dur": 2.97,
+   "speech": "膨胀核，把感受野撑开。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 76.06,
+   "dur": 3.54,
+   "speech": "残差 TCN，叠四层还能训。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 79.78,
+   "dur": 2.68,
+   "speech": "数据是两只白酒股。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 82.64,
+   "dur": 2.15,
+   "speech": "十六年半日线。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 84.97,
+   "dur": 2.58,
+   "speech": "三千九百三十二行。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 87.73,
+   "dur": 2.05,
+   "speech": "一百维窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 89.97,
+   "dur": 2.05,
+   "speech": "四十八个注入。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 92.2,
+   "dur": 2.13,
+   "speech": "四十个检查点。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 94.51,
+   "dur": 1.86,
+   "speech": "先看问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 99.77,
+   "dur": 2.37,
+   "speech": "先把问题说清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 102.32,
+   "dur": 3.09,
+   "speech": "一个点，怎么算重构误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 105.58,
+   "dur": 2.73,
+   "speech": "取它前后各十五天。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 108.49,
+   "dur": 2.75,
+   "speech": "一个长度三十一的窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 111.42,
+   "dur": 2.94,
+   "speech": "卷积核在这个窗口上滑。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 114.54,
+   "dur": 3.4,
+   "speech": "对称核，左右各看十五天。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 118.12,
+   "dur": 2.41,
+   "speech": "问题不在核本身。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 120.71,
+   "dur": 2.49,
+   "speech": "在于它看了未来。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 123.38,
+   "dur": 2.61,
+   "speech": "如果把最后一天改掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 126.16,
+   "dur": 2.87,
+   "speech": "最后一个位置的误差会变。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 129.21,
+   "dur": 3.11,
+   "speech": "这没问题，它是被改的点。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 132.5,
+   "dur": 3.06,
+   "speech": "但它左边十五个位置也变了。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 135.75,
+   "dur": 2.8,
+   "speech": "那些位置的未来被改了。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 138.72,
+   "dur": 1.93,
+   "speech": "这就是泄漏。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 140.84,
+   "dur": 2.82,
+   "speech": "离线验证看不见这个。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 143.84,
+   "dur": 2.92,
+   "speech": "因为验证也在整窗上做。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 146.94,
+   "dur": 2.73,
+   "speech": "训练集上分数很漂亮。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 149.84,
+   "dur": 3.35,
+   "speech": "上线那天，模型只拿到过去。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 153.37,
+   "dur": 2.27,
+   "speech": "后面的位置补零。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 155.82,
+   "dur": 2.27,
+   "speech": "或者逐点递推。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 158.27,
+   "dur": 2.77,
+   "speech": "两种口径，两个模型。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 161.23,
+   "dur": 3.09,
+   "speech": "这一集用一个办法量它。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 164.49,
+   "dur": 3.73,
+   "speech": "同一个模型，两种口径各跑一遍。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 168.41,
+   "dur": 2.29,
+   "speech": "一种整窗可见。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 170.88,
+   "dur": 2.97,
+   "speech": "一种从第 t 位以后补零。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 174.03,
+   "dur": 4,
+   "speech": "因果模型的两种结果应该逐位相同。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 178.21,
+   "dur": 2.87,
+   "speech": "对称模型的应该不一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 181.26,
+   "dur": 1.93,
+   "speech": "这就是判据。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 183.37,
+   "dur": 2.65,
+   "speech": "三个零件各有分工。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 186.2,
+   "dur": 2.97,
+   "speech": "因果卷积负责不看未来。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 189.35,
+   "dur": 3.73,
+   "speech": "膨胀核把感受野从三撑到三十一。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 193.26,
+   "dur": 3.35,
+   "speech": "残差让四层叠起来还能训。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 196.79,
+   "dur": 2.7,
+   "speech": "外加一个双重卷积。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 199.68,
+   "dur": 3.93,
+   "speech": "书上的式四点一六 a 和正文打架。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 203.78,
+   "dur": 3.09,
+   "speech": "两种读法都实现，都量。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 207.05,
+   "dur": 2.27,
+   "speech": "先把定义写下来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 212.72,
+   "dur": 2.61,
+   "speech": "定义一，因果卷积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 215.51,
+   "dur": 2.65,
+   "speech": "左填充，右边不填。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 218.34,
+   "dur": 3.95,
+   "speech": "第 t 个位置只看得见第 t 天和以前。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 222.47,
+   "dur": 2.44,
+   "speech": "数学上就一句话。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 225.09,
+   "dur": 3.52,
+   "speech": "卷积权重只在过去那侧非零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 228.79,
+   "dur": 2.08,
+   "speech": "感受野怎么算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 231.04,
+   "dur": 3.85,
+   "speech": "一层膨胀卷积，核 k，膨胀 d。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 235.08,
+   "dur": 3.83,
+   "speech": "单层撑开 k 减一乘 d，再加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 239.09,
+   "dur": 2.61,
+   "speech": "堆起来是等比求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 241.87,
+   "dur": 3.4,
+   "speech": "k 等于三，d 取一二四八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 245.45,
+   "dur": 2.89,
+   "speech": "四层，感受野三十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 248.53,
+   "dur": 2.8,
+   "speech": "正好覆盖一个月的交易日。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 251.5,
+   "dur": 2.75,
+   "speech": "这是设计，不是巧合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 254.43,
+   "dur": 2.63,
+   "speech": "定义二，双重卷积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 257.24,
+   "dur": 3.85,
+   "speech": "书上的式四点一六 a 写得很短。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 261.28,
+   "dur": 3.28,
+   "speech": "先做幂变换，再除标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 264.74,
+   "dur": 3.16,
+   "speech": "再乘一个增益，过一次卷积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 268.07,
+   "dur": 3.52,
+   "speech": "幂变换怎么写，书里两种说法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 271.77,
+   "dur": 2.63,
+   "speech": "规格按取最大值读。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 274.58,
+   "dur": 3.76,
+   "speech": "正文说核覆盖的子序列取最大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 278.52,
+   "dur": 4.14,
+   "speech": "取最大，读数是均值的正一点八六倍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 282.84,
+   "dur": 3.83,
+   "speech": "取均值，就退化成均匀核卷积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 286.85,
+   "dur": 3.01,
+   "speech": "两种读法都写进代码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 290.05,
+   "dur": 2.39,
+   "speech": "两种都进检查。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 292.62,
+   "dur": 2.46,
+   "speech": "定义三，TCN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 295.26,
+   "dur": 1.89,
+   "speech": "一层残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 297.32,
+   "dur": 3.66,
+   "speech": "y 等于 ReLU，x 加 F x。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 301.17,
+   "dur": 3.88,
+   "speech": "F 是三次膨胀卷积加一次投影。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 305.22,
+   "dur": 2.87,
+   "speech": "残差让梯度有直通路。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 308.27,
+   "dur": 3.83,
+   "speech": "四层叠起来，参数量一千零八十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 312.28,
+   "dur": 1.96,
+   "speech": "配方写死。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 314.42,
+   "dur": 4.57,
+   "speech": "k 三，d 一二四八，隐藏八，四层。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 319.18,
+   "dur": 3.06,
+   "speech": "学习率三乘十的负三次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 322.42,
+   "dur": 2.75,
+   "speech": "批十六，最多六十轮。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 325.35,
+   "dur": 2.25,
+   "speech": "早停耐心五轮。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 327.77,
+   "dur": 2.32,
+   "speech": "实测十二轮收敛。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 330.27,
+   "dur": 2.25,
+   "speech": "三个定义讲完。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 332.7,
+   "dur": 2.32,
+   "speech": "先看它们长什么样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 338.42,
+   "dur": 2.15,
+   "speech": "先看感受野。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 340.75,
+   "dur": 2.8,
+   "speech": "三十一天，就是一个月。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 343.73,
+   "dur": 3.97,
+   "speech": "一个月前的价格，还在影响今天的重构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 347.88,
+   "dur": 3.11,
+   "speech": "这是卷积能给的最长记忆。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 351.17,
+   "dur": 3.18,
+   "speech": "再长，得加层或加膨胀。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 354.53,
+   "dur": 3.01,
+   "speech": "第二个直觉，泄漏长什么样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 357.73,
+   "dur": 3.09,
+   "speech": "把窗口后半段改成噪声。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 360.99,
+   "dur": 4.09,
+   "speech": "因果模型，前半段重构逐位不动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 365.27,
+   "dur": 3.04,
+   "speech": "对称模型，前半段全变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 368.49,
+   "dur": 3.61,
+   "speech": "扰动范围三十一，和公式对上了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 372.28,
+   "dur": 2.7,
+   "speech": "这两个读数在检查里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 375.16,
+   "dur": 2.97,
+   "speech": "第三个直觉，训练曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 378.31,
+   "dur": 4.6,
+   "speech": "验证损失从零点零五二降到零点零零零九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 383.09,
+   "dur": 1.67,
+   "speech": "十二轮。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 384.94,
+   "dur": 2.27,
+   "speech": "损失掉得很快。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 387.39,
+   "dur": 2.2,
+   "speech": "快到有点可疑。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 389.76,
+   "dur": 3.78,
+   "speech": "残差让模型几乎学成恒等映射。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 393.73,
+   "dur": 3.35,
+   "speech": "输入原样输出，误差就很小。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 397.26,
+   "dur": 2.05,
+   "speech": "这不是坏事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 399.49,
+   "dur": 3.52,
+   "speech": "异常是残差大，不是重构完美。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 403.19,
+   "dur": 2.7,
+   "speech": "但它解释了后面一件事。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 406.07,
+   "dur": 3.57,
+   "speech": "两个模型离线分数为什么这么近。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 409.82,
+   "dur": 3.61,
+   "speech": "都接近恒等映射，就差一点点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 413.61,
+   "dur": 2.85,
+   "speech": "第四，看 PR 曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 416.64,
+   "dur": 2.99,
+   "speech": "因果和对称几乎重合。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 419.81,
+   "dur": 2.97,
+   "speech": "对称的平均精度还更高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 422.95,
+   "dur": 3.73,
+   "speech": "零点四四一三，对零点三一六零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 426.87,
+   "dur": 3.11,
+   "speech": "离线看，偷看的那个更准。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 430.16,
+   "dur": 2.15,
+   "speech": "这句话得记住。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 432.49,
+   "dur": 2.8,
+   "speech": "它是这一集的核心反例。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 435.46,
+   "dur": 2.73,
+   "speech": "离线指标奖励偷看。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 438.37,
+   "dur": 3.85,
+   "speech": "所以不能拿离线分数当上线承诺。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 442.4,
+   "dur": 2.25,
+   "speech": "得换一种量法。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 444.83,
+   "dur": 3.01,
+   "speech": "就是刚才说的两种口径。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 448.02,
+   "dur": 2.27,
+   "speech": "现在去看代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 453.69,
+   "dur": 3.16,
+   "speech": "三个模块，一个核心函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 457.03,
+   "dur": 4,
+   "speech": "因果卷积在 ch4 因果膨胀模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 461.21,
+   "dur": 3.37,
+   "speech": "接口是配置到张量到张量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 464.76,
+   "dur": 4.93,
+   "speech": "配置里有核大小，膨胀序列，层数，隐藏维度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 469.87,
+   "dur": 4.21,
+   "speech": "双重卷积在 ch4 双重卷积模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 474.27,
+   "dur": 2.73,
+   "speech": "输入矩阵，输出矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 477.17,
+   "dur": 3.57,
+   "speech": "TCN 在 ch4 TCN 模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 480.92,
+   "dur": 3.88,
+   "speech": "初始化，前向，重构误差，打分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 484.98,
+   "dur": 2.56,
+   "speech": "打分就是重构误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 487.72,
+   "dur": 2.46,
+   "speech": "误差大，分数大。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 490.36,
+   "dur": 2.65,
+   "speech": "第一个坑，填充方向。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 493.19,
+   "dur": 2.7,
+   "speech": "没有内置的因果填充。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 496.07,
+   "dur": 3.47,
+   "speech": "自己补左边 k 减一乘 d 个零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 499.72,
+   "dur": 2.68,
+   "speech": "右边界一个都不补。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 502.58,
+   "dur": 3.37,
+   "speech": "补错方向，检查会立刻抓到。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 506.14,
+   "dur": 2.61,
+   "speech": "第二个坑，逐位验证。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 508.92,
+   "dur": 2.49,
+   "speech": "怎么证明没看未来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 511.59,
+   "dur": 3.18,
+   "speech": "把第 t 天以后的数据改掉。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 514.95,
+   "dur": 2.61,
+   "speech": "重算，比较前 t 位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 517.74,
+   "dur": 2.87,
+   "speech": "逐位相同，才算因果。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 520.79,
+   "dur": 2.65,
+   "speech": "浮点相等是硬判据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 523.62,
+   "dur": 2.51,
+   "speech": "检查里就是这么写的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 526.31,
+   "dur": 2.77,
+   "speech": "第三个坑，两种口径。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 529.26,
+   "dur": 2.58,
+   "speech": "上线时未来补零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 532.03,
+   "dur": 2.46,
+   "speech": "补零不是真实分布。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 534.67,
+   "dur": 2.65,
+   "speech": "它只是一个下界口径。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 537.5,
+   "dur": 4.12,
+   "speech": "但因果模型在这个口径下逐位不变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 541.8,
+   "dur": 3.4,
+   "speech": "所以这个下界对它是精确的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 545.38,
+   "dur": 2.39,
+   "speech": "对对称模型不是。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 547.95,
+   "dur": 3.76,
+   "speech": "第四个坑，双重卷积的两种读法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 551.89,
+   "dur": 2.7,
+   "speech": "取最大和取均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 554.77,
+   "dur": 4.57,
+   "speech": "取均值那种，检查要求它等于均匀核卷积。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 559.52,
+   "dur": 1.91,
+   "speech": "逐点相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 561.61,
+   "dur": 3.25,
+   "speech": "取最大那种，只量统计量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 565.05,
+   "dur": 2.32,
+   "speech": "均值一点八六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 567.54,
+   "dur": 2.65,
+   "speech": "最后一个坑，残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 570.38,
+   "dur": 3.09,
+   "speech": "残差把深度和记忆分开。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 573.64,
+   "dur": 3.09,
+   "speech": "有了残差，十二轮就收敛。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 576.91,
+   "dur": 4.43,
+   "speech": "梯度检查最大误差八点七乘十的负十四次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 581.52,
+   "dur": 2.61,
+   "speech": "代码讲完，看读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 587.53,
+   "dur": 2.87,
+   "speech": "四十个检查，一次跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 590.58,
+   "dur": 1.89,
+   "speech": "数据四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 592.65,
+   "dur": 1.96,
+   "speech": "窗口四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 594.78,
+   "dur": 2.08,
+   "speech": "因果性三项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 597.04,
+   "dur": 2.03,
+   "speech": "感受野两项。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 599.25,
+   "dur": 1.86,
+   "speech": "训练五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 601.29,
+   "dur": 1.84,
+   "speech": "注入六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 603.31,
+   "dur": 2.56,
+   "speech": "打分与阈值三项。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 606.05,
+   "dur": 1.86,
+   "speech": "对比四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 608.09,
+   "dur": 2.34,
+   "speech": "上线口径四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 610.61,
+   "dur": 2.1,
+   "speech": "交并比两项。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 612.9,
+   "dur": 2.44,
+   "speech": "双重卷积三项。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 615.51,
+   "dur": 2.65,
+   "speech": "合计四十，全过。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 618.35,
+   "dur": 2.56,
+   "speech": "耗时一百一十一秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 621.09,
+   "dur": 2.29,
+   "speech": "先看离线对比。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 623.56,
+   "dur": 2.99,
+   "speech": "这是这一集最扫兴的一页。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 626.73,
+   "dur": 4.43,
+   "speech": "训练段 F1，两个都是零点四二一一。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 631.34,
+   "dur": 1.74,
+   "speech": "一模一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 633.26,
+   "dur": 3.3,
+   "speech": "测试段，因果零点五零五五。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 636.74,
+   "dur": 2.49,
+   "speech": "对称零点五零零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 639.41,
+   "dur": 2.29,
+   "speech": "差零点零零五五。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 641.88,
+   "dur": 3.66,
+   "speech": "按尖峰拆，因果零点六七六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 645.73,
+   "dur": 2.63,
+   "speech": "对称零点六五七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 648.54,
+   "dur": 3.3,
+   "speech": "按形态替换拆，两个都是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 652.02,
+   "dur": 2.51,
+   "speech": "零点零零五五的差距。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 654.71,
+   "dur": 3.25,
+   "speech": "放到两千四百五十八个窗口上。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 658.14,
+   "dur": 2.32,
+   "speech": "就是十三个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 660.64,
+   "dur": 3.18,
+   "speech": "这不是一个能讲故事的差距。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 664,
+   "dur": 2.68,
+   "speech": "所以这一集不靠它。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 666.86,
+   "dur": 2.25,
+   "speech": "再看平均精度。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 669.29,
+   "dur": 2.61,
+   "speech": "因果零点三一六零。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 672.07,
+   "dur": 2.61,
+   "speech": "对称零点四四一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 674.86,
+   "dur": 3.49,
+   "speech": "离线指标偏偏喜欢偷看的那个。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 678.53,
+   "dur": 2.17,
+   "speech": "高零点一二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 680.89,
+   "dur": 1.6,
+   "speech": "为什么。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 682.66,
+   "dur": 2.82,
+   "speech": "因为对称核有未来信息。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 685.67,
+   "dur": 3.28,
+   "speech": "尖峰的前后两天它都看得见。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 689.12,
+   "dur": 2.46,
+   "speech": "重构更容易贴合。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 691.77,
+   "dur": 2.87,
+   "speech": "所以曲线更靠右上。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 694.82,
+   "dur": 3.28,
+   "speech": "这条曲线画出来几乎重合。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 698.27,
+   "dur": 2.94,
+   "speech": "操作点上的差距也很小。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 701.4,
+   "dur": 2.53,
+   "speech": "但平均精度分得开。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 704.11,
+   "dur": 2.34,
+   "speech": "这就是问题所在。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 706.63,
+   "dur": 2.61,
+   "speech": "离线说对称更好。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 709.42,
+   "dur": 2.46,
+   "speech": "上线不是这么回事。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 712.06,
+   "dur": 2.37,
+   "speech": "换成上线口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 714.61,
+   "dur": 3.35,
+   "speech": "九千九百个位置，同一批窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 718.14,
+   "dur": 3.23,
+   "speech": "从每个位置往后全部补零。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 721.55,
+   "dur": 3.09,
+   "speech": "因果模型，最大偏差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 724.81,
+   "dur": 1.86,
+   "speech": "逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 726.85,
+   "dur": 3.93,
+   "speech": "位置级 F1，离线零点三三六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 730.96,
+   "dur": 3.47,
+   "speech": "上线口径也是零点三三六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 734.61,
+   "dur": 3.66,
+   "speech": "对称模型，最大偏差零点四零二。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 738.45,
+   "dur": 2.7,
+   "speech": "两个百分点位置翻转。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 741.33,
+   "dur": 3.52,
+   "speech": "位置级 F1 从零点三一二三。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 745.03,
+   "dur": 2.7,
+   "speech": "变成零点五三四四。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 747.91,
+   "dur": 1.79,
+   "speech": "注意方向。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 749.88,
+   "dur": 2.73,
+   "speech": "它变好了，不是变差。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 752.79,
+   "dur": 3.3,
+   "speech": "补零让它误报更多，召回涨了。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 756.27,
+   "dur": 3.25,
+   "speech": "但这不是它的真实上线表现。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 759.71,
+   "dur": 2.89,
+   "speech": "真实上线是逐点递推。"
+  },
+  {
+   "scene": "verification",
+   "index": 61,
+   "start": 762.78,
+   "dur": 2.77,
+   "speech": "补零只是其中一种模拟。"
+  },
+  {
+   "scene": "verification",
+   "index": 62,
+   "start": 765.73,
+   "dur": 2.2,
+   "speech": "关键不在这里。"
+  },
+  {
+   "scene": "verification",
+   "index": 63,
+   "start": 768.11,
+   "dur": 4.21,
+   "speech": "关键在因果模型的两种口径完全一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 64,
+   "start": 772.51,
+   "dur": 3.09,
+   "speech": "这是可以写进合同的承诺。"
+  },
+  {
+   "scene": "verification",
+   "index": 65,
+   "start": 775.77,
+   "dur": 2.85,
+   "speech": "最后看几组黄金读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 66,
+   "start": 778.8,
+   "dur": 3.66,
+   "speech": "尖峰注入段交并比零点二九五。"
+  },
+  {
+   "scene": "verification",
+   "index": 67,
+   "start": 782.64,
+   "dur": 3.54,
+   "speech": "误差峰落在注入段内，百分之百。"
+  },
+  {
+   "scene": "verification",
+   "index": 68,
+   "start": 786.36,
+   "dur": 3.33,
+   "speech": "段找得粗，但没找错地方。"
+  },
+  {
+   "scene": "verification",
+   "index": 69,
+   "start": 789.87,
+   "dur": 4.24,
+   "speech": "膨胀感受野，公式三十一，实测三十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 70,
+   "start": 794.29,
+   "dur": 4.33,
+   "speech": "梯度检查，最大误差八点七乘十的负十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 71,
+   "start": 798.8,
+   "dur": 3.54,
+   "speech": "训练损失十二轮降两个数量级。"
+  },
+  {
+   "scene": "verification",
+   "index": 72,
+   "start": 802.52,
+   "dur": 4.84,
+   "speech": "双重卷积，取最大读数是均值的一点八六倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 73,
+   "start": 807.54,
+   "dur": 4.14,
+   "speech": "取均值读法和均匀核卷积逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 74,
+   "start": 811.86,
+   "dur": 2.56,
+   "speech": "这些数都在检查里。"
+  },
+  {
+   "scene": "verification",
+   "index": 75,
+   "start": 814.6,
+   "dur": 1.84,
+   "speech": "结论三句。"
+  },
+  {
+   "scene": "verification",
+   "index": 76,
+   "start": 816.62,
+   "dur": 3.88,
+   "speech": "第一，因果卷积的离线分数不高。"
+  },
+  {
+   "scene": "verification",
+   "index": 77,
+   "start": 820.68,
+   "dur": 2.58,
+   "speech": "它和对称版差不多。"
+  },
+  {
+   "scene": "verification",
+   "index": 78,
+   "start": 823.44,
+   "dur": 3.85,
+   "speech": "第二，因果卷积的上线口径可验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 79,
+   "start": 827.47,
+   "dur": 2.73,
+   "speech": "两种口径逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 80,
+   "start": 830.38,
+   "dur": 4.07,
+   "speech": "第三，对称卷积的离线分数会骗人。"
+  },
+  {
+   "scene": "verification",
+   "index": 81,
+   "start": 834.63,
+   "dur": 2.05,
+   "speech": "它奖励偷看。"
+  },
+  {
+   "scene": "verification",
+   "index": 82,
+   "start": 836.86,
+   "dur": 2.87,
+   "speech": "这一集报的是可验证性。"
+  },
+  {
+   "scene": "verification",
+   "index": 83,
+   "start": 839.91,
+   "dur": 2.41,
+   "speech": "不是更高的准确率。"
+  },
+  {
+   "scene": "verification",
+   "index": 84,
+   "start": 842.51,
+   "dur": 2.34,
+   "speech": "这个区别很重要。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 848.25,
+   "dur": 1.96,
+   "speech": "四条边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 850.39,
+   "dur": 2.65,
+   "speech": "边界一，差距太小。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 853.22,
+   "dur": 3.28,
+   "speech": "零点零零五五，讲不出故事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 856.68,
+   "dur": 3.25,
+   "speech": "所以这一集不拿它当主张。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 860.11,
+   "dur": 2.97,
+   "speech": "主张放在逐位相同上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 863.26,
+   "dur": 3.09,
+   "speech": "边界二，形态替换是盲区。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 866.53,
+   "dur": 2.34,
+   "speech": "两个模型都是零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 869.05,
+   "dur": 2.89,
+   "speech": "卷积只认局部形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 872.12,
+   "dur": 3.3,
+   "speech": "整段换一只股票，误差不大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 875.6,
+   "dur": 3.09,
+   "speech": "这和三十二集的结论接上了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 878.87,
+   "dur": 2.89,
+   "speech": "边界三，段定位粗糙。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 881.94,
+   "dur": 3.16,
+   "speech": "交并比只有零点二九五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 885.28,
+   "dur": 3.4,
+   "speech": "误差峰在段内，但边界糊。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 888.86,
+   "dur": 3.57,
+   "speech": "尖峰太窄，重构误差会摊开。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 892.61,
+   "dur": 3.61,
+   "speech": "边界四，双重卷积公式有歧义。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 896.4,
+   "dur": 2.99,
+   "speech": "书上的式子和正文对不上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 899.57,
+   "dur": 3.4,
+   "speech": "两种读法都实现，都留了读数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 903.15,
+   "dur": 3.13,
+   "speech": "哪一种对，得看后续章节。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 906.46,
+   "dur": 1.98,
+   "speech": "这一集不判。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 908.62,
+   "dur": 2.29,
+   "speech": "四条边界讲完。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 911.1,
+   "dur": 1.72,
+   "speech": "三笔债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 913,
+   "dur": 3.33,
+   "speech": "第一笔，上线口径只是模拟。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 916.5,
+   "dur": 3.11,
+   "speech": "补零不等于真实在线滚动。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 919.79,
+   "dur": 2.77,
+   "speech": "真实系统要逐点递推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 922.75,
+   "dur": 2.61,
+   "speech": "那是另一个工程问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 925.53,
+   "dur": 2.99,
+   "speech": "第二笔，长程依赖还没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 928.7,
+   "dur": 2.39,
+   "speech": "感受野三十一天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 931.27,
+   "dur": 3.35,
+   "speech": "再长的记忆，卷积要加层。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 934.8,
+   "dur": 2.37,
+   "speech": "或者换一种结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 937.35,
+   "dur": 3.18,
+   "speech": "第三笔，多变量面板没用上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 940.71,
+   "dur": 2.99,
+   "speech": "现在是一只股票一个窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 943.88,
+   "dur": 2.49,
+   "speech": "横截面信息没进来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 946.55,
+   "dur": 2.53,
+   "speech": "这一集证明了一件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 949.26,
+   "dur": 2.58,
+   "speech": "因果性可以离线验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 952.02,
+   "dur": 2.27,
+   "speech": "不用上线才知道。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 954.47,
+   "dur": 2.94,
+   "speech": "下一集，把记忆交给门。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 957.59,
+   "dur": 2.8,
+   "speech": "GRU 和 LSTM。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 960.57,
+   "dur": 3.16,
+   "speech": "预测下一段，误差就是分数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 963.91,
+   "dur": 2.65,
+   "speech": "第 33 集就到这里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 966.74,
+   "dur": 1.81,
+   "speech": "下一集见。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 971.96,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 974.24,
+   "dur": 2.97,
+   "speech": "第一，卷积默认看两边。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 977.39,
+   "dur": 2.46,
+   "speech": "左填充才叫因果。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 980.03,
+   "dur": 3.61,
+   "speech": "第二，离线分数不等于上线分数。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 983.82,
+   "dur": 3.04,
+   "speech": "对称核的两种口径不一样。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 987.04,
+   "dur": 4.05,
+   "speech": "第三，因果模型两种口径逐位相同。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 991.27,
+   "dur": 2.68,
+   "speech": "这才是能验证的承诺。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 994.13,
+   "dur": 2.7,
+   "speech": "感受野靠膨胀撑开。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 997.01,
+   "dur": 3.88,
+   "speech": "k 三，d 一二四八，三十一天。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1001.07,
+   "dur": 3.71,
+   "speech": "下一集，GRU 与 LSTM。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1004.96,
+   "dur": 2.53,
+   "speech": "第 33 集，完。"
+  }
+ ]
+}
