@@ -1,6 +1,6 @@
 # STATUS — video_project 内容仓状态
 
-> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-11-01T17:50:19+08:00。
+> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-11-01T19:01:23+08:00。
 
 | id | title | status | sec | audio | derived | delivery | BV |
 |---|---|---|---|---|---|---|---|
@@ -51,7 +51,7 @@
 | tsint-29-prob-copula-ddpm-flow | 概率生成补集：Copula、扩散损失、连续流 | ready | - | yes | ok | 11 | - |
 | tsint-30-ad-foundation-window-score | 地基：窗口·指标·评分——异常检测里 80% 的差别不在模型 | ready | - | yes | ok | 11 | - |
 | tsint-31-ad-threshold-and-baselines | 分数怎么变成 0/1：阈值、分类器，与最笨的基线 | ready | - | yes | ok | 11 | - |
-| tsint-32-ad-classic-unsupervised | 三种几何直觉：距离、密度、随机分割 | draft | 1200 | silent | ok | 1 | - |
+| tsint-32-ad-classic-unsupervised | 三种几何直觉：距离、密度、随机分割 | ready | - | yes | ok | 11 | - |
 | tsint-33-ad-causal-dilated-conv | 卷积看见了未来：因果卷积、膨胀核与 TCN | draft | 1680 | silent | ok | 1 | - |
 | tsint-34-ad-gru-lstm-predictor | 预测未来，误差就是分数：GRU 单元与 LSTM 预测器 | draft | 1440 | silent | ok | 1 | - |
 | tsint-35-ad-attention-assoc-discrepancy | 注意力矩阵里的异常：关联差异、两阶段焦点与次邻域遮罩 | draft | 1800 | silent | ok | 1 | - |
