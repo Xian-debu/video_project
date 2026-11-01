@@ -1,0 +1,1702 @@
+{
+ "entry": "src/tsint-27-patch-embed-and-two-attn/script.ts",
+ "fps": 30,
+ "totalSec": 708.28,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 80.91
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 80.91,
+   "dur": 89.3
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 170.21,
+   "dur": 124.52
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 294.73,
+   "dur": 85.94
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 380.67,
+   "dur": 104.52
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 485.19,
+   "dur": 98.47
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 583.66,
+   "dur": 80.84
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 664.5,
+   "dur": 43.78
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.94,
+   "speech": "第三篇章，第二十七集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.32,
+   "dur": 4,
+   "speech": "上一集，把九十六步压成了十二步。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.5,
+   "dur": 2.32,
+   "speech": "这一集换一条路。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11,
+   "dur": 2.99,
+   "speech": "不压时间轴，改压注意力。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.17,
+   "dur": 4.57,
+   "speech": "九十六个时间点，注意力矩阵九十六乘九十六。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 18.92,
+   "dur": 3.28,
+   "speech": "一共九千二百一十六对交互。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.38,
+   "dur": 2.41,
+   "speech": "切成十一个块之后。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 24.97,
+   "dur": 2.32,
+   "speech": "只剩十一乘十一。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 27.47,
+   "dur": 2.05,
+   "speech": "一百二十一对。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 29.71,
+   "dur": 2.13,
+   "speech": "少了七十六倍。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 32.01,
+   "dur": 3.21,
+   "speech": "这就是 PatchTST 的出发点。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 35.4,
+   "dur": 3.13,
+   "speech": "再加一个交叉注意力解码器。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 38.71,
+   "dur": 3.09,
+   "speech": "让解码端的二十四个查询。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 41.98,
+   "dur": 3.4,
+   "speech": "直接读到编码端的九十六个记忆。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 45.56,
+   "dur": 2.99,
+   "speech": "三个模块，本集都实现。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 48.73,
+   "dur": 1.72,
+   "speech": "块嵌入。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 50.62,
+   "dur": 2.46,
+   "speech": "通道独立的编码器。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 53.27,
+   "dur": 2.37,
+   "speech": "交叉注意力解码。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 55.81,
+   "dur": 2.85,
+   "speech": "参数分别是五百四十四。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 58.84,
+   "dur": 2.49,
+   "speech": "两万零七百三十六。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 61.5,
+   "dur": 2.77,
+   "speech": "和一万七千一百五十二。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 64.46,
+   "dur": 2.92,
+   "speech": "全部有测试，有读数。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 67.56,
+   "dur": 2.65,
+   "speech": "但先说清楚一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 70.39,
+   "dur": 2.2,
+   "speech": "本集没有训练。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 72.77,
+   "dur": 2.34,
+   "speech": "也不报预测精度。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 75.29,
+   "dur": 3.42,
+   "speech": "只报结构和真实数据上的性质。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 82.11,
+   "dur": 2.29,
+   "speech": "逐点模型怎么做。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 84.58,
+   "dur": 2.99,
+   "speech": "九十六步，每步一个向量。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 87.75,
+   "dur": 3.35,
+   "speech": "自注意力在九十六个位置之间做。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 91.28,
+   "dur": 2.05,
+   "speech": "平方复杂度。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 93.52,
+   "dur": 4,
+   "speech": "九十六乘九十六，九千二百一十六对。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 97.7,
+   "dur": 4.07,
+   "speech": "参数量不算大，但交互对数是平方的。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 101.95,
+   "dur": 2.08,
+   "speech": "窗口再长呢。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 104.2,
+   "dur": 3.33,
+   "speech": "三百三十六步，就是十一万对。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 107.71,
+   "dur": 2.94,
+   "speech": "所以时间序列里的注意力。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 110.83,
+   "dur": 2.94,
+   "speech": "第一刀通常砍在时间轴上。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 113.95,
+   "dur": 1.67,
+   "speech": "怎么砍。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 115.8,
+   "dur": 3.28,
+   "speech": "把相邻的若干步并成一个块。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 119.26,
+   "dur": 2.25,
+   "speech": "这一步叫分块。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 121.69,
+   "dur": 2.65,
+   "speech": "每个块用一个向量表示。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 124.52,
+   "dur": 2.92,
+   "speech": "块数从九十六降到十一。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 127.62,
+   "dur": 2.94,
+   "speech": "交互从九千二百一十六。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 130.74,
+   "dur": 2.27,
+   "speech": "降到一百二十一。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 133.19,
+   "dur": 2.03,
+   "speech": "代价是什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 135.4,
+   "dur": 2.27,
+   "speech": "块内部十六步。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 137.85,
+   "dur": 3.28,
+   "speech": "被一个线性映射压成一个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 141.31,
+   "dur": 2.27,
+   "speech": "块内的细节没了。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 143.76,
+   "dur": 2.73,
+   "speech": "只能靠块间的关系补。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 146.67,
+   "dur": 2.05,
+   "speech": "这是一个赌注。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 148.9,
+   "dur": 2.68,
+   "speech": "赌块内的高频不重要。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 151.76,
+   "dur": 3.18,
+   "speech": "赌块间的低频结构更重要。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 155.12,
+   "dur": 2.37,
+   "speech": "PatchTST 赌了。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 157.67,
+   "dur": 2.27,
+   "speech": "它还有第二个赌注。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 160.12,
+   "dur": 2.56,
+   "speech": "通道之间互相独立。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 162.85,
+   "dur": 2.61,
+   "speech": "每个通道单独建模。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 165.64,
+   "dur": 2.37,
+   "speech": "这条更反直觉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 171.41,
+   "dur": 2.27,
+   "speech": "定义一，块嵌入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 173.86,
+   "dur": 3.52,
+   "speech": "九十六步，块长十六，步长八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 177.56,
+   "dur": 3.35,
+   "speech": "第一个块是第一步到第十六步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 181.09,
+   "dur": 2.89,
+   "speech": "第二个块从第九步开始。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 184.16,
+   "dur": 3.13,
+   "speech": "所以相邻块重叠八个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 187.48,
+   "dur": 2.05,
+   "speech": "块数怎么算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 189.71,
+   "dur": 3.71,
+   "speech": "九十六减十六，除以八，加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 193.6,
+   "dur": 1.77,
+   "speech": "等于十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 195.55,
+   "dur": 1.74,
+   "speech": "不是十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 197.47,
+   "dur": 2.34,
+   "speech": "这个一必须记住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 199.99,
+   "dur": 3.59,
+   "speech": "每个块乘一个十六乘三十二的矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 203.76,
+   "dur": 2.29,
+   "speech": "加三十二个偏置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 206.23,
+   "dur": 2.87,
+   "speech": "十六乘三十二加三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 209.28,
+   "dur": 2.34,
+   "speech": "五百四十四个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 211.81,
+   "dur": 2.56,
+   "speech": "再加十一个位置编码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 214.54,
+   "dur": 2.1,
+   "speech": "三百五十二个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 216.83,
+   "dur": 2.85,
+   "speech": "输出是十一行三十二列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 219.85,
+   "dur": 3.25,
+   "speech": "定义二，PatchTST 编码器。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 223.29,
+   "dur": 2.58,
+   "speech": "每个通道自己走一遍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 226.05,
+   "dur": 2.89,
+   "speech": "一层编码器，四个头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 229.12,
+   "dur": 2.68,
+   "speech": "前馈宽度一百二十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 231.98,
+   "dur": 4.05,
+   "speech": "注意力四块方阵，四乘三十二的平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 236.21,
+   "dur": 2.17,
+   "speech": "四千零九十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 238.56,
+   "dur": 4.17,
+   "speech": "前馈两层，二乘三十二乘一百二十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 242.91,
+   "dur": 2.25,
+   "speech": "八千一百九十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 245.33,
+   "dur": 3.33,
+   "speech": "编码器一万二千二百八十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 248.84,
+   "dur": 3.01,
+   "speech": "预测头是十一乘三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 252.03,
+   "dur": 2.29,
+   "speech": "再乘二十四步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 254.51,
+   "dur": 2.32,
+   "speech": "八千四百四十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 257,
+   "dur": 3.01,
+   "speech": "合计两万零七百三十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 260.2,
+   "dur": 3.18,
+   "speech": "定义三，交叉注意力解码器。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 263.56,
+   "dur": 3.13,
+   "speech": "查询来自解码端，二十四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 266.87,
+   "dur": 3.23,
+   "speech": "键和值来自编码端的记忆。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 270.28,
+   "dur": 4.24,
+   "speech": "每层有自注意力、交叉注意力、前馈。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 274.7,
+   "dur": 2.8,
+   "speech": "自注意力带因果掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 277.68,
+   "dur": 2.34,
+   "speech": "交叉注意力不掩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 280.2,
+   "dur": 2.85,
+   "speech": "归一化都在残差之后。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 283.23,
+   "dur": 2.46,
+   "speech": "也就是 Post-LN。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 285.87,
+   "dur": 3.9,
+   "speech": "八个方阵，加两段前馈，加查询。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 289.95,
+   "dur": 2.58,
+   "speech": "一万七千一百五十二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 295.93,
+   "dur": 2.27,
+   "speech": "先看块怎么铺。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 298.38,
+   "dur": 2.34,
+   "speech": "九十六根收盘价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 300.9,
+   "dur": 2.65,
+   "speech": "第一块盖住一到十六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 303.74,
+   "dur": 2.87,
+   "speech": "第二块盖住九到二十四。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 306.79,
+   "dur": 2.49,
+   "speech": "每块往后挪八个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 309.45,
+   "dur": 3.16,
+   "speech": "最后一块从八十一到九十六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 312.79,
+   "dur": 1.96,
+   "speech": "正好十一个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 314.93,
+   "dur": 2.13,
+   "speech": "若要十二个块。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 317.23,
+   "dur": 2.8,
+   "speech": "步长得是六又三分之二。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 320.21,
+   "dur": 1.72,
+   "speech": "不均匀。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 322.11,
+   "dur": 4,
+   "speech": "所以书上写的十二是九十六除以八。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 326.29,
+   "dur": 2.56,
+   "speech": "真正的块数是十一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 329.03,
+   "dur": 2.1,
+   "speech": "再看感受野。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 331.31,
+   "dur": 3.04,
+   "speech": "第一个块只看到前十六步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 334.53,
+   "dur": 2.89,
+   "speech": "改第十六步，第一个块变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 337.6,
+   "dur": 3.09,
+   "speech": "改第十七步，第一个块不变。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 340.87,
+   "dur": 2.15,
+   "speech": "这条性质能测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 343.2,
+   "dur": 2.05,
+   "speech": "读出十六步。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 345.43,
+   "dur": 2.27,
+   "speech": "后面全是空的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 347.88,
+   "dur": 2.63,
+   "speech": "这就是分辨率的代价。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 350.69,
+   "dur": 2.27,
+   "speech": "再看注意力矩阵。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 353.14,
+   "dur": 2.51,
+   "speech": "横轴是九十六个位置。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 355.83,
+   "dur": 2.7,
+   "speech": "纵轴是二十四个查询。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 358.71,
+   "dur": 2.13,
+   "speech": "每行和是一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 361.02,
+   "dur": 2.87,
+   "speech": "但这个矩阵是未训练的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 364.07,
+   "dur": 2.61,
+   "speech": "查询是随机初始化。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 366.85,
+   "dur": 2.92,
+   "speech": "位置是固定的线性投影。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 369.95,
+   "dur": 2.63,
+   "speech": "所以它只说明结构。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 372.76,
+   "dur": 2.89,
+   "speech": "不说明模型学到了什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 375.84,
+   "dur": 2.63,
+   "speech": "这句话要写进画面。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 381.87,
+   "dur": 2.99,
+   "speech": "三个模块，都在 Haskell 里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 385.04,
+   "dur": 3.01,
+   "speech": "PatchEmbed.hs 最短。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 388.23,
+   "dur": 4.14,
+   "speech": "切片、乘矩阵、加偏置、加位置。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 392.56,
+   "dur": 2.63,
+   "speech": "一个入口 peForward。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 395.37,
+   "dur": 3.23,
+   "speech": "PatchTst.hs 长一些。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 398.78,
+   "dur": 2.49,
+   "speech": "先切块，再嵌入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 401.44,
+   "dur": 2.53,
+   "speech": "然后过一层编码器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 404.16,
+   "dur": 2.49,
+   "speech": "多头注意力加残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 406.82,
+   "dur": 2.15,
+   "speech": "前馈加残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 409.15,
+   "dur": 3.13,
+   "speech": "两次层归一化都在后面。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 412.47,
+   "dur": 2.46,
+   "speech": "最后按通道循环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 415.11,
+   "dur": 2.87,
+   "speech": "每个通道输出二十四步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 418.16,
+   "dur": 2.34,
+   "speech": "再拼回一张表。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 420.68,
+   "dur": 2.2,
+   "speech": "这里踩了一个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 423.06,
+   "dur": 2.58,
+   "speech": "拼表用的是行主序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 425.82,
+   "dur": 3.09,
+   "speech": "但 V.concat 是列主序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 429.09,
+   "dur": 3.21,
+   "speech": "第一次跑出来通道差三点四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 432.47,
+   "dur": 2.7,
+   "speech": "看起来像模型不独立。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 435.35,
+   "dur": 2.2,
+   "speech": "其实是拼错了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 437.73,
+   "dur": 3.18,
+   "speech": "修完之后通道差精确为零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 441.09,
+   "dur": 2.97,
+   "speech": "第二个模块方向要钉死。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 444.24,
+   "dur": 3.54,
+   "speech": "交叉注意力里，查询来自解码端。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 447.96,
+   "dur": 2.94,
+   "speech": "键和值来自编码端。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 451.08,
+   "dur": 2.08,
+   "speech": "反过来也能跑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 453.34,
+   "dur": 2.7,
+   "speech": "但那就不是解码器了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 456.22,
+   "dur": 3.09,
+   "speech": "所以写了两个翻转测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 459.49,
+   "dur": 3.47,
+   "speech": "交换查询和记忆，输出必须变。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 463.14,
+   "dur": 3.64,
+   "speech": "第三个坑是层归一化的 epsilon。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 466.96,
+   "dur": 3.21,
+   "speech": "方差里加了一乘十的负五次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 470.34,
+   "dur": 3.35,
+   "speech": "标准差是零点九九九九五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 473.87,
+   "dur": 2.15,
+   "speech": "不是精确的一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 476.2,
+   "dur": 3.23,
+   "speech": "测试阈值放到一万分之一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 479.61,
+   "dur": 3.37,
+   "speech": "这不是放水，是写清口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 486.39,
+   "dur": 2.92,
+   "speech": "三十一项检查，三组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 489.49,
+   "dur": 2.13,
+   "speech": "块嵌入十二项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 491.79,
+   "dur": 2.34,
+   "speech": "PatchTST 十项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 494.32,
+   "dur": 2.34,
+   "speech": "交叉注意力九项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 496.84,
+   "dur": 1.69,
+   "speech": "零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 498.71,
+   "dur": 1.67,
+   "speech": "断言呢。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 500.56,
+   "dur": 2.17,
+   "speech": "块嵌入二十条。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 502.92,
+   "dur": 2.61,
+   "speech": "PatchTST 二十条。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 505.7,
+   "dur": 2.53,
+   "speech": "交叉注意力十六条。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 508.42,
+   "dur": 3.54,
+   "speech": "全仓九十二套，一千二百五十一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 512.14,
+   "dur": 1.69,
+   "speech": "零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 514.01,
+   "dur": 2.15,
+   "speech": "读数一条条看。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 516.34,
+   "dur": 2.41,
+   "speech": "块嵌入：十一块。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 518.94,
+   "dur": 2.29,
+   "speech": "参数五百四十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 521.41,
+   "dur": 2.27,
+   "speech": "位置三百五十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 523.86,
+   "dur": 2.1,
+   "speech": "切片误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 526.14,
+   "dur": 2.99,
+   "speech": "不重叠时能拼回六块。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 529.31,
+   "dur": 2.05,
+   "speech": "拼回误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 531.55,
+   "dur": 4.33,
+   "speech": "PatchTST：编码器一万二千二百八十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 536.06,
+   "dur": 2.58,
+   "speech": "头八千四百四十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 538.82,
+   "dur": 3.01,
+   "speech": "合计两万零七百三十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 542.02,
+   "dur": 1.93,
+   "speech": "通道差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 544.13,
+   "dur": 3.4,
+   "speech": "置换差八点九乘十的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 547.71,
+   "dur": 3.9,
+   "speech": "遮挡一块，输出差一点五乘十的负二。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 551.79,
+   "dur": 2.2,
+   "speech": "感受野十六步。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 554.17,
+   "dur": 2.34,
+   "speech": "交互一百二十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 556.69,
+   "dur": 2.65,
+   "speech": "稠密九千二百一十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 559.52,
+   "dur": 2.46,
+   "speech": "比值七十六点一七。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 562.17,
+   "dur": 4.07,
+   "speech": "交叉注意力：参数一万七千一百五十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 566.42,
+   "dur": 3.13,
+   "speech": "查询标准差零点零二零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 569.73,
+   "dur": 3.25,
+   "speech": "单记忆 token，权重全一。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 573.16,
+   "dur": 1.91,
+   "speech": "分支误差零。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 575.25,
+   "dur": 2.32,
+   "speech": "上三角最大零。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 577.75,
+   "dur": 3.71,
+   "speech": "行和误差四点四乘十的负十六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 584.86,
+   "dur": 1.91,
+   "speech": "边界四条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 586.95,
+   "dur": 2.22,
+   "speech": "第一，没有训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 589.35,
+   "dur": 3.81,
+   "speech": "所有读数都是结构与初始化的性质。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 593.34,
+   "dur": 2.17,
+   "speech": "不报预测精度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 595.69,
+   "dur": 2.49,
+   "speech": "不能说得比证据多。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 598.36,
+   "dur": 3.01,
+   "speech": "第二，块内信息是有损的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 601.55,
+   "dur": 2.77,
+   "speech": "十六步压成一个向量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 604.51,
+   "dur": 2.17,
+   "speech": "一个线性映射。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 606.86,
+   "dur": 2.39,
+   "speech": "它可能抹掉高频。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 609.43,
+   "dur": 2.68,
+   "speech": "这是方法本身的设计。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 612.29,
+   "dur": 2.17,
+   "speech": "不是实现的 bug。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 614.64,
+   "dur": 3.42,
+   "speech": "第三，注意力热图是未训练的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 618.24,
+   "dur": 2.37,
+   "speech": "查询随机初始化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 620.79,
+   "dur": 2.92,
+   "speech": "位置是固定的线性投影。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 623.89,
+   "dur": 2.89,
+   "speech": "所以它只能说明形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 626.96,
+   "dur": 3.04,
+   "speech": "不能说明模型关注哪里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 630.18,
+   "dur": 2.58,
+   "speech": "第四，单一面板。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 632.94,
+   "dur": 3.3,
+   "speech": "八个通道，两千六百五十七行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 636.42,
+   "dur": 2.58,
+   "speech": "三百一十八个窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 639.19,
+   "dur": 2.63,
+   "speech": "训练段二百二十二个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 642,
+   "dur": 2.44,
+   "speech": "不外推到全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 644.61,
+   "dur": 1.98,
+   "speech": "还有三笔债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 646.78,
+   "dur": 2.08,
+   "speech": "算法卡没写。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 649.03,
+   "dur": 2.49,
+   "speech": "demo 子命令没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 651.7,
+   "dur": 2.44,
+   "speech": "端到端训练没做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 654.32,
+   "dur": 2.41,
+   "speech": "这些不影响交付。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 656.91,
+   "dur": 2.29,
+   "speech": "但都记在账上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 659.39,
+   "dur": 2.92,
+   "speech": "所以这一集仍算 ready。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 665.7,
+   "dur": 1.77,
+   "speech": "三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 667.65,
+   "dur": 3.54,
+   "speech": "分块把交互从九千二百一十六。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 671.37,
+   "dur": 2.27,
+   "speech": "降到一百二十一。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 673.82,
+   "dur": 2.63,
+   "speech": "代价是块内的细节。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 676.63,
+   "dur": 3.23,
+   "speech": "交叉注意力的方向必须钉死。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 680.04,
+   "dur": 2.29,
+   "speech": "查询在解码端。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 682.51,
+   "dur": 2.37,
+   "speech": "键值在编码端。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 685.06,
+   "dur": 2.92,
+   "speech": "下一集，通道三补集。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 688.16,
+   "dur": 4.17,
+   "speech": "混合 MLP、路由注意力、动态聚类。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 692.5,
+   "dur": 3.06,
+   "speech": "把时间轴换成通道轴。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 695.74,
+   "dur": 2.49,
+   "speech": "第 27 集的证词是："
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 698.41,
+   "dur": 2.34,
+   "speech": "压掉的是分辨率。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 700.93,
+   "dur": 2.46,
+   "speech": "换回来的是全局。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 703.57,
+   "dur": 2.51,
+   "speech": "第 27 集，完。"
+  }
+ ]
+}
