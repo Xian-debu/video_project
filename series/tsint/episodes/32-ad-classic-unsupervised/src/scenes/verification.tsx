@@ -7,21 +7,21 @@ const W = 740, H = 520, PL = 76, PB = 58, PT = 34;
 const px = (r: number) => PL + r * (W - PL - 24);
 const py = (p: number) => H - PB - p * (H - PB - PT);
 
-const PRPlot: React.FC<{ det: string; color: string }> = ({ det, color }) => {
-  const cur = M.curves.spike[det];
+const PRPlot: React.FC<{ det: string; color: string; inj: "spike" | "swap"; dash?: string; mark?: boolean }> = ({ det, color, inj, dash, mark }) => {
+  const cur = M.curves[inj][det];
   const sorted = [...cur].sort((a, b) => a[2] - b[2]);
   const d = sorted.map((p, i) => (i === 0 ? "M" : "L") + px(p[2]).toFixed(1) + "," + py(p[1]).toFixed(1)).join(" ");
-  const r = read("spike", det);
+  const r = read(inj, det);
   return (
     <g>
-      <path d={d} fill="none" stroke={color} strokeWidth={2.4} opacity={0.95} />
-      <circle cx={px(r.r)} cy={py(r.p)} r={6} fill={color} stroke={C.bg} strokeWidth={2} />
+      <path d={d} fill="none" stroke={color} strokeWidth={mark ? 2.4 : 1.9} strokeDasharray={dash} opacity={mark ? 0.95 : 0.75} />
+      {mark ? <circle cx={px(r.r)} cy={py(r.p)} r={6} fill={color} stroke={C.bg} strokeWidth={2} /> : null}
     </g>
   );
 };
 
 export const SVerification: React.FC = () => {
-  const at = [0, pageAt("verification", 17), pageAt("verification", 28), pageAt("verification", 39)];
+  const at = [0, pageAt("verification", 15), pageAt("verification", 22), pageAt("verification", 31)];
   const k = read("spike", "kmeans"), l = read("spike", "lof"), f = read("spike", "iforest");
   const ks = read("swap", "kmeans"), ls = read("swap", "lof"), fs = read("swap", "iforest");
   return (
@@ -73,16 +73,23 @@ export const SVerification: React.FC = () => {
                   <text x={px(t)} y={H - PB + 20} textAnchor="middle" fill={C.inkFaint} fontFamily={FONT.mono} fontSize={FT.micro}>{t.toFixed(1)}</text>
                 </g>
               ))}
-              <PRPlot det="kmeans" color={C.cyan} />
-              <PRPlot det="lof" color={C.amber} />
-              <PRPlot det="iforest" color={C.violet} />
+              <PRPlot det="kmeans" color={C.cyan} inj="spike" mark />
+              <PRPlot det="lof" color={C.amber} inj="spike" mark />
+              <PRPlot det="iforest" color={C.violet} inj="spike" mark />
+              <PRPlot det="kmeans" color={C.cyan} inj="swap" dash="7 5" />
+              <PRPlot det="lof" color={C.amber} inj="swap" dash="7 5" />
+              <PRPlot det="iforest" color={C.violet} inj="swap" dash="7 5" />
               <text x={W / 2} y={H - 12} textAnchor="middle" fill={C.inkFaint} fontFamily={FONT.mono} fontSize={FT.micro}>召回 Recall</text>
               <text x={16} y={H / 2} textAnchor="middle" transform={"rotate(-90 16 " + H / 2 + ")"} fill={C.inkFaint} fontFamily={FONT.mono} fontSize={FT.micro}>精度 Precision</text>
             </svg>
+            <div style={{ paddingLeft: PL, marginTop: 6, fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkDim }}>
+              纵轴 0–1：虚线三条全部贴着横轴，最好点 0.035。
+            </div>
             <div style={{ display: "flex", gap: 24, paddingLeft: PL, marginTop: 8 }}>
               <span style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.cyan }}>K 均值</span>
               <span style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.amber }}>LOF</span>
               <span style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.violet }}>孤立森林</span>
+              <span style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint }}>实线 尖峰 · 虚线 形态替换</span>
               <span style={{ fontFamily: FONT.sans, fontSize: FT.meta, color: C.inkFaint }}>圆点 = 测试段 99% 分位</span>
             </div>
           </div>
