@@ -83,6 +83,27 @@
 
 ## Delivery
 
-（成片完成后补：mp4 时长 / 字节 / LUFS / 闪烁门 / 字幕条数与换行 / 导出四件 / 混音与 stem 读数 /
-make 轮次与静帧修整 / 证据与测试总数 / 四个仓库的 pin。）
+- 成片 `delivery/Tsint38AdGraphContrastive.mp4`：1,087.07 s / 32,612 帧 / 8 场 28 页 / 51,994,244 B
+  （programme_unnorm 51,723,024 B、raw_video 24,024,820 B）；−15 LUFS、TP −2 dBFS；树哈希
+  `6a7cfd19eb0effb8`，八段全重渲（reused 0 / rendered 8）。
+- 四件导出在 `delivery/`：`tsint-38.srt` 281 条（发声 912.4 s，平均 3.25 s；0 换行、最长 28 字、
+  跨度 00:00:01,200 → 00:18:04,880）、`tsint-38.chapters.txt` 8 章（首 00:00:00 / 末 00:16:47，
+  合计 1087.07 s）、`tsint-38.chapters.ffmeta.txt`、`cover.png`（帧 20 = 0.67 s，开场标题页，
+  无字幕条）；mp4 按惯例不入库。
+- 混音：48 kHz / 1,088.28 s，峰 −1.26 dBFS、RMS −26.64 dBFS，duck 4.5 dB 覆盖 57.1%，
+  musicGain −4.5、淡入 1.5 s / 淡出 2.5 s；stem 门 full −25.1 / audible −27.88（share 63.1% /
+  sub 6.8%），mix 门 speech −23.52 / gap_full −30.44 / gap_audible −33.28 / bed 36.7 全过。
+- 闪烁门：32,612 帧 mean|Δ| 0.0135、p99 0.1038、最大 9.05、7 个切点
+  （3158 / 6908 / 11513 / 15686 / 19556 / 26709 / 30216），全过。
+- make 三轮：首轮被「内容仓 dirty」拦住（派生 `data/graph.json` 未忽略，补 `.gitignore` 后过）；
+  二轮没带 `--score`，make 起了一次全新 1,088 s 分数渲染（单核 100%、>26 分钟不出字节）被我中止，
+  改回惯例 `--score=out/e04-score-loop-48k.wav`；三轮 PASS（23 个 stage 全 ok），`report.json` 的
+  content commit `817911b`、src hash `8fa343d4…`、data hash `8cf32ac5…`。
+- 静帧复核：make 只抽 4 帧，我又按 28 页页中点全量渲了一遍；抓到两处排版问题——PairBar 行高写成
+  16/18（行高 8/9 px 时两行标签与数值互相压住，直觉页、验证页各一处，改成 84），数据页把四只票名
+  塞进姓名列被折成「泸州老 / 窖」「今世 / 缘」（改成 白酒·龙头 4 只 / 白酒·次高端 3 只 /
+  啤酒 3 只 / 其他 2 只，票名挪到备注列）。改完重渲那三页＋重跑 make 才是交付版；
+  32 张复核静帧留在 `delivery/stills/`。
+- 证据 48/48、156.1 s（ts-base `beb0a57`：ch04/GNN.hs 9 条、Augment.hs 8 条、InfoNCE.hs 4 条），
+  测试 122 套 / 1,645 断言；pin 算法 `1bae41d` / 证据 `beb0a57` / 数据 `d1cce83`。
 
