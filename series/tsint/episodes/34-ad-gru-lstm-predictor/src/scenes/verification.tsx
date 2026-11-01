@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
 import {
-  PAD, M, det, prOf, fmtF, fmtP, fmtInt, pageAt, Pages, Scene, SceneHead, Stat, Card, Row, Body, Verdict, PairBar, PRPlot, Bars, K, Chip, Num,
+  PAD, M, det, prOf, fmtF, fmtP, fmtInt, pctOf, pageAt, Pages, Scene, SceneHead, Stat, Card, Row, Body, Verdict, PairBar, PRPlot, Bars, K, Chip, Num,
 } from "../shared";
 
 export const SVerification: React.FC = () => {
@@ -36,7 +36,7 @@ export const SVerification: React.FC = () => {
             <Card label="注入清单" accent={C.violet}>
               <Row name="尖峰" value={String(M.inject.count) + " 处"} note={M.inject.spike.amp + " · " + M.inject.spike.span} width={590} />
               <Row name="相位" value={String(M.inject.count) + " 处"} note={M.inject.phase.lag + " · " + M.inject.phase.how} width={590} />
-              <Row name="占比" value={M.inject.rate} note={"seed " + M.inject.seed} width={590} />
+              <Row name="占比" value={pctOf(M.inject.rate)} note={"seed " + M.inject.seed} width={590} />
               <Row name="真值" value={M.inject.truthLevel} note="只改未来窗" width={590} />
             </Card>
             <div style={{ marginTop: 18, display: "flex", gap: 12 }}>

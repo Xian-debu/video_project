@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, M, det, fmtF, fmtP, pageAt, Pages, Scene, SceneHead, Card, Row, Body, Formula, Chip, K, Num, Verdict } from "../shared";
+import { PAD, M, det, fmtF, fmtP, pctOf, pageAt, Pages, Scene, SceneHead, Card, Row, Body, Formula, Chip, K, Num, Verdict } from "../shared";
 
 export const SDefinitions: React.FC = () => {
   const at = [0, pageAt("definitions", 12), pageAt("definitions", 26), pageAt("definitions", 32)];
@@ -94,7 +94,7 @@ export const SDefinitions: React.FC = () => {
             <Card label="定义五 · 注入" accent={C.violet}>
               <Row name="尖峰" value={M.inject.spike.span} note={M.inject.spike.amp} width={590} />
               <Row name="相位" value={M.inject.phase.lag} note={M.inject.phase.how} width={590} />
-              <Row name="个数" value={M.inject.count + " + " + M.inject.count} note={"占测试窗 " + M.inject.rate} width={590} />
+              <Row name="个数" value={M.inject.count + " + " + M.inject.count} note={"占测试窗 " + pctOf(M.inject.rate)} width={590} />
             </Card>
             <Card label="真值" accent={C.cyan} style={{ marginTop: 18 }}>
               <Body size={FT.body} color={C.ink}>只改未来窗的真值，历史窗保持干净 —— 修的是脏数据，不是脏历史。</Body>

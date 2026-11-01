@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, CW, M, det, fmtF, fmtP, fmtInt, pageAt, Pages, Scene, SceneHead, Card, Row, Body, Formula, Chip, Num, K } from "../shared";
+import { PAD, CW, M, det, fmtF, fmtP, fmtInt, pctOf, pageAt, Pages, Scene, SceneHead, Card, Row, Body, Formula, Chip, Num, K } from "../shared";
 
 const Window: React.FC<{ title: string; accent: string; hist: number; fut: number; scoreFuture: boolean }> = ({ title, accent, hist, fut, scoreFuture }) => {
   const hasFuture = fut > 0;
@@ -94,7 +94,7 @@ export const SProblem: React.FC = () => {
             <Card label="量什么" accent={C.cyan}>
               <Row name="尖峰" value={M.inject.spike.span} note={M.inject.spike.amp} width={590} />
               <Row name="相位" value={M.inject.phase.lag} note={M.inject.phase.how} width={590} />
-              <Row name="个数" value={M.inject.count + " + " + M.inject.count} note={"占测试窗 " + M.inject.rate} width={590} />
+              <Row name="个数" value={M.inject.count + " + " + M.inject.count} note={"占测试窗 " + pctOf(M.inject.rate)} width={590} />
             </Card>
             <div style={{ marginTop: 22, display: "flex", gap: 12 }}>
               <Chip color={C.cyan}>单点</Chip>

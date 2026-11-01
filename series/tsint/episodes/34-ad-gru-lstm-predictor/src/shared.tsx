@@ -88,6 +88,8 @@ export const fmtE = (v: number, d = 2) => {
   return m.toFixed(d) + "e" + String(e).replace("-", "−");
 };
 export const fmtM = (v: number, d = 2) => v.toFixed(d);
+/** 从一句读数里只取百分比，行内值列放不下一整句。 */
+export const pctOf = (s: string) => (s.match(/[-\d.]+%/) ?? [s])[0];
 
 export const lf = (id: string, k: number): number => {
   const s = SCENES.find((x) => x.id === id);

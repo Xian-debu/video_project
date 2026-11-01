@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, M, det, fmtF, fmtInt, fmtP, pageAt, Pages, PairBar, Scene, SceneHead, Card, Row, Body, Verdict, Chip, Num } from "../shared";
+import { PAD, M, det, fmtF, fmtInt, fmtP, pctOf, pageAt, Pages, PairBar, Scene, SceneHead, Card, Row, Body, Verdict, Chip, Num } from "../shared";
 
 export const SOpen: React.FC = () => {
   const at = [0, pageAt("open", 10), pageAt("open", 22), pageAt("open", 35)];
@@ -133,7 +133,7 @@ export const SOpen: React.FC = () => {
             <Card label="注入" accent={C.cyan} style={{ marginTop: 18 }}>
               <Row name="尖峰" value={M.inject.count + " 个"} note={M.inject.spike.span + " · " + M.inject.spike.amp} width={590} />
               <Row name="相位" value={M.inject.count + " 个"} note={M.inject.phase.lag + " · " + M.inject.phase.how} width={590} />
-              <Row name="比例" value={M.inject.rate} note={"seed " + M.inject.seed} width={590} />
+              <Row name="比例" value={pctOf(M.inject.rate)} note={"seed " + M.inject.seed} width={590} />
             </Card>
           </div>
         </AbsoluteFill>
