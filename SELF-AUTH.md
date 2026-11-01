@@ -313,3 +313,13 @@
   data/episodes/21-attn-mhsa-block-masked/summary.json；没有为文档好看改读数或门限。
 - **可逆性**：高（纯文档提交，可整段回退）。
 - **返工成本**：一次（HANDOFF/E20 遗留冲突按 stash 版本取回后重做，未丢内容）。
+
+## A22 E25 交付：递归与分段成片入库（2026-11-01 下午）
+
+- **决定**：delivery 收 mp4 34,515,568 B / 773.03 s（23,191 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 frames 23,191、mean 20.73、min 14.48、max 23.63、mean|d| 0.0149、p99 0.1786、最大 8.17、7 个切点，全过；字幕 242 条 / 8 章、0 换行、最长 25 字、跨度 00:00:01,200 → 00:12:50,840（发声 703.7 s），章节合计 773.04 s。
+- **决定**：四件导出（srt / chapters / ffmeta / cover）放 pack 的 delivery/，mp4 按惯例不入库；封面帧 10414（347.13 s），无字幕条，publish 一次通过。
+- **决定**：证据 31/31（ch3-rnn 13 条 / ch3-segrnn 15 条断言，31 项检查），测试 87 套 / 1,161 断言；plan.md 的 status 从 draft 改为 ready 并补 Delivery，头部钉住 算法 ts-base bec487f / 证据 dd22478 / 数据 ts-admin a5c3ae5。
+- **决定（编号漂移登记）**：本仓 SELF-AUTH 在 A21 之后停了三个交付周期；E23/E24 提交底部的 Self-auth: A54 / A57 其实是 ts-base 那本账的编号（A57 在那边是 E24 证据，不是 E24 交付），两边都出现过被截断的账本。本条起 video 侧恢复自己的连续编号（A22），提交底部写 Self-auth: A22 (ep25 delivery epoch, publish gates, cover choice)，不再借用 ts-base 编号。
+- **依据**：publish 输出与 report.json；读数没有为好看改动，门限没有放宽。
+- **可逆性**：高（四件导出 + 计划文档，可整段回退）。
+- **返工成本**：0 额外渲染；本集 make 一轮 PASS。

@@ -1,8 +1,8 @@
 # 25-rnn-recurrence-vs-segments — 递归与分段：RNN 的两条生成路
 
-> status: draft (scaffolded, not produced)
+> status: ready（证据 31/31；画面与旁白已按实测语音对齐）
 > chapter: ch03 · 序列模型 | 书 p.47–48（印刷页） | units: ch3-rnn / ch3-segrnn
-> 算法：ts-base dd22478；数据：ts-admin a5c3ae5
+> 算法：ts-base bec487f；证据：ts-base dd22478；数据：ts-admin a5c3ae5
 
 ## 一句话
 
@@ -40,4 +40,10 @@ ts-admin 导出 2,674 行面板；build/generate_rnn_data.py 把 summary 与五�
 
 ## Delivery
 
-（生产完成后补实测时长、封面帧、闸门读数。）
+2026-11-01 生产完成：773.0 s / 23,191 帧，-15 LUFS（真峰 -2 dBFS），mp4 34,515,568 B。
+
+- 封面帧 10414（347.13 s，直觉页的递归/分段状态图，无字幕条）。
+- 字幕 242 条 / 8 章，0 条换行（最长 25 字），字幕跨度 00:00:01,200 → 00:12:50,840（发声 703.7 s）；章节合计 773.04 s，首 00:00:00、末 00:12:11。
+- 闸门：静帧 lint 全过；亮度闪烁 frames 23,191、mean 20.73、min 14.48、max 23.63、mean|d| 0.0149、p99 0.1786、最大 8.17、7 个切点，均过；响度 I=-15 / TP=-2。
+- 证据 31/31（ch3-rnn 13 条 / ch3-segrnn 15 条断言，31 项检查），测试 87 套 / 1,161 断言。
+- 欠账：A7 算法卡、`tsbase demo` 子命令仍规划中。
