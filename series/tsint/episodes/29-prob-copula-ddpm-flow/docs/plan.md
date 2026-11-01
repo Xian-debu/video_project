@@ -1,6 +1,6 @@
 # 29-prob-copula-ddpm-flow - 概率生成补集：Copula、扩散损失、连续流
 
-> status: draft（脚本、画面与旁白已写完，成片待生产）
+> status: ready（成片入库，交付完成 2026-11-01）
 > chapter: ch03 | runtime target: 26 min | algorithms: 3
 > 算法：ts-base a205c82；证据：ts-base e0d5265；数据：ts-admin e8c737f
 
@@ -32,3 +32,11 @@ ts-admin 导出的同一份 8 通道日线面板（白酒 sh600519 / sz000596 / 
 - ch3-copula - Copula 多元联合分布建模 (TsBase.Algos.Ch03.Copula)
 - ch3-ddpm-loss - 扩散模型噪声预测损失 (TsBase.Algos.Ch03.DdpmLoss)
 - ch3-cnf - 连续归一化流（常微分方程密度模型） (TsBase.Algos.Ch03.Cnf)
+
+## Delivery
+
+成片 `out/tsint-29/Tsint29ProbCopulaDdpmFlow.mp4`：883.03 s（26,491 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 26,491 帧 mean 22.24 / min 14.47 / max 25.71、mean|d| 0.0151、p99 0.1394、最大 8.47、7 个切点，全过；字幕 264 条 / 8 章、0 换行、最长 32 字、跨度 00:00:01,200 → 00:14:40,810（发声 883.02 s），章节合计 883.02 s。
+
+四件导出在 `delivery/`：cover.png（帧 1341，44.70 s，开场页，无字幕条）、tsint-29.srt、tsint-29.chapters.txt、tsint-29.chapters.ffmeta.txt；mp4 按惯例不入库。publish 一轮 PASS，报告 `out/tsint-29/report.json`；分数床按 80 s 分块渲染后拼接（13 块，20 ms 等功率交叉淡化，接缝落在小节线），stem 读数与单次渲染一致。
+
+证据 24/24（ts-base a205c82 的 Copula / DdpmLoss / Cnf 三个模块，58 条断言，24 项检查），测试 99 套 / 1,371 断言；头部钉住 算法 ts-base a205c82 / 证据 e0d5265 / 数据 ts-admin e8c737f。

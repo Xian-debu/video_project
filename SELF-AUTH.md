@@ -354,3 +354,14 @@
 - **依据**：publish 输出与 report.json（out/tsint-28/report.json）；读数没有为好看改动，门限没有放宽。
 - **可逆性**：高（四件导出 + 计划文档，可整段回退）。
 - **返工成本**：0 额外渲染（仍是首轮 make）；三处画面修正各自复跑了 still + still_lint。
+
+
+## A26 E29 交付：概率生成补集成片入库（2026-11-01 下午）
+
+- **决定**：delivery 收 mp4 43,918,649 B / 883.03 s（26,491 帧），−15 LUFS、TP −2 dBFS；亮度闪烁 26,491 帧 mean 22.24 / min 14.47 / max 25.71、mean|d| 0.0151、p99 0.1394、最大 8.47、7 个切点，全过；字幕 264 条 / 8 章、0 换行、最长 32 字、跨度 00:00:01,200 → 00:14:40,810（发声 883.02 s），章节合计 883.02 s。
+- **决定**：四件导出（srt / chapters / ffmeta / cover）放 pack 的 delivery/，mp4 按惯例不入库；封面帧 1341（44.70 s）落在开场页，全屏无字幕条，publish 一次通过。
+- **决定**：证据 24/24（ts-base a205c82 的 Copula 22 条 / DdpmLoss 21 条 / Cnf 15 条断言，24 项检查），测试 99 套 / 1,371 断言；plan.md 的 status 从 draft 改为 ready 并补 Delivery，头部钉住 算法 ts-base a205c82 / 证据 e0d5265 / 数据 ts-admin e8c737f。
+- **决定（管线返工）**：分数床单次渲染 884 s 在本集卡死四十多分钟（单个 tokio worker 100% CPU、RSS 800 MB、score.wav 未落盘；docs/known-issues.md 已记过 593 s 曾花 20 分钟），判定单次渲染对长片不可用，改为 80 s 分块渲染、20 ms 等功率交叉拼接（本集 13 块，80 s = 84 BPM 的 28 小节，接缝落在小节线且 pad 已衰减到 1e-4），并写了可复用工具 /root/video-work/make_score_chunks.mjs；接缝 max|diff| 0.00142 远低于全局 p99 0.0878，无 click，stem 读数（−25.08 / −27.80 / 0.631 / 0.068）与 E28 单次渲染完全一致。
+- **依据**：publish 输出、report.json 与 luma_blink 读数；读数没有为好看改动，门限没有放宽。
+- **可逆性**：高（四件导出 + 计划文档，可整段回退；分数床仅换渲染路径，音频内容同分布）。
+- **返工成本**：分数床分块渲染约 2.5 分钟（原来的单次渲染白烧四十多分钟）；make 因 content repo dirty（E30 草稿未入库）重启一次，其余一轮 PASS。
