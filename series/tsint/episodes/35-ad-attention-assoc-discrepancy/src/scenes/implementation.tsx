@@ -14,7 +14,7 @@ export const SImplementation: React.FC = () => {
           <div style={{ position: "absolute", left: PAD, top: 292, width: 1120 }}>
             <Card label="三个模块，全部纯函数" accent={C.cyan}>
               {M.modules.map((m) => (
-                <Row key={m.id} name={m.file + "  ·  " + m.name} value={m.lines + " 行"} note={m.cases + " 条单元测试"} width={1070} />
+                <Row key={m.id} name={m.name} value={m.lines + " 行"} note={m.file.split("/").pop() + " · " + m.cases + " 条单元测试"} width={1070} />
               ))}
             </Card>
             <Card label="测试与证据" accent={C.amber} style={{ marginTop: 20 }}>
