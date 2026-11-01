@@ -1563,21 +1563,21 @@
    "index": 7,
    "start": 673.3,
    "dur": 3.64,
-   "speech": "下一集，序列分解与周期对齐。"
+   "speech": "下一集，块嵌入与两种注意力。"
   },
   {
    "scene": "outro",
    "index": 8,
    "start": 677.12,
    "dur": 2.44,
-   "speech": "STL 和傅里叶。"
+   "speech": "PatchTST 和交叉注意力解码器。"
   },
   {
    "scene": "outro",
    "index": 9,
    "start": 679.73,
    "dur": 4.45,
-   "speech": "把一条序列拆成趋势、季节、残差。"
+   "speech": "九十六步切成十二个块，注意力矩阵缩到十二乘十二。"
   },
   {
    "scene": "outro",
