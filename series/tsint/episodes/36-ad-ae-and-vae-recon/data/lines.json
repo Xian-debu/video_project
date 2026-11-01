@@ -1,0 +1,2003 @@
+{
+ "entry": "src/tsint-36-ad-ae-and-vae-recon/script.ts",
+ "fps": 30,
+ "totalSec": 1251.42,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 177.87
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 177.87,
+   "dur": 158.93
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 336.8,
+   "dur": 180.01
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 516.81,
+   "dur": 142
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 658.81,
+   "dur": 121.55
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 780.36,
+   "dur": 276.63
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1056.99,
+   "dur": 126.88
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1183.87,
+   "dur": 67.55
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.74,
+   "speech": "上一集量的是关系，这一集问一个更基础的问题。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 6.12,
+   "dur": 3.9,
+   "speech": "重构误差这个数，到底有没有概率含义。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.2,
+   "dur": 4.69,
+   "speech": "自编码器把窗口压进潜空间，再还原回来。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 15.08,
+   "dur": 4.53,
+   "speech": "损失只看还原得准不准，不看潜空间长什么样。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 19.78,
+   "dur": 5.32,
+   "speech": "这个自由很大：隐层一宽，模型可以把输入原样抄回去。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 25.28,
+   "dur": 4.26,
+   "speech": "抄回去的模型，损失是零，分数也是零。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 29.72,
+   "dur": 4.84,
+   "speech": "检测器从此失效，而训练日志漂亮得像成功。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 34.74,
+   "dur": 3.54,
+   "speech": "书里图4.6 画的正是这个结构。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 38.46,
+   "dur": 4.05,
+   "speech": "变分自编码器在损失里加一项 KL。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 42.69,
+   "dur": 3.73,
+   "speech": "它要求后验不要离标准正态太远。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 46.6,
+   "dur": 5.29,
+   "speech": "正常样本因此被钉在原点附近，重构误差有了先验。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 52.08,
+   "dur": 4.84,
+   "speech": "这一集就把这两种模型放在同一套注入上量。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 57.1,
+   "dur": 2.73,
+   "speech": "先给读数，免得后面绕。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 60,
+   "dur": 4.38,
+   "speech": "瓶颈自编码器，F1 是 0.4507。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 64.56,
+   "dur": 5.8,
+   "speech": "变分自编码器 beta 等于 0.1，F1 是 0.4229。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 70.54,
+   "dur": 4,
+   "speech": "beta 等于 1，F1 是 0.4412。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 74.72,
+   "dur": 3.06,
+   "speech": "恒等模型，F1 是零。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 77.96,
+   "dur": 4.86,
+   "speech": "三个非零读数都不高，这一集的重点不是排名。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 83,
+   "dur": 4.74,
+   "speech": "重点是失败长什么样，以及 KL 买到了什么。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 87.93,
+   "dur": 5.2,
+   "speech": "三个问题。第一，重构损失为什么量不到关系。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 93.3,
+   "dur": 4.74,
+   "speech": "第二，恒等陷阱需要什么条件才会真的发生。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 98.23,
+   "dur": 4.55,
+   "speech": "第三，KL 有没有把检测能力也一起买回来。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 102.96,
+   "dur": 4.24,
+   "speech": "数据是两只白酒股，2010 到 2026。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 107.37,
+   "dur": 4.12,
+   "speech": "三千九百三十二个交易日，一百点一个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 111.67,
+   "dur": 4.77,
+   "speech": "测试段注入二十段异常，十段尖峰、十段斜坡。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 116.62,
+   "dur": 4.05,
+   "speech": "点级真值二百七十五个点，分成二十段。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 120.84,
+   "dur": 4.05,
+   "speech": "模块两百六十三行加三百三十三行。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 125.07,
+   "dur": 5.25,
+   "speech": "新增二十九条单元测试，仓库合计一千六百零二条。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 130.5,
+   "dur": 4.69,
+   "speech": "打分打在点上：覆盖它的所有窗口取最大分。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 135.37,
+   "dur": 3.69,
+   "speech": "阈值取训练段点分数的九十九分位。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 139.24,
+   "dur": 4.43,
+   "speech": "真值也按点算，再按点调整口径判命中。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 143.85,
+   "dur": 4.57,
+   "speech": "这个口径会抬高 F1，我们只用它横向比较。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 148.6,
+   "dur": 4,
+   "speech": "所有数字一条命令复现，种子固定。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 152.78,
+   "dur": 1.98,
+   "speech": "这一集八页。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 154.94,
+   "dur": 6.52,
+   "speech": "开场、问题、定义、直觉、实现、验证、边界、收尾。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 161.64,
+   "dur": 3.93,
+   "speech": "定义页建两个损失，直觉页看散点。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 165.74,
+   "dur": 5.01,
+   "speech": "验证页读四十项检查，其中两项是负向结论。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 170.93,
+   "dur": 4.74,
+   "speech": "走完你会知道，概率含义和检测性能不是一回事。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 179.07,
+   "dur": 4.19,
+   "speech": "自编码器的目标很朴素：压小，再还原。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 183.44,
+   "dur": 5.87,
+   "speech": "式(4.6)：编码 Z 等于 f(X)，解码 X̂ 等于 g(Z)。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 189.49,
+   "dur": 3.93,
+   "speech": "最小化所有窗口的重构误差平方和。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 193.6,
+   "dur": 3.81,
+   "speech": "这条损失只问输出和输入像不像。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 197.58,
+   "dur": 4.89,
+   "speech": "它看不见均值、方差，也看不见点与点的关系。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 202.65,
+   "dur": 3.61,
+   "speech": "潜空间里怎么摆，损失完全不管。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 206.44,
+   "dur": 4.24,
+   "speech": "只要解码器能把它还原，摆成什么样都行。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 210.86,
+   "dur": 4.19,
+   "speech": "这就是为什么重构误差量不到结构变化。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 215.23,
+   "dur": 4.17,
+   "speech": "上一集用注意力矩阵补的，正是这个盲区。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 219.58,
+   "dur": 4.89,
+   "speech": "这一集换个方向：先承认盲区，再给分数一个分布。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 224.64,
+   "dur": 3.59,
+   "speech": "恒等陷阱不是传说，是精确解。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 228.41,
+   "dur": 5.49,
+   "speech": "隐层维度不小于输入维度时，解码器可以学成编码器的逆。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 234.08,
+   "dur": 5.13,
+   "speech": "线性激活下，解就是两个权重都等于单位矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 239.38,
+   "dur": 4.5,
+   "speech": "损失恰好为零，干净窗分数也恰好为零。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 244.07,
+   "dur": 3.97,
+   "speech": "我们真跑了一次：一百维进，一百维出。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 248.22,
+   "dur": 4.53,
+   "speech": "两万零两百个参数，样本内 MSE 是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 252.93,
+   "dur": 6.16,
+   "speech": "干净窗分数均值 0.00，阈值 0.00，F1 0.00。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 259.26,
+   "dur": 4.69,
+   "speech": "检测器死了，但每个指标都停在最漂亮的数上。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 264.14,
+   "dur": 4.31,
+   "speech": "这不是训练不充分，是目标函数允许的解。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 268.63,
+   "dur": 4.72,
+   "speech": "换损失不行，得换约束；KL 就是一种约束。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 273.53,
+   "dur": 4.07,
+   "speech": "先记住这个对照，验证页会再看它一眼。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 277.78,
+   "dur": 4.57,
+   "speech": "第二种失败更隐蔽：模型学了，阈值不迁移。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 282.53,
+   "dur": 3.4,
+   "speech": "二〇二一年以后，波动结构换了。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 286.11,
+   "dur": 5.29,
+   "speech": "干净窗的重构误差整体抬高，训练段的尺子就不准了。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 291.58,
+   "dur": 5.39,
+   "speech": "拿二〇二〇年的九十九分位当阈值，七成干净点被误报。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 297.15,
+   "dur": 5.03,
+   "speech": "报警率 70.26%，召回 99.64%。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 302.36,
+   "dur": 5.39,
+   "speech": "召回好看，是因为阈值太低；精确率只有 0.2912。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 307.93,
+   "dur": 4.55,
+   "speech": "这不是 bug，是分布漂移下阈值法的固有代价。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 312.66,
+   "dur": 4.98,
+   "speech": "变分自编码器解决第一种失败：给潜空间一个先验。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 317.82,
+   "dur": 4.91,
+   "speech": "它解决不了第二种；后面会看到它也误报六成。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 322.91,
+   "dur": 4.41,
+   "speech": "两个失败要分开说，否则容易把功劳记错。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 327.5,
+   "dur": 2.65,
+   "speech": "先把两个损失写出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 330.33,
+   "dur": 4.26,
+   "speech": "公式不多，但每个细节都会影响后面的数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 338,
+   "dur": 3.42,
+   "speech": "自编码器这一页只有三行公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 341.6,
+   "dur": 3.85,
+   "speech": "编码器把一百维窗口压成十六维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 345.64,
+   "dur": 3.45,
+   "speech": "解码器再把它还原成一百维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 349.26,
+   "dur": 3.57,
+   "speech": "目标是最小化重构误差平方和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 353.01,
+   "dur": 4.29,
+   "speech": "去噪版本在输入上加一层伯努利掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 357.47,
+   "dur": 4.6,
+   "speech": "掩码把一部分点抹成零，再去还原干净输入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 362.25,
+   "dur": 4.74,
+   "speech": "注意这个不对称：破坏输入，目标还是原来的 X。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 367.17,
+   "dur": 3.97,
+   "speech": "这逼着编码器学结构，而不是学恒等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 371.33,
+   "dur": 4.33,
+   "speech": "但书里的自编码器没有先验，也没有采样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 375.84,
+   "dur": 4.45,
+   "speech": "变分自编码器把潜变量当成随机变量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 380.48,
+   "dur": 3.83,
+   "speech": "编码器不输出一个点，输出一个分布。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 384.49,
+   "dur": 3.49,
+   "speech": "均值一个头，对数方差一个头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 388.16,
+   "dur": 4.77,
+   "speech": "式(4.22)：损失等于重构期望加 KL 散度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 393.11,
+   "dur": 5.32,
+   "speech": "采样用重参数化：Z 等于 mu 加 sigma 乘 eps。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 398.6,
+   "dur": 4.29,
+   "speech": "eps 从标准正态里抽，和参数无关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 403.07,
+   "dur": 3.73,
+   "speech": "这样梯度能穿过采样回到编码器。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 406.98,
+   "dur": 3.57,
+   "speech": "否则采样这一步会把梯度路断掉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 410.73,
+   "dur": 6.06,
+   "speech": "先验固定成 N(0,I)，KL 就是后验离先验多远。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 416.97,
+   "dur": 3.85,
+   "speech": "这一项同时起两个作用：约束和正则。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 421.01,
+   "dur": 2.68,
+   "speech": "先看 KL 怎么算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 423.86,
+   "dur": 3.37,
+   "speech": "KL 有解析式，不用采样估计。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 427.42,
+   "dur": 5.05,
+   "speech": "KL 等于二分之一乘以 mu 平方加 sigma 平方减一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 432.65,
+   "dur": 2.8,
+   "speech": "再减去 log sigma 平方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 435.63,
+   "dur": 4.09,
+   "speech": "我们对每个维度求和，再对窗口取平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 439.9,
+   "dur": 3.66,
+   "speech": "学的是 log sigma 平方，不是 sigma。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 443.75,
+   "dur": 3.47,
+   "speech": "因为它可以取负，数值上更稳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 447.4,
+   "dur": 5.46,
+   "speech": "黄金值：mu 等于一、logvar 等于零，KL 是 0.5。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 453.04,
+   "dur": 3.95,
+   "speech": "mu 和 logvar 都为零时，KL 是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 457.17,
+   "dur": 5.27,
+   "speech": "这两条都进了单元测试，误差容限是十的负十二次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 462.62,
+   "dur": 3.73,
+   "speech": "重构项按原文不除以窗口长度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 466.53,
+   "dur": 4.21,
+   "speech": "这和前面式(4.10) 的平均口径不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 470.93,
+   "dur": 4.09,
+   "speech": "这个差异会让 beta 的等效强度跟着变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 475.2,
+   "dur": 3.78,
+   "speech": "把两项合起来看，就是一个 ELBO。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 479.16,
+   "dur": 3.76,
+   "speech": "重构项管还原，KL 项管先验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 483.1,
+   "dur": 3.45,
+   "speech": "beta 是我们加的旋钮，书上没有。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 486.73,
+   "dur": 4,
+   "speech": "屏幕上标「非书中」，免得被当成原文。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 490.9,
+   "dur": 3.21,
+   "speech": "beta 等于一就是原文的权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 494.29,
+   "dur": 4.33,
+   "speech": "beta 小于一放松 KL，让重构更自由。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 498.8,
+   "dur": 5.87,
+   "speech": "beta 太大会后验坍缩：KL 压到零，输出退化成常数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 504.85,
+   "dur": 5.29,
+   "speech": "参数只有一千八百五十二个：一百进八，两个八乘八头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 510.33,
+   "dur": 4.29,
+   "speech": "模型很小，所以每个数字都能手工核对。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 518.01,
+   "dur": 4.6,
+   "speech": "先看二维散点，这是 beta 等于 0.1 的模型。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 522.79,
+   "dur": 3.69,
+   "speech": "取的是潜空间均值，不是采样点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 526.65,
+   "dur": 4.77,
+   "speech": "正常窗一百二十个点，半径中位 2.637。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 531.6,
+   "dur": 4.19,
+   "speech": "注入窗六十个点，半径中位 2.546。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 535.97,
+   "dur": 4.36,
+   "speech": "尖峰窗 2.716，斜坡窗 2.525。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 540.51,
+   "dur": 3.54,
+   "speech": "三个数挤在一起，没有谁飞出去。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 544.23,
+   "dur": 3.76,
+   "speech": "虚线圈是标准正态的一倍标准差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 548.17,
+   "dur": 5.37,
+   "speech": "大部分点落在圈外，说明后验没有被完全压回先验。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 553.71,
+   "dur": 4.67,
+   "speech": "但异常也没有被推到远处，它就混在正常团里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 558.56,
+   "dur": 4.29,
+   "speech": "为什么？因为编码器只被要求还原。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 563.03,
+   "dur": 3.83,
+   "speech": "再看恒等陷阱的对照，同一套窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 567.04,
+   "dur": 4.72,
+   "speech": "十六维瓶颈：干净窗分数均值 0.1835。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 571.94,
+   "dur": 3.49,
+   "speech": "训练 MSE 0.0654。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 575.61,
+   "dur": 4.26,
+   "speech": "损失从 0.5008 降到 0.0327。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 580.05,
+   "dur": 4.86,
+   "speech": "一百维线性：分数均值零，样本内 MSE 零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 585.1,
+   "dur": 4.19,
+   "speech": "两万零两百个参数，一步到位，没有曲线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 589.47,
+   "dur": 4.77,
+   "speech": "左边在学，右边在抄；抄的那边指标更好看。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 594.41,
+   "dur": 4.45,
+   "speech": "如果只看训练损失，会得出完全相反的结论。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 599.05,
+   "dur": 4.19,
+   "speech": "所以这一集先跑失效对照，再跑检测。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 603.42,
+   "dur": 3.81,
+   "speech": "顺序错了，叙事就会被数字带走。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 607.4,
+   "dur": 4.19,
+   "speech": "记住这张图：分数为零不等于模型正常。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 611.77,
+   "dur": 2.85,
+   "speech": "最后看 beta 的交换。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 614.8,
+   "dur": 4.93,
+   "speech": "beta 等于 0.1 时，每窗 KL 13.496。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 619.91,
+   "dur": 4.12,
+   "speech": "beta 等于 1 时，KL 压到 5.964。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 624.21,
+   "dur": 5.05,
+   "speech": "重构 MSE 从 0.1321 抬到 0.1572。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 629.44,
+   "dur": 4.77,
+   "speech": "这是必然的交换：KL 压得越紧，还原越吃力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 634.39,
+   "dur": 6.28,
+   "speech": "但 F1 呢？0.4229 到 0.4412，几乎没有差别。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 640.85,
+   "dur": 4.38,
+   "speech": "所以 KL 买到的是先验，不是检测能力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 645.41,
+   "dur": 4.57,
+   "speech": "散点好看、KL 收紧，都不等于分数更准。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 650.16,
+   "dur": 4.17,
+   "speech": "这是这一集最重要的一句，后面还会回来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 654.51,
+   "dur": 2.1,
+   "speech": "下面进实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 660.01,
+   "dur": 2.68,
+   "speech": "两个模块都是纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 662.87,
+   "dur": 4.17,
+   "speech": "给配置和数据，返回模型和损失曲线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 667.21,
+   "dur": 4.36,
+   "speech": "没有外部依赖，没有随机数生成器之外的状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 671.75,
+   "dur": 4.67,
+   "speech": "自编码器二百六十三行，十四条单元测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 676.6,
+   "dur": 4.36,
+   "speech": "变分自编码器三百三十三行，十五条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 681.14,
+   "dur": 4.14,
+   "speech": "参数三千三百一十六和一千八百五十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 685.46,
+   "dur": 3.69,
+   "speech": "训练配方书里没有，这一页说清楚。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 689.33,
+   "dur": 4.26,
+   "speech": "全批量在三百八十五个窗上每轮只有一步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 693.77,
+   "dur": 4.31,
+   "speech": "两百四十轮就是两百四十步，实测学不动。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 698.26,
+   "dur": 5.03,
+   "speech": "改成逐窗：每轮三百八十五步，固定顺序、不洗牌。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 703.47,
+   "dur": 3.06,
+   "speech": "自编码器的接口只有三个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 706.71,
+   "dur": 3.25,
+   "speech": "编码、解码、单窗分数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 710.15,
+   "dur": 4.14,
+   "speech": "恒等模型不是训练出来的，是构造出来的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 714.47,
+   "dur": 4.19,
+   "speech": "单位矩阵加零偏置，输出严格等于输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 718.84,
+   "dur": 3.73,
+   "speech": "这样分数严格为零，对照才干净。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 722.75,
+   "dur": 4.55,
+   "speech": "梯度是手写的：先算输出误差，再穿两层。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 727.48,
+   "dur": 3.13,
+   "speech": "掩码注入只在训练时发生。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 730.8,
+   "dur": 3.3,
+   "speech": "重构目标永远是干净输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 734.28,
+   "dur": 3.04,
+   "speech": "这一条有专门的测试钉住。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 737.5,
+   "dur": 4.14,
+   "speech": "每个窗口的梯度先裁到范数一，再更新。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 741.82,
+   "dur": 2.97,
+   "speech": "变分自编码器多两个头。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 744.96,
+   "dur": 3.97,
+   "speech": "均值和对数方差，各一个八乘八矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 749.12,
+   "dur": 3.59,
+   "speech": "重参数化路径的梯度也是手写的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 752.89,
+   "dur": 3.28,
+   "speech": "dz 直接加在均值梯度上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 756.35,
+   "dur": 3.95,
+   "speech": "KL 对均值和对数方差分别求导。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 760.48,
+   "dur": 2.17,
+   "speech": "各乘一个 beta。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 762.83,
+   "dur": 3.28,
+   "speech": "有一个测试专门钉住一致性。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 766.29,
+   "dur": 5.37,
+   "speech": "beta 零、eps 零时，前向和自编码器逐位相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 771.83,
+   "dur": 2.92,
+   "speech": "不是近似，是逐位相等。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 774.93,
+   "dur": 3.23,
+   "speech": "这条测试比任何解释都硬。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 781.56,
+   "dur": 4.05,
+   "speech": "数据是两只白酒股，复权收盘取对数。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 785.79,
+   "dur": 4.79,
+   "speech": "逐窗标准化，均值和标准差都来自窗口自己。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 790.76,
+   "dur": 3.23,
+   "speech": "窗口一百个交易日，步长一。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 794.17,
+   "dur": 4.86,
+   "speech": "训练段两千三百零七个窗，测试段九百五十六个。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 799.21,
+   "dur": 4.29,
+   "speech": "训练只用其中三百八十五个，每六个取一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 803.67,
+   "dur": 4,
+   "speech": "注入只在测试段，种子 3601。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 807.85,
+   "dur": 4.77,
+   "speech": "十段尖峰、十段斜坡，共二百七十五个真值点。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 812.8,
+   "dur": 4.09,
+   "speech": "尖峰一到三个点，加五到十个 sigma。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 817.07,
+   "dur": 4.81,
+   "speech": "斜坡二十到三十个点，净幅三到六个 sigma。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 822.07,
+   "dur": 3.28,
+   "speech": "二十段真值两两不重叠。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 825.52,
+   "dur": 4.6,
+   "speech": "数据三千九百三十二行，最大间隔九十六天。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 830.3,
+   "dur": 3.83,
+   "speech": "那段是源数据整段缺失，不是停牌。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 834.31,
+   "dur": 4.86,
+   "speech": "所以在窗口检查里，跨度超过十天就丢窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 839.35,
+   "dur": 4.12,
+   "speech": "四十项检查全过，用时三百一十九秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 843.65,
+   "dur": 3.81,
+   "speech": "其中两项是负向的，等会儿指出来。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 847.64,
+   "dur": 2.73,
+   "speech": "先看瓶颈自编码器。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 850.54,
+   "dur": 3.64,
+   "speech": "十六维，三千三百一十六个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 854.36,
+   "dur": 6.18,
+   "speech": "F1 0.4507，精确率 0.2912，召回 0.9964。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 860.72,
+   "dur": 4.29,
+   "speech": "召回几乎满分：二十段异常抓到十九段。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 865.19,
+   "dur": 3.76,
+   "speech": "代价是报警率 70.26%。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 869.13,
+   "dur": 4.17,
+   "speech": "测试期干净点里，七成被判成异常。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 873.47,
+   "dur": 3.95,
+   "speech": "阈值 0.4198，训练段九十九分位。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 877.6,
+   "dur": 3.04,
+   "speech": "平均精度 0.2675。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 880.82,
+   "dur": 3.83,
+   "speech": "曲线贴着右边：高召回，低精度。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 884.83,
+   "dur": 4.69,
+   "speech": "恒等模型，一百维线性，两万零两百个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 889.71,
+   "dur": 4.89,
+   "speech": "F1 零，精确率零，召回零，阈值也是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 894.77,
+   "dur": 5.73,
+   "speech": "干净窗分数均值 0.00，样本内 MSE 0.00。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 900.68,
+   "dur": 3.59,
+   "speech": "没有损失曲线，因为它一步就到位。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 904.45,
+   "dur": 3.37,
+   "speech": "这不是训练失败，是精确解。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 908,
+   "dur": 4.09,
+   "speech": "如果只看损失，它是最完美的那个模型。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 912.28,
+   "dur": 4.72,
+   "speech": "所以我们把它放进片子里，而不是放进备注。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 917.17,
+   "dur": 3.76,
+   "speech": "检测器死了，指标却显示它活着。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 921.11,
+   "dur": 4.38,
+   "speech": "变分自编码器 beta 等于 0.1，八维。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 925.67,
+   "dur": 2.68,
+   "speech": "一千八百五十二个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 928.53,
+   "dur": 6.37,
+   "speech": "F1 0.4229，精确率 0.2776，召回 0.8873。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 935.09,
+   "dur": 4.72,
+   "speech": "二十段抓到十七段，报警率 64.61%。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 939.98,
+   "dur": 5.75,
+   "speech": "重构 MSE 0.1321，每窗 KL 13.496。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 945.91,
+   "dur": 2.61,
+   "speech": "阈值 0.7067。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 948.7,
+   "dur": 4.38,
+   "speech": "它的分数整体更高，因为重构项是求和。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 953.26,
+   "dur": 3.49,
+   "speech": "不除以维度，这一条和原文一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 956.94,
+   "dur": 3.9,
+   "speech": "beta 等于 1，KL 压到 5.964。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 961.02,
+   "dur": 3.81,
+   "speech": "重构 MSE 抬到 0.1572。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 965,
+   "dur": 4.89,
+   "speech": "F1 0.4412，召回同样是 0.8873。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 970.07,
+   "dur": 4.5,
+   "speech": "报警率 60.32%，三个模型里最低。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 974.75,
+   "dur": 2.87,
+   "speech": "但仍然不是可用的水平。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 977.8,
+   "dur": 4.24,
+   "speech": "三条曲线叠在一起，差别比想象的小。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 982.22,
+   "dur": 5.01,
+   "speech": "瓶颈自编码器略高，两条变分曲线几乎重合。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 987.41,
+   "dur": 4.98,
+   "speech": "分类型看：尖峰二十个点，自编码器中十九个。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 992.57,
+   "dur": 4.24,
+   "speech": "变分自编码器中十六个，beta 两边一样。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 996.99,
+   "dur": 4.89,
+   "speech": "斜坡二百五十五个点，自编码器中 247 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1002.05,
+   "dur": 3.45,
+   "speech": "变分自编码器中 207 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1005.68,
+   "dur": 4.57,
+   "speech": "三个坑。第一个：KL 的温度尺度用错。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1010.43,
+   "dur": 6.13,
+   "speech": "用方差量纲去算距离，KL 直接变成零，F1 也变成零。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1016.75,
+   "dur": 3.69,
+   "speech": "第二个：重参数化路径漏了回传。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1020.61,
+   "dur": 4.77,
+   "speech": "梯度小两个数量级，训练看着在动，其实没动。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1025.56,
+   "dur": 4.41,
+   "speech": "第三个：损失曲线画倒序，误判成发散。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1030.14,
+   "dur": 4.17,
+   "speech": "其实是日志索引反了，曲线本身没问题。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 1034.49,
+   "dur": 4.98,
+   "speech": "两项负向检查：报警率必须在三成到九成之间。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 1039.65,
+   "dur": 5.99,
+   "speech": "测试期干净点中位 0.607，高于训练阈值 0.4198。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 1045.82,
+   "dur": 4.62,
+   "speech": "注入窗半径比正常窗 0.966，没有飞出去。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 1050.62,
+   "dur": 4.17,
+   "speech": "这两条不是通过，是把失败写成了断言。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1058.19,
+   "dur": 4.81,
+   "speech": "四条限制。第一，只有两只票，都是白酒。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1063.18,
+   "dur": 4.6,
+   "speech": "同一行业，同一个市场，不能说代表全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1067.96,
+   "dur": 3.52,
+   "speech": "第二，数据里有一个九十六天的洞。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1071.66,
+   "dur": 4.41,
+   "speech": "二〇一五年七月到十一月，源数据整段缺失。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1076.25,
+   "dur": 3.33,
+   "speech": "它不是停牌，是数据源没给。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1079.75,
+   "dur": 4.05,
+   "speech": "窗口内部跨过这个洞就丢掉，不补。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1083.98,
+   "dur": 4.17,
+   "speech": "第三，真值是点级的，注入只有两类。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1088.32,
+   "dur": 4.96,
+   "speech": "尖峰和斜坡；换成别的异常形状，结论要重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1093.46,
+   "dur": 4.45,
+   "speech": "第四，阈值是全局一个数，不随季节重估。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1098.1,
+   "dur": 3.37,
+   "speech": "这是这次报警率高的直接原因。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1101.65,
+   "dur": 4.86,
+   "speech": "如果按测试期自己的分数重估阈值，数字会好看。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1106.69,
+   "dur": 3.37,
+   "speech": "但那不是同一个实验，我们不做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1110.25,
+   "dur": 5.2,
+   "speech": "两笔口径债。第一笔：真值二十段，段都很短。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1115.62,
+   "dur": 4.26,
+   "speech": "尖峰平均两个点，斜坡平均二十五点五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1120.07,
+   "dur": 4.93,
+   "speech": "点调整会把短段的命中放大，这是已知偏差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1125.18,
+   "dur": 5.08,
+   "speech": "第二笔：训练两千三百零七个窗，只用了三百八十五个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1130.44,
+   "dur": 3.54,
+   "speech": "每六个取一个，为了训练时间可控。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1134.16,
+   "dur": 3.45,
+   "speech": "这会损失覆盖，下一集可以补。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1137.79,
+   "dur": 4.48,
+   "speech": "还有一笔不报的：散点只取每八个窗一个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1142.44,
+   "dur": 4.05,
+   "speech": "图是抽样，半径中位数是全量算的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1146.67,
+   "dur": 3.88,
+   "speech": "两个口径在片子里分开写，不混着说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1150.73,
+   "dur": 3.37,
+   "speech": "不声称的事：不声称 SOTA。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1154.28,
+   "dur": 4.53,
+   "speech": "不声称通用，不声称实时，不声称可解释。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1158.99,
+   "dur": 3.37,
+   "speech": "不声称 KL 一定提升检测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1162.54,
+   "dur": 5.25,
+   "speech": "这次实测反而略低：0.4229 对 0.4507。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1167.97,
+   "dur": 4.5,
+   "speech": "也不声称恒等陷阱只发生在玩具设置。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1172.65,
+   "dur": 4.24,
+   "speech": "这一集能带走的是：一个可复现的失败对照。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1177.07,
+   "dur": 4.6,
+   "speech": "加上一条口径：先证明模型没死，再谈分数。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1185.07,
+   "dur": 2.29,
+   "speech": "一集一个读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1187.54,
+   "dur": 3.45,
+   "speech": "瓶颈自编码器 0.4507。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1191.17,
+   "dur": 4.74,
+   "speech": "变分自编码器 0.4229 和 0.4412。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1196.09,
+   "dur": 2.44,
+   "speech": "三个数字都不高。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1198.71,
+   "dur": 4.29,
+   "speech": "这一集的结论不是谁更好，是失败在哪里。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1203.18,
+   "dur": 5.03,
+   "speech": "恒等陷阱让分数归零，KL 把潜空间钉住。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1208.39,
+   "dur": 4.26,
+   "speech": "但 KL 没有把 F1 拉起来，这是实测。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1212.83,
+   "dur": 4.48,
+   "speech": "四十项检查全过，两条负向结论也在里面。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1217.49,
+   "dur": 3.81,
+   "speech": "下一集是第三十七集：混合先验。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1221.47,
+   "dur": 3.47,
+   "speech": "GMM-VAE，和「多个正常模式」。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1225.12,
+   "dur": 4.5,
+   "speech": "如果一个高斯不够，就用多个高斯拼一个先验。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1229.8,
+   "dur": 3.21,
+   "speech": "证据在 inventory/evidence 下。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1233.19,
+   "dur": 3.64,
+   "speech": "一条 cabal 命令重跑全部数字。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1237.01,
+   "dur": 4.02,
+   "speech": "数据与清单在 ts-base 的数据目录。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1241.21,
+   "dur": 4.79,
+   "speech": "导出脚本在 ts-admin，模块在 Ch04。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1246.18,
+   "dur": 3.04,
+   "speech": "这一集到这里，我们下次见。"
+  }
+ ]
+}
