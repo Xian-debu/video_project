@@ -56,12 +56,12 @@ export const SIntuition: React.FC = () => {
         </AbsoluteFill>
 
         <AbsoluteFill>
-          <div style={{ position: "absolute", left: PAD, top: 360 }}>
-            <Card label="二十只股票 · 二十乘二十相关" accent={C.violet} style={{ padding: 20 }}>
-              <Heat matrix={M.real.corr20} labels={M.real.names20} groups={M.real.groups20} cell={30} labelW={92} min={-0.2} max={1} size={FT.micro} />
+          <div style={{ position: "absolute", left: PAD, top: 350 }}>
+            <Card label="二十只股票 · 二十乘二十相关" accent={C.violet} style={{ padding: 18 }}>
+              <Heat matrix={M.real.corr20} labels={M.real.names20} groups={M.real.groups20} cell={25} gap={2} labelW={86} min={-0.2} max={1} size={FT.micro} />
             </Card>
           </div>
-          <div style={{ position: "absolute", left: PAD + 710, top: 360, width: CW - 710 }}>
+          <div style={{ position: "absolute", left: PAD + 710, top: 350, width: CW - 710 }}>
             <Card label="结构更细，但仍是四块" accent={C.violet} style={{ height: 460 }}>
               <Row name="四个行业" value="白酒 / 银行 / 券商 / 地产" note="每块 5 只，块内亮、块间暗" width={1000} />
               <Row name="边不只看相关" value="相关 kNN → 29 条边" note="相关高不等于边，取每个节点前 k 个邻居" width={1000} />
