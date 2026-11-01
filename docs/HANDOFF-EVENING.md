@@ -25,11 +25,11 @@
 允许把指令写入三仓规划并建 goal 防断。执行时沿用本文件 §4 的 12 步流水线与 §5 的冻结口径：
 仍只到 `ready`、不发布 B 站、不改引擎、score 复用 `out/e04-score-loop-48k.wav`。
 
-## 2. 状态（2026-11-01 20:10 实测）
+## 2. 状态（2026-11-01 21:50 实测）
 
-- 成片 **43 / 74**：E01–E33、E65–E74（全部 `status: ready`，**未发布 B 站**）。
-- 算法 111 个模块文件（ch02 37 / ch03 39 / ch04 12 / ch08 12 / ch09 11），**111 组测试套件 / 1,513 条断言**全绿。
-- 四仓 HEAD（E33 交付后）：video_project `968a6ec`（delivery）+ 一个 docs 提交紧随其后、ts-base `b956147`（证据）、ts-admin `b81b487`、
+- 成片 **44 / 74**：E01–E34、E65–E74（全部 `status: ready`，**未发布 B 站**）。
+- 算法 113 个模块文件（ch02 37 / ch03 39 / ch04 14 / ch08 12 / ch09 11），**113 组测试套件 / 1,537 条断言**全绿。
+- 四仓 HEAD（E34 交付后）：video_project `c6eb11c`（delivery）+ 一个 docs 提交紧随其后、ts-base `8d7b9be`（证据 8367f77 + 摘要）、ts-admin `c7f2e85`、
   engine `a667688`（冻结未改）；`node tools/check.mjs` = 90 films / 2 series / 0 error。
 - **归档纪律（2026-11-01 补）**：每集成片的全部产物（mp4 / programme_unnorm / raw_video / mix.wav / score.wav / score.meta.json / report.json / scenes / stills）
   必须搬回 pack `delivery/`，引擎 `out/<id>/` 只作临时工作区、搬完即删（CONVENTIONS §1）。E24–E30 已按此回填，E31 起直接落 delivery。
@@ -65,12 +65,13 @@
 - E31 成片 `995.67 s / 29,870 帧 / 8 场 20 页 / −15 LUFS / TP −2 dBFS`，312 cue、8 章、封面 2985。
 - E32 成片 `971.00 s / 29,130 帧 / 8 场 21 页 / −15 LUFS / TP −2 dBFS`，304 cue、8 章、封面 20。
 - E33 成片 `1,009.70 s / 30,291 帧 / 8 场 23 页 / −15 LUFS / TP −2 dBFS`，319 cue、8 章、封面 20。
+- E34 成片 `1,128.07 s / 33,842 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS`，372 cue、8 章、封面 20。
 - E69 成片 `961.33 s / 28,840 帧 / 8 场 / −15 LUFS / TP −2 dBFS`，247 cue、8 章、封面 3984。
 - E68 成片 `1123.81 s / 33714 帧 / 8 场`，316 cue、8 章、封面 2200。
 - Docker `haskell-ts` 已启动：GHC 9.14.1（`/opt/ghc/9.14.1/bin`），`/root/ts-base` → `/work`，
   `/root/.cache/ts-haskell` → `/cabalhome`；容器内存限额 12 GiB / swap 16 GiB。
 - 宿主机 `.wslconfig` 已改 memory=40GB/swap=24GB，但**需 `wsl --shutdown` 才生效**；本会话不执行。
-- 下一步入口：**E34 `ad-gru-lstm-predictor`**（ch04 第 5 集：GRU 单元与 LSTM 预测器）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；E33 实测 1,009.7 s）。
+- 下一步入口：**E35 `ad-attention-assoc-discrepancy`**（ch04 第 6 集：关联差异、两阶段焦点与次邻域遮罩，runtime target 30 min）；score 继续复用 `out/e04-score-loop-48k.wav`（1560 s；`mix.mjs:141` 用 `i % music.frames` 循环，超过 1560 s 也够，E35 不必重渲长床）。
 
 ## 3. 授权（增量自授权清单）
 
@@ -117,10 +118,10 @@ self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HAND
     卡点、返工次数、与计划偏差、下一集）；更新 `STATUS.md`（`node tools/status.mjs --md`）；
     `docs/HANDOFF-EVENING.md` §2/§5 的进度数字；四仓 `git status` 干净后进入下一集。
 
-## 5. 排期（production_order 剩余 33 集）
+## 5. 排期（production_order 剩余 32 集）
 
-E01–E33 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E33（17.70 / 16.59 / 16.18 / 16.83 min）。按 `production_order` 继续：
-**E33 ad-causal-dilated-conv 已交付；下一集 E34 ad-gru-lstm-predictor** → … → E64 llm-side-adapters。
+E01–E34 与 E65–E74 已交付；ch02 十六集里已出 E02–E16 十五集，成片 13.70 / 18.42 / 21.67 / 24.68 / 20.15 / 22.91 / 21.65 / 22.40 / 25.11 / 17.50 / 19.78 / 18.63 / 14.66 / 12.49 / 13.79 / 13.41 min；ch03 已出 E17–E29（13.95 / 14.02 / 21.06 / 16.59 / 14.27 / 15.10 / 14.57 / 13.43 / 12.88 / 11.58 / 11.80 / 14.03 / 14.72 min）；ch04 已出 E30–E34（17.70 / 16.59 / 16.18 / 16.83 / 18.80 min）。按 `production_order` 继续：
+**E34 ad-gru-lstm-predictor 已交付；下一集 E35 ad-attention-assoc-discrepancy** → … → E64 llm-side-adapters。
 每章开工前先读该章 `plans` 的 unit 清单与 `ALGORITHM-SPEC.md`，按"章批"实现该章全部算法，再逐集出片（沿用 A3）。
 
 E05 冻结口径（E06 直接复用，别重新发明）：差分 `diff :: Int -> Maybe Int -> ...` 先 d 次普通再一次季节，输出长度 `n − d − d·L`；
@@ -345,6 +346,10 @@ VAE：ELBO = ½‖x−x̂‖² + KL，KL 手算 ½(1+4−1−log 4) = **1.306852
 - make 会把 `film.json` 的 `audio.musicGainDb` 原样传给混音，音乐床门限余量只有 ~0.14 dB：E33 首跑 bed full-band −25.75 dBFS 比门限 −25.89 高 0.14 dB 就 FAIL；开工即把 `musicGainDb` 定 −4.5（E31/E32 同值），别等失败再改。
 - 二跑 make 会复用首轮场景（reused 8 / rendered 0）且 report 树不变，但交付画面来自首轮渲染时的代码 commit（E33 是 `7c2efc9`）；写 plan Delivery 时把这个 commit 记下来，否则复现无据。
 - 验证页「合计」行要给足列宽：E33 的 `40 / 40` 在 120 px 单元格里折成两行，140 px 才站得住；PRPlot 图例 `y height-44`、`padB 88` 才不压横轴刻度。
+- `Row`（宽 590）的值列是 `maxWidth 44%` ≈ 260 px 且 `nowrap`，中文值超过 ~13 字就顶出卡边：E34 的「两类各占测试窗口 1.22%」（286 px）、「未来窗内 1 点（隔一个）或连续 3 点」（442 px）、「窗口级真值：被改的窗口 = 正样本」（403 px）全被 still lint 抓出。值列只放短读数（`pctOf` 取百分比、`窗口级`），长描述一律进可换行的 `note` 列。
+- **make 前必须提交内容仓并重新 sync**：`make` 的 content check 先查 dirty（失败一），提交后又查 `content HEAD moved`（失败二），两次都白跑；固定顺序 `git commit` → `node scripts/films.mjs sync` → `make`。make 生成的 delivery 文件会让 report 的 `content.dirty` 记 4，属预期。
+- 静帧复核用 `--still-frames=` 显式传**每页中点帧**（按 `data/lines.json` 算），默认只挑 4 张，多页场根本盖不到：E34 29 页传了 29 个帧号，才抓出两轮值列溢出。
+- 画面读数必须回头改**旁白与计划**再重录：E34 学习率千分之五→千分之一、裁剪范数一→五、注入 1–5 点→1–3 点、相位窗「均值方差都正常」→「分数只抬了一点」，四处改完删旧 clip 重 TTS、重测时间轴（1,128.07 s）并整集重渲；只改画面不改讲稿会让旁白与证据对不上。
 
 ## 9. 断线恢复（60 秒）
 
