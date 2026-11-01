@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { PAD, M, fmtF, pageAt, Pages, Scene, SceneHead, Card, Row, Body, LinePlot, Verdict } from "../shared";
+import { PAD, M, fmtF, pageAt, Pages, Scene, SceneHead, Card, Row, KV, Body, LinePlot, Verdict } from "../shared";
 
 const TopTable: React.FC = () => {
   const cols = ["窗", "起点", "MSE", "MAE", "预测分", "标签"];
@@ -80,7 +80,11 @@ export const SVerification: React.FC = () => {
           </div>
           <div style={{ position: "absolute", left: 1230, top: 300, width: 590 }}>
             <Card label="读数" accent={C.cyan} pad={20}>
-              <Row name="重构 MSE" value={fmtF(M.scores.mse.p, 3) + " / " + fmtF(M.scores.mse.r, 3) + " / " + fmtF(M.scores.mse.f1, 4)} width={540} />
+              <div style={{ display: "flex", gap: 26, marginTop: 2 }}>
+                <KV k="重构 MSE · 精度" v={fmtF(M.scores.mse.p, 4)} />
+                <KV k="召回" v={fmtF(M.scores.mse.r, 4)} />
+                <KV k="F1" v={fmtF(M.scores.mse.f1, 4)} />
+              </div>
               <Row name="重构 MAE" value={fmtF(M.scores.mae.f1, 4)} note="和 MSE 一模一样" width={540} />
               <Row name="预测" value={fmtF(M.scores.pred.f1, 4)} note="19 / 540" width={540} />
               <Row name="范围" value={fmtF(M.scores.mse.rf1, 4)} note="精度为零" width={540} color={C.coral} />
