@@ -1,0 +1,2360 @@
+{
+ "entry": "src/tsint-30-ad-foundation-window-score/script.ts",
+ "fps": 30,
+ "totalSec": 1062.15,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 120.37
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 120.37,
+   "dur": 125.02
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 245.39,
+   "dur": 169.52
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 414.91,
+   "dur": 161.6
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 576.51,
+   "dur": 175.91
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 752.42,
+   "dur": 158.72
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 911.14,
+   "dur": 103.05
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1014.19,
+   "dur": 47.96
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.58,
+   "speech": "第四篇章，第一集。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 3.96,
+   "dur": 2.7,
+   "speech": "上一集还在搬分布。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 6.84,
+   "dur": 3.21,
+   "speech": "这一集换话题，异常检测。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.23,
+   "dur": 2.27,
+   "speech": "但先不讲模型。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 12.68,
+   "dur": 1.89,
+   "speech": "先讲地基。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 14.75,
+   "dur": 3.85,
+   "speech": "因为这一章里，八成的差别不在模型。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 18.78,
+   "dur": 1.72,
+   "speech": "在口径。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 20.68,
+   "dur": 3.73,
+   "speech": "同一组模型输出，同一批异常点。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 24.59,
+   "dur": 2.34,
+   "speech": "换一种评分方式。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 27.11,
+   "dur": 2.53,
+   "speech": "F1 就换一个数。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 29.83,
+   "dur": 1.98,
+   "speech": "先给三个数。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 31.99,
+   "dur": 2.8,
+   "speech": "第一个，零点零七六二。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 34.97,
+   "dur": 2.58,
+   "speech": "重构误差的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 37.73,
+   "dur": 2.97,
+   "speech": "第二个，零点零六三三。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 40.88,
+   "dur": 2.56,
+   "speech": "预测误差的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 43.61,
+   "dur": 2.32,
+   "speech": "第三个，是零。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 46.11,
+   "dur": 2.58,
+   "speech": "范围口径的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 48.87,
+   "dur": 2.7,
+   "speech": "三个数，同一批预测。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 51.76,
+   "dur": 2.13,
+   "speech": "这不是模型差。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 54.06,
+   "dur": 2.63,
+   "speech": "这一集根本没有模型。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 56.87,
+   "dur": 2.22,
+   "speech": "只有三块地基。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 59.27,
+   "dur": 2.85,
+   "speech": "窗口，指标，评分。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 62.3,
+   "dur": 2.7,
+   "speech": "一只股票，二十五年。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 65.18,
+   "dur": 2.65,
+   "speech": "五千九百五十个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 68.02,
+   "dur": 2.75,
+   "speech": "一百日窗口，步长十。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 70.95,
+   "dur": 2.75,
+   "speech": "切出五百八十六个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 73.88,
+   "dur": 2.41,
+   "speech": "注入六十个异常点。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 76.47,
+   "dur": 2.56,
+   "speech": "占全序列百分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 79.21,
+   "dur": 2.97,
+   "speech": "最高那个，也不到零点一。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 82.35,
+   "dur": 2.29,
+   "speech": "这是地基的样子。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 84.83,
+   "dur": 2.68,
+   "speech": "三个模块，四个坑。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 87.69,
+   "dur": 2.44,
+   "speech": "四十七条新断言。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 90.3,
+   "dur": 3.04,
+   "speech": "二十八个检查点，全过。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 93.52,
+   "dur": 2.37,
+   "speech": "数据是真实日线。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 96.07,
+   "dur": 2.99,
+   "speech": "二零零一年到二零二六年。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 99.24,
+   "dur": 2.73,
+   "speech": "贵州茅台，收盘价。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 102.14,
+   "dur": 2.94,
+   "speech": "最长的停牌，五十三天。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 105.27,
+   "dur": 3.06,
+   "speech": "这些噪音，后面都要处理。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 108.51,
+   "dur": 3.49,
+   "speech": "先说问题：为什么会有三个 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 112.18,
+   "dur": 3.01,
+   "speech": "然后给定义，再给直觉。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 115.38,
+   "dur": 2.8,
+   "speech": "最后看实现和验证。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 121.57,
+   "dur": 1.81,
+   "speech": "先说问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 123.56,
+   "dur": 3.28,
+   "speech": "做异常检测，绕不开一张表。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 127.02,
+   "dur": 1.98,
+   "speech": "表里是预测。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 129.18,
+   "dur": 2.73,
+   "speech": "预测是什么，先不管。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 132.09,
+   "dur": 2.41,
+   "speech": "假设已经有一组。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 134.68,
+   "dur": 2.49,
+   "speech": "现在要报一个分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 137.35,
+   "dur": 1.77,
+   "speech": "问题来了。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 139.3,
+   "dur": 1.77,
+   "speech": "报哪一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 141.24,
+   "dur": 2.41,
+   "speech": "第一种，逐点算。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 143.84,
+   "dur": 3.52,
+   "speech": "预测对了一个点，算一个真阳性。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 147.53,
+   "dur": 2.41,
+   "speech": "第二种，点调整。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 150.13,
+   "dur": 4.36,
+   "speech": "一段异常里，命中一个点，整段算命中。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 154.67,
+   "dur": 2.53,
+   "speech": "第三种，范围调整。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 157.38,
+   "dur": 3.06,
+   "speech": "按段算，还要看覆盖比例。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 160.62,
+   "dur": 3.16,
+   "speech": "三种口径，都是行业标准。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 163.96,
+   "dur": 2.94,
+   "speech": "三种口径，给出三个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 167.08,
+   "dur": 2.17,
+   "speech": "看真实读数。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 169.44,
+   "dur": 4.24,
+   "speech": "重构 MSE 口径，F1 零点零七六二。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 173.85,
+   "dur": 2.99,
+   "speech": "重构 MAE 口径，一模一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 177.02,
+   "dur": 3.23,
+   "speech": "预测口径，零点零六三三。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 180.43,
+   "dur": 2.37,
+   "speech": "范围口径，零。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 182.98,
+   "dur": 1.93,
+   "speech": "注意第二行。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 185.09,
+   "dur": 3.54,
+   "speech": "MSE 和 MAE，两个不同的分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 188.82,
+   "dur": 3.16,
+   "speech": "选出来的窗口，完全相同。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 192.15,
+   "dur": 3.23,
+   "speech": "所以 F1 也完全相同。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 195.56,
+   "dur": 2.94,
+   "speech": "这不是巧合，后面解释。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 198.69,
+   "dur": 2.37,
+   "speech": "更麻烦的是排序。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 201.23,
+   "dur": 2.97,
+   "speech": "换一组预测，排序会翻。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 204.38,
+   "dur": 2.22,
+   "speech": "合成一个例子。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 206.78,
+   "dur": 3.11,
+   "speech": "两段异常，每段十个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 210.07,
+   "dur": 4.57,
+   "speech": "预测 A，每段命中五个点，再加八个误报。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 214.82,
+   "dur": 3.97,
+   "speech": "预测 B，只覆盖第一段，但覆盖满。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 218.98,
+   "dur": 5.53,
+   "speech": "普通 F1，B 赢，零点六六六七对零点五二六三。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 224.69,
+   "dur": 5.25,
+   "speech": "点调整，A 赢，零点八三三三对零点六六六七。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 230.12,
+   "dur": 4,
+   "speech": "同一组预测，两种口径，两个冠军。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 234.3,
+   "dur": 3.23,
+   "speech": "所以 F1 不是模型的属性。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 237.71,
+   "dur": 2.15,
+   "speech": "是口径的属性。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 240.04,
+   "dur": 3.16,
+   "speech": "报 F1 之前，先报口径。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 246.59,
+   "dur": 2.56,
+   "speech": "定义，三张公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 249.33,
+   "dur": 2.44,
+   "speech": "第一张，重构误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 251.95,
+   "dur": 2.13,
+   "speech": "式四点一零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 254.25,
+   "dur": 2.58,
+   "speech": "每个窗口，先重构。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 257.01,
+   "dur": 3.47,
+   "speech": "再算重构值和原值的平方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 260.66,
+   "dur": 2.75,
+   "speech": "对窗内所有格子求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 263.59,
+   "dur": 2.1,
+   "speech": "除以格子数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 265.88,
+   "dur": 3.16,
+   "speech": "式四点一一，是同一个东西。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 269.21,
+   "dur": 2.58,
+   "speech": "平方换成绝对值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 271.98,
+   "dur": 2.44,
+   "speech": "除以格子数不变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 274.59,
+   "dur": 3.04,
+   "speech": "式四点一四，是预测版。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 277.81,
+   "dur": 2.05,
+   "speech": "不看整个窗。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 280.05,
+   "dur": 2.65,
+   "speech": "只看窗尾的 F 个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 282.88,
+   "dur": 2.46,
+   "speech": "分母也换成 F。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 285.52,
+   "dur": 2.58,
+   "speech": "三个公式，都很短。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 288.28,
+   "dur": 2.61,
+   "speech": "但每一处都能埋坑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 291.07,
+   "dur": 2.1,
+   "speech": "第一处，分母。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 293.35,
+   "dur": 3.13,
+   "speech": "格子数是窗长乘通道数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 296.67,
+   "dur": 3.04,
+   "speech": "除以格子数，只除一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 299.88,
+   "dur": 3.37,
+   "speech": "再除一遍通道数，是静默错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 303.44,
+   "dur": 3.16,
+   "speech": "排序不变，分数整体缩小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 306.78,
+   "dur": 3.06,
+   "speech": "换一个数据集，就不可比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 310.02,
+   "dur": 2.61,
+   "speech": "第二处，窗口本身。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 312.8,
+   "dur": 1.86,
+   "speech": "式四点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 314.85,
+   "dur": 3.54,
+   "speech": "窗口从 t 减 C 加一，到 t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 318.57,
+   "dur": 3.4,
+   "speech": "步长 s，决定窗口怎么滑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 322.15,
+   "dur": 5.01,
+   "speech": "窗口数等于，总长减窗长，除以步长，加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 327.33,
+   "dur": 2.56,
+   "speech": "标签和窗口同形。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 330.07,
+   "dur": 3.81,
+   "speech": "是逐点标签，不是整个窗一个零一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 334.06,
+   "dur": 1.86,
+   "speech": "这里出事了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 336.1,
+   "dur": 2.75,
+   "speech": "窗长一百，步长十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 339.03,
+   "dur": 3.01,
+   "speech": "一个点，落在十个窗口里。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 342.22,
+   "dur": 2.44,
+   "speech": "百分之一的点异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 344.84,
+   "dur": 3.23,
+   "speech": "会让一半以上的窗口带标签。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 348.25,
+   "dur": 4.12,
+   "speech": "五百八十六个窗口，三百一十一个带异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 352.55,
+   "dur": 2.1,
+   "speech": "百分之五十三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 354.83,
+   "dur": 3.81,
+   "speech": "窗口级的 F1，到这个密度就不可用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 358.82,
+   "dur": 3.16,
+   "speech": "必须先折叠成逐点标签。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 362.15,
+   "dur": 4.12,
+   "speech": "折叠规则，任一窗口标它，就算异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 366.45,
+   "dur": 3.61,
+   "speech": "再往下，是点调整和范围调整。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 370.25,
+   "dur": 3.18,
+   "speech": "书里只提了一句，公式没给。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 373.61,
+   "dur": 3.13,
+   "speech": "我们按 Tatbul 二零一八的口径。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 376.92,
+   "dur": 4.65,
+   "speech": "点调整，命中一段里一个点，整段算命中。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 381.75,
+   "dur": 4.81,
+   "speech": "范围调整，按段算，覆盖比例不小于 alpha 才算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 386.74,
+   "dur": 2.25,
+   "speech": "alpha 取零点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 389.17,
+   "dur": 2.77,
+   "speech": "最后，三个 golden 值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 392.12,
+   "dur": 3.18,
+   "speech": "完美重构，分数严格是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 395.48,
+   "dur": 3.88,
+   "speech": "输入一二，重构零零，分数二点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 399.54,
+   "dur": 3.64,
+   "speech": "输入翻倍，分数变四倍，十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 403.36,
+   "dur": 3.66,
+   "speech": "预测版，行尾十个二，分数四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 407.2,
+   "dur": 3.21,
+   "speech": "这几个数，钉进单元测试。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 410.59,
+   "dur": 2.13,
+   "speech": "往下看直觉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 416.11,
+   "dur": 1.93,
+   "speech": "先给直觉。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 418.22,
+   "dur": 3.37,
+   "speech": "为什么窗口一叠，标签就糊。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 421.78,
+   "dur": 1.67,
+   "speech": "算一下。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 423.63,
+   "dur": 2.75,
+   "speech": "窗长一百，步长十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 426.56,
+   "dur": 2.8,
+   "speech": "一百除以十，等于十。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 429.54,
+   "dur": 3.11,
+   "speech": "每个点，被十个窗口覆盖。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 432.83,
+   "dur": 3.16,
+   "speech": "反过来说，一个窗口的标签。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 436.16,
+   "dur": 2.97,
+   "speech": "是窗内一百个点的并集。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 439.31,
+   "dur": 2.85,
+   "speech": "窗里只要有一个异常点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 442.34,
+   "dur": 2.7,
+   "speech": "这个窗口就是正样本。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 445.22,
+   "dur": 2.05,
+   "speech": "注入六十个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 447.45,
+   "dur": 2.58,
+   "speech": "它们散在四十四段里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 450.21,
+   "dur": 2.65,
+   "speech": "每段，一到三个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 453.05,
+   "dur": 3.18,
+   "speech": "第一段异常，污染十个窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 456.41,
+   "dur": 3.04,
+   "speech": "四十四段，几乎连成片。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 459.63,
+   "dur": 3.09,
+   "speech": "数出来，三百一十一个窗口。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 462.89,
+   "dur": 2.58,
+   "speech": "百分之五十三点零七。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 465.66,
+   "dur": 2.82,
+   "speech": "窗口级 F1 会怎样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 468.66,
+   "dur": 2.37,
+   "speech": "真阳性一大堆。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 471.2,
+   "dur": 2.53,
+   "speech": "假阳性也一大堆。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 473.92,
+   "dur": 2.27,
+   "speech": "指标没有意义。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 476.37,
+   "dur": 1.89,
+   "speech": "必须折叠。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 478.43,
+   "dur": 2.53,
+   "speech": "折叠成逐点标签。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 481.15,
+   "dur": 4.33,
+   "speech": "五百八十六个窗口，变回五千九百五十个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 485.66,
+   "dur": 4.12,
+   "speech": "预测的六个窗口，折叠成一百五十个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 489.96,
+   "dur": 2.03,
+   "speech": "为什么是六个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 492.17,
+   "dur": 3.49,
+   "speech": "百分之一的窗口，选分数最高的。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 495.84,
+   "dur": 4.24,
+   "speech": "五百八十六乘百分之一，五点八六，取六。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 500.26,
+   "dur": 3.01,
+   "speech": "六个一百日窗，叠成一段。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 503.46,
+   "dur": 2.61,
+   "speech": "这就是精度的天花板。"
+  },
+  {
+   "scene": "intuition",
+   "index": 30,
+   "start": 506.24,
+   "dur": 2.51,
+   "speech": "真实阳性，八个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 31,
+   "start": 508.93,
+   "dur": 3.88,
+   "speech": "八个除以一百五十，零点零五三三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 32,
+   "start": 512.99,
+   "dur": 3.09,
+   "speech": "和重构口径的精度对上了。"
+  },
+  {
+   "scene": "intuition",
+   "index": 33,
+   "start": 516.26,
+   "dur": 3.21,
+   "speech": "六十个注入点，只抓到八个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 34,
+   "start": 519.64,
+   "dur": 2.61,
+   "speech": "召回零点一三三三。"
+  },
+  {
+   "scene": "intuition",
+   "index": 35,
+   "start": 522.43,
+   "dur": 2.34,
+   "speech": "预测口径不一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 36,
+   "start": 524.95,
+   "dur": 3.9,
+   "speech": "它选六个窗口，折叠出五百四十个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 37,
+   "start": 529.03,
+   "dur": 2.05,
+   "speech": "抓到十九个。"
+  },
+  {
+   "scene": "intuition",
+   "index": 38,
+   "start": 531.27,
+   "dur": 2.8,
+   "speech": "所以召回高，精度低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 39,
+   "start": 534.24,
+   "dur": 3.57,
+   "speech": "这是口径的差别，不是模型的能力。"
+  },
+  {
+   "scene": "intuition",
+   "index": 40,
+   "start": 537.99,
+   "dur": 2.8,
+   "speech": "范围口径为什么是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 41,
+   "start": 540.97,
+   "dur": 2.99,
+   "speech": "预测是一段一百五十点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 42,
+   "start": 544.14,
+   "dur": 3.71,
+   "speech": "真实异常段，一段才一到三个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 43,
+   "start": 548.03,
+   "dur": 4.17,
+   "speech": "预测段里那点覆盖，连百分之二都不到。"
+  },
+  {
+   "scene": "intuition",
+   "index": 44,
+   "start": 552.37,
+   "dur": 3.52,
+   "speech": "所以预测段一个都不算命中。"
+  },
+  {
+   "scene": "intuition",
+   "index": 45,
+   "start": 556.07,
+   "dur": 2.25,
+   "speech": "召回却有一点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 46,
+   "start": 558.5,
+   "dur": 3.9,
+   "speech": "因为四段异常，整个落在预测区间里。"
+  },
+  {
+   "scene": "intuition",
+   "index": 47,
+   "start": 562.58,
+   "dur": 3.16,
+   "speech": "四十四分之四，零点零九。"
+  },
+  {
+   "scene": "intuition",
+   "index": 48,
+   "start": 565.92,
+   "dur": 3.28,
+   "speech": "精度是零，F1 就是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 49,
+   "start": 569.38,
+   "dur": 2.94,
+   "speech": "三个口径，三种死法。"
+  },
+  {
+   "scene": "intuition",
+   "index": 50,
+   "start": 572.5,
+   "dur": 1.81,
+   "speech": "落到实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 577.71,
+   "dur": 2.51,
+   "speech": "实现，三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 580.4,
+   "dur": 2.46,
+   "speech": "Window，管切窗。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 583.04,
+   "dur": 4.17,
+   "speech": "窗口数，切窗，窗口起点，折叠。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 587.39,
+   "dur": 2.46,
+   "speech": "Metrics，管指标。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 590.03,
+   "dur": 4.05,
+   "speech": "混淆矩阵，精度，召回，F1。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 594.26,
+   "dur": 2.56,
+   "speech": "点调整，范围调整。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 596.99,
+   "dur": 2.49,
+   "speech": "Score，管评分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 599.66,
+   "dur": 2.82,
+   "speech": "三个公式，各一个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 602.66,
+   "dur": 2.92,
+   "speech": "再加一套带校验的版本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 605.76,
+   "dur": 3.71,
+   "speech": "形状不对，返回错误，不静默截断。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 609.65,
+   "dur": 2.46,
+   "speech": "四个坑，都是口径。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 612.29,
+   "dur": 3.16,
+   "speech": "第一个坑，折叠函数的参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 615.63,
+   "dur": 3.83,
+   "speech": "它要的是，每个窗口每个位置的掩码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 619.64,
+   "dur": 3.97,
+   "speech": "我第一版传了，每个窗口一个零一标签。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 623.79,
+   "dur": 3.57,
+   "speech": "结果只折出了第一个窗口的第三位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 627.54,
+   "dur": 2.15,
+   "speech": "看上去没报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 629.87,
+   "dur": 2.97,
+   "speech": "我的断言还写错了期望。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 633.02,
+   "dur": 3.49,
+   "speech": "翻文档，改语义，断言也改对。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 636.69,
+   "dur": 3.83,
+   "speech": "现在它钉的期望是，假假真假假。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 640.7,
+   "dur": 2.7,
+   "speech": "第二个坑，基线太弱。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 643.58,
+   "dur": 3.57,
+   "speech": "第一版重构，用窗口均值填充。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 647.33,
+   "dur": 3.52,
+   "speech": "一个十 sigma 的尖峰，进窗口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 651.03,
+   "dur": 3.49,
+   "speech": "平均下来，只多零点二五到一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 654.7,
+   "dur": 4.48,
+   "speech": "而正常窗口的 MSE，最大能到一点四五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 659.36,
+   "dur": 4.19,
+   "speech": "所以选出的六个窗口，和尖峰无关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 663.73,
+   "dur": 2.08,
+   "speech": "真阳性是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 665.99,
+   "dur": 2.65,
+   "speech": "改成逐窗直线拟合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 668.82,
+   "dur": 4.12,
+   "speech": "尖峰的残差，从百分之一，变回它自己。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 673.12,
+   "dur": 3.45,
+   "speech": "六个窗口，终于落在尖峰上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 676.74,
+   "dur": 3.97,
+   "speech": "这个改动，是这一集最重要的一次调试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 680.9,
+   "dur": 2.56,
+   "speech": "第三个坑，注入器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 683.64,
+   "dur": 4.33,
+   "speech": "第一版按均匀分布排序，再拿光标往后推。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 688.15,
+   "dur": 3.35,
+   "speech": "最小的那个数，落在序列末尾。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 691.68,
+   "dur": 2.56,
+   "speech": "光标跟着跳到最后。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 694.42,
+   "dur": 2.75,
+   "speech": "后面的候选全被跳过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 697.35,
+   "dur": 3.21,
+   "speech": "只注入了十六个点，十二段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 700.73,
+   "dur": 2.25,
+   "speech": "应该是六十个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 703.16,
+   "dur": 3.83,
+   "speech": "改成占用表，命中过的地方不再选。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 707.17,
+   "dur": 3.61,
+   "speech": "六十个点，四十四段，一次就对。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 710.96,
+   "dur": 2.37,
+   "speech": "第四个坑，分母。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 713.51,
+   "dur": 3.11,
+   "speech": "重构分数，除以格子数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 716.8,
+   "dur": 2.85,
+   "speech": "如果通道数再除一遍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 719.83,
+   "dur": 2.7,
+   "speech": "分数会小一个数量级。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 722.71,
+   "dur": 3.33,
+   "speech": "排序不变，测试也不会报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 726.21,
+   "dur": 2.46,
+   "speech": "所以加了一条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 728.86,
+   "dur": 3.54,
+   "speech": "输入翻倍，分数必须变成四倍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 732.58,
+   "dur": 3.01,
+   "speech": "四倍的线性，钉住了分母。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 735.77,
+   "dur": 3.06,
+   "speech": "四个坑，全都是静默错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 48,
+   "start": 739.01,
+   "dur": 2.49,
+   "speech": "每一个都配了断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 49,
+   "start": 741.68,
+   "dur": 3.33,
+   "speech": "断言数，十六加十五加十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 50,
+   "start": 745.19,
+   "dur": 2.77,
+   "speech": "四十七条，都是新的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 51,
+   "start": 748.14,
+   "dur": 2.08,
+   "speech": "往下看验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 753.62,
+   "dur": 2.37,
+   "speech": "验证，第三层。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 756.17,
+   "dur": 3.33,
+   "speech": "二十八个检查点，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 759.67,
+   "dur": 2.05,
+   "speech": "跑零点一秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 761.91,
+   "dur": 2.2,
+   "speech": "十一个在窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 764.28,
+   "dur": 2.08,
+   "speech": "九个在指标。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 766.54,
+   "dur": 2.03,
+   "speech": "八个在评分。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 768.75,
+   "dur": 2.01,
+   "speech": "先看 golden。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 770.94,
+   "dur": 4.29,
+   "speech": "窗口，一到五，窗长三，切出三窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 775.4,
+   "dur": 4.17,
+   "speech": "依次是一二三，二三四，三四五。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 779.75,
+   "dur": 3.64,
+   "speech": "折叠，一个掩码，只标第三位。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 783.57,
+   "dur": 3.04,
+   "speech": "折出来就是假假真假假。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 786.79,
+   "dur": 3.45,
+   "speech": "重构，完美输入，分数是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 790.41,
+   "dur": 3.93,
+   "speech": "二点五，翻倍变十，四倍关系成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 794.52,
+   "dur": 3.66,
+   "speech": "预测版，行尾十个二，分数四。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 798.36,
+   "dur": 2.82,
+   "speech": "这几个数，手动就能验。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 801.36,
+   "dur": 2.27,
+   "speech": "再看真实读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 803.81,
+   "dur": 2.34,
+   "speech": "五百八十六个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 806.33,
+   "dur": 2.99,
+   "speech": "注入六十个点，四十四段。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 809.5,
+   "dur": 3.06,
+   "speech": "窗口标签，三百一十一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 812.75,
+   "dur": 2.97,
+   "speech": "三种评分，各选六窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 815.89,
+   "dur": 2.61,
+   "speech": "精度零点零五三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 818.68,
+   "dur": 2.61,
+   "speech": "召回零点一三三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 821.46,
+   "dur": 2.68,
+   "speech": "F1 零点零七六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 824.32,
+   "dur": 2.92,
+   "speech": "点调整后，F1 没变。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 827.42,
+   "dur": 1.6,
+   "speech": "为什么。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 829.2,
+   "dur": 3.97,
+   "speech": "命中的八个点，恰好都落在单点段上。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 833.35,
+   "dur": 3.57,
+   "speech": "没有一段被额外放宽，数就原样。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 837.1,
+   "dur": 3.16,
+   "speech": "这是巧合，但读数要照报。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 840.44,
+   "dur": 3.23,
+   "speech": "范围口径，召回零点零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 843.85,
+   "dur": 2.22,
+   "speech": "F1 还是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 846.25,
+   "dur": 3.54,
+   "speech": "预测口径，精度零点零三五二。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 849.97,
+   "dur": 2.7,
+   "speech": "召回零点三一六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 852.85,
+   "dur": 2.87,
+   "speech": "F1 零点零六三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 855.9,
+   "dur": 2.44,
+   "speech": "折叠五百四十个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 858.52,
+   "dur": 2.03,
+   "speech": "抓了十九个。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 860.73,
+   "dur": 2.99,
+   "speech": "比重构口径多抓十一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 863.9,
+   "dur": 2.63,
+   "speech": "但精度掉到三分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 866.71,
+   "dur": 2.37,
+   "speech": "最后看那个平局。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 869.26,
+   "dur": 3.57,
+   "speech": "MSE 和 MAE，读数完全相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 873,
+   "dur": 2.03,
+   "speech": "不是实现错。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 875.21,
+   "dur": 3.81,
+   "speech": "是这六个窗口，两种分数都排第一。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 879.2,
+   "dur": 3.95,
+   "speech": "尖峰把平方项和绝对项一起抬起来。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 883.33,
+   "dur": 2.17,
+   "speech": "所以排序一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 885.68,
+   "dur": 3.25,
+   "speech": "换个数据集，可能就不一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 889.12,
+   "dur": 2.08,
+   "speech": "这句要照实说。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 891.37,
+   "dur": 3.88,
+   "speech": "合成例子里，排序翻转倒是真的。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 895.43,
+   "dur": 2.75,
+   "speech": "普通 F1，B 赢。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 898.36,
+   "dur": 2.37,
+   "speech": "点调整，A 赢。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 900.91,
+   "dur": 2.68,
+   "speech": "范围调整，A 是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 903.77,
+   "dur": 2.92,
+   "speech": "三个口径，三个冠军。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 906.86,
+   "dur": 2.08,
+   "speech": "往下看边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 912.34,
+   "dur": 2.27,
+   "speech": "边界，四条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 914.79,
+   "dur": 2.22,
+   "speech": "第一，没有训练。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 917.19,
+   "dur": 2.49,
+   "speech": "重构是直线拟合。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 919.86,
+   "dur": 3.95,
+   "speech": "不是自编码器，不是 LSTM。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 923.99,
+   "dur": 2.13,
+   "speech": "预测是外推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 926.29,
+   "dur": 2.99,
+   "speech": "所以本集不报模型能力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 929.46,
+   "dur": 3.81,
+   "speech": "这一集只证明，口径怎么改变读数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 933.45,
+   "dur": 2.7,
+   "speech": "第二，标签是注入的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 936.33,
+   "dur": 4.36,
+   "speech": "真实市场上，哪一天是异常，没有标准答案。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 940.87,
+   "dur": 3.25,
+   "speech": "所以用了已知真值的注入。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 944.3,
+   "dur": 3.09,
+   "speech": "这是检测实验的标准做法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 947.57,
+   "dur": 4.12,
+   "speech": "但也意味着，F1 不能外推到真实交易。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 951.87,
+   "dur": 3.57,
+   "speech": "第三，MSE 和 MAE 平局。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 955.61,
+   "dur": 2.22,
+   "speech": "本数据上一致。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 958.02,
+   "dur": 1.91,
+   "speech": "不能推广。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 960.11,
+   "dur": 2.87,
+   "speech": "照实报，平局也是证据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 963.16,
+   "dur": 3.4,
+   "speech": "第四，窗口级 F1 不可用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 966.73,
+   "dur": 3.54,
+   "speech": "这是算术结果，不是实现缺陷。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 970.46,
+   "dur": 3.69,
+   "speech": "步长小于窗长，一个点进十个窗。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 974.32,
+   "dur": 3.73,
+   "speech": "百分之一的异常，一半窗口带标签。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 978.24,
+   "dur": 4.86,
+   "speech": "所以窗口级指标，只能在步长等于窗长时用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 983.28,
+   "dur": 1.72,
+   "speech": "三笔债。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 985.18,
+   "dur": 2.29,
+   "speech": "阈值不在这一集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 987.65,
+   "dur": 2.53,
+   "speech": "分类器不在这一集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 990.36,
+   "dur": 2.65,
+   "speech": "统计基线，也不在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 993.2,
+   "dur": 2.49,
+   "speech": "下一集补第一笔。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 995.86,
+   "dur": 2.8,
+   "speech": "分数怎么变成零和一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 998.84,
+   "dur": 3.61,
+   "speech": "固定阈值，分位数，还有 SPOT。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1002.64,
+   "dur": 2.92,
+   "speech": "同一组分数，三种切法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1005.73,
+   "dur": 2.44,
+   "speech": "也会有三个 F1。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1008.35,
+   "dur": 3.64,
+   "speech": "这一集的地基，就是下一集的尺子。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1015.39,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1017.67,
+   "dur": 4.6,
+   "speech": "第一，F1 不是模型的属性，是口径的属性。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1022.45,
+   "dur": 2.94,
+   "speech": "报分数之前，先报口径。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1025.57,
+   "dur": 3.4,
+   "speech": "第二，窗口一叠，标签就糊。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1029.15,
+   "dur": 4.86,
+   "speech": "一点进十窗，百分之一的异常，一半窗口带标签。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1034.19,
+   "dur": 2.7,
+   "speech": "先折叠，再算指标。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1037.07,
+   "dur": 2.77,
+   "speech": "第三，静默错误最贵。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1040.03,
+   "dur": 4.38,
+   "speech": "折叠传错参数，基线太弱，分母除两次。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1044.59,
+   "dur": 2.2,
+   "speech": "三个都不报错。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1046.97,
+   "dur": 2.82,
+   "speech": "三个都靠断言钉住。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1049.97,
+   "dur": 3.37,
+   "speech": "下一集，把分数变成零和一。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1053.52,
+   "dur": 3.83,
+   "speech": "阈值，分类器，和最笨的基线。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1057.53,
+   "dur": 2.41,
+   "speech": "第 30 集，完。"
+  }
+ ]
+}

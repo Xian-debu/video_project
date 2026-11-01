@@ -20,9 +20,10 @@
   "fps": 30,
   "prefix": "tsint-30",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [],
   "derived": [],
@@ -36,5 +37,6 @@
   "docs": [
     "docs/plan.md"
   ],
+  "notes": "units: ch4-window, ch4-metrics, ch4-score",
   "assetsStatus": "incomplete"
 }
