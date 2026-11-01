@@ -417,3 +417,16 @@
 - 返工: 29 页静帧按页中点全量复核（只改 1 页 1 行 + 1 句旁白）；TTS 两轮（310 句一次过 cps 检查，第二轮回 1 句）；make 两轮 PASS
 - 偏差: 计划判据「两个基线抓住注入异常」落空——ARIMA 只认点（F1 0.1218 / P 0.9556 / R 0.0651 / τ 3.064288 / 报警 3.66% / 40 个尖峰全中、1,200 个相位点只中 3），MP 一次都没报警（τ 11.400858、评估段最大 11.0171、F1 0）；停牌 240 天把两者的边界同时打出（ARIMA 0 天、MP 严格 42 天 / 宽松 0 天）；点级调整 0.1218 → 0.9985 只作口径对照
 - 备注: ch04 第十集（tsint 全系列第 49 部成片）；证据 49 条（数据 6 / 收益 3 / ARIMA 11 / MP 8 / 盲区 4 / 注入 5 / 分数 8 / 分类 4）；三条负向断言（ACF 0.080 > 白噪声带 0.038、仿射有限距离 4.3e−5、F1 < 1）写进检查；下一步 E40 `ad-adversarial-dual-decoder`。
+
+## E40 ad-adversarial-dual-decoder — 2026-11-02 上午
+
+- ts-base: `20a044f`（算法 Ch04/USAD.hs 354 行 / 9 条、Ch04/DAGMM.hs 456 行 / 10 条、Ch04/AEEnsemble.hs 211 行 / 7 条 + 证据 ch4-adversarial 57/57、142.9 s；单 AE 基线复用 `Ch04/AE.hs`（同瓶颈 d=16、同轮次））；套件 127，总断言 1,689
+- ts-admin: `8da7527`（`inventory/scripts/export_ch04_dual.py`；600519.SH hfq 日线 2010-01-04..2026-06-30，3,996 行，最大间隔 11 天，train 2,180 / val 487 / test 1,328；manifest 的 fit 2,181 是交易日切分含边界，窗口首窗需 100 天历史，片内按 2,080/2,081 记）
+- video_project: `5a58b1c`（pack 源 + 29 页静帧修）+ `42d20dd`（delivery：cover.png / tsint-40.srt / chapters / ffmeta + film.json ready）；讲稿 261 行、coverFrame 20
+- 引擎: `a667688`（未改）；score 复用 `out/e04-score-loop-48k.wav`（1560 s，scoreReused false）
+- 成片: 1,012.97 s（16:52.97）/ 30,389 帧 / 8 场 29 页 / −15 LUFS / TP −2 dBFS / LRA 2.7 / 261 条旁白（发声 940.4 s）/ 字幕跨度 00:00:01,200→00:16:50,760 / mp4 54,069,423 B / cover.png 89,867 B（帧 20）/ srt 20,482 B / chapters 453 B / ffmeta 830 B / 树 `4ef582d92cd8196b`
+- 流水线: 23 个 stage 全 ok、8 段 rendered 8（reused 0）；mix 48 kHz / 1,014.16 s、peak −1.12 dBFS、RMS −26.60 dBFS、ducked 57.5%（4.5 dB）、musicGain −4.5；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.34、gap_full −30.67、gap_audible −33.47、bed 36.5；loudnorm I −15 / TP −2；闪烁门 30,389 帧 mean 21.11 / min 14.50 / max 27.57、mean|Δ| 0.0143、p99 0.1157、最大 10.17、7 切点（3746 / 7360 / 11681 / 15293 / 18948 / 25236 / 28456）；261 cue 无一换行、最长 29 字（budget 34）；8 章合计 1,012.96 s（首 00:00:00 / 末 00:15:48）
+- 卡点: ① 逐窗 SGD 写成惰性 zipWith，`foldl` 只强制最外层构造器，四万次更新堆 thunk 链，进程被 cgroup 杀掉（exit 137、峰值 8.17 GB / 上限 12 GB）→ 按阶段 `V.force` / `evaluate`，常驻 0.4 GB；② 派生 `data/dual.json` 未 gitignore（首轮内容检查）→ 根 `.gitignore` 加 `**/data/dual.json`，`git check-ignore -v` 确认；③ 首轮静帧 7 处要修：开场 USAD 两条损失公式溢出卡片（拆两行、字号 27）、「真值窗」Stat 值换行（valueSize 34）、problem 字幕「一千二百二十八」笔误（改一千三百二十八）、USAD 训练曲线出现负刻度（yMin 0）、implementation 方向性 Row 溢出（改 s3 < s2 + 备注）、verification 三类中位行值列被挤（每模型一行 a · b · c）、verification 种子/证据行与备注重叠（种子并入备注、证据文件只留文件名）；④ 检查要有反向器：方向性检查配「符号翻反的训练器」，正常 201→54、翻反 0.02/0.10（必须失败），否则分不清方法失败与噪声；⑤ 集成前提塌掉：验证段 0.2800 → 测试段 0.0584（掉 0.2216），成员错得不同时中位数只把错误平均，单 AE 0.2219 反超
+- 返工: 静帧两轮（29 帧估算帧 + 29 帧实测帧，修 7 处后重渲 7 帧确认）；TTS 一轮 261 条全过 cps；make 首轮 PASS
+- 偏差: 计划写「两个解码器/能量/集成三个思路都该更稳」，实测三个都失灵且方式各不同——USAD 高召回低精度（F1 0.239826 / P 0.136589 / R 0.982143 / TP 165 / FP 1,043 / FN 3）、DAGMM 三类中位只差 0.107（−7.0186 / −6.9130 / −6.9116）且阈在中段导致 1,121 个报警、集成验证到测试反向掉 0.2216；脚手架计划写「600519.SH + 000858.SZ 两只」，实现只导出一只并把「换票要重跑」写进边界页；书 §4.5 p.94–97 三个公式都不是原式（只有名字与一段直觉），推导由本集补上并标「非书中」
+- 备注: ch04 第十一集（tsint 全系列第 50 部成片）；证据 57 条（dagmm 10 / usad 9 / scores 8 / data 6 / ens 6 / inject 6 / window 5 / blind 4 / ae 3）；三条负向断言（F1 四个读数都 < 1、集成必须掉 0.2 以上、对抗必须抬 L1 2,376.88 > 2 × 90）写进检查；参数 USAD 2,608 / DAGMM 353 / 单 AE 3,316 / 五成员 16,580；下一步 E41 `ad-sparse-prior-dual-attention`。
