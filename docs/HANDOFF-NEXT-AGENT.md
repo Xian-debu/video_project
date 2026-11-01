@@ -1,8 +1,8 @@
-# HANDOFF — 下一任 agent 接手单（tsint 系列，E22 收尾后）
+# HANDOFF — 下一任 agent 接手单（tsint 系列，E23 收尾后）
 
 > 写于 2026-10-31。本文件写给**下一个接手本工程的 agent**：读完这一份就能继续跑，不必回放旧会话。
 > 真源顺序：本文件 → `docs/HANDOFF-EVENING.md`（长期主入口，§4 流水线、§5 冻结口径、§8 坑）→ `STATUS.md` → 四仓 `git log` → `docs/production-log.md`。
-> 当前用户状态：**无人值守续跑已恢复**（2026-10-31 20:20 用户指令，A42）：按 production_order 逐集做到 E64（E01–E22 已交付，当前从 E23 继续），逐集验证后提交；**不发布 B 站**、只到 ready。
+> 当前用户状态：**无人值守续跑已恢复**（2026-10-31 20:20 用户指令，A42）：按 production_order 逐集做到 E64（E01–E23 已交付，当前从 E24 继续），逐集验证后提交；**不发布 B 站**、只到 ready。
 
 ## 0. 60 秒接手
 
@@ -20,10 +20,10 @@ docker ps --format '{{.Names}} {{.Status}}' | grep haskell-ts || docker start ha
 node /root/video_project/tools/status.mjs --md | sed -n 1,12p
 ```
 
-- 已交付成片 **32 / 74**：E01–E22 + E65–E74，全部 `status: ready`，**未发布 B 站**。
-- 算法 **77 / 190** 模块、**1,059** 条断言、**79** 组 cabal suite。
-- 当前最后一集 **E22 `prob-nll-quantile-eval`**（ch03 第六集，概率预测三个式子：高斯 NLL / pinball 分位数损失 / QL 指标），本轮已走完 数据 → 算法 → 测试 → 证据 → pack → TTS → 成片 → 封面。
-- **下一集 = E23 `prob-crps-picp-vae`**（`plans/series.json` production_order 第 33 位、series order 23；CRPS 把预测分布与真值之差的积分压成一个分数）。E22 的 outro 已按这个标题写了下一集预告。
+- 已交付成片 **33 / 74**：E01–E23 + E65–E74，全部 `status: ready`，**未发布 B 站**。
+- 算法 **80 / 190** 模块、**1,097** 条断言、**82** 组 cabal suite。
+- 当前最后一集 **E23 `prob-crps-picp-vae`**（ch03 第七集，CRPS / 区间覆盖率 PICP / VAE 的 ELBO），本轮已走完 数据 → 算法 → 测试 → 证据 → pack → TTS → 成片 → 封面。
+- **下一集 = E24 `chan-mix-itrans-graph`**（`plans/series.json` production_order 第 34 位、series order 24；八个通道怎么互相借力，iTrans 与图结构）。E23 的 outro 已按这个标题写了下一集预告。
 
 ## 1. 用户目标与授权（不要改口）
 
@@ -34,7 +34,7 @@ node /root/video_project/tools/status.mjs --md | sed -n 1,12p
   ```
   self-auth: A5 (video_project) — 全系列无人值守恢复；详见 docs/HANDOFF-EVENING.md §1/§3
   ```
-  ts-base/ts-admin 的每次提交引用各自的 SELF-AUTH 条目（A46–A47 是 E22 新增，写在 `ts-base/SELF-AUTH.md`；A42 是本轮续跑授权）。video_project 本轮 A48–A50（E22 pack / delivery / 收尾，编号是全局序列，条目内容在提交 body）。
+  ts-base/ts-admin 的每次提交引用各自的 SELF-AUTH 条目（A51–A52 是 E23 新增，写在 `ts-base/SELF-AUTH.md`；A42 是本轮续跑授权）。video_project 本轮 A53–A55（E23 pack / delivery / 收尾，编号是全局序列，条目内容在提交 body）。
 - 用户 2026-10-31 20:20 已恢复无人值守续跑（A42），从 E19 做到 E64；**不发布**与 `status: ready` 两条约束不变。
 
 ## 2. 四仓结构

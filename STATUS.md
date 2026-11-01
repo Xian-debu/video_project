@@ -1,6 +1,6 @@
 # STATUS — video_project 内容仓状态
 
-> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-11-01T09:32:51+08:00。
+> 由 `node tools/status.mjs --md` 生成；与各包 film.json 一致。生成于 2026-11-01T10:39:49+08:00。
 
 | id | title | status | sec | audio | derived | delivery | BV |
 |---|---|---|---|---|---|---|---|
@@ -42,7 +42,7 @@
 | tsint-20-conv-dilated-fft-2d | 卷积看时序：因果空洞卷积、FFT 周期、二维聚合 | ready | - | yes | ok | 11 | - |
 | tsint-21-attn-mhsa-block-masked | 注意力三件套：多头自注意力、Transformer 块、因果掩码 | ready | - | yes | ok | 11 | - |
 | tsint-22-prob-nll-quantile-eval | 概率预测入门：高斯 NLL、分位数损失、分位数指标 | ready | - | yes | ok | 11 | - |
-| tsint-23-prob-crps-picp-vae | 概率预测进阶：CRPS、区间覆盖率、VAE 的 ELBO | draft | 1440 | silent | ok | 1 | - |
+| tsint-23-prob-crps-picp-vae | 概率预测进阶：CRPS、区间覆盖率、VAE 的 ELBO | ready | - | yes | ok | 11 | - |
 | tsint-24-chan-mix-itrans-graph | 通道关系三法：混合 MLP、iTransformer、图通道 | draft | 1440 | silent | ok | 1 | - |
 | tsint-25-rnn-recurrence-vs-segments | 递归与分段：RNN 的两条生成路 | draft | 1200 | silent | ok | 1 | - |
 | tsint-26-seq-compress-three-ways | 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩 | draft | 1320 | silent | ok | 1 | - |
