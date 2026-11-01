@@ -253,3 +253,63 @@
 - **返工成本**：make 2 轮（第 1 轮卡在 score 生成，中止；第 2 轮 PASS，仅封面帧预检一次）。
   教训：**score 生成在长时长上可能异常慢，先看 E04 床够不够长再决定是否重生成**。
 
+
+## A18 E20 收尾：文档回填与下一集交接（2026-10-31 夜）
+
+- **决定**：docs/production-log.md 补 E20 条目（四仓提交号、995.23 s / 29,857 帧、256 旁白、
+  全部门禁读数、3 处卡点、两轮静帧、3.7%→3.8% 口径修正）；STATUS.md 由
+  node tools/status.mjs --md 重新生成（E20 由 draft/1320/silent 变为 ready/yes/11 件）；
+  docs/HANDOFF-EVENING.md 状态块改为 30/74、74 模块 / 1,014 断言 / 73 套件，追加 E20 成片行
+  与 E20 冻结口径，§5 排期改为 E21 起；docs/HANDOFF-NEXT-AGENT.md 改为 E20 收尾、
+  E21 attn-mhsa-block-masked 起手，并补两条坑（score 生成异常慢、批量静帧要后台跑）。
+- **决定**：四仓 HEAD 记为 video_project 33a8a79、ts-base 19ba447、ts-admin afe5628、
+  engine a667688；文档提交紧随本条目之后，不重写历史。
+- **依据**：所有数字来自 delivery/report.json、ts-base inventory/evidence/ch3-* 与
+  data/episodes/20-conv-dilated-fft-2d/summary.json；没有为文档好看而改读数或门限。
+  唯一改动是画面/旁白把 3.75% 报成 3.8%（四舍五入，前后一致）。
+- **可逆性**：高（纯文档提交，可整段回退）。
+- **返工成本**：0（一次补齐；HANDOFF-NEXT-AGENT 第一轮 edit 因 old_string 前缀写错中断，
+  按当前文件行号重做，未产生半改状态）。
+
+## A19 E21 打包：三个模块拼成的注意力单元（2026-11-01 凌晨）
+
+- **决定**：E21 pack 按 8 场 33 页落地（open 3 / problem 3 / definitions 4 / intuition 4 /
+  implementation 5 / verification 7 / boundary 5 / outro 2），所有屏上数字从 data/attn.json 取；
+  证据 35/35（数据 6 / 结构 19 / 梯度 2 / 真实 8），断言 16（mhsa 7 / block 4 / masked 5）。
+- **决定**：讲稿 256 行，TTS 实测语音 694.5 s、成片 855.92 s / 25,678 帧；封面帧 **21010**
+  （700.33 s，verification 末页缩放消融、字幕条已结束）。score 复用 out/e04-score-loop-48k.wav。
+- **决定**：data/attn.json 继续走 derived（.gitignore 单行修好，之前 linear/attn 两条粘成一行）。
+- **依据**：README 与 series.json 的章节口径；书 p.53–56 只有三行式子（errata E36），补的
+  头数/维度/初始化/拼接顺序全部标「本仓约定」；画面不出现训练或预测口吻。
+- **可逆性**：高（纯内容/文件；data 可重建，成片可重渲）。
+- **返工成本**：静帧复核 33 帧，修 4 页（intuition 百分比反序 + Bars 残留 bit、open Formula 折行、
+  verification 只画 2/8 序列）后重渲 3 帧；TTS 一轮 256 条；make 一轮 PASS。
+
+## A20 E21 交付：35/35 证据落地，门禁全 PASS（2026-11-01 凌晨）
+
+- **决定**：delivery 收 mp4 38,667,067 B / 855.93 s，−15 LUFS、TP −2 dBFS；music gate
+  stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%），mix speech −23.36 /
+  gap_full −30.24 / gap_audible −33.01 / bed 37.0；flicker mean|d| 0.0163、p99 0.2644、
+  max 8.84、cuts 7；字幕 256 cue、0 换行、最长 26 字；8 章。
+- **决定**：四件导出（srt / chapters / ffmeta / cover）与 report.json 留在 pack delivery/，
+  mp4 按惯例不入库；coverFrame 21010 重 publish 一次通过（无字幕）。
+- **决定**：把 E21 的两次提交 body 补齐 SELF-AUTH A19/A20——原先只有标题、没有 body，
+  与「每次提交 body 带自授权行」的约定不符；因是本仓本地历史、无远端，重写为
+  `2f53ce4`（pack）与 `cde0ac6`（delivery），内容 tree 不变。
+- **依据**：delivery/report.json 与 publish 输出；没有为好看改读数或门限。
+- **可逆性**：高。重渲只需 `make --film tsint-21-attn-mhsa-block-masked --score=out/e04-score-loop-48k.wav`。
+- **返工成本**：0 额外渲染；提交改写一次（已用 content check 与 git show --stat 复核）。
+
+## A21 E21 收尾：文档回填与下一集交接（2026-11-01 上午）
+
+- **决定**：production-log 补 E21 条目（2f53ce4/cde0ac6、855.93 s / 25,678 帧、256 旁白、
+  全部门禁读数、8 处卡点、返工与偏差、冻结口径与诚实结论）；STATUS.md 重新生成
+  （E21 由 draft/1320/silent 变为 ready/yes/11 件）；HANDOFF-EVENING 改为 31/74、76 套件 /
+  1,030 断言、E21 成片行与 E21 冻结口径、§5 排期改为 E22 起；HANDOFF-NEXT-AGENT 改为
+  E21 收尾、E22 prob-nll-quantile-eval 起手。
+- **决定**：把 E20 收尾遗留的两份未提交文档（SELF-AUTH A18、HANDOFF-NEXT 的 E20 状态）
+  一并纳入本次文档提交，避免继续漂移。
+- **依据**：所有数字来自 delivery/report.json、ts-base b1f9322 的证据 JSON 与
+  data/episodes/21-attn-mhsa-block-masked/summary.json；没有为文档好看改读数或门限。
+- **可逆性**：高（纯文档提交，可整段回退）。
+- **返工成本**：一次（HANDOFF/E20 遗留冲突按 stash 版本取回后重做，未丢内容）。
