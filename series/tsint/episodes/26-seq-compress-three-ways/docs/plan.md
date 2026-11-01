@@ -1,22 +1,52 @@
-# 26-seq-compress-three-ways - 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩
+# 26-seq-compress-three-ways — 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩
 
 > status: draft (scaffolded, not produced)
-> chapter: ch03 | runtime target: 22 min | algorithms: 3
+> chapter: ch03 · 序列模型 | 书 p.46–52（印刷页） | units: ch3-scinet / ch3-sparse-tsf / ch3-last-step-compress
+> 算法：ts-base a70a28d；证据：ts-base 3cc95ab；数据：ts-admin cf9f63e
 
-## Thesis
+## 一句话
 
-把 96 步压到 12 步再预测，三种压缩里只有一种能无损往返；压缩比 8:1 让计算量掉到 1/4 的同时，有损的那两种会在突变行情上系统性滞后。
+96 步历史先压到 12 步再预测 24 步：奇偶拆分是唯一无损的置换，周期折叠把 96 步折成 12 个相位、每相位留 4 点，
+最后时刻压缩只看末尾 8 根；三个头都用闭式最小二乘拟合，压缩比 8:1 让乘加从 2,304 掉到 288。
+
+## 口径决定（写片前冻结）
+
+- 数据：茅台 sh600519 六十分钟线 4,063 根（2022-08-16 11:30 → 2026-10-28 15:00，1,016 个交易日）。
+  原计划五分钟线，但湖里每只只保留最近 5,000 根，覆盖不足，降频到六十分钟并在脚本与证据里写明。
+- 输入 96 步、预测 24 步，窗口步长 4 → 986 个窗口；前七成 690 个训练，最后 160 个测试，不重叠。
+- 对数收益，训练段均值方差标准化；三个头同一口径、同一把尺。
+- 三个头都是闭式岭回归（正规方程 + 高斯消元），无随机初始化、无梯度下降，读数可逐位复现。
+- 奇偶：partition 置换成偶/奇两条子序列，交错还原；往返误差精确为 0。
+- 周期：p=12，m=8，每相位保留最后 w=4 点，参数 p·K·w = 12·2·4 = 96；输出下标钉死为 q + b·p。
+- 最后时刻：L=8，W∈R^{24×8}+b，参数 216；前面 88 根不看。
+- 稀疏只报 MSE/MAE 与调用比，不做端到端训练，不声称任何收益结论。
 
 ## Verification
 
-两套数据并行：合成断言——奇偶往返 1e-12、SCINet 手工值 [1,5]、乘加比 8、SparseTSF 参数量 96、last-step 求和 L·c、因果逐位不变；A 股与分钟线演示——5 分钟线奇偶拆分叠图、SparseTSF vs DLinear 的 MAE 与参数量对照。屏幕上必须出现 4 个数字：8（压缩比）、96（SparseTSF 参数量）、1560（压缩头参数量）、1e-12（往返误差）。
+数组断言的读数：奇偶往返 0.0、交互卷积金例 [1,5]、因果卷积 [2,5,7]、卷积核参数 8、MACs 2,304/288/8、
+周期参数 96、输出下标金例 [30,8,3,12]、最后时刻参数 216、金例 6、3 个套件 12/12/10。
+A 股对照（同一份数据）：周期稀疏 0.6226（96 参数）、最后 8 根 0.7092（216 参数）、稠密线性 0.8973（2,328 参数）、
+常数基线 0.8249；尖峰子集 0.9529 / 1.0071 / 1.1656 / 1.2583。
+屏幕上必须出现 4 个数字：8（压缩比）、96（周期头参数）、2,304 → 288（乘加）、0.6226（最准误差）。
+（原 Verification 规划里的 1,560 与我们实测的三个头都不符——那是规划数，片中用实测 96 / 216 / 2,328，此差异在此记录。）
+
+## 必须报的边界
+
+四个头是闭式拟合，不是 SGD、也不是端到端训练，不能说「SCINet 训练收敛」；数据降频到六十分钟（湖里 5 分钟线只剩 5,000 根）；
+单只票不外推；稠密头输给常数基线是 690 个重叠窗口的样本问题，不是线性模型的原罪，换更大样本结论可能反过来。
+另有：压缩比的乘加口径只数读出层，不含卷积与窗口化本身；尖峰子集按 24 步累计波动前十分之一取。
 
 ## Data
 
-ts-admin 5 分钟线单只 2019–2025；合成序列 x_t=sin(2πt/p)+噪声，p∈{24,12}
+ts-base 证据运行 data/episodes/26-seq-compress-three-ways/（compress_series.csv 121,445 B，sha256 2080375114b0…，4,063 行）；
+build/generate_compress_data.py 把 summary 与五张 CSV 折叠成 data/compress.json。
 
 ## Algorithms
 
-- ch3-scinet - 奇偶下采样与交互卷积（SCINet 式） (TsBase.Algos.Ch03.SCINet)
-- ch3-sparse-tsf - 周期下采样稀疏线性 SparseTSF (TsBase.Algos.Ch03.SparseTsf)
-- ch3-last-step-compress - 最后时刻压缩 (TsBase.Algos.Ch03.LastStepCompress)
+- ch3-scinet — 奇偶下采样与交互卷积（`SCINet.hs`：scinSplitOddEven / scinInterleave / scinInteract / scinConv）
+- ch3-sparse-tsf — 周期下采样稀疏线性 SparseTSF（`SparseTsf.hs`：stPhases / stWindow / stForward / stFit）
+- ch3-last-step-compress — 最后时刻压缩（`LastStepCompress.hs`：lscLastSteps / lscForward / lscFit）
+
+## Delivery
+
+（生产完成后补实测时长、封面帧、闸门读数。）
