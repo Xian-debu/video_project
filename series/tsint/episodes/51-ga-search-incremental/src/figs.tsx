@@ -181,8 +181,8 @@ export const ExtrapBars: React.FC<{ w?: number; at?: number }> = ({ w = 1040, at
 export const GapRuler: React.FC<{ w?: number; at?: number }> = ({ w = 1000, at = 0 }) => {
   const f = useCurrentFrame();
   const p = at > 0 ? pct(f, at, at + 20) : 1;
-  const hi = 1.6;
-  const bar = (v: number) => Math.max(3, (v / hi) * (w - 300));
+  const hi = Math.max(M.demo.lin.errMean, M.demo.pow.errMean);
+  const bar = (v: number) => Math.min(w - 300, Math.max(3, (v / hi) * (w - 300)));
   const rows = [
     { name: "冠军 − 亚军", v: M.demo.gap, color: C.cyan, note: "真实排序要恢复的量" },
     { name: "幂律外推误差", v: M.demo.pow.errMean, color: C.violet, note: "外推读数偏离冠军的均值" },
