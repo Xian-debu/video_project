@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, Chip, Formula, KV, M, MiniTable, PAD, Pages, pagesOf, Row, Scene, SceneHead, Verdict, fmt2, fmt4 } from "../shared";
+import { Body, Card, Chip, Formula, KV, M, MiniTable, PAD, Pages, pagesOf, Row, Scene, SceneHead, Verdict, fmt2, fmt4 } from "../shared";
 import { AugAccFig, ProbeCompareFig, ThreeUpFig } from "../figs";
 
 export const ProblemScene: React.FC = () => (
@@ -9,7 +9,6 @@ export const ProblemScene: React.FC = () => (
     <SceneHead id="problem" />
     <Pages id="problem" at={pagesOf("problem")}>
       <AbsoluteFill>
-        <Head kicker="标签太贵" title="四十八个标签，撑不起一次预训练" goal="贵 · 少 · 有偏" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>标一条，<br />要一个人盯一天。</Body>
           <Body style={{ marginTop: 28 }}>行情不要钱，标签要钱。一条序列标成「电子」还是「银行」，得有人对着财报看。五十条已经是这一集能给的最大方——而随便一个监督模型都要几千条才够。</Body>
@@ -30,7 +29,6 @@ export const ProblemScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="标签太贵" title="四十八个标签，撑不起一次预训练" goal="贵 · 少 · 有偏" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>自监督：<br />自己给自己出题。</Body>
           <Body style={{ marginTop: 24 }}>没有标签，就从数据本身挖监督信号：把一条曲线扰动一下，要网络认出「这还是同一条」；挖掉一段，要它补回来。答案不在文件里，在数据自身。</Body>
@@ -50,7 +48,6 @@ export const ProblemScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="标签太贵" title="四十八个标签，撑不起一次预训练" goal="贵 · 少 · 有偏" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>一把尺子：<br />二十条测试。</Body>
           <Body style={{ marginTop: 28 }}>不管预训练怎么花，最后都冻住编码器，只用三十条标签训一个线性分类器，在剩下二十条上打分。二十条里对一条，就是五个百分点——尺子粗，所以结论要保守。</Body>
@@ -67,7 +64,6 @@ export const ProblemScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="标签太贵" title="四十八个标签，撑不起一次预训练" goal="贵 · 少 · 有偏" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>三种答案，<br />先记住数。</Body>
           <Body style={{ marginTop: 24 }}>对比学习把探针从 {fmt2(M.control.untrainedProbe)} 抬到 {fmt2(M.contrast.probeAcc)}；掩码只抬到 {fmt2(M.mask.probeAcc)}；而时间弯曲这一类增强反而把成绩拉到 {fmt2(M.probeTable.find((p) => p.aug === "warp")!.acc)}——比基线还低。</Body>
@@ -83,7 +79,6 @@ export const ProblemScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="标签太贵" title="四十八个标签，撑不起一次预训练" goal="贵 · 少 · 有偏" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>三个问题，<br />这一集要回答。</Body>
           <Body style={{ marginTop: 28 }}>第一，增强到什么程度还算同一条？第二，对比学习真比掩码强吗，还是只是这一次？第三，成绩提高是编码器的功劳，还是探针自己在背题？</Body>

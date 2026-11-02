@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, KV, M, MiniTable, PAD, Pages, pagesOf, Row, Scene, SceneHead, Verdict, fmt2, fmt4 } from "../shared";
+import { Body, Card, KV, M, MiniTable, PAD, Pages, pagesOf, Row, Scene, SceneHead, Verdict, fmt2, fmt4 } from "../shared";
 import { AugAccFig, LossFig, ProbeCompareFig, ThreeUpFig } from "../figs";
 
 export const MetricsScene: React.FC = () => (
@@ -9,7 +9,6 @@ export const MetricsScene: React.FC = () => (
     <SceneHead id="metrics" />
     <Pages id="metrics" at={pagesOf("metrics")}>
       <AbsoluteFill>
-        <Head kicker="一个配方两份损失" title="同一套预训练，两种监督，一把尺子" goal="3008 · 5852 · 0.45 / 0.35" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>配方只有<br />一个变量：监督信号。</Body>
           <Body style={{ marginTop: 28 }}>两套预训练除了目标函数完全一样：Adam、十二轮（对比）与十轮（掩码）、全批量、种子 7。下游探针也不变：三百轮、lr 0.01、三十条训练、二十条测试。</Body>
@@ -35,7 +34,6 @@ export const MetricsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="一个配方两份损失" title="同一套预训练，两种监督，一把尺子" goal="3008 · 5852 · 0.45 / 0.35" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>对比损失<br />掉到三分之一。</Body>
           <Body style={{ marginTop: 24 }}>从 {fmt4(M.contrast.lossStart)} 降到 {fmt4(M.contrast.lossEnd)}，用了十二轮。最后编码器在二十条测试上拿到 {fmt2(M.contrast.probeAcc)}（{M.contrast.correct} 条对），比未训练的 {fmt2(M.control.untrainedProbe)} 高出 {fmt2((M.contrast.probeAcc - M.control.untrainedProbe) * 100)} 个百分点。</Body>
@@ -57,7 +55,6 @@ export const MetricsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="一个配方两份损失" title="同一套预训练，两种监督，一把尺子" goal="3008 · 5852 · 0.45 / 0.35" />
         <div style={{ position: 'absolute', left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>掩码也能学，<br />但学得少一点。</Body>
           <Body style={{ marginTop: 24 }}>重构损失从 {fmt4(M.mask.lossStart)} 压到 {fmt4(M.mask.lossEnd)}，掩码位的平方误差已经很小；可探针只到 {fmt2(M.mask.probeAcc)}，刚过基线 {fmt2(M.data.baseline)}。补得准和学得有用，是两件事。</Body>
@@ -77,7 +74,6 @@ export const MetricsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="一个配方两份损失" title="同一套预训练，两种监督，一把尺子" goal="3008 · 5852 · 0.45 / 0.35" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>增强的强度，<br />一走神就过头。</Body>
           <Body style={{ marginTop: 24 }}>同一套对比编码器，换不同增强做第二次预训练：抖动、缩放、翻转都保持 {fmt2(M.contrast.probeAcc)}；时间弯曲到 {M.augment.warpPct} 个百分点，探针掉到 {fmt2(M.probeTable.find((p) => p.aug === "warp")!.acc)}，比基线还低。</Body>
@@ -96,7 +92,6 @@ export const MetricsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="一个配方两份损失" title="同一套预训练，两种监督，一把尺子" goal="3008 · 5852 · 0.45 / 0.35" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>三张成绩单，<br />放在一起看。</Body>
           <Body style={{ marginTop: 28 }}>对比 {fmt2(M.contrast.probeAcc)}、掩码 {fmt2(M.mask.probeAcc)}、未训练 {fmt2(M.control.untrainedProbe)}；随机基线 {fmt2(M.data.baseline)}。两个学到东西，一个没有——但测试只有二十条，每一格五个点，差距要小心读。</Body>

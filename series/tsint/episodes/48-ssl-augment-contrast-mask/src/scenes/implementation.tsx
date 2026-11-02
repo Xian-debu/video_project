@@ -1,14 +1,13 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, Chip, CodeBlock, KV, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, fmt4 } from "../shared";
+import { Body, Card, Chip, CodeBlock, KV, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, fmt4 } from "../shared";
 
 export const ImplementationScene: React.FC = () => (
   <Scene id="implementation">
     <SceneHead id="implementation" />
     <Pages id="implementation" at={pagesOf("implementation")}>
       <AbsoluteFill>
-        <Head kicker="Haskell 里的五行核心" title="从扰动到掩码：每个公式都有一行代码" goal="jitter · warp · infoNce · train · mask" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>抖动：<br />σ 为零时一个数都不动。</Body>
           <Body style={{ marginTop: 24 }}>强度按相对标准差写：s = σ · sd(x)，再给每个点加一个高斯噪声。σ 等于零时直接返回原向量——这是黄金测试要求的第一条。</Body>
@@ -35,7 +34,6 @@ export const ImplementationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="Haskell 里的五行核心" title="从扰动到掩码：每个公式都有一行代码" goal="jitter · warp · infoNce · train · mask" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>时间弯曲：<br />先造位置，再插值。</Body>
           <Body style={{ marginTop: 24 }}>每个点先算一个权重 1 ± 20%，累积和归一化到 [0, 59]，端点钉死在 0 和 59。位置序列严格递增——测试直接查这一条。最后按位置做线性插值。</Body>
@@ -61,7 +59,6 @@ export const ImplementationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="Haskell 里的五行核心" title="从扰动到掩码：每个公式都有一行代码" goal="jitter · warp · infoNce · train · mask" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>InfoNCE：<br />数值稳定版 softmax。</Body>
           <Body style={{ marginTop: 24 }}>先减最大值再取 exp，避免溢出；τ = 0.2 把相似度拉开。候选列表首元素是正例，只有一个候选时直接报错——没有负例，损失无定义。</Body>
@@ -88,7 +85,6 @@ export const ImplementationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="Haskell 里的五行核心" title="从扰动到掩码：每个公式都有一行代码" goal="jitter · warp · infoNce · train · mask" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>训练循环：<br />正例是增强，负例是邻居。</Body>
           <Body style={{ marginTop: 24 }}>每条窗口抽两次增强：一次当锚点、一次当正例；批里其余的窗口都当负例。梯度只回传给锚点这一侧——正例被当成常量，这是 SimCLR 的老规矩。</Body>
@@ -115,7 +111,6 @@ export const ImplementationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="Haskell 里的五行核心" title="从扰动到掩码：每个公式都有一行代码" goal="jitter · warp · infoNce · train · mask" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>掩码：<br />两种挖法，一条损失。</Body>
           <Body style={{ marginTop: 24 }}>随机点逐点以 15% 概率挖，连续块挖掉十个点中的六个；损失只在被挖的位置上算，除以 |M|。空掩码直接报错——损失没有定义。</Body>
@@ -142,7 +137,6 @@ export const ImplementationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="Haskell 里的五行核心" title="从扰动到掩码：每个公式都有一行代码" goal="jitter · warp · infoNce · train · mask" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>输入布局：<br />值在前，标记在后。</Body>
           <Body style={{ marginTop: 24 }}>一百二十维输入 = 六十个（被挖的填 0）+ 六十个 0/1 标记。这一行决定了「网络怎么知道哪里缺了」。第一版把标记写反，黄金值当场对不上。</Body>

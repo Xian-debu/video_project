@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, Chip, Formula, K, KV, M, MiniTable, PAD, Pages, pagesOf, Row, Scene, SceneHead, fmt2, fmt4 } from "../shared";
+import { Body, Card, Chip, Formula, K, KV, M, MiniTable, PAD, Pages, pagesOf, Row, Scene, SceneHead, fmt2, fmt4 } from "../shared";
 import { AugQuadFig, EncoderFig, MaskInputFig, MaskStripFig, ParamFig, SimFig, TauFig } from "../figs";
 
 export const DefinitionsScene: React.FC = () => (
@@ -9,7 +9,6 @@ export const DefinitionsScene: React.FC = () => (
     <SceneHead id="definitions" />
     <Pages id="definitions" at={pagesOf("definitions")}>
       <AbsoluteFill>
-        <Head kicker="增强 · 对比 · 掩码" title="三个零件：扰动、相似度、挖洞" goal="四种算子 · 一个温度 · 一张掩码" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>四种扰动，<br />一个强度参数。</Body>
           <Body style={{ marginTop: 24 }}>抖动加点噪声、缩放整体乘个系数、翻转把曲线倒过来、时间弯曲把数轴拉扯一下。强度都用相对量写：抖动 σ = {M.augment.jitterSigma}，缩放 σγ = {M.augment.scalingSigma}，弯曲 {M.augment.warpPct} 个百分点。</Body>
@@ -29,7 +28,6 @@ export const DefinitionsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="增强 · 对比 · 掩码" title="三个零件：扰动、相似度、挖洞" goal="四种算子 · 一个温度 · 一张掩码" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>InfoNCE：<br />一次四选一。</Body>
           <Body style={{ marginTop: 24 }}>把同一条窗口的两次增强当一个正例，把别的三条当负例；相似度除以温度 τ 再 softmax。正例拿到的权重越大，损失越小。均匀分布时是 ln 3 = {fmt4(M.contrast.uniform)}，本集的黄金值是 {fmt4(M.contrast.infoNce)}。</Body>
@@ -46,7 +44,6 @@ export const DefinitionsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="增强 · 对比 · 掩码" title="三个零件：扰动、相似度、挖洞" goal="四种算子 · 一个温度 · 一张掩码" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>编码器：<br />两层，3008 个参数。</Body>
           <Body style={{ marginTop: 24 }}>六十维输入压到三十二维，再过一层还是三十二维，最后得到 32 维的 z。参数是 (60×32+32) + (32×32+32) = {M.contrast.params}。这层网络一次都没见过标签。</Body>
@@ -69,7 +66,6 @@ export const DefinitionsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="增强 · 对比 · 掩码" title="三个零件：扰动、相似度、挖洞" goal="四种算子 · 一个温度 · 一张掩码" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>掩码：<br />挖掉再补。</Body>
           <Body style={{ marginTop: 24 }}>两种挖法合起来：每个点以 15% 的概率被随机挖掉，再挖掉一段连续的 10%（六个点）。挖掉的位置填 0，另外给一路 0/1 标记告诉网络哪里少了东西。</Body>
@@ -90,7 +86,6 @@ export const DefinitionsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="增强 · 对比 · 掩码" title="三个零件：扰动、相似度、挖洞" goal="四种算子 · 一个温度 · 一张掩码" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>重构损失<br />只算被挖掉的地方。</Body>
           <Body style={{ marginTop: 24 }}>把 120 维（60 值 + 60 标记）送进编码器，再预测 60 个值；损失只在掩码位上算平方误差。四个数的黄金例：输入 [1,2,3,4]、遮第三位、预测全 0，损失等于 {fmt2(M.mask.reconGolden)}。</Body>
@@ -109,7 +104,6 @@ export const DefinitionsScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="增强 · 对比 · 掩码" title="三个零件：扰动、相似度、挖洞" goal="四种算子 · 一个温度 · 一张掩码" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>线性探针：<br />冻住编码器，只训一层。</Body>
           <Body style={{ marginTop: 24 }}>预训练完之后，编码器参数冻住，只加一个 32 分类 3 的线性层，用三十条标签训到收敛，在剩下二十条上打分。线性层能学好，说明特征本身可分；学不好，说明特征里没有行业信息。</Body>

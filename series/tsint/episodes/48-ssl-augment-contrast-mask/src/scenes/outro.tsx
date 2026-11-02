@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, Chip, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, fmt2 } from "../shared";
+import { Body, Card, Chip, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, fmt2 } from "../shared";
 import { ThreeUpFig } from "../figs";
 
 export const OutroScene: React.FC = () => (
@@ -9,7 +9,6 @@ export const OutroScene: React.FC = () => (
     <SceneHead id="outro" />
     <Pages id="outro" at={pagesOf("outro")}>
       <AbsoluteFill>
-        <Head kicker="没有标签怎么学" title="标签少，不等于没法学" goal="读数 · 边界 · 下一集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>三句话<br />带走。</Body>
           <Body style={{ marginTop: 26 }}>第一，自监督是自己给自己出题：增强、对比、掩码都是把数据变成监督；第二，对比学习比掩码更会用一千条窗口，{fmt2(M.contrast.probeAcc)} 对 {fmt2(M.mask.probeAcc)}；第三，成绩小、测试少、训练欠，所以只说机制成立，不说方法更强。</Body>
@@ -26,7 +25,6 @@ export const OutroScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="没有标签怎么学" title="标签少，不等于没法学" goal="读数 · 边界 · 下一集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Chip color={C.coral}>下一集</Chip>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25, marginTop: 18 }}>把曲线<br />画成图。</Body>

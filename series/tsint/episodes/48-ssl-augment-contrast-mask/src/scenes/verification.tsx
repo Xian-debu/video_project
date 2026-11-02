@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, CheckGrid, Chip, KV, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, checksOf, fmt2, fmt4 } from "../shared";
+import { Body, Card, CheckGrid, Chip, KV, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, checksOf, fmt2, fmt4 } from "../shared";
 import { AugAccFig, AugQuadFig } from "../figs";
 import { Grid20Fig, MaskStripFig, ProbeCompareFig, SimFig } from "../figs";
 
@@ -22,7 +22,6 @@ export const VerificationScene: React.FC = () => (
     <SceneHead id="verification" />
     <Pages id="verification" at={pagesOf("verification")}>
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>二十八项，<br />一项不漏。</Body>
           <Body style={{ marginTop: 28 }}>证据程序把数据、增强、对比、掩码、对照、训练拆成六组检查，一次跑完 {M.checks.length} 项，全部通过，用时 {M.meta.evidence.seconds} 秒。所有数字都从 dist.json 读，不是手抄的。</Body>
@@ -48,7 +47,6 @@ export const VerificationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 620 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>先证明数据<br />是真的。</Body>
           <div style={{ marginTop: 26, width: 600 }}><List group="data" /></div>
@@ -65,7 +63,6 @@ export const VerificationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 620 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>增强五项：<br />每一条都能手算。</Body>
           <div style={{ marginTop: 26, width: 600 }}><List group="augment" /></div>
@@ -79,7 +76,6 @@ export const VerificationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 620 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>对比六项：<br />黄金值算得出来。</Body>
           <div style={{ marginTop: 22, width: 600 }}><List group="contrast" /></div>
@@ -92,7 +88,6 @@ export const VerificationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 620 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>掩码五项：<br />边界条件也钉住。</Body>
           <div style={{ marginTop: 26, width: 600 }}><List group="mask" /></div>
@@ -110,7 +105,6 @@ export const VerificationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 620 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>对照组：<br />提升不是白来的。</Body>
           <div style={{ marginTop: 26, width: 600 }}><List group="control" /></div>
@@ -128,7 +122,6 @@ export const VerificationScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="二十八项检查" title="每条公式都被钉住" goal={"全 PASS · " + M.meta.evidence.seconds + " 秒"} />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 620 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>训练三项：<br />损失都往下走。</Body>
           <div style={{ marginTop: 26, width: 600 }}><List group="train" /></div>

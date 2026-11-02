@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { C, FONT, FT } from "../../design/tokens";
-import { Body, Head, Card, Chip, KV, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, Verdict, fmt2 } from "../shared";
+import { Body, Card, Chip, KV, M, PAD, Pages, pagesOf, Row, Scene, SceneHead, Verdict, fmt2 } from "../shared";
 import { Grid20Fig, OverlapFig } from "../figs";
 
 export const BoundaryScene: React.FC = () => (
@@ -9,7 +9,6 @@ export const BoundaryScene: React.FC = () => (
     <SceneHead id="boundary" />
     <Pages id="boundary" at={pagesOf("boundary")}>
       <AbsoluteFill>
-        <Head kicker="这一集之外" title="一千条不是一千条独立样本" goal="重叠 · 欠训练 · 小测试集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>窗口重着<br />四十天。</Body>
           <Body style={{ marginTop: 28 }}>步长 {M.data.stride} 天，窗口 {M.data.length} 天，相邻两条样本共享 {M.data.length - M.data.stride} 天。一千条窗口其实只有三分之一是新的——有效样本量比看上去小得多。</Body>
@@ -27,7 +26,6 @@ export const BoundaryScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="这一集之外" title="一千条不是一千条独立样本" goal="重叠 · 欠训练 · 小测试集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>十二轮、十轮，<br />都没收敛。</Body>
           <Body style={{ marginTop: 24 }}>对比十二轮、掩码十轮，是为了在一集里跑完三种对照。损失还在往下走，训练是欠的：再给十倍轮数，两个探针大概率都会更高——但那时比的就不是「方法」而是「预算」了。</Body>
@@ -48,7 +46,6 @@ export const BoundaryScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="这一集之外" title="一千条不是一千条独立样本" goal="重叠 · 欠训练 · 小测试集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>二十条测试，<br />一格五个点。</Body>
           <Body style={{ marginTop: 28 }}>对比 {fmt2(M.contrast.probeAcc)}、掩码 {fmt2(M.mask.probeAcc)}，差两个点六个点；可一格就是五个点。这点差距没有置信区间可言，只能当方向看。</Body>
@@ -66,7 +63,6 @@ export const BoundaryScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="这一集之外" title="一千条不是一千条独立样本" goal="重叠 · 欠训练 · 小测试集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h2} color={C.ink} style={{ lineHeight: 1.28 }}>弯曲只试了<br />一个强度。</Body>
           <Body style={{ marginTop: 24 }}>“{M.augment.warpPct} 个百分点”这一个点就掉到了 {fmt2(M.probeTable.find((p) => p.aug === "warp")!.acc)}，但强度扫描没做：也许 5% 是好的、10% 刚好、20% 才过界。这一集只报告一个点，不给曲线。</Body>
@@ -88,7 +84,6 @@ export const BoundaryScene: React.FC = () => (
       </AbsoluteFill>
 
       <AbsoluteFill>
-        <Head kicker="这一集之外" title="一千条不是一千条独立样本" goal="重叠 · 欠训练 · 小测试集" />
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25 }}>明确<br />不做的事。</Body>
           <Body style={{ marginTop: 28 }}>没有大模型、没有大数据、没有超参搜索，也没有跨数据集验证。四件事都不做，是因为它们会把这一集的「机制」讲成「调参」。</Body>
