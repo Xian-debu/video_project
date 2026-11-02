@@ -1,0 +1,2451 @@
+{
+ "entry": "src/tsint-44-learnable-shapelet-softmin/script.ts",
+ "fps": 30,
+ "totalSec": 1291.52,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 122.8
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 122.8,
+   "dur": 130.44
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 253.24,
+   "dur": 220.35
+  },
+  {
+   "id": "metrics",
+   "chapter": "度量",
+   "start": 473.59,
+   "dur": 181.03
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 654.62,
+   "dur": 165.45
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 820.07,
+   "dur": 240.99
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1061.06,
+   "dur": 170.69
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1231.75,
+   "dur": 59.77
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.64,
+   "speech": "上一集，Shapelet 用 min 量距离。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.02,
+   "dur": 3.23,
+   "speech": "min 只挑最小的那个窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.43,
+   "dur": 2.94,
+   "speech": "其余窗口，梯度全是零。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.55,
+   "dur": 4.09,
+   "speech": "所以模板只能从数据里截，学不了。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.82,
+   "dur": 3.45,
+   "speech": "这一集，把 min 换成 SoftMin。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.45,
+   "dur": 3.28,
+   "speech": "先看一个数：负一点零九八六。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.91,
+   "dur": 3.49,
+   "speech": "这是 SoftMin 在一组零距离上的值。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 26.58,
+   "dur": 4.05,
+   "speech": "它等于负的 log 三，是这一集的黄金值。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 30.81,
+   "dur": 2.7,
+   "speech": "书里还有一条定量结论。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.69,
+   "dur": 4.12,
+   "speech": "α 每放大十倍，落点误差小十倍。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.99,
+   "dur": 4.31,
+   "speech": "我们实测了 α 等于一、十、一百。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 42.48,
+   "dur": 5.68,
+   "speech": "模板误差是一点八一一三、二点一二四二、二点一四一五。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 48.34,
+   "dur": 3.78,
+   "speech": "越大反而略差，十倍规则没有出现。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 52.3,
+   "dur": 3.18,
+   "speech": "分类准确率倒是三档全对。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 55.66,
+   "dur": 3.16,
+   "speech": "原因在最后边界一页拆开。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 59,
+   "dur": 3.76,
+   "speech": "先记住：分类对了，不等于模板对了。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 62.94,
+   "dur": 2.25,
+   "speech": "再看真实数据。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 65.36,
+   "dur": 4.14,
+   "speech": "一百五十只股票，每只最后一百个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 69.68,
+   "dur": 4.81,
+   "speech": "学出来的五个模板，测试准确率零点五五二四。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 74.68,
+   "dur": 3.83,
+   "speech": "上一集暴力搜索是零点三四二九。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 78.69,
+   "dur": 2.46,
+   "speech": "高了二十一个百分点。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 81.33,
+   "dur": 3.66,
+   "speech": "DTW 一近邻是零点五一四三。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 85.17,
+   "dur": 3.09,
+   "speech": "随机猜是零点三三三三。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 88.44,
+   "dur": 3.04,
+   "speech": "这就是让模板可学的回报。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 91.66,
+   "dur": 2.53,
+   "speech": "这一集讲三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 94.37,
+   "dur": 3.97,
+   "speech": "第一，SoftMin 怎么让梯度处处存在。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 98.52,
+   "dur": 3.69,
+   "speech": "第二，五个模板怎么用梯度学出来。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 102.39,
+   "dur": 3.64,
+   "speech": "第三，树和 MLP 两个对照。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 106.21,
+   "dur": 3.11,
+   "speech": "还要拆掉书里两条断言。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 109.5,
+   "dur": 4.45,
+   "speech": "一条是十倍规则，一条是 α 大了会停。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 114.13,
+   "dur": 3.64,
+   "speech": "两条都没复现，画面按实测讲。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 117.95,
+   "dur": 2.65,
+   "speech": "先从 min 的梯度说起。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 124,
+   "dur": 3.49,
+   "speech": "一条一百点的序列，长八的模板。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 127.67,
+   "dur": 4.12,
+   "speech": "起点有九十三个，就有九十三个窗口距离。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 131.97,
+   "dur": 3.04,
+   "speech": "min 只留下最小的那一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 135.19,
+   "dur": 4.12,
+   "speech": "反向传播时，梯度也只从那一个回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 139.49,
+   "dur": 3.33,
+   "speech": "其余九十二个窗口，梯度是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 142.99,
+   "dur": 3.37,
+   "speech": "零的比例是九十二除九十三。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 146.55,
+   "dur": 3.25,
+   "speech": "零点九八九二，几乎全零。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 149.98,
+   "dur": 2.85,
+   "speech": "这就是 min 学不动的原因。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 153.01,
+   "dur": 3.83,
+   "speech": "稀疏，而且哪一个是赢家还会跳。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 157.02,
+   "dur": 2.53,
+   "speech": "回看第 43 集。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 159.73,
+   "dur": 3.28,
+   "speech": "模板是从训练序列里截出来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 163.19,
+   "dur": 3.18,
+   "speech": "截出来就固定了，不能微调。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 166.55,
+   "dur": 3.45,
+   "speech": "五个模板，就是五个固定形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 170.18,
+   "dur": 3.42,
+   "speech": "想要的是位置和形状都能学。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 173.78,
+   "dur": 3.33,
+   "speech": "距离里只要还有 min，就不行。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 177.29,
+   "dur": 3.28,
+   "speech": "min 在最小窗口处不可导。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 180.74,
+   "dur": 2.46,
+   "speech": "在别处导数是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 183.39,
+   "dur": 2.65,
+   "speech": "所以得先把 min 换掉。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 186.22,
+   "dur": 2.56,
+   "speech": "换法叫 SoftMin。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 188.96,
+   "dur": 4.24,
+   "speech": "每个距离先取负指数：e 的负 α 乘 d。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 193.38,
+   "dur": 3.71,
+   "speech": "求和，再取对数，除以负 α。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 197.27,
+   "dur": 4.17,
+   "speech": "α 小的时候，权重摊在好几个窗口上。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 201.61,
+   "dur": 4,
+   "speech": "α 大的时候，权重集中到最小那个。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 205.79,
+   "dur": 3.21,
+   "speech": "α 趋于无穷，就等于 min。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 209.18,
+   "dur": 2.37,
+   "speech": "这样每一项都可导。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 211.72,
+   "dur": 3.04,
+   "speech": "梯度从所有窗口一起回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 214.94,
+   "dur": 3.52,
+   "speech": "但它只是 min 的近似，不是相等。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 218.64,
+   "dur": 2.34,
+   "speech": "近似是有代价的。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 221.16,
+   "dur": 3.76,
+   "speech": "第一，SoftMin 永远比 min 大一点。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 225.1,
+   "dur": 3.73,
+   "speech": "第二，α 太大，指数会下溢。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 229.01,
+   "dur": 4.09,
+   "speech": "书里说 α 超过五百，训练就停住。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 233.29,
+   "dur": 3.45,
+   "speech": "这一集把这两条都实测一遍。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 236.91,
+   "dur": 3.64,
+   "speech": "还要看学出来的模板，到底准不准。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 240.73,
+   "dur": 3.06,
+   "speech": "先给 SoftMin 一个精确定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 243.97,
+   "dur": 3.04,
+   "speech": "从一个三条距离的例子开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 247.19,
+   "dur": 3.85,
+   "speech": "三个零距离，正好能算出黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 254.44,
+   "dur": 3.3,
+   "speech": "给定 k 个距离，d 一到 d k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 257.92,
+   "dur": 4.5,
+   "speech": "SoftMin 等于负 α 分之一，乘 log 求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 262.6,
+   "dur": 3.69,
+   "speech": "求和项是 e 的负 α d i 次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 266.47,
+   "dur": 3.73,
+   "speech": "取 α 等于一，三个距离都是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 270.38,
+   "dur": 3.64,
+   "speech": "三项指数都是一，求和等于三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 274.2,
+   "dur": 3.18,
+   "speech": "log 三等于一点零九八六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 277.56,
+   "dur": 3.73,
+   "speech": "除以负一，得到负一点零九八六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 281.48,
+   "dur": 2.97,
+   "speech": "这就是屏幕上的黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 284.62,
+   "dur": 3.37,
+   "speech": "它等于负 log k，k 是三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 288.18,
+   "dur": 3.88,
+   "speech": "记住这个数，后面每一步都拿它校验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 292.24,
+   "dur": 2.8,
+   "speech": "为什么可导，要看梯度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 295.21,
+   "dur": 2.56,
+   "speech": "对每个距离求偏导。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 297.95,
+   "dur": 3.25,
+   "speech": "得到的权重就是 softmax。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 301.39,
+   "dur": 3.93,
+   "speech": "权重等于 e 的负 α d i 除以求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 305.49,
+   "dur": 2.56,
+   "speech": "所有权重都是正数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 308.23,
+   "dur": 2.56,
+   "speech": "权重和恒等于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 310.97,
+   "dur": 3.18,
+   "speech": "最小距离那一项权重最大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 314.33,
+   "dur": 4.24,
+   "speech": "α 越大，权重越尖，越接近 one-hot。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 318.75,
+   "dur": 3.61,
+   "speech": "代码里 softMinGrad 就是这个式子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 322.54,
+   "dur": 4.21,
+   "speech": "解析梯度和数值梯度，误差实测为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 326.94,
+   "dur": 3.4,
+   "speech": "SoftMin 还有两条性质值得记。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 330.51,
+   "dur": 2.29,
+   "speech": "第一，平移同变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 332.99,
+   "dur": 4.29,
+   "speech": "所有距离加一个常数，结果也加这个常数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 337.45,
+   "dur": 3.78,
+   "speech": "它不是平移不变，这点常被写错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 341.42,
+   "dur": 2.89,
+   "speech": "第二，它永远到不了 min。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 344.49,
+   "dur": 3.93,
+   "speech": "差多少？乘上 α 之后有界。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 348.6,
+   "dur": 5.22,
+   "speech": "α 等于一百万时，差乘 α 仍等于负 log 三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 354,
+   "dur": 3.37,
+   "speech": "我们用它当近似误差的口径。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 357.55,
+   "dur": 4.17,
+   "speech": "所以提高 α 只是逼近，不是相等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 361.9,
+   "dur": 3.49,
+   "speech": "这也解释了后面为什么要有退火。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 365.57,
+   "dur": 4.43,
+   "speech": "训练分三段，α 从一到二十到两百。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 370.18,
+   "dur": 2.99,
+   "speech": "每段十轮，一共三十轮。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 373.35,
+   "dur": 3.85,
+   "speech": "小 α 先学位置，权重摊得开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 377.39,
+   "dur": 3.4,
+   "speech": "大 α 再收紧到最小窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 380.96,
+   "dur": 2.89,
+   "speech": "换档时目标函数变了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 384.04,
+   "dur": 3.73,
+   "speech": "损失会向上跳一下，然后继续降。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 387.95,
+   "dur": 4.29,
+   "speech": "实测从一点四四打头，降到零点零一三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 392.42,
+   "dur": 3.61,
+   "speech": "三十轮损失降到原来的百分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 396.21,
+   "dur": 3.16,
+   "speech": "这是退火曲线的正常形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 399.55,
+   "dur": 2.85,
+   "speech": "不要把它当成训练发散。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 402.58,
+   "dur": 3.01,
+   "speech": "α 的上限由下溢决定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 405.77,
+   "dur": 3.09,
+   "speech": "取六个距离，从零到五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 409.04,
+   "dur": 3.78,
+   "speech": "α 等于两百，六个里下溢两个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 413,
+   "dur": 2.46,
+   "speech": "五百，下溢四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 415.64,
+   "dur": 3.23,
+   "speech": "一千，只剩最小那个不溢出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 419.05,
+   "dur": 3.73,
+   "speech": "比例是六分之五，零点八三三三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 422.96,
+   "dur": 4.19,
+   "speech": "下溢不报错，只是静默把权重丢成零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 427.33,
+   "dur": 3.11,
+   "speech": "所以 α 必须有上限。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 430.62,
+   "dur": 2.51,
+   "speech": "我们的实验取到一千。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 433.31,
+   "dur": 3.64,
+   "speech": "再大，SoftMin 就退化成硬 min。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 437.13,
+   "dur": 2.29,
+   "speech": "最后是分类头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 439.61,
+   "dur": 2.65,
+   "speech": "五个模板，五个距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 52,
+   "start": 442.44,
+   "dur": 3.18,
+   "speech": "距离拼成一个五维向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 53,
+   "start": 445.8,
+   "dur": 4.41,
+   "speech": "乘权重矩阵，加偏置，得到三个 logits。"
+  },
+  {
+   "scene": "definitions",
+   "index": 54,
+   "start": 450.39,
+   "dur": 3.06,
+   "speech": "softmax 变成三类概率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 55,
+   "start": 453.63,
+   "dur": 3.3,
+   "speech": "交叉熵算损失，反向传播。"
+  },
+  {
+   "scene": "definitions",
+   "index": 56,
+   "start": 457.11,
+   "dur": 3.66,
+   "speech": "梯度顺着链式，回到模板的每个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 57,
+   "start": 460.95,
+   "dur": 3.83,
+   "speech": "距离对模板的导数，就是刚才的权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 58,
+   "start": 464.96,
+   "dur": 3.33,
+   "speech": "这一条链，就是可学习 shapelet。"
+  },
+  {
+   "scene": "definitions",
+   "index": 59,
+   "start": 468.47,
+   "dur": 2.92,
+   "speech": "下面看实现里的三个模块。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 474.79,
+   "dur": 2.73,
+   "speech": "先定口径，再看数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 477.7,
+   "dur": 3.95,
+   "speech": "α 扫描三档：一、十、一百。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 481.83,
+   "dur": 2.56,
+   "speech": "每档训练二十五轮。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 484.56,
+   "dur": 3.57,
+   "speech": "测试准确率三档都是一点零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 488.31,
+   "dur": 6.04,
+   "speech": "模板平均误差是一点八一一三、二点一二四二、二点一四一五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 494.53,
+   "dur": 5.58,
+   "speech": "最终损失是零点零一三八、零点零一二四、零点零一二八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 500.29,
+   "dur": 2.97,
+   "speech": "梯度零比例三档都是零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 503.44,
+   "dur": 3.09,
+   "speech": "也就是说，梯度一直存在。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 506.7,
+   "dur": 3.45,
+   "speech": "但模板误差没有随 α 下降。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 510.33,
+   "dur": 2.37,
+   "speech": "模板误差怎么定义？"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 512.87,
+   "dur": 3.61,
+   "speech": "取学到的模板，和真正的正弦比。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 516.67,
+   "dur": 2.68,
+   "speech": "正弦允许循环平移。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 519.53,
+   "dur": 3.66,
+   "speech": "在九十三种起点里找最近的那个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 523.37,
+   "dur": 5.05,
+   "speech": "五个模板的误差是二点二八三三到零点七九八七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 528.6,
+   "dur": 5.32,
+   "speech": "长度八的两个，误差零点九八四八和一点一九四八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 534.1,
+   "dur": 5.17,
+   "speech": "长度十二的两个，三点一七三一和二点九四八九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 539.45,
+   "dur": 3.66,
+   "speech": "长度二十的一个，零点七九八七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 543.3,
+   "dur": 4.45,
+   "speech": "注意，长度十二的两个偏移了三点和十点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 547.93,
+   "dur": 2.8,
+   "speech": "树的部分有两个曲线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 550.91,
+   "dur": 3.57,
+   "speech": "第一条用五个学到的距离当特征。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 554.65,
+   "dur": 3.13,
+   "speech": "深度二就到训练测试全对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 557.97,
+   "dur": 4.07,
+   "speech": "五个特征太少，树没有自由度过拟合。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 562.22,
+   "dur": 3.23,
+   "speech": "第二条换成二十个原始点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 565.63,
+   "dur": 4.57,
+   "speech": "训练从零点四六六七升到零点九四四四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 570.38,
+   "dur": 3.85,
+   "speech": "测试从零点四升到零点八六六七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 574.42,
+   "dur": 4.57,
+   "speech": "拐点在深度四，深度八差零点零七七八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 579.17,
+   "dur": 3.81,
+   "speech": "这才是计划里想看到的过拟合拐点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 583.16,
+   "dur": 1.93,
+   "speech": "成本怎么算？"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 585.27,
+   "dur": 4.65,
+   "speech": "第 43 集搜索要二万三千六百七十个候选。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 590.1,
+   "dur": 3.69,
+   "speech": "每个候选在九十条序列上滑一遍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 593.96,
+   "dur": 2.89,
+   "speech": "一共二百一十三万次距离。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 597.04,
+   "dur": 4.38,
+   "speech": "这一集训练三十轮，每轮九十条，五个模板。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 601.6,
+   "dur": 3.25,
+   "speech": "前向只要一万三千五百次距离。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 605.03,
+   "dur": 3.49,
+   "speech": "按距离次数算，少一百五十八倍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 608.71,
+   "dur": 4.69,
+   "speech": "但每步还有反向传播，所以不能直接说快多少。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 613.58,
+   "dur": 3.95,
+   "speech": "只能说搜索的代价被换成了训练。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 617.71,
+   "dur": 3.4,
+   "speech": "真实数据这里，四个数放一起。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 621.29,
+   "dur": 2.82,
+   "speech": "随机是零点三三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 624.29,
+   "dur": 4.5,
+   "speech": "第 43 集搜索模板是零点三四二九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 628.97,
+   "dur": 3.66,
+   "speech": "DTW 一近邻是零点五一四三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 632.81,
+   "dur": 3.71,
+   "speech": "SoftMin 学到的模板是零点五五二四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 636.7,
+   "dur": 3.95,
+   "speech": "五个模板的误差平均是二点零七五四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 640.83,
+   "dur": 4.67,
+   "speech": "最好一个一点四四三九，最差二点九一八九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 645.68,
+   "dur": 3.71,
+   "speech": "判别力上来了，但模板还是不完美。"
+  },
+  {
+   "scene": "metrics",
+   "index": 44,
+   "start": 649.57,
+   "dur": 2.85,
+   "speech": "这两个事实要一起讲。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 655.82,
+   "dur": 3.28,
+   "speech": "三个模块，都在第五章下面。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 659.28,
+   "dur": 2.75,
+   "speech": "LearnShapelet 十七个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 662.21,
+   "dur": 3.69,
+   "speech": "ShapeletTree 十九个，Mlp 十四个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 666.07,
+   "dur": 2.65,
+   "speech": "合计五十条新断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 668.91,
+   "dur": 4.96,
+   "speech": "整个仓库现在一百三十九组、一千八百九十六条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 674.05,
+   "dur": 3.9,
+   "speech": "证据程序三十五条检查，全部通过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 678.13,
+   "dur": 2.39,
+   "speech": "耗时十一点八秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 680.7,
+   "dur": 3.61,
+   "speech": "每条检查都对应屏幕上的一个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 684.49,
+   "dur": 2.49,
+   "speech": "先看训练主循环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 687.16,
+   "dur": 2.7,
+   "speech": "trainShapelets 干四件事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 690.04,
+   "dur": 3.49,
+   "speech": "第一，按 alphaAt 取当前 α。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 693.71,
+   "dur": 2.68,
+   "speech": "第二，前向算损失。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 696.57,
+   "dur": 2.61,
+   "speech": "第三，反向算梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 699.36,
+   "dur": 3.78,
+   "speech": "第四，Adam 更新模板和分类头。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 703.32,
+   "dur": 4.29,
+   "speech": "Adam 用一阶、二阶矩，加偏差校正。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 707.79,
+   "dur": 3.52,
+   "speech": "批量三十二，学习率零点零一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 711.48,
+   "dur": 3.45,
+   "speech": "三十轮，α 换两次档。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 715.11,
+   "dur": 3.85,
+   "speech": "损失写进 lsLosses，每轮一个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 719.14,
+   "dur": 2.27,
+   "speech": "这里踩过一个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 721.59,
+   "dur": 3.73,
+   "speech": "距离对模板的导数，不能直接用距离。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 725.51,
+   "dur": 2.49,
+   "speech": "要先算 dds。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 728.17,
+   "dur": 5.17,
+   "speech": "dds 等于每个类权重乘 W 的对应列，再求和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 733.53,
+   "dur": 3.81,
+   "speech": "然后把 dds 喂给模板的链式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 737.51,
+   "dur": 4.05,
+   "speech": "写错的时候，损失对不上，梯度差三倍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 741.74,
+   "dur": 3.06,
+   "speech": "修好之后，数值校验才过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 744.98,
+   "dur": 3.33,
+   "speech": "这也是为什么梯度校验不能省。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 748.49,
+   "dur": 2.89,
+   "speech": "它专门抓这类链式错误。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 751.56,
+   "dur": 2.7,
+   "speech": "第二个坑是数值稳定。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 754.44,
+   "dur": 3.47,
+   "speech": "指数相加容易上溢或下溢。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 758.09,
+   "dur": 3.69,
+   "speech": "实现里先减最大项，再取指数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 761.96,
+   "dur": 3.33,
+   "speech": "这就是 log-sum-exp 的写法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 765.47,
+   "dur": 2.94,
+   "speech": "另写一个 underflowFraction。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 768.59,
+   "dur": 3.33,
+   "speech": "专门数有多少项被压成零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 772.09,
+   "dur": 3.88,
+   "speech": "α 等于一千时，六个里五个是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 776.15,
+   "dur": 3.23,
+   "speech": "这个比例进检查，也进画面。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 779.56,
+   "dur": 3.57,
+   "speech": "它把看不见的下溢变成可报的数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 783.31,
+   "dur": 2.99,
+   "speech": "证据程序按十组检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 786.48,
+   "dur": 4.09,
+   "speech": "数据五条，合成一条，SoftMin 六条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 790.75,
+   "dur": 3.95,
+   "speech": "扫描四条，退火三条，下溢五条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 794.88,
+   "dur": 5.49,
+   "speech": "MLP 三条，DTW 一条，树四条，真实三条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 800.55,
+   "dur": 2.39,
+   "speech": "加起来三十五条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 803.12,
+   "dur": 2.77,
+   "speech": "全部通过，十一秒八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 806.07,
+   "dur": 4.12,
+   "speech": "结果写进 summary、checks 和 inventory。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 810.37,
+   "dur": 4.69,
+   "speech": "任何一个读数和 dist 对不上，生成就中止。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 815.24,
+   "dur": 2.63,
+   "speech": "下面把证据摆开看。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 821.27,
+   "dur": 2.32,
+   "speech": "先看证据总表。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 823.77,
+   "dur": 3.49,
+   "speech": "三十五条检查，三十五条通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 827.44,
+   "dur": 3.33,
+   "speech": "十组，从数据到真实收益。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 830.95,
+   "dur": 2.39,
+   "speech": "耗时十一点八秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 833.52,
+   "dur": 3.93,
+   "speech": "黄金值、权重、下溢都在里面。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 837.62,
+   "dur": 3.78,
+   "speech": "还有树的拐点和 MLP 的梯度校验。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 841.59,
+   "dur": 2.92,
+   "speech": "每一条都能追到一次实测。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 844.68,
+   "dur": 2.77,
+   "speech": "下面挑关键几条展开。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 847.64,
+   "dur": 2.46,
+   "speech": "第一条是黄金值。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 850.28,
+   "dur": 4.41,
+   "speech": "SoftMin 在一组零距离上等于负一点零九八六。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 854.87,
+   "dur": 2.97,
+   "speech": "它必须等于负 log 三。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 858.01,
+   "dur": 4.43,
+   "speech": "α 等于一百万时，和 min 的差乘 α。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 862.62,
+   "dur": 2.82,
+   "speech": "结果仍然是负 log 三。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 865.62,
+   "dur": 3.35,
+   "speech": "误差绝对值小于百万分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 869.15,
+   "dur": 3.76,
+   "speech": "解析梯度和数值梯度，误差是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 873.09,
+   "dur": 2.92,
+   "speech": "梯度权重和恒等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 876.19,
+   "dur": 3.95,
+   "speech": "这三条一起，说明公式和代码一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 880.32,
+   "dur": 3.25,
+   "speech": "公式错一位，黄金值就不对。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 883.75,
+   "dur": 3.78,
+   "speech": "第二条，看 min 和 SoftMin 的权重。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 887.72,
+   "dur": 2.82,
+   "speech": "一条序列九十三个窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 890.72,
+   "dur": 3.76,
+   "speech": "min 的零权重比例是零点九八九二。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 894.66,
+   "dur": 3.28,
+   "speech": "也就是九十二个窗口没有梯度。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 898.11,
+   "dur": 7.45,
+   "speech": "四个权重是零点四五五一、零点二七六零、零点一六七四、零点一零一五。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 905.75,
+   "dur": 2.17,
+   "speech": "零的比例是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 908.1,
+   "dur": 4.72,
+   "speech": "α 等于二十和两百时，权重回到一和零。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 913,
+   "dur": 2.97,
+   "speech": "零比例变成零点七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 916.15,
+   "dur": 4.14,
+   "speech": "这就是 α 太大退化成 min 的直接读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 920.47,
+   "dur": 2.77,
+   "speech": "第三条，α 扫描。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 923.42,
+   "dur": 3.16,
+   "speech": "三档准确率全是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 926.76,
+   "dur": 3.18,
+   "speech": "模板误差没有按十倍缩小。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 930.12,
+   "dur": 4.79,
+   "speech": "一点八一一三、二点一二四二、二点一四一五。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 935.09,
+   "dur": 3.76,
+   "speech": "最终损失都很低，零点零一三上下。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 939.03,
+   "dur": 2.49,
+   "speech": "梯度零比例都是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 941.7,
+   "dur": 4.53,
+   "speech": "结论：分类任务上，α 的大小不影响对错。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 946.4,
+   "dur": 4.67,
+   "speech": "影响的是模板形状，而且方向和书里相反。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 951.25,
+   "dur": 3.01,
+   "speech": "这一点在边界一页解释。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 954.45,
+   "dur": 2.34,
+   "speech": "第四条，退火。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 956.97,
+   "dur": 4.53,
+   "speech": "三十轮，损失从一点四四降到零点零一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 961.67,
+   "dur": 2.77,
+   "speech": "换档处有两次小跳。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 964.63,
+   "dur": 5.15,
+   "speech": "五个模板的长度是八、八、十二、十二、二十。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 969.96,
+   "dur": 4.86,
+   "speech": "循环对齐误差零点九七八七到三点四三零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 975,
+   "dur": 5.17,
+   "speech": "相位偏移两点、一点、三点、十点、四点。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 980.35,
+   "dur": 4.93,
+   "speech": "两个长度十二的模板，一个偏三点，一个偏十点。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 985.47,
+   "dur": 3.18,
+   "speech": "分类全对，模板却没对齐。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 988.83,
+   "dur": 2.49,
+   "speech": "这两个事实不矛盾。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 991.5,
+   "dur": 3.88,
+   "speech": "第五条，α 等于一千会不会停。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 995.55,
+   "dur": 2.13,
+   "speech": "书里说会停。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 997.86,
+   "dur": 4.74,
+   "speech": "实测十二轮，损失一点六二降到零点零七三。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1002.78,
+   "dur": 2.77,
+   "speech": "降了百分之九十五点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1005.74,
+   "dur": 2.65,
+   "speech": "测试准确率一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1008.57,
+   "dur": 4.12,
+   "speech": "窗口权重里，九成零三下溢成零。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1012.87,
+   "dur": 3.47,
+   "speech": "但梯度仍然从最小窗口回来。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1016.52,
+   "dur": 3.69,
+   "speech": "训练没有停，只是退化成了硬 min。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1020.38,
+   "dur": 2.97,
+   "speech": "这条断言要按实测讲。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1023.53,
+   "dur": 2.51,
+   "speech": "第六条，两个对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1026.22,
+   "dur": 3.47,
+   "speech": "树用五个距离，深度二就全对。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1029.87,
+   "dur": 4.09,
+   "speech": "换成二十个原始点，拐点在深度四。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 1034.14,
+   "dur": 4.5,
+   "speech": "训练零点九四四四，测试零点八六六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 1038.83,
+   "dur": 3.37,
+   "speech": "差零点零七七八，过拟合出现了。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 1042.38,
+   "dur": 4.24,
+   "speech": "MLP 一百、十六、三，四十轮。"
+  },
+  {
+   "scene": "verification",
+   "index": 60,
+   "start": 1046.8,
+   "dur": 3.93,
+   "speech": "梯度校验零，测试零点九六六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 61,
+   "start": 1050.9,
+   "dur": 4.33,
+   "speech": "把五个距离喂给小 MLP，测试一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 62,
+   "start": 1055.42,
+   "dur": 3.45,
+   "speech": "说明学出来的距离本身可读。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1062.26,
+   "dur": 2.89,
+   "speech": "第一个边界：十倍规则。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1065.33,
+   "dur": 4.84,
+   "speech": "书里说 α 每放大十倍，落点误差缩十倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1070.35,
+   "dur": 3.4,
+   "speech": "我们测到的是不变，甚至略差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1073.93,
+   "dur": 2.39,
+   "speech": "差别在损失函数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1076.5,
+   "dur": 3.59,
+   "speech": "分类交叉熵只要求分开三类。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1080.27,
+   "dur": 2.94,
+   "speech": "不要求模板还原真正弦。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1083.39,
+   "dur": 3.88,
+   "speech": "所以 α 变大，分类照样满分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1087.45,
+   "dur": 3.04,
+   "speech": "模板形状却不需要变准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1090.67,
+   "dur": 3.69,
+   "speech": "书里的落点误差，对应重建损失。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1094.53,
+   "dur": 3.25,
+   "speech": "第二个边界：下溢不等于断流。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1097.97,
+   "dur": 3.01,
+   "speech": "九成窗口权重变成零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1101.16,
+   "dur": 3.45,
+   "speech": "但最小的那个窗口权重还在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1104.79,
+   "dur": 2.39,
+   "speech": "梯度从那一个回来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1107.36,
+   "dur": 3.69,
+   "speech": "所以训练继续，只是退化成 min。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1111.22,
+   "dur": 3.88,
+   "speech": "书里说训练停住，本实现没有复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1115.28,
+   "dur": 4.07,
+   "speech": "这也说明：下溢的风险是精度，不是中断。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1119.53,
+   "dur": 3.69,
+   "speech": "如果所有窗口都下溢，才会真的断。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1123.4,
+   "dur": 3.83,
+   "speech": "我们的实现里，最小项永远不溢出。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1127.41,
+   "dur": 2.85,
+   "speech": "第三个边界：树的拐点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1130.43,
+   "dur": 3.59,
+   "speech": "五个特征做树，深度二就全对。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1134.2,
+   "dur": 2.53,
+   "speech": "曲线没有过拟合段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1136.92,
+   "dur": 3.85,
+   "speech": "换成二十个原始点，拐点才出现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1140.95,
+   "dur": 4.19,
+   "speech": "在深度四，训练测试差零点零七七八。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1145.32,
+   "dur": 4.6,
+   "speech": "所以计划里的拐点，只在原始特征上成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1150.1,
+   "dur": 3.04,
+   "speech": "特征少，树学不到噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1153.32,
+   "dur": 3.4,
+   "speech": "这不是树不行，是特征太少。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1156.9,
+   "dur": 4.29,
+   "speech": "画面把两条曲线并排，不合并成一条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1161.36,
+   "dur": 2.82,
+   "speech": "第四个边界：数据口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1164.36,
+   "dur": 4.05,
+   "speech": "计划写沪深三百、六十日、五个字段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1168.59,
+   "dur": 3.16,
+   "speech": "实际沿用第 43 集的面板。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1171.93,
+   "dur": 4.26,
+   "speech": "全市场同门类各五十只，一百日收盘价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1176.37,
+   "dur": 3.23,
+   "speech": "五个字段留给下一集卷积。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1179.78,
+   "dur": 3.47,
+   "speech": "这样能和零点三四二九直接比。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1183.43,
+   "dur": 4.33,
+   "speech": "偏差写进 manifest、dist 和这一页。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1187.94,
+   "dur": 3.01,
+   "speech": "三处一致，才算讲清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1191.14,
+   "dur": 3.76,
+   "speech": "换口径就要重新报数，不能混着比。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1195.08,
+   "dur": 3.25,
+   "speech": "最后一个边界：没验证的清单。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1198.51,
+   "dur": 3.9,
+   "speech": "真实数据只有一百五十只、一种划分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1202.59,
+   "dur": 3.04,
+   "speech": "训练时长没有单独计时。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1205.81,
+   "dur": 4,
+   "speech": "α 调度只试了一、二十、两百。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1209.99,
+   "dur": 3.64,
+   "speech": "树和 MLP 都是小规模对照。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 1213.81,
+   "dur": 3.01,
+   "speech": "这些都不当成已证结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 42,
+   "start": 1217,
+   "dur": 4.43,
+   "speech": "下一集换工具：一维卷积、残差、GAP。"
+  },
+  {
+   "scene": "boundary",
+   "index": 43,
+   "start": 1221.61,
+   "dur": 5.46,
+   "speech": "用六十日五通道窗口，让分类器指出哪几天在起作用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 44,
+   "start": 1227.25,
+   "dur": 2.29,
+   "speech": "这一集就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1232.95,
+   "dur": 2.1,
+   "speech": "这一集的读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1235.23,
+   "dur": 3.04,
+   "speech": "黄金值负一点零九八六。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1238.45,
+   "dur": 5.2,
+   "speech": "真实准确率零点五五二四，比搜索高二十一个百分点。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1243.83,
+   "dur": 3.52,
+   "speech": "三十五条检查全过，十一秒八。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1247.53,
+   "dur": 2.99,
+   "speech": "三个模块五十条新断言。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1250.7,
+   "dur": 3.97,
+   "speech": "书里两条断言没复现，都写进边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1254.85,
+   "dur": 3.09,
+   "speech": "梯度处处存在，这是真的。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1258.12,
+   "dur": 4,
+   "speech": "十倍规则和下溢停住，这两条不成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1262.29,
+   "dur": 3.73,
+   "speech": "下一集：卷积、残差与 GAP。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1266.21,
+   "dur": 3.25,
+   "speech": "一维卷积在时间轴上滑动。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1269.64,
+   "dur": 2.85,
+   "speech": "残差让深网络好训练。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1272.67,
+   "dur": 3.09,
+   "speech": "GAP 把特征图压成一个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1275.93,
+   "dur": 2.97,
+   "speech": "CAM 再把它变回热图。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1279.08,
+   "dur": 3.45,
+   "speech": "这样就能指出哪几天在起作用。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1282.71,
+   "dur": 3.28,
+   "speech": "六十日五通道窗口已经准备好。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1286.16,
+   "dur": 3.16,
+   "speech": "这一集就到这里，下一集见。"
+  }
+ ]
+}
