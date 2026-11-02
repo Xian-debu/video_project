@@ -62,3 +62,12 @@
 4. **树拐点**：计划用树深-准确率拐点说明过拟合；实际五个学到的距离深度 2 就满分、没有过拟合段；改用 20 个原始点后才在深度 4 出现拐点（gap 0.0778）。
 
 以上四条同时写进 ts-base `manifest.json`、本片 `data/dist.json` 的 `meta.deviations`、以及成片 boundary 场景画面。
+
+## Delivery
+
+- 成片 **1,291.53 s（21:31.53）/ 38,746 帧 / 8 场 38 页 / 342 条旁白（发声 1,204.2 s）/ −15 LUFS / TP −2 dBFS / LRA 2.5**。
+- 交付物：`delivery/Tsint44LearnableShapeletSoftmin.mp4`（66,829,398 B）、`cover.png`（82,542 B，帧 20）、`tsint-44.srt`（26,124 B，342 cue，0 换行，最长 33 字）、`tsint-44.chapters.txt`（454 B）、`tsint-44.chapters.ffmeta.txt`（835 B）。
+- 混音：48 kHz / 1,292.72 s，peak −1.01 dBFS、RMS −26.58 dBFS、musicGain −4.5 dB、ducked 57.0%；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.55 / gap_full −30.90 / gap_audible −33.62 / bed 36.4。
+- 闪烁门：38,746 帧 mean 20.72 / min 14.73 / max 22.84、mean|d| 0.0131、p99 0.1091、max 7.16、7 切点（3684 / 7597 / 14208 / 19639 / 24602 / 31832 / 36953）。
+- make 首轮 PASS（23 stage 全 ok、8 段 rendered 8、reused 0），tree `68c90e7b5c611a00`。
+- 分数床复用 E04 的 1560 s 循环（scoreReused false）；封面帧 20；film.json status ready、assetsStatus complete。

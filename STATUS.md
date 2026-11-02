@@ -59,7 +59,7 @@
 | tsint-41-ad-sparse-prior-dual-attention | 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力 | ready | - | yes | ok | 11 | - |
 | tsint-42-metrics-distance-1nn-ee | 距离决定一切：从 1-NN+DTW 到弹性集成 | ready | - | yes | ok | 11 | - |
 | tsint-43-shapelet-search-pips | Shapelet：从一条序列里挖出一小段判别力 | ready | - | yes | ok | 11 | - |
-| tsint-44-learnable-shapelet-softmin | 把 min 换成 SoftMin：Shapelet 终于可以求导 | draft | 1440 | silent | ok | 1 | - |
+| tsint-44-learnable-shapelet-softmin | 把 min 换成 SoftMin：Shapelet 终于可以求导 | ready | - | yes | ok | 11 | - |
 | tsint-45-cnn-resnet-gap-cam | 卷积、残差与 GAP：让分类器指出「哪几天在起作用」 | draft | 1320 | silent | ok | 1 | - |
 | tsint-46-rnn-shallow-dilated | 感受野之争：RNN、Brick 并行与空洞卷积 | draft | 1320 | silent | ok | 1 | - |
 | tsint-47-gcn-gat-attention | 谁在影响谁：图卷积、图注意力与自注意力 | draft | 1440 | silent | ok | 1 | - |
