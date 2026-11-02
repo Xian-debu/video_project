@@ -1,0 +1,2577 @@
+{
+ "entry": "src/tsint-47-gcn-gat-attention/script.ts",
+ "fps": 30,
+ "totalSec": 1230.54,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 128.72
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 128.72,
+   "dur": 171.53
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 300.25,
+   "dur": 208.49
+  },
+  {
+   "id": "metrics",
+   "chapter": "指标",
+   "start": 508.74,
+   "dur": 147.36
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 656.1,
+   "dur": 153.65
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 809.75,
+   "dur": 206.74
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1016.49,
+   "dur": 143.76
+  },
+  {
+   "id": "outro",
+   "chapter": "下一集",
+   "start": 1160.25,
+   "dur": 70.29
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.14,
+   "speech": "上一集把五百步的序列喂给循环网络。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.52,
+   "dur": 2.39,
+   "speech": "这一集换一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.09,
+   "dur": 2.13,
+   "speech": "谁在影响谁。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.4,
+   "dur": 2.99,
+   "speech": "三十只股票，一张图。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.57,
+   "dur": 2.51,
+   "speech": "每只股票是一个点。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.26,
+   "dur": 3.25,
+   "speech": "两只股票相关，就连一条线。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 19.69,
+   "dur": 3.09,
+   "speech": "图不是给定的，是算出来的。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 22.96,
+   "dur": 3.81,
+   "speech": "从二〇一八年一月，到二〇二五年底。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 26.94,
+   "dur": 2.58,
+   "speech": "三十条日收益曲线。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 29.71,
+   "dur": 2.75,
+   "speech": "一千九百四十二个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 32.64,
+   "dur": 2.99,
+   "speech": "两两算皮尔逊相关系数。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 35.81,
+   "dur": 3.49,
+   "speech": "三十只股票，一共四百三十五对。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 39.48,
+   "dur": 3.64,
+   "speech": "绝对值超过零点三，就连一条边。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 43.3,
+   "dur": 3.47,
+   "speech": "取绝对值，因为负相关也是关系。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 46.95,
+   "dur": 3.64,
+   "speech": "四百三十五对，留下一百六十二对。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 50.77,
+   "dur": 3.16,
+   "speech": "超过三分之一的对，连上了。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 54.1,
+   "dur": 3.42,
+   "speech": "阈值是选出来的，不是算出来的。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 57.71,
+   "dur": 2.39,
+   "speech": "这一点后面还要说。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 60.28,
+   "dur": 3.04,
+   "speech": "一眼看去，图不是均匀的。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 63.49,
+   "dur": 3.52,
+   "speech": "三个行业各十只，分成三块。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 67.19,
+   "dur": 3.21,
+   "speech": "行业内部几乎两两相连。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 70.58,
+   "dur": 3.42,
+   "speech": "行业内部密度，零点九九二六。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 74.18,
+   "dur": 4.09,
+   "speech": "一百三十五对同行业，连了一百三十四对。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 78.45,
+   "dur": 3.61,
+   "speech": "跨行业密度，只有零点零九三三。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 82.25,
+   "dur": 3.37,
+   "speech": "三百对跨行业，连了二十八对。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 85.8,
+   "dur": 3.13,
+   "speech": "度数最高二十二，最低九。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 89.12,
+   "dur": 4.05,
+   "speech": "所以这张图，基本就是一张行业图。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 93.34,
+   "dur": 3.01,
+   "speech": "有了图，就能做节点分类。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 96.54,
+   "dur": 3.47,
+   "speech": "每个节点五个特征，标签是行业。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 100.19,
+   "dur": 3.81,
+   "speech": "三个模型，同一张图，三种用法。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 104.17,
+   "dur": 3.3,
+   "speech": "图卷积，邻居按度数平均。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 107.65,
+   "dur": 3.97,
+   "speech": "图注意力，邻居各占多少是学出来的。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 111.81,
+   "dur": 3.97,
+   "speech": "自注意力，干脆不要图，两两打分。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 115.96,
+   "dur": 4.79,
+   "speech": "参数量：一百四十七、三百二十八、八百一十六。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 120.93,
+   "dur": 2.44,
+   "speech": "一层比一层贵。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 123.55,
+   "dur": 2.97,
+   "speech": "这一集要回答三个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 129.92,
+   "dur": 3.88,
+   "speech": "先看「样本独立」这个假设，问题出在哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 133.98,
+   "dur": 3.4,
+   "speech": "普通分类假设样本彼此独立。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 137.56,
+   "dur": 3.78,
+   "speech": "一只股票涨跌，跟别的股票没关系。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 141.52,
+   "dur": 2.32,
+   "speech": "市场里不是这样。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 144.02,
+   "dur": 3.25,
+   "speech": "同行业的股票常常一起动。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 147.45,
+   "dur": 3.9,
+   "speech": "四条曲线摆在一起，形状几乎一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 151.53,
+   "dur": 3.61,
+   "speech": "最强的一对，相关系数零点八八。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 155.33,
+   "dur": 4.19,
+   "speech": "工商银行和建设银行，零点八八零一。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 159.7,
+   "dur": 4.19,
+   "speech": "工商银行和农业银行，零点八四三九。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 164.07,
+   "dur": 3.78,
+   "speech": "都在同一行业，相关接近零点九。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 168.03,
+   "dur": 3.06,
+   "speech": "边是按相关系数算出来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 171.27,
+   "dur": 4.36,
+   "speech": "把三十只股票两两的相关系数排成矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 175.81,
+   "dur": 3.25,
+   "speech": "对角是走自己，永远是零。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 179.24,
+   "dur": 2.92,
+   "speech": "颜色越亮，相关越强。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 182.34,
+   "dur": 3.33,
+   "speech": "三个行业块，几乎整块发亮。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 185.85,
+   "dur": 3.57,
+   "speech": "块与块之间的格子，大多是暗的。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 189.59,
+   "dur": 2.94,
+   "speech": "所以图不是先验知识。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 192.71,
+   "dur": 2.01,
+   "speech": "是数据给的。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 194.9,
+   "dur": 2.85,
+   "speech": "换个阈值，图就会变。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 197.93,
+   "dur": 3.45,
+   "speech": "但节点和边的关系，是真实的。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 201.55,
+   "dur": 3.23,
+   "speech": "图有了，还要切训练和测试。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 204.96,
+   "dur": 4.05,
+   "speech": "三十个节点，每个行业前七只训练。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 209.19,
+   "dur": 2.92,
+   "speech": "二十一个训练，九个测试。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 212.29,
+   "dur": 2.63,
+   "speech": "标签只给训练节点。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 215.1,
+   "dur": 3.95,
+   "speech": "测试节点的标签，只在最后打分时用。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 219.23,
+   "dur": 2.77,
+   "speech": "这一步和普通分类一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 222.18,
+   "dur": 2.2,
+   "speech": "不一样的是特征。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 224.56,
+   "dur": 3.64,
+   "speech": "训练时，所有节点的特征都看得到。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 228.38,
+   "dur": 2.32,
+   "speech": "只有标签被遮住。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 230.87,
+   "dur": 3.09,
+   "speech": "三个模型对图的态度不一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 234.14,
+   "dur": 3.81,
+   "speech": "图卷积：邻居的权重由度数定死。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 238.13,
+   "dur": 3.25,
+   "speech": "归一化后的邻接，固定不变。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 241.56,
+   "dur": 4.05,
+   "speech": "图注意力：权重学出来，但只在邻居上。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 245.79,
+   "dur": 3.95,
+   "speech": "自注意力：每个节点跟所有节点打分。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 249.92,
+   "dur": 3.4,
+   "speech": "没有邻接，也没有邻居这个概念。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 253.49,
+   "dur": 3.4,
+   "speech": "三种态度，对应三种计算图。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 257.07,
+   "dur": 2.49,
+   "speech": "也对应三种参数量。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 259.74,
+   "dur": 2.13,
+   "speech": "下面逐个拆。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 262.04,
+   "dur": 3.16,
+   "speech": "三个问题，这一集要回答。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 265.38,
+   "dur": 2.75,
+   "speech": "第一，图到底有没有用？"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 268.31,
+   "dur": 4.05,
+   "speech": "第二，学出来的边权比固定权重强吗？"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 272.54,
+   "dur": 3.59,
+   "speech": "第三，不用图，注意力还能不能行？"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 276.31,
+   "dur": 2.15,
+   "speech": "先给三个结果。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 278.64,
+   "dur": 3.09,
+   "speech": "固定邻接，九个测试全对。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 281.9,
+   "dur": 2.46,
+   "speech": "图注意力，对八个。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 284.55,
+   "dur": 2.63,
+   "speech": "自注意力，对六个。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 287.36,
+   "dur": 3.21,
+   "speech": "但真正的对照是打乱邻接。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 290.74,
+   "dur": 3.73,
+   "speech": "把图打乱，同一套代码，只对一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 294.66,
+   "dur": 3.4,
+   "speech": "这个对照，是本集的核心证据。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 301.45,
+   "dur": 2.53,
+   "speech": "先把图写成矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 304.16,
+   "dur": 4.33,
+   "speech": "邻接矩阵 A：i 和 j 有边是一，没有是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 308.68,
+   "dur": 3.18,
+   "speech": "矩阵对称，因为相关没有方向。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 312.04,
+   "dur": 3.66,
+   "speech": "对角清零，自己不算自己的邻居。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 315.88,
+   "dur": 2.8,
+   "speech": "度，是一行里一的总数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 318.86,
+   "dur": 2.61,
+   "speech": "度越大，邻居越多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 321.65,
+   "dur": 3.81,
+   "speech": "这张图里，最高二十二，最低九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 325.63,
+   "dur": 2.39,
+   "speech": "孤立节点度为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 328.2,
+   "dur": 2.27,
+   "speech": "后面要处理它。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 330.65,
+   "dur": 2.44,
+   "speech": "原始邻接有个问题。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 333.27,
+   "dur": 3.47,
+   "speech": "度数大的节点，消息会被放大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 336.92,
+   "dur": 2.97,
+   "speech": "所以先做对称归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 340.07,
+   "dur": 4.21,
+   "speech": "A 加上单位阵，每个节点至少一条自环。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 344.46,
+   "dur": 3.09,
+   "speech": "再除以两端度数的平方根。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 347.73,
+   "dur": 4.69,
+   "speech": "公式：D 的负二分之一，乘 A 加 I，再乘一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 352.6,
+   "dur": 4.21,
+   "speech": "两个节点一条边，每行零点五和零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 356.99,
+   "dur": 2.75,
+   "speech": "孤立节点也不会除零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 359.92,
+   "dur": 2.87,
+   "speech": "这一步，测试里钉死了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 362.97,
+   "dur": 3.37,
+   "speech": "图卷积一层，只做三次乘法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 366.53,
+   "dur": 2.53,
+   "speech": "先乘归一化邻接。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 369.24,
+   "dur": 3.57,
+   "speech": "邻居的消息，就按权重聚过来了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 372.99,
+   "dur": 2.32,
+   "speech": "再乘权重矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 375.49,
+   "dur": 2.49,
+   "speech": "加偏置，过 tanh。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 378.15,
+   "dur": 3.85,
+   "speech": "输入五维，隐层十六维，输出三类。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 382.19,
+   "dur": 4.84,
+   "speech": "参数量：五乘十六加十六，十六乘三加三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 387.2,
+   "dur": 3.3,
+   "speech": "九十六加五十一，一百四十七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 390.69,
+   "dur": 3.16,
+   "speech": "注意：参数跟节点数无关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 394.02,
+   "dur": 3.11,
+   "speech": "三十只股票，还是这么多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 397.31,
+   "dur": 2.97,
+   "speech": "换成三千只，也一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 400.46,
+   "dur": 3.33,
+   "speech": "图注意力的打分，用两组权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 403.97,
+   "dur": 4.05,
+   "speech": "a 转置乘拼接，拆开就是两次点积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 408.19,
+   "dur": 4.45,
+   "speech": "a1 点乘自己的表示，a2 点乘邻居的表示。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 412.83,
+   "dur": 3.9,
+   "speech": "打分过 LeakyReLU，斜率零点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 416.91,
+   "dur": 2.97,
+   "speech": "再在邻居上做 softmax。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 420.05,
+   "dur": 3.18,
+   "speech": "非邻居不打分，直接屏蔽。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 423.42,
+   "dur": 4.24,
+   "speech": "两个邻居，权重零点二五和零点七五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 427.83,
+   "dur": 3.33,
+   "speech": "那是打分零和 ln 三的结果。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 431.34,
+   "dur": 3.85,
+   "speech": "四个头，各四维，拼成十六维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 435.37,
+   "dur": 3.9,
+   "speech": "第二层四个头，每头三类，取平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 439.46,
+   "dur": 2.34,
+   "speech": "参数三百二十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 441.98,
+   "dur": 2.77,
+   "speech": "是一百四十七的两倍多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 444.93,
+   "dur": 2.39,
+   "speech": "屏蔽不是设成零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 447.5,
+   "dur": 2.75,
+   "speech": "设成负十的三十次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 450.43,
+   "dur": 4.43,
+   "speech": "减完行最大值，exp 精确下溢成零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 455.04,
+   "dur": 2.97,
+   "speech": "不是很小，是精确的零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 458.19,
+   "dur": 2.34,
+   "speech": "行和仍然是 1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 460.71,
+   "dur": 3.33,
+   "speech": "只在本来的邻居上归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 464.22,
+   "dur": 3.49,
+   "speech": "非邻居的注意力，一丁点都不分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 467.89,
+   "dur": 3.09,
+   "speech": "这个细节，测试里钉死了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 471.16,
+   "dur": 3.18,
+   "speech": "行和不对，整个传播就偏了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 474.52,
+   "dur": 2.58,
+   "speech": "自注意力没有邻接。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 477.28,
+   "dur": 3.18,
+   "speech": "每个节点，跟所有节点打分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 52,
+   "start": 480.64,
+   "dur": 2.92,
+   "speech": "打分先除以根号 d 撇。"
+  },
+  {
+   "scene": "definitions",
+   "index": 53,
+   "start": 483.74,
+   "dur": 2.34,
+   "speech": "d 撇是键的维度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 54,
+   "start": 486.26,
+   "dur": 3.61,
+   "speech": "除完再 softmax，权重和为一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 55,
+   "start": 490.06,
+   "dur": 3.28,
+   "speech": "d 撇等于四，因子零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 56,
+   "start": 493.51,
+   "dur": 2.56,
+   "speech": "四个头，各四维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 57,
+   "start": 496.25,
+   "dur": 2.15,
+   "speech": "第二层四个头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 58,
+   "start": 498.58,
+   "dur": 3.73,
+   "speech": "参数八百一十六，三个模型里最多。"
+  },
+  {
+   "scene": "definitions",
+   "index": 59,
+   "start": 502.5,
+   "dur": 4.05,
+   "speech": "它把图的约束完全扔掉，只留注意力。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 509.94,
+   "dur": 2.85,
+   "speech": "三个模型，一套配方。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 512.97,
+   "dur": 3.95,
+   "speech": "三百轮，Adam，学习率零点零一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 517.1,
+   "dur": 3.45,
+   "speech": "种子七，全批量，交叉熵。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 520.72,
+   "dur": 2.73,
+   "speech": "输入五维，标签三类。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 523.63,
+   "dur": 2.92,
+   "speech": "二十一个训练，九个测试。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 526.73,
+   "dur": 3.16,
+   "speech": "只换模型结构，别的都不动。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 530.06,
+   "dur": 3.78,
+   "speech": "配方越简单，差别越能归给结构。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 534.03,
+   "dur": 2.29,
+   "speech": "也越容易被复现。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 536.5,
+   "dur": 2.73,
+   "speech": "图卷积的结果很干脆。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 539.41,
+   "dur": 3.57,
+   "speech": "训练准确率一，测试准确率一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 543.15,
+   "dur": 2.87,
+   "speech": "九个测试节点，全对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 546.2,
+   "dur": 4.5,
+   "speech": "损失从一点零六七三，压到零点零零四八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 550.88,
+   "dur": 4.21,
+   "speech": "梯度核对，误差三点九二六乘十的负十次。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 555.28,
+   "dur": 2.34,
+   "speech": "干净得有点可疑。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 557.8,
+   "dur": 3.81,
+   "speech": "所以这一集花了整整一页做对照。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 561.79,
+   "dur": 2.75,
+   "speech": "九个格子里，九个对的。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 564.72,
+   "dur": 2.58,
+   "speech": "但也许只是样本小。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 567.48,
+   "dur": 2.75,
+   "speech": "图注意力的结果差一点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 570.41,
+   "dur": 3.35,
+   "speech": "测试准确率零点八八八九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 573.94,
+   "dur": 2.77,
+   "speech": "九个里对八个，错一个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 576.89,
+   "dur": 2.92,
+   "speech": "损失停在零点二四零八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 579.99,
+   "dur": 2.37,
+   "speech": "比图卷积高得多。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 582.54,
+   "dur": 3.06,
+   "speech": "学出来的注意力，容易过拟合。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 585.78,
+   "dur": 2.34,
+   "speech": "参数三百二十八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 588.3,
+   "dur": 2.8,
+   "speech": "是图卷积的二点二三倍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 591.28,
+   "dur": 2.39,
+   "speech": "更贵，也没更好。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 593.85,
+   "dur": 3.45,
+   "speech": "自注意力给出最反直觉的数字。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 597.47,
+   "dur": 3.23,
+   "speech": "测试准确率零点六六六七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 600.88,
+   "dur": 2.05,
+   "speech": "九个里对六个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 603.12,
+   "dur": 3.3,
+   "speech": "训练损失压到零点零零零二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 606.6,
+   "dur": 2.94,
+   "speech": "三个模型里，损失最低。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 609.72,
+   "dur": 2.44,
+   "speech": "测试准确率最差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 612.34,
+   "dur": 4,
+   "speech": "损失说明它把二十一个训练节点背熟了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 616.52,
+   "dur": 3.66,
+   "speech": "测试说明这份记忆没转移出去。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 620.36,
+   "dur": 3.83,
+   "speech": "参数最多，损失最低，测试最差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 624.37,
+   "dur": 2.68,
+   "speech": "这三件事同时成立。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 627.23,
+   "dur": 2.87,
+   "speech": "三张成绩单放在一起。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 630.28,
+   "dur": 4,
+   "speech": "随机猜是三分之一，零点三三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 634.46,
+   "dur": 2.56,
+   "speech": "三个都过了随机线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 637.19,
+   "dur": 3.88,
+   "speech": "但没有谁敢说这是图上学习的胜利。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 641.25,
+   "dur": 3.06,
+   "speech": "因为真正的证据，在下一场。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 644.49,
+   "dur": 2.87,
+   "speech": "打乱邻接，同样的代码。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 647.54,
+   "dur": 3.54,
+   "speech": "成绩掉到多少，才是图的价值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 651.27,
+   "dur": 2.63,
+   "speech": "这个数，下一场给。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 657.3,
+   "dur": 2.44,
+   "speech": "代码从建图开始。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 659.92,
+   "dur": 4.12,
+   "speech": "三十条序列转成矩阵，两两算相关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 664.22,
+   "dur": 3.42,
+   "speech": "绝对值过阈值，就记一条边。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 667.82,
+   "dur": 2.17,
+   "speech": "对角线清零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 670.17,
+   "dur": 2.92,
+   "speech": "一行判断，把图建出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 673.27,
+   "dur": 3.04,
+   "speech": "没有循环，没有手写规则。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 676.49,
+   "dur": 2.94,
+   "speech": "阈值是参数，不是常量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 679.61,
+   "dur": 3.23,
+   "speech": "换一个数，图就换一张。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 683.02,
+   "dur": 3.13,
+   "speech": "归一化之前，先补自环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 686.33,
+   "dur": 2.8,
+   "speech": "每个节点至少有一条边。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 689.31,
+   "dur": 3.64,
+   "speech": "再乘两端度数的负二分之一次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 693.13,
+   "dur": 2.82,
+   "speech": "先补自环，再算度数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 696.13,
+   "dur": 2.27,
+   "speech": "这个顺序不能反。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 698.58,
+   "dur": 3.45,
+   "speech": "两次乘法，一次除法，完了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 702.21,
+   "dur": 3.73,
+   "speech": "孤立节点靠自环保底，不会除零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 706.12,
+   "dur": 3.13,
+   "speech": "一层图卷积，一行代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 709.44,
+   "dur": 2.13,
+   "speech": "矩阵乘邻接。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 711.74,
+   "dur": 3.45,
+   "speech": "乘权重，加偏置，过 tanh。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 715.37,
+   "dur": 3.4,
+   "speech": "两次矩阵乘，一次广播加法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 718.95,
+   "dur": 2.58,
+   "speech": "没有任何隐藏分支。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 721.71,
+   "dur": 3.37,
+   "speech": "两层叠起来，就是完整的前向。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 725.26,
+   "dur": 3.18,
+   "speech": "所有参数，都在两个矩阵里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 728.62,
+   "dur": 3.47,
+   "speech": "注意力的打分，拆成两组点积。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 732.27,
+   "dur": 3.71,
+   "speech": "a1 点乘自己，a2 点乘邻居。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 736.16,
+   "dur": 2.25,
+   "speech": "省掉二维拼接。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 738.59,
+   "dur": 3.33,
+   "speech": "书里的写法和这里数值等价。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 742.1,
+   "dur": 2.82,
+   "speech": "梯度核对会证明这一条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 745.1,
+   "dur": 2.85,
+   "speech": "两组点积，一行 map。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 748.12,
+   "dur": 2.75,
+   "speech": "多头就是循环四次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 751.05,
+   "dur": 2.92,
+   "speech": "每个头，各自一套参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 754.15,
+   "dur": 2.37,
+   "speech": "屏蔽靠一个常数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 756.7,
+   "dur": 2.37,
+   "speech": "负十的三十次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 759.24,
+   "dur": 3.97,
+   "speech": "减完行最大值，exp 下溢成零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 763.4,
+   "dur": 3.28,
+   "speech": "非邻居的权重，精确为零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 766.86,
+   "dur": 2.1,
+   "speech": "行和还是一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 769.14,
+   "dur": 4.55,
+   "speech": "softmax 的数值稳定性，全靠先减最大值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 773.87,
+   "dur": 2.87,
+   "speech": "不然 exp 会溢出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 776.92,
+   "dur": 3.28,
+   "speech": "缩放因子是根号 d 撇的倒数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 780.38,
+   "dur": 3.28,
+   "speech": "d 撇等于四，因子零点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 783.83,
+   "dur": 2.97,
+   "speech": "点积的方差随维度增长。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 786.98,
+   "dur": 3.06,
+   "speech": "不除，softmax 会饱和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 790.22,
+   "dur": 3.47,
+   "speech": "三个模型都写了数值梯度核对。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 793.87,
+   "dur": 2.77,
+   "speech": "解析梯度对中心差分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 796.83,
+   "dur": 3.81,
+   "speech": "最大相对误差，都在十的负十次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 800.81,
+   "dur": 3.4,
+   "speech": "干净得可疑，所以更要多跑一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 804.39,
+   "dur": 3.16,
+   "speech": "这一条，也是本集的检查项。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 810.95,
+   "dur": 3.52,
+   "speech": "证据程序把这一集拆成六组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 814.65,
+   "dur": 2.58,
+   "speech": "一共二十八项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 817.41,
+   "dur": 3.95,
+   "speech": "建图五，图卷积五，图注意力六。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 821.54,
+   "dur": 3.64,
+   "speech": "自注意力五，对照四，训练三。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 825.36,
+   "dur": 2.77,
+   "speech": "二十八项，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 828.31,
+   "dur": 2.87,
+   "speech": "整组跑完，用时七秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 831.36,
+   "dur": 4.17,
+   "speech": "数字从证据 JSON 读，不是手抄。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 835.71,
+   "dur": 2.87,
+   "speech": "第一组，证明图是真的。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 838.76,
+   "dur": 3.61,
+   "speech": "面板一千九百四十二行，三十列。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 842.55,
+   "dur": 3.66,
+   "speech": "对齐之后，还剩一千八百二十二天。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 846.39,
+   "dur": 3.25,
+   "speech": "边在一百六十二到两百之间。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 849.83,
+   "dur": 2.75,
+   "speech": "对角为零，矩阵对称。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 852.76,
+   "dur": 2.53,
+   "speech": "三个行业各十只。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 855.47,
+   "dur": 2.82,
+   "speech": "训练二十一，测试九。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 858.47,
+   "dur": 3.4,
+   "speech": "还有一条：三十列全是有限值。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 862.05,
+   "dur": 3.61,
+   "speech": "数据有洞，后面的数就都不作数。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 865.85,
+   "dur": 2.44,
+   "speech": "第二组，图卷积。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 868.46,
+   "dur": 4.24,
+   "speech": "两节点一条边，归一化后每行零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 872.88,
+   "dur": 3.64,
+   "speech": "输入一，权重一，输出 tanh 一。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 876.7,
+   "dur": 2.94,
+   "speech": "tanh 一等于零点七六一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 879.82,
+   "dur": 2.41,
+   "speech": "参数一百四十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 882.42,
+   "dur": 3.13,
+   "speech": "梯度核对小于十的负五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 885.73,
+   "dur": 3.16,
+   "speech": "测试准确率高于三分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 889.07,
+   "dur": 3.13,
+   "speech": "五条，各自钉住一个环节。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 892.38,
+   "dur": 3.3,
+   "speech": "错一条，后面的成绩就不信。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 895.86,
+   "dur": 2.53,
+   "speech": "第三组，图注意力。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 898.58,
+   "dur": 4.84,
+   "speech": "打分零到 ln 三，注意力零点二五到零点七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 903.6,
+   "dur": 2.87,
+   "speech": "每一行，系数和为一。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 906.65,
+   "dur": 3.21,
+   "speech": "非邻居的系数，精确为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 910.03,
+   "dur": 2.34,
+   "speech": "参数三百二十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 912.55,
+   "dur": 3.28,
+   "speech": "第一层四个头，第二层四个头。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 916.01,
+   "dur": 3.13,
+   "speech": "梯度核对小于十的负五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 919.33,
+   "dur": 3.16,
+   "speech": "测试准确率高于三分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 922.66,
+   "dur": 3.04,
+   "speech": "六条，比图卷积多一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 925.88,
+   "dur": 2.68,
+   "speech": "第四组，自注意力。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 928.74,
+   "dur": 3.69,
+   "speech": "d 撇等于四，缩放因子零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 932.61,
+   "dur": 3.23,
+   "speech": "全零输入，权重各零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 936.02,
+   "dur": 2.32,
+   "speech": "参数八百一十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 938.51,
+   "dur": 3.13,
+   "speech": "梯度核对小于十的负五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 941.83,
+   "dur": 3.16,
+   "speech": "测试准确率高于三分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 945.17,
+   "dur": 2.99,
+   "speech": "自注意力这一组，五条。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 948.34,
+   "dur": 4.29,
+   "speech": "它证明了缩放和均匀两种极端情况。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 952.8,
+   "dur": 2.17,
+   "speech": "第五组，对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 955.16,
+   "dur": 4.57,
+   "speech": "打乱邻接：边数不变，边集改变，仍然对称。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 959.91,
+   "dur": 3.64,
+   "speech": "置换等变：图和节点同时重排。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 963.73,
+   "dur": 2.85,
+   "speech": "系数按同一置换重排。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 966.75,
+   "dur": 3.4,
+   "speech": "误差五点五五一乘十的负十七次。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 970.33,
+   "dur": 2.46,
+   "speech": "基本是浮点噪声。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 972.97,
+   "dur": 3.06,
+   "speech": "同种子重跑，逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 976.22,
+   "dur": 3.4,
+   "speech": "打乱之后，九个测试只对一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 979.79,
+   "dur": 2.32,
+   "speech": "零点一一一一。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 982.29,
+   "dur": 2.8,
+   "speech": "这是全片最重要的一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 985.27,
+   "dur": 2.22,
+   "speech": "第六组，训练。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 987.67,
+   "dur": 3.37,
+   "speech": "三百轮，三条损失都下降。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 991.23,
+   "dur": 4.45,
+   "speech": "图卷积从一点零六七三到零点零零四八。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 995.86,
+   "dur": 4.26,
+   "speech": "图注意力从一点零三一到零点二四零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1000.3,
+   "dur": 4.45,
+   "speech": "自注意力从一点一零五五到零点零零零二。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 1004.94,
+   "dur": 2.94,
+   "speech": "三条曲线，都记了下来。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 1008.06,
+   "dur": 3.3,
+   "speech": "损失下降不等于是好模型。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 1011.54,
+   "dur": 2.75,
+   "speech": "这一条，下一场还要说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1017.69,
+   "dur": 2.56,
+   "speech": "先说这张图有多大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1020.43,
+   "dur": 3.33,
+   "speech": "三十个节点，一百六十二条边。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1023.93,
+   "dur": 3.54,
+   "speech": "稠密矩阵，整张能放进缓存。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1027.66,
+   "dur": 3.09,
+   "speech": "真实图动辄上百万节点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1030.92,
+   "dur": 2.65,
+   "speech": "邻接要换稀疏格式。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1033.76,
+   "dur": 3.66,
+   "speech": "邻居要采样，小批次要切子图。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1037.6,
+   "dur": 2.29,
+   "speech": "那是另一门手艺。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1040.07,
+   "dur": 2.27,
+   "speech": "本集不假装会。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1042.52,
+   "dur": 2.68,
+   "speech": "第二件要说清楚的事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1045.38,
+   "dur": 3.4,
+   "speech": "连上线，不等于谁影响谁。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1048.96,
+   "dur": 2.56,
+   "speech": "相关系数不给方向。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1051.7,
+   "dur": 2.01,
+   "speech": "也不给因果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1053.88,
+   "dur": 2.97,
+   "speech": "同行业的股票高度相关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1057.03,
+   "dur": 3.06,
+   "speech": "可能只是共享同一批因子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1060.27,
+   "dur": 2.89,
+   "speech": "阈值零点三，是人选的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1063.34,
+   "dur": 2.8,
+   "speech": "换个阈值，图就变了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1066.32,
+   "dur": 2.85,
+   "speech": "本集把它当给定条件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1069.35,
+   "dur": 1.98,
+   "speech": "不当成发现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1071.51,
+   "dur": 2.25,
+   "speech": "第三件，数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1073.94,
+   "dur": 3.28,
+   "speech": "原始面板一千九百四十二行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1077.39,
+   "dur": 4.33,
+   "speech": "三十列全部有值的日子，一千八百二十二天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1081.91,
+   "dur": 2.39,
+   "speech": "丢掉一百二十天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1084.48,
+   "dur": 2.46,
+   "speech": "约占百分之六点二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1087.12,
+   "dur": 4.26,
+   "speech": "停牌、上市晚、退市，都会造成缺失。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1091.56,
+   "dur": 2.41,
+   "speech": "没有做前向填充。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1094.16,
+   "dur": 2.01,
+   "speech": "也没有插值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1096.34,
+   "dur": 2.73,
+   "speech": "宁可少算，不编数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1099.25,
+   "dur": 2.41,
+   "speech": "第四件，样本量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1101.84,
+   "dur": 4.21,
+   "speech": "九个测试点，一格就是百分之十一点一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1106.24,
+   "dur": 2.51,
+   "speech": "图卷积九个全对。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1108.93,
+   "dur": 2.39,
+   "speech": "图注意力错一格。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1111.5,
+   "dur": 2.49,
+   "speech": "自注意力错三格。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1114.16,
+   "dur": 2.94,
+   "speech": "差距只在一到三格之间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1117.28,
+   "dur": 3.95,
+   "speech": "这个样本量，支撑不了谁更好的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1121.41,
+   "dur": 3.64,
+   "speech": "只能支撑：三个都学到了点东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1125.23,
+   "dur": 3.35,
+   "speech": "要下结论，得换更大的样本。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1128.76,
+   "dur": 3.16,
+   "speech": "多次划分，报均值与方差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1132.1,
+   "dur": 3.01,
+   "speech": "最后，这不是工业级实现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1135.29,
+   "dur": 3.71,
+   "speech": "没有稀疏大图，没有 inductive 划分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1139.18,
+   "dur": 3.01,
+   "speech": "没有动态图，没有边特征。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1142.38,
+   "dur": 2.49,
+   "speech": "也没有调参和早停。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 1145.04,
+   "dur": 3.33,
+   "speech": "四个模块加起来不到两千行。"
+  },
+  {
+   "scene": "boundary",
+   "index": 42,
+   "start": 1148.55,
+   "dur": 3.49,
+   "speech": "但每一条都有测试，有梯度核对。"
+  },
+  {
+   "scene": "boundary",
+   "index": 43,
+   "start": 1152.22,
+   "dur": 3.66,
+   "speech": "价值是把公式变成能查错的代码。"
+  },
+  {
+   "scene": "boundary",
+   "index": 44,
+   "start": 1156.07,
+   "dur": 1.98,
+   "speech": "不是赢榜单。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1161.45,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1163.73,
+   "dur": 4.17,
+   "speech": "第一，图给出样本之间本不存在的关系。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1168.08,
+   "dur": 4.05,
+   "speech": "第二，注意力把邻居权重变成学出来的。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1172.3,
+   "dur": 4.12,
+   "speech": "第三，判断图有没有用，看打乱邻接。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1176.6,
+   "dur": 2.46,
+   "speech": "真实图九个全对。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1179.24,
+   "dur": 2.34,
+   "speech": "打乱图只对一个。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1181.77,
+   "dur": 3.18,
+   "speech": "这才是图在起作用的证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1185.13,
+   "dur": 3.09,
+   "speech": "三十个节点，三种模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1188.39,
+   "dur": 4.07,
+   "speech": "一句话：图有用，但别把相关当因果。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1192.64,
+   "dur": 2.05,
+   "speech": "下一集的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1194.88,
+   "dur": 2.22,
+   "speech": "如果没有标签呢？"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1197.28,
+   "dur": 4.26,
+   "speech": "二十一个训练节点，标签只在训练时给。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1201.72,
+   "dur": 3.64,
+   "speech": "如果一只标签都没有，还能不能学？"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1205.54,
+   "dur": 3.64,
+   "speech": "下一集：增强、对比与掩码。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1209.36,
+   "dur": 3.4,
+   "speech": "从数据里自己造监督信号。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1212.94,
+   "dur": 4.29,
+   "speech": "扰动输入，让同一个样本的两个版本对齐。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1217.4,
+   "dur": 3.45,
+   "speech": "或者遮住一部分，让模型重建。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1221.03,
+   "dur": 2.92,
+   "speech": "不靠标签，也能训练表示。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1224.13,
+   "dur": 1.96,
+   "speech": "二十六分钟。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1226.26,
+   "dur": 2.08,
+   "speech": "这一集到这里。"
+  }
+ ]
+}
