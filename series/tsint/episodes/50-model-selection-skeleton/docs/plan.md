@@ -1,6 +1,6 @@
 # 50-model-selection-skeleton - 自动选模型：池子比策略更重要
 
-> status: draft (produced, not yet rendered)
+> status: ready (rendered 2026-11-03)
 > chapter: ch06 | runtime: 20 min target (actual 18:19.6) | algorithms: 3
 
 ## Thesis
@@ -58,3 +58,12 @@ ts-admin 导出（inventory/scripts/export_ch06_modelsel.py，提交 a8135a4）�
 4. **预筛规则修正**：初版「m = 4 时只留 id 小于 7」会连带删掉 hmean5（它跟季节周期无关），语义不对；改成「m = 4 时剔除 SAR(12) 与 SAR(5)」，剔除数从 60 变 **40**，评测点读数随之更新。
 5. **主指标选择**：计划没有指定主指标；因为 flips = 10/20，必须显式选一个。取 MAE（与「预测误差」这个目标对齐），MSE 只做稳健性检查，并把这条写进边界。
 6. **Hit@2 / Average Rank 的口径**：Hit@2 在池 5 上算（真值最优属于池 5 验证排序前 2），Average Rank 也是池 5 内的名次；全池遍历只报 Hit@1。这两个数不进主结论，只做选择器分辨力的辅助读数。
+
+## Delivery
+
+- 成片 `delivery/Tsint50ModelSelectionSkeleton.mp4`：1,099.6 s（18:19.6）/ 32,988 帧 / 30 fps / 8 场 32 页 / 320 条旁白（发声 1,016.3 s）/ −15 LUFS / TP −2 dBFS / LRA 2.3 / 52,616,637 B。
+- 字幕 `tsint-50.srt`（320 cue，跨度 00:00:01,200 → 00:18:17,410，最长 28 字，无一换行，22,573 B）；章节 `tsint-50.chapters.txt`（8 章，合计 1,099.61 s，首 00:00:00 / 末 00:16:41，384 B）；`tsint-50.chapters.ffmeta.txt`（763 B）；封面 `cover.png`（帧 20，75,159 B）。
+- 分数床复用 `out/e04-score-loop-48k.wav`（1560 s，scoreReused false，musicGain −4.5 dB、duck 4.5 dB、ducked 53.8%）；mix 48 kHz / 1,100.81 s、peak −1.32 dBFS、RMS −26.68 dBFS、music-only peak −11.75 dBFS；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；loudnorm out **I −15 LUFS / TP −2 dBFS / LRA 2.3**（dynamic，target offset +0.8）。
+- 流水线：23 个 stage 全 ok、8 段 rendered 8（reused 0）；闪烁 32,988 帧 mean 20.93 / min 14.61 / max 25.46 / mean|d| 0.0137 / p99 0.1089 / max 6.88 / 7 切点（3130 / 7276 / 12826 / 17165 / 21148 / 26083 / 30052）；树 `cdbaa9fade4d1c93`；content commit `3704b93`。
+- 静帧复核：按每页首句从成片抽 32 帧（四张联系表：p01–p08 / p09–p16 / p17–p24 / p25–p32）逐页看。**改了两处**：① p10 的 `Hit@k` 公式在 1120 宽下折行，「t）」被下方注释压住 → 公式改成 `Hit@k = 命中数 / N`，说明移进 Body，重渲确认单行；② p17 的 CodeBlock 路径写成 `src/Algos/Ch06/Metrics.hs`、类型名写成 `V.Vector` → 改为 `src/TsBase/Algos/Ch06/Metrics.hs` 与 `VU.Vector`，`mape` 行按真实 API 改成 `mapeWith 1e-12 False`。其余 30 页版式与数字均核对一致（黄金值、648→81、AIC 206、75/85/100、50/50/55、96,790→62,716、10/20、14/2/2/1/1、21.4 s）。
+- 时长偏差：计划 20 分钟，成片 **18:19.6**；计划分钟是粗估（历史区间 E43 18.8 / E44 21.5 / E45 21.5 / E46 23.1 / E47 20.5 / E48 24.1 / E49 24.0 分钟），不扩稿。

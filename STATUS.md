@@ -65,7 +65,7 @@
 | tsint-47-gcn-gat-attention | 谁在影响谁：图卷积、图注意力与自注意力 | ready | - | yes | ok | 11 | - |
 | tsint-48-ssl-augment-contrast-mask | 没有标签怎么办：增强、对比与掩码重构 | ready | - | yes | ok | 11 | - |
 | tsint-49-gaf-mtf-cote-multidomain | 换一种表示：图像化编码与多域集成 | ready | - | yes | ok | 11 | - |
-| tsint-50-model-selection-skeleton | 自动选模型：池子比策略更重要 | draft | 1200 | silent | ok | 1 | - |
+| tsint-50-model-selection-skeleton | 自动选模型：池子比策略更重要 | ready | - | yes | ok | 11 | - |
 | tsint-51-ga-search-incremental | 省算力的两把刀：遗传算法与学习曲线外推 | draft | 1080 | silent | ok | 1 | - |
 | tsint-52-meta-learning-task-library | 把 300 只股票当成 300 个任务：元学习选模型 | draft | 1440 | silent | ok | 1 | - |
 | tsint-53-ensemble-average-iter | 集成：平均就能赢，但别乱调权 | draft | 1320 | silent | ok | 1 | - |
