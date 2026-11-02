@@ -1,0 +1,1961 @@
+{
+ "entry": "src/tsint-42-metrics-distance-1nn-ee/script.ts",
+ "fps": 30,
+ "totalSec": 926.35,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 74.95
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 74.95,
+   "dur": 107.08
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 182.03,
+   "dur": 173.55
+  },
+  {
+   "id": "metrics",
+   "chapter": "度量",
+   "start": 355.58,
+   "dur": 155.3
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 510.88,
+   "dur": 101.06
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 611.94,
+   "dur": 182.03
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 793.97,
+   "dur": 90.11
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 884.08,
+   "dur": 42.27
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.37,
+   "speech": "一条曲线，向左挪五个点。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.75,
+   "dur": 2.92,
+   "speech": "欧氏距离从一跳到十五。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.85,
+   "dur": 3.37,
+   "speech": "DTW 只从零点三六起步。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.41,
+   "dur": 4.12,
+   "speech": "同一个形状，两种距离给出两个世界。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.7,
+   "dur": 3.04,
+   "speech": "这一集问一个更硬的问题。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 18.92,
+   "dur": 3.47,
+   "speech": "换个距离，分类真的会变好吗。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 22.57,
+   "dur": 2.92,
+   "speech": "六十只股票，三个行业。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.67,
+   "dur": 3.64,
+   "speech": "六十天的收益窗，贴上行业标签。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.49,
+   "dur": 3.85,
+   "speech": "欧氏 1-NN 准确率零点四一六七。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.52,
+   "dur": 3.06,
+   "speech": "换成带宽 6 的 DTW。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 36.76,
+   "dur": 2.53,
+   "speech": "还是零点四一六七。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 39.48,
+   "dur": 2.61,
+   "speech": "净提升零个百分点。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 42.26,
+   "dur": 3.18,
+   "speech": "书里说提升不到两个百分点。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 45.63,
+   "dur": 2.32,
+   "speech": "我们测出来是零。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 48.12,
+   "dur": 3.3,
+   "speech": "四个弹性距离加权集成。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 51.61,
+   "dur": 2.65,
+   "speech": "升到零点四六六七。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 54.44,
+   "dur": 3.45,
+   "speech": "但 Nemenyi 检验说，不显著。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 58.07,
+   "dur": 3.21,
+   "speech": "这一集把三件事拆开讲。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 61.45,
+   "dur": 1.89,
+   "speech": "距离怎么算。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 63.52,
+   "dur": 2.29,
+   "speech": "分类器怎么评。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 65.99,
+   "dur": 3.21,
+   "speech": "集成为什么还是赢不了显著。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 69.38,
+   "dur": 3.37,
+   "speech": "先看那条挪了五个点的曲线。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 76.15,
+   "dur": 2.17,
+   "speech": "任务是三分类。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 78.5,
+   "dur": 3.28,
+   "speech": "输入是一段六十天的对数收益。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 81.96,
+   "dur": 2.75,
+   "speech": "输出是三个行业之一。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 84.89,
+   "dur": 2.99,
+   "speech": "银行、半导体、医药。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 88.06,
+   "dur": 2.87,
+   "speech": "为什么用收益，不用价格。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 91.11,
+   "dur": 3.21,
+   "speech": "价格有量纲，也有长期趋势。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 94.5,
+   "dur": 3.35,
+   "speech": "收益近似平稳，量纲也统一。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 98.03,
+   "dur": 3.04,
+   "speech": "每个窗口再做 z 标准化。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 101.25,
+   "dur": 2.94,
+   "speech": "均值归零，方差归一。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 104.37,
+   "dur": 3.01,
+   "speech": "这样比的是形状，不是价位。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 107.56,
+   "dur": 3.18,
+   "speech": "分类器只用一个：最近邻。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 110.92,
+   "dur": 3.37,
+   "speech": "训练集里找距离最近的那条。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 114.48,
+   "dur": 2.51,
+   "speech": "它的标签就是预测。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 117.17,
+   "dur": 3.47,
+   "speech": "这叫 1-NN，没有参数可调。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 120.82,
+   "dur": 2.41,
+   "speech": "基线距离是欧氏。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 123.41,
+   "dur": 3.85,
+   "speech": "逐点相减，平方，求和，开方。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 127.45,
+   "dur": 3.25,
+   "speech": "它对时间轴上的错位零容忍。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 130.88,
+   "dur": 2.94,
+   "speech": "第二个距离是 DTW。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 134,
+   "dur": 3.49,
+   "speech": "允许时间轴拉伸，再对齐求和。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 137.68,
+   "dur": 3.28,
+   "speech": "书上说 DTW 通常更好。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 141.13,
+   "dur": 2.53,
+   "speech": "提升不到两个百分点。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 143.85,
+   "dur": 2.77,
+   "speech": "这一集要验证这句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 146.8,
+   "dur": 3.25,
+   "speech": "数据来自沪深三百成分股。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 150.24,
+   "dur": 3.54,
+   "speech": "银行二十五只，半导体十八只。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 153.96,
+   "dur": 3.18,
+   "speech": "医药十七只，合计六十只。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 157.32,
+   "dur": 3.23,
+   "speech": "计划本来写的是各三十只。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 160.73,
+   "dur": 2.97,
+   "speech": "湖里只有这么多，如实记录。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 163.88,
+   "dur": 2.68,
+   "speech": "每只股票取一个窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 166.73,
+   "dur": 2.77,
+   "speech": "窗口长度六十个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 169.69,
+   "dur": 3.76,
+   "speech": "起点按固定步长错开，避免重叠。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 173.63,
+   "dur": 3.76,
+   "speech": "样本少，所以读数要看不确定性。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 177.56,
+   "dur": 2.27,
+   "speech": "这就是问题设定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 183.23,
+   "dur": 2.53,
+   "speech": "先把距离定义清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 185.94,
+   "dur": 3.13,
+   "speech": "两条等长序列，a 和 b。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 189.26,
+   "dur": 4.6,
+   "speech": "欧氏距离：逐点差，平方，求和，开方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 194.04,
+   "dur": 3.69,
+   "speech": "公式写成根号下 Σ 平方差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 197.9,
+   "dur": 3.33,
+   "speech": "它假设第 i 点只跟第 i 点比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 201.41,
+   "dur": 3.49,
+   "speech": "时间轴错一格，误差就锁死。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 205.08,
+   "dur": 2.97,
+   "speech": "DTW 放开这个假设。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 208.23,
+   "dur": 3.71,
+   "speech": "允许 a 的第 i 点对上 b 的第 j 点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 212.12,
+   "dur": 2.8,
+   "speech": "代价矩阵 D 逐格填。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 215.1,
+   "dur": 2.61,
+   "speech": "第一行第一列先累加。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 217.88,
+   "dur": 4.02,
+   "speech": "其余每格：局部平方差加三选一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 222.08,
+   "dur": 3.49,
+   "speech": "三选一是左边、上边、左上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 225.76,
+   "dur": 3.78,
+   "speech": "写出来就是 D 等于 d 加 min。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 229.72,
+   "dur": 3.33,
+   "speech": "这条递推是 DTW 的全部。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 233.23,
+   "dur": 3.57,
+   "speech": "终点取右下角，除以 n 加 m。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 236.97,
+   "dur": 2.77,
+   "speech": "再开方，距离才可比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 239.93,
+   "dur": 3.59,
+   "speech": "不除，长序列会被系统性惩罚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 243.7,
+   "dur": 2.53,
+   "speech": "带宽是第二个约束。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 246.41,
+   "dur": 3.61,
+   "speech": "只允许 i 减 j 的绝对值不超过 6。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 250.2,
+   "dur": 3.18,
+   "speech": "带外格子代价记为正无穷。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 253.57,
+   "dur": 3.42,
+   "speech": "带宽把搜索限制在一条走廊。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 257.17,
+   "dur": 3.35,
+   "speech": "没有带宽，DTW 会乱拉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 260.7,
+   "dur": 3.09,
+   "speech": "本集固定带宽 6，不调。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 263.96,
+   "dur": 3.47,
+   "speech": "对齐路径从右下往左上回溯。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 267.61,
+   "dur": 3.18,
+   "speech": "每步走向左、上、左上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 270.98,
+   "dur": 3.13,
+   "speech": "路径就是一条时间对应关系。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 274.29,
+   "dur": 2.65,
+   "speech": "它能把两段形态对上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 277.12,
+   "dur": 3.04,
+   "speech": "也能把不同长度的段对齐。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 280.34,
+   "dur": 3.52,
+   "speech": "代价矩阵画出来是一张热图。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 284.04,
+   "dur": 3.85,
+   "speech": "深色是低代价，浅色是高代价。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 288.07,
+   "dur": 2.65,
+   "speech": "路径贴着低代价走。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 290.91,
+   "dur": 4.12,
+   "speech": "这是 DTW 唯一能看见的中间量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 295.21,
+   "dur": 3.18,
+   "speech": "弹性集成不只用一个距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 298.57,
+   "dur": 6.97,
+   "speech": "四个成员：DTW、导数 DTW、加权 DTW、LCSS。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 305.72,
+   "dur": 3.45,
+   "speech": "导数 DTW 先对序列求导。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 309.35,
+   "dur": 2.63,
+   "speech": "它比的是形状的斜率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 312.16,
+   "dur": 3.71,
+   "speech": "加权 DTW 给时间轴加惩罚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 316.05,
+   "dur": 2.77,
+   "speech": "参数 g 等于零点零五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 319,
+   "dur": 3.54,
+   "speech": "LCSS 数最长公共子序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 322.72,
+   "dur": 2.94,
+   "speech": "容差 eps 取零点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 325.85,
+   "dur": 2.77,
+   "speech": "四个距离，四种偏好。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 328.8,
+   "dur": 2.99,
+   "speech": "集成给每个成员一个权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 331.97,
+   "dur": 2.77,
+   "speech": "权重来自留一准确率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 334.92,
+   "dur": 3.04,
+   "speech": "减掉随机猜测的三分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 338.14,
+   "dur": 2.63,
+   "speech": "小于零就截断为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 340.95,
+   "dur": 3.37,
+   "speech": "再归一化，让权重和为一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 344.51,
+   "dur": 3.16,
+   "speech": "预测时四个距离各投一票。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 347.84,
+   "dur": 2.82,
+   "speech": "也可以按权重加权投票。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 350.85,
+   "dur": 2.53,
+   "speech": "这就是弹性集成。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 356.78,
+   "dur": 3.13,
+   "speech": "分类器要评，就得有尺子。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 360.09,
+   "dur": 3.13,
+   "speech": "第一把尺子是混淆矩阵。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 363.41,
+   "dur": 2.94,
+   "speech": "行是真值，列是预测。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 366.53,
+   "dur": 2.87,
+   "speech": "对角线上是判对的窗。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 369.58,
+   "dur": 3.06,
+   "speech": "三个行业，就是三乘三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 372.82,
+   "dur": 3.93,
+   "speech": "准确率等于对角线之和除以总数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 376.93,
+   "dur": 2.46,
+   "speech": "简单，但会骗人。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 379.57,
+   "dur": 3.42,
+   "speech": "两类极不平衡时尤其会骗。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 383.17,
+   "dur": 3.49,
+   "speech": "五个 A、一个 B，全判成 A。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 386.85,
+   "dur": 4,
+   "speech": "准确率是六分之五，零点八三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 391.02,
+   "dur": 2.77,
+   "speech": "可 B 类一个都没召回。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 393.98,
+   "dur": 3.73,
+   "speech": "宏平均 F1 只有零点四五四六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 397.89,
+   "dur": 3.9,
+   "speech": "所以第二把尺子是逐类精度召回。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 401.97,
+   "dur": 3.95,
+   "speech": "精度：预测为该类的里面，对的比例。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 406.1,
+   "dur": 3.76,
+   "speech": "召回：该类真值里，被找出的比例。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 410.04,
+   "dur": 3.76,
+   "speech": "F1 是精度和召回的调和平均。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 413.98,
+   "dur": 3.09,
+   "speech": "调和平均偏向小的那一边。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 417.25,
+   "dur": 3.76,
+   "speech": "宏平均：每类各算一份，再平均。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 421.18,
+   "dur": 3.3,
+   "speech": "它给每个类一张等值的选票。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 424.67,
+   "dur": 2.75,
+   "speech": "小类不再被大类淹没。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 427.6,
+   "dur": 1.98,
+   "speech": "黄金值来了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 429.76,
+   "dur": 3.3,
+   "speech": "十个窗，两个行业各错一个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 433.24,
+   "dur": 2.73,
+   "speech": "准确率是零点八零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 436.15,
+   "dur": 3.47,
+   "speech": "宏平均 F1 是零点八三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 439.8,
+   "dur": 3.23,
+   "speech": "不是算错，是加权方式不同。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 443.21,
+   "dur": 2.63,
+   "speech": "准确率按样本计票。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 446.02,
+   "dur": 2.61,
+   "speech": "宏平均按类别计票。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 448.8,
+   "dur": 3.11,
+   "speech": "第三把尺子：统计显著性。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 452.09,
+   "dur": 3.49,
+   "speech": "三个分类器，二十次平衡抽样。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 455.77,
+   "dur": 3.49,
+   "speech": "每次每类抽十只，共三十窗。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 459.44,
+   "dur": 3.13,
+   "speech": "每次给三个分类器排名。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 462.75,
+   "dur": 2.46,
+   "speech": "平均秩越小越好。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 465.4,
+   "dur": 4.12,
+   "speech": "弹性集成一点七五，欧氏一点九零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 469.69,
+   "dur": 3.16,
+   "speech": "DTW 二点三五，最差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 473.03,
+   "dur": 2.99,
+   "speech": "平均秩差要跟临界差比。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 476.2,
+   "dur": 4.55,
+   "speech": "CD 等于 q 乘根号下 k(k+1)/6N。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 480.93,
+   "dur": 3.04,
+   "speech": "三个分类器，二十次抽样。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 484.15,
+   "dur": 2.63,
+   "speech": "q 取二点三四三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 486.96,
+   "dur": 3.01,
+   "speech": "临界差是零点七四零九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 490.15,
+   "dur": 3.49,
+   "speech": "计划里写的一点一六，是算错的。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 493.83,
+   "dur": 4.79,
+   "speech": "三对秩差：零点四五、零点一五、零点六零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 498.8,
+   "dur": 2.51,
+   "speech": "全部小于临界差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 501.49,
+   "dur": 3.66,
+   "speech": "结论：三个分类器没有显著差异。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 505.33,
+   "dur": 3.35,
+   "speech": "这句比任何一个准确率都重要。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 512.08,
+   "dur": 2.75,
+   "speech": "实现放在 Haskell 仓。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 515.01,
+   "dur": 3.28,
+   "speech": "三个模块，五十八个新测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 518.47,
+   "dur": 2.85,
+   "speech": "度量模块二十四个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 521.49,
+   "dur": 2.7,
+   "speech": "DTW 模块十六个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 524.38,
+   "dur": 2.46,
+   "speech": "弹性集成十八个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 527.02,
+   "dur": 3.28,
+   "speech": "度量模块管混淆矩阵和秩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 530.48,
+   "dur": 2.85,
+   "speech": "它用的是 boxed 向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 533.5,
+   "dur": 3.61,
+   "speech": "DTW 模块用 unboxed 向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 537.3,
+   "dur": 3.45,
+   "speech": "序列是 double 数组，省内存。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 540.92,
+   "dur": 2.8,
+   "speech": "两种向量不能混着写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 543.9,
+   "dur": 2.87,
+   "speech": "混了会连报六个类型错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 546.95,
+   "dur": 2.82,
+   "speech": "这是本集最花时间的坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 549.95,
+   "dur": 3.49,
+   "speech": "DTW 的带宽写成整数参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 553.63,
+   "dur": 3.28,
+   "speech": "带宽六在证据里是固定的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 557.08,
+   "dur": 3.73,
+   "speech": "不带带宽，准确率掉到零点三五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 561,
+   "dur": 3.28,
+   "speech": "带不带，差六点七个百分点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 564.46,
+   "dur": 3.3,
+   "speech": "集成权重用留一准确率算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 567.94,
+   "dur": 3.3,
+   "speech": "留一就是每次留一个窗不训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 571.42,
+   "dur": 3.66,
+   "speech": "用剩下的五十九个窗找最近邻。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 575.26,
+   "dur": 3.13,
+   "speech": "四个距离各算一次留一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 578.58,
+   "dur": 3.25,
+   "speech": "权重等于准确率减三分之一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 582.01,
+   "dur": 2.87,
+   "speech": "负数截断，再归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 585.06,
+   "dur": 3.35,
+   "speech": "合成数据用确定性随机数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 588.59,
+   "dur": 2.85,
+   "speech": "线性同余，种子写死。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 591.62,
+   "dur": 3.3,
+   "speech": "换机器重跑，读数逐位一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 595.1,
+   "dur": 2.85,
+   "speech": "证据程序二十项检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 598.12,
+   "dur": 2.92,
+   "speech": "数据八项，主任务四项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 601.22,
+   "dur": 3.06,
+   "speech": "抽样四项，合成四项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 604.46,
+   "dur": 2.53,
+   "speech": "一次跑完五十九秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 607.18,
+   "dur": 2.56,
+   "speech": "全绿才允许提交。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 613.14,
+   "dur": 2.46,
+   "speech": "先看主任务的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 615.78,
+   "dur": 3.45,
+   "speech": "欧氏 1-NN 判对二十五只。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 619.41,
+   "dur": 2.82,
+   "speech": "准确率零点四一六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 622.41,
+   "dur": 3.42,
+   "speech": "宏平均 F1 零点三九一八。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 626.01,
+   "dur": 3.25,
+   "speech": "DTW 也判对二十五只。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 629.45,
+   "dur": 3.04,
+   "speech": "准确率还是零点四一六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 632.66,
+   "dur": 3.33,
+   "speech": "宏平均 F1 零点四零八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 636.17,
+   "dur": 2.61,
+   "speech": "净提升零个百分点。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 638.96,
+   "dur": 3.93,
+   "speech": "书里说提升不到两个点，实测是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 643.06,
+   "dur": 3.23,
+   "speech": "弹性集成判对二十八只。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 646.47,
+   "dur": 2.92,
+   "speech": "准确率零点四六六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 649.57,
+   "dur": 3.4,
+   "speech": "宏平均 F1 零点四五五七。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 653.15,
+   "dur": 2.94,
+   "speech": "三个读数，一个比一个好。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 656.27,
+   "dur": 3.25,
+   "speech": "但混淆矩阵讲的故事更细。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 659.7,
+   "dur": 3.71,
+   "speech": "欧氏的医药召回只有零点一七六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 663.59,
+   "dur": 3.13,
+   "speech": "十七只医药，只认出三只。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 666.91,
+   "dur": 3.93,
+   "speech": "另外十四只被判成银行或半导体。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 671.01,
+   "dur": 4.45,
+   "speech": "DTW 把医药召回提到零点三五二九。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 675.65,
+   "dur": 2.01,
+   "speech": "认出了六只。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 677.83,
+   "dur": 3.83,
+   "speech": "但银行和半导体的对称误分补回来。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 681.84,
+   "dur": 2.41,
+   "speech": "所以总数没变。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 684.44,
+   "dur": 3.21,
+   "speech": "这就是净提升为零的机制。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 687.82,
+   "dur": 3.59,
+   "speech": "集成在医药上也是零点三五二九。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 691.59,
+   "dur": 3.49,
+   "speech": "但它在银行上召回零点五六。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 695.27,
+   "dur": 2.97,
+   "speech": "半导体零点四四四四。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 698.41,
+   "dur": 2.75,
+   "speech": "多对的三只，来自这里。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 701.34,
+   "dur": 2.94,
+   "speech": "看四个弹性距离的权重。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 704.47,
+   "dur": 3.54,
+   "speech": "导数 DTW 零点七二七三。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 708.19,
+   "dur": 3.4,
+   "speech": "加权 DTW 零点一八一八。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 711.77,
+   "dur": 3.57,
+   "speech": "普通 DTW 零点零九零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 715.51,
+   "dur": 2.53,
+   "speech": "LCSS 是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 718.23,
+   "dur": 3.35,
+   "speech": "导数距离拿走了七成权重。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 721.76,
+   "dur": 3.16,
+   "speech": "说明斜率比绝对值更稳。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 725.09,
+   "dur": 4.96,
+   "speech": "LCSS 容差零点二下，留一只猜对三分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 730.23,
+   "dur": 3.13,
+   "speech": "减掉三分之一，正好是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 733.55,
+   "dur": 2.56,
+   "speech": "二十次抽样看排名。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 736.28,
+   "dur": 2.85,
+   "speech": "集成平均秩一点七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 739.31,
+   "dur": 2.29,
+   "speech": "欧氏一点九零。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 741.78,
+   "dur": 2.58,
+   "speech": "DTW 二点三五。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 744.55,
+   "dur": 3.23,
+   "speech": "集成最好，DTW 最差。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 747.96,
+   "dur": 3.33,
+   "speech": "但临界差是零点七四零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 751.46,
+   "dur": 3.16,
+   "speech": "最大的一对差才零点六零。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 754.8,
+   "dur": 2.34,
+   "speech": "三对全不显著。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 757.32,
+   "dur": 2.87,
+   "speech": "合成对照给出另一面。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 760.37,
+   "dur": 3.13,
+   "speech": "三类周期，干净查询全对。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 763.69,
+   "dur": 4.07,
+   "speech": "欧氏、DTW、集成都是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 767.94,
+   "dur": 3.04,
+   "speech": "把查询循环左移五个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 771.15,
+   "dur": 2.39,
+   "speech": "欧氏掉到零点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 773.72,
+   "dur": 2.89,
+   "speech": "DTW 还是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 776.8,
+   "dur": 2.39,
+   "speech": "集成也是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 779.37,
+   "dur": 3.66,
+   "speech": "教科书结论在合成数据上成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 783.21,
+   "dur": 2.99,
+   "speech": "在真实收益窗上不成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 786.38,
+   "dur": 2.01,
+   "speech": "这不是矛盾。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 788.57,
+   "dur": 3.21,
+   "speech": "是数据里没有可对齐的平移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 795.17,
+   "dur": 2.41,
+   "speech": "先把边界摆出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 797.76,
+   "dur": 3.35,
+   "speech": "只有六十个窗，每个窗一个样本。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 801.29,
+   "dur": 3.4,
+   "speech": "窗口不重叠，但股票不独立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 804.87,
+   "dur": 2.8,
+   "speech": "同一行业，同涨同跌。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 807.85,
+   "dur": 3.06,
+   "speech": "有效样本远少于六十。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 811.09,
+   "dur": 3.11,
+   "speech": "行业标签是证监会门类。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 814.38,
+   "dur": 2.51,
+   "speech": "粗，而且有重叠。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 817.07,
+   "dur": 3.69,
+   "speech": "半导体和电子设备，被分在一起。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 820.94,
+   "dur": 3.21,
+   "speech": "医药里混了医疗器械和中药。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 824.32,
+   "dur": 2.68,
+   "speech": "类别本身就不干净。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 827.18,
+   "dur": 2.75,
+   "speech": "集成权重不是嵌套的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 830.11,
+   "dur": 3.47,
+   "speech": "权重在全部六十只上算留一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 833.76,
+   "dur": 2.85,
+   "speech": "再用同一批数据评集成。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 836.79,
+   "dur": 2.97,
+   "speech": "这会让集成读数偏乐观。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 839.93,
+   "dur": 3.09,
+   "speech": "正确做法是双层留一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 843.2,
+   "dur": 2.22,
+   "speech": "这一集没有做。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 845.6,
+   "dur": 3.3,
+   "speech": "带宽 6 和容差 0.2 是选的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 849.08,
+   "dur": 2.94,
+   "speech": "没有做参数敏感性扫描。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 852.21,
+   "dur": 2.87,
+   "speech": "换一个带宽，读数会动。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 855.26,
+   "dur": 3.23,
+   "speech": "Nemenyi 检验的检验力有限。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 858.67,
+   "dur": 2.92,
+   "speech": "二十次抽样，三十个窗。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 861.76,
+   "dur": 2.97,
+   "speech": "不显著不等于没有差异。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 864.91,
+   "dur": 3.18,
+   "speech": "只能说这批数据看不出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 868.27,
+   "dur": 2.37,
+   "speech": "下一集换武器。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 870.82,
+   "dur": 2.34,
+   "speech": "不再比整条序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 873.34,
+   "dur": 2.92,
+   "speech": "从序列里挖一小段形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 876.44,
+   "dur": 2.13,
+   "speech": "叫 Shapelet。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 878.74,
+   "dur": 3.13,
+   "speech": "还要讲 PIPs，感知重要点。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 885.28,
+   "dur": 2.05,
+   "speech": "这一集的结论。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 887.51,
+   "dur": 2.44,
+   "speech": "距离不是万能钥匙。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 890.13,
+   "dur": 3.37,
+   "speech": "换 DTW，准确率没动。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 893.69,
+   "dur": 3.25,
+   "speech": "集成多对三只，但不显著。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 897.12,
+   "dur": 3.23,
+   "speech": "合成数据上 DTW 完胜。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 900.53,
+   "dur": 2.49,
+   "speech": "真实数据上打平。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 903.2,
+   "dur": 3.13,
+   "speech": "差别在数据里有没有平移。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 906.51,
+   "dur": 2.53,
+   "speech": "新增五十八条测试。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 909.22,
+   "dur": 2.44,
+   "speech": "二十项证据检查。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 911.84,
+   "dur": 3.23,
+   "speech": "本集进度五十二 / 七十四。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 915.25,
+   "dur": 2.51,
+   "speech": "下一集：Shapelet。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 917.94,
+   "dur": 3.16,
+   "speech": "从一条序列里挖出判别力。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 921.28,
+   "dur": 2.87,
+   "speech": "距离决定一切，说到这里。"
+  }
+ ]
+}

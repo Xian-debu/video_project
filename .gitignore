@@ -32,3 +32,6 @@
 **/data/graph.json
 **/data/classic.json
 **/data/dual.json
+
+# tooling artifacts
+**/.dsh-ops-*.lock
