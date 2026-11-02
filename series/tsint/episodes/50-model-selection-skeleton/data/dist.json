@@ -1,0 +1,546 @@
+{
+ "meta": {
+  "episode": 50,
+  "slug": "model-selection-skeleton",
+  "group": "ch6-modelsel",
+  "title": "自动选模型：池子比策略更重要",
+  "chapter": "ch06",
+  "chapterName": "自动化模型设计",
+  "runtimeTarget": 20,
+  "next": {
+   "id": 51,
+   "title": "省算力的两把刀：遗传算法与学习曲线外推",
+   "minutes": 18
+  },
+  "commits": {
+   "tsBase": "74443c9",
+   "tsAdmin": "527e03b"
+  }
+ },
+ "data": {
+  "stocks": 20,
+  "codes": [
+   "sh600118",
+   "sh600015",
+   "sz002028",
+   "sh601688",
+   "sh600085",
+   "sh600111",
+   "sh600066",
+   "sh600519",
+   "sz002493",
+   "sz000768",
+   "sh600011",
+   "sh601186",
+   "sh600031",
+   "sh600029",
+   "sh600588",
+   "sh600489",
+   "sz002202",
+   "sh600018",
+   "sh601225",
+   "sh601318"
+  ],
+  "bars": [
+   2412,
+   2431
+  ],
+  "split": {
+   "train": [
+    1686,
+    1705
+   ],
+   "valid": [
+    483,
+    484
+   ],
+   "test": [
+    242,
+    242
+   ]
+  },
+  "cut": {
+   "trainEnd": "2022-01-01",
+   "validEnd": "2024-01-01",
+   "snapshot": "2024-12-31"
+  },
+  "candidates": 10
+ },
+ "metrics": {
+  "mae": 0.5,
+  "mse": 0.4167,
+  "rmse": 0.6455,
+  "mape": 27.7778,
+  "acc3": 0.6667
+ },
+ "coverage": {
+  "pool3": 0.75,
+  "pool5": 0.85,
+  "all": 1.0,
+  "pool3n": 15,
+  "pool5n": 17
+ },
+ "hit": {
+  "pool3": 0.5,
+  "pool5": 0.5,
+  "hit2": 0.6,
+  "avgRank": 2.35,
+  "full": 0.55,
+  "pre": 0.55,
+  "pool3n": 10,
+  "pool5n": 10,
+  "fulln": 11,
+  "pren": 11
+ },
+ "prefilter": {
+  "top4Recall": 0.85,
+  "evalsFull": 96790,
+  "evalsPre": 62716,
+  "saved": 0.352,
+  "seasonM12": 0,
+  "pruned": 40
+ },
+ "flips": 10,
+ "grid": {
+  "full": 648,
+  "locked": 81,
+  "aicGold": 206.0
+ },
+ "candidates": [
+  {
+   "name": "naive",
+   "validMae": 10.723,
+   "testMae": 10.3148,
+   "wins": 14
+  },
+  {
+   "name": "drift30",
+   "validMae": 11.4219,
+   "testMae": 11.3161,
+   "wins": 2
+  },
+  {
+   "name": "exp0.2",
+   "validMae": 18.2409,
+   "testMae": 16.9688,
+   "wins": 0
+  },
+  {
+   "name": "exp0.5",
+   "validMae": 12.5703,
+   "testMae": 12.1423,
+   "wins": 0
+  },
+  {
+   "name": "ar1",
+   "validMae": 10.7968,
+   "testMae": 10.4364,
+   "wins": 1
+  },
+  {
+   "name": "ridge5-l1e-3",
+   "validMae": 10.8498,
+   "testMae": 10.4866,
+   "wins": 0
+  },
+  {
+   "name": "ridge5-l1",
+   "validMae": 10.8482,
+   "testMae": 10.4856,
+   "wins": 0
+  },
+  {
+   "name": "sar12",
+   "validMae": 10.8208,
+   "testMae": 10.4252,
+   "wins": 2
+  },
+  {
+   "name": "sar5",
+   "validMae": 10.8151,
+   "testMae": 10.4137,
+   "wins": 1
+  },
+  {
+   "name": "hmean5",
+   "validMae": 16.4623,
+   "testMae": 15.9035,
+   "wins": 0
+  }
+ ],
+ "perStock": [
+  {
+   "code": "sh600118",
+   "truth": 4,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sh600015",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sz002028",
+   "truth": 1,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sh601688",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600085",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600111",
+   "truth": 1,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 1,
+   "pre": 1,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600066",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600519",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sz002493",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 8,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": false,
+   "hitpre": true
+  },
+  {
+   "code": "sz000768",
+   "truth": 7,
+   "pool3": 2,
+   "pool5": 4,
+   "full": 7,
+   "pre": 4,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": true,
+   "hitpre": false
+  },
+  {
+   "code": "sh600011",
+   "truth": 0,
+   "pool3": 2,
+   "pool5": 2,
+   "full": 4,
+   "pre": 4,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sh601186",
+   "truth": 8,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sh600031",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600029",
+   "truth": 0,
+   "pool3": 2,
+   "pool5": 2,
+   "full": 4,
+   "pre": 4,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sh600588",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600489",
+   "truth": 0,
+   "pool3": 2,
+   "pool5": 4,
+   "full": 7,
+   "pre": 4,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sz002202",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh600018",
+   "truth": 0,
+   "pool3": 2,
+   "pool5": 4,
+   "full": 7,
+   "pre": 4,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  },
+  {
+   "code": "sh601225",
+   "truth": 0,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": true,
+   "hit5": true,
+   "hitfull": true,
+   "hitpre": true
+  },
+  {
+   "code": "sh601318",
+   "truth": 7,
+   "pool3": 0,
+   "pool5": 0,
+   "full": 0,
+   "pre": 0,
+   "hit3": false,
+   "hit5": false,
+   "hitfull": false,
+   "hitpre": false
+  }
+ ],
+ "checks": [
+  {
+   "group": "data",
+   "name": "20 只 HS300 行业分层股票，每只 2,400 根以上日线",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "按时间三段切分：train 1,686-1,705 / valid 483-484 / test 242",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "每只股票的验证段 >= 480 点、测试段 242 点，足够逐点滚动评测",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "csv 行数 = 每只股票根数之和，无重复日期",
+   "ok": true
+  },
+  {
+   "group": "metrics",
+   "name": "MAE y=[1,2,3] ŷ=[1.5,2,2] → 0.5；MSE → 0.4167",
+   "ok": true
+  },
+  {
+   "group": "metrics",
+   "name": "RMSE = sqrt(MSE) = 0.6455 > MAE = 0.5（平方对大残差更敏感）",
+   "ok": true
+  },
+  {
+   "group": "metrics",
+   "name": "MAPE = (0.5 + 0 + 1/3) / 3 × 100% = 27.7778%",
+   "ok": true
+  },
+  {
+   "group": "metrics",
+   "name": "Accuracy@3：预测 {1,3,4} 对真值 {1,2,3} → 交集 2 个 / 3 = 0.6667",
+   "ok": true
+  },
+  {
+   "group": "metrics",
+   "name": "真值过零时 MAPE 爆大，跳过近零样本后只对非零平均",
+   "ok": true
+  },
+  {
+   "group": "pool",
+   "name": "池 3 覆盖真值最优的比例（真值 = 全池 10 个候选 test 最优）",
+   "ok": true
+  },
+  {
+   "group": "pool",
+   "name": "池 5 覆盖真值最优的比例不低于池 3",
+   "ok": true
+  },
+  {
+   "group": "pool",
+   "name": "验证集 argmin 命中真值最优（Hit@1）：池 3",
+   "ok": true
+  },
+  {
+   "group": "pool",
+   "name": "验证集 argmin 命中真值最优（Hit@1）：池 5，且不低于池 3",
+   "ok": true
+  },
+  {
+   "group": "pool",
+   "name": "池 5 的 Hit@2 不低于 Hit@1（放宽 k 只会更容易命中）",
+   "ok": true
+  },
+  {
+   "group": "pool",
+   "name": "Average Rank（真值最优在池 5 验证排序里的名次）落在 [1, 5]",
+   "ok": true
+  },
+  {
+   "group": "prefilter",
+   "name": "两阶段预筛的 Hit@1 与全池遍历的差 < 0.05",
+   "ok": true
+  },
+  {
+   "group": "prefilter",
+   "name": "评测点数：全池 10×480/只 vs 预筛 10×120 + 4×480/只，减少 35% 以上",
+   "ok": true
+  },
+  {
+   "group": "prefilter",
+   "name": "两阶段预筛的 Top-4 召回了真值最优的股票数",
+   "ok": true
+  },
+  {
+   "group": "prefilter",
+   "name": "特征锁：季节强度 > 0.64 锁 m=12，其余锁 m=4 并剔除季节候选",
+   "ok": true
+  },
+  {
+   "group": "grid",
+   "name": "AIC = 2k - 2 lnL：lnL=-100、k=3 → 206",
+   "ok": true
+  },
+  {
+   "group": "grid",
+   "name": "网格 648 组合（3·3·2·2·3·3·2），锁 m/d/D 后 81（1/8）；计划写的 54 与自身维度不符，按实际 81",
+   "ok": true
+  },
+  {
+   "group": "grid",
+   "name": "拟合失败丢组合不抛异常；同一样本下 AIC 随 RSS 单调",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "MAE 与 MSE 排序在至少 1 只股票上翻转（指标选错会选错模型）",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "用真值排序当策略排序时 Average Rank 恒为 1（自洽性）",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "边界：单候选池 Hit@1=1、k=0 记 0 不崩",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "每只股票的最优候选分布不退化（至少 2 个候选各赢过 1 次）",
+   "ok": true
+  }
+ ],
+ "seconds": 21.4329
+}

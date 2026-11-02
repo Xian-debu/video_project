@@ -1,0 +1,2297 @@
+{
+ "entry": "src/tsint-50-model-selection-skeleton/script.ts",
+ "fps": 30,
+ "totalSec": 1099.61,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 104.34
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 104.34,
+   "dur": 138.2
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 242.54,
+   "dur": 184.98
+  },
+  {
+   "id": "metrics",
+   "chapter": "读数",
+   "start": 427.52,
+   "dur": 144.66
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 572.18,
+   "dur": 132.76
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 704.94,
+   "dur": 164.48
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 869.42,
+   "dur": 132.3
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 1001.72,
+   "dur": 97.89
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.66,
+   "speech": "这一集换个问法：机器怎么挑模型。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.04,
+   "dur": 3.57,
+   "speech": "前面几集都在调一个具体的模型。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.79,
+   "dur": 3.9,
+   "speech": "参数、结构、正则，一项项试。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.87,
+   "dur": 3.83,
+   "speech": "但真实工作里，候选从来不止一个。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.88,
+   "dur": 3.69,
+   "speech": "你有十种写法，总得选一个交出去。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.75,
+   "dur": 3.95,
+   "speech": "选谁、凭什么，这是一个独立的问题。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 24.88,
+   "dur": 3.06,
+   "speech": "今天讲选模型的三个零件。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 28.12,
+   "dur": 3.23,
+   "speech": "指标、池子、搜索策略。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 31.53,
+   "dur": 2.68,
+   "speech": "指标决定你拿什么排。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 34.39,
+   "dur": 2.63,
+   "speech": "这一集有一个坏消息。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.2,
+   "dur": 2.39,
+   "speech": "指标会换冠军。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 39.77,
+   "dur": 2.32,
+   "speech": "池子会设上限。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 42.26,
+   "dur": 2.32,
+   "speech": "搜索要花算力。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 44.76,
+   "dur": 4.36,
+   "speech": "三件事都有数字，都在二十只股票上量过。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 49.3,
+   "dur": 2.8,
+   "speech": "先说清楚这一集的做法。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 52.28,
+   "dur": 3.25,
+   "speech": "十个候选模型，二十只股票。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 55.71,
+   "dur": 3.13,
+   "speech": "每只股票用同一套切分。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 59.03,
+   "dur": 4.17,
+   "speech": "训练、验证、测试，按年份切开。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 63.37,
+   "dur": 3.42,
+   "speech": "全池完整训练，当标准答案。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 66.97,
+   "dur": 3.35,
+   "speech": "然后看验证集能不能挑中它。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 70.5,
+   "dur": 2.85,
+   "speech": "一句话版本先放在这里。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 73.53,
+   "dur": 2.41,
+   "speech": "池子决定天花板。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 76.12,
+   "dur": 2.92,
+   "speech": "策略决定你能摸到多近。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 79.22,
+   "dur": 3.06,
+   "speech": "指标决定冠军到底是谁。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 82.46,
+   "dur": 3.01,
+   "speech": "这三件事的权重并不一样。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 85.66,
+   "dur": 3.21,
+   "speech": "计划里我以为池子最重要。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 89.04,
+   "dur": 4.12,
+   "speech": "数据说：池子抬上限，抬不动命中率。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 93.34,
+   "dur": 2.75,
+   "speech": "这个反转后面会讲到。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 96.27,
+   "dur": 2.37,
+   "speech": "先回到问题本身。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 98.82,
+   "dur": 3.33,
+   "speech": "为什么选模型是一个独立的问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 105.54,
+   "dur": 2.56,
+   "speech": "人工选模型有三步。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 108.28,
+   "dur": 2.61,
+   "speech": "第一，想出一批候选。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 111.06,
+   "dur": 3.66,
+   "speech": "第二，在验证集上给候选打分。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 114.91,
+   "dur": 3.06,
+   "speech": "第三，挑分数最好的那个。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 118.15,
+   "dur": 2.2,
+   "speech": "听起来很直白。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 120.53,
+   "dur": 2.44,
+   "speech": "但每一步都有坑。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 123.14,
+   "dur": 2.56,
+   "speech": "先说候选从哪来。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 125.88,
+   "dur": 3.16,
+   "speech": "有人手写，有人按经验抄。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 129.22,
+   "dur": 2.94,
+   "speech": "也有人让机器自己搜。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 132.34,
+   "dur": 3.37,
+   "speech": "最后一条叫自动化模型设计。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 135.9,
+   "dur": 3.28,
+   "speech": "两条路线，搜索和元学习。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 139.35,
+   "dur": 3.16,
+   "speech": "搜索是在参数空间里找。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 142.69,
+   "dur": 3.25,
+   "speech": "元学习是拿别的任务的经验。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 146.13,
+   "dur": 2.41,
+   "speech": "这一集只做搜索。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 148.72,
+   "dur": 3.09,
+   "speech": "搜索的第一步是定义空间。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 151.99,
+   "dur": 3.47,
+   "speech": "空间里有什么，决定你能找到什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 155.64,
+   "dur": 3.21,
+   "speech": "文献里把这一步叫配置空间。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 159.02,
+   "dur": 3.83,
+   "speech": "空间定小了，最优解根本不在里面。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 163.03,
+   "dur": 3.21,
+   "speech": "空间定大了，算力就烧起来。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 166.42,
+   "dur": 3.35,
+   "speech": "所以空间本身就是一个决策。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 169.95,
+   "dur": 3.3,
+   "speech": "定义空间要写清楚三件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 173.43,
+   "dur": 3.57,
+   "speech": "哪些超参、取值范围、约束。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 177.18,
+   "dur": 3.37,
+   "speech": "比如 SARIMA 有七个可调项。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 180.73,
+   "dur": 3.52,
+   "speech": "阶数 p 和 q，差分 d 和 D。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 184.43,
+   "dur": 3.85,
+   "speech": "季节周期 m，季节阶数 P 和 Q。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 188.46,
+   "dur": 3.47,
+   "speech": "每个都取小范围，组合就爆炸。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 192.11,
+   "dur": 2.82,
+   "speech": "这就是第二件事：怎么搜。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 195.11,
+   "dur": 4.07,
+   "speech": "穷举、随机、进化、代理模型。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 199.36,
+   "dur": 3.18,
+   "speech": "不同策略花的时间差几十倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 202.73,
+   "dur": 3.04,
+   "speech": "第三件事：怎么判断谁赢。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 205.94,
+   "dur": 3.81,
+   "speech": "判断要用验证集，不能用测试集。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 209.93,
+   "dur": 3.37,
+   "speech": "测试集只能用来看最终结果。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 213.48,
+   "dur": 3.4,
+   "speech": "这条纪律在本集里贯穿到底。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 217.06,
+   "dur": 3.35,
+   "speech": "所以标准答案是这样定义的。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 220.59,
+   "dur": 3.28,
+   "speech": "十个候选，每个都完整训练。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 224.05,
+   "dur": 2.68,
+   "speech": "在测试集上算误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 226.91,
+   "dur": 3.66,
+   "speech": "误差最小的那个，就是真值最优。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 230.75,
+   "dur": 2.56,
+   "speech": "注意这是事后视角。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 233.49,
+   "dur": 3.69,
+   "speech": "真实决策的时候，你看不到测试集。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 237.35,
+   "dur": 2.99,
+   "speech": "选模型就是猜这个真值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 243.74,
+   "dur": 2.49,
+   "speech": "先把指标写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 246.41,
+   "dur": 3.25,
+   "speech": "第一类指标量误差有多大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 249.84,
+   "dur": 3.16,
+   "speech": "平均绝对误差，简称 MAE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 253.18,
+   "dur": 3.81,
+   "speech": "把每个点的误差取绝对值，再平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 257.16,
+   "dur": 3.23,
+   "speech": "均方误差，简称 MSE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 260.57,
+   "dur": 2.46,
+   "speech": "先平方，再平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 263.22,
+   "dur": 4.74,
+   "speech": "平方放大残差，所以 MSE 更怕异常点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 268.14,
+   "dur": 3.16,
+   "speech": "开根号就是 RMSE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 271.48,
+   "dur": 3.47,
+   "speech": "RMSE 和原序列同量纲。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 275.13,
+   "dur": 3.9,
+   "speech": "三个指标口径不同，排序也可能不同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 279.21,
+   "dur": 3.33,
+   "speech": "第四种是百分比误差，MAPE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 282.71,
+   "dur": 3.73,
+   "speech": "误差除以真值，再取平均百分比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 286.63,
+   "dur": 3.09,
+   "speech": "真值接近零时，分母会炸。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 289.89,
+   "dur": 3.13,
+   "speech": "所以要先跳过近零样本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 293.21,
+   "dur": 3.23,
+   "speech": "第五种是 Accuracy@k。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 296.62,
+   "dur": 3.35,
+   "speech": "预测 k 个候选，看命中几个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 300.15,
+   "dur": 3.28,
+   "speech": "这一集只用它做黄金值检查。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 303.61,
+   "dur": 3.83,
+   "speech": "日线预测更关心误差，不关心排序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 307.62,
+   "dur": 3.11,
+   "speech": "指标选错，冠军就换人。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 310.91,
+   "dur": 3.09,
+   "speech": "这句话后面有数字支撑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 314.17,
+   "dur": 2.8,
+   "speech": "第二组指标量选择对不对。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 317.15,
+   "dur": 2.63,
+   "speech": "定义真值最优为 t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 319.96,
+   "dur": 3.3,
+   "speech": "一个池子挑出来的叫 a 帽。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 323.44,
+   "dur": 3.33,
+   "speech": "如果 a 帽等于 t，记一次命中。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 326.95,
+   "dur": 2.99,
+   "speech": "这个比例叫 Hit@1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 330.12,
+   "dur": 3.81,
+   "speech": "放宽到前两名，叫 Hit@2。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 334.1,
+   "dur": 3.61,
+   "speech": "真值最优在池里的名次，取平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 337.9,
+   "dur": 2.85,
+   "speech": "这个数叫 Average Rank。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 340.92,
+   "dur": 3.85,
+   "speech": "它比 Hit@1 更细，因为用了名次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 344.96,
+   "dur": 3.73,
+   "speech": "三个数一起看，才知道选择器好不好。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 348.87,
+   "dur": 3.57,
+   "speech": "第三组指标是给网格搜索用的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 352.62,
+   "dur": 2.94,
+   "speech": "赤池信息量，AIC。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 355.74,
+   "dur": 3.78,
+   "speech": "公式是 2k 减 2 倍对数似然。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 359.7,
+   "dur": 3.57,
+   "speech": "k 是参数个数，越大罚得越狠。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 363.45,
+   "dur": 2.94,
+   "speech": "似然用高斯残差近似。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 366.57,
+   "dur": 4.43,
+   "speech": "同一个样本上，AIC 随残差平方和单调。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 371.18,
+   "dur": 3.33,
+   "speech": "所以它和 MSE 的口径一致。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 374.69,
+   "dur": 2.68,
+   "speech": "黄金值是 206。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 377.54,
+   "dur": 4.74,
+   "speech": "参数三个、对数似然负一百，正好 206。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 382.47,
+   "dur": 2.87,
+   "speech": "这一条在测试里钉死了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 385.52,
+   "dur": 3.23,
+   "speech": "网格这一集要更正一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 388.93,
+   "dur": 4.05,
+   "speech": "计划里写的是从 648 降到 54。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 393.15,
+   "dur": 3.73,
+   "speech": "但 54 和七维网格自相矛盾。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 397.07,
+   "dur": 6.16,
+   "speech": "实际算一遍：三、三、二、二、三、三、二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 403.4,
+   "dur": 2.63,
+   "speech": "乘起来是 648。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 406.21,
+   "dur": 4.38,
+   "speech": "锁定 m、d、D 之后，剩四个自由维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 410.78,
+   "dur": 3.09,
+   "speech": "每个取 0 到 2，就是 81。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 414.04,
+   "dur": 4.09,
+   "speech": "所以是 648 降到 81，八分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 418.32,
+   "dur": 3.73,
+   "speech": "计划里的 54 是错的，按实际报。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 422.23,
+   "dur": 3.09,
+   "speech": "这个更正写进了偏差记录。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 428.72,
+   "dur": 3.28,
+   "speech": "指标定义完了，看真实读数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 432.18,
+   "dur": 3.28,
+   "speech": "先说黄金值，用来钉住实现。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 435.64,
+   "dur": 5.05,
+   "speech": "真值 1、2、3，预测 1.5、2、2。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 440.87,
+   "dur": 2.17,
+   "speech": "MAE 是 0.5。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 443.22,
+   "dur": 3.23,
+   "speech": "MSE 是 0.4167。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 446.63,
+   "dur": 3.3,
+   "speech": "RMSE 是 0.6455。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 450.12,
+   "dur": 2.99,
+   "speech": "MAPE 是百分之二十七点八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 453.29,
+   "dur": 3.76,
+   "speech": "Accuracy@3 是 0.6667。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 457.22,
+   "dur": 3.97,
+   "speech": "五个数都对上，指标实现才算过关。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 461.38,
+   "dur": 2.39,
+   "speech": "然后是真实数据。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 463.95,
+   "dur": 3.66,
+   "speech": "十个候选，在二十只股票上打分。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 467.79,
+   "dur": 3.78,
+   "speech": "验证集误差和测试集误差都记。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 471.75,
+   "dur": 3.85,
+   "speech": "朴素模型在验证集是 10.723。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 475.79,
+   "dur": 3.33,
+   "speech": "在测试集是 10.3148。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 479.29,
+   "dur": 2.56,
+   "speech": "它赢了 14 只股票。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 482.03,
+   "dur": 5.51,
+   "speech": "AR(1) 验证 10.7968，测试 10.4364。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 487.72,
+   "dur": 1.93,
+   "speech": "它赢了 1 只。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 489.83,
+   "dur": 2.65,
+   "speech": "两个岭回归几乎一样。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 492.67,
+   "dur": 3.61,
+   "speech": "验证 10.85 上下，一只都没赢。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 496.46,
+   "dur": 3.81,
+   "speech": "季节性模型略好，赢 2 只和 1 只。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 500.45,
+   "dur": 3.18,
+   "speech": "最值得注意的是指标打架。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 503.81,
+   "dur": 4.36,
+   "speech": "对同一只股票，MAE 和 MSE 排名不同。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 508.35,
+   "dur": 3.01,
+   "speech": "二十只里有十只翻了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 511.54,
+   "dur": 2.05,
+   "speech": "正好是一半。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 513.78,
+   "dur": 4.05,
+   "speech": "也就是说换指标，一半的冠军会换。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 518,
+   "dur": 1.96,
+   "speech": "为什么会翻。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 520.14,
+   "dur": 4.07,
+   "speech": "MSE 罚大残差，倾向于稳的模型。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 524.39,
+   "dur": 3.85,
+   "speech": "MAE 罚所有残差，倾向于中庸的模型。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 528.42,
+   "dur": 2.7,
+   "speech": "一个怕爆，一个怕偏。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 531.31,
+   "dur": 2.97,
+   "speech": "目标是什么，就该选哪个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 534.45,
+   "dur": 2.89,
+   "speech": "本集的目标是预测误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 537.53,
+   "dur": 2.63,
+   "speech": "所以主指标用 MAE。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 540.34,
+   "dur": 3.54,
+   "speech": "MSE 只用来做稳健性检查。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 544.06,
+   "dur": 2.89,
+   "speech": "这一条决定后面所有排序。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 547.13,
+   "dur": 3.47,
+   "speech": "也解释了为什么朴素模型总赢。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 550.78,
+   "dur": 4.38,
+   "speech": "日线一步预测里，昨天的价格就是强预测。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 555.34,
+   "dur": 4,
+   "speech": "复杂模型在一千七百个训练点上没赚到。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 559.52,
+   "dur": 2.99,
+   "speech": "这不是说复杂模型没用。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 562.69,
+   "dur": 4.55,
+   "speech": "是说在这个切分和这个目标下，它没赚到。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 567.42,
+   "dur": 2.56,
+   "speech": "结论要带着条件说。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 573.38,
+   "dur": 2.58,
+   "speech": "实现写在 Haskell 里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 576.14,
+   "dur": 2.97,
+   "speech": "三个模块，对应三件事。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 579.29,
+   "dur": 3.61,
+   "speech": "指标一个，选择一个，网格一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 583.08,
+   "dur": 3.04,
+   "speech": "指标模块只放纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 586.3,
+   "dur": 3.9,
+   "speech": "MAE、MSE、MAPE，一行一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 590.38,
+   "dur": 2.99,
+   "speech": "选择模块管池子和排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 593.55,
+   "dur": 3.42,
+   "speech": "网格模块管参数组合和打分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 597.15,
+   "dur": 2.94,
+   "speech": "每个模块都配黄金用例。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 600.28,
+   "dur": 2.94,
+   "speech": "十四个用例，全部通过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 603.4,
+   "dur": 2.44,
+   "speech": "先看数据长什么样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 606.02,
+   "dur": 2.99,
+   "speech": "数据是沪深三百的日线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 609.19,
+   "dur": 2.85,
+   "speech": "快照取到 2024 年底。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 612.21,
+   "dur": 3.4,
+   "speech": "后复权，收盘价乘复权因子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 615.79,
+   "dur": 2.85,
+   "speech": "按行业分层抽二十只。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 618.82,
+   "dur": 2.63,
+   "speech": "每只两千四百根以上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 621.63,
+   "dur": 2.8,
+   "speech": "训练切在 2022 年之前。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 624.6,
+   "dur": 3.4,
+   "speech": "验证是 2022 到 2023。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 628.18,
+   "dur": 2.85,
+   "speech": "测试从 2024 年开始。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 631.21,
+   "dur": 2.85,
+   "speech": "验证段四百八十三个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 634.23,
+   "dur": 2.82,
+   "speech": "测试段二百四十二个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 637.24,
+   "dur": 3.16,
+   "speech": "十个候选都在训练段拟合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 640.57,
+   "dur": 3.59,
+   "speech": "拟合完，对全序列做单步预测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 644.34,
+   "dur": 2.82,
+   "speech": "这样每个点都有预测值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 647.35,
+   "dur": 3.25,
+   "speech": "验证段和测试段分别打分。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 650.78,
+   "dur": 2.44,
+   "speech": "池子有三个版本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 653.4,
+   "dur": 3.23,
+   "speech": "三只、五只、十只全上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 656.81,
+   "dur": 3.25,
+   "speech": "池子越大，覆盖的面越广。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 660.24,
+   "dur": 2.82,
+   "speech": "但也意味着更多次拟合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 663.24,
+   "dur": 3.76,
+   "speech": "十个候选乘二十只，就是两百次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 667.18,
+   "dur": 2.99,
+   "speech": "每次都是一次最小二乘。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 670.35,
+   "dur": 3.52,
+   "speech": "全池遍历很贵，所以要预筛。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 674.05,
+   "dur": 2.37,
+   "speech": "第一步是特征锁。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 676.6,
+   "dur": 2.32,
+   "speech": "先估季节强度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 679.09,
+   "dur": 3.78,
+   "speech": "强度过零点六四，锁季节周期十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 683.06,
+   "dur": 3.23,
+   "speech": "这一集二十只全没过线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 686.47,
+   "dur": 3.06,
+   "speech": "所以全部锁成周期四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 689.71,
+   "dur": 2.97,
+   "speech": "顺手剔掉两个季节候选。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 692.85,
+   "dur": 2.27,
+   "speech": "第二步是粗排。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 695.3,
+   "dur": 3.78,
+   "speech": "验证段前一百二十个点先排一遍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 699.27,
+   "dur": 3.47,
+   "speech": "取前四名，再在整段上精排。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 706.14,
+   "dur": 2.8,
+   "speech": "验证是二十六项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 709.12,
+   "dur": 5.85,
+   "speech": "分六组：数据、指标、池子、预筛、网格、演示。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 715.14,
+   "dur": 2.68,
+   "speech": "全跑完二十一点四秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 718,
+   "dur": 2.32,
+   "speech": "二十六项全过。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 720.5,
+   "dur": 2.15,
+   "speech": "先说数据组。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 722.83,
+   "dur": 3.69,
+   "speech": "二十只股票，每只两千四百根以上。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 726.7,
+   "dur": 2.92,
+   "speech": "三段切分的点数都对。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 729.79,
+   "dur": 3.54,
+   "speech": "每只的验证段不少于四百八十点。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 733.52,
+   "dur": 3.16,
+   "speech": "行数等于各只根数之和。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 736.85,
+   "dur": 2.15,
+   "speech": "没有重复日期。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 739.18,
+   "dur": 3.06,
+   "speech": "指标组钉住五个黄金值。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 742.43,
+   "dur": 4.05,
+   "speech": "RMSE 大于 MAE，这是平方的性质。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 746.65,
+   "dur": 2.58,
+   "speech": "MAPE 跳过近零样本。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 749.41,
+   "dur": 4.17,
+   "speech": "Accuracy@3 交集两个，等于三分之二。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 753.76,
+   "dur": 2.89,
+   "speech": "池子组是这一集的核心。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 756.83,
+   "dur": 3.9,
+   "speech": "池子三覆盖真值最优的百分之七十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 760.92,
+   "dur": 3.01,
+   "speech": "池子五覆盖百分之八十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 764.11,
+   "dur": 2.56,
+   "speech": "全池是百分之百。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 766.85,
+   "dur": 2.89,
+   "speech": "覆盖是上限，不是命中。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 769.92,
+   "dur": 2.17,
+   "speech": "命中要另算。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 772.28,
+   "dur": 3.49,
+   "speech": "验证集 argmin 的 Hit@1。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 775.95,
+   "dur": 2.75,
+   "speech": "池子三是百分之五十。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 778.88,
+   "dur": 2.89,
+   "speech": "池子五还是百分之五十。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 781.95,
+   "dur": 3.01,
+   "speech": "全池十是百分之五十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 785.15,
+   "dur": 2.99,
+   "speech": "Hit@2 是百分之六十。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 788.32,
+   "dur": 2.65,
+   "speech": "平均名次二点三五。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 791.15,
+   "dur": 2.87,
+   "speech": "这三组数说明一件事。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 794.2,
+   "dur": 3.16,
+   "speech": "扩池抬了上限，没抬命中。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 797.54,
+   "dur": 2.39,
+   "speech": "原因在池子内部。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 800.11,
+   "dur": 2.37,
+   "speech": "候选之间太像了。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 802.66,
+   "dur": 2.87,
+   "speech": "预筛组验的是省算力。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 805.71,
+   "dur": 4.14,
+   "speech": "全池遍历要九万六千七百九十次评测。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 810.03,
+   "dur": 3.57,
+   "speech": "预筛只要六万二千七百一十六次。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 813.77,
+   "dur": 2.7,
+   "speech": "省了百分之三十五点二。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 816.66,
+   "dur": 2.01,
+   "speech": "那命中率呢。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 818.84,
+   "dur": 4.43,
+   "speech": "全池百分之五十五，预筛也是百分之五十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 823.45,
+   "dur": 2.01,
+   "speech": "一分都没掉。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 825.64,
+   "dur": 4.21,
+   "speech": "前四名召回了百分之八十五的真值最优。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 830.03,
+   "dur": 3.23,
+   "speech": "这一条是这一集最实用的结论。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 833.44,
+   "dur": 2.39,
+   "speech": "省算力可以不掉点。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 836.01,
+   "dur": 2.49,
+   "speech": "网格组验两件事。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 838.68,
+   "dur": 2.94,
+   "speech": "全网格 648 个组合。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 841.8,
+   "dur": 2.85,
+   "speech": "锁定之后剩 81 个。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 844.83,
+   "dur": 2.17,
+   "speech": "正好八分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 847.18,
+   "dur": 3.4,
+   "speech": "拟合失败要丢掉，不能抛异常。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 850.76,
+   "dur": 3.83,
+   "speech": "同一个样本下，AIC 随残差单调。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 854.77,
+   "dur": 2.58,
+   "speech": "演示组验两个反例。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 857.53,
+   "dur": 2.92,
+   "speech": "指标选错会选错模型。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 860.63,
+   "dur": 4.17,
+   "speech": "用真值排序当策略，平均名次恒为一。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 864.97,
+   "dur": 2.25,
+   "speech": "自洽性也验了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 870.62,
+   "dur": 3.54,
+   "speech": "这一集有几条边界要说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 874.34,
+   "dur": 2.65,
+   "speech": "第一条，二十只股票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 877.18,
+   "dur": 3.33,
+   "speech": "全是沪深三百里的行业龙头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 880.68,
+   "dur": 2.63,
+   "speech": "没有小盘，没有新股。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 883.49,
+   "dur": 2.97,
+   "speech": "换一批股票，数字会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 886.64,
+   "dur": 2.56,
+   "speech": "第二条，十个候选。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 889.38,
+   "dur": 2.46,
+   "speech": "这十个是我手挑的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 892.02,
+   "dur": 3.16,
+   "speech": "更优的模型可能不在池子里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 895.36,
+   "dur": 3.69,
+   "speech": "池子定了，结论就只对池子成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 899.22,
+   "dur": 2.68,
+   "speech": "第三条，一步预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 902.08,
+   "dur": 2.53,
+   "speech": "只预测下一个交易日。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 904.79,
+   "dur": 2.85,
+   "speech": "多步预测是另一个问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 907.82,
+   "dur": 3.35,
+   "speech": "误差会累加，指标要重算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 911.35,
+   "dur": 2.53,
+   "speech": "第四条，单指标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 914.06,
+   "dur": 3.45,
+   "speech": "主指标 MAE 是选的，不是推出来的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 917.69,
+   "dur": 3.61,
+   "speech": "换成 Sharpe 或者胜率，冠军会换。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 921.48,
+   "dur": 3.45,
+   "speech": "指标的选择本身就是一个假设。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 925.11,
+   "dur": 2.58,
+   "speech": "第五条，日线噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 927.87,
+   "dur": 3.01,
+   "speech": "一天一根，样本两千根。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 931.07,
+   "dur": 2.44,
+   "speech": "统计显著性有限。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 933.68,
+   "dur": 2.77,
+   "speech": "计划里的预期没有成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 936.64,
+   "dur": 3.54,
+   "speech": "我原本以为扩池能让命中率涨。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 940.36,
+   "dur": 2.73,
+   "speech": "至少涨十五个百分点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 943.27,
+   "dur": 2.13,
+   "speech": "实测就是零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 945.57,
+   "dur": 4.17,
+   "speech": "池子三百分之五十，池子五百分之五十。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 949.92,
+   "dur": 3.01,
+   "speech": "上限确实涨了十个百分点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 953.11,
+   "dur": 3.3,
+   "speech": "但命中率被验证噪声卡住。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 956.59,
+   "dur": 3.04,
+   "speech": "这个负结果照样写进片子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 959.81,
+   "dur": 3.13,
+   "speech": "因为它比正结果更有用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 963.13,
+   "dur": 2.63,
+   "speech": "它告诉你先修哪里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 965.94,
+   "dur": 2.68,
+   "speech": "明确不做的事有四项。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 968.79,
+   "dur": 3.52,
+   "speech": "不做元学习，不拿别的任务迁移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 972.49,
+   "dur": 3.25,
+   "speech": "不做多目标优化，不排权衡。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 975.93,
+   "dur": 3.88,
+   "speech": "不做在线更新，模型不滚动重训。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 979.98,
+   "dur": 2.41,
+   "speech": "不做跨市场验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 982.58,
+   "dur": 3.35,
+   "speech": "这一集只把选择这一件事讲透。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 986.11,
+   "dur": 3.71,
+   "speech": "指标、池子、策略，各一段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 990,
+   "dur": 3.3,
+   "speech": "数字都在报告里，可以复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 993.48,
+   "dur": 2.89,
+   "speech": "复现要跑那条证据命令。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 996.55,
+   "dur": 2.97,
+   "speech": "二十一点四秒，二十六项。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1002.92,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1005.2,
+   "dur": 3.18,
+   "speech": "第一，指标决定冠军是谁。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1008.56,
+   "dur": 4.12,
+   "speech": "二十只里十只，换指标就换冠军。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1012.86,
+   "dur": 3.47,
+   "speech": "指标要对齐目标，不能随手选。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1016.51,
+   "dur": 2.77,
+   "speech": "第二，池子决定上限。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1019.47,
+   "dur": 3.83,
+   "speech": "覆盖从百分之七十五到百分之八十五。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1023.48,
+   "dur": 2.56,
+   "speech": "全池是百分之百。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1026.21,
+   "dur": 2.58,
+   "speech": "命中率超不过覆盖。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1028.98,
+   "dur": 2.97,
+   "speech": "第三，搜索可以很便宜。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1032.12,
+   "dur": 3.57,
+   "speech": "预筛省百分之三十五，命中不变。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1035.87,
+   "dur": 2.99,
+   "speech": "这三句话对应三个决定。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1039.04,
+   "dur": 3.01,
+   "speech": "指标是假设，要写下来。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1042.23,
+   "dur": 3.01,
+   "speech": "池子是设计，要写清楚。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1045.43,
+   "dur": 3.04,
+   "speech": "策略是工程，要算成本。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1048.64,
+   "dur": 2.13,
+   "speech": "顺序不能反。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1050.95,
+   "dur": 4.07,
+   "speech": "先定指标，再定池子，最后选策略。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1055.2,
+   "dur": 1.89,
+   "speech": "反了会怎样。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1057.27,
+   "dur": 3.06,
+   "speech": "会拿策略的复杂度骗自己。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1060.51,
+   "dur": 3.01,
+   "speech": "会以为换了算法就能变好。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1063.7,
+   "dur": 2.17,
+   "speech": "其实上限没动。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1066.06,
+   "dur": 3.49,
+   "speech": "下一集讲省算力的另外两把刀。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1069.73,
+   "dur": 3.4,
+   "speech": "遗传算法和学习曲线外推。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1073.31,
+   "dur": 3.18,
+   "speech": "遗传算法在空间里跳着找。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1076.67,
+   "dur": 3.21,
+   "speech": "学习曲线拿少量点外推。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1080.06,
+   "dur": 3.23,
+   "speech": "两个都是把拟合次数降下来。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1083.47,
+   "dur": 2.94,
+   "speech": "下一集有数字，也有坑。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1086.59,
+   "dur": 2.08,
+   "speech": "谢谢大家观看。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1088.85,
+   "dur": 2.08,
+   "speech": "我们下集再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1091.1,
+   "dur": 3.01,
+   "speech": "代码和数据都在仓库里。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1094.3,
+   "dur": 3.11,
+   "speech": "有问题欢迎在评论里指出。"
+  }
+ ]
+}
