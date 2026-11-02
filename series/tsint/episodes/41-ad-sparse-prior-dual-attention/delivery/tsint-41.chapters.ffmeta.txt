@@ -1,0 +1,41 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=0
+END=110850
+title=开场 · 换掉一个假设：稀疏二值注意力、重尾先验与双视图
+[CHAPTER]
+TIMEBASE=1/1000
+START=110850
+END=227050
+title=问题 · 三个假设，三个替换
+[CHAPTER]
+TIMEBASE=1/1000
+START=227050
+END=377190
+title=定义 · 先看公式，再看约定
+[CHAPTER]
+TIMEBASE=1/1000
+START=377190
+END=482110
+title=直觉 · 曲线 · 尾部 · 验证段
+[CHAPTER]
+TIMEBASE=1/1000
+START=482110
+END=590940
+title=实现 · 手写 · 直通估计 · 训练成本
+[CHAPTER]
+TIMEBASE=1/1000
+START=590940
+END=784830
+title=验证 · 同数据 · 同注入 · 同阈值
+[CHAPTER]
+TIMEBASE=1/1000
+START=784830
+END=861850
+title=边界 · 不声称 · 三笔债 · 下一集
+[CHAPTER]
+TIMEBASE=1/1000
+START=861850
+END=909350
+title=收尾 · 两个赢 · 一个打平 · 下一集

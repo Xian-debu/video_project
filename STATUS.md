@@ -56,7 +56,7 @@
 | tsint-38-ad-graph-contrastive | 图上的异常：增强、对比损失与 TopK 邻接 | ready | - | yes | ok | 11 | - |
 | tsint-39-ad-classic-arima-matrixprofile | 残差与邻居：ARIMA 残差检测与 Matrix Profile discord | ready | - | yes | ok | 11 | - |
 | tsint-40-ad-adversarial-dual-decoder | 两个解码器，一个说谎：USAD 对抗、DAGMM 能量与多 AE 中位数 | ready | - | yes | ok | 11 | - |
-| tsint-41-ad-sparse-prior-dual-attention | 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力 | draft | 1740 | silent | ok | 1 | - |
+| tsint-41-ad-sparse-prior-dual-attention | 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力 | ready | - | yes | ok | 11 | - |
 | tsint-42-metrics-distance-1nn-ee | 距离决定一切：从 1-NN+DTW 到弹性集成 | draft | 1320 | silent | ok | 1 | - |
 | tsint-43-shapelet-search-pips | Shapelet：从一条序列里挖出一小段判别力 | draft | 1200 | silent | ok | 1 | - |
 | tsint-44-learnable-shapelet-softmin | 把 min 换成 SoftMin：Shapelet 终于可以求导 | draft | 1440 | silent | ok | 1 | - |

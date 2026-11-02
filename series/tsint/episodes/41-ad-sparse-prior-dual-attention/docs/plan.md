@@ -1,6 +1,6 @@
 # 41-ad-sparse-prior-dual-attention - 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力
 
-> status: producing（2026-11-02 上午 渲染中） · chapter: ch04 · runtime: 15 min 10 s · 3 algorithms
+> status: ready（2026-11-02 上午交付） · chapter: ch04 · runtime: 15 min 09 s · 3 algorithms
 > 算法 ts-base `3d5c6c7` | 数据 ts-admin `56722f4`
 
 ## Thesis
@@ -60,3 +60,11 @@ ts-admin `export_ch04_sparse_prior.py`：600519.SH 日线，hfq，2010-01-04 至
 - 注入比例 13.7% 而非计划的 1%：窗口层真值天生稀疏（一段 20 点注入只有末尾一个窗口算真值），1% 会让 168 个真值窗掉到十几个，F1 读数没有统计意义。
 - 5 分钟线覆盖期与计划不符（见 Data）。
 - TS 训练抽样（见 Implementation）。
+
+## Delivery（2026-11-02）
+
+- 成片：`delivery/Tsint41AdSparsePriorDualAttention.mp4`，909.37 s（15:09.37）/ 27,281 帧 / 8 场 27 页 / −15 LUFS / TP −2 dBFS / LRA 2.5；mp4 48,055,741 B。
+- 旁白：253 条（发声 838.1 s），字幕跨度 00:00:01,200 → 00:15:07,150，0 条换行、最长 30 字；8 章合计 909.35 s。
+- 流水线：make 23 个 stage 全 ok，8 段 rendered 8（reused 0，tree `221896d2c2db0af0`）；mix 48 kHz / 910.55 s、peak −1.22 dBFS、RMS −26.79 dBFS、ducked 54.8%；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.48、gap_full −31.02、gap_audible −33.84、bed 36.2；闪烁 27,281 帧 mean 20.66 / min 14.70 / max 24.09、mean|d| 0.0137、p99 0.1271、max 7.51、7 切点（3326 / 6812 / 11316 / 14463 / 17728 / 23545 / 25856）。
+- 导出：srt 18,488 B / chapters 466 B / ffmeta 842 B / cover.png 84,924 B（帧 20）。score 复用 `out/e04-score-loop-48k.wav`（1560 s，scoreReused false），make 的 `--out` 直接指向 pack 的 delivery，引擎 `out/` 无 `tsint-*` 残留。
+- 静帧复核：27 页全部按页中点渲出，修 4 处（开场标题过长折行压住 goal 行、训练/验证/测试 Stat 三个数字折行、p(0) 的 1/pi 改 1/π、实现页「一次证据跑 447 s」改 402 s），另改 boundary 卡片标签「下一页笔记」→「下一集」；改旁白一处「四百四十七秒」→「四百零二秒」并重录那条 clip（总长 909.54 → 909.35 s）。
