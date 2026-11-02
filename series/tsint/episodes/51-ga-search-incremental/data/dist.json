@@ -1,0 +1,681 @@
+{
+ "meta": {
+  "episode": 51,
+  "slug": "ga-search-incremental",
+  "group": "ch6-ga",
+  "title": "省算力的两把刀：遗传算法与学习曲线外推",
+  "chapter": "ch06",
+  "chapterName": "自动化模型设计",
+  "runtimeTarget": 18,
+  "next": {
+   "id": 52,
+   "title": "把 300 只股票当成 300 个任务：元学习选模型",
+   "minutes": 24
+  },
+  "commits": {
+   "tsBase": "8239ee2",
+   "tsAdmin": "a8135a4"
+  }
+ },
+ "data": {
+  "stocks": 20,
+  "codes": [
+   "sh600118",
+   "sh600015",
+   "sz002028",
+   "sh601688",
+   "sh600085",
+   "sh600111",
+   "sh600066",
+   "sh600519",
+   "sz002493",
+   "sz000768",
+   "sh600011",
+   "sh601186",
+   "sh600031",
+   "sh600029",
+   "sh600588",
+   "sh600489",
+   "sz002202",
+   "sh600018",
+   "sh601225",
+   "sh601318"
+  ],
+  "bars": [
+   2412,
+   2431
+  ],
+  "split": {
+   "train": [
+    1686,
+    1705
+   ],
+   "valid": [
+    483,
+    484
+   ],
+   "test": [
+    242,
+    242
+   ]
+  },
+  "cut": {
+   "trainEnd": "2022-01-01",
+   "validEnd": "2024-01-01",
+   "snapshot": "2024-12-31"
+  },
+  "stages": [
+   213,
+   426,
+   852
+  ],
+  "candidates": 10
+ },
+ "ga": {
+  "evals": 200,
+  "unique": 200,
+  "same": 20,
+  "best": 10.7165,
+  "worst": 10.8482
+ },
+ "curve": {
+  "slope": -0.01,
+  "intercept": 1.2,
+  "sse": 1.233e-32,
+  "extrap60": 0.6,
+  "twoPoint50": 6.0,
+  "maxTarget": 120
+ },
+ "stageCurves": [
+  {
+   "name": "naive",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    10.723,
+    10.723,
+    10.723
+   ],
+   "full": 10.723
+  },
+  {
+   "name": "drift30",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    10.9326,
+    10.7188,
+    10.8011
+   ],
+   "full": 11.4219
+  },
+  {
+   "name": "exp0.2",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    18.2409,
+    18.2409,
+    18.2409
+   ],
+   "full": 18.2409
+  },
+  {
+   "name": "exp0.5",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    12.5703,
+    12.5703,
+    12.5703
+   ],
+   "full": 12.5703
+  },
+  {
+   "name": "ar1",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    18.0186,
+    11.4521,
+    10.9135
+   ],
+   "full": 10.7968
+  },
+  {
+   "name": "ridge5-l1e-3",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    18.6316,
+    11.7952,
+    11.1145
+   ],
+   "full": 10.8498
+  },
+  {
+   "name": "ridge5-l1",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    15.8466,
+    11.6509,
+    11.0971
+   ],
+   "full": 10.8482
+  },
+  {
+   "name": "sar12",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    20.5584,
+    11.7274,
+    10.9647
+   ],
+   "full": 10.8208
+  },
+  {
+   "name": "sar5",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    18.6648,
+    11.5622,
+    10.926
+   ],
+   "full": 10.8151
+  },
+  {
+   "name": "hmean5",
+   "at": [
+    213,
+    426,
+    852
+   ],
+   "mae": [
+    16.4623,
+    16.4623,
+    16.4623
+   ],
+   "full": 16.4623
+  }
+ ],
+ "demo": {
+  "lin": {
+   "acc2": 0.05,
+   "acc2n": 1,
+   "acc1": 0.05,
+   "overlap": 0.4,
+   "errMean": 4.7613,
+   "errMax": 219.0929
+  },
+  "pow": {
+   "acc2": 0.15,
+   "acc2n": 3,
+   "acc1": 0.3,
+   "overlap": 0.7,
+   "errMean": 1.3835,
+   "errMax": 55.7345
+  },
+  "acc1Full": 1.0,
+  "gap": 0.0653,
+  "ratio": 21.19,
+  "gaSame": 20,
+  "mono": 161,
+  "monoOf": 200
+ },
+ "budget": {
+  "fitsInc": 600,
+  "fitsFull": 200,
+  "rowsInc": 297770,
+  "rowsFull": 340530,
+  "dataRatio": 0.8744,
+  "gaEvalsTotal": 4000,
+  "gridShare": 30.86
+ },
+ "candidates": [
+  {
+   "name": "naive",
+   "validMae": 10.723,
+   "extrapMae": 10.723,
+   "extrapPow": 10.723,
+   "testMae": 10.3148,
+   "wins": 13
+  },
+  {
+   "name": "drift30",
+   "validMae": 11.4219,
+   "extrapMae": 10.6378,
+   "extrapPow": 10.6991,
+   "testMae": 11.3161,
+   "wins": 1
+  },
+  {
+   "name": "exp0.2",
+   "validMae": 18.2409,
+   "extrapMae": 18.2409,
+   "extrapPow": 18.2409,
+   "testMae": 16.9688,
+   "wins": 0
+  },
+  {
+   "name": "exp0.5",
+   "validMae": 12.5703,
+   "extrapMae": 12.5703,
+   "extrapPow": 12.5703,
+   "testMae": 12.1423,
+   "wins": 0
+  },
+  {
+   "name": "ar1",
+   "validMae": 10.7968,
+   "extrapMae": 1.7304,
+   "extrapPow": 8.2468,
+   "testMae": 10.4364,
+   "wins": 2
+  },
+  {
+   "name": "ridge5-l1e-3",
+   "validMae": 10.8498,
+   "extrapMae": 1.3909,
+   "extrapPow": 8.3139,
+   "testMae": 10.4866,
+   "wins": 0
+  },
+  {
+   "name": "ridge5-l1",
+   "validMae": 10.8482,
+   "extrapMae": 4.9447,
+   "extrapPow": 9.0334,
+   "testMae": 10.4856,
+   "wins": 0
+  },
+  {
+   "name": "sar12",
+   "validMae": 10.8208,
+   "extrapMae": -1.4373,
+   "extrapPow": 7.7859,
+   "testMae": 10.4252,
+   "wins": 3
+  },
+  {
+   "name": "sar5",
+   "validMae": 10.8151,
+   "extrapMae": 0.9203,
+   "extrapPow": 8.1034,
+   "testMae": 10.4137,
+   "wins": 1
+  },
+  {
+   "name": "hmean5",
+   "validMae": 16.4623,
+   "extrapMae": 16.4623,
+   "extrapPow": 16.4623,
+   "testMae": 15.9035,
+   "wins": 0
+  }
+ ],
+ "perStock": [
+  {
+   "code": "sh600118",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600015",
+   "truth": 0,
+   "inc": 8,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 0,
+   "powok": true,
+   "unique": 10
+  },
+  {
+   "code": "sz002028",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh601688",
+   "truth": 0,
+   "inc": 1,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600085",
+   "truth": 0,
+   "inc": 5,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 0,
+   "powok": true,
+   "unique": 10
+  },
+  {
+   "code": "sh600111",
+   "truth": 1,
+   "inc": 5,
+   "ga": 1,
+   "acc1": false,
+   "pow1": 1,
+   "powok": true,
+   "unique": 10
+  },
+  {
+   "code": "sh600066",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600519",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sz002493",
+   "truth": 8,
+   "inc": 7,
+   "ga": 8,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sz000768",
+   "truth": 7,
+   "inc": 5,
+   "ga": 7,
+   "acc1": false,
+   "pow1": 7,
+   "powok": true,
+   "unique": 10
+  },
+  {
+   "code": "sh600011",
+   "truth": 4,
+   "inc": 7,
+   "ga": 4,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh601186",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600031",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600029",
+   "truth": 4,
+   "inc": 7,
+   "ga": 4,
+   "acc1": false,
+   "pow1": 7,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600588",
+   "truth": 0,
+   "inc": 1,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 1,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600489",
+   "truth": 7,
+   "inc": 5,
+   "ga": 7,
+   "acc1": false,
+   "pow1": 5,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sz002202",
+   "truth": 0,
+   "inc": 5,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 5,
+   "powok": false,
+   "unique": 10
+  },
+  {
+   "code": "sh600018",
+   "truth": 7,
+   "inc": 7,
+   "ga": 7,
+   "acc1": true,
+   "pow1": 7,
+   "powok": true,
+   "unique": 10
+  },
+  {
+   "code": "sh601225",
+   "truth": 0,
+   "inc": 7,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 0,
+   "powok": true,
+   "unique": 10
+  },
+  {
+   "code": "sh601318",
+   "truth": 0,
+   "inc": 4,
+   "ga": 0,
+   "acc1": false,
+   "pow1": 4,
+   "powok": false,
+   "unique": 10
+  }
+ ],
+ "checks": [
+  {
+   "group": "data",
+   "name": "20 只 HS300 行业分层股票，每只 2,400 根以上日线",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "按时间三段切分：train 1,686-1,705 / valid 483-484 / test 242",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "阶段点 = train 的 1/8、1/4、1/2，三次部分拟合接触 0.874 倍训练数据",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "csv 行数 = 每只股票根数之和，日期无重复",
+   "ok": true
+  },
+  {
+   "group": "ga",
+   "name": "GA 黄金值：f(x)=-(x-3)^2、种群 6、2 代后 best 基因 = 3，适应度 0",
+   "ok": true
+  },
+  {
+   "group": "ga",
+   "name": "精英保留：逐代 best 单调不降，最终种群规模 = 8",
+   "ok": true
+  },
+  {
+   "group": "ga",
+   "name": "交叉后子代基因全部落在界内、长度不变（20 个种子）",
+   "ok": true
+  },
+  {
+   "group": "ga",
+   "name": "变异保持合法、同 seed 完全复现、不同 seed 至少变出一个新个体",
+   "ok": true
+  },
+  {
+   "group": "ga",
+   "name": "随机流：50 次抽样都在界内、同 seed 复现、不同 seed 不同",
+   "ok": true
+  },
+  {
+   "group": "ga",
+   "name": "覆盖率：GA 名义 200 次评估，缓存去重后每只股票最多训练 10 次",
+   "ok": true
+  },
+  {
+   "group": "curve",
+   "name": "学习曲线黄金值：三点拟合斜率 -0.01 / 截距 1.2 / 残差 0",
+   "ok": true
+  },
+  {
+   "group": "curve",
+   "name": "外推：三点 (10,1.1)(20,1.0)(30,0.9) 到 n=60 得 0.6；两点共线到 n=50 得 6.0",
+   "ok": true
+  },
+  {
+   "group": "curve",
+   "name": "外推目标截断到最大观测点的 4 倍：n=10000 与 n=120 同值",
+   "ok": true
+  },
+  {
+   "group": "curve",
+   "name": "护栏：点数不足或无斜率返回 Nothing；两点不算可信；阶段点 1686 -> 210/421/843",
+   "ok": true
+  },
+  {
+   "group": "curve",
+   "name": "learningCurve 按阶段点采样；pruneByCurve 只留已优于阈值的阶段",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "线性外推在 MAE 这种凸曲线上不够用：Top-2 全等率不到一半、误差被系统性低估",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "换成幂律外推能把误差压掉三分之二，但只到 1.38：形状对了，平台期还是读不出来",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "幂律也没把排序救回来：Top-1 只有三成，Top-2 全等 3/20",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "外推误差是冠军-亚军差距的二十倍：信号比噪声还小，排序本来就不该被外推恢复",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "GA 与穷举选出同一个候选（20/20 只）",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "学习曲线在至少 70% 的 (股票, 候选) 上随训练量单调不升",
+   "ok": true
+  },
+  {
+   "group": "budget",
+   "name": "增量侧每只股票 30 次部分拟合，对照全量 10 次整段拟合",
+   "ok": true
+  },
+  {
+   "group": "budget",
+   "name": "增量侧接触训练数据 0.874 倍：每候选 1/8 + 1/4 + 1/2",
+   "ok": true
+  },
+  {
+   "group": "budget",
+   "name": "GA 名义评估 200 次 / 只，缓存后唯一训练不超过 10 次",
+   "ok": true
+  },
+  {
+   "group": "budget",
+   "name": "10 个候选的小空间上，穷举 10 次就够：GA 多花 20 倍评估换同一个答案",
+   "ok": true
+  },
+  {
+   "group": "budget",
+   "name": "648 组合的网格才轮到 GA：200 次评估只碰 30.9% 的空间",
+   "ok": true
+  }
+ ],
+ "seconds": 26.4113
+}

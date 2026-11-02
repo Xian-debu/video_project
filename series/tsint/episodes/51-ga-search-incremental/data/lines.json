@@ -1,0 +1,2297 @@
+{
+ "entry": "src/tsint-51-ga-search-incremental/script.ts",
+ "fps": 30,
+ "totalSec": 1259.65,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 127.55
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 127.55,
+   "dur": 165.78
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 293.33,
+   "dur": 191.58
+  },
+  {
+   "id": "metrics",
+   "chapter": "读数",
+   "start": 484.91,
+   "dur": 167.51
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 652.42,
+   "dur": 156.71
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 809.13,
+   "dur": 231.8
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1040.93,
+   "dur": 108.98
+  },
+  {
+   "id": "outro",
+   "chapter": "收束",
+   "start": 1149.91,
+   "dur": 109.74
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.21,
+   "speech": "上一集换了个问法，这一集换两把刀。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.59,
+   "dur": 4,
+   "speech": "模型选择有两笔账：候选多、拟合贵。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.77,
+   "dur": 5.08,
+   "speech": "候选多就要多试，拟合贵就是每次都要扫全样本。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 15.03,
+   "dur": 4.98,
+   "speech": "省算力的办法也只有两种：少试几个、少拟合几次。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 20.19,
+   "dur": 3.83,
+   "speech": "这一集把两种都实现、都跑一遍。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 24.2,
+   "dur": 4.86,
+   "speech": "第一种是遗传算法：不逐个试，按适应度养种群。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 29.24,
+   "dur": 5.44,
+   "speech": "第二种是学习曲线外推：先小样本拟合，再往全量推。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 34.86,
+   "dur": 4.29,
+   "speech": "两个都写成 Haskell 模块，都有黄金用例。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 39.33,
+   "dur": 3.97,
+   "speech": "也都在二十只股票、十个候选上量过。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 43.48,
+   "dur": 3.81,
+   "speech": "结论先说：两把刀都没省在排序上。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 47.47,
+   "dur": 2.22,
+   "speech": "先看三个数字。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 49.87,
+   "dur": 5.01,
+   "speech": "第一个是两百：遗传算法每只股票评估两百次。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 55.06,
+   "dur": 3.61,
+   "speech": "十个候选，穷举只要十次拟合。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 58.85,
+   "dur": 4.5,
+   "speech": "两百次评估，去重之后仍然是两百次训练。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 63.53,
+   "dur": 3.35,
+   "speech": "多花二十倍，换回来同一个答案。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 67.06,
+   "dur": 4.14,
+   "speech": "第二个是一点三八：幂律外推后的平均误差。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 71.38,
+   "dur": 3.4,
+   "speech": "候选的验证误差在十点八左右。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 74.96,
+   "dur": 3.85,
+   "speech": "一点三八只有百分之十三，看着很小。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 79,
+   "dur": 4.86,
+   "speech": "但冠军和亚军的验证差距只有零点零六五。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 84.04,
+   "dur": 2.89,
+   "speech": "外推误差是它的二十一倍。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 87.11,
+   "dur": 4.57,
+   "speech": "第三个是三成：幂律外推的 Top-1 命中率。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 91.87,
+   "dur": 2.7,
+   "speech": "全量遍历是百分之百。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 94.75,
+   "dur": 2.77,
+   "speech": "外推没有把排序救回来。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 97.7,
+   "dur": 2.56,
+   "speech": "三句话先放在这里。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 100.44,
+   "dur": 4.12,
+   "speech": "第一，省算力的前提是信号比噪声大。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 104.74,
+   "dur": 4.21,
+   "speech": "第二，遗传算法只在搜不完的空间里划算。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 109.13,
+   "dur": 4.79,
+   "speech": "第三，学习曲线要先看形状，再看平台期。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 114.1,
+   "dur": 3.37,
+   "speech": "这三句不是推的，是量出来的。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 117.66,
+   "dur": 4.05,
+   "speech": "下面先讲这两把刀各自要花什么钱。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 121.88,
+   "dur": 3.47,
+   "speech": "再看钱花在哪里、省没省下来。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 128.75,
+   "dur": 3.73,
+   "speech": "上一集的结论是池子决定天花板。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 132.66,
+   "dur": 4.12,
+   "speech": "池子越大，天花板越高，代价也越大。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 136.96,
+   "dur": 4.69,
+   "speech": "十个候选乘二十只股票，是两百次整段拟合。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 141.84,
+   "dur": 4.12,
+   "speech": "每次拟合都要扫过一千六百多根训练样本。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 146.13,
+   "dur": 2.99,
+   "speech": "这只是一次验证段的打分。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 149.3,
+   "dur": 4.31,
+   "speech": "换成七维超参的网格，就是六百四十八次。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 153.79,
+   "dur": 4.33,
+   "speech": "一轮网格搜索，等于一轮完整训练的开销。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 158.31,
+   "dur": 3.16,
+   "speech": "所以第一笔账是拟合次数。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 161.65,
+   "dur": 3.81,
+   "speech": "第二笔账是每次拟合本身贵不贵。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 165.63,
+   "dur": 3.09,
+   "speech": "这一集把两笔账一起算。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 168.9,
+   "dur": 3.73,
+   "speech": "省算力的路线有两条，方向相反。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 172.81,
+   "dur": 3.81,
+   "speech": "一条压缩搜索空间：少试几个组合。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 176.8,
+   "dur": 4.17,
+   "speech": "一条压缩每次拟合：用部分数据先排序。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 181.14,
+   "dur": 4.24,
+   "speech": "遗传算法走第一条，让好的组合多繁殖。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 185.56,
+   "dur": 4.55,
+   "speech": "学习曲线外推走第二条，把误差推到全量。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 190.29,
+   "dur": 3.13,
+   "speech": "两条路线依赖同一个前提。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 193.61,
+   "dur": 2.97,
+   "speech": "省下来的部分不改变排序。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 196.75,
+   "dur": 3.47,
+   "speech": "这个前提成立不成立，只能量。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 200.4,
+   "dur": 3.61,
+   "speech": "这一集的全部工作，就是量这件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 204.2,
+   "dur": 3.23,
+   "speech": "量之前先把零件讲清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 207.61,
+   "dur": 4.41,
+   "speech": "遗传算法要先把搜索问题翻译成基因。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 212.19,
+   "dur": 4.53,
+   "speech": "七维超参就是七段基因，每段有上下界。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 216.9,
+   "dur": 4.05,
+   "speech": "一个组合叫个体，一群个体叫种群。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 221.12,
+   "dur": 3.49,
+   "speech": "个体的好坏由适应度函数打分。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 224.8,
+   "dur": 3.73,
+   "speech": "这里的适应度是验证段 MAE 的相反数。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 228.71,
+   "dur": 4.48,
+   "speech": "每一代做三件事：选择、交叉、变异。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 233.37,
+   "dur": 4.19,
+   "speech": "选择用锦标赛：随机抓三个，留最好的。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 237.74,
+   "dur": 3.47,
+   "speech": "交叉把两个父代的基因段交换。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 241.39,
+   "dur": 3.85,
+   "speech": "变异按小概率把某一位在界内重抽。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 245.42,
+   "dur": 4.24,
+   "speech": "再加精英保留：最好的两个原样进下一代。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 249.84,
+   "dur": 4.33,
+   "speech": "参数固定，写进默认值，结果可复现。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 254.36,
+   "dur": 3.54,
+   "speech": "种群二十，十代，精英两个。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 258.08,
+   "dur": 4.89,
+   "speech": "锦标赛规模三，交叉率零点八，变异率零点一。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 263.14,
+   "dur": 3.06,
+   "speech": "种子固定，序列就在那里。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 266.39,
+   "dur": 3.81,
+   "speech": "二十乘十，每只股票两百次评估。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 270.37,
+   "dur": 4.62,
+   "speech": "评估不等于训练：同一个个体会被反复抽到。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 275.17,
+   "dur": 4.69,
+   "speech": "缓存命中时，唯一训练次数会远小于两百。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 280.05,
+   "dur": 4.14,
+   "speech": "这一集专门加了覆盖率读数来量这件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 284.37,
+   "dur": 3.64,
+   "speech": "后面会看到，它一次都没命中。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 288.19,
+   "dur": 2.94,
+   "speech": "这就是第一个坏消息的伏笔。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 294.53,
+   "dur": 3.33,
+   "speech": "定义第一个量：搜索空间大小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 298.04,
+   "dur": 3.52,
+   "speech": "它是所有超参取值个数的乘积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 301.73,
+   "dur": 4.29,
+   "speech": "这一集的候选是十个现成模型，不是网格。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 306.2,
+   "dur": 3.01,
+   "speech": "所以搜索空间就是十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 309.39,
+   "dur": 3.18,
+   "speech": "上一集的网格是六百四十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 312.76,
+   "dur": 4.14,
+   "speech": "后面说遗传算法只在搜不完的空间里划算，"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 317.08,
+   "dur": 3.4,
+   "speech": "指的就是这两种规模的差别。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 320.66,
+   "dur": 3.52,
+   "speech": "十个的空间，穷举十次就完了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 324.35,
+   "dur": 4.21,
+   "speech": "六百四十八的空间，穷举要六百四十八次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 328.75,
+   "dur": 2.73,
+   "speech": "优势只能出现在后者。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 331.65,
+   "dur": 2.97,
+   "speech": "定义第二个量：评估预算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 334.8,
+   "dur": 3.69,
+   "speech": "一次评估就是拿一个基因组去打分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 338.67,
+   "dur": 3.4,
+   "speech": "一次训练是真正拟合一遍模型。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 342.24,
+   "dur": 2.27,
+   "speech": "两者不是一回事。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 344.69,
+   "dur": 3.66,
+   "speech": "有缓存时同一个基因只训练一次。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 348.54,
+   "dur": 3.85,
+   "speech": "这一集的缓存键就是整个基因向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 352.57,
+   "dur": 4.07,
+   "speech": "同一个基因在十代里可能被反复抽到。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 356.82,
+   "dur": 3.73,
+   "speech": "覆盖率记录的是去重后的训练次数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 360.73,
+   "dur": 3.21,
+   "speech": "每代记一次，最后取末值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 364.12,
+   "dur": 3.93,
+   "speech": "这是判断遗传算法值不值的直接依据。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 368.23,
+   "dur": 2.85,
+   "speech": "定义第三个量：阶段点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 371.25,
+   "dur": 3.21,
+   "speech": "阶段点是训练量的采样位置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 374.64,
+   "dur": 3.83,
+   "speech": "取八分之一、四分之一、二分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 378.65,
+   "dur": 2.44,
+   "speech": "三个点单调递增。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 381.27,
+   "dur": 4.26,
+   "speech": "三次部分拟合，接触的数据加起来是多少。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 385.71,
+   "dur": 4.72,
+   "speech": "八分之一加四分之一加二分之一，等于八分之七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 390.61,
+   "dur": 3.09,
+   "speech": "不是一半，是零点八七五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 393.87,
+   "dur": 3.85,
+   "speech": "实际读数零点八七四，差在取整。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 397.91,
+   "dur": 2.49,
+   "speech": "这个数字后面要用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 400.57,
+   "dur": 2.58,
+   "speech": "它决定了省钱的上限。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 403.33,
+   "dur": 2.77,
+   "speech": "定义第四个量：外推。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 406.29,
+   "dur": 4.38,
+   "speech": "线性外推假设误差随训练量线性下降。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 410.85,
+   "dur": 4.19,
+   "speech": "两点就能定一条线，三点做最小二乘。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 415.22,
+   "dur": 2.89,
+   "speech": "真实的学习曲线是凸的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 418.29,
+   "dur": 4.02,
+   "speech": "凸曲线的割线，永远高估下降幅度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 422.5,
+   "dur": 3.76,
+   "speech": "所以线性外推会系统性低估误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 426.43,
+   "dur": 2.53,
+   "speech": "幂律外推换一个假设。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 429.15,
+   "dur": 3.37,
+   "speech": "误差等于 a 乘 n 的负 b 次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 432.7,
+   "dur": 4.09,
+   "speech": "取对数之后还是一条直线，拟合方式一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 436.98,
+   "dur": 4.21,
+   "speech": "但形状对上了：凸、递减、有平台。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 441.37,
+   "dur": 2.94,
+   "speech": "定义第五个量：外推误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 444.49,
+   "dur": 4.5,
+   "speech": "它是外推 MAE 与全量验证 MAE 的平均绝对差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 449.17,
+   "dur": 3.04,
+   "speech": "注意比的是 MAE，不是排序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 452.39,
+   "dur": 3.18,
+   "speech": "排序对不对，还要另外几个量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 455.75,
+   "dur": 5.49,
+   "speech": "一个是 Top-1 命中：外推选的和全量选的是不是同一个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 461.42,
+   "dur": 5.17,
+   "speech": "一个是 Top-2 全等：两个名额的集合是否完全一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 466.77,
+   "dur": 3.54,
+   "speech": "再加一个平均交集，宽松一点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 470.5,
+   "dur": 3.76,
+   "speech": "最后是冠军和亚军的验证 MAE 差距。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 474.43,
+   "dur": 2.94,
+   "speech": "这个差距是信号的尺度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 477.56,
+   "dur": 5.15,
+   "speech": "外推误差比它大多少倍，就是排序能不能恢复的判据。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 486.11,
+   "dur": 3.23,
+   "speech": "指标只挑四个，够用就行。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 489.52,
+   "dur": 5.17,
+   "speech": "第一个是线性外推的黄金值：三点外推到六十得零点六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 494.87,
+   "dur": 3.81,
+   "speech": "第二个是两点共线：外推到五十得六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 498.86,
+   "dur": 6.35,
+   "speech": "第三个是阶段点：训练量切成三段，取二一三、四二六、八五二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 505.39,
+   "dur": 3.52,
+   "speech": "第四个是遗传算法的黄金值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 509.09,
+   "dur": 4.79,
+   "speech": "目标函数是负的 x 减三平方，种子一三六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 514.06,
+   "dur": 5.17,
+   "speech": "第一代最好适应度负一，第二代出现基因三，适应度零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 519.41,
+   "dur": 5.03,
+   "speech": "单调性也量了：两百对里一百六十一对单调不升。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 524.62,
+   "dur": 3.33,
+   "speech": "八成一的比例，后面边界要提。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 528.13,
+   "dur": 3.18,
+   "speech": "指标定义完，看真实读数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 531.49,
+   "dur": 3.01,
+   "speech": "先看十候选的阶段曲线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 534.68,
+   "dur": 5.44,
+   "speech": "表上有四个数：二一零、四二一、八四三、全量。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 540.3,
+   "dur": 4.31,
+   "speech": "朴素模型是一条平线，因为它不看训练量。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 544.79,
+   "dur": 3.59,
+   "speech": "拟合型的候选，曲线都往下掉。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 548.56,
+   "dur": 2.77,
+   "speech": "以 AR(1) 为例。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 551.52,
+   "dur": 2.99,
+   "speech": "二一零时误差十八点零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 554.69,
+   "dur": 4.74,
+   "speech": "四二一时十一点四五，八四三时十点九一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 559.61,
+   "dur": 2.32,
+   "speech": "全量十点八零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 562.11,
+   "dur": 3.64,
+   "speech": "前两段掉得快，后两段几乎不动。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 565.92,
+   "dur": 4.41,
+   "speech": "这就是平台期：曲线在最后一段已经平了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 570.51,
+   "dur": 4.33,
+   "speech": "同一批候选，两种外推的误差完全不同。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 575.02,
+   "dur": 3.9,
+   "speech": "线性外推的平均绝对差是四点七六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 579.11,
+   "dur": 3.25,
+   "speech": "最大的一次差了两百一十九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 582.54,
+   "dur": 5.7,
+   "speech": "为什么这么大：AR(1) 全量十点八，线性外推给一点七三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 588.42,
+   "dur": 3.54,
+   "speech": "差了一个量级，排序自然塌了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 592.14,
+   "dur": 3.57,
+   "speech": "幂律外推把误差压到一点三八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 595.89,
+   "dur": 2.82,
+   "speech": "最大的差是五十五点七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 598.89,
+   "dur": 3.93,
+   "speech": "压掉了三分之二，但离十点八还很远。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 603,
+   "dur": 4.17,
+   "speech": "三个点都在下降段，外推看不见平台。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 607.34,
+   "dur": 3.59,
+   "speech": "形状对了，平台期还是没读出来。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 611.11,
+   "dur": 2.32,
+   "speech": "再看排序对不对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 613.61,
+   "dur": 3.54,
+   "speech": "线性外推的 Top-1 只有百分之五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 617.33,
+   "dur": 3.37,
+   "speech": "二十只股票里只挑对一只。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 620.89,
+   "dur": 3.95,
+   "speech": "幂律外推把 Top-1 抬到百分之三十。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 625.02,
+   "dur": 3.93,
+   "speech": "六只挑对，仍远低于全量的百分之百。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 629.12,
+   "dur": 3.35,
+   "speech": "Top-2 全等，幂律只有三只。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 632.65,
+   "dur": 3.16,
+   "speech": "平均交集是零点七个名额。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 635.99,
+   "dur": 4.77,
+   "speech": "冠军和亚军的验证 MAE 平均只差零点零六五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 640.94,
+   "dur": 4.07,
+   "speech": "幂律外推的误差一点三八，是它的二十一倍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 645.19,
+   "dur": 5.03,
+   "speech": "信号比噪声还小，排序本来就不该被外推恢复。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 653.62,
+   "dur": 2.37,
+   "speech": "实现分三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 656.17,
+   "dur": 5.08,
+   "speech": "遗传算法：基因、种群、选择、交叉、变异。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 661.42,
+   "dur": 4.98,
+   "speech": "增量搜索：拟合直线、外推、阶段点、剪枝。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 666.59,
+   "dur": 3.76,
+   "speech": "证据程序：把两者接到真实数据上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 670.52,
+   "dur": 3.97,
+   "speech": "三个模块都是纯函数，没有隐式状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 674.68,
+   "dur": 3.54,
+   "speech": "随机数流用一个线性同余发生器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 678.4,
+   "dur": 3.01,
+   "speech": "种子在哪，序列就在哪。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 681.59,
+   "dur": 3.76,
+   "speech": "每个模块配黄金用例，一共十一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 685.53,
+   "dur": 3.47,
+   "speech": "六个遗传算法，五个增量搜索。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 689.18,
+   "dur": 3.33,
+   "speech": "用例全过，才有资格跑证据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 692.69,
+   "dur": 2.75,
+   "speech": "先看遗传算法的核心。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 695.62,
+   "dur": 3.95,
+   "speech": "基因是整数向量，上下界一起带着。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 699.75,
+   "dur": 3.73,
+   "speech": "修复函数很简单：越界就夹回去。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 703.66,
+   "dur": 3.64,
+   "speech": "选择用锦标赛，抓三个留最好的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 707.48,
+   "dur": 4.53,
+   "speech": "交叉按概率换尾段，变异按概率重抽一位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 712.19,
+   "dur": 2.92,
+   "speech": "精英直接复制，不打乱。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 715.28,
+   "dur": 4.74,
+   "speech": "每代都记账：评估次数、去重后的训练次数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 720.21,
+   "dur": 2.8,
+   "speech": "这条账是判据的来源。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 723.18,
+   "dur": 3.54,
+   "speech": "参数全是默认值，种子固定。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 726.91,
+   "dur": 3.64,
+   "speech": "所以两百次评估可以完整复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 730.72,
+   "dur": 2.29,
+   "speech": "再看增量搜索。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 733.2,
+   "dur": 4.36,
+   "speech": "拟合直线是标准最小二乘，两点就能算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 737.74,
+   "dur": 3.81,
+   "speech": "斜率不存在时返回空，不给错误答案。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 741.72,
+   "dur": 4.72,
+   "speech": "外推前先截断目标：不超过最大观测点的四倍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 746.62,
+   "dur": 2.32,
+   "speech": "这条护栏很实际。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 749.12,
+   "dur": 4.12,
+   "speech": "没有它，外推到无穷会给出荒谬的数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 753.42,
+   "dur": 3.35,
+   "speech": "阶段点函数按总量切三段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 756.95,
+   "dur": 3.81,
+   "speech": "剪枝函数只留已经优于阈值的阶段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 760.93,
+   "dur": 3.37,
+   "speech": "两个都是纯函数，直接可以测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 764.49,
+   "dur": 4.07,
+   "speech": "这一集的曲线全部由这三个函数算出来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 768.74,
+   "dur": 3.93,
+   "speech": "证据程序把两者接到二十只股票上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 772.84,
+   "dur": 4.69,
+   "speech": "每只股票先跑十次全量拟合，得到真值排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 777.72,
+   "dur": 3.93,
+   "speech": "再跑三次部分拟合，得到三个阶段点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 781.82,
+   "dur": 3.64,
+   "speech": "然后线性外推一次，幂律外推一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 785.64,
+   "dur": 3.71,
+   "speech": "再跑一次遗传算法，两百次评估。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 789.53,
+   "dur": 3.54,
+   "speech": "所有读数写进查询用的摘要文件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 793.25,
+   "dur": 4,
+   "speech": "每只股票、每个候选的中间值都留着。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 797.43,
+   "dur": 3.28,
+   "speech": "画面上的每个数字都能追溯。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 800.89,
+   "dur": 3.04,
+   "speech": "二十六项检查，二十六秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 804.11,
+   "dur": 2.82,
+   "speech": "下面是按组看的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 810.33,
+   "dur": 2.13,
+   "speech": "验证分五组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 812.64,
+   "dur": 4.79,
+   "speech": "数据四项：样本、切分、阶段点、行数。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 817.61,
+   "dur": 6.85,
+   "speech": "遗传算法六项：黄金值、精英、交叉、变异、随机流、覆盖率。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 824.64,
+   "dur": 5.85,
+   "speech": "学习曲线五项：黄金值、外推、截断、护栏、采样。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 830.67,
+   "dur": 6.23,
+   "speech": "演示六项：线性、幂律、排序、差距、GA 一致性、单调性。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 837.08,
+   "dur": 6.3,
+   "speech": "预算五项：拟合次数、数据比、覆盖率、穷举对照、网格占比。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 843.56,
+   "dur": 3.52,
+   "speech": "二十六项全过，二十六点四秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 847.26,
+   "dur": 2.53,
+   "speech": "下面挑四组看读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 849.97,
+   "dur": 3.09,
+   "speech": "先看数据，因为它是地基。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 853.24,
+   "dur": 3.76,
+   "speech": "数据歪了，上面的读数一个都不能用。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 857.17,
+   "dur": 4.05,
+   "speech": "二十只股票，每只两千四百根以上日线。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 861.4,
+   "dur": 4.43,
+   "speech": "训练段一千六百八十六到一千七百零五根。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 866.01,
+   "dur": 4.09,
+   "speech": "验证段四百八十三到四百八十四根。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 870.28,
+   "dur": 2.82,
+   "speech": "测试段两百四十二根。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 873.29,
+   "dur": 3.78,
+   "speech": "阶段点二一三、四二六、八五二。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 877.25,
+   "dur": 4.55,
+   "speech": "行数逐只核对过，等于每只股票根数之和。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 881.98,
+   "dur": 2.22,
+   "speech": "日期没有重复。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 884.38,
+   "dur": 2.34,
+   "speech": "这些数都对上了。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 886.9,
+   "dur": 2.58,
+   "speech": "下一组看遗传算法。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 889.66,
+   "dur": 2.8,
+   "speech": "看它到底花了几次训练。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 892.64,
+   "dur": 2.87,
+   "speech": "每只股票两百次评估。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 895.69,
+   "dur": 3.42,
+   "speech": "去重后的唯一训练次数：两百。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 899.29,
+   "dur": 2.73,
+   "speech": "缓存一次都没命中。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 902.2,
+   "dur": 4.14,
+   "speech": "为什么：二十个个体的初始种群，十代。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 906.52,
+   "dur": 2.87,
+   "speech": "基因在界内几乎不重复。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 909.57,
+   "dur": 3.3,
+   "speech": "两百次评估就是两百次训练。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 913.05,
+   "dur": 3.45,
+   "speech": "和穷举十次比，多花二十倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 916.68,
+   "dur": 4.38,
+   "speech": "选出的候选和穷举完全一样，二十只全对。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 921.24,
+   "dur": 4.38,
+   "speech": "两百除以六百四十八，百分之三十点九。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 925.8,
+   "dur": 2.8,
+   "speech": "这是它在网格上的占比。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 928.78,
+   "dur": 2.46,
+   "speech": "现在看学习曲线。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 931.42,
+   "dur": 2.75,
+   "speech": "先看线性外推的失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 934.35,
+   "dur": 4.29,
+   "speech": "平均绝对差四点七六，最大两百一十九。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 938.82,
+   "dur": 4.19,
+   "speech": "Top-1 百分之五，Top-2 全等一只。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 943.19,
+   "dur": 2.92,
+   "speech": "平均交集零点四个名额。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 946.29,
+   "dur": 2.61,
+   "speech": "这四项说明一件事。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 949.07,
+   "dur": 4.17,
+   "speech": "线性外推在凸曲线上系统性低估误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 953.42,
+   "dur": 3.23,
+   "speech": "被低估的候选排到最前面。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 956.83,
+   "dur": 2.32,
+   "speech": "排序整体翻转。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 959.33,
+   "dur": 3.81,
+   "speech": "这不是实现错误，是方法本身的偏。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 963.31,
+   "dur": 3.52,
+   "speech": "换成幂律，误差压到一点三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 967.01,
+   "dur": 2.68,
+   "speech": "比线性小三点四倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 969.87,
+   "dur": 3.21,
+   "speech": "但 Top-1 只到百分之三十。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 973.26,
+   "dur": 4.12,
+   "speech": "Top-2 全等三只，平均交集零点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 977.55,
+   "dur": 3.73,
+   "speech": "和全量的百分之百比，差七十个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 981.47,
+   "dur": 2.44,
+   "speech": "三点都在下降段。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 984.09,
+   "dur": 3.66,
+   "speech": "幂律把下降段延长，看不见平台。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 987.93,
+   "dur": 4.6,
+   "speech": "真实曲线在八四三到一六八六之间几乎没动。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 992.71,
+   "dur": 3.69,
+   "speech": "外推把这段平台读成了继续下降。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 996.57,
+   "dur": 3.01,
+   "speech": "形状对了，平台期没对上。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 999.77,
+   "dur": 2.32,
+   "speech": "最后看那个判据。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1002.26,
+   "dur": 4.02,
+   "speech": "冠军和亚军平均只差零点零六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1006.47,
+   "dur": 2.82,
+   "speech": "幂律外推误差一点三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1009.47,
+   "dur": 4.29,
+   "speech": "一点三八除以零点零六五，二十一倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1013.93,
+   "dur": 4.12,
+   "speech": "误差比信号大二十倍，排序不可能恢复。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1018.23,
+   "dur": 2.39,
+   "speech": "这条结论可以推广。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 1020.8,
+   "dur": 5.27,
+   "speech": "学习曲线外推能省算力，但只在候选差距大的空间。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 1026.25,
+   "dur": 4.53,
+   "speech": "候选挤在一起时，省下来的数据换不来排序。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 1030.96,
+   "dur": 2.65,
+   "speech": "预算那组还有两个数。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 1033.79,
+   "dur": 4.93,
+   "speech": "数据比零点八七四，网格占比百分之三十点九。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1042.13,
+   "dur": 2.65,
+   "speech": "这一集有五条边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1044.96,
+   "dur": 4.55,
+   "speech": "第一，二十只股票、十个候选，样本很小。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1049.69,
+   "dur": 3.23,
+   "speech": "第二，学习曲线只有三个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1053.1,
+   "dur": 3.16,
+   "speech": "第三，只用一个指标：MAE。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1056.44,
+   "dur": 3.54,
+   "speech": "第四，只有一份数据、一个切分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1060.16,
+   "dur": 4.36,
+   "speech": "第五，遗传算法的参数是手写的默认值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1064.7,
+   "dur": 4.24,
+   "speech": "五条都成立，结论也只能在这个范围内说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1069.12,
+   "dur": 4.36,
+   "speech": "换成两百个候选，遗传算法可能真的划算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1073.66,
+   "dur": 4.24,
+   "speech": "换成五个阶段点，外推可能读得出平台。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1078.08,
+   "dur": 2.61,
+   "speech": "这些都没试，不能说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1080.86,
+   "dur": 2.85,
+   "speech": "这一集报了两条负结果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1083.89,
+   "dur": 3.85,
+   "speech": "一条是遗传算法在小空间上白忙。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1087.92,
+   "dur": 3.61,
+   "speech": "一条是学习曲线外推救不回排序。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1091.72,
+   "dur": 3.76,
+   "speech": "负结果也是结果，只要读数可复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1095.65,
+   "dur": 3.23,
+   "speech": "所以每一条都留在证据里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1099.06,
+   "dur": 2.97,
+   "speech": "明确不做的事有四件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1102.21,
+   "dur": 2.94,
+   "speech": "不做不同随机种子的分布。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1105.33,
+   "dur": 2.87,
+   "speech": "不做候选池的重新设计。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1108.38,
+   "dur": 2.61,
+   "speech": "不做多指标一致性。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1111.17,
+   "dur": 2.49,
+   "speech": "不做跨行业的推广。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1113.83,
+   "dur": 3.83,
+   "speech": "这四件都写进计划，留给后面的集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1117.84,
+   "dur": 3.76,
+   "speech": "边界不是免责，是标定适用范围。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1121.78,
+   "dur": 3.85,
+   "speech": "在范围内可复核，范围外不下结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1125.82,
+   "dur": 3.52,
+   "speech": "这一集的所有数字都有唯一来源。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1129.51,
+   "dur": 3.21,
+   "speech": "证据一跑，画面就不能改。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1132.9,
+   "dur": 2.61,
+   "speech": "这也是这个系列的做法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1135.69,
+   "dur": 4.02,
+   "speech": "先写实现，再写证据，最后写画稿。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1139.89,
+   "dur": 2.13,
+   "speech": "顺序不能反。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1142.19,
+   "dur": 2.39,
+   "speech": "反了就会挑数字。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1144.76,
+   "dur": 2.94,
+   "speech": "挑出来的数字，不叫证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1151.11,
+   "dur": 2.1,
+   "speech": "三句话带走。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1153.39,
+   "dur": 4.12,
+   "speech": "第一，省算力的前提是信号比噪声大。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1157.69,
+   "dur": 4.21,
+   "speech": "第二，遗传算法只在搜不完的空间里划算。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1162.08,
+   "dur": 4.79,
+   "speech": "第三，学习曲线要先看形状，再看平台期。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1167.05,
+   "dur": 2.87,
+   "speech": "三句话对应三个读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1170.1,
+   "dur": 3.49,
+   "speech": "信号比噪声，是二十一倍那个比。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1173.78,
+   "dur": 4.5,
+   "speech": "搜不完的空间，是两百比十、比六百四十八。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1178.46,
+   "dur": 4.24,
+   "speech": "平台期，是八四三到一六八六那段平线。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1182.88,
+   "dur": 2.82,
+   "speech": "这三句都能自己复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1185.88,
+   "dur": 2.85,
+   "speech": "复现的方法就是跑证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1188.91,
+   "dur": 2.37,
+   "speech": "这一集没有赢家。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1191.45,
+   "dur": 3.66,
+   "speech": "两把刀都试了，都没省在排序上。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1195.29,
+   "dur": 3.01,
+   "speech": "但省下来的东西是清楚的。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1198.49,
+   "dur": 3.85,
+   "speech": "增量侧省了数据量，零点八七四倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1202.52,
+   "dur": 5.32,
+   "speech": "遗传算法在网格上省了评估次数，百分之三十点九。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1208.02,
+   "dur": 4.14,
+   "speech": "只是这两笔省下来的钱，都没换成排序。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1212.34,
+   "dur": 2.89,
+   "speech": "省下来的账，要分开记。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1215.42,
+   "dur": 3.21,
+   "speech": "这样才知道省没省到地方。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1218.8,
+   "dur": 2.53,
+   "speech": "下一集换一个角度。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1221.52,
+   "dur": 3.83,
+   "speech": "不再问怎么省算力，问怎么复用经验。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1225.53,
+   "dur": 3.61,
+   "speech": "把三百只股票当成三百个任务。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1229.32,
+   "dur": 3.78,
+   "speech": "元学习选模型，看能不能学出规律。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1233.28,
+   "dur": 3.18,
+   "speech": "主题是把股票当成任务。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1236.64,
+   "dur": 3.52,
+   "speech": "问题是用统计特征还是表征。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1240.34,
+   "dur": 3.35,
+   "speech": "方法是用任务库训元学习器。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1243.87,
+   "dur": 2.46,
+   "speech": "时长二十四分钟。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1246.51,
+   "dur": 2.29,
+   "speech": "这一集就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1248.99,
+   "dur": 2.75,
+   "speech": "所有数字都在证据里。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1251.92,
+   "dur": 2.49,
+   "speech": "所有检查都能重跑。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1254.58,
+   "dur": 2.87,
+   "speech": "谢谢观看，我们下集再见。"
+  }
+ ]
+}
