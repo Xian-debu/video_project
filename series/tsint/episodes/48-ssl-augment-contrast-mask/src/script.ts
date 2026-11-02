@@ -363,7 +363,7 @@ const SPEC: SceneSpec[] = [
   "chapter": "验证",
   "kicker": "二十八项检查",
   "title": "每条公式都被钉住",
-  "goal": "全 PASS · 10.6 秒",
+  "goal": "全 PASS · 10.8 秒",
   "pages": [
    0,
    10,

@@ -28,18 +28,18 @@ export const OutroScene: React.FC = () => (
         <div style={{ position: "absolute", left: PAD, top: 300, width: 660 }}>
           <Chip color={C.coral}>下一集</Chip>
           <Body size={FT.h1} color={C.ink} style={{ lineHeight: 1.25, marginTop: 18 }}>把曲线<br />画成图。</Body>
-          <Body style={{ marginTop: 22 }}>下一集：GAF 把一维序列铺成二维图像，MTF 把状态转移写成矩阵，两种表示叠在一起——序列分类第一次用上卷积网络。</Body>
+          <Body style={{ marginTop: 22 }}>下一集：GAF 把一维序列铺成二维图，MTF 把状态转移写成矩阵，两条通道并进卷积；再把时域、ACF、谱和 shapelet 四个域的判断投成一票。</Body>
           <div style={{ display: "flex", gap: 10, marginTop: 22 }}>
-            <Chip color={C.coral}>第 49-gaf-mtf-cote-multidomain 集</Chip>
+            <Chip color={C.coral}>第 49 集</Chip>
             <Chip color={C.cyan}>22 分钟</Chip>
             <Chip color={C.violet}>ch05 · 表示</Chip>
           </div>
         </div>
         <div style={{ position: "absolute", left: 800, top: 300, width: 1020 }}>
           <Card label="这一集留下的问题" accent={C.violet}>
-            <Row name="标签" value="50 条" note="行业三分类" width={960} />
-            <Row name="特征" value="32 维" note="从 60 天压出来" width={960} />
-            <Row name="下一集" value="图像表示" note="GAF / MTF / 多域" width={960} color={C.violet} />
+            <Row name="只有五十个标签" value="一千条窗口" note="行业三分类" width={960} />
+            <Row name="换一种表示" value="曲线能变图像" note="GAF 靠幅值，MTF 靠转移次序" width={960} color={C.cyan} />
+            <Row name="下一集" value="图像化 + 四域投票" note="GAF / MTF / RP 与 COTE" width={960} color={C.violet} />
             <div style={{ marginTop: 6 }} />
           </Card>
         </div>
