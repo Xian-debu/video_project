@@ -1,0 +1,2178 @@
+{
+ "entry": "src/tsint-43-shapelet-search-pips/script.ts",
+ "fps": 30,
+ "totalSec": 1127.12,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 93.39
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 93.39,
+   "dur": 131.47
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 224.86,
+   "dur": 199.09
+  },
+  {
+   "id": "metrics",
+   "chapter": "度量",
+   "start": 423.95,
+   "dur": 151.1
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 575.05,
+   "dur": 153.95
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 729,
+   "dur": 222.6
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 951.6,
+   "dur": 134
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 1085.6,
+   "dur": 41.52
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.97,
+   "speech": "一条曲线，先挖一小段。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.35,
+   "dur": 3.4,
+   "speech": "这一小段形状，自己就能分类。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.92,
+   "dur": 3.13,
+   "speech": "它有个名字，叫 shapelet。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.24,
+   "dur": 3.66,
+   "speech": "读作形状子，意思是判别形状。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.08,
+   "dur": 2.73,
+   "speech": "看这三条合成序列。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.99,
+   "dur": 3.78,
+   "speech": "周期分别是八、十二、二十。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 21.95,
+   "dur": 3.33,
+   "speech": "每类五十条，每条一百个点。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.45,
+   "dur": 3.25,
+   "speech": "训练九十条，测试六十条。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 28.89,
+   "dur": 4.07,
+   "speech": "全搜索要试两万三千六百七十个候选。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.14,
+   "dur": 4.09,
+   "speech": "找到的最优增益是零点八四七五 bit。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.41,
+   "dur": 3.54,
+   "speech": "PIPs 只让起点落在十个拐点上。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 41.13,
+   "dur": 4.45,
+   "speech": "候选压到两千三百二十五个，百分之九点八二。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 45.77,
+   "dur": 3.49,
+   "speech": "耗时二十二秒掉到两秒，十倍。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 49.44,
+   "dur": 3.45,
+   "speech": "增益一模一样，零点八四七五。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 53.07,
+   "dur": 3.06,
+   "speech": "分类准确率也都是一点零。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 56.31,
+   "dur": 3.3,
+   "speech": "这是合成数据上的完美世界。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 59.79,
+   "dur": 3.28,
+   "speech": "换成真实的一百五十只股票。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 63.25,
+   "dur": 3.4,
+   "speech": "每条取最后一百个交易日的收益。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 66.83,
+   "dur": 4.29,
+   "speech": "同一个算法，准确率只有零点三四二九。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 71.29,
+   "dur": 3.85,
+   "speech": "随机猜是三分之一，它只多一点点。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 75.33,
+   "dur": 3.33,
+   "speech": "完美和失效之间，差的是什么。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 78.83,
+   "dur": 2.53,
+   "speech": "这一集讲三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 81.55,
+   "dur": 2.63,
+   "speech": "形状怎么变成特征。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 84.36,
+   "dur": 3.16,
+   "speech": "搜索怎么用信息增益打分。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 87.7,
+   "dur": 3.49,
+   "speech": "以及 PIPs 与真实数据的边界。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 94.59,
+   "dur": 1.98,
+   "speech": "先看清任务。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 96.75,
+   "dur": 4.57,
+   "speech": "给一条一百点的序列，判它属于三类中的哪一类。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 101.51,
+   "dur": 3.66,
+   "speech": "最直接的做法的整条序列算距离。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 105.35,
+   "dur": 4.74,
+   "speech": "上一集试过，欧氏和 DTW 都不到五成。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 110.27,
+   "dur": 3.93,
+   "speech": "原因之一是：判别信息只占一小段。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 114.38,
+   "dur": 2.94,
+   "speech": "其余九十几点都是背景。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 117.5,
+   "dur": 3.13,
+   "speech": "真实数据里能看见这件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 120.81,
+   "dur": 5.29,
+   "speech": "中创智领，装备组，到模板的距离二点一九七五。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 126.29,
+   "dur": 4.38,
+   "speech": "同方股份，电子组，距离零点零零零二。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 130.85,
+   "dur": 4.41,
+   "speech": "同一条模板，在两条序列上差了一万倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 135.43,
+   "dur": 2.7,
+   "speech": "所以别拿整条序列比。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 138.32,
+   "dur": 2.15,
+   "speech": "拿一小段比。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 140.65,
+   "dur": 2.7,
+   "speech": "这一小段叫 shapelet。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 143.53,
+   "dur": 4.26,
+   "speech": "定义是：从某条序列里截出的连续子序列。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 147.97,
+   "dur": 4.48,
+   "speech": "长短由我们搜，比如八、十二、二十。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 152.63,
+   "dur": 4.55,
+   "speech": "它对每条序列的距离，是滑动窗口最小距离。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 157.36,
+   "dur": 4.07,
+   "speech": "窗口内先做 z 归一化，形状才可比。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 161.61,
+   "dur": 3.88,
+   "speech": "然后找一个阈值，把一类和其余分开。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 165.67,
+   "dur": 3.71,
+   "speech": "分开得好不好，用信息增益衡量。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 169.56,
+   "dur": 3.37,
+   "speech": "搜索目标就是增益最大的那一段。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 173.11,
+   "dur": 2.46,
+   "speech": "搜索空间有多大。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 175.75,
+   "dur": 3.78,
+   "speech": "每条序列，长度八有九十三个起点。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 179.71,
+   "dur": 3.88,
+   "speech": "长度十二八十九个，长度二十八十一。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 183.77,
+   "dur": 2.85,
+   "speech": "合起来二百六十三个起点。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 186.8,
+   "dur": 4.43,
+   "speech": "九十条训练序列，两万三千六百七十个候选。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 191.41,
+   "dur": 4.09,
+   "speech": "每个候选都要在九十条序列上滑一遍。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 195.68,
+   "dur": 3.54,
+   "speech": "这就是全搜索要二十二秒的原因。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 199.4,
+   "dur": 2.03,
+   "speech": "分数怎么算。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 201.61,
+   "dur": 4.91,
+   "speech": "训练集里每类取一条最好的模板，组成分类器。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 206.7,
+   "dur": 4.41,
+   "speech": "测试时算三条模板的距离，取最近的那类。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 211.29,
+   "dur": 3.28,
+   "speech": "还要问一句：这个差别是真的吗。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 214.75,
+   "dur": 4.29,
+   "speech": "用 ANOVA 的 F 和 Kruskal 的 H 两个检验。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 219.21,
+   "dur": 3.45,
+   "speech": "好，先把形状这个词讲清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 226.06,
+   "dur": 3.09,
+   "speech": "一条序列 x，长度 n。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 229.33,
+   "dur": 4.93,
+   "speech": "一个候选片段 s，长度 L，从位置 p 开始。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 234.44,
+   "dur": 3.09,
+   "speech": "s 是 x 的连续子序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 237.71,
+   "dur": 4.43,
+   "speech": "候选 s 对另一条序列 y 的距离，这样定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 242.32,
+   "dur": 4.24,
+   "speech": "把 y 的每个窗口拿出来，各自 z 归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 246.73,
+   "dur": 3.06,
+   "speech": "算欧氏距离，取最小值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 249.98,
+   "dur": 4.57,
+   "speech": "距离等于，所有窗口里最小的那个欧氏距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 254.73,
+   "dur": 3.85,
+   "speech": "z 归一化是减均值、除标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 258.76,
+   "dur": 3.95,
+   "speech": "为什么要归一化：幅度不该影响形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 262.89,
+   "dur": 4.17,
+   "speech": "为什么取最小：形状可以出现在任何位置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 267.24,
+   "dur": 2.61,
+   "speech": "有了距离，就能排序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 270.03,
+   "dur": 4.91,
+   "speech": "把九十条序列按到 s 的距离从小到大排。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 275.12,
+   "dur": 4.77,
+   "speech": "每个位置切一刀，左边判正类，右边判负类。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 280.06,
+   "dur": 3.25,
+   "speech": "刀切在哪里，由信息熵决定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 283.5,
+   "dur": 4.09,
+   "speech": "熵的公式：H 等于负的 sum p log2 p。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 287.77,
+   "dur": 4.41,
+   "speech": "两类时，熵最大是一 bit，当两类各半。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 292.36,
+   "dur": 4.48,
+   "speech": "增益等于父熵，减去左右子熵的加权平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 297.01,
+   "dur": 3.78,
+   "speech": "权重是两边样本数占全体的比例。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 300.98,
+   "dur": 3.73,
+   "speech": "对第 c 类做一对其余，就是二分类。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 304.89,
+   "dur": 4.17,
+   "speech": "三分类时，每类各算一次，取最大的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 309.24,
+   "dur": 3.21,
+   "speech": "阈值取相邻两个距离的中点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 312.62,
+   "dur": 3.73,
+   "speech": "只在中点严格大于前一点时才切。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 316.54,
+   "dur": 3.3,
+   "speech": "这是为了不把相等的距离切开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 320.02,
+   "dur": 3.52,
+   "speech": "注意一个容易被忽略的细节：方向。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 323.72,
+   "dur": 3.59,
+   "speech": "通常假设：距离小，才像这个类。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 327.49,
+   "dur": 4.65,
+   "speech": "但增益对方向是对称的，反向切同样高分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 332.31,
+   "dur": 3.83,
+   "speech": "反向的意思是：距离大，才像这个类。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 336.32,
+   "dur": 3.18,
+   "speech": "本集的最优模板就是反向的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 339.68,
+   "dur": 2.99,
+   "speech": "它从第一类的序列里截出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 342.85,
+   "dur": 2.77,
+   "speech": "却对第三类判别最好。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 345.81,
+   "dur": 3.66,
+   "speech": "因为第三类里没有这段八周期形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 349.65,
+   "dur": 4.14,
+   "speech": "第三类的距离全都大于一点二八六六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 353.97,
+   "dur": 3.66,
+   "speech": "其余两类全在一点二零三六以下。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 357.81,
+   "dur": 4.05,
+   "speech": "这条分界线，正好把第三类隔离在外。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 362.04,
+   "dur": 4.12,
+   "speech": "所以看 shapelet 不能只看模板长什么样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 366.34,
+   "dur": 2.73,
+   "speech": "还要看它站在哪一边。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 369.24,
+   "dur": 2.25,
+   "speech": "接下来是 PIPs。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 371.67,
+   "dur": 3.88,
+   "speech": "PIP 是感知重要点，也叫感知拐点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 375.73,
+   "dur": 3.45,
+   "speech": "做法很贪心：先取首尾两点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 379.35,
+   "dur": 3.47,
+   "speech": "每轮找离当前折线最远的那个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 383,
+   "dur": 3.3,
+   "speech": "加进来，重画折线，再找。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 386.49,
+   "dur": 4.07,
+   "speech": "取十个点，就把一百点压成十个拐点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 390.74,
+   "dur": 3.88,
+   "speech": "搜索时，起点只许落在这十个点上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 394.79,
+   "dur": 4.38,
+   "speech": "这就是候选数从两万三掉到两千三的原因。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 399.36,
+   "dur": 3.25,
+   "speech": "代价是可能错过最优起点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 402.79,
+   "dur": 2.34,
+   "speech": "最后是两个检验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 405.31,
+   "dur": 4.26,
+   "speech": "ANOVA 的 F 比组间均方和组内均方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 409.75,
+   "dur": 4.69,
+   "speech": "Kruskal 的 H 先把数据换成秩，再比秩和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 414.63,
+   "dur": 3.3,
+   "speech": "F 假设正态，H 不假设。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 418.11,
+   "dur": 3.64,
+   "speech": "所以它们会在同一批数据上吵架。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 425.15,
+   "dur": 2.08,
+   "speech": "先算一笔账。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 427.41,
+   "dur": 4.6,
+   "speech": "全搜索：九十条序列，每条二百六十三个起点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 432.19,
+   "dur": 2.89,
+   "speech": "两万三千六百七十个候选。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 435.26,
+   "dur": 3.47,
+   "speech": "每个候选长度八、十二或二十。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 438.91,
+   "dur": 3.69,
+   "speech": "对九十条序列做滑动最小距离。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 442.78,
+   "dur": 3.16,
+   "speech": "总距离计算量按百万次算。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 446.11,
+   "dur": 2.77,
+   "speech": "实测二十二点一五秒。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 449.07,
+   "dur": 3.95,
+   "speech": "PIPs 搜索：起点只从十个拐点里选。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 453.2,
+   "dur": 5.15,
+   "speech": "长度八放得下九个拐点，十二九个，二十也是九个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 458.53,
+   "dur": 3.25,
+   "speech": "每条序列平均二十六个起点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 461.96,
+   "dur": 4.55,
+   "speech": "一共两千三百二十五个候选，占百分之九点八二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 466.69,
+   "dur": 3.57,
+   "speech": "候选少了十倍，时间也少了十倍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 470.44,
+   "dur": 3.52,
+   "speech": "二十二点一五秒对二点一七秒。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 474.14,
+   "dur": 2.41,
+   "speech": "倍数是十点二一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 476.73,
+   "dur": 1.89,
+   "speech": "那么增益呢。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 478.8,
+   "dur": 3.16,
+   "speech": "全搜索零点八四七五 bit。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 482.13,
+   "dur": 3.23,
+   "speech": "PIPs 也是零点八四七五 bit。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 485.54,
+   "dur": 2.29,
+   "speech": "增益差值是零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 488.02,
+   "dur": 3.93,
+   "speech": "准确率都是一点零，六十条测试全对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 492.12,
+   "dur": 2.8,
+   "speech": "看上去是免费的午餐。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 495.1,
+   "dur": 2.53,
+   "speech": "但要看清楚两件事。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 497.82,
+   "dur": 4.09,
+   "speech": "第一，两条路径找到的不是同一个模板。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 502.09,
+   "dur": 3.54,
+   "speech": "全搜索的最优起点是第八个点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 505.81,
+   "dur": 3.09,
+   "speech": "PIPs 的起点集合里没有八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 509.08,
+   "dur": 3.64,
+   "speech": "它在另一个起点上找到同分模板。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 512.9,
+   "dur": 3.78,
+   "speech": "第二，增益相同不等于模板相同。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 516.86,
+   "dur": 3.16,
+   "speech": "周期八的形状会重复出现。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 520.2,
+   "dur": 3.59,
+   "speech": "不同起点能截出几乎一样的片段。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 523.97,
+   "dur": 3.45,
+   "speech": "所以这个平局有运气成分。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 527.59,
+   "dur": 2.97,
+   "speech": "换成周期二十的长模板。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 530.74,
+   "dur": 2.99,
+   "speech": "起点就被 PIPs 卡住了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 533.91,
+   "dur": 2.75,
+   "speech": "这是 PIPs 的真实风险。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 536.84,
+   "dur": 4.81,
+   "speech": "表格里四个数：候选、耗时、增益、准确率。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 541.83,
+   "dur": 3.45,
+   "speech": "两列并排，差值一栏写零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 545.46,
+   "dur": 2.92,
+   "speech": "十倍加速来自候选数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 548.56,
+   "dur": 2.89,
+   "speech": "候选数来自起点限制。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 551.63,
+   "dur": 3.11,
+   "speech": "起点限制来自十个拐点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 554.92,
+   "dur": 3.13,
+   "speech": "十个拐点来自贪心选点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 558.23,
+   "dur": 2.99,
+   "speech": "整条链路只有一处近似。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 561.4,
+   "dur": 3.16,
+   "speech": "它省掉了百分之九十的搜索。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 564.74,
+   "dur": 2.17,
+   "speech": "判别力没有掉。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 567.1,
+   "dur": 3.33,
+   "speech": "至少在这份合成数据上没掉。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 570.6,
+   "dur": 2.25,
+   "speech": "下一段看代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 576.25,
+   "dur": 4.09,
+   "speech": "三个 Haskell 模块，都在 Ch05 下面。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 580.52,
+   "dur": 2.89,
+   "speech": "Shapelet 模块十九个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 583.6,
+   "dur": 2.63,
+   "speech": "Pips 模块十一个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 586.41,
+   "dur": 3.47,
+   "speech": "DistTest 模块十四个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 590.06,
+   "dur": 2.85,
+   "speech": "合计四十四条新断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 593.08,
+   "dur": 2.56,
+   "speech": "先看搜索主循环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 595.82,
+   "dur": 4.5,
+   "speech": "对每条训练序列，对每个长度，对每个起点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 600.5,
+   "dur": 3.66,
+   "speech": "截出候选，算九十条序列的距离。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 604.35,
+   "dur": 2.8,
+   "speech": "用 bestSplitFor 算增益。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 607.32,
+   "dur": 3.16,
+   "speech": "保留下来的是一条命中记录。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 610.66,
+   "dur": 5.77,
+   "speech": "字段：长度、起点、序列号、类别、增益、阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 616.62,
+   "dur": 2.65,
+   "speech": "注意类别字段的含义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 619.45,
+   "dur": 3.23,
+   "speech": "它不是候选所在序列的标签。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 622.86,
+   "dur": 3.57,
+   "speech": "它是这条候选对哪个类分裂最好。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 626.61,
+   "dur": 2.82,
+   "speech": "这两个值经常不一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 629.61,
+   "dur": 3.4,
+   "speech": "Top-5 全是第一类序列里的片段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 633.19,
+   "dur": 2.92,
+   "speech": "却都对第三类分裂最好。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 636.28,
+   "dur": 3.76,
+   "speech": "分类器用的时候，要按这个字段过滤。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 640.22,
+   "dur": 3.9,
+   "speech": "代码里一行：hitClass 等于序列标签。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 644.3,
+   "dur": 2.77,
+   "speech": "否则准确率会掉到零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 647.26,
+   "dur": 3.01,
+   "speech": "这是本集踩过的最大的坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 650.45,
+   "dur": 2.41,
+   "speech": "bestSplitFor 的实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 653.05,
+   "dur": 3.64,
+   "speech": "把距离和标签配对，按距离排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 656.86,
+   "dur": 3.81,
+   "speech": "从左往右扫，维护正类前缀计数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 660.85,
+   "dur": 3.57,
+   "speech": "每个严格上升的位置算一次增益。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 664.6,
+   "dur": 3.97,
+   "speech": "取最大的那个，记下中点作为阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 668.75,
+   "dur": 3.47,
+   "speech": "复杂度是排序的 O n log n。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 672.4,
+   "dur": 2.49,
+   "speech": "PIPs 的实现更短。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 675.07,
+   "dur": 3.85,
+   "speech": "从首尾开始，每轮找最大偏差点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 679.1,
+   "dur": 4,
+   "speech": "偏差用相邻已选点的线性插值算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 683.28,
+   "dur": 2.37,
+   "speech": "选满十个点为止。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 685.82,
+   "dur": 3.28,
+   "speech": "DistTest 里两个检验。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 689.28,
+   "dur": 3.57,
+   "speech": "F 用组间均方比组内均方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 693.03,
+   "dur": 3.01,
+   "speech": "p 值走不完全 beta 函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 696.22,
+   "dur": 3.4,
+   "speech": "H 先把所有值换成平均秩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 699.8,
+   "dur": 3.73,
+   "speech": "并列值取平均秩，再做并列校正。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 703.71,
+   "dur": 3.25,
+   "speech": "p 值走卡方分布，自由度二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 707.15,
+   "dur": 2.89,
+   "speech": "这两个检验的假设不同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 710.22,
+   "dur": 2.73,
+   "speech": "一个要正态，一个不要。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 713.13,
+   "dur": 3.21,
+   "speech": "所以它们可以给出相反的结论。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 716.51,
+   "dur": 3.88,
+   "speech": "证据程序跑二十三组检查，全过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 720.57,
+   "dur": 2.56,
+   "speech": "耗时三十六点八秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 723.31,
+   "dur": 3.49,
+   "speech": "结果写进 summary 和 checks 文件。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 730.2,
+   "dur": 2.8,
+   "speech": "先看合成数据的总表。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 733.18,
+   "dur": 4.81,
+   "speech": "全搜索：增益零点八四七五，准确率一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 738.17,
+   "dur": 3.54,
+   "speech": "PIPs：同样的增益，同样的准确率。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 741.89,
+   "dur": 4.45,
+   "speech": "候选两万三千六百七十对两千三百二十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 746.53,
+   "dur": 3.52,
+   "speech": "耗时二十二点一五对二点一七。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 750.23,
+   "dur": 3.35,
+   "speech": "十倍加速，判别力零损失。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 753.76,
+   "dur": 2.2,
+   "speech": "再看 Top-5。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 756.13,
+   "dur": 2.53,
+   "speech": "五条全是长度八。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 758.85,
+   "dur": 5.51,
+   "speech": "起点分别是八、十六、二十、三十二、四十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 764.54,
+   "dur": 2.92,
+   "speech": "全部来自第一条训练序列。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 767.64,
+   "dur": 3.11,
+   "speech": "全部对第三类分裂最好。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 770.93,
+   "dur": 3.09,
+   "speech": "增益都是零点八四七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 774.19,
+   "dur": 4.09,
+   "speech": "阈值从一点零四七七到一点三四五八。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 778.47,
+   "dur": 3.04,
+   "speech": "这就是反向 shapelet 的样子。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 781.68,
+   "dur": 3.57,
+   "speech": "第三类的三十条全在阈值右边。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 785.43,
+   "dur": 3.06,
+   "speech": "其余五十九条全在左边。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 788.67,
+   "dur": 4.45,
+   "speech": "有一个例外是模板自己的序列，距离记无穷。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 793.31,
+   "dur": 4.38,
+   "speech": "五十九条对三十一条，增益零点八四七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 797.87,
+   "dur": 2.7,
+   "speech": "再看两类平衡的对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 800.75,
+   "dur": 2.94,
+   "speech": "增益零点八九三八 bit。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 803.87,
+   "dur": 2.92,
+   "speech": "理论上界是一点零 bit。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 806.97,
+   "dur": 2.29,
+   "speech": "差零点一零六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 809.44,
+   "dur": 3.47,
+   "speech": "差距来自自距离记无穷远。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 813.09,
+   "dur": 3.59,
+   "speech": "模板自己那条序列不参与分裂。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 816.86,
+   "dur": 2.39,
+   "speech": "所以拿不到满分。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 819.43,
+   "dur": 2.75,
+   "speech": "这不是噪声，是口径。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 822.36,
+   "dur": 2.39,
+   "speech": "现在看真实数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 824.93,
+   "dur": 3.71,
+   "speech": "一百五十只股票，每只最后一百天。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 828.82,
+   "dur": 3.52,
+   "speech": "训练四十五，测试一百零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 832.52,
+   "dur": 4.12,
+   "speech": "搜索八千一百九十个候选，四点六八秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 836.82,
+   "dur": 3.59,
+   "speech": "最优模板增益只有零点三九八三。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 840.59,
+   "dur": 3.83,
+   "speech": "准确率零点三四二九，三十六条对。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 844.6,
+   "dur": 3.09,
+   "speech": "随机猜是零点三三三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 847.87,
+   "dur": 2.41,
+   "speech": "只高了一个百分点。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 850.46,
+   "dur": 2.58,
+   "speech": "检验却说有差异。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 853.22,
+   "dur": 5.32,
+   "speech": "ANOVA：F 等于三点五七二六，p 零点零三零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 858.72,
+   "dur": 4.84,
+   "speech": "Kruskal：H 等于九点二零零九，p 零点零一零零。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 863.74,
+   "dur": 2.01,
+   "speech": "两个都显著。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 865.92,
+   "dur": 5.68,
+   "speech": "三组均值：一点三八二八、一点二零三七、一点二八九七。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 871.78,
+   "dur": 3.25,
+   "speech": "F 显著说明均值有差。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 875.22,
+   "dur": 3.21,
+   "speech": "不代表一条模板能分开它们。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 878.6,
+   "dur": 3.21,
+   "speech": "用阈值一点六七零九去切。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 881.99,
+   "dur": 4.09,
+   "speech": "召回三十九条电子，但误伤九十一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 886.26,
+   "dur": 2.34,
+   "speech": "精确率只有三成。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 888.78,
+   "dur": 3.06,
+   "speech": "这就是显著与可分的区别。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 892.03,
+   "dur": 2.32,
+   "speech": "再看黄金小例。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 894.52,
+   "dur": 4.19,
+   "speech": "F 例：两组相同，第三组整体加九。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 898.89,
+   "dur": 3.78,
+   "speech": "组间平方和二百七，组内一百二。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 902.86,
+   "dur": 4.24,
+   "speech": "自由度二和十二，均方一百三十五和十。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 907.27,
+   "dur": 4.41,
+   "speech": "F 正好十三点五，p 零点零零零八四九。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 911.86,
+   "dur": 4.6,
+   "speech": "H 例：秩和分别是四、二十四、五十。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 916.64,
+   "dur": 4.72,
+   "speech": "H 等于三点八五七一四三，p 零点一四五四。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 921.54,
+   "dur": 3.37,
+   "speech": "F 说显著，H 说不显著。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 925.09,
+   "dur": 3.16,
+   "speech": "这就是两个检验吵架的样子。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 928.43,
+   "dur": 2.01,
+   "speech": "还有一个反例。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 930.61,
+   "dur": 3.4,
+   "speech": "第三组里放一个一百的离群点。"
+  },
+  {
+   "scene": "verification",
+   "index": 56,
+   "start": 934.19,
+   "dur": 3.85,
+   "speech": "F 被方差拉平，p 零点四八七七。"
+  },
+  {
+   "scene": "verification",
+   "index": 57,
+   "start": 938.23,
+   "dur": 3.66,
+   "speech": "H 只看秩，p 零点零四四五。"
+  },
+  {
+   "scene": "verification",
+   "index": 58,
+   "start": 942.07,
+   "dur": 3.33,
+   "speech": "一个说不显著，一个说显著。"
+  },
+  {
+   "scene": "verification",
+   "index": 59,
+   "start": 945.57,
+   "dur": 3.83,
+   "speech": "结论：先问数据长什么样，再选检验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 952.8,
+   "dur": 2.82,
+   "speech": "边界从真实数据开始。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 955.8,
+   "dur": 3.45,
+   "speech": "为什么 shapelet 在收益窗上失效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 959.43,
+   "dur": 3.88,
+   "speech": "因为收益序列里没有稳定的局部形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 963.49,
+   "dur": 4.02,
+   "speech": "日收益接近白噪声，一百点里没有周期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 967.69,
+   "dur": 3.28,
+   "speech": "模板截出来的只是一段噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 971.15,
+   "dur": 2.49,
+   "speech": "换一条序列就变样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 973.81,
+   "dur": 3.37,
+   "speech": "所以增益只有零点三九八三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 977.37,
+   "dur": 2.97,
+   "speech": "行业之间确实有均值差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 980.51,
+   "dur": 2.87,
+   "speech": "F 显著，H 也显著。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 983.56,
+   "dur": 2.8,
+   "speech": "但均值差不是形状差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 986.54,
+   "dur": 3.64,
+   "speech": "形状方法要的是可重复的片段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 990.36,
+   "dur": 2.68,
+   "speech": "第二个边界：增益上界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 993.22,
+   "dur": 4.19,
+   "speech": "三分类一对其余的上界是零点九一八三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 997.59,
+   "dur": 3.45,
+   "speech": "两类平衡的上界才是一点零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1001.21,
+   "dur": 4.48,
+   "speech": "本集实测零点八四七五和零点八九三八。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1005.87,
+   "dur": 4.07,
+   "speech": "计划里写的一点零 bit 附近，要拆开说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1010.12,
+   "dur": 3.21,
+   "speech": "上界不是实测，不能混着报。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1013.51,
+   "dur": 2.39,
+   "speech": "第三个边界：方向。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1016.08,
+   "dur": 4,
+   "speech": "反向 shapelet 不是 bug，是定义的一部分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1020.25,
+   "dur": 2.97,
+   "speech": "但分类器必须知道方向。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1023.4,
+   "dur": 3.21,
+   "speech": "本集的分类器只用同类模板。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1026.79,
+   "dur": 3.49,
+   "speech": "所以反向模板没有参与预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1030.46,
+   "dur": 2.65,
+   "speech": "这是一个可以改进的地方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1033.29,
+   "dur": 3.09,
+   "speech": "第四个边界：PIPs 的起点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1036.56,
+   "dur": 3.97,
+   "speech": "十个拐点可能漏掉真正的最优起点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1040.71,
+   "dur": 4,
+   "speech": "合成数据上没漏，不代表真实数据不漏。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1044.89,
+   "dur": 2.94,
+   "speech": "本集没有做漏检率的实验。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1048.01,
+   "dur": 2.34,
+   "speech": "这是未验证的部分。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1050.54,
+   "dur": 2.44,
+   "speech": "第五个边界：数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1053.15,
+   "dur": 4.53,
+   "speech": "计划写沪深三百，实际是全市场同门类。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1057.86,
+   "dur": 3.95,
+   "speech": "每组五十只，三百内凑不齐这些行业。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1061.99,
+   "dur": 3.78,
+   "speech": "偏差记在 manifest 和 dist 里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1065.95,
+   "dur": 2.27,
+   "speech": "不悄悄改口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1068.4,
+   "dur": 4.26,
+   "speech": "证据：二十三组检查全过，三十六点八秒。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1072.84,
+   "dur": 3.73,
+   "speech": "测试：三个模块四十四条新断言。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1076.76,
+   "dur": 3.78,
+   "speech": "下一集，把这个 min 换成 SoftMin。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1080.72,
+   "dur": 2.68,
+   "speech": "让 shapelet 可以求导。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1086.8,
+   "dur": 3.28,
+   "speech": "这一集挖出了一小段形状。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1090.26,
+   "dur": 3.23,
+   "speech": "学会用信息增益给它打分。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1093.67,
+   "dur": 3.3,
+   "speech": "也看见它在真实收益上失效。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1097.15,
+   "dur": 2.89,
+   "speech": "下一集解决另一个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1100.22,
+   "dur": 2.61,
+   "speech": "搜索里的 min 不可导。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1103.01,
+   "dur": 2.37,
+   "speech": "梯度到这里就断了。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1105.56,
+   "dur": 3.57,
+   "speech": "换成 SoftMin，梯度处处存在。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1109.3,
+   "dur": 4.12,
+   "speech": "alpha 每放大十倍，落点误差小十倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1113.6,
+   "dur": 3.25,
+   "speech": "但 alpha 太大，梯度会下溢。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1117.03,
+   "dur": 2.2,
+   "speech": "训练反而停住。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1119.41,
+   "dur": 3.45,
+   "speech": "下一集：把 min 换成 SoftMin。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1123.04,
+   "dur": 1.89,
+   "speech": "我们下集见。"
+  }
+ ]
+}
