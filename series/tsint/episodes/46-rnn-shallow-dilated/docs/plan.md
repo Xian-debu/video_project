@@ -66,3 +66,11 @@ ts-admin 导出：计划是沪深 300 内 500 只，但湖里 HS300 成分只有
 6. **抽样与种子**：单种子 7、120 训练 / 60 测试，未做多次初始化与交叉验证。
 
 以上六条同时写进 ts-base `data/episodes/46-rnn-shallow-dilated/manifest.json`、本片 `data/dist.json` 的 `meta.deviations`、以及成片 boundary 场景画面。
+
+## Delivery
+
+- 成片 `delivery/Tsint46RnnShallowDilated.mp4`：1,387.20 s（23:07.20）/ 41,616 帧 / 8 场 41 页 / 354 条旁白 / −15 LUFS / TP −2 dBFS / LRA 2.6 / 70,632,840 B。
+- 画面：41 页静帧全检（一轮 15 处返修 + 重渲确认），题图 `cover.png` 取帧 20；字幕 `tsint-46.srt`（354 cue，最长 33 字，0 折行，跨度 00:00:01,200→00:23:04,990）、`tsint-46.chapters.txt`（8 章合计 1,387.19 s）、`tsint-46.chapters.ffmeta.txt`。
+- 音频：旁白 354 句 / 1,387.19 s；分数字床复用 E04 的 1560 s 循环（`scoreReused: false`，musicGain −4.5 dB、duck 4.5 dB / 57.8%）；mix 48 kHz / 1,388.39 s，peak −1.00 dBFS、RMS −26.66 dBFS。
+- 流水线：23 个 stage 全 ok、8 段 rendered 8（reused 0）；闪烁 41,616 帧 mean 20.90 / min 14.74 / max 23.27、mean|d| 0.0133、p99 0.1101、max 6.72、7 切点（4616 / 9765 / 15665 / 20709 / 26961 / 34041 / 40021）；树 `01a33b6af97974db`。
+- 复现命令：`node scripts/make.mjs --film tsint-46-rnn-shallow-dilated --score out/e04-score-loop-48k.wav`（不带 `--score` 会现场合成 23 分钟床，单核 28 分钟跑不完）。
