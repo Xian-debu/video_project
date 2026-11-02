@@ -110,7 +110,7 @@ export const ImplementationScene: React.FC = () => (
         <div style={{ position: "absolute", left: 700, top: 280, width: 1150 }}>
           <CodeBlock title="fitLine / extrapolate / powExtrap" lines={CURVE} width={1100} size={FT.meta} />
           <div style={{ marginTop: 16, fontFamily: FONT.mono, fontSize: FT.meta, color: C.inkFaint }}>
-            最大可信目标 = 4 × {fmtInt(Math.max(...M.data.stages))} = {fmtInt(M.curve.maxTarget)}；画面上的三条曲线全部由这三个函数算出
+            护栏把目标截到最大观测点的四倍：黄金值那组 4 × 30 = {fmtInt(M.curve.maxTarget)}，真数据 4 × {fmtInt(Math.max(...M.data.stages))} = {fmtInt(Math.max(...M.data.stages) * 4)}；画面上的三条曲线全部由这三个函数算出
           </div>
         </div>
       </AbsoluteFill>
