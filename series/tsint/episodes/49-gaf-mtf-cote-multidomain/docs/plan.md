@@ -1,7 +1,7 @@
 # 49-gaf-mtf-cote-multidomain - 换一种表示：图像化编码与多域集成
 
-> status: draft (produced, not yet rendered)
-> chapter: ch05 | runtime: 22 min target (actual 24:03.75) | algorithms: 2
+> status: ready (rendered 2026-11-03)
+> chapter: ch05 | runtime: 22 min target (actual 24:03.73) | algorithms: 2
 
 ## Thesis
 
@@ -52,3 +52,11 @@ ts-admin 导出（`inventory/scripts/export_ch05_imaging.py`，提交 `527e03b`�
 4. **CNN 抽样**：计划「全量 5,672 条训练」；实际按类均衡抽 2,400 训练 / 1,200 测试（证据程序的时间预算），抽样列 `cnn = 1` 写进 CSV。
 5. **COTE 分类器**：计划「每域训练一个分类器」；实际每域一套手工特征（7 / 12 / 8 / 8 维）+ **最近质心**，权重用验证集准确率，其余照计划。
 6. **时长**：计划 22 分钟；成片 **24:03.75**（1,443.75 s）。历史区间 E43 18.8 / E44 21.5 / E45 21.5 / E46 23.1 / E47 20.5 / E48 24.1 分钟，计划分钟是粗估，实测 ±30% 正常，不改稿。
+
+## Delivery
+
+- 成片 `delivery/Tsint49GafMtfCoteMultidomain.mp4`：1,443.73 s（24:03.73）/ 43,312 帧 / 30 fps / 8 场 38 页 / 380 条旁白（发声 1,349.6 s）/ −15 LUFS / TP −2 dBFS / LRA 2.4 / 68,885,116 B。
+- 字幕 `tsint-49.srt`（380 cue，跨度 00:00:01,200 → 00:24:01,550，最长 28 字，无一换行，29,380 B）；章节 `tsint-49.chapters.txt`（8 章，合计 1,443.75 s，首 00:00:00 / 末 00:22:48，462 B）；`tsint-49.chapters.ffmeta.txt`（843 B）；封面 `cover.png`（帧 20，79,197 B）。
+- 分数床复用 `out/e04-score-loop-48k.wav`（1560 s，scoreReused false，musicGain −4.5 dB、duck 4.5 dB、ducked 57.3%）；mix 48 kHz / 1,444.95 s、peak −1.0 dBFS、RMS −26.58 dBFS；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.59、gap_full −30.47、gap_audible −33.22、bed 36.8；loudnorm in I −23.0 / TP −1.4 / LRA 4.0 → out I −15.9 / TP −2.0 / LRA 2.4（dynamic，target offset +0.9）。
+- 流水线：23 个 stage 全 ok、8 段 rendered 8（reused 0）；闪烁 43,312 帧 mean 20.54 / min 14.68 / max 27.12 / mean|d| 0.0131 / p99 0.1087 / max 8.21 / 7 切点（3500 / 8023 / 14850 / 20548 / 27258 / 35428 / 41045）；树 `f1e2457955f0818c`；content commit `e55ea69`。
+- 静帧复核：按每页首句从成片抽 38 帧（640 宽三张联系表）逐页看，另跑 still_lint 七帧。**没有版面缺陷**；唯一读数是 still_lint 在页面切换的 12 帧淡入淡出窗口里报 39 处「两页文本重叠」（f39905 / f42182），把采样点偏移 18 帧后 PASS——这是 `Pages` 的过场交叠，不是排版错，未改稿、未重渲。
