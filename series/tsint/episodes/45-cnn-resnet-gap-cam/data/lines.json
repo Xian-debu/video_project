@@ -1,0 +1,2451 @@
+{
+ "entry": "src/tsint-45-cnn-resnet-gap-cam/script.ts",
+ "fps": 30,
+ "totalSec": 1288.78,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 145.83
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 145.83,
+   "dur": 169.99
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 315.82,
+   "dur": 182.74
+  },
+  {
+   "id": "metrics",
+   "chapter": "度量",
+   "start": 498.56,
+   "dur": 167.23
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 665.79,
+   "dur": 184.59
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 850.38,
+   "dur": 203.42
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1053.8,
+   "dur": 174.44
+  },
+  {
+   "id": "outro",
+   "chapter": "下一集",
+   "start": 1228.24,
+   "dur": 60.54
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.73,
+   "speech": "上一集，Shapelet 把模板学出来了。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.11,
+   "dur": 2.77,
+   "speech": "但它只认一小段形状。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.07,
+   "dur": 3.95,
+   "speech": "这一集换卷积：让核滑过整条窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 12.2,
+   "dur": 4.36,
+   "speech": "一条 60 步、5 通道的序列，一共 300 个数。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.74,
+   "dur": 5.01,
+   "speech": "过完两层卷积和池化，展平成 288 个特征。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 21.92,
+   "dur": 4.55,
+   "speech": "60 步先压到 9 个位置，每个位置 32 个通道。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 26.65,
+   "dur": 3.54,
+   "speech": "这是这一集的第一个数：288。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 30.37,
+   "dur": 2.94,
+   "speech": "窗口变短，通道变多。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 33.5,
+   "dur": 3.81,
+   "speech": "先记住这个账，后面每一步都要对上。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 37.48,
+   "dur": 3.66,
+   "speech": "卷积不补零，所以序列一定会缩。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 41.32,
+   "dur": 2.85,
+   "speech": "缩多少，取决于核长。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 44.35,
+   "dur": 4.72,
+   "speech": "卷积、残差、GAP 三个模型，同一批窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 49.25,
+   "dur": 4.6,
+   "speech": "分类目标是三个行业：电子、医药、装备。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 54.03,
+   "dur": 2.58,
+   "speech": "随机猜是三分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 56.79,
+   "dur": 3.61,
+   "speech": "线性 softmax 是零点五四九四。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 60.58,
+   "dur": 2.94,
+   "speech": "卷积是零点五八八零。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 63.7,
+   "dur": 3.23,
+   "speech": "四块残差是零点六二六六。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 67.11,
+   "dur": 3.73,
+   "speech": "一块残差反而高：零点六六零九。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 71.03,
+   "dur": 3.47,
+   "speech": "GAP-CAM 最低，零点四八九三。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 74.68,
+   "dur": 3.66,
+   "speech": "先别急着下结论，后面逐张拆。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 78.52,
+   "dur": 2.08,
+   "speech": "看一张热图。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 80.78,
+   "dur": 4.45,
+   "speech": "同一条 60 步窗口，GAP-CAM 给出每一天的权重。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 85.41,
+   "dur": 6.23,
+   "speech": "最亮的五天，索引是 51、50、52、49、53。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 91.82,
+   "dur": 2.44,
+   "speech": "都在窗口的尾巴上。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 94.44,
+   "dur": 4.43,
+   "speech": "也就是说，最后一周的走势，撑起了这次判断。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 99.05,
+   "dur": 4.93,
+   "speech": "这条记录来自测试集里的 sh600130。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 104.16,
+   "dur": 2.77,
+   "speech": "真实数据，不是合成的。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 107.12,
+   "dur": 4,
+   "speech": "可解释性，就是这一集要拿到的增益。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 111.3,
+   "dur": 2.53,
+   "speech": "这一集讲三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 114.01,
+   "dur": 4.89,
+   "speech": "第一，卷积怎么把 300 个数压成 288 个特征。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 119.08,
+   "dur": 4.48,
+   "speech": "第二，残差为什么在这批数据上没帮上忙。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 123.73,
+   "dur": 4.19,
+   "speech": "第三，GAP-CAM 怎么指出哪几天在起作用。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 128.1,
+   "dur": 3.13,
+   "speech": "还会拆掉书里的一条预期。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 131.42,
+   "dur": 3.33,
+   "speech": "书里说残差让深层更强。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 134.92,
+   "dur": 2.39,
+   "speech": "我们的实测是反的。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 137.49,
+   "dur": 2.63,
+   "speech": "原因放在边界一页。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 140.3,
+   "dur": 3.33,
+   "speech": "先看问题：为什么非要用卷积。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 147.03,
+   "dur": 4.05,
+   "speech": "一条 60 步、5 通道的窗口，300 个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 151.26,
+   "dur": 3.9,
+   "speech": "最直接的做法：拉平，接全连接层。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 155.34,
+   "dur": 4.19,
+   "speech": "三个类，每个类 300 个权重，一共 900 个。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 159.71,
+   "dur": 3.25,
+   "speech": "本集的线性对照就是这么干的。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 163.14,
+   "dur": 4.57,
+   "speech": "它在 288 维特征上做到零点五四九四。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 167.9,
+   "dur": 2.39,
+   "speech": "问题不在参数量。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 170.47,
+   "dur": 2.01,
+   "speech": "问题在位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 172.65,
+   "dur": 6.21,
+   "speech": "拉平之后，第 3 天的开盘价和第 40 天的开盘价，是两个无关的数。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 179.04,
+   "dur": 2.77,
+   "speech": "局部形状，被拆散了。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 181.99,
+   "dur": 2.41,
+   "speech": "卷积换一种看法。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 184.59,
+   "dur": 4.24,
+   "speech": "取一个长 8 的小核，在整条序列上滑动。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 189,
+   "dur": 3.04,
+   "speech": "同一个核，用 53 次。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 192.22,
+   "dur": 3.16,
+   "speech": "参数只有八个，不是三百个。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 195.56,
+   "dur": 3.76,
+   "speech": "它学到的是「局部形状」，不是「第几天」。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 199.5,
+   "dur": 4.26,
+   "speech": "形状出现在哪一段，都能被同一个核认出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 203.94,
+   "dur": 2.27,
+   "speech": "这叫平移共享。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 206.39,
+   "dur": 4.17,
+   "speech": "代价是：卷积不补零，序列会变短。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 210.74,
+   "dur": 4.41,
+   "speech": "60 步过一遍长 8 的核，只剩 53 个位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 215.32,
+   "dur": 3.54,
+   "speech": "一层一层算下来：60 变 53。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 219.04,
+   "dur": 2.63,
+   "speech": "池化减半，26。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 221.85,
+   "dur": 2.8,
+   "speech": "再过一层卷积，19。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 224.83,
+   "dur": 2.29,
+   "speech": "再池化，9。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 227.31,
+   "dur": 5.15,
+   "speech": "九个位置，每个位置 32 个通道，展平是 288。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 232.64,
+   "dur": 3.73,
+   "speech": "从 300 个数，到 288 个特征。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 236.55,
+   "dur": 3.42,
+   "speech": "数目差不多，但含义完全不同。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 240.15,
+   "dur": 4.5,
+   "speech": "原来每一天一个数，现在每个位置一小段形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 244.83,
+   "dur": 4.5,
+   "speech": "通道 32，是让网络同时记 32 种形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 249.52,
+   "dur": 2.25,
+   "speech": "第二个问题是深。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 251.94,
+   "dur": 4.6,
+   "speech": "层数多了，梯度一层层乘下去，越乘越小。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 256.72,
+   "dur": 5.15,
+   "speech": "残差块给梯度留一条直路：输出等于输入加上残差。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 262.05,
+   "dur": 3.61,
+   "speech": "书里说，这让深层网络能训起来。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 265.84,
+   "dur": 2.53,
+   "speech": "我们照着做了四块。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 268.56,
+   "dur": 2.89,
+   "speech": "结果是零点六二六六。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 271.63,
+   "dur": 3.21,
+   "speech": "只做一块，零点六六零九。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 275.02,
+   "dur": 3.37,
+   "speech": "深的反倒低了三点四个百分点。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 278.57,
+   "dur": 3.64,
+   "speech": "这条预期，在这批数据上没站住。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 282.39,
+   "dur": 2.97,
+   "speech": "核长选 8，是有代价的。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 285.54,
+   "dur": 3.33,
+   "speech": "八天以外的信息，它一次看不到。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 289.04,
+   "dur": 3.42,
+   "speech": "要覆盖整个 60 步，得叠两层。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 292.64,
+   "dur": 3.76,
+   "speech": "第一层看 8 天，第二层看到 15 天。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 296.58,
+   "dur": 2.46,
+   "speech": "池化再放大一倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 299.22,
+   "dur": 3.54,
+   "speech": "这就是感受野：一层层叠出来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 302.95,
+   "dur": 3.81,
+   "speech": "叠得越多，看得越远，也越难训。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 306.93,
+   "dur": 2.87,
+   "speech": "下一集专门讲感受野。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 309.98,
+   "dur": 3.64,
+   "speech": "这一集先把 8 天的小形状认出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 317.02,
+   "dur": 2.44,
+   "speech": "先钉一个黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 319.64,
+   "dur": 4.21,
+   "speech": "输入四个点：一、二、三、四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 324.03,
+   "dur": 3.23,
+   "speech": "核长三：一、零、负一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 327.44,
+   "dur": 1.72,
+   "speech": "偏置零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 329.34,
+   "dur": 5.65,
+   "speech": "第一个位置：一乘一，加二乘零，加三乘负一，等于负二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 335.17,
+   "dur": 3.45,
+   "speech": "第二个位置：二减四，还是负二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 338.8,
+   "dur": 3.33,
+   "speech": "输出就两个数：负二、负二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 342.31,
+   "dur": 3.81,
+   "speech": "长 4 减核长 3，加一，正好 2。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 346.29,
+   "dur": 3.18,
+   "speech": "池化是把两个位置并成一个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 349.65,
+   "dur": 3.83,
+   "speech": "取最大：窗口里一和三，留三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 353.66,
+   "dur": 2.37,
+   "speech": "二和五，留五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 356.21,
+   "dur": 2.13,
+   "speech": "输出三和五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 358.52,
+   "dur": 3.49,
+   "speech": "如果两个一样大，取最左边那个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 362.19,
+   "dur": 3.93,
+   "speech": "这条要写进测试，不然梯度会乱走。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 366.3,
+   "dur": 1.55,
+   "speech": "池化把长度减半，也把「在哪里」变成「有没有」。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 368.03,
+   "dur": 2.99,
+   "speech": "位置信息，从这里开始丢。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 371.2,
+   "dur": 2.44,
+   "speech": "残差块只有一行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 373.81,
+   "dur": 4.26,
+   "speech": "输出等于 ReLU，作用在「输入加残差」上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 378.26,
+   "dur": 3.95,
+   "speech": "残差退化成零，输出就是输入本身。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 382.39,
+   "dur": 3.57,
+   "speech": "输入一二三，输出还是一二三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 386.13,
+   "dur": 3.35,
+   "speech": "这是恒等，测试里逐元素比。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 389.66,
+   "dur": 4.17,
+   "speech": "通道数变了，要加一个 1×1 投影。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 394.01,
+   "dur": 3.66,
+   "speech": "权重取二，输入一二，输出二四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 397.85,
+   "dur": 4.05,
+   "speech": "投影只是把通道对齐，不是特征变换。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 402.08,
+   "dur": 2.53,
+   "speech": "卷积有两种做法。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 404.79,
+   "dur": 4.45,
+   "speech": "通道独立：每个通道各卷各的，最后拼起来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 409.42,
+   "dur": 3.78,
+   "speech": "通道依赖：同一个核同时看五个通道。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 413.39,
+   "dur": 4.14,
+   "speech": "前者参数少，后者能学通道间的关系。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 417.71,
+   "dur": 2.89,
+   "speech": "我们的网络用通道依赖。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 420.78,
+   "dur": 3.04,
+   "speech": "输入 5 个通道，输出 16 个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 424,
+   "dur": 3.4,
+   "speech": "一个核是 5 乘 8，四十个权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 427.58,
+   "dur": 3.66,
+   "speech": "参数不多，但关系要数据来教。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 431.42,
+   "dur": 3.54,
+   "speech": "第四个模块是全局平均池化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 435.14,
+   "dur": 3.78,
+   "speech": "它对时间维取平均，不管序列多长。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 439.1,
+   "dur": 3.25,
+   "speech": "一二三四，平均是二点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 442.54,
+   "dur": 3.88,
+   "speech": "GAP 等于 2.5，这是第二个黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 446.6,
+   "dur": 5.1,
+   "speech": "好处是：同一套权重，吃 60 步和 120 步都行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 451.88,
+   "dur": 2.94,
+   "speech": "输出都是三个 logits。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 455,
+   "dur": 3.81,
+   "speech": "坏处也明显：时间顺序被平均掉了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 458.99,
+   "dur": 3.83,
+   "speech": "所以它必须配 CAM，把顺序找回来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 463,
+   "dur": 2.65,
+   "speech": "CAM 是一行加权和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 465.83,
+   "dur": 3.78,
+   "speech": "分类头的权重，乘回每个位置的通道。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 469.79,
+   "dur": 5.75,
+   "speech": "权重取零点五，四个位置：零点五、一、一点五、二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 475.72,
+   "dur": 2.61,
+   "speech": "再做 min-max 归一化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 478.51,
+   "dur": 3.88,
+   "speech": "零、三分之一、三分之二、一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 482.57,
+   "dur": 5.37,
+   "speech": "屏幕上是零、零点三三三三、零点六六六七、一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 488.11,
+   "dur": 3.37,
+   "speech": "这就是 CAM 归一化四元组。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 491.67,
+   "dur": 4.69,
+   "speech": "它只对「GAP 加单层线性头」成立，偏置不参与。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 499.76,
+   "dur": 1.89,
+   "speech": "先定口径。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 501.83,
+   "dur": 3.49,
+   "speech": "300 只股票，三行业各 100。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 505.5,
+   "dur": 4.14,
+   "speech": "每只取四个窗口，一共 1,178 个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 509.82,
+   "dur": 4.55,
+   "speech": "按股票切分，240 只训练，60 只测试。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 514.55,
+   "dur": 4.21,
+   "speech": "训练 945 窗，测试 233 窗。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 518.95,
+   "dur": 4.31,
+   "speech": "每个窗口 60 步、5 个字段，各自标准化。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 523.44,
+   "dur": 3.21,
+   "speech": "三分类，随机猜三分之一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 526.82,
+   "dur": 3.18,
+   "speech": "所有模型都吃同一批窗口。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 530.18,
+   "dur": 3.09,
+   "speech": "差别只在模型，不在数据。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 533.45,
+   "dur": 2.56,
+   "speech": "四个模型摆在一起。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 536.19,
+   "dur": 3.54,
+   "speech": "线性 softmax：零点五四九四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 539.91,
+   "dur": 4.38,
+   "speech": "卷积：零点五八八零，训练集零点八二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 544.47,
+   "dur": 3.16,
+   "speech": "四块残差：零点六二六六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 547.81,
+   "dur": 3.18,
+   "speech": "一块残差：零点六六零九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 551.17,
+   "dur": 3.06,
+   "speech": "GAP-CAM：零点四八九三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 554.41,
+   "dur": 2.87,
+   "speech": "最高的是最浅的残差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 557.46,
+   "dur": 3.23,
+   "speech": "卷积比线性高三点九个点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 560.87,
+   "dur": 3.01,
+   "speech": "这是卷积唯一明确的收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 564.07,
+   "dur": 2.68,
+   "speech": "残差这组要单独看。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 566.93,
+   "dur": 5.1,
+   "speech": "四块：训练零点八二五四，测试零点六二六六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 572.21,
+   "dur": 2.7,
+   "speech": "中间差了将近两毛。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 575.09,
+   "dur": 3.23,
+   "speech": "一块：测试零点六六零九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 578.5,
+   "dur": 2.77,
+   "speech": "参数少，反而泛化好。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 581.45,
+   "dur": 3.95,
+   "speech": "窗口只有 60 步，样本只有一千出头。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 585.58,
+   "dur": 3.61,
+   "speech": "深网没有足够的数据去用它的容量。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 589.38,
+   "dur": 4.07,
+   "speech": "加深不等于更强，这一集按实测讲。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 593.63,
+   "dur": 3.85,
+   "speech": "书的结论有前提，前提是数据够。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 597.66,
+   "dur": 2.53,
+   "speech": "还有一个数要先说。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 600.38,
+   "dur": 4.6,
+   "speech": "五个字段两两相关，平均绝对值零点七五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 605.15,
+   "dur": 5.13,
+   "speech": "开盘、最高、最低、收盘，本来就捆在一起。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 610.46,
+   "dur": 2.7,
+   "speech": "成交量稍微独立一点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 613.34,
+   "dur": 4.96,
+   "speech": "卷积的通道依赖，本该从五个通道里学互补信息。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 618.48,
+   "dur": 3.45,
+   "speech": "在这批数据上，互补信息不多。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 622.11,
+   "dur": 3.54,
+   "speech": "所以多通道的收益，被高估了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 625.83,
+   "dur": 2.34,
+   "speech": "这一条写进边界。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 628.35,
+   "dur": 3.49,
+   "speech": "不是实现错，是数据本身冗余。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 632.02,
+   "dur": 2.56,
+   "speech": "训练过程也要看一眼。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 634.76,
+   "dur": 5.61,
+   "speech": "卷积十二轮，损失从零点八二八三降到零点二八三一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 640.55,
+   "dur": 4.79,
+   "speech": "残差十五轮，零点八六二八到零点二九三零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 645.52,
+   "dur": 4.98,
+   "speech": "GAP-CAM 三十轮，一点一一一三只降到零点九九九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 650.68,
+   "dur": 2.2,
+   "speech": "损失几乎没动。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 653.06,
+   "dur": 4.12,
+   "speech": "它容量太小：单层卷积、十六个通道。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 657.36,
+   "dur": 3.54,
+   "speech": "它学到的是弱信号，不是强规律。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 661.08,
+   "dur": 2.51,
+   "speech": "这条也写进边界。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 666.99,
+   "dur": 3.3,
+   "speech": "三个模块，四十二条新断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 670.47,
+   "dur": 4.48,
+   "speech": "Cnn 管卷积、池化、反传，十九条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 675.13,
+   "dur": 3.76,
+   "speech": "ResNet 管残差块和深网，十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 679.07,
+   "dur": 4.26,
+   "speech": "GapCam 管 GAP、CAM 和训练，十三条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 683.51,
+   "dur": 4.89,
+   "speech": "全仓现在是 142 套、1,938 条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 688.58,
+   "dur": 2.44,
+   "speech": "三套 spec 全绿。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 691.19,
+   "dur": 3.3,
+   "speech": "下面挑三个容易写错的地方讲。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 694.68,
+   "dur": 3.16,
+   "speech": "每一个都用数值梯度校过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 698.01,
+   "dur": 3.04,
+   "speech": "维度账在代码里是显式的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 701.23,
+   "dur": 4.19,
+   "speech": "卷积层记输入通道、输出通道、核长。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 705.6,
+   "dur": 3.23,
+   "speech": "池化只记窗口，不记参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 709.01,
+   "dur": 6.25,
+   "speech": "前向一路带着形状走：60、53、26、19、9。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 715.45,
+   "dur": 3.81,
+   "speech": "展平 9 乘 32，等于 288。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 719.43,
+   "dur": 3.37,
+   "speech": "分类头 288 进，3 出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 722.99,
+   "dur": 3.21,
+   "speech": "形状写错，第一层就会报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 726.37,
+   "dur": 3.66,
+   "speech": "这比训到一半发现不收敛便宜得多。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 730.21,
+   "dur": 2.39,
+   "speech": "反传有两个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 732.78,
+   "dur": 2.13,
+   "speech": "第一个是池化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 735.09,
+   "dur": 3.78,
+   "speech": "梯度只回最大值那个位置，其余是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 739.05,
+   "dur": 4.74,
+   "speech": "所以前向要记下 argmax，反传按表路由。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 743.97,
+   "dur": 2.2,
+   "speech": "第二个是卷积。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 746.35,
+   "dur": 4.09,
+   "speech": "对输入是 full 卷积，对权重是互相关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 750.63,
+   "dur": 4.53,
+   "speech": "第一版把两者写成同一个函数，梯度差了三倍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 755.33,
+   "dur": 4.26,
+   "speech": "数值梯度校到十的负十一次方，才算过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 759.77,
+   "dur": 2.41,
+   "speech": "第三个坑更隐蔽。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 762.37,
+   "dur": 4.6,
+   "speech": "六层 ReLU 的网络，训练损失停在零点六九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 767.15,
+   "dur": 2.25,
+   "speech": "正好是 log 二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 769.57,
+   "dur": 3.59,
+   "speech": "查下去：第一层隐层输出全是零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 773.34,
+   "dur": 4.45,
+   "speech": "ReLU 一旦整层死掉，梯度就再也回不来。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 777.98,
+   "dur": 3.16,
+   "speech": "修法是把偏置抬高一点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 781.31,
+   "dur": 3.23,
+   "speech": "隐层零点一，主干零点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 784.72,
+   "dur": 3.01,
+   "speech": "之后损失才开始下降。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 787.92,
+   "dur": 2.53,
+   "speech": "训练循环是两层。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 790.63,
+   "dur": 2.99,
+   "speech": "外层轮数，内层小批量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 793.8,
+   "dur": 5.15,
+   "speech": "每个批量：前向、算交叉熵、反传、Adam 更新。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 799.13,
+   "dur": 4.91,
+   "speech": "卷积层、池化层、线性头，梯度一路传回去。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 804.22,
+   "dur": 3.83,
+   "speech": "批量为三十二，学习率零点零零五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 808.23,
+   "dur": 3.47,
+   "speech": "每轮开始前打乱一次样本顺序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 811.88,
+   "dur": 3.45,
+   "speech": "损失每轮记一次，画成曲线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 815.51,
+   "dur": 3.83,
+   "speech": "曲线不降，先查梯度，别调超参。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 819.52,
+   "dur": 2.39,
+   "speech": "训练配方很朴素。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 822.09,
+   "dur": 4.21,
+   "speech": "Adam，学习率零点零零五，批量三十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 826.48,
+   "dur": 3.04,
+   "speech": "卷积跑十二轮，七十二秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 829.7,
+   "dur": 2.99,
+   "speech": "残差跑十五轮，十四秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 832.87,
+   "dur": 3.25,
+   "speech": "GAP-CAM 跑三十轮，九秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 836.3,
+   "dur": 3.95,
+   "speech": "全部在 CPU 上，加起来不到两分钟。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 840.43,
+   "dur": 4.41,
+   "speech": "证据程序总共 105 秒，27 项检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 845.02,
+   "dur": 3.16,
+   "speech": "这是这一集所有数字的来源。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 851.58,
+   "dur": 3.21,
+   "speech": "证据程序跑 27 项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 854.97,
+   "dur": 2.58,
+   "speech": "全过，105 秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 857.73,
+   "dur": 5.65,
+   "speech": "分十组：数据、卷积、残差、GAP、CAM、训练。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 863.56,
+   "dur": 3.23,
+   "speech": "每一格对应一条带名字的断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 866.97,
+   "dur": 2.68,
+   "speech": "全绿才算证据成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 869.83,
+   "dur": 3.47,
+   "speech": "任何一格红了，程序直接退出。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 873.48,
+   "dur": 2.41,
+   "speech": "先看卷积这一组。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 876.07,
+   "dur": 3.93,
+   "speech": "黄金值、维度、池化，三条。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 880.18,
+   "dur": 3.01,
+   "speech": "第一组是数据，六条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 883.37,
+   "dur": 4.89,
+   "speech": "1,942 行，300 列，五个面板行数一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 888.44,
+   "dur": 2.7,
+   "speech": "三个行业各 100 只。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 891.32,
+   "dur": 3.01,
+   "speech": "标签和面板列数对得上。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 894.52,
+   "dur": 3.23,
+   "speech": "窗口里没有 NaN，也没有无穷。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 897.93,
+   "dur": 4.67,
+   "speech": "训练和测试按股票切开，240 对 60。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 902.78,
+   "dur": 3.33,
+   "speech": "五个字段平均相关零点七五。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 906.28,
+   "dur": 2.85,
+   "speech": "这条不是通过，是记录。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 909.31,
+   "dur": 2.37,
+   "speech": "四条卷积检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 911.85,
+   "dur": 2.65,
+   "speech": "黄金值负二、负二。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 914.69,
+   "dur": 3.64,
+   "speech": "输出长度 2，等于 4 减 3 加 1。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 918.51,
+   "dur": 2.15,
+   "speech": "池化三和五。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 920.84,
+   "dur": 2.37,
+   "speech": "平票取索引零。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 923.38,
+   "dur": 6.52,
+   "speech": "维度账 60、53、26、19、9，展平 288。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 930.08,
+   "dur": 3.18,
+   "speech": "检查里是重算的，不是抄的。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 933.44,
+   "dur": 2.46,
+   "speech": "抄一遍不算证明。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 936.08,
+   "dur": 2.34,
+   "speech": "残差四条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 938.61,
+   "dur": 3.4,
+   "speech": "恒等：一二三进，一二三出。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 942.18,
+   "dur": 3.04,
+   "speech": "投影：一二进，二四出。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 945.4,
+   "dur": 3.13,
+   "speech": "四块深网前向，没有 NaN。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 948.72,
+   "dur": 3.95,
+   "speech": "同一个输入跑两次，输出逐元素相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 952.85,
+   "dur": 2.2,
+   "speech": "这几条都过了。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 955.22,
+   "dur": 2.75,
+   "speech": "深网能训，不等于更好。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 958.15,
+   "dur": 2.41,
+   "speech": "下一组才是关键。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 960.75,
+   "dur": 2.15,
+   "speech": "GAP 五条检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 963.08,
+   "dur": 3.01,
+   "speech": "一二三四，平均二点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 966.27,
+   "dur": 5.05,
+   "speech": "权重零点五，输出零点五、一、一点五、二。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 971.51,
+   "dur": 3.23,
+   "speech": "归一化四元组，零到一。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 974.92,
+   "dur": 2.94,
+   "speech": "乘以正数，归一化不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 978.04,
+   "dur": 4.24,
+   "speech": "60 步和 120 步，都输出三个 logits。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 982.46,
+   "dur": 3.69,
+   "speech": "长度无关，这是 GAP 的全部意义。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 986.32,
+   "dur": 3.01,
+   "speech": "也是 CAM 能工作的地方。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 989.52,
+   "dur": 3.21,
+   "speech": "真实数据上取一只测试股。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 992.9,
+   "dur": 4.81,
+   "speech": "sh600130，电子行业，预测正确。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 997.9,
+   "dur": 4.05,
+   "speech": "特征长 53，线性上采样到 60 天。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1002.12,
+   "dur": 6.37,
+   "speech": "top-5 特征位置：48、47、49、46、50。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1008.68,
+   "dur": 3.9,
+   "speech": "感受野中心偏 3 天，映射成日索引。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1012.76,
+   "dur": 4.77,
+   "speech": "51、50、52、49、53。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1017.7,
+   "dur": 3.81,
+   "speech": "热图上最亮的五天，就在窗口末尾。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1021.69,
+   "dur": 2.73,
+   "speech": "这一段没有任何手挑。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1024.6,
+   "dur": 2.39,
+   "speech": "最后两组是对照。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1027.17,
+   "dur": 3.16,
+   "speech": "残差深浅：四块对一块。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1030.5,
+   "dur": 3.93,
+   "speech": "一块的测试准确率高 3.4 个百分点。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1034.61,
+   "dur": 3.57,
+   "speech": "卷积对线性：高 3.9 个百分点。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1038.36,
+   "dur": 3.78,
+   "speech": "GAP-CAM 对卷积：低 9.9 个百分点。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1042.32,
+   "dur": 2.61,
+   "speech": "可解释性不是免费的。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1045.1,
+   "dur": 2.44,
+   "speech": "它换掉的是精度。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1047.72,
+   "dur": 3.88,
+   "speech": "这个精度差，值不值，留给下一集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1055,
+   "dur": 2.92,
+   "speech": "边界第一条：数据口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1058.1,
+   "dur": 3.54,
+   "speech": "计划写沪深 300 里取 300 只。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1061.82,
+   "dur": 4.36,
+   "speech": "实际凑不出：三个行业在沪深 300 里很少。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1066.36,
+   "dur": 3.47,
+   "speech": "改成全市场同门类各 100 只。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1070.01,
+   "dur": 3.4,
+   "speech": "区间从 2018 到 2025 年底。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1073.59,
+   "dur": 3.71,
+   "speech": "和第 43、44 集同口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1077.48,
+   "dur": 3.25,
+   "speech": "manifest 里写死了选取规则。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1080.91,
+   "dur": 4.45,
+   "speech": "三处登记：manifest、dist、这一页。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1085.54,
+   "dur": 2.94,
+   "speech": "第二条：五个字段太像。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1088.67,
+   "dur": 2.7,
+   "speech": "平均相关零点七五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1091.55,
+   "dur": 4.09,
+   "speech": "卷积的通道依赖，学的是通道间的互补。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1095.82,
+   "dur": 3.45,
+   "speech": "互补少，这部分就学不到东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1099.45,
+   "dur": 3.01,
+   "speech": "我们没做只用收盘价的对照。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1102.64,
+   "dur": 3.57,
+   "speech": "所以「多通道无用」这句话，不能讲。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1106.39,
+   "dur": 4.33,
+   "speech": "只能讲：这批数据上，多通道没体现优势。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1110.9,
+   "dur": 1.91,
+   "speech": "差别很大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1112.99,
+   "dur": 3.35,
+   "speech": "第三条：残差的结论不能外推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1116.52,
+   "dur": 3.64,
+   "speech": "1,178 个窗口，60 步长度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1120.34,
+   "dur": 5.05,
+   "speech": "深网在训练集到零点八二，测试掉到零点六二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1125.57,
+   "dur": 2.39,
+   "speech": "这不是「残差没用」。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1128.14,
+   "dur": 3.47,
+   "speech": "这是「这个规模下，深网用不上」。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1131.79,
+   "dur": 4.53,
+   "speech": "换一万个窗口、500 步序列，结论可能反过来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1136.5,
+   "dur": 3.88,
+   "speech": "书里的结论有前提，我们的反例也有前提。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1140.56,
+   "dur": 2.15,
+   "speech": "两句都要讲。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1142.89,
+   "dur": 3.23,
+   "speech": "第四条：可解释性有代价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1146.3,
+   "dur": 3.42,
+   "speech": "GAP-CAM 比卷积低九点九个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1149.9,
+   "dur": 2.2,
+   "speech": "比线性低六个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1152.28,
+   "dur": 3.52,
+   "speech": "热图能看，但判断本身变弱了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1155.98,
+   "dur": 3.69,
+   "speech": "CAM 还只对 GAP 加线性头成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1159.84,
+   "dur": 4.96,
+   "speech": "上采样是线性的，热图分辨率就是特征的分辨率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1164.98,
+   "dur": 3.16,
+   "speech": "53 个位置，映射到 60 天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1168.32,
+   "dur": 2.08,
+   "speech": "再细就编了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1170.58,
+   "dur": 3.47,
+   "speech": "第五条：所有模型只训了一次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1174.23,
+   "dur": 2.34,
+   "speech": "种子固定在七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1176.75,
+   "dur": 3.57,
+   "speech": "换个种子，准确率会动几个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1180.49,
+   "dur": 2.73,
+   "speech": "我们没有跑多次取平均。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1183.4,
+   "dur": 4.77,
+   "speech": "所以深浅差的 3.4 个点，可能有一部分是噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1188.35,
+   "dur": 3.93,
+   "speech": "卷积和线性的 3.9 个点，也一样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1192.45,
+   "dur": 2.68,
+   "speech": "这一条影响所有比较。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1195.31,
+   "dur": 3.25,
+   "speech": "重要的对照，以后要跑三次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1198.74,
+   "dur": 2.2,
+   "speech": "四件没做的事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 1201.12,
+   "dur": 2.85,
+   "speech": "第一，只用收盘价的对照。"
+  },
+  {
+   "scene": "boundary",
+   "index": 42,
+   "start": 1204.15,
+   "dur": 2.53,
+   "speech": "第二，更长的窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 43,
+   "start": 1206.86,
+   "dur": 3.3,
+   "speech": "第三，多次随机初始化的方差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 44,
+   "start": 1210.34,
+   "dur": 3.85,
+   "speech": "第四，卷积核到底学到了什么形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 45,
+   "start": 1214.38,
+   "dur": 3.61,
+   "speech": "这四条挂在这里，下一集接着用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 46,
+   "start": 1218.17,
+   "dur": 4.45,
+   "speech": "下一集：RNN、Brick 并行、空洞卷积。"
+  },
+  {
+   "scene": "boundary",
+   "index": 47,
+   "start": 1222.81,
+   "dur": 3.23,
+   "speech": "22 分钟，感受野之争。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1229.44,
+   "dur": 2.1,
+   "speech": "这一集的读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1231.72,
+   "dur": 2.73,
+   "speech": "卷积零点五八八零。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1234.63,
+   "dur": 4.72,
+   "speech": "残差四块零点六二六六，一块零点六六零九。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1239.53,
+   "dur": 2.92,
+   "speech": "GAP-CAM 零点四八九三。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1242.62,
+   "dur": 5.89,
+   "speech": "top-5 交易日：51、50、52、49、53。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1248.7,
+   "dur": 2.7,
+   "speech": "27 项检查全过。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1251.58,
+   "dur": 4.96,
+   "speech": "一句话：卷积有用，残差没加分，可解释性拿到了。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1256.72,
+   "dur": 3.21,
+   "speech": "三件事分开讲，才不糊。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1260.1,
+   "dur": 2.56,
+   "speech": "下一集换一个方向。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1262.84,
+   "dur": 3.78,
+   "speech": "把窗口切成十块，并行跑 RNN。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1266.8,
+   "dur": 3.28,
+   "speech": "训练时间降到六分之一左右。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1270.26,
+   "dur": 4.72,
+   "speech": "空洞卷积用五分之一的参数，拿到同样的感受野。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1275.16,
+   "dur": 2.94,
+   "speech": "三条路线，比谁看得远。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1278.28,
+   "dur": 1.93,
+   "speech": "22 分钟。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1280.4,
+   "dur": 2.08,
+   "speech": "这一集到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1282.65,
+   "dur": 3.93,
+   "speech": "数据与代码都在仓库里，可以自己跑。"
+  }
+ ]
+}

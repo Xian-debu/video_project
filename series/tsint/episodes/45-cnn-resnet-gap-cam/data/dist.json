@@ -1,0 +1,464 @@
+{
+ "meta": {
+  "episode": "45-cnn-resnet-gap-cam",
+  "title": "卷积、残差与 GAP：让分类器指出「哪几天在起作用」",
+  "commits": {
+   "tsBase": "37411e1",
+   "tsAdmin": "d89ebd3"
+  },
+  "tests": {
+   "groups": 142,
+   "assertions": 1938
+  },
+  "modules": [
+   {
+    "file": "src/TsBase/Algos/Ch05/Cnn.hs",
+    "cases": 19
+   },
+   {
+    "file": "src/TsBase/Algos/Ch05/ResNet.hs",
+    "cases": 10
+   },
+   {
+    "file": "src/TsBase/Algos/Ch05/GapCam.hs",
+    "cases": 13
+   }
+  ],
+  "newCases": 42,
+  "evidence": {
+   "checks": 27,
+   "passed": 27,
+   "seconds": 105.3885
+  },
+  "progress": {
+   "delivered": 55,
+   "total": 74
+  },
+  "next": {
+   "id": "46-rnn-shallow-dilated",
+   "title": "感受野之争：RNN、Brick 并行与空洞卷积",
+   "minutes": 22
+  },
+  "deviation": "规划写『沪深300 中 300 只、2018-2024』；HS300 内 C39 48 只、C27 13 只、C35 14 只，凑不出三类各 100。改为全市场同为 C39/C27/C35 三个证监会门类各 100 只（共 300），选取规则写死（非 ST、2018 前上市、有效日 >= 900、按代码升序取前 100）；区间延到 2025-12-31 与第 43/44 集一致。体积用原始成交量（后复权只作用在价格列）。",
+  "tsAdminCommit": "8955376"
+ },
+ "dataset": {
+  "rows": 1942,
+  "stocks": 300,
+  "groups": {
+   "electronics": 100,
+   "pharma": 100,
+   "equipment": 100
+  },
+  "window": 60,
+  "stride": 150,
+  "perStock": 4,
+  "windows": 1178,
+  "train": 945,
+  "test": 233,
+  "start": "2018-01-02",
+  "end": "2025-12-31",
+  "meanAbsCorr": 0.7505,
+  "deviation": "计划写 HS300 中 300 只、2018-2024；HS300 里三个行业凑不足 300 只，改全市场 C39/C27/C35 各 100 只、区间延到 2025-12-31"
+ },
+ "conv": {
+  "kernel": [
+   1.0,
+   0.0,
+   -1.0
+  ],
+  "input": [
+   1.0,
+   2.0,
+   3.0,
+   4.0
+  ],
+  "golden": [
+   -2.0,
+   -2.0
+  ],
+  "goldenLen": 2,
+  "poolIn": [
+   1,
+   3,
+   2,
+   5
+  ],
+  "poolOut": [
+   3.0,
+   5.0
+  ],
+  "dims": [
+   60,
+   53,
+   26,
+   19,
+   9
+  ],
+  "flat": 288,
+  "channels": [
+   5,
+   16,
+   32
+  ],
+  "k": 8
+ },
+ "residual": {
+  "identity": [
+   1.0,
+   2.0,
+   3.0
+  ],
+  "proj": [
+   2.0,
+   4.0
+  ],
+  "blocks": 4,
+  "deepAcc": 0.6266,
+  "shallowAcc": 0.6609,
+  "deepMinusShallowPp": -3.4
+ },
+ "gapcam": {
+  "vec": [
+   1.0,
+   2.0,
+   3.0,
+   4.0
+  ],
+  "gap": 2.5,
+  "w": 0.5,
+  "cam": [
+   0.5,
+   1.0,
+   1.5,
+   2.0
+  ],
+  "norm": [
+   0.0,
+   0.3333,
+   0.6667,
+   1.0
+  ],
+  "len60": 3,
+  "len120": 3,
+  "acc": 0.4893,
+  "trainAcc": 0.5016,
+  "channels": 16,
+  "k": 8,
+  "epochs": 30
+ },
+ "cam": {
+  "featureLen": 53,
+  "class": 0,
+  "features": [
+   0.0007,
+   0.2691,
+   0.0431,
+   0.2523,
+   0.3222,
+   0.5976,
+   0.4857,
+   0.4067,
+   0.2532,
+   0.2285,
+   0.1521,
+   0.3505,
+   0.4032,
+   0.4798,
+   0.3417,
+   0.5073,
+   0.5677,
+   0.5096,
+   0.3149,
+   0.3065,
+   0.2509,
+   0.0,
+   0.2289,
+   0.4227,
+   0.5759,
+   0.75,
+   0.6517,
+   0.6794,
+   0.5839,
+   0.5958,
+   0.5789,
+   0.7995,
+   0.6609,
+   0.7305,
+   0.6902,
+   0.7428,
+   0.7825,
+   0.742,
+   0.7208,
+   0.6328,
+   0.5387,
+   0.5524,
+   0.5295,
+   0.6996,
+   0.619,
+   0.697,
+   0.8486,
+   0.9655,
+   1.0,
+   0.8985,
+   0.8062,
+   0.7328,
+   0.7944
+  ],
+  "heat": [
+   0.0007,
+   0.2372,
+   0.0968,
+   0.1778,
+   0.289,
+   0.4342,
+   0.5653,
+   0.4723,
+   0.3989,
+   0.2636,
+   0.2331,
+   0.1754,
+   0.2664,
+   0.3746,
+   0.4292,
+   0.4494,
+   0.3586,
+   0.5045,
+   0.5595,
+   0.5243,
+   0.3875,
+   0.3106,
+   0.2848,
+   0.1829,
+   0.0349,
+   0.2355,
+   0.4063,
+   0.5448,
+   0.694,
+   0.695,
+   0.6639,
+   0.6487,
+   0.5863,
+   0.5944,
+   0.5795,
+   0.7658,
+   0.6985,
+   0.7034,
+   0.7107,
+   0.7098,
+   0.7529,
+   0.777,
+   0.7416,
+   0.7229,
+   0.6522,
+   0.5706,
+   0.5461,
+   0.5427,
+   0.5814,
+   0.6846,
+   0.6243,
+   0.693,
+   0.8229,
+   0.9318,
+   0.986,
+   0.9518,
+   0.8657,
+   0.7888,
+   0.7401,
+   0.7944
+  ],
+  "top5Feature": [
+   48,
+   47,
+   49,
+   46,
+   50
+  ],
+  "top5": [
+   51,
+   50,
+   52,
+   49,
+   53
+  ],
+  "stock": "sh600130",
+  "label": 0
+ },
+ "models": {
+  "cnn": {
+   "epochs": 12,
+   "trainAcc": 0.8201,
+   "testAcc": 0.588,
+   "seconds": 73.2427,
+   "lossStart": 0.8283,
+   "lossEnd": 0.2831
+  },
+  "resnet": {
+   "epochs": 15,
+   "blocks": 4,
+   "trainAcc": 0.8254,
+   "testAcc": 0.6266,
+   "seconds": 13.5608,
+   "lossStart": 0.8628,
+   "lossEnd": 0.293
+  },
+  "resnetShallow": {
+   "blocks": 1,
+   "testAcc": 0.6609,
+   "lossStart": 0.5757,
+   "lossEnd": 0.1688
+  },
+  "gapcam": {
+   "epochs": 30,
+   "channels": 16,
+   "trainAcc": 0.5016,
+   "testAcc": 0.4893,
+   "seconds": 8.8394,
+   "lossStart": 1.1113,
+   "lossEnd": 0.999
+  },
+  "linear": {
+   "epochs": 25,
+   "trainAcc": 0.6423,
+   "testAcc": 0.5494
+  },
+  "chance": 0.3333
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "1942 行 x 300 列五个面板",
+   "pass": true
+  },
+  {
+   "group": "data",
+   "name": "三个行业各 100 只",
+   "pass": true
+  },
+  {
+   "group": "data",
+   "name": "标签与面板列数一致",
+   "pass": true
+  },
+  {
+   "group": "data",
+   "name": "窗口全部为有限值",
+   "pass": true
+  },
+  {
+   "group": "data",
+   "name": "训练/测试按股票切分（240/60 只）",
+   "pass": true
+  },
+  {
+   "group": "data",
+   "name": "五个字段平均相关高于 0.5（多通道高度冗余）",
+   "pass": true
+  },
+  {
+   "group": "conv",
+   "name": "手算 4 点 x 长 3 核 = [-2,-2]、输出长 2",
+   "pass": true
+  },
+  {
+   "group": "conv",
+   "name": "池化 [1,3,2,5] -> [3,5]",
+   "pass": true
+  },
+  {
+   "group": "conv",
+   "name": "平票 [2,2] 取索引 0",
+   "pass": true
+  },
+  {
+   "group": "conv",
+   "name": "维度账 60->53->26->19->9、展平 288",
+   "pass": true
+  },
+  {
+   "group": "res",
+   "name": "F=0 时残差块是恒等（1,2,3 原样）",
+   "pass": true
+  },
+  {
+   "group": "res",
+   "name": "1x1 投影 W=2 把 [1,2] 放大成 [2,4]",
+   "pass": true
+  },
+  {
+   "group": "res",
+   "name": "四块深网前向无 NaN/Inf",
+   "pass": true
+  },
+  {
+   "group": "gap",
+   "name": "gap([1,2,3,4]) = 2.5",
+   "pass": true
+  },
+  {
+   "group": "gap",
+   "name": "归一化 [0,1/3,2/3,1]",
+   "pass": true
+  },
+  {
+   "group": "gap",
+   "name": "top-5 从最大往下数 [59,58,57,56,55]",
+   "pass": true
+  },
+  {
+   "group": "train",
+   "name": "CNN 训练损失下降",
+   "pass": true
+  },
+  {
+   "group": "train",
+   "name": "CNN 测试准确率高于随机 1/3",
+   "pass": true
+  },
+  {
+   "group": "train",
+   "name": "ResNet 测试准确率高于随机 1/3",
+   "pass": true
+  },
+  {
+   "group": "res",
+   "name": "浅残差（1 块）与深残差（4 块）测试准确率差小于 0.05，加深没换来精度",
+   "pass": true
+  },
+  {
+   "group": "train",
+   "name": "GAP-CAM 测试准确率高于随机 1/3",
+   "pass": true
+  },
+  {
+   "group": "train",
+   "name": "线性基线测试准确率也高于随机",
+   "pass": true
+  },
+  {
+   "group": "gap",
+   "name": "同一套权重吃 60 步输出 3 维",
+   "pass": true
+  },
+  {
+   "group": "gap",
+   "name": "同一套权重吃 120 步也输出 3 维（GAP 不受长度影响）",
+   "pass": true
+  },
+  {
+   "group": "cam",
+   "name": "CAM 特征长度 53（60-8+1，valid 卷积）",
+   "pass": true
+  },
+  {
+   "group": "cam",
+   "name": "上采样到 60 个日位置、取值落在 [0,1]",
+   "pass": true
+  },
+  {
+   "group": "cam",
+   "name": "top-5 映射成 5 个不同的日索引",
+   "pass": true
+  }
+ ]
+}
