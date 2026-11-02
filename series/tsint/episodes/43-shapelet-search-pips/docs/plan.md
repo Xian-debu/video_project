@@ -52,3 +52,11 @@
 - 计划的 PIPs「候选压到 10%」实测 9.82%；增益损失 0.0000 bit，两条路径取到同一个模板（不同起点、同一形状），这一点在 metrics 段讲清「平局有运气成分」。
 - 计划写「随机相位 ±π」，实现按此保留（与 E42 的固定相位相反）——随机相位帮助 DTW/Shapelet 证明形状价值，但也让合成数据比真实数据更「干净」。
 - 证据检查 23 条（data 5 / synth 8 / real 5 / worked 5），耗时 36.8 s；检查逐条写 pass 文本，不是只报总数。
+
+## Delivery
+
+- 成片 1,127.13 s（18:47.13）/ 33,814 帧 / 8 场 39 页 / 303 条旁白（发声 940.8 s）/ −15 LUFS / TP −2 dBFS / LRA 2.6 / 视频树 `5a1f101ef496ffcc`。
+- 交付件：`delivery/Tsint43ShapeletSearchPips.mp4` 59,371,702 B、`cover.png` 77,164 B（帧 20）、`tsint-43.srt` 303 cues / 23,062 B（最长 31 字，无换行）、`chapters.txt` 402 B（8 章）、`chapters.ffmeta.txt` 779 B；`mix.wav` / `raw_video.mp4` / `programme_unnorm.mp4` / `score.wav` / `report.json` / `scenes/` / `stills/` 留在本机不入库。
+- 流水线 23 个 stage 全 ok、8 段 rendered 8（reused 0）；mix 48 kHz / 1,128.32 s、peak −1.08 dBFS、RMS −26.66 dBFS、ducked 56.9%（4.5 dB）；mixGate speech −23.44 / gap_full −30.16 / gap_audible −33.09 / bed 36.9；闪烁 33,814 帧 mean|Δ| 0.0143、p99 0.1503、7 切点。
+- 提交：video_project content `0b15b60`、delivery 见本文件所在提交；ts-base 算法 `d3c0e87` + `4e48c2a`（平衡二分类上界）、证据 `5fdc3ac` / `6ea7cae` / `24fa1a0`；ts-admin `8955376`；引擎未改，score 复用 `out/e04-score-loop-48k.wav`。
+
