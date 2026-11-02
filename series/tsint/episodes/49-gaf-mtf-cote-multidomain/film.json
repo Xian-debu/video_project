@@ -19,10 +19,11 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-49",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [],
   "derived": [],
@@ -36,5 +37,8 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete",
+  "publish": {
+    "coverFrame": 20
+  }
 }
