@@ -1,0 +1,2535 @@
+{
+ "entry": "src/tsint-46-rnn-shallow-dilated/script.ts",
+ "fps": 30,
+ "totalSec": 1387.19,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 153.87
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 153.87,
+   "dur": 171.62
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 325.49,
+   "dur": 196.69
+  },
+  {
+   "id": "metrics",
+   "chapter": "度量",
+   "start": 522.18,
+   "dur": 168.12
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 690.3,
+   "dur": 208.4
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 898.7,
+   "dur": 235.99
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 1134.69,
+   "dur": 199.33
+  },
+  {
+   "id": "outro",
+   "chapter": "下一集",
+   "start": 1334.02,
+   "dur": 53.17
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.38,
+   "speech": "上一集把 300 个数压成了 288 个特征。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.76,
+   "dur": 4.43,
+   "speech": "这一集把窗口拉长：一条 500 步的收益序列。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.37,
+   "dur": 5.08,
+   "speech": "五百天，一只股票，从 2015 年走到 2025 年。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 15.63,
+   "dur": 3.33,
+   "speech": "整整五百步，喂给一个循环网络。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 19.14,
+   "dur": 3.97,
+   "speech": "序列模型只有一条路：一步一步往前传。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 23.29,
+   "dur": 3.9,
+   "speech": "第 t 步的输出，取决于第 t 减一步。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 27.37,
+   "dur": 3.47,
+   "speech": "五百步，就是五百次串行的依赖。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 31.02,
+   "dur": 3.88,
+   "speech": "这是这一集要拆的第一个数字：500。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 35.08,
+   "dur": 2.56,
+   "speech": "第二个数字是 60。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 37.82,
+   "dur": 4.5,
+   "speech": "把五百步切成十块，每块五十步，块内串行。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 42.5,
+   "dur": 3.81,
+   "speech": "块与块之间并行，最后只串十步。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 46.49,
+   "dur": 3.21,
+   "speech": "串行深度从五百降到六十。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 49.87,
+   "dur": 2.29,
+   "speech": "整整八点三倍。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 52.35,
+   "dur": 3.42,
+   "speech": "换成空洞卷积，又是一种看法。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 55.95,
+   "dur": 3.49,
+   "speech": "核不连着放，隔几个点放一个。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 59.62,
+   "dur": 3.37,
+   "speech": "四层下来，感受野三十一天。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 63.18,
+   "dur": 4.24,
+   "speech": "参数只要同感受野普通卷积的四分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 67.59,
+   "dur": 4.5,
+   "speech": "这两条是结构上的事实，能算清，也能验。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 72.28,
+   "dur": 4.36,
+   "speech": "精度呢？这一集给不出好看的数字。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 76.81,
+   "dur": 5.22,
+   "speech": "五百步的真实三分位标签，测试准确率贴着随机线。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 82.22,
+   "dur": 4.38,
+   "speech": "零点三三三三，就是三类分类的三分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 86.78,
+   "dur": 3.85,
+   "speech": "窗口从五十拉到五百，准确率没动。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 90.81,
+   "dur": 4.38,
+   "speech": "所以这一集把「学到什么」和「量得出什么」分开。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 95.37,
+   "dur": 5.99,
+   "speech": "结构能算清：深度八点三倍、参数四分之一、感受野三十一。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 101.54,
+   "dur": 3.88,
+   "speech": "精度量不出：数据里没有可学的信号。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 105.6,
+   "dur": 4.02,
+   "speech": "这不是失败，是要说清楚边界在哪。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 109.8,
+   "dur": 4.12,
+   "speech": "合成周期序列上，同一个 RNN 学得会。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 114.1,
+   "dur": 4,
+   "speech": "训练准确率和测试准确率都是一点零。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 118.28,
+   "dur": 2.53,
+   "speech": "这一集讲三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 120.99,
+   "dur": 4.17,
+   "speech": "第一，RNN 单步怎么算，梯度怎么回传。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 125.34,
+   "dur": 4.33,
+   "speech": "第二，brick 并行把深度从五百压到六十。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 129.85,
+   "dur": 5.1,
+   "speech": "第三，空洞卷积怎么用十五个参数拿到三十一天。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 135.14,
+   "dur": 3.16,
+   "speech": "还会拆掉书里的两条预期。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 138.47,
+   "dur": 2.68,
+   "speech": "书里说训练快六倍。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 141.33,
+   "dur": 3.33,
+   "speech": "书里说精度差不到一个百分点。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 144.84,
+   "dur": 4.02,
+   "speech": "两条在我们的单线程实验里都没站住。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 149.04,
+   "dur": 2.63,
+   "speech": "原因放在边界一页。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 155.07,
+   "dur": 2.87,
+   "speech": "先看串行到底贵在哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 158.12,
+   "dur": 4.74,
+   "speech": "一条五百步的序列，循环网络要走五百个时间步。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 163.04,
+   "dur": 4.6,
+   "speech": "每一步都要算一次：输入、隐状态、输出。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 167.82,
+   "dur": 3.81,
+   "speech": "第 t 步算完，才能算第 t 加一步。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 171.81,
+   "dur": 3.01,
+   "speech": "这不是并行能解决的依赖。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 175,
+   "dur": 2.05,
+   "speech": "反传也一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 177.23,
+   "dur": 3.93,
+   "speech": "梯度要从第五百步，一路乘回第一步。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 181.34,
+   "dur": 3.64,
+   "speech": "五百次矩阵乘法，一次也不能少。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 185.16,
+   "dur": 3.95,
+   "speech": "所以长窗口的第一个代价，是时间。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 189.29,
+   "dur": 3.52,
+   "speech": "第二个代价更隐蔽：梯度会消失。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 192.99,
+   "dur": 3.18,
+   "speech": "每一步的隐状态都过一遍 tanh。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 196.35,
+   "dur": 4.86,
+   "speech": "tanh 的导数最大是一，链式乘下来只会越来越小。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 201.39,
+   "dur": 4.57,
+   "speech": "输入零点五，输入权重一，隐状态从零开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 206.14,
+   "dur": 4.14,
+   "speech": "第一步是 tanh 零点五，零点四六二一。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 210.47,
+   "dur": 4.38,
+   "speech": "第二步是 tanh 零点二三一，零点二二七零。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 215.03,
+   "dur": 4.77,
+   "speech": "第三步是 tanh 零点一一三五，零点一一三零。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 219.97,
+   "dur": 2.63,
+   "speech": "三步已经掉了一半多。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 222.78,
+   "dur": 3.78,
+   "speech": "五百步之后，第一步的信息基本没了。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 226.75,
+   "dur": 2.85,
+   "speech": "brick 并行的想法很直接。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 229.77,
+   "dur": 3.61,
+   "speech": "把五百步切成十块，每块五十步。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 233.57,
+   "dur": 3.9,
+   "speech": "十块同时跑，各自得到一个块末状态。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 237.65,
+   "dur": 3.54,
+   "speech": "再把十个块末状态，喂给第二层。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 241.37,
+   "dur": 2.29,
+   "speech": "第二层只有十步。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 243.84,
+   "dur": 3.83,
+   "speech": "串行深度变成五十加十，六十。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 247.85,
+   "dur": 3.11,
+   "speech": "参数量和窗口长度无关。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 251.14,
+   "dur": 3.61,
+   "speech": "块大块小，参数都是那几十个。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 254.94,
+   "dur": 3.81,
+   "speech": "代价是：块与块之间没有信息流动。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 258.92,
+   "dur": 3.35,
+   "speech": "空洞卷积换的是另一种代价。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 262.45,
+   "dur": 3.73,
+   "speech": "核不连续地摆，隔 d 个点取一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 266.37,
+   "dur": 3.13,
+   "speech": "d 等于一，就是普通卷积。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 269.68,
+   "dur": 3.11,
+   "speech": "d 等于二，跳过中间一个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 272.97,
+   "dur": 3.35,
+   "speech": "这样一层就能看到更长的一段。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 276.5,
+   "dur": 3.33,
+   "speech": "叠四层，d 取一二四八。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 280.01,
+   "dur": 2.58,
+   "speech": "感受野是三十一天。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 282.77,
+   "dur": 4.96,
+   "speech": "参数只跟核长有关：五层，核长三，十五个。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 287.91,
+   "dur": 2.7,
+   "speech": "普通卷积要六十三。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 290.79,
+   "dur": 3.06,
+   "speech": "数据这边，先说清楚口径。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 294.03,
+   "dur": 4.17,
+   "speech": "全市场五千多只，按成交额取前五百。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 298.38,
+   "dur": 3.83,
+   "speech": "五百只股票，两千六百七十四个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 302.39,
+   "dur": 3.16,
+   "speech": "窗口五百步，步长二百五。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 305.73,
+   "dur": 3.3,
+   "speech": "一只股票最多切出八个窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 309.21,
+   "dur": 3.09,
+   "speech": "一共四千三百九十二个窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 312.47,
+   "dur": 3.64,
+   "speech": "标签是未来六十天收益的三分位。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 316.29,
+   "dur": 2.94,
+   "speech": "三类各占三分之一左右。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 319.41,
+   "dur": 3.88,
+   "speech": "也就是说，标签本身不带方向信息。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 326.69,
+   "dur": 2.46,
+   "speech": "先钉 RNN 的单步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 329.33,
+   "dur": 3.23,
+   "speech": "输入一个数，隐状态四个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 332.74,
+   "dur": 5.92,
+   "speech": "新的隐状态等于 tanh，作用在输入权重、状态权重、偏置上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 338.84,
+   "dur": 5.17,
+   "speech": "隐状态和输入拼起来，过一层线性，得到三个类的分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 344.19,
+   "dur": 2.89,
+   "speech": "整个网络只有两组权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 347.27,
+   "dur": 2.56,
+   "speech": "参数一共三十九个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 350.01,
+   "dur": 4.02,
+   "speech": "隐状态四维，输入一维，输出三维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 354.21,
+   "dur": 3.35,
+   "speech": "三十九这个数，手算就能对上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 357.74,
+   "dur": 2.37,
+   "speech": "钉第二个黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 360.28,
+   "dur": 3.9,
+   "speech": "输入零点五，输入权重一，偏置零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 364.37,
+   "dur": 2.49,
+   "speech": "隐状态从零开始。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 367.03,
+   "dur": 3.37,
+   "speech": "tanh 零点五等于零点四六二一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 370.59,
+   "dur": 2.01,
+   "speech": "不是零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 372.77,
+   "dur": 4.31,
+   "speech": "tanh 是压缩：输入再大，输出也到不了一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 377.26,
+   "dur": 4.67,
+   "speech": "这是 RNN 记住东西的方式，也是它会忘的原因。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 382.11,
+   "dur": 3.85,
+   "speech": "序列走完，把五百个隐状态平均一下。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 386.15,
+   "dur": 3.13,
+   "speech": "这就是时间维的平均池化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 389.46,
+   "dur": 3.69,
+   "speech": "平均值过线性层，得到三个分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 393.33,
+   "dur": 3.59,
+   "speech": "分数过 softmax，得到三类概率。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 397.1,
+   "dur": 2.32,
+   "speech": "损失是交叉熵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 399.59,
+   "dur": 5.29,
+   "speech": "三个类均匀猜，损失是 log 三，一点零九八六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 405.07,
+   "dur": 4.12,
+   "speech": "这是训练的起点，也是随机水平的参照。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 409.37,
+   "dur": 3.04,
+   "speech": "反传要一路传回第一步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 412.58,
+   "dur": 4.33,
+   "speech": "这叫 BPTT，按时间展开的反向传播。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 417.1,
+   "dur": 3.16,
+   "speech": "梯度会累积，所以要裁剪。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 420.44,
+   "dur": 4.31,
+   "speech": "全局 L2 范数超过五，就整体缩到五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 424.93,
+   "dur": 2.92,
+   "speech": "brick 并行把序列切块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 428.02,
+   "dur": 3.61,
+   "speech": "五百步，块长五十，正好十块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 431.82,
+   "dur": 3.81,
+   "speech": "十块各跑一个 RNN，互不干扰。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 435.8,
+   "dur": 3.06,
+   "speech": "每块只留最后一个隐状态。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 439.05,
+   "dur": 3.57,
+   "speech": "十个状态拼成一条十步的序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 442.79,
+   "dur": 3.28,
+   "speech": "第二层 RNN 只吃这十步。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 446.25,
+   "dur": 2.87,
+   "speech": "串行深度是五十加十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 449.3,
+   "dur": 3.83,
+   "speech": "参数八十七个，和窗口长度无关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 453.31,
+   "dur": 3.52,
+   "speech": "代价写在定义里：块间不通信。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 457.01,
+   "dur": 3.21,
+   "speech": "空洞卷积的公式只多一个 d。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 460.39,
+   "dur": 5.97,
+   "speech": "输出第 i 个点，取输入第 i、i 加 d、i 加二 d 三个点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 466.54,
+   "dur": 2.61,
+   "speech": "核长三，间隔 d。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 469.33,
+   "dur": 3.35,
+   "speech": "d 等于一，退化成普通卷积。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 472.86,
+   "dur": 4.89,
+   "speech": "输出长度是输入长度减，核长减一，乘 d。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 477.92,
+   "dur": 3.42,
+   "speech": "五百步过五层，每层核长三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 481.52,
+   "dur": 2.61,
+   "speech": "d 取一二四八十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 484.31,
+   "dur": 2.7,
+   "speech": "输出长度四百三十八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 487.19,
+   "dur": 2.63,
+   "speech": "每过一层，短一点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 490,
+   "dur": 4.6,
+   "speech": "感受野是一加，核长减一，乘间隔之和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 494.78,
+   "dur": 3.93,
+   "speech": "四层 d 取一二四八，感受野三十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 498.89,
+   "dur": 3.73,
+   "speech": "再加一层 d 等于十六，六十三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 502.8,
+   "dur": 2.63,
+   "speech": "参数只由核长决定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 505.61,
+   "dur": 3.64,
+   "speech": "五层，每层核长三，十五个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 509.43,
+   "dur": 3.64,
+   "speech": "同感受野的普通卷积要六十三个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 513.25,
+   "dur": 3.76,
+   "speech": "十五除以六十三，约等于四分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 517.18,
+   "dur": 2.8,
+   "speech": "这是这一集最干净的省。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 523.38,
+   "dur": 2.51,
+   "speech": "这一集量三样东西。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 526.07,
+   "dur": 4.17,
+   "speech": "第一样是结构：深度、参数、感受野。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 530.42,
+   "dur": 3.76,
+   "speech": "这些不靠训练，算出来就是算出来。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 534.35,
+   "dur": 4.21,
+   "speech": "第二样是可学性：给一个有信号的合成任务。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 538.75,
+   "dur": 3.52,
+   "speech": "网络学得会，说明实现没写坏。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 542.45,
+   "dur": 3.37,
+   "speech": "第三样是真实标签上的准确率。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 546,
+   "dur": 3.16,
+   "speech": "这一样最诚实，也最不好看。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 549.34,
+   "dur": 4.09,
+   "speech": "三样分开量，才知道哪一层出了问题。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 553.61,
+   "dur": 2.32,
+   "speech": "先看真实标签。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 556.11,
+   "dur": 3.85,
+   "speech": "窗口五十步，测试零点三一六七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 560.14,
+   "dur": 3.35,
+   "speech": "二百五十步，零点三三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 563.67,
+   "dur": 3.42,
+   "speech": "五百步，还是零点三三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 567.28,
+   "dur": 4,
+   "speech": "随机猜是三分之一，零点三三三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 571.45,
+   "dur": 3.35,
+   "speech": "窗口拉长十倍，准确率没动。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 574.98,
+   "dur": 3.23,
+   "speech": "训练集上是零点四七五零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 578.39,
+   "dur": 3.61,
+   "speech": "训练比测试高，但也没高到哪去。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 582.19,
+   "dur": 4.09,
+   "speech": "这说明模型记住了一点点训练集的噪声。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 586.46,
+   "dur": 2.63,
+   "speech": "没学到能迁移的东西。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 589.27,
+   "dur": 2.25,
+   "speech": "再看训练损失。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 591.7,
+   "dur": 5.17,
+   "speech": "三十轮下来，从一点零七四四降到一点零三六二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 597.05,
+   "dur": 4.36,
+   "speech": "三个类均匀猜，损失是一点零九八六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 601.59,
+   "dur": 4.69,
+   "speech": "也就是训练损失比随机还低零点零六二四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 606.46,
+   "dur": 4.14,
+   "speech": "这点下降，基本就是把训练集背下来了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 610.79,
+   "dur": 2.73,
+   "speech": "测试损失没跟着降。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 613.69,
+   "dur": 2.08,
+   "speech": "曲线是平的。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 615.95,
+   "dur": 2.58,
+   "speech": "这就是「没信号」的样子。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 618.71,
+   "dur": 2.94,
+   "speech": "换一个有信号的合成任务。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 621.83,
+   "dur": 4,
+   "speech": "三类序列，周期八、十二、二十。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 626.01,
+   "dur": 3.21,
+   "speech": "每条六十步，加两成噪声。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 629.4,
+   "dur": 3.85,
+   "speech": "同一个 RNN，隐状态十六，四十轮。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 633.43,
+   "dur": 2.61,
+   "speech": "训练准确率一点零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 636.22,
+   "dur": 2.94,
+   "speech": "测试准确率也是一点零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 639.34,
+   "dur": 2.2,
+   "speech": "四十一秒跑完。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 641.72,
+   "dur": 3.35,
+   "speech": "同一个实现，换个任务就学得会。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 645.25,
+   "dur": 3.54,
+   "speech": "所以问题不在代码，在数据。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 648.97,
+   "dur": 3.61,
+   "speech": "这条对照是这一集最关键的一步。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 652.76,
+   "dur": 3.42,
+   "speech": "把三个量写成可复现的定义。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 656.37,
+   "dur": 4.26,
+   "speech": "深度比：串行五百步，除以并行六十步。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 660.81,
+   "dur": 5.2,
+   "speech": "参数：两个网络都数一遍，八十七对三十九加分类头。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 666.19,
+   "dur": 4.41,
+   "speech": "感受野：一加核长减一，乘间隔之和。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 670.77,
+   "dur": 5.39,
+   "speech": "墙钟时间：单线程，六十个五百步窗口，前向各跑一遍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 676.34,
+   "dur": 3.57,
+   "speech": "单线程墙钟比测到零点四三八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 680.09,
+   "dur": 3.73,
+   "speech": "不到一，意思是并行反而更慢。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 684,
+   "dur": 4.09,
+   "speech": "所以「快六倍」这条，我们只能给结构比。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 691.5,
+   "dur": 3.37,
+   "speech": "三个模块，二十七条新断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 695.05,
+   "dur": 4.93,
+   "speech": "Rnn 管单步、前向、损失、反传，十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 700.17,
+   "dur": 4.14,
+   "speech": "ShallowRnn 管切块与两层并行，八条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 704.49,
+   "dur": 4.26,
+   "speech": "Dilated 管空洞卷积与感受野，九条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 708.93,
+   "dur": 5.03,
+   "speech": "全仓现在是一百四十五组、一千九百六十五条断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 714.14,
+   "dur": 4.74,
+   "speech": "每个模块配一份 spec，跑 cabal test 一次全验。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 719.06,
+   "dur": 2.15,
+   "speech": "先写 Rnn。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 721.39,
+   "dur": 4.65,
+   "speech": "参数用扁平数组存，初始化用同一个种子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 726.22,
+   "dur": 3.59,
+   "speech": "前向走一遍，每步记下隐状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 729.99,
+   "dur": 4.36,
+   "speech": "序列走完，隐状态取平均，再进线性层。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 734.53,
+   "dur": 4.67,
+   "speech": "损失用交叉熵，带 softmax 的数值稳定写法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 739.38,
+   "dur": 3.23,
+   "speech": "反传是最容易写错的地方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 742.79,
+   "dur": 4.26,
+   "speech": "第一步：把梯度从线性层传回平均池化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 747.23,
+   "dur": 4.12,
+   "speech": "第二步：平均池化要把梯度分回每一步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 751.53,
+   "dur": 3.97,
+   "speech": "第三步：每一步再往前传，累加梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 755.68,
+   "dur": 3.33,
+   "speech": "漏掉任何一步，梯度就对不上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 759.19,
+   "dur": 4.29,
+   "speech": "所以有一条检查：解析梯度和中心差分比。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 763.65,
+   "dur": 3.9,
+   "speech": "实测最大差一点五九乘十的负十次方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 767.74,
+   "dur": 2.32,
+   "speech": "第二个坑是类型。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 770.23,
+   "dur": 3.54,
+   "speech": "向量有两种：boxed 和 unboxed。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 773.96,
+   "dur": 3.59,
+   "speech": "混用会编译不过，或者悄悄变慢。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 777.73,
+   "dur": 2.92,
+   "speech": "第三个坑是惰性求值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 780.82,
+   "dur": 4.31,
+   "speech": "只算损失不强制求值，训练其实没发生。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 785.31,
+   "dur": 4,
+   "speech": "所以每个训练循环里，都要 evaluate。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 789.49,
+   "dur": 3.95,
+   "speech": "这三条都写进提交说明，下次不踩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 793.62,
+   "dur": 2.61,
+   "speech": "brick 的实现分三层。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 796.41,
+   "dur": 3.83,
+   "speech": "第一层 brickify，把序列按块切开。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 800.42,
+   "dur": 4.09,
+   "speech": "第二层对每块跑 RNN，只取块末状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 804.69,
+   "dur": 4.55,
+   "speech": "第三层把块末状态拼起来，再跑一个短 RNN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 809.42,
+   "dur": 5.01,
+   "speech": "检查里有一条：T 等于十二、块长四，要切出三块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 814.61,
+   "dur": 3.59,
+   "speech": "拼回去逐项相等，不能丢一个点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 818.38,
+   "dur": 3.57,
+   "speech": "第二层只吃三个状态，每个四维。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 822.12,
+   "dur": 3.01,
+   "speech": "浅层的「浅」，就浅在这里。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 825.32,
+   "dur": 3.47,
+   "speech": "窗口再长，第二层也只有十步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 828.97,
+   "dur": 2.92,
+   "speech": "空洞卷积的实现更短。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 832.07,
+   "dur": 4.69,
+   "speech": "一个循环：对每个输出位置，按 d 间隔取核。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 836.94,
+   "dur": 4.24,
+   "speech": "核长三，d 等于二，五个点出三个输出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 841.36,
+   "dur": 4.19,
+   "speech": "检查里要有黄金值：四、六、八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 845.73,
+   "dur": 4.98,
+   "speech": "还要有一条退化检查：d 等于一，和普通卷积一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 850.89,
+   "dur": 3.13,
+   "speech": "输出长度单独写一个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 854.2,
+   "dur": 2.65,
+   "speech": "感受野也单独写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 857.04,
+   "dur": 3.66,
+   "speech": "这两个函数被证据程序直接调用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 860.88,
+   "dur": 2.39,
+   "speech": "训练配方很朴素。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 863.45,
+   "dur": 3.9,
+   "speech": "Adam，学习率零点零一，批量十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 867.53,
+   "dur": 3.81,
+   "speech": "全局裁剪五，三十轮，种子七。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 871.52,
+   "dur": 3.16,
+   "speech": "单线程，一轮一点五七秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 874.86,
+   "dur": 4.07,
+   "speech": "没有 GPU，没有早停，没有学习率调度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 879.11,
+   "dur": 2.92,
+   "speech": "所有对照共用这套配方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 48,
+   "start": 882.2,
+   "dur": 2.85,
+   "speech": "差别只在结构和数据。"
+  },
+  {
+   "scene": "implementation",
+   "index": 49,
+   "start": 885.23,
+   "dur": 3.16,
+   "speech": "这也是为什么读数是能比的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 50,
+   "start": 888.57,
+   "dur": 4.12,
+   "speech": "代价是慢：一轮只有一百二十个训练样本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 51,
+   "start": 892.87,
+   "dur": 3.64,
+   "speech": "全量四千个窗口，单线程跑不动。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 899.9,
+   "dur": 2.92,
+   "speech": "三十项检查，逐组看。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 903,
+   "dur": 4.05,
+   "speech": "数据五项，RNN 七项，brick 五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 907.22,
+   "dur": 4,
+   "speech": "空洞六项，长窗口两项，训练五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 911.4,
+   "dur": 4.43,
+   "speech": "六组，三十项，八十五点四秒，全过。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 916.01,
+   "dur": 2.82,
+   "speech": "每一组的格子都在右边。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 919.01,
+   "dur": 2.08,
+   "speech": "第一组是数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 921.27,
+   "dur": 3.64,
+   "speech": "面板两千六百七十四行，五百列。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 925.09,
+   "dur": 4.89,
+   "speech": "区间二零一五年一月五号到二零二五年十二月三十一号。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 930.16,
+   "dur": 4.57,
+   "speech": "五百只股票，每只都有对数收益，没有整列空。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 934.91,
+   "dur": 4,
+   "speech": "窗口四千三百九十二个，每只八到九个。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 939.09,
+   "dur": 4.29,
+   "speech": "三分位标签，三类占比都在三成上下。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 943.55,
+   "dur": 3.25,
+   "speech": "这五项不过，后面全是假的。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 946.99,
+   "dur": 2.82,
+   "speech": "再钉 RNN 的黄金值。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 949.99,
+   "dur": 3.37,
+   "speech": "tanh 零点五等于零点四六二一。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 953.54,
+   "dur": 5.99,
+   "speech": "三步链是零点四六二一、零点二二七零、零点一一三零。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 959.71,
+   "dur": 4.05,
+   "speech": "不是零点五、零点二五、零点一二五。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 963.94,
+   "dur": 4.6,
+   "speech": "参数三十九，零权重网络损失等于 log 三。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 968.72,
+   "dur": 6.13,
+   "speech": "BPTT 解析梯度和中心差分，最大差一点五九乘十的负十次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 975.03,
+   "dur": 3.25,
+   "speech": "范数十的梯度，裁剪后是五。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 978.47,
+   "dur": 3.9,
+   "speech": "同一颗种子，两次初始化逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 982.55,
+   "dur": 5.53,
+   "speech": "手算的对，说明口径没歪；实现的对，说明代码没崩。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 988.26,
+   "dur": 1.77,
+   "speech": "brick 五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 990.21,
+   "dur": 5.34,
+   "speech": "T 等于十二、块长四，切出三块，拼回逐项相等。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 995.73,
+   "dur": 4.72,
+   "speech": "T 等于五百、块长五十，十块，每块五十。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1000.63,
+   "dur": 3.88,
+   "speech": "第二层只吃三个块末状态，每个四维。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1004.69,
+   "dur": 5.03,
+   "speech": "串行深度五百，并行深度六十，比八点三三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1009.9,
+   "dur": 3.66,
+   "speech": "参数八十七，和窗口长度无关。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1013.74,
+   "dur": 4.05,
+   "speech": "这五项证明：切块保序，深度真降了。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1017.96,
+   "dur": 4,
+   "speech": "但第二层的准确率没训，边界里写。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1022.14,
+   "dur": 2.34,
+   "speech": "空洞组有六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1024.66,
+   "dur": 4.77,
+   "speech": "d 等于二，核一一，对一到五，输出四六八。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1029.61,
+   "dur": 4.74,
+   "speech": "d 等于一，退化成普通卷积，输出负二负二。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1034.53,
+   "dur": 3.47,
+   "speech": "五百点过五层，剩四百三十八。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1038.18,
+   "dur": 3.71,
+   "speech": "感受野四层三十一，五层六十三。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1042.07,
+   "dur": 4.26,
+   "speech": "参数十五对六十三，比值零点二三八一。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1046.51,
+   "dur": 3.88,
+   "speech": "周期八的正弦，隔八差分完全抵消。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1050.57,
+   "dur": 4.38,
+   "speech": "同一周期隔一差分，还剩零点四九九一。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1055.13,
+   "dur": 3.49,
+   "speech": "这两句是空洞卷积真正的证据。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1058.81,
+   "dur": 3.01,
+   "speech": "长窗口两项，训练五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1062,
+   "dur": 7.07,
+   "speech": "五十步零点三一六七，两百五十步零点三三三三，五百步零点三三三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1069.25,
+   "dur": 4.14,
+   "speech": "三个数都在零点二八到零点四零之间。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1073.57,
+   "dur": 3.97,
+   "speech": "窗口拉长十倍，变化不到零点零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1077.73,
+   "dur": 5.17,
+   "speech": "合成周期序列，训练测试都是一点零，四十一秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1083.08,
+   "dur": 3.25,
+   "speech": "同一个 RNN，换任务就学得会。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1086.52,
+   "dur": 4.38,
+   "speech": "真实三分位，离三分之一不超过零点零五。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1091.08,
+   "dur": 5.68,
+   "speech": "串行三十轮，损失从一点零七四四降到一点零三六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1096.94,
+   "dur": 4.79,
+   "speech": "单线程墙钟比零点四四，结构深度比八点三。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1101.91,
+   "dur": 2.29,
+   "speech": "参数两套一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1104.38,
+   "dur": 2.25,
+   "speech": "最后看一张表。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1106.81,
+   "dur": 2.75,
+   "speech": "六条路，同一批窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 1109.74,
+   "dur": 2.77,
+   "speech": "随机零点三三三三。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 1112.69,
+   "dur": 5.32,
+   "speech": "串行在五十、两百五十、五百步上，都是随机水平。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 1118.19,
+   "dur": 2.37,
+   "speech": "合成是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 1120.73,
+   "dur": 4.81,
+   "speech": "结论不是 RNN 不行，是这批数据没有方向信号。"
+  },
+  {
+   "scene": "verification",
+   "index": 54,
+   "start": 1125.73,
+   "dur": 3.59,
+   "speech": "结构上的账，一条一条都算清了。"
+  },
+  {
+   "scene": "verification",
+   "index": 55,
+   "start": 1129.5,
+   "dur": 2.99,
+   "speech": "精度上的账，这一集没有。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1135.89,
+   "dur": 2.92,
+   "speech": "边界第一条：数据口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1138.99,
+   "dur": 3.64,
+   "speech": "计划写沪深三百里取五百只。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1142.81,
+   "dur": 4.57,
+   "speech": "指数成分只有二零二六年一期快照，三百只。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1147.56,
+   "dur": 3.35,
+   "speech": "拿不到历史成分，只好改口径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1151.09,
+   "dur": 3.3,
+   "speech": "全市场按成交额取前五百。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1154.57,
+   "dur": 3.61,
+   "speech": "第二条：成交额字段整列为空。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1158.37,
+   "dur": 3.13,
+   "speech": "改用收盘价乘成交量近似。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1161.68,
+   "dur": 4.79,
+   "speech": "第三条：计划二零一五到二零二五，T 等于五百。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1166.65,
+   "dur": 5.41,
+   "speech": "两千六百七十四个交易日，每只股票只切出八到九个窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1172.24,
+   "dur": 2.85,
+   "speech": "brick 这条，边界更硬。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1175.27,
+   "dur": 3.49,
+   "speech": "书里说训练时间降到六分之一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1178.94,
+   "dur": 3.25,
+   "speech": "深度比确实是八点三倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1182.38,
+   "dur": 4.26,
+   "speech": "但单线程测墙钟，只测到零点四三八。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1186.82,
+   "dur": 3.01,
+   "speech": "不到一，并行反而更慢。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1190.01,
+   "dur": 2.7,
+   "speech": "单线程没有并行收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1192.9,
+   "dur": 3.47,
+   "speech": "要快六倍，得有多核或者多流。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1196.55,
+   "dur": 2.05,
+   "speech": "我们没有多核。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1198.78,
+   "dur": 3.9,
+   "speech": "所以这条只能写成「结构上能并行」。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1202.86,
+   "dur": 3.59,
+   "speech": "第二条边界：精度差不到一个百分点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1206.63,
+   "dur": 2.53,
+   "speech": "这句话需要一个前提。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1209.35,
+   "dur": 3.83,
+   "speech": "前提是串行 RNN 本身能学到东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1213.36,
+   "dur": 4.84,
+   "speech": "我们的串行 RNN，测试准确率零点三三三三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1218.37,
+   "dur": 2.08,
+   "speech": "正好是随机。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1220.63,
+   "dur": 1.86,
+   "speech": "brick 也一样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1222.67,
+   "dur": 4.24,
+   "speech": "两边都在随机线上，差多少都测不出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1227.09,
+   "dur": 3.4,
+   "speech": "所以「精度没掉」这句，我们证不了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1230.67,
+   "dur": 4.67,
+   "speech": "能证的是：结构等价、深度更低、参数不变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1235.52,
+   "dur": 2.89,
+   "speech": "空洞卷积这边，两条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1238.59,
+   "dur": 2.87,
+   "speech": "书里说五分之一参数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1241.64,
+   "dur": 4.12,
+   "speech": "我们算出来是十五对六十三，四分之一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1245.94,
+   "dur": 3.01,
+   "speech": "差不太多，但数字要改。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1249.14,
+   "dur": 2.89,
+   "speech": "第二条：感受野三十一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1252.21,
+   "dur": 3.3,
+   "speech": "三十一天是总宽度，不是单边。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1255.69,
+   "dur": 4.31,
+   "speech": "在时间序列上，这是因果和非因果的区别。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1260.18,
+   "dur": 3.9,
+   "speech": "我们的实现是 valid 卷积，不补零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1264.26,
+   "dur": 3.93,
+   "speech": "所以五百步进来，四百三十八步出去。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1268.37,
+   "dur": 3.88,
+   "speech": "周期八的正弦，隔八差分完全抵消。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1272.43,
+   "dur": 3.4,
+   "speech": "这是合成序列上的干净证据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1276.01,
+   "dur": 3.28,
+   "speech": "真实数据没有这么干净的周期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1279.46,
+   "dur": 3.88,
+   "speech": "所以这条只证明机制，不证明有用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1283.52,
+   "dur": 3.69,
+   "speech": "第四条边界：一次训练，一个种子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 1287.39,
+   "dur": 4.26,
+   "speech": "训练窗口抽了一百二十个，测试六十个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 42,
+   "start": 1291.83,
+   "dur": 3.45,
+   "speech": "没有多次初始化，没有交叉验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 43,
+   "start": 1295.46,
+   "dur": 3.45,
+   "speech": "差三个百分点以内，当噪声看。"
+  },
+  {
+   "scene": "boundary",
+   "index": 44,
+   "start": 1299.08,
+   "dur": 2.44,
+   "speech": "还有四件没做的事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 45,
+   "start": 1301.7,
+   "dur": 2.92,
+   "speech": "第一，brick 的第二层没训。"
+  },
+  {
+   "scene": "boundary",
+   "index": 46,
+   "start": 1304.8,
+   "dur": 3.54,
+   "speech": "第二，多线程的墙钟加速没测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 47,
+   "start": 1308.52,
+   "dur": 2.7,
+   "speech": "第三，换种子重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 48,
+   "start": 1311.4,
+   "dur": 4.36,
+   "speech": "第四，真实数据上的空洞卷积没做对照。"
+  },
+  {
+   "scene": "boundary",
+   "index": 49,
+   "start": 1315.94,
+   "dur": 3.59,
+   "speech": "这四条挂在这里，下一集不用还。"
+  },
+  {
+   "scene": "boundary",
+   "index": 50,
+   "start": 1319.71,
+   "dur": 4.33,
+   "speech": "下一集：图卷积、图注意力、自注意力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 51,
+   "start": 1324.22,
+   "dur": 3.47,
+   "speech": "三十只股票，一张相关性图。"
+  },
+  {
+   "scene": "boundary",
+   "index": 52,
+   "start": 1327.87,
+   "dur": 3.95,
+   "speech": "把图打乱，准确率该掉回无图水平。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1335.22,
+   "dur": 2.1,
+   "speech": "这一集的读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1337.5,
+   "dur": 3.47,
+   "speech": "tanh 零点五，零点四六二一。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1341.15,
+   "dur": 3.4,
+   "speech": "空洞卷积黄金值，四六八。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1344.73,
+   "dur": 3.47,
+   "speech": "感受野三十一，参数四分之一。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1348.38,
+   "dur": 4.19,
+   "speech": "串行深度五百，并行六十，八点三倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1352.75,
+   "dur": 4.57,
+   "speech": "真实测试准确率零点三三三三，随机水平。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1357.5,
+   "dur": 2.41,
+   "speech": "合成任务一点零。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1360.1,
+   "dur": 2.56,
+   "speech": "三十项检查全过。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1362.84,
+   "dur": 3.85,
+   "speech": "一句话：结构能算清，精度量不出。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1366.87,
+   "dur": 2.56,
+   "speech": "下一集换一个方向。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1369.61,
+   "dur": 3.47,
+   "speech": "三十只股票，一张相关性图。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1373.26,
+   "dur": 3.54,
+   "speech": "图卷积、图注意力、自注意力。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1376.98,
+   "dur": 3.61,
+   "speech": "打乱图结构，看准确率掉不掉。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1380.77,
+   "dur": 1.96,
+   "speech": "二十四分钟。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1382.91,
+   "dur": 2.08,
+   "speech": "这一集到这里。"
+  }
+ ]
+}
