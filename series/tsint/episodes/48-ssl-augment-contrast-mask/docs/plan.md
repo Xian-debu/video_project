@@ -53,3 +53,11 @@ ts-admin 导出（`inventory/scripts/export_ch05_ssl.py`，提交 `1966618`）�
 4. **异常窗口**：计划未提；实际剔除窗口内单日 `|收益| ≥ 0.5` 的异常段（拆股/错价），未做前向填充或插值。
 5. **对比批大小**：计划两套预训练用同一批大小；实际对比 32、掩码 64（掩码要拼 120 维输入，显存/内存预算不同），其余超参（种子 7、Adam、全批量）一致，learning rate 分别 0.01 / 0.005。
 6. **时长**：计划 26 分钟；成片 **24:06.48**（1,446.48 s）。历史区间 E43 18.8 / E44 21.5 / E45 21.5 / E46 23.1 / E47 20.5 分钟，计划分钟是粗估，实测 ±30% 正常，不改稿。
+
+## Delivery
+
+- 成片 `delivery/Tsint48SslAugmentContrastMask.mp4`：1,446.47 s（24:06.47）/ 43,394 帧 / 30 fps / 8 场 40 页 / 397 条旁白（发声 1,349.2 s）/ −15 LUFS / TP −2 dBFS / LRA 2.6 / 70,925,270 B。
+- 字幕 `tsint-48.srt`（397 cue，跨度 00:00:01,200 → 00:24:04,280，最长 23 字，无一换行）；章节 `tsint-48.chapters.txt`（8 章，合计 1,446.48 s，首 00:00:00 / 末 00:23:03，501 B）；`tsint-48.chapters.ffmeta.txt`（882 B）；封面 `cover.png`（帧 20，82,201 B）。
+- 分数床复用 `out/e04-score-loop-48k.wav`（1560 s，scoreReused false，musicGain −4.5 dB、duck 4.5 dB、ducked 55.7%）；mix 48 kHz / 1,447.68 s、peak −1.2 dBFS、RMS −26.72 dBFS；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.43、gap_full −30.53、gap_audible −33.3、bed 36.7；loudnorm in I −23.24 / TP −1.20 → out I −15 / TP −2（linear）。
+- 流水线：23 个 stage 全 ok、8 段 rendered 8（reused 0）；闪烁 43,394 帧 mean 20.33 / min 14.73 / max 23.43 / mean|d| 0.0130 / p99 0.1065 / max 7.55 / 7 切点（4863 / 10794 / 17586 / 23097 / 29263 / 36533 / 41517）；树 `312667dc40ba150b`。
+- 静帧复核：从成片按每页首句抽 40 帧逐页看（640 宽三张联系表 + 12 张全分辨率抽查），抓出两处：① outro 下集预告卡把本集自己的「50 条 / 32 维」当成下一集字段（E49 实际是 20 只股票、128 日窗口、20 日前向收益三分位）；② verification 页头 goal 写 10.6 秒（证据实测 10.8449 s → 10.8）。两处修完重渲（`cc01e9e`），成片时长与字幕不变。
