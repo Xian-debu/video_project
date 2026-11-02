@@ -62,3 +62,13 @@ ts-admin 导出（commit d89ebd3）：全市场 C39/C27/C35 三个证监会门�
 4. **CAM 的日映射**：特征 53 个、日位置 60 个，按感受野中心（feature j → day j+3）摊回，不按均匀上采样；热图与 top-5 日索引因此对齐。
 
 以上四条同时写进 ts-base `data/episodes/45-cnn-resnet-gap-cam/manifest.json`、本片 `data/dist.json` 的 `meta.deviations`、以及成片 boundary 场景画面。
+
+## Delivery
+
+- 成片 **1,288.77 s（21:28.77）/ 38,663 帧 / 8 场 41 页 / 342 条旁白（发声 1,201.5 s）/ −15 LUFS / TP −2 dBFS / LRA 2.5**。
+- 交付物：`delivery/Tsint45CnnResnetGapCam.mp4`（65,180,040 B）、`cover.png`（83,368 B，帧 20）、`tsint-45.srt`（25,863 B，342 cue，0 换行，最长 34 字）、`tsint-45.chapters.txt`（468 B）、`tsint-45.chapters.ffmeta.txt`（849 B）。
+- 字幕跨度 00:00:01,200 → 00:21:26,580；8 章合计 1,288.78 s（首 00:00:00 / 末 00:20:28）。
+- 混音：48 kHz / 1,289.98 s，peak −1.00 dBFS、RMS −26.96 dBFS、musicGain −4.5 dB、ducked 56.0%；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.83 / gap_full −30.53 / gap_audible −33.43 / bed 36.6。
+- 闪烁门：38,663 帧 mean 20.75 / min 14.74 / max 23.46、mean|d| 0.0131、p99 0.1159、max 7.15、7 切点（4375 / 9475 / 14957 / 19974 / 25511 / 31614 / 36847）。
+- make 首轮 PASS（23 stage 全 ok、8 段 rendered 8、reused 0），tree `c40f8f96b125b389`。
+- 分数床复用 E04 的 1560 s 循环（scoreReused false）；封面帧 20；film.json status ready、assetsStatus complete。
