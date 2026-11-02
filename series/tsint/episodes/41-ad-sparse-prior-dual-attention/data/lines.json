@@ -1,0 +1,1828 @@
+{
+ "entry": "src/tsint-41-ad-sparse-prior-dual-attention/script.ts",
+ "fps": 30,
+ "totalSec": 909.35,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 110.85
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 110.85,
+   "dur": 116.2
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 227.05,
+   "dur": 150.14
+  },
+  {
+   "id": "intuition",
+   "chapter": "直觉",
+   "start": 377.19,
+   "dur": 104.92
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 482.11,
+   "dur": 108.83
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 590.94,
+   "dur": 193.89
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 784.83,
+   "dur": 77.02
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 861.85,
+   "dur": 47.5
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.6,
+   "speech": "上一集，四个神经网络判据都没到零点二五。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.98,
+   "dur": 2.58,
+   "speech": "问题不在模型深浅。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.74,
+   "dur": 2.97,
+   "speech": "在三个没人写下来的假设。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.89,
+   "dur": 2.32,
+   "speech": "这一集换掉它们。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.38,
+   "dur": 3.3,
+   "speech": "第一个假设：注意力必须稠密。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.87,
+   "dur": 3.4,
+   "speech": "SBT 换成二值稀疏掩码。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 21.44,
+   "dur": 3.13,
+   "speech": "时间上也只让模型看过去。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 24.76,
+   "dur": 3.78,
+   "speech": "Step-T 因果，一个点一个点往前走。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 28.72,
+   "dur": 3.69,
+   "speech": "第二个假设：重构误差服从高斯。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 32.59,
+   "dur": 3.59,
+   "speech": "TVAE 把先验换成 Student-t。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 36.36,
+   "dur": 3.76,
+   "speech": "尾部更重，跳空不再被当成异常。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 40.29,
+   "dur": 3.16,
+   "speech": "第三个假设：一个视图就够。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 43.63,
+   "dur": 4.43,
+   "speech": "DCdetector 同时看特征和样本两个方向。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 48.24,
+   "dur": 3.9,
+   "speech": "用对比学习判断哪段模式更一致。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 52.32,
+   "dur": 2.94,
+   "speech": "三个替换，三种赌法。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 55.45,
+   "dur": 1.84,
+   "speech": "先说结论。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 57.46,
+   "dur": 2.61,
+   "speech": "两个赢了，一个打平。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 60.25,
+   "dur": 5.08,
+   "speech": "TVAE 测试 F1 零点二一，高斯 VAE 零点一三。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 65.51,
+   "dur": 4.41,
+   "speech": "DCdetector 零点二四，patch-AE 零点一一。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 70.09,
+   "dur": 4.77,
+   "speech": "SBT 零点一零，稠密注意力也是零点一零。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 75.04,
+   "dur": 1.6,
+   "speech": "打平。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 76.82,
+   "dur": 2.73,
+   "speech": "数据还是茅台一只票。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 79.72,
+   "dur": 2.94,
+   "speech": "日线三千九百九十六行。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 82.85,
+   "dur": 4.33,
+   "speech": "训练两千一百八十天，验证四百八十七天。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 87.36,
+   "dur": 2.99,
+   "speech": "测试一千三百二十八天。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 90.53,
+   "dur": 2.29,
+   "speech": "注入三种异常。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 93,
+   "dur": 4.65,
+   "speech": "八段尖峰、四段形态替换、四段相位翻转。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 97.83,
+   "dur": 3.83,
+   "speech": "真值一百六十八个窗口，占一成四。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 101.84,
+   "dur": 2.99,
+   "speech": "另外拉了五千根五分钟线。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 105.01,
+   "dur": 3.64,
+   "speech": "给 DCdetector 做一次独立演示。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 112.05,
+   "dur": 2.73,
+   "speech": "先看上一集留下的坑。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 114.96,
+   "dur": 4.69,
+   "speech": "四个方法，验证段都在零点二八到零点三一。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 119.83,
+   "dur": 3.95,
+   "speech": "搬到测试段，最好的也只有零点二五。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 123.96,
+   "dur": 3.06,
+   "speech": "这一次不看分数，看假设。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 127.2,
+   "dur": 3.25,
+   "speech": "第一个隐藏假设：噪声是白的。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 130.64,
+   "dur": 3.52,
+   "speech": "现实里跳空、涨跌停、停牌。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 134.33,
+   "dur": 3.61,
+   "speech": "这些点会被高斯先验判成异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 138.13,
+   "dur": 4.14,
+   "speech": "第二个隐藏假设：一个窗口只有一种模式。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 142.45,
+   "dur": 3.93,
+   "speech": "同一段形态，放在不同尺度上不一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 146.56,
+   "dur": 2.63,
+   "speech": "单视图重建分不清。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 149.37,
+   "dur": 4.14,
+   "speech": "第三个隐藏假设：注意力越稠密越好。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 153.69,
+   "dur": 4.62,
+   "speech": "一百个点的窗口，稠密注意力的成本不是瓶颈。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 158.49,
+   "dur": 3.73,
+   "speech": "真正的问题是它把噪声也学进去。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 162.4,
+   "dur": 3.09,
+   "speech": "三个假设，对应三个替换。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 165.67,
+   "dur": 4.55,
+   "speech": "验证办法：同数据、同注入、同阈值规则。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 170.4,
+   "dur": 3.18,
+   "speech": "每个方法配一个同结构基线。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 173.76,
+   "dur": 2.53,
+   "speech": "只换掉那一个假设。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 176.48,
+   "dur": 2.29,
+   "speech": "其余全部锁死。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 178.95,
+   "dur": 2.29,
+   "speech": "注入三种异常。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 181.42,
+   "dur": 3.66,
+   "speech": "尖峰：一个点乘五到十个标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 185.27,
+   "dur": 4.12,
+   "speech": "形态替换：把整段换成另一只票的形态。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 189.56,
+   "dur": 2.89,
+   "speech": "相位翻转：半周期错位。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 192.64,
+   "dur": 3.73,
+   "speech": "尖峰八段，形态四段，相位四段。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 196.55,
+   "dur": 2.87,
+   "speech": "真值一百六十八个窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 199.6,
+   "dur": 3.18,
+   "speech": "验证段另做一套小的注射。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 202.96,
+   "dur": 3.76,
+   "speech": "四段尖峰、两段形态、一段相位。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 206.9,
+   "dur": 4.69,
+   "speech": "种子写死：四十二、四二四二、四二四三。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 211.78,
+   "dur": 4.91,
+   "speech": "验证段用四十三、四二四三、四三四四。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 216.87,
+   "dur": 4.81,
+   "speech": "两条纪律：窗口不重叠；真值只认窗口末尾。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 221.86,
+   "dur": 2.99,
+   "speech": "所有读数都在窗口层算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 228.25,
+   "dur": 3.69,
+   "speech": "第一块：SBT 的稀疏二值注意力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 232.12,
+   "dur": 3.47,
+   "speech": "掩码矩阵 B 每个位置独立采样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 235.77,
+   "dur": 2.99,
+   "speech": "一半保留，一半清零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 238.94,
+   "dur": 3.37,
+   "speech": "采样一次就冻结，不参与训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 242.49,
+   "dur": 2.61,
+   "speech": "注意力还是标准形式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 245.28,
+   "dur": 3.64,
+   "speech": "分数矩阵乘掩码，再 softmax。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 249.09,
+   "dur": 3.69,
+   "speech": "被清零的位置，权重直接为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 252.96,
+   "dur": 4.69,
+   "speech": "每一层都有 Q、K、V、O 四个投影。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 257.83,
+   "dur": 4.29,
+   "speech": "权重二值化：只取正一、零、负一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 262.3,
+   "dur": 2.87,
+   "speech": "反向传播用直通估计。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 265.35,
+   "dur": 2.92,
+   "speech": "梯度原样穿过 sign 函数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 268.45,
+   "dur": 3.28,
+   "speech": "时间上再做一次因果掩码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 271.91,
+   "dur": 2.7,
+   "speech": "第 t 个点只看一到 t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 274.79,
+   "dur": 2.44,
+   "speech": "这叫 Step-T 因果。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 277.41,
+   "dur": 2.77,
+   "speech": "参数量只有一百六十九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 280.36,
+   "dur": 3.25,
+   "speech": "一个窗口连一千个参数都不到。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 283.79,
+   "dur": 3.33,
+   "speech": "第二块：TVAE 的重尾先验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 287.3,
+   "dur": 3.71,
+   "speech": "普通 VAE 让潜码服从标准高斯。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 291.19,
+   "dur": 2.39,
+   "speech": "尾部按指数衰减。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 293.76,
+   "dur": 3.16,
+   "speech": "一个跳空点就能把似然拉爆。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 297.1,
+   "dur": 2.99,
+   "speech": "TVAE 换成 Student-t。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 300.27,
+   "dur": 3.61,
+   "speech": "密度正比于一加 z 方比 nu 的负幂。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 304.06,
+   "dur": 2.73,
+   "speech": "nu 越小，尾巴越重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 306.97,
+   "dur": 2.61,
+   "speech": "本集固定 nu 等于五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 309.75,
+   "dur": 3.66,
+   "speech": "分数是负对数似然加 KL。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 313.6,
+   "dur": 3.33,
+   "speech": "用八次蒙特卡洛采样估期望。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 317.1,
+   "dur": 3.97,
+   "speech": "先验重尾，跳空就不再被当成异常。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 321.26,
+   "dur": 3.21,
+   "speech": "但形态变了，它照样报警。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 324.64,
+   "dur": 3.57,
+   "speech": "第三块：DCdetector 的双注意力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 328.39,
+   "dur": 3.04,
+   "speech": "一个窗口切成十一段 patch。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 331.61,
+   "dur": 3.88,
+   "speech": "两个视图：一段一段看，和隔段看。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 335.66,
+   "dur": 3.76,
+   "speech": "同一个窗口的两个视图互为正样本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 339.6,
+   "dur": 3.06,
+   "speech": "别的窗口的 patch 当负样本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 342.84,
+   "dur": 2.85,
+   "speech": "损失是 InfoNCE。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 345.87,
+   "dur": 2.51,
+   "speech": "温度 tau 取零点一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 348.56,
+   "dur": 3.35,
+   "speech": "黄金值：所有相似度相等时。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 352.09,
+   "dur": 3.28,
+   "speech": "损失等于 log 负样本数加一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 355.55,
+   "dur": 3.21,
+   "speech": "十一个负样本，就是 log 十一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 358.93,
+   "dur": 2.25,
+   "speech": "四条数值约定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 361.36,
+   "dur": 2.7,
+   "speech": "阈值只在验证段挑。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 364.24,
+   "dur": 3.93,
+   "speech": "六个模型同一套窗口、同一套真值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 368.35,
+   "dur": 3.16,
+   "speech": "种子全写死，没有随机数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 371.69,
+   "dur": 3.3,
+   "speech": "换机器重跑，读数逐位一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 0,
+   "start": 378.39,
+   "dur": 2.8,
+   "speech": "先看稀疏到底省了什么。"
+  },
+  {
+   "scene": "intuition",
+   "index": 1,
+   "start": 381.37,
+   "dur": 2.56,
+   "speech": "掩码率零点六二五。"
+  },
+  {
+   "scene": "intuition",
+   "index": 2,
+   "start": 384.11,
+   "dur": 4.57,
+   "speech": "不是精确的一半，因为因果三角也被算进去。"
+  },
+  {
+   "scene": "intuition",
+   "index": 3,
+   "start": 388.86,
+   "dur": 4.48,
+   "speech": "二值权重取值只有负一、零、正一。"
+  },
+  {
+   "scene": "intuition",
+   "index": 4,
+   "start": 393.52,
+   "dur": 3.64,
+   "speech": "训练完，权重里一半以上是零。"
+  },
+  {
+   "scene": "intuition",
+   "index": 5,
+   "start": 397.34,
+   "dur": 3.78,
+   "speech": "这不是剪枝，是训练时就长这样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 6,
+   "start": 401.3,
+   "dur": 3.37,
+   "speech": "Step-T 因果检查：改未来点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 7,
+   "start": 404.85,
+   "dur": 3.06,
+   "speech": "窗口后半段全改成一亿。"
+  },
+  {
+   "scene": "intuition",
+   "index": 8,
+   "start": 408.09,
+   "dur": 2.89,
+   "speech": "前十步的重构一动不动。"
+  },
+  {
+   "scene": "intuition",
+   "index": 9,
+   "start": 411.17,
+   "dur": 2.68,
+   "speech": "说明它真的没看未来。"
+  },
+  {
+   "scene": "intuition",
+   "index": 10,
+   "start": 414.03,
+   "dur": 2.65,
+   "speech": "对比稠密注意力基线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 11,
+   "start": 416.86,
+   "dur": 3.42,
+   "speech": "同样的窗口，同样的训练轮次。"
+  },
+  {
+   "scene": "intuition",
+   "index": 12,
+   "start": 420.46,
+   "dur": 2.94,
+   "speech": "结果：测试段两者打平。"
+  },
+  {
+   "scene": "intuition",
+   "index": 13,
+   "start": 423.58,
+   "dur": 2.68,
+   "speech": "再看重尾先验的形状。"
+  },
+  {
+   "scene": "intuition",
+   "index": 14,
+   "start": 426.44,
+   "dur": 3.09,
+   "speech": "横轴是离均值几个标准差。"
+  },
+  {
+   "scene": "intuition",
+   "index": 15,
+   "start": 429.71,
+   "dur": 2.58,
+   "speech": "纵轴是负对数密度。"
+  },
+  {
+   "scene": "intuition",
+   "index": 16,
+   "start": 432.47,
+   "dur": 2.27,
+   "speech": "高斯是抛物线。"
+  },
+  {
+   "scene": "intuition",
+   "index": 17,
+   "start": 434.92,
+   "dur": 3.01,
+   "speech": "Student-t 在尾部更低。"
+  },
+  {
+   "scene": "intuition",
+   "index": 18,
+   "start": 438.11,
+   "dur": 2.92,
+   "speech": "差在尾巴上，不在中间。"
+  },
+  {
+   "scene": "intuition",
+   "index": 19,
+   "start": 441.21,
+   "dur": 3.13,
+   "speech": "中间两个分布几乎重合。"
+  },
+  {
+   "scene": "intuition",
+   "index": 20,
+   "start": 444.53,
+   "dur": 3.35,
+   "speech": "所以干净窗的分数几乎一样。"
+  },
+  {
+   "scene": "intuition",
+   "index": 21,
+   "start": 448.06,
+   "dur": 2.94,
+   "speech": "差别只在跳空那几个点。"
+  },
+  {
+   "scene": "intuition",
+   "index": 22,
+   "start": 451.18,
+   "dur": 3.78,
+   "speech": "尖峰窗上，t 先验不抬高分数。"
+  },
+  {
+   "scene": "intuition",
+   "index": 23,
+   "start": 455.14,
+   "dur": 3.73,
+   "speech": "这就是重尾先验四个字的实际含义。"
+  },
+  {
+   "scene": "intuition",
+   "index": 24,
+   "start": 459.05,
+   "dur": 2.94,
+   "speech": "DCdetector 的对比损失，在注入窗口整段抬高。"
+  },
+  {
+   "scene": "intuition",
+   "index": 25,
+   "start": 462.18,
+   "dur": 2.58,
+   "speech": "单视图 patch-AE 只有零星几个尖刺。"
+  },
+  {
+   "scene": "intuition",
+   "index": 26,
+   "start": 464.94,
+   "dur": 3.57,
+   "speech": "形态替换和相位翻转，双视图能看到。"
+  },
+  {
+   "scene": "intuition",
+   "index": 27,
+   "start": 468.68,
+   "dur": 5.34,
+   "speech": "测试 F1 零点二四，patch-AE 零点一一，两倍多。"
+  },
+  {
+   "scene": "intuition",
+   "index": 28,
+   "start": 474.21,
+   "dur": 2.94,
+   "speech": "三个替换，三种结果。"
+  },
+  {
+   "scene": "intuition",
+   "index": 29,
+   "start": 477.33,
+   "dur": 2.58,
+   "speech": "打平一个，赢两个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 483.31,
+   "dur": 3.81,
+   "speech": "实现：三个模块，一千零二十一行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 487.3,
+   "dur": 3.95,
+   "speech": "SBT 三百一十四行，十四个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 491.43,
+   "dur": 3.97,
+   "speech": "TVAE 二百二十七行，十八个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 495.58,
+   "dur": 4.05,
+   "speech": "DCdetector 二百六十行，二十三个测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 499.81,
+   "dur": 3.57,
+   "speech": "全部纯函数，没有第三方数值库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 503.55,
+   "dur": 3.95,
+   "speech": "矩阵乘、Cholesky、自动微分都手写。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 507.68,
+   "dur": 3.49,
+   "speech": "SBT 的直通估计最先写错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 511.36,
+   "dur": 3.04,
+   "speech": "初版把 sign 乘进了梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 514.57,
+   "dur": 3.3,
+   "speech": "结果负权重那半边方向反了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 518.06,
+   "dur": 2.25,
+   "speech": "训练照样收敛。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 520.48,
+   "dur": 3.13,
+   "speech": "但方向性检查立刻失败。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 523.8,
+   "dur": 3.28,
+   "speech": "单测里专门做了反向对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 527.25,
+   "dur": 4.89,
+   "speech": "正常方向，第二个解码器更不会重建第一个的输出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 532.32,
+   "dur": 3.45,
+   "speech": "方向反了，检查直接判失败。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 535.95,
+   "dur": 4.05,
+   "speech": "训练成本是个真问题。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 540.17,
+   "dur": 3.11,
+   "speech": "两千零八十一个窗口，注意力是平方复杂度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 543.46,
+   "dur": 3.42,
+   "speech": "一轮要一分半，十轮就爆内存。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 547.06,
+   "dur": 2.75,
+   "speech": "解法不是加内存。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 549.99,
+   "dur": 4.5,
+   "speech": "是拟合段每五个窗口取一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 554.68,
+   "dur": 3.73,
+   "speech": "四百一十七个窗口训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 558.59,
+   "dur": 2.49,
+   "speech": "分数仍在全量窗口上算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 561.26,
+   "dur": 3.21,
+   "speech": "TVAE 的 gamma 函数用 Lanczos 近似。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 564.64,
+   "dur": 2.75,
+   "speech": "卡方采样用 Marsaglia-Tsang。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 567.57,
+   "dur": 3.16,
+   "speech": "十万次采样做一次数值体检。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 570.91,
+   "dur": 3.04,
+   "speech": "数值兜底也要写进代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 574.13,
+   "dur": 3.21,
+   "speech": "协方差矩阵加 Cholesky 抖动。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 577.51,
+   "dur": 3.76,
+   "speech": "分母夹下界，防止零向量出 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 581.45,
+   "dur": 2.89,
+   "speech": "每个模块都有反向检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 584.53,
+   "dur": 4.21,
+   "speech": "检查不是看损失降没降，是看方向对不对。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 592.14,
+   "dur": 1.84,
+   "speech": "验证协议。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 594.16,
+   "dur": 4.07,
+   "speech": "标的：贵州茅台，日频，复权收盘。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 598.41,
+   "dur": 4.07,
+   "speech": "三千九百九十六行，二零一零到二零二六。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 602.66,
+   "dur": 2.49,
+   "speech": "训练到二零一八年底。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 605.32,
+   "dur": 3.73,
+   "speech": "验证两年，测试从二零二一年起。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 609.24,
+   "dur": 3.18,
+   "speech": "窗口长一百，滑动一格。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 612.6,
+   "dur": 2.65,
+   "speech": "拟合两千零八十一窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 615.43,
+   "dur": 2.63,
+   "speech": "验证三百八十八窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 618.24,
+   "dur": 2.89,
+   "speech": "测试一千二百二十九窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 621.32,
+   "dur": 4,
+   "speech": "阈值只在验证段挑，取 F1 最优。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 625.5,
+   "dur": 3.35,
+   "speech": "测试段一个点都不参与调参。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 629.03,
+   "dur": 4.14,
+   "speech": "六个模型，同一套窗口、同一套真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 633.35,
+   "dur": 1.48,
+   "speech": "读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 635.01,
+   "dur": 4.26,
+   "speech": "TVAE 零点二一，高斯 VAE 零点一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 639.45,
+   "dur": 1.84,
+   "speech": "提升六成。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 641.47,
+   "dur": 4.41,
+   "speech": "DCdetector 零点二四，patch-AE 零点一一。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 646.05,
+   "dur": 2.05,
+   "speech": "提升一倍多。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 648.29,
+   "dur": 4.77,
+   "speech": "SBT 零点一零，稠密注意力也是零点一零。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 653.23,
+   "dur": 1.6,
+   "speech": "打平。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 655.01,
+   "dur": 4.67,
+   "speech": "但看验证段：TVAE 和高斯都是零点三一。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 659.86,
+   "dur": 2.85,
+   "speech": "DCdetector 反而更低。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 662.89,
+   "dur": 2.94,
+   "speech": "增益全部出现在测试段。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 666.01,
+   "dur": 2.41,
+   "speech": "精确率和召回率。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 668.6,
+   "dur": 4.43,
+   "speech": "TVAE 精确率零点一四，召回零点四六。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 673.21,
+   "dur": 4.21,
+   "speech": "高斯 VAE 精确率零点一一，召回零点一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 677.61,
+   "dur": 4.65,
+   "speech": "DCdetector 精确率零点一四，召回零点九九。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 682.43,
+   "dur": 4.41,
+   "speech": "patch-AE 精确率零点一零，召回零点三一。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 687.02,
+   "dur": 4.31,
+   "speech": "SBT 精确率零点一三，召回零点九五。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 691.51,
+   "dur": 4.24,
+   "speech": "召回高、精确率低，是这套数据的常态。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 695.93,
+   "dur": 2.13,
+   "speech": "阈值和量纲。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 698.23,
+   "dur": 3.18,
+   "speech": "六个模型的阈值没有可比性。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 701.59,
+   "dur": 4.96,
+   "speech": "SBT 是重建误差，高斯 VAE 是负对数似然。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 706.73,
+   "dur": 3.04,
+   "speech": "DCdetector 是对比损失。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 709.95,
+   "dur": 2.53,
+   "speech": "只有过没过线可比。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 712.66,
+   "dur": 2.46,
+   "speech": "按注入类型拆开看。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 715.31,
+   "dur": 4.21,
+   "speech": "尖峰窗、形态窗、相位窗、干净窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 719.7,
+   "dur": 3.57,
+   "speech": "三个方法在形态窗上分最高。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 723.45,
+   "dur": 3.52,
+   "speech": "尖峰窗反而最接近干净窗。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 727.14,
+   "dur": 4.74,
+   "speech": "原因：窗口一百个点，一个尖峰只占百分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 732.07,
+   "dur": 3.04,
+   "speech": "窗口层读数把它稀释了。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 735.28,
+   "dur": 3.06,
+   "speech": "六十四项检查，一次跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 738.53,
+   "dur": 4.69,
+   "speech": "数据、窗口、三个方法、基线，各管一段。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 743.4,
+   "dur": 4.74,
+   "speech": "注入、读数、盲区、分钟线，也各管一段。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 748.32,
+   "dur": 4.6,
+   "speech": "TVAE 八项、DC 八项、SBT 八项。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 753.1,
+   "dur": 1.53,
+   "speech": "全绿。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 754.81,
+   "dur": 2.27,
+   "speech": "还有负向断言。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 757.26,
+   "dur": 2.25,
+   "speech": "没有满分 F1。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 759.68,
+   "dur": 2.73,
+   "speech": "SBT 打平不算赢。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 762.59,
+   "dur": 3.73,
+   "speech": "分钟线的形态替换没有抬高损失。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 766.5,
+   "dur": 2.01,
+   "speech": "读数的来源。"
+  },
+  {
+   "scene": "verification",
+   "index": 50,
+   "start": 768.69,
+   "dur": 4.89,
+   "speech": "证据 JSON、包内数据、两个仓的提交号。"
+  },
+  {
+   "scene": "verification",
+   "index": 51,
+   "start": 773.75,
+   "dur": 3.78,
+   "speech": "换机器重跑，差异只在浮点末位。"
+  },
+  {
+   "scene": "verification",
+   "index": 52,
+   "start": 777.72,
+   "dur": 2.82,
+   "speech": "六十四项，四百零二秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 53,
+   "start": 780.72,
+   "dur": 1.91,
+   "speech": "全部通过。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 786.03,
+   "dur": 2.87,
+   "speech": "不声称的事，先摆出来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 789.08,
+   "dur": 2.37,
+   "speech": "不声称 SOTA。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 791.63,
+   "dur": 3.16,
+   "speech": "没有公开基准，只有一只票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 794.96,
+   "dur": 1.96,
+   "speech": "不声称通用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 797.1,
+   "dur": 3.81,
+   "speech": "换市场、换品种，全部要重跑。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 801.09,
+   "dur": 2.01,
+   "speech": "不声称实时。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 803.27,
+   "dur": 2.49,
+   "speech": "日频收盘后批处理。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 805.94,
+   "dur": 3.01,
+   "speech": "不声称稀疏一定更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 809.13,
+   "dur": 2.99,
+   "speech": "SBT 这一集只是打平。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 812.3,
+   "dur": 2.77,
+   "speech": "不声称阈值可迁移。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 815.26,
+   "dur": 3.69,
+   "speech": "验证到测试的落差，每一集都在。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 819.12,
+   "dur": 3.42,
+   "speech": "三个替换，只证明了两件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 822.73,
+   "dur": 2.85,
+   "speech": "三笔债，这一集没还。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 825.75,
+   "dur": 2.97,
+   "speech": "一：SBT 的增益为零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 828.9,
+   "dur": 3.37,
+   "speech": "二值化削掉的表达力，没找回来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 832.45,
+   "dur": 2.89,
+   "speech": "二：验证段样本太少。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 835.53,
+   "dur": 3.47,
+   "speech": "七段注射，六十四个真值窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 839.18,
+   "dur": 3.09,
+   "speech": "阈值挑得抖，读数跟着抖。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 842.44,
+   "dur": 3.04,
+   "speech": "三：窗口重叠九十九天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 845.66,
+   "dur": 3.69,
+   "speech": "一千二百二十九个窗口不是独立样本。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 849.53,
+   "dur": 3.35,
+   "speech": "下一集：把距离本身当模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 853.06,
+   "dur": 4.26,
+   "speech": "从 1-NN 加 DTW 到弹性集成。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 857.5,
+   "dur": 2.15,
+   "speech": "距离决定一切。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 863.05,
+   "dur": 2.15,
+   "speech": "换掉一个假设。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 865.38,
+   "dur": 2.56,
+   "speech": "两个赢，一个打平。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 868.12,
+   "dur": 3.21,
+   "speech": "TVAE 重尾，赢了高斯。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 871.5,
+   "dur": 3.35,
+   "speech": "DCdetector 双视图，赢了一倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 875.03,
+   "dur": 2.8,
+   "speech": "SBT 稀疏，打平。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 878.01,
+   "dur": 3.57,
+   "speech": "但赢的两个，验证段都没领先。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 881.76,
+   "dur": 3.28,
+   "speech": "这是这一集最该记住的一句。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 885.22,
+   "dur": 2.63,
+   "speech": "新增测试五十五条。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 888.03,
+   "dur": 4.05,
+   "speech": "三个模块：十四、十八、二十三。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 892.25,
+   "dur": 3.37,
+   "speech": "仓库合计一千七百四十四条。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 895.81,
+   "dur": 2.56,
+   "speech": "证据检查六十四项。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 898.54,
+   "dur": 2.85,
+   "speech": "本集进度五十一 / 七十四。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 901.57,
+   "dur": 2.89,
+   "speech": "下一集：距离决定一切。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 904.64,
+   "dur": 2.51,
+   "speech": "换假设，说到这里。"
+  }
+ ]
+}
