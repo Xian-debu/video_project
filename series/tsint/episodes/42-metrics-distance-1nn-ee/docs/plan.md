@@ -51,3 +51,12 @@ ts-admin 日线表：股票代码、交易日、close；沪深 300 成分股里�
 - 合成数据用固定相位（计划写相位随机）：随机相位会让训练集本身覆盖平移，ED 在平移后仍能到 0.9+，复现不出「ED 掉到 0」；固定相位 + 平移 5 点才把 DTW 的抗错位单独拎出来。
 - 证据检查总数保持 20 条：把原来一条较弱的检查替换成「band6 > band-free 且 band-free = 0.3500」，不新增条数，避免改讲稿与重录旁白。
 - DTW 带宽固定 6（计划未定），归一化用 sqrt(D/(n+m))。
+
+## Delivery（2026-11-02 晚）
+
+- 成片：`delivery/Tsint42MetricsDistance1nnEe.mp4`，926.37 s（15:26.37）/ 27,791 帧 / 8 场 45 页 / −15 LUFS / TP −2 dBFS / LRA 2.2；mp4 48,308,048 B。
+- 旁白：272 条（发声 851.5 s），字幕跨度 00:00:01,200 → 00:15:24,150，0 条换行、最长 28 字；8 章合计 926.35 s。
+- 流水线：make 23 个 stage 全 ok，8 段 rendered 8（reused 0，tree `dc20cb2af7fda192`）；mix 48 kHz / 927.55 s、peak −1.00 dBFS、RMS −26.90 dBFS、ducked 53.8%（4.5 dB）、musicGain −4.5；stem full −25.1 / audible −27.88（share 63.1% / sub 6.8%）；mixGate speech −23.48、gap_full −30.48、gap_audible −33.25、bed 36.8；闪烁 27,791 帧 mean 19.80 / min 14.77 / max 25.00、mean|d| 0.0139、p99 0.1693、max 7.16、7 切点（2249 / 5461 / 10667 / 15326 / 18358 / 23819 / 26522）。
+- 导出：srt 18,877 B / chapters 459 B / ffmeta 833 B / cover.png 77,367 B（帧 20）。score 复用 `out/e04-score-loop-48k.wav`（1560 s，scoreReused false），make 的 `--out` 直接指向 pack 的 delivery，引擎 `out/` 无 `tsint-*` 残留。
+- 静帧复核：45 页全部按页中点渲出，修 6 处（带宽图说明被字幕压住、对齐矩阵底部标签贴字幕、problem 标题「三次」→「二十次」、CheckGrid 分组标签重复、验证页补医药召回两个小数、收尾标题折行），另把「去掉带宽 0.3500」接进证据字段（ts-base `2affc73`）。
+- 返工：首轮静帧用的是旧 lines.json（TTS 定稿前 dump），页面与字幕错位约 1 s；重 dump（272 行 / 926.35 s）后重渲。make 首轮没带 `--score`，现场合成 927 s 床（单核 8 分钟还没到一半），杀掉后改用共享床，二轮 PASS。
