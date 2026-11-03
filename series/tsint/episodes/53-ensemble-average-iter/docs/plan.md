@@ -66,4 +66,19 @@
 
 ## Delivery
 
-待 make 后补：成片时长、音量、字幕与章节、闪烁、静帧、复现命令、封面帧。
+- **成片**：`delivery/Tsint53EnsembleAverageIter.mp4`，1,135.97 s（18:56），34,079 帧，54,057,947 B；tree `121eb49bb0d8980b`。
+- **音量**：mix 48 kHz，峰值 −1.23 dBFS（前限制器同值），RMS −26.71 dBFS；loudnorm 输出 I = −15 LUFS、TP = −2 dBTP（ffmpeg 实测 −15.8 LUFS / −2.0 dBTP / LRA 2.5）。
+- **混音闸门**：语音 −23.61、整段间隙 −30.61、可听带间隙 −33.37、床贡献 36.6 dB；duck 55.3%（4.5 dB），底线通过。
+- **字幕**：`delivery/tsint-53.srt`，320 条 cue（0 条换行，最长 29 字），跨度 00:00:01,200 → 00:18:53,770，语音 1,052.6 s。
+- **章节**：`delivery/tsint-53.chapters.txt`（408 B）+ `.chapters.ffmeta.txt`（785 B），8 章合计 1,135.96 s，首 00:00:00，末 00:16:37。
+- **闪烁闸门**：frames 34,079，mean 20.30 / min 14.57 / max 22.44，mean|Δ| 0.0132，p99 0.1061，max 6.81，7 个场景硬切（4480, 8565, 12806, 17094, 21304, 25744, 29922）——PASS。
+- **静帧**：3 帧（13166 / 23745 / 30522），still lint PASS（无出框、无压边、无溢出、无重叠）。
+- **封面**：`delivery/cover.png`，frame 180（6.00 s），185,300 B；film.json `publish.coverFrame = 180`。
+- **复现**：
+  ```bash
+  cd /root/video-pipeline-blueprint
+  node scripts/films.mjs sync
+  node scripts/make.mjs --film tsint-53-ensemble-average-iter \
+    --score=out/e04-score-loop-48k.wav --still-frames=13166,23745,30522
+  ```
+- **报告**：`delivery/report.json`（23 stage 全 ok，pass true，content commit 0c1cbd7）。
