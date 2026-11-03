@@ -1,0 +1,3067 @@
+{
+ "entry": "src/tsint-58-channel-strategies/script.ts",
+ "fps": 30,
+ "totalSec": 1235.33,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 154.93
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 154.93,
+   "dur": 175.49
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 330.42,
+   "dur": 178.8
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 509.22,
+   "dur": 142.9
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 652.12,
+   "dur": 170.36
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 822.48,
+   "dur": 137.26
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 959.74,
+   "dur": 137.82
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 1097.56,
+   "dur": 137.77
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.4,
+   "speech": "上一集，序列切成了 token。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.78,
+   "dur": 3.76,
+   "speech": "九十六个点，十二、六、三。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.72,
+   "dur": 2.87,
+   "speech": "这一集，多了六条通道。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.77,
+   "dur": 2.8,
+   "speech": "六条通道，怎么进模型？"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.74,
+   "dur": 2.53,
+   "speech": "每条通道一套参数？"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.46,
+   "dur": 2.25,
+   "speech": "还是六条一起看？"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 19.88,
+   "dur": 2.34,
+   "speech": "这不是口味问题。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 22.41,
+   "dur": 2.63,
+   "speech": "是一个可算的选择题。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 25.22,
+   "dur": 3.81,
+   "speech": "三种策略：独立、混合、折中。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 29.2,
+   "dur": 2.56,
+   "speech": "选择由相关性决定。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 31.94,
+   "dur": 2.27,
+   "speech": "先看真实数据。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 34.39,
+   "dur": 3.52,
+   "speech": "六只 A 股，五百一十二个交易日。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 38.09,
+   "dur": 3.09,
+   "speech": "平安、万科、五粮液。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 41.35,
+   "dur": 2.94,
+   "speech": "浦发、茅台、招商。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 44.48,
+   "dur": 2.44,
+   "speech": "每条是一列收益。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 47.09,
+   "dur": 3.18,
+   "speech": "六列并排，就是六条通道。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 50.46,
+   "dur": 3.23,
+   "speech": "每天六个数，进同一个模型。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 53.87,
+   "dur": 3.06,
+   "speech": "每条通道，切十六个 token。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 57.11,
+   "dur": 2.75,
+   "speech": "六条合起来，九十六个。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 60.04,
+   "dur": 2.22,
+   "speech": "这是通道独立。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 62.44,
+   "dur": 1.98,
+   "speech": "换一种做法。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 64.6,
+   "dur": 3.21,
+   "speech": "同一时刻，六个值先拼起来。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 67.99,
+   "dur": 2.97,
+   "speech": "拼成一段，再切 token。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 71.13,
+   "dur": 3.16,
+   "speech": "十六个 token，每个装六条。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 74.47,
+   "dur": 2.2,
+   "speech": "通道不再分开。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 76.85,
+   "dur": 2.89,
+   "speech": "注意力只看这十六个位置。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 79.92,
+   "dur": 2.15,
+   "speech": "九十六对十六。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 82.25,
+   "dur": 2.37,
+   "speech": "token 少了六倍。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 84.8,
+   "dur": 3.01,
+   "speech": "注意力代价，少三十六倍。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 87.99,
+   "dur": 2.08,
+   "speech": "代价换来什么？"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 90.25,
+   "dur": 3.54,
+   "speech": "混合的前提，是通道之间相关。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 93.97,
+   "dur": 3.83,
+   "speech": "相关越强，混在一起越不丢信息。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 97.98,
+   "dur": 3.3,
+   "speech": "相关越弱，混合越像硬凑。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 101.47,
+   "dur": 2.89,
+   "speech": "真实数据，相关性中等。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 104.54,
+   "dur": 3.3,
+   "speech": "平均绝对相关，零点五一。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 108.02,
+   "dur": 2.92,
+   "speech": "最大相关，零点八四。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 111.12,
+   "dur": 2.68,
+   "speech": "有效秩，二点四七。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 113.98,
+   "dur": 2.65,
+   "speech": "所以答案不是两端。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 116.81,
+   "dur": 2.7,
+   "speech": "是折中：两两混合。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 119.69,
+   "dur": 3.11,
+   "speech": "十六个 token，三十二个维度。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 122.98,
+   "dur": 2.68,
+   "speech": "这一集要算三件事。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 125.84,
+   "dur": 3.52,
+   "speech": "相关矩阵、特征值、有效秩。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 129.54,
+   "dur": 2.73,
+   "speech": "再用两个阈值做决策。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 132.45,
+   "dur": 2.89,
+   "speech": "二十四项检查，五组。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 135.52,
+   "dur": 2.8,
+   "speech": "二十九条单测，全绿。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 138.5,
+   "dur": 2.65,
+   "speech": "证据程序不到一秒。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 141.33,
+   "dur": 2.51,
+   "speech": "三种策略都实现。"
+  },
+  {
+   "scene": "open",
+   "index": 47,
+   "start": 144.02,
+   "dur": 3.25,
+   "speech": "独立、混合、两两混合。"
+  },
+  {
+   "scene": "open",
+   "index": 48,
+   "start": 147.46,
+   "dur": 2.73,
+   "speech": "决策规则写进代码。"
+  },
+  {
+   "scene": "open",
+   "index": 49,
+   "start": 150.36,
+   "dur": 2.37,
+   "speech": "先看问题有多大。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 156.13,
+   "dur": 2.63,
+   "speech": "先看六条通道本身。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 158.94,
+   "dur": 2.8,
+   "speech": "六只股票，两年数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 161.92,
+   "dur": 2.87,
+   "speech": "从二零二四年九月开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 164.97,
+   "dur": 2.73,
+   "speech": "到二零二六年十月结束。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 167.87,
+   "dur": 2.37,
+   "speech": "五百一十三个收盘。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 170.42,
+   "dur": 2.51,
+   "speech": "五百一十二个对数收益。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 173.11,
+   "dur": 2.7,
+   "speech": "六列对齐，没有缺失。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 175.99,
+   "dur": 2.77,
+   "speech": "每天六个收益，一起看。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 178.95,
+   "dur": 3.3,
+   "speech": "平安和浦发，相关零点六五。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 182.43,
+   "dur": 3.64,
+   "speech": "茅台和五粮液，相关零点八四。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 186.25,
+   "dur": 2.22,
+   "speech": "先试通道独立。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 188.65,
+   "dur": 2.37,
+   "speech": "每列单独标准化。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 191.19,
+   "dur": 2.85,
+   "speech": "每列切成三十二点一块。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 194.22,
+   "dur": 2.87,
+   "speech": "五百一十二除以三十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 197.27,
+   "dur": 2.92,
+   "speech": "每条通道十六个 token。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 200.37,
+   "dur": 2.99,
+   "speech": "六条通道，九十六个 token。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 203.54,
+   "dur": 2.61,
+   "speech": "每个 token 三十二维。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 206.32,
+   "dur": 2.85,
+   "speech": "通道之间不共享参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 209.35,
+   "dur": 2.82,
+   "speech": "位置编码，九十六个位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 212.35,
+   "dur": 3.3,
+   "speech": "注意力矩阵，九十六乘九十六。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 215.83,
+   "dur": 2.29,
+   "speech": "再试通道混合。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 218.31,
+   "dur": 3.3,
+   "speech": "同一时刻，六个值拼成一段。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 221.79,
+   "dur": 2.49,
+   "speech": "一段一百九十二维。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 224.46,
+   "dur": 2.85,
+   "speech": "每段投影回三十二维。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 227.48,
+   "dur": 2.92,
+   "speech": "五百一十二点，切十六段。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 230.58,
+   "dur": 3.16,
+   "speech": "十六个 token，每个装六条。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 233.92,
+   "dur": 2.2,
+   "speech": "位置只有十六个。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 236.3,
+   "dur": 3.16,
+   "speech": "注意力矩阵，十六乘十六。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 239.63,
+   "dur": 2.65,
+   "speech": "通道信息揉在一起。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 242.47,
+   "dur": 2.49,
+   "speech": "参数少，算得快。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 245.13,
+   "dur": 2.44,
+   "speech": "算一笔注意力账。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 247.75,
+   "dur": 2.92,
+   "speech": "九十六的平方，乘三十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 250.85,
+   "dur": 3.04,
+   "speech": "二十九万四千九百一十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 254.07,
+   "dur": 2.85,
+   "speech": "十六的平方，乘三十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 257.09,
+   "dur": 2.25,
+   "speech": "八千一百九十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 259.52,
+   "dur": 2.29,
+   "speech": "比值，三十六。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 261.99,
+   "dur": 2.39,
+   "speech": "正好是六的平方。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 264.56,
+   "dur": 3.59,
+   "speech": "token 少六倍，代价少三十六倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 268.33,
+   "dur": 2.41,
+   "speech": "但混合不是白拿。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 270.93,
+   "dur": 2.8,
+   "speech": "它假设通道可以互换。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 273.91,
+   "dur": 2.8,
+   "speech": "能不能混，看相关性。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 276.88,
+   "dur": 2.85,
+   "speech": "相关高，混了损失小。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 279.91,
+   "dur": 2.73,
+   "speech": "相关低，混了丢细节。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 282.82,
+   "dur": 3.3,
+   "speech": "真实平均相关，零点五一。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 286.3,
+   "dur": 2.75,
+   "speech": "不高不低，卡在中间。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 289.23,
+   "dur": 2.89,
+   "speech": "独立太贵，混合太糙。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 292.3,
+   "dur": 2.05,
+   "speech": "需要一个折中。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 294.54,
+   "dur": 3.13,
+   "speech": "按相关性分组，再混合。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 297.85,
+   "dur": 3.13,
+   "speech": "组内相关高，组间独立。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 301.16,
+   "dur": 2.56,
+   "speech": "这正是两两混合。"
+  },
+  {
+   "scene": "problem",
+   "index": 50,
+   "start": 303.9,
+   "dur": 1.98,
+   "speech": "问题就来了。"
+  },
+  {
+   "scene": "problem",
+   "index": 51,
+   "start": 306.06,
+   "dur": 2.15,
+   "speech": "分组分几组？"
+  },
+  {
+   "scene": "problem",
+   "index": 52,
+   "start": 308.39,
+   "dur": 2.32,
+   "speech": "哪些通道放一组？"
+  },
+  {
+   "scene": "problem",
+   "index": 53,
+   "start": 310.89,
+   "dur": 1.98,
+   "speech": "不能拍脑袋。"
+  },
+  {
+   "scene": "problem",
+   "index": 54,
+   "start": 313.05,
+   "dur": 2.44,
+   "speech": "相关矩阵给出答案。"
+  },
+  {
+   "scene": "problem",
+   "index": 55,
+   "start": 315.67,
+   "dur": 2.39,
+   "speech": "特征值给出维度。"
+  },
+  {
+   "scene": "problem",
+   "index": 56,
+   "start": 318.24,
+   "dur": 2.46,
+   "speech": "有效秩给出组数。"
+  },
+  {
+   "scene": "problem",
+   "index": 57,
+   "start": 320.88,
+   "dur": 2.37,
+   "speech": "两个阈值做判断。"
+  },
+  {
+   "scene": "problem",
+   "index": 58,
+   "start": 323.43,
+   "dur": 2.37,
+   "speech": "先把定义写清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 59,
+   "start": 325.98,
+   "dur": 2.25,
+   "speech": "再看数怎么算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 331.62,
+   "dur": 2.44,
+   "speech": "先定义相关矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 334.24,
+   "dur": 2.61,
+   "speech": "六条通道，六乘六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 337.02,
+   "dur": 2.97,
+   "speech": "对角是一，自己和自己。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 340.17,
+   "dur": 2.75,
+   "speech": "非对角是皮尔逊相关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 343.1,
+   "dur": 2.87,
+   "speech": "取值范围，负一到一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 346.15,
+   "dur": 2.1,
+   "speech": "我们取绝对值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 348.43,
+   "dur": 2.97,
+   "speech": "因为正负相关都算依赖。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 351.58,
+   "dur": 3.01,
+   "speech": "平均绝对相关，一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 354.77,
+   "dur": 2.68,
+   "speech": "它回答：整体有多像。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 357.63,
+   "dur": 2.44,
+   "speech": "但它看不见结构。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 360.25,
+   "dur": 2.08,
+   "speech": "再看特征值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 362.51,
+   "dur": 2.82,
+   "speech": "相关矩阵对称半正定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 365.51,
+   "dur": 2.68,
+   "speech": "六个特征值，非负。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 368.37,
+   "dur": 2.87,
+   "speech": "加起来等于六，迹不变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 371.42,
+   "dur": 3.16,
+   "speech": "特征值大，说明能量集中。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 374.75,
+   "dur": 3.18,
+   "speech": "特征值小，说明方向独立。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 378.12,
+   "dur": 2.49,
+   "speech": "排序，从大到小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 380.78,
+   "dur": 2.94,
+   "speech": "真实数据，三点六零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 383.9,
+   "dur": 2.46,
+   "speech": "第二个，一点零一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 386.55,
+   "dur": 2.63,
+   "speech": "剩下的，都小于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 389.36,
+   "dur": 2.85,
+   "speech": "有效秩，不是一个整数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 392.38,
+   "dur": 3.3,
+   "speech": "它衡量有几个方向真正在用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 395.86,
+   "dur": 3.54,
+   "speech": "公式：迹的平方，除以平方和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 399.59,
+   "dur": 3.01,
+   "speech": "全部相等，等于通道数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 402.78,
+   "dur": 2.63,
+   "speech": "一条独大，接近一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 405.59,
+   "dur": 2.77,
+   "speech": "真实数据，二点四七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 408.54,
+   "dur": 2.77,
+   "speech": "合成独立，正好四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 411.5,
+   "dur": 3.13,
+   "speech": "合成高相关，一点一七。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 414.81,
+   "dur": 3.04,
+   "speech": "有效秩比特征值更好读。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 418.03,
+   "dur": 2.92,
+   "speech": "它直接告诉你，几组够用。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 421.13,
+   "dur": 3.04,
+   "speech": "第三个定义，决策规则。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 424.35,
+   "dur": 2.8,
+   "speech": "平均相关大于零点六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 427.32,
+   "dur": 2.73,
+   "speech": "且有效秩不超过三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 430.23,
+   "dur": 2.29,
+   "speech": "那就直接混合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 432.7,
+   "dur": 2.73,
+   "speech": "平均相关小于零点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 435.61,
+   "dur": 2.25,
+   "speech": "那就直接独立。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 438.04,
+   "dur": 2.97,
+   "speech": "中间地带，两两混合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 441.18,
+   "dur": 3.06,
+   "speech": "组数取有效秩的四舍五入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 444.42,
+   "dur": 2.8,
+   "speech": "两个阈值，都是我们定的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 447.4,
+   "dur": 2.27,
+   "speech": "不是书里的定理。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 449.85,
+   "dur": 2.44,
+   "speech": "再定义 token 数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 452.47,
+   "dur": 3.47,
+   "speech": "独立：通道数乘每通道块数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 456.12,
+   "dur": 2.61,
+   "speech": "六乘十六，九十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 458.91,
+   "dur": 2.73,
+   "speech": "混合：每通道块数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 461.81,
+   "dur": 2.17,
+   "speech": "混合只有十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 464.17,
+   "dur": 3.3,
+   "speech": "两两混合：组数乘块数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 467.65,
+   "dur": 2.63,
+   "speech": "二乘十六，三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 470.46,
+   "dur": 2.29,
+   "speech": "块长三十二点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 472.93,
+   "dur": 2.87,
+   "speech": "五百一十二除以三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 475.98,
+   "dur": 2.05,
+   "speech": "正好十六块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 50,
+   "start": 478.22,
+   "dur": 2.41,
+   "speech": "注意力代价怎么算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 51,
+   "start": 480.81,
+   "dur": 2.85,
+   "speech": "token 数的平方，乘维度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 52,
+   "start": 483.84,
+   "dur": 2.37,
+   "speech": "维度统一三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 53,
+   "start": 486.38,
+   "dur": 3.28,
+   "speech": "独立：九十六平方乘三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 54,
+   "start": 489.84,
+   "dur": 3.3,
+   "speech": "混合：十六平方乘三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 55,
+   "start": 493.32,
+   "dur": 2.29,
+   "speech": "比值，三十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 56,
+   "start": 495.8,
+   "dur": 3.78,
+   "speech": "两两混合：三十二平方乘三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 57,
+   "start": 499.76,
+   "dur": 2.25,
+   "speech": "比独立省九倍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 58,
+   "start": 502.18,
+   "dur": 2.46,
+   "speech": "三个数，一条线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 59,
+   "start": 504.83,
+   "dur": 2.2,
+   "speech": "定义到此为止。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 510.42,
+   "dur": 2.13,
+   "speech": "现在看读数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 512.73,
+   "dur": 2.39,
+   "speech": "第一组，相关谱。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 515.3,
+   "dur": 2.39,
+   "speech": "六个特征值排开。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 517.87,
+   "dur": 2.87,
+   "speech": "三点六零，一点零一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 520.92,
+   "dur": 2.97,
+   "speech": "零点六三，零点三八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 524.06,
+   "dur": 2.77,
+   "speech": "零点二五，零点一四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 527.02,
+   "dur": 2.25,
+   "speech": "第一个占六成。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 529.44,
+   "dur": 2.58,
+   "speech": "前三个占八成七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 532.2,
+   "dur": 3.3,
+   "speech": "后面三个，加起来不到一成三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 535.69,
+   "dur": 2.32,
+   "speech": "能量明显集中。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 538.18,
+   "dur": 2.46,
+   "speech": "第二组，有效秩。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 540.83,
+   "dur": 2.27,
+   "speech": "真实二点四七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 543.28,
+   "dur": 3.01,
+   "speech": "合成独立，四点零零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 546.47,
+   "dur": 3.13,
+   "speech": "合成高相关，一点一七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 549.78,
+   "dur": 2.22,
+   "speech": "三个数放一起。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 552.19,
+   "dur": 2.46,
+   "speech": "真实数据在中间。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 554.83,
+   "dur": 2.2,
+   "speech": "不像独立那么散。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 557.21,
+   "dur": 2.73,
+   "speech": "也不像高相关那么紧。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 560.11,
+   "dur": 2.89,
+   "speech": "二点四七，四舍五入。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 563.19,
+   "dur": 2.22,
+   "speech": "两组，刚好。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 565.59,
+   "dur": 2.34,
+   "speech": "第三组，决策。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 568.11,
+   "dur": 2.68,
+   "speech": "平均相关零点五一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 570.97,
+   "dur": 3.06,
+   "speech": "不到零点六，不能直接混。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 574.21,
+   "dur": 2.87,
+   "speech": "也高于零点二，不能独立。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 577.26,
+   "dur": 2.68,
+   "speech": "中间地带，走折中。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 580.12,
+   "dur": 2.68,
+   "speech": "组数取有效秩，二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 582.98,
+   "dur": 2.37,
+   "speech": "结论：Hybrid 2。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 585.52,
+   "dur": 2.37,
+   "speech": "三十二个 token。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 588.07,
+   "dur": 2.7,
+   "speech": "比独立省九倍注意力。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 590.95,
+   "dur": 2.58,
+   "speech": "比混合多一倍位置。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 593.71,
+   "dur": 3.01,
+   "speech": "两个合成极端，做对照。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 596.91,
+   "dur": 3.21,
+   "speech": "相关为零，四条独立通道。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 600.29,
+   "dur": 2.63,
+   "speech": "有效秩，四点零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 603.1,
+   "dur": 2.94,
+   "speech": "首特征占比，零点二五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 606.22,
+   "dur": 2.51,
+   "speech": "决策，通道独立。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 608.91,
+   "dur": 3.54,
+   "speech": "相关零点九，四条强相关。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 612.64,
+   "dur": 2.7,
+   "speech": "有效秩，一点一七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 615.52,
+   "dur": 3.21,
+   "speech": "首特征占比，零点九二五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 618.9,
+   "dur": 2.61,
+   "speech": "决策，通道混合。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 621.69,
+   "dur": 2.8,
+   "speech": "一条规则，两端都对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 624.67,
+   "dur": 2.8,
+   "speech": "四组读数，四个结论。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 627.65,
+   "dur": 2.27,
+   "speech": "相关谱看结构。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 630.1,
+   "dur": 2.29,
+   "speech": "有效秩看组数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 632.57,
+   "dur": 2.49,
+   "speech": "决策规则看边界。"
+  },
+  {
+   "scene": "metrics",
+   "index": 44,
+   "start": 635.24,
+   "dur": 2.27,
+   "speech": "token 账看成本。"
+  },
+  {
+   "scene": "metrics",
+   "index": 45,
+   "start": 637.69,
+   "dur": 2.05,
+   "speech": "全部能手算。"
+  },
+  {
+   "scene": "metrics",
+   "index": 46,
+   "start": 639.92,
+   "dur": 2.29,
+   "speech": "全部写进证据。"
+  },
+  {
+   "scene": "metrics",
+   "index": 47,
+   "start": 642.39,
+   "dur": 2.73,
+   "speech": "二十四项，逐项对照。"
+  },
+  {
+   "scene": "metrics",
+   "index": 48,
+   "start": 645.3,
+   "dur": 2.32,
+   "speech": "没有一项靠目测。"
+  },
+  {
+   "scene": "metrics",
+   "index": 49,
+   "start": 647.8,
+   "dur": 2.13,
+   "speech": "这就是可复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 653.32,
+   "dur": 2.37,
+   "speech": "代码分三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 655.87,
+   "dur": 2.82,
+   "speech": "相关、谱、决策。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 658.87,
+   "dur": 2.97,
+   "speech": "一个模块，二百六十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 662.01,
+   "dur": 2.32,
+   "speech": "导出十八个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 664.51,
+   "dur": 2.51,
+   "speech": "纯函数，没有 IO。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 667.2,
+   "dur": 2.27,
+   "speech": "输入都是列表。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 669.65,
+   "dur": 2.27,
+   "speech": "输出也是列表。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 672.1,
+   "dur": 2.1,
+   "speech": "不依赖外部库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 674.38,
+   "dur": 2.05,
+   "speech": "只用标准库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 676.62,
+   "dur": 2.34,
+   "speech": "先看相关代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 679.14,
+   "dur": 3.09,
+   "speech": "标准化，减均值除方差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 682.41,
+   "dur": 2.44,
+   "speech": "除以样本数减一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 685.02,
+   "dur": 3.21,
+   "speech": "相关，就是标准化的协方差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 688.41,
+   "dur": 2.7,
+   "speech": "两层循环，六乘六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 691.29,
+   "dur": 2.1,
+   "speech": "对角写成一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 693.57,
+   "dur": 2.7,
+   "speech": "对称，只算上三角。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 696.46,
+   "dur": 3.23,
+   "speech": "平均绝对相关，取非对角。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 699.87,
+   "dur": 3.16,
+   "speech": "最大绝对相关，同一个循环。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 703.2,
+   "dur": 1.96,
+   "speech": "返回一个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 705.34,
+   "dur": 2.7,
+   "speech": "六个通道，十五条边。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 708.22,
+   "dur": 2.46,
+   "speech": "特征值用 Jacobi。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 710.87,
+   "dur": 2.87,
+   "speech": "对称矩阵，旋转消元。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 713.92,
+   "dur": 2.82,
+   "speech": "每次找最大的非对角。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 716.92,
+   "dur": 2.61,
+   "speech": "旋转，把它压到零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 719.7,
+   "dur": 3.35,
+   "speech": "迭代到残差小于一的负十次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 723.23,
+   "dur": 2.8,
+   "speech": "特征值排在对角线上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 726.21,
+   "dur": 2.61,
+   "speech": "特征向量按列存。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 729,
+   "dur": 2.82,
+   "speech": "降序排，一起交换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 732,
+   "dur": 2.89,
+   "speech": "六乘六，几十次旋转。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 735.07,
+   "dur": 2.99,
+   "speech": "残差，九乘十的负十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 738.24,
+   "dur": 2.8,
+   "speech": "决策函数，三个输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 741.22,
+   "dur": 3.57,
+   "speech": "平均相关、有效秩、通道数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 744.97,
+   "dur": 2.17,
+   "speech": "先判断混合。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 747.32,
+   "dur": 2.1,
+   "speech": "再判断独立。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 749.6,
+   "dur": 2.85,
+   "speech": "否则，组数四舍五入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 752.63,
+   "dur": 3.18,
+   "speech": "组数夹在一和通道数之间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 755.99,
+   "dur": 2.29,
+   "speech": "返回一个策略值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 758.47,
+   "dur": 2.75,
+   "speech": "模式匹配，三个分支。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 761.4,
+   "dur": 2.03,
+   "speech": "没有默认值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 763.61,
+   "dur": 2.27,
+   "speech": "编译器帮你查漏。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 766.06,
+   "dur": 2.63,
+   "speech": "token 数，三个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 768.87,
+   "dur": 2.63,
+   "speech": "独立，通道乘块数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 771.68,
+   "dur": 2.27,
+   "speech": "混合，块数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 774.13,
+   "dur": 3.33,
+   "speech": "两两混合，组数乘块数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 777.63,
+   "dur": 3.06,
+   "speech": "注意力代价，平方乘维度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 780.87,
+   "dur": 2.46,
+   "speech": "再加一个节省比例。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 783.52,
+   "dur": 2.1,
+   "speech": "全部是乘法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 785.8,
+   "dur": 2.01,
+   "speech": "全部可手算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 48,
+   "start": 787.98,
+   "dur": 2.1,
+   "speech": "没有浮点误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 49,
+   "start": 790.27,
+   "dur": 2.17,
+   "speech": "整数，精确。"
+  },
+  {
+   "scene": "implementation",
+   "index": 50,
+   "start": 792.62,
+   "dur": 2.75,
+   "speech": "证据程序，二十四项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 51,
+   "start": 795.55,
+   "dur": 2.92,
+   "speech": "读 CSV，算相关。"
+  },
+  {
+   "scene": "implementation",
+   "index": 52,
+   "start": 798.65,
+   "dur": 2.46,
+   "speech": "算谱，算决策。"
+  },
+  {
+   "scene": "implementation",
+   "index": 53,
+   "start": 801.29,
+   "dur": 3.25,
+   "speech": "每组读数写进 JSON。"
+  },
+  {
+   "scene": "implementation",
+   "index": 54,
+   "start": 804.72,
+   "dur": 2.65,
+   "speech": "检查清单一条条对。"
+  },
+  {
+   "scene": "implementation",
+   "index": 55,
+   "start": 807.56,
+   "dur": 2.82,
+   "speech": "数据四项，相关六项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 56,
+   "start": 810.56,
+   "dur": 2.82,
+   "speech": "谱九项，决策三项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 57,
+   "start": 813.56,
+   "dur": 1.91,
+   "speech": "token 两项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 58,
+   "start": 815.65,
+   "dur": 2.22,
+   "speech": "一共二十四项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 59,
+   "start": 818.05,
+   "dur": 2.22,
+   "speech": "跑完不到一秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 823.68,
+   "dur": 2.39,
+   "speech": "验收从这里开始。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 826.25,
+   "dur": 2.75,
+   "speech": "一条命令，二十四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 829.18,
+   "dur": 2.03,
+   "speech": "没有一项跳过。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 831.39,
+   "dur": 2.03,
+   "speech": "没有大概通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 833.6,
+   "dur": 2.37,
+   "speech": "每项都带读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 836.15,
+   "dur": 2.82,
+   "speech": "数据四项，相关六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 839.15,
+   "dur": 2.82,
+   "speech": "谱九项，决策三项。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 842.15,
+   "dur": 1.91,
+   "speech": "token 两项。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 844.24,
+   "dur": 2.29,
+   "speech": "二十四项全过。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 846.71,
+   "dur": 2.41,
+   "speech": "用时零点零二秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 849.31,
+   "dur": 2.22,
+   "speech": "第一组，数据。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 851.71,
+   "dur": 2.2,
+   "speech": "通道数，六。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 854.09,
+   "dur": 2.44,
+   "speech": "样本，五百一十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 856.71,
+   "dur": 2.65,
+   "speech": "日期，从九月十号。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 859.54,
+   "dur": 2.22,
+   "speech": "到十月二十八号。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 861.94,
+   "dur": 2.46,
+   "speech": "无缺失，无 NaN。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 864.58,
+   "dur": 2.29,
+   "speech": "六列严格对齐。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 867.06,
+   "dur": 2.01,
+   "speech": "每一项都查。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 869.24,
+   "dur": 2.03,
+   "speech": "不只是行数。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 871.45,
+   "dur": 2.34,
+   "speech": "连日期边界也查。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 873.98,
+   "dur": 2.32,
+   "speech": "第二组，相关。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 876.47,
+   "dur": 2.15,
+   "speech": "对角全是一。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 878.8,
+   "dur": 3.23,
+   "speech": "最大偏差，一点七的负十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 882.21,
+   "dur": 2.25,
+   "speech": "矩阵完全对称。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 884.64,
+   "dur": 2.05,
+   "speech": "偏差等于零。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 886.87,
+   "dur": 2.94,
+   "speech": "平均相关，零点五一。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 890,
+   "dur": 3.06,
+   "speech": "在零点三到零点七之间。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 893.24,
+   "dur": 2.92,
+   "speech": "最大相关，零点八四。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 896.34,
+   "dur": 2.77,
+   "speech": "大于平均，符合预期。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 899.29,
+   "dur": 3.06,
+   "speech": "合成序列，精确到九。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 902.53,
+   "dur": 2.15,
+   "speech": "第三组，谱。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 904.86,
+   "dur": 2.44,
+   "speech": "迹等于通道数六。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 907.48,
+   "dur": 2.08,
+   "speech": "特征值降序。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 909.74,
+   "dur": 2.65,
+   "speech": "最大特征向量残差。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 912.57,
+   "dur": 2.32,
+   "speech": "八点九的负十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 915.07,
+   "dur": 2.89,
+   "speech": "合成独立，有效秩四。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 918.14,
+   "dur": 3.13,
+   "speech": "合成高相关，一点一七。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 921.46,
+   "dur": 2.46,
+   "speech": "真实，二点四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 924.1,
+   "dur": 3.28,
+   "speech": "真实前三占比，零点八七。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 927.56,
+   "dur": 2.25,
+   "speech": "全部在阈值内。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 929.98,
+   "dur": 2.37,
+   "speech": "第四组，决策。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 932.53,
+   "dur": 2.32,
+   "speech": "相关零，独立。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 935.03,
+   "dur": 2.8,
+   "speech": "相关零点九，混合。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 938.01,
+   "dur": 2.75,
+   "speech": "真实数据，Hybrid 2。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 940.94,
+   "dur": 2.37,
+   "speech": "三个分支都走到。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 943.48,
+   "dur": 2.32,
+   "speech": "第五组，token。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 945.98,
+   "dur": 3.11,
+   "speech": "九十六、十六、三十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 949.27,
+   "dur": 2.61,
+   "speech": "注意力比，三十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 952.06,
+   "dur": 2.99,
+   "speech": "二十四项，全部有读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 955.23,
+   "dur": 2.32,
+   "speech": "没有一项靠目测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 960.94,
+   "dur": 2.7,
+   "speech": "边界，只做选择题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 963.82,
+   "dur": 2.46,
+   "speech": "这一集不训练模型。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 966.46,
+   "dur": 2.2,
+   "speech": "不比预测精度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 968.84,
+   "dur": 2.13,
+   "speech": "不跑下游任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 971.15,
+   "dur": 2.99,
+   "speech": "只回答：怎么选通道策略。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 974.32,
+   "dur": 2.46,
+   "speech": "输入是六列收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 976.96,
+   "dur": 2.53,
+   "speech": "输出是一个策略值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 979.67,
+   "dur": 2.61,
+   "speech": "其余变量全部固定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 982.46,
+   "dur": 2.05,
+   "speech": "同一段窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 984.69,
+   "dur": 2.2,
+   "speech": "同一套 token 数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 987.07,
+   "dur": 1.98,
+   "speech": "数据也有限。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 989.23,
+   "dur": 2.73,
+   "speech": "六只股票，一只窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 992.14,
+   "dur": 2.39,
+   "speech": "不能代表全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 994.71,
+   "dur": 2.44,
+   "speech": "相关性随行情变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 997.33,
+   "dur": 3.23,
+   "speech": "这段相关，下段可能不相关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1000.74,
+   "dur": 2.44,
+   "speech": "滚动窗口可以重算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1003.36,
+   "dur": 2.49,
+   "speech": "但这一集只算一次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1006.02,
+   "dur": 2.49,
+   "speech": "结论只对这段数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1008.69,
+   "dur": 2.53,
+   "speech": "不推广到所有股票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1011.4,
+   "dur": 2.2,
+   "speech": "这是数据边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1013.78,
+   "dur": 2.37,
+   "speech": "阈值是边界之二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1016.33,
+   "dur": 3.13,
+   "speech": "零点六、零点二、三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1019.64,
+   "dur": 2.56,
+   "speech": "三个数都是我们定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1022.38,
+   "dur": 2.39,
+   "speech": "可以改成零点五五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1024.95,
+   "dur": 2.53,
+   "speech": "也可以改成零点二五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1027.66,
+   "dur": 2.73,
+   "speech": "换阈值，结论可能变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1030.57,
+   "dur": 2.08,
+   "speech": "但流程不变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1032.83,
+   "dur": 2.53,
+   "speech": "决策仍然可复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1035.54,
+   "dur": 2.49,
+   "speech": "因为参数写进代码。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1038.21,
+   "dur": 2.32,
+   "speech": "也写进偏差表。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1040.7,
+   "dur": 2.58,
+   "speech": "不能推的，有四条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1043.47,
+   "dur": 2.92,
+   "speech": "换模型也有效，不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1046.56,
+   "dur": 2.97,
+   "speech": "换数据也有效，不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1049.71,
+   "dur": 2.63,
+   "speech": "下游更好，不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1052.52,
+   "dur": 2.92,
+   "speech": "这是最优策略，不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1055.62,
+   "dur": 2.2,
+   "speech": "能说的只有这些。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1058,
+   "dur": 2.61,
+   "speech": "三种策略都跑通。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1060.78,
+   "dur": 2.41,
+   "speech": "决策规则可复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1063.38,
+   "dur": 2.27,
+   "speech": "token 数能手算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1065.83,
+   "dur": 2.17,
+   "speech": "相关谱有结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1068.18,
+   "dur": 2.29,
+   "speech": "有效秩是近似。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 1070.65,
+   "dur": 2.63,
+   "speech": "四舍五入会丢信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 42,
+   "start": 1073.46,
+   "dur": 2.49,
+   "speech": "二点四七，取二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 43,
+   "start": 1076.13,
+   "dur": 2.77,
+   "speech": "如果取三，也说得通。"
+  },
+  {
+   "scene": "boundary",
+   "index": 44,
+   "start": 1079.08,
+   "dur": 2.58,
+   "speech": "选二，是因为更省。"
+  },
+  {
+   "scene": "boundary",
+   "index": 45,
+   "start": 1081.85,
+   "dur": 2.15,
+   "speech": "这是一个取舍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 46,
+   "start": 1084.18,
+   "dur": 2.65,
+   "speech": "写清楚，比藏起来好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 47,
+   "start": 1087.01,
+   "dur": 2.73,
+   "speech": "边界之内，结论成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 48,
+   "start": 1089.92,
+   "dur": 2.68,
+   "speech": "边界之外，只给方法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 49,
+   "start": 1092.77,
+   "dur": 2.58,
+   "speech": "下一集，进入模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1098.76,
+   "dur": 2.41,
+   "speech": "收尾，三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1101.35,
+   "dur": 2.68,
+   "speech": "第一，通道策略可选。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1104.21,
+   "dur": 2.34,
+   "speech": "相关谱给出答案。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1106.73,
+   "dur": 3.06,
+   "speech": "第二，三种策略都成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1109.98,
+   "dur": 3.61,
+   "speech": "token 数九十六、十六、三十二。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1113.77,
+   "dur": 3.01,
+   "speech": "第三，真实数据走折中。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1116.96,
+   "dur": 3.04,
+   "speech": "Hybrid 2，三十二个 token。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1120.18,
+   "dur": 2.56,
+   "speech": "三句话，都有读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1122.92,
+   "dur": 2.46,
+   "speech": "都能一条命令复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1125.56,
+   "dur": 2.29,
+   "speech": "没有一句是感觉。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1128.04,
+   "dur": 2.32,
+   "speech": "先看交付清单。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1130.53,
+   "dur": 2.97,
+   "speech": "一个模块，二百六十九行。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1133.68,
+   "dur": 2.34,
+   "speech": "十八个导出函数。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1136.2,
+   "dur": 2.15,
+   "speech": "二十九条单测。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1138.53,
+   "dur": 2.25,
+   "speech": "二十四项检查。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1140.96,
+   "dur": 2.2,
+   "speech": "五百一十二个收益。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1143.34,
+   "dur": 2.32,
+   "speech": "六条通道并排。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1145.83,
+   "dur": 2.32,
+   "speech": "三种策略齐全。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1148.33,
+   "dur": 2.01,
+   "speech": "全部可复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1150.52,
+   "dur": 2.17,
+   "speech": "不需要 GPU。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1152.87,
+   "dur": 2.46,
+   "speech": "复现命令，一条。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1155.51,
+   "dur": 1.96,
+   "speech": "加数据目录。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1157.65,
+   "dur": 1.98,
+   "speech": "加输出目录。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1159.81,
+   "dur": 2.03,
+   "speech": "加证据路径。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1162.02,
+   "dur": 3.09,
+   "speech": "不到一秒写出 JSON。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1165.29,
+   "dur": 2.61,
+   "speech": "检查清单也在里面。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1168.08,
+   "dur": 2.73,
+   "speech": "单测用 cabal test。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1170.98,
+   "dur": 2.25,
+   "speech": "二十九条全绿。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1173.41,
+   "dur": 2.8,
+   "speech": "证据，二十四项全过。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1176.39,
+   "dur": 2.65,
+   "speech": "一行命令，两个绿灯。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1179.22,
+   "dur": 2.75,
+   "speech": "下一集，往前走一步。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1182.15,
+   "dur": 2.63,
+   "speech": "token 有了，通道有了。"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1184.96,
+   "dur": 2.05,
+   "speech": "模型还没搭。"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1187.19,
+   "dur": 3.28,
+   "speech": "第五十九集，迷你基础模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1190.65,
+   "dur": 2.85,
+   "speech": "一个小模型，五个部件。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1193.68,
+   "dur": 2.65,
+   "speech": "从 patch 到预测头。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1196.51,
+   "dur": 3.28,
+   "speech": "二十分钟，从零件到整机。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1199.97,
+   "dur": 2.99,
+   "speech": "这一集的选择，会是输入。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1203.14,
+   "dur": 2.01,
+   "speech": "下一集再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1205.33,
+   "dur": 2.17,
+   "speech": "频道还是这个。"
+  },
+  {
+   "scene": "outro",
+   "index": 40,
+   "start": 1207.68,
+   "dur": 2.41,
+   "speech": "这一集，就到这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 41,
+   "start": 1210.27,
+   "dur": 2.8,
+   "speech": "三种策略，一条判据。"
+  },
+  {
+   "scene": "outro",
+   "index": 42,
+   "start": 1213.25,
+   "dur": 2.46,
+   "speech": "相关高，混合。"
+  },
+  {
+   "scene": "outro",
+   "index": 43,
+   "start": 1215.89,
+   "dur": 2.27,
+   "speech": "相关低，独立。"
+  },
+  {
+   "scene": "outro",
+   "index": 44,
+   "start": 1218.34,
+   "dur": 2.2,
+   "speech": "中间，折中。"
+  },
+  {
+   "scene": "outro",
+   "index": 45,
+   "start": 1220.72,
+   "dur": 2.51,
+   "speech": "数字都写进证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 46,
+   "start": 1223.41,
+   "dur": 2.25,
+   "speech": "代码都在仓库。"
+  },
+  {
+   "scene": "outro",
+   "index": 47,
+   "start": 1225.84,
+   "dur": 2.39,
+   "speech": "视频都在这一集。"
+  },
+  {
+   "scene": "outro",
+   "index": 48,
+   "start": 1228.41,
+   "dur": 2.56,
+   "speech": "下一集，模型见。"
+  },
+  {
+   "scene": "outro",
+   "index": 49,
+   "start": 1231.15,
+   "dur": 1.98,
+   "speech": "谢谢你的观看。"
+  }
+ ]
+}

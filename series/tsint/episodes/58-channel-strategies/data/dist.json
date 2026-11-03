@@ -1,0 +1,279 @@
+{
+ "meta": {
+  "episode": 58,
+  "slug": "channel-strategies",
+  "chapter": "ch07",
+  "title": "通道独立还是混合：一个由相关性决定的选择题",
+  "runtimeTarget": 20
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "通道数 = 6",
+   "ok": true,
+   "detail": "6 列（date + 6 只股票）"
+  },
+  {
+   "group": "data",
+   "name": "样本 = 512 个对数收益",
+   "ok": true,
+   "detail": "513 行收盘 → 512 个收益"
+  },
+  {
+   "group": "data",
+   "name": "日期范围 2024-09-10 → 2026-10-28",
+   "ok": true,
+   "detail": "2024-09-10 → 2026-10-28"
+  },
+  {
+   "group": "data",
+   "name": "无缺失、无 NaN",
+   "ok": true,
+   "detail": "6 列 512 行全部有效"
+  },
+  {
+   "group": "corr",
+   "name": "对角全部 = 1",
+   "ok": true,
+   "detail": "max |diag-1| = 1.7e-15"
+  },
+  {
+   "group": "corr",
+   "name": "相关矩阵对称",
+   "ok": true,
+   "detail": "max |ρij - ρji| = 0.0e0"
+  },
+  {
+   "group": "corr",
+   "name": "真实 mean|ρ| 在 0.3–0.7",
+   "ok": true,
+   "detail": "0.5109"
+  },
+  {
+   "group": "corr",
+   "name": "合成 ρ=0：mean|ρ| < 0.02",
+   "ok": true,
+   "detail": "0.0000"
+  },
+  {
+   "group": "corr",
+   "name": "合成 ρ=0.9：mean|ρ| = 0.9",
+   "ok": true,
+   "detail": "0.900000"
+  },
+  {
+   "group": "corr",
+   "name": "真实 max|ρ| > mean|ρ|",
+   "ok": true,
+   "detail": "0.8401 > 0.5109"
+  },
+  {
+   "group": "spectrum",
+   "name": "trace(Σ) = 通道数",
+   "ok": true,
+   "detail": "6.000000 = 6"
+  },
+  {
+   "group": "spectrum",
+   "name": "特征值降序",
+   "ok": true,
+   "detail": "3.5953, 1.0091, 0.6312, 0.3788, 0.2467, 0.1388"
+  },
+  {
+   "group": "spectrum",
+   "name": "特征向量满足 A v = λ v",
+   "ok": true,
+   "detail": "max residual = 8.9e-16"
+  },
+  {
+   "group": "spectrum",
+   "name": "合成 ρ=0：effRank > 3.5（接近 4）",
+   "ok": true,
+   "detail": "4.0000"
+  },
+  {
+   "group": "spectrum",
+   "name": "合成 ρ=0.9：effRank < 1.3",
+   "ok": true,
+   "detail": "1.1662"
+  },
+  {
+   "group": "spectrum",
+   "name": "真实 effRank 在 1.5–4",
+   "ok": true,
+   "detail": "2.4714"
+  },
+  {
+   "group": "spectrum",
+   "name": "ρ=0 的 top1 占比 ≈ 0.25",
+   "ok": true,
+   "detail": "0.2500"
+  },
+  {
+   "group": "spectrum",
+   "name": "ρ=0.9 的 top1 占比 ≈ 0.925",
+   "ok": true,
+   "detail": "0.9250"
+  },
+  {
+   "group": "spectrum",
+   "name": "真实 top3 > top1",
+   "ok": true,
+   "detail": "0.8726 > 0.5992"
+  },
+  {
+   "group": "decision",
+   "name": "ρ=0 → 通道独立",
+   "ok": true,
+   "detail": "independent"
+  },
+  {
+   "group": "decision",
+   "name": "ρ=0.9 → 通道混合",
+   "ok": true,
+   "detail": "mixed"
+  },
+  {
+   "group": "decision",
+   "name": "真实数据 → Hybrid 2",
+   "ok": true,
+   "detail": "hybrid2（mean|ρ| 0.5109, effRank 2.4714）"
+  },
+  {
+   "group": "token",
+   "name": "CI 96 / CM 16 / Hybrid 32",
+   "ok": true,
+   "detail": "96 / 16 / 32"
+  },
+  {
+   "group": "token",
+   "name": "注意力代价比 = 6² = 36",
+   "ok": true,
+   "detail": "294912 / 8192"
+  }
+ ],
+ "summary": {
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "ok": true
+ },
+ "data": {
+  "channels": 6,
+  "rows": 513,
+  "samples": 512,
+  "codes": [
+   "sz000001",
+   "sz000002",
+   "sz000858",
+   "sh600000",
+   "sh600519",
+   "sh600036"
+  ],
+  "firstDate": "2024-09-10",
+  "lastDate": "2026-10-28",
+  "corr": [
+   [
+    1.0,
+    0.4221,
+    0.5644,
+    0.647,
+    0.5197,
+    0.7455
+   ],
+   [
+    0.4221,
+    1.0,
+    0.5281,
+    0.2278,
+    0.4208,
+    0.2949
+   ],
+   [
+    0.5644,
+    0.5281,
+    1.0,
+    0.3862,
+    0.8401,
+    0.4934
+   ],
+   [
+    0.647,
+    0.2278,
+    0.3862,
+    1.0,
+    0.4127,
+    0.6271
+   ],
+   [
+    0.5197,
+    0.4208,
+    0.8401,
+    0.4127,
+    1.0,
+    0.5343
+   ],
+   [
+    0.7455,
+    0.2949,
+    0.4934,
+    0.6271,
+    0.5343,
+    1.0
+   ]
+  ],
+  "meanAbsCorr": 0.5109,
+  "maxAbsCorr": 0.8401,
+  "eig": [
+   3.5953,
+   1.0091,
+   0.6312,
+   0.3788,
+   0.2467,
+   0.1388
+  ],
+  "effRank": 2.4714,
+  "top1": 0.5992,
+  "top3": 0.8726
+ },
+ "synth": {
+  "rho0": {
+   "effRank": 4.0,
+   "top1": 0.25,
+   "meanAbs": 0.0,
+   "strategy": "independent"
+  },
+  "rho9": {
+   "effRank": 1.1662,
+   "top1": 0.925,
+   "meanAbs": 0.9,
+   "strategy": "mixed"
+  }
+ },
+ "decision": {
+  "strategy": "hybrid2",
+  "groups": 2,
+  "meanThreshold": 0.6,
+  "indThreshold": 0.2,
+  "rankThreshold": 3
+ },
+ "tokens": {
+  "patch": 32,
+  "perChannel": 16,
+  "ci": 96,
+  "cm": 16,
+  "hybrid": 32,
+  "costCi": 294912,
+  "costCm": 8192,
+  "costHybrid": 32768,
+  "ratio": 36,
+  "hybridRatio": 9
+ },
+ "code": {
+  "modules": 1,
+  "moduleLines": 269,
+  "exports": 18,
+  "tests": 29,
+  "evidenceLines": 212
+ }
+}
