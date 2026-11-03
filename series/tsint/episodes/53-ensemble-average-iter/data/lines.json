@@ -1,0 +1,2297 @@
+{
+ "entry": "src/tsint-53-ensemble-average-iter/script.ts",
+ "fps": 30,
+ "totalSec": 1135.96,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "开场",
+   "start": 0,
+   "dur": 149.34
+  },
+  {
+   "id": "problem",
+   "chapter": "问题",
+   "start": 149.34,
+   "dur": 136.16
+  },
+  {
+   "id": "definitions",
+   "chapter": "定义",
+   "start": 285.5,
+   "dur": 141.37
+  },
+  {
+   "id": "metrics",
+   "chapter": "读数",
+   "start": 426.87,
+   "dur": 142.93
+  },
+  {
+   "id": "implementation",
+   "chapter": "实现",
+   "start": 569.8,
+   "dur": 140.32
+  },
+  {
+   "id": "verification",
+   "chapter": "验证",
+   "start": 710.12,
+   "dur": 148.02
+  },
+  {
+   "id": "boundary",
+   "chapter": "边界",
+   "start": 858.14,
+   "dur": 139.26
+  },
+  {
+   "id": "outro",
+   "chapter": "收尾",
+   "start": 997.4,
+   "dur": 138.56
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.92,
+   "speech": "二十只股票，十个候选。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.3,
+   "dur": 2.58,
+   "speech": "这一集只问一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.06,
+   "dur": 3.47,
+   "speech": "把十个模型平均起来，能不能赢？"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.71,
+   "dur": 2.92,
+   "speech": "先说答案，再说怎么量。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.81,
+   "dur": 3.76,
+   "speech": "等权平均的检验误差是十点一六。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 17.75,
+   "dur": 3.9,
+   "speech": "十个候选各自的平均是十一点二一。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 21.83,
+   "dur": 2.82,
+   "speech": "平均起来，确实更低。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 24.83,
+   "dur": 4.77,
+   "speech": "但按调参段选出的最强单模型，只要九点五五。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 29.78,
+   "dur": 3.4,
+   "speech": "平均输了，而且二十只全输。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 33.35,
+   "dur": 4.53,
+   "speech": "所以标题是：平均能赢平均，赢不过最强。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 38.06,
+   "dur": 2.77,
+   "speech": "先把三个基线摆清楚。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 41.01,
+   "dur": 3.66,
+   "speech": "第一个是平均单模型，十一点二一。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.86,
+   "dur": 3.49,
+   "speech": "它回答：集成到底有没有降方差。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 48.53,
+   "dur": 3.61,
+   "speech": "第二个是最强单模型，九点五五。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 52.32,
+   "dur": 3.52,
+   "speech": "它回答：集成能不能替代挑选。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 56.02,
+   "dur": 3.47,
+   "speech": "第三个是 oracle，九点五四。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 59.67,
+   "dur": 3.57,
+   "speech": "它回答：这个池子的天花板在哪。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 63.42,
+   "dur": 5.08,
+   "speech": "等权十点一六，比平均单模型低百分之九点三七。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 68.68,
+   "dur": 3.78,
+   "speech": "比最强单模型高百分之六点三五。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 72.64,
+   "dur": 3.35,
+   "speech": "比天花板高百分之六点四七。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 76.17,
+   "dur": 3.45,
+   "speech": "为什么平均会输给最强单模型？"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 79.79,
+   "dur": 3.09,
+   "speech": "因为池子里有很差的成员。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 83.06,
+   "dur": 3.97,
+   "speech": "指数平滑零点二，误差十六点三零。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 87.21,
+   "dur": 3.52,
+   "speech": "调和平均，误差十五点零六。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 90.91,
+   "dur": 3.42,
+   "speech": "等权平均把它们也当十分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 94.51,
+   "dur": 3.45,
+   "speech": "降方差的收益，被偏差吃掉了。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 98.14,
+   "dur": 3.93,
+   "speech": "反过来，如果池子里每个成员都差不多。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 102.25,
+   "dur": 2.56,
+   "speech": "平均就会稳稳地赢。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 104.98,
+   "dur": 3.78,
+   "speech": "这一集用真实池子，不是理想池子。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 108.95,
+   "dur": 3.61,
+   "speech": "所以结论是条件句，不是口号。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 112.74,
+   "dur": 2.08,
+   "speech": "路线分四段。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 115,
+   "dur": 3.95,
+   "speech": "第一段定义权重、中位数、有效权重。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 119.13,
+   "dur": 3.52,
+   "speech": "第二段量三条基线和一个偏序。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 122.83,
+   "dur": 2.61,
+   "speech": "第三段写三个模块。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 125.61,
+   "dur": 3.49,
+   "speech": "第四段用二十八项检查验收。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 129.29,
+   "dur": 3.54,
+   "speech": "每个数都来自同一份证据程序。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 133.01,
+   "dur": 4.02,
+   "speech": "二十只股票，四万八千五百七十二行。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 137.21,
+   "dur": 3.23,
+   "speech": "二十八项检查，八点九秒。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 140.62,
+   "dur": 2.34,
+   "speech": "一条命令可以复现。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 143.14,
+   "dur": 4,
+   "speech": "先看问题：平均为什么可能赢，也可能输。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 150.54,
+   "dur": 2.32,
+   "speech": "平均为什么可能赢？"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 153.04,
+   "dur": 3.11,
+   "speech": "因为误差里有一部分是运气。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 156.33,
+   "dur": 2.77,
+   "speech": "每个模型犯的错不一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 159.28,
+   "dur": 3.45,
+   "speech": "错得不一样，平均就会相互抵消。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 162.91,
+   "dur": 2.89,
+   "speech": "假设 K 个模型误差独立。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 165.98,
+   "dur": 2.75,
+   "speech": "方差按 K 分之一收缩。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 168.91,
+   "dur": 3.33,
+   "speech": "标准差按根号 K 分之一收缩。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 172.42,
+   "dur": 3.66,
+   "speech": "十个模型，标准差降到三分之一。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 176.26,
+   "dur": 2.63,
+   "speech": "这是集成最老的理由。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 179.07,
+   "dur": 3.3,
+   "speech": "也是这一集要检验的第一条。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 182.55,
+   "dur": 2.46,
+   "speech": "但平均也可能输。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 185.19,
+   "dur": 3.13,
+   "speech": "因为误差里还有一部分是偏差。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 188.51,
+   "dur": 2.75,
+   "speech": "偏差不会被平均抵消。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 191.44,
+   "dur": 2.56,
+   "speech": "它只会被平均保留。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 194.18,
+   "dur": 3.33,
+   "speech": "池子里如果有两个很差的成员。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 197.68,
+   "dur": 2.92,
+   "speech": "它们会把平均值往下拽。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 200.78,
+   "dur": 3.01,
+   "speech": "看十个候选的检验误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 203.97,
+   "dur": 3.09,
+   "speech": "最好的是朴素，九点五四。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 207.24,
+   "dur": 4.29,
+   "speech": "最差的是指数平滑零点二，十六点三零。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 211.71,
+   "dur": 2.61,
+   "speech": "中间差了将近七。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 214.49,
+   "dur": 3.33,
+   "speech": "更麻烦的是，挑选本身很强。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 218,
+   "dur": 3.64,
+   "speech": "每只股票用调参段选一个候选。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 221.82,
+   "dur": 3.11,
+   "speech": "二十只里，朴素赢了九只。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 225.11,
+   "dur": 3.21,
+   "speech": "十二阶 SARIMA 赢了四只。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 228.49,
+   "dur": 4.43,
+   "speech": "漂移赢了三只，五阶 SARIMA 赢了三只。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 233.1,
+   "dur": 2.87,
+   "speech": "一阶自回归赢了一只。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 236.15,
+   "dur": 4,
+   "speech": "这个挑选规则的检验误差是九点五五。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 240.33,
+   "dur": 3.21,
+   "speech": "离 oracle 只差零点零一。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 243.72,
+   "dur": 4.5,
+   "speech": "也就是说，池子里的冠军几乎都能被选出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 248.4,
+   "dur": 2.77,
+   "speech": "平均要赢它，很难。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 251.35,
+   "dur": 3.13,
+   "speech": "所以这一集有两个判据。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 254.67,
+   "dur": 3.83,
+   "speech": "判据一：等权是否低于平均单模型。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 258.68,
+   "dur": 2.32,
+   "speech": "这检验降方差。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 261.17,
+   "dur": 3.83,
+   "speech": "判据二：等权是否低于最强单模型。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 265.18,
+   "dur": 3.11,
+   "speech": "这检验能不能替代挑选。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 268.47,
+   "dur": 3.21,
+   "speech": "两个判据可能给出相反答案。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 271.86,
+   "dur": 2.29,
+   "speech": "事实正是如此。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 274.33,
+   "dur": 3.09,
+   "speech": "十点一六低于十一点二一。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 277.6,
+   "dur": 2.46,
+   "speech": "但高于九点五五。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 280.24,
+   "dur": 3.06,
+   "speech": "接下来把每个量定义清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 286.7,
+   "dur": 2.1,
+   "speech": "定义四个东西。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 288.98,
+   "dur": 2.53,
+   "speech": "第一个，加权平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 291.7,
+   "dur": 4.77,
+   "speech": "式 6.5：预测等于权重乘各模型预测之和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 296.64,
+   "dur": 2.8,
+   "speech": "权重非负，和为一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 299.62,
+   "dur": 3.01,
+   "speech": "权重全相等，就是等权。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 302.81,
+   "dur": 2.77,
+   "speech": "第二个，中位数集成。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 305.77,
+   "dur": 3.69,
+   "speech": "每个时点，取十个预测的中位数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 309.63,
+   "dur": 3.04,
+   "speech": "它不看权重，只看排序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 312.85,
+   "dur": 2.29,
+   "speech": "对离群值更稳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 315.33,
+   "dur": 2.97,
+   "speech": "代价是丢掉幅度信息。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 318.47,
+   "dur": 2.53,
+   "speech": "第三个，学习权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 321.19,
+   "dur": 4.26,
+   "speech": "把十个候选在调参段的预测排成矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 325.63,
+   "dur": 2.92,
+   "speech": "解一个带约束的岭回归。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 328.73,
+   "dur": 4.43,
+   "speech": "目标是最小化残差平方，加 L2 惩罚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 333.34,
+   "dur": 3.59,
+   "speech": "约束是权重非负、和为一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 337.11,
+   "dur": 4.48,
+   "speech": "做法是先解无约束，再投影回单纯形。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 341.76,
+   "dur": 2.56,
+   "speech": "投影用一维搜索。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 344.5,
+   "dur": 3.18,
+   "speech": "解一次线性方程组就够。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 347.86,
+   "dur": 2.75,
+   "speech": "惩罚系数取千分之一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 350.79,
+   "dur": 4.14,
+   "speech": "二十只股票，权重和都精确等于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 355.12,
+   "dur": 2.61,
+   "speech": "第四个，有效权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 357.9,
+   "dur": 3.59,
+   "speech": "定义为一除以权重平方和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 361.67,
+   "dur": 3.64,
+   "speech": "等权十个模型，有效权重是十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 365.49,
+   "dur": 3.54,
+   "speech": "全押一个模型，有效权重是一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 369.21,
+   "dur": 2.63,
+   "speech": "实测平均二点一六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 372.02,
+   "dur": 3.95,
+   "speech": "说明权重确实分散，没有退化成单选。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 376.15,
+   "dur": 2.73,
+   "speech": "再定义迭代重加权。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 379.06,
+   "dur": 3.85,
+   "speech": "每轮先算集成误差和各模型误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 383.09,
+   "dur": 3.54,
+   "speech": "误差比集成小的模型，权重加。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 386.81,
+   "dur": 3.61,
+   "speech": "误差比集成大的模型，权重减。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 390.61,
+   "dur": 3.47,
+   "speech": "步长 eta 控制每次加多少。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 394.26,
+   "dur": 3.11,
+   "speech": "这一集试零点一和零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 397.55,
+   "dur": 3.64,
+   "speech": "轮数试一、三、五、十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 401.37,
+   "dur": 3.76,
+   "speech": "每轮后重新归一化，负权重截零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 405.3,
+   "dur": 2.68,
+   "speech": "最后一个定义：切分。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 408.16,
+   "dur": 2.73,
+   "speech": "前百分之七十做训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 411.07,
+   "dur": 3.06,
+   "speech": "中间百分之十五做调参。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 414.31,
+   "dur": 2.63,
+   "speech": "后百分之十五做检验。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 417.12,
+   "dur": 4.24,
+   "speech": "权重、挑选、选参只看调参段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 421.54,
+   "dur": 3.13,
+   "speech": "检验段只报告，不回头改。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 428.07,
+   "dur": 2.32,
+   "speech": "先看读数总览。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 430.57,
+   "dur": 2.92,
+   "speech": "二十八项检查，五组。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 433.67,
+   "dur": 2.82,
+   "speech": "数据四项，集成六项。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 436.67,
+   "dur": 3.25,
+   "speech": "交叉验证七项，迭代六项。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 440.1,
+   "dur": 2.08,
+   "speech": "噪声组五项。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 442.36,
+   "dur": 3.28,
+   "speech": "全部通过，用时八点九秒。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 445.82,
+   "dur": 2.05,
+   "speech": "下面按组看。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 448.05,
+   "dur": 2.89,
+   "speech": "先看四条基线的高低。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 451.13,
+   "dur": 3.04,
+   "speech": "再看二十只股票的胜负表。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 454.34,
+   "dur": 3.45,
+   "speech": "最后看十个候选谁强谁弱。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 457.97,
+   "dur": 3.23,
+   "speech": "把七个误差放在同一根尺上。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 461.38,
+   "dur": 3.04,
+   "speech": "平均单模型，十一点二一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 464.6,
+   "dur": 2.85,
+   "speech": "等权集成，十点一六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 467.62,
+   "dur": 3.06,
+   "speech": "中位数集成，九点六六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 470.87,
+   "dur": 2.75,
+   "speech": "岭权重，九点六三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 473.8,
+   "dur": 3.78,
+   "speech": "迭代五轮 eta 零点五，九点五五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 477.76,
+   "dur": 3.01,
+   "speech": "最强单模型，九点五五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 480.95,
+   "dur": 2.65,
+   "speech": "oracle，九点五四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 483.79,
+   "dur": 4.74,
+   "speech": "从十一点二一到十点一六，集成确实降了误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 488.71,
+   "dur": 4.65,
+   "speech": "从十点一六到九点五五，挑选又降了一截。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 493.53,
+   "dur": 3.01,
+   "speech": "为什么等权只能到十点一六？"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 496.73,
+   "dur": 3.01,
+   "speech": "看十个候选的检验误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 499.92,
+   "dur": 4.21,
+   "speech": "朴素九点五四，一阶自回归九点六六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 504.32,
+   "dur": 4.09,
+   "speech": "两个 SARIMA 九点六六和九点六五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 508.59,
+   "dur": 2.73,
+   "speech": "两个岭回归九点七二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 511.5,
+   "dur": 4.93,
+   "speech": "漂移十一点三四，指数平滑零点五，十一点四二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 516.61,
+   "dur": 2.8,
+   "speech": "调和平均十五点零六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 519.59,
+   "dur": 3.61,
+   "speech": "指数平滑零点二，十六点三零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 523.38,
+   "dur": 4.53,
+   "speech": "十个里六个在十以下，两个在十五以上。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 528.09,
+   "dur": 3.42,
+   "speech": "等权把这两个大的也平均进来。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 531.69,
+   "dur": 2.82,
+   "speech": "再看逐只股票的胜负。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 534.69,
+   "dur": 3.13,
+   "speech": "岭权重对等权，二十比零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 538.01,
+   "dur": 4.24,
+   "speech": "迭代 eta 零点一，对等权也是二十比零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 542.42,
+   "dur": 3.66,
+   "speech": "等权对最强单模型，零比二十。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 546.27,
+   "dur": 3.69,
+   "speech": "中位数对最强单模型，六比十四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 550.13,
+   "dur": 3.73,
+   "speech": "岭权重对最强单模型，九比十一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 554.05,
+   "dur": 3.59,
+   "speech": "迭代对最强单模型，五比十五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 557.82,
+   "dur": 3.66,
+   "speech": "没有一个集成方法整体赢过挑选。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 561.66,
+   "dur": 3.18,
+   "speech": "但它们都稳定地赢过等权。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 565.02,
+   "dur": 2.58,
+   "speech": "这就是这一集的偏序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 571,
+   "dur": 3.88,
+   "speech": "三个模块，都在第六章的算法目录。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 575.06,
+   "dur": 2.92,
+   "speech": "第一个负责平均和权重。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 578.16,
+   "dur": 2.68,
+   "speech": "第二个负责噪声增强。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 581.01,
+   "dur": 2.97,
+   "speech": "第三个负责迭代重加权。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 584.16,
+   "dur": 2.94,
+   "speech": "它们共用同一个模型接口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 587.28,
+   "dur": 2.46,
+   "speech": "接口只有两个字段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 589.92,
+   "dur": 3.37,
+   "speech": "一个拟合函数，一个预测函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 593.48,
+   "dur": 4.21,
+   "speech": "所以任何候选都能直接塞进集成。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 597.87,
+   "dur": 2.75,
+   "speech": "先看第一个模块的签名。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 600.8,
+   "dur": 2.99,
+   "speech": "三个函数，都是纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 603.97,
+   "dur": 3.81,
+   "speech": "weightedAvg 接收权重和一组预测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 607.96,
+   "dur": 2.34,
+   "speech": "逐点做加权和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 610.48,
+   "dur": 3.3,
+   "speech": "medianEns 逐点排序取中位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 613.96,
+   "dur": 3.09,
+   "speech": "偶数个取中间两个的均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 617.23,
+   "dur": 3.49,
+   "speech": "fitWeights 接收预测矩阵和真值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 620.9,
+   "dur": 3.93,
+   "speech": "先算 X 转置乘 X，加惩罚项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 625.01,
+   "dur": 2.89,
+   "speech": "再算 X 转置乘 y。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 628.08,
+   "dur": 2.94,
+   "speech": "解一个六元线性方程组。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 631.2,
+   "dur": 3.06,
+   "speech": "投影到单纯形，归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 634.45,
+   "dur": 3.61,
+   "speech": "求解器是自己写的高斯消元。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 638.24,
+   "dur": 3.11,
+   "speech": "第二个模块是迭代重加权。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 641.53,
+   "dur": 3.76,
+   "speech": "输入是初始权重、步长、轮数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 645.47,
+   "dur": 3.13,
+   "speech": "每轮先算当前集成的误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 648.78,
+   "dur": 3.06,
+   "speech": "再算每个模型单独的误差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 652.02,
+   "dur": 3.42,
+   "speech": "差值乘以步长，加到权重上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 655.63,
+   "dur": 3.09,
+   "speech": "负的截零，然后归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 658.89,
+   "dur": 3.47,
+   "speech": "如果权重全为零，回退等权。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 662.54,
+   "dur": 3.25,
+   "speech": "被截零的模型记入剔除名单。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 665.98,
+   "dur": 3.42,
+   "speech": "返回最终权重和剔除名单。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 669.58,
+   "dur": 3.13,
+   "speech": "整个过程没有任何随机数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 672.89,
+   "dur": 3.01,
+   "speech": "第三个模块是噪声增强。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 676.09,
+   "dur": 3.78,
+   "speech": "把训练序列加上小扰动，复制多份。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 680.05,
+   "dur": 3.45,
+   "speech": "每份拟合一个模型，再平均预测。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 683.67,
+   "dur": 3.45,
+   "speech": "扰动幅度按序列标准差缩放。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 687.3,
+   "dur": 2.99,
+   "speech": "噪声用线性同余发生器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 690.47,
+   "dur": 3.18,
+   "speech": "正态样本用 Box-Muller 变换。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 693.83,
+   "dur": 3.47,
+   "speech": "同一个种子，结果完全可复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 697.48,
+   "dur": 3.85,
+   "speech": "标准差设为零，变体逐元素相同。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 701.52,
+   "dur": 3.3,
+   "speech": "这时集成退化成单模型。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 705,
+   "dur": 2.92,
+   "speech": "单测专门锁住这个退化。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 711.32,
+   "dur": 2.13,
+   "speech": "验收分五组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 713.63,
+   "dur": 2.44,
+   "speech": "第一组是数据契约。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 716.24,
+   "dur": 4.96,
+   "speech": "二十只乘十个候选，验证段是后百分之三十。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 721.38,
+   "dur": 3.76,
+   "speech": "调参和检验各一半，最多差一天。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 725.32,
+   "dur": 3.01,
+   "speech": "每只至少两千四百根日线。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 728.51,
+   "dur": 3.57,
+   "speech": "十个候选的全段误差两两不同。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 732.26,
+   "dur": 2.56,
+   "speech": "第二组是集成契约。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 735,
+   "dur": 3.45,
+   "speech": "式 6.5 的黄金值是一点七。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 738.62,
+   "dur": 2.87,
+   "speech": "中位数把一百压回二。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 741.67,
+   "dur": 3.66,
+   "speech": "同一个模型平均三次，逐点复原。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 745.52,
+   "dur": 2.68,
+   "speech": "第三组是交叉验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 748.37,
+   "dur": 3.61,
+   "speech": "这一组专门记录计划与实测的偏差。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 752.17,
+   "dur": 4.57,
+   "speech": "计划说等权比最强单模型低百分之三到八。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 756.92,
+   "dur": 3.85,
+   "speech": "实测高百分之六点三五，方向相反。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 760.96,
+   "dur": 4.09,
+   "speech": "计划说二十只里至少十一只不输。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 765.23,
+   "dur": 2.99,
+   "speech": "实测零比二十，全输。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 768.4,
+   "dur": 2.92,
+   "speech": "计划说岭权重会自伤。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 771.5,
+   "dur": 4.21,
+   "speech": "实测二十比零，平均低百分之五点一六。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 775.89,
+   "dur": 3.45,
+   "speech": "三个计划假设，三个都没成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 779.52,
+   "dur": 4.07,
+   "speech": "检查照样通过，因为检查记录的是事实。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 783.77,
+   "dur": 2.65,
+   "speech": "第四组是迭代曲线。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 786.6,
+   "dur": 3.59,
+   "speech": "eta 零点一，从一轮到十轮。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 790.37,
+   "dur": 4.07,
+   "speech": "检验误差从九点六三降到九点五六。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 794.62,
+   "dur": 4.53,
+   "speech": "eta 零点五，从九点六二降到九点五五。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 799.33,
+   "dur": 3.13,
+   "speech": "轮数越多越好，没有反弹。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 802.64,
+   "dur": 3.09,
+   "speech": "计划说 eta 越大越糟。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 805.91,
+   "dur": 3.95,
+   "speech": "实测 eta 零点五还略低零点零二。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 810.04,
+   "dur": 3.01,
+   "speech": "计划说五轮后会变差。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 813.23,
+   "dur": 3.52,
+   "speech": "实测二十只全部不高于等权。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 816.93,
+   "dur": 2.85,
+   "speech": "两条预言又都没成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 819.96,
+   "dur": 2.25,
+   "speech": "第五组是噪声。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 822.38,
+   "dur": 3.78,
+   "speech": "标准差为零，五个变体逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 826.34,
+   "dur": 4.29,
+   "speech": "集成和单模型的差小于十的负十二次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 830.81,
+   "dur": 3.73,
+   "speech": "同一个种子，两次生成完全一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 834.72,
+   "dur": 3.73,
+   "speech": "十个变体的平均误差是十六点七一。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 838.64,
+   "dur": 2.87,
+   "speech": "集成后降到十点六一。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 841.69,
+   "dur": 4.05,
+   "speech": "相对干净单模型的偏离是零点二六五。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 845.91,
+   "dur": 2.58,
+   "speech": "方差确实被压住了。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 848.68,
+   "dur": 4.29,
+   "speech": "但十点六一仍然高于干净的九点六六。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 853.14,
+   "dur": 2.8,
+   "speech": "修了方差，没修偏差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 859.34,
+   "dur": 2.08,
+   "speech": "现在划边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 861.6,
+   "dur": 2.46,
+   "speech": "先看计划错在哪。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 864.24,
+   "dur": 5.2,
+   "speech": "计划第一条：等权比最强单模型低百分之三到八。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 869.62,
+   "dur": 2.99,
+   "speech": "实测高百分之六点三五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 872.79,
+   "dur": 3.3,
+   "speech": "错在低估了挑选规则的实力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 876.27,
+   "dur": 3.49,
+   "speech": "计划第二条：迭代调权会自伤。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 879.94,
+   "dur": 2.8,
+   "speech": "实测二十只全部改善。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 882.92,
+   "dur": 3.28,
+   "speech": "错在低估了调参段的信息量。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 886.38,
+   "dur": 3.42,
+   "speech": "计划第三条：步长越大越糟。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 889.98,
+   "dur": 3.85,
+   "speech": "实测大歩长略好，错在高估了振荡。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 894.02,
+   "dur": 2.27,
+   "speech": "为什么三条都错？"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 896.47,
+   "dur": 3.16,
+   "speech": "因为计划把池子想得太理想。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 899.8,
+   "dur": 3.45,
+   "speech": "计划假设成员误差独立同分布。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 903.43,
+   "dur": 4,
+   "speech": "实际成员高度相关，而且强弱分明。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 907.61,
+   "dur": 3.4,
+   "speech": "计划假设权重拟合样本不足。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 911.19,
+   "dur": 4.57,
+   "speech": "实际二十只股票乘三百六十二天，样本够。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 915.94,
+   "dur": 3.21,
+   "speech": "计划假设大步长会振荡。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 919.33,
+   "dur": 3.97,
+   "speech": "实际归一化和截零把振荡压住了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 923.48,
+   "dur": 2.97,
+   "speech": "这些不是借口，是机制。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 926.63,
+   "dur": 3.23,
+   "speech": "写进文档，供下一集参考。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 930.04,
+   "dur": 2.87,
+   "speech": "再看四个不能推的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 933.09,
+   "dur": 3.01,
+   "speech": "第一，不能推到别的股票池。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 936.28,
+   "dur": 4.26,
+   "speech": "这二十只是行业分层抽的，不是全市场。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 940.72,
+   "dur": 3.23,
+   "speech": "第二，不能推到别的预测跨度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 944.13,
+   "dur": 2.75,
+   "speech": "这里只做单步预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 947.06,
+   "dur": 3.37,
+   "speech": "第三，不能推到别的损失函数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 950.62,
+   "dur": 2.01,
+   "speech": "这里只报 MAE。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 952.8,
+   "dur": 2.97,
+   "speech": "第四，不能说集成没用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 955.95,
+   "dur": 3.71,
+   "speech": "它确实降了百分之九点三七的方差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 959.84,
+   "dur": 2.37,
+   "speech": "只是没赢过挑选。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 962.38,
+   "dur": 2.7,
+   "speech": "最后给三条适用条件。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 965.27,
+   "dur": 3.13,
+   "speech": "第一，成员要足够多样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 968.58,
+   "dur": 3.61,
+   "speech": "误差相关性越低，平均越有用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 972.37,
+   "dur": 3.61,
+   "speech": "第二，池子里不能有太差的成员。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 976.17,
+   "dur": 4.09,
+   "speech": "两个十六点三零的成员就能拖垮等权。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 980.44,
+   "dur": 3.13,
+   "speech": "第三，要有可靠的调参段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 983.76,
+   "dur": 2.89,
+   "speech": "权重和挑选都需要它。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 986.83,
+   "dur": 3.25,
+   "speech": "满足这三条，集成值得试。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 990.26,
+   "dur": 2.7,
+   "speech": "不满足，先修池子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 993.15,
+   "dur": 2.05,
+   "speech": "下一段收尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 998.6,
+   "dur": 2.29,
+   "speech": "收尾，三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1001.07,
+   "dur": 4.74,
+   "speech": "第一，等权比平均单模型低百分之九点三七。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1006,
+   "dur": 2.1,
+   "speech": "降方差成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1008.28,
+   "dur": 4.77,
+   "speech": "第二，等权比最强单模型高百分之六点三五。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1013.22,
+   "dur": 2.41,
+   "speech": "替代挑选不成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1015.82,
+   "dur": 4.57,
+   "speech": "第三，岭权重和迭代都能再降百分之五左右。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1020.57,
+   "dur": 3.09,
+   "speech": "但仍然只是逼近 oracle。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1023.84,
+   "dur": 3.9,
+   "speech": "三个数放在一起，就是这一集的结论。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1027.92,
+   "dur": 3.42,
+   "speech": "平均能赢平均，赢不过最强。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1031.52,
+   "dur": 2.8,
+   "speech": "这不是失败，是边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1034.5,
+   "dur": 2.65,
+   "speech": "这一集还做了一件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1037.33,
+   "dur": 3.42,
+   "speech": "把三条计划假设原样保留。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1040.94,
+   "dur": 3.64,
+   "speech": "然后在证据里逐条标为未成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1044.75,
+   "dur": 3.13,
+   "speech": "等权没有低百分之三到八。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1048.07,
+   "dur": 2.13,
+   "speech": "迭代没有自伤。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1050.37,
+   "dur": 2.37,
+   "speech": "大步长没有更糟。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1052.92,
+   "dur": 3.28,
+   "speech": "计划是猜想，读数是事实。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1056.38,
+   "dur": 3.97,
+   "speech": "两者不一致时，改计划，不改读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1060.53,
+   "dur": 4.53,
+   "speech": "二十八项检查里，有五项专门记录这种偏差。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1065.24,
+   "dur": 2.8,
+   "speech": "这是这个系列的工作方式。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1068.22,
+   "dur": 2.68,
+   "speech": "下一集讲架构搜索。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1071.07,
+   "dur": 2.56,
+   "speech": "手工设计网络太慢。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1073.81,
+   "dur": 3.04,
+   "speech": "能不能把搜索变成可微？"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1077.03,
+   "dur": 3.9,
+   "speech": "DARTS 用软化的选择替掉离散选择。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1081.11,
+   "dur": 4.41,
+   "speech": "三层搜索空间：单元、连接、算子。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1085.7,
+   "dur": 3.69,
+   "speech": "用梯度下降同时学权重和结构。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1089.56,
+   "dur": 3.13,
+   "speech": "代价是显存和二阶导。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1092.88,
+   "dur": 2.75,
+   "speech": "还会讲离散化时的落差。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1095.81,
+   "dur": 4.21,
+   "speech": "下一集的标题是：把架构搜索变成可微。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1100.2,
+   "dur": 3.04,
+   "speech": "第五十四集，二十六分钟。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1103.42,
+   "dur": 2.03,
+   "speech": "这一集交付。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1105.63,
+   "dur": 4.79,
+   "speech": "ts-base 两个提交，ts-admin 一个数据快照。"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1110.6,
+   "dur": 3.23,
+   "speech": "二十八项检查，八点九秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1114.01,
+   "dur": 3.45,
+   "speech": "三十页脚本，三百二十行口播。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1117.64,
+   "dur": 2.63,
+   "speech": "成片二十一分钟左右。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1120.45,
+   "dur": 2.56,
+   "speech": "一条命令重跑证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1123.18,
+   "dur": 3.54,
+   "speech": "所有数字都在 dist 里可查。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1126.91,
+   "dur": 2.01,
+   "speech": "下一集再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1129.09,
+   "dur": 2.29,
+   "speech": "平均不是免费的。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1131.57,
+   "dur": 2.2,
+   "speech": "认输也是结论。"
+  }
+ ]
+}

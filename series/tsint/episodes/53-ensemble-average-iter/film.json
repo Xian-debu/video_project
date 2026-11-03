@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "tsint-53-ensemble-average-iter",
   "kind": "series-episode",
-  "title": "集成：平均就能赢，但别乱调权",
+  "title": "平均能赢平均，赢不过最强",
   "series": {
     "id": "tsint",
     "order": 53,
@@ -20,9 +20,10 @@
   "fps": 30,
   "prefix": "tsint-53",
   "status": "draft",
-  "narration": null,
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [],
   "derived": [],
@@ -36,5 +37,5 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "pending"
 }

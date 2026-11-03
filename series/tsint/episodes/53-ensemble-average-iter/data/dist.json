@@ -1,0 +1,715 @@
+{
+ "meta": {
+  "episode": 53,
+  "slug": "ensemble-average-iter",
+  "group": "ch6-ensemble",
+  "title": "平均能赢平均，赢不过最强",
+  "chapter": "ch06",
+  "chapterName": "自动化模型设计",
+  "runtimeTarget": 22,
+  "next": {
+   "id": 54,
+   "title": "把架构搜索变成可微：DARTS 与三层搜索空间",
+   "minutes": 26
+  },
+  "commits": {
+   "tsBase": "bb3fc52",
+   "tsAdmin": "1318010"
+  }
+ },
+ "data": {
+  "stocks": 20,
+  "codes": [
+   "sh600118",
+   "sh600015",
+   "sz002028",
+   "sh601688",
+   "sh600085",
+   "sh600111",
+   "sh600066",
+   "sh600519",
+   "sz002493",
+   "sz000768",
+   "sh600011",
+   "sh601186",
+   "sh600031",
+   "sh600029",
+   "sh600588",
+   "sh600489",
+   "sz002202",
+   "sh600018",
+   "sh601225",
+   "sh601318"
+  ],
+  "rows": 48572,
+  "bars": [
+   2412,
+   2431
+  ],
+  "split": {
+   "train": [
+    1688,
+    1701
+   ],
+   "tune": [
+    362,
+    365
+   ],
+   "test": [
+    362,
+    365
+   ],
+   "fractions": [
+    0.7,
+    0.15,
+    0.15
+   ]
+  },
+  "candidates": [
+   {
+    "name": "naive",
+    "tuneMae": 11.7125,
+    "testMae": 9.5433
+   },
+   {
+    "name": "drift30",
+    "tuneMae": 13.0216,
+    "testMae": 11.3371
+   },
+   {
+    "name": "exp0.2",
+    "tuneMae": 19.3723,
+    "testMae": 16.2997
+   },
+   {
+    "name": "exp0.5",
+    "tuneMae": 13.4902,
+    "testMae": 11.4157
+   },
+   {
+    "name": "ar1",
+    "tuneMae": 11.7991,
+    "testMae": 9.663
+   },
+   {
+    "name": "ridge5-l1e-3",
+    "tuneMae": 11.8351,
+    "testMae": 9.7193
+   },
+   {
+    "name": "ridge5-l1",
+    "tuneMae": 11.8334,
+    "testMae": 9.7178
+   },
+   {
+    "name": "sar12",
+    "tuneMae": 11.8333,
+    "testMae": 9.6605
+   },
+   {
+    "name": "sar5",
+    "tuneMae": 11.8181,
+    "testMae": 9.6575
+   },
+   {
+    "name": "hmean5",
+    "tuneMae": 17.6019,
+    "testMae": 15.0564
+   }
+  ]
+ },
+ "levels": {
+  "meanSingle": 11.207,
+  "equal": 10.1566,
+  "median": 9.6562,
+  "fit": 9.6322,
+  "iter01": 9.5588,
+  "iter05": 9.5501,
+  "best": 9.5498,
+  "oracle": 9.5397,
+  "naive": 9.5433,
+  "noiseSingle": 9.663,
+  "noiseAvg": 16.7067,
+  "noiseEns": 10.6134
+ },
+ "gains": {
+  "equalVsBest": 0.0635,
+  "equalVsMean": 0.0937,
+  "fitVsEqual": 0.0516,
+  "iter01VsEqual": 0.0589,
+  "iter05VsEqual": 0.0597,
+  "iter05VsIter01": 0.0009,
+  "medianVsMean": 0.1384
+ },
+ "bestCounts": {
+  "naive": 9,
+  "drift30": 3,
+  "sar5": 3,
+  "sar12": 4,
+  "ar1": 1
+ },
+ "fit": {
+  "winsOverEqual": 20,
+  "effW": 2.1601,
+  "sumMin": 1.0,
+  "sumMax": 1.0
+ },
+ "iters": [
+  {
+   "eta": 0.1,
+   "rounds": 1,
+   "tuneMae": 11.773,
+   "testMae": 9.6296,
+   "removed": 27
+  },
+  {
+   "eta": 0.1,
+   "rounds": 3,
+   "tuneMae": 11.7429,
+   "testMae": 9.5984,
+   "removed": 43
+  },
+  {
+   "eta": 0.1,
+   "rounds": 5,
+   "tuneMae": 11.723,
+   "testMae": 9.5693,
+   "removed": 50
+  },
+  {
+   "eta": 0.1,
+   "rounds": 10,
+   "tuneMae": 11.7124,
+   "testMae": 9.5588,
+   "removed": 65
+  },
+  {
+   "eta": 0.5,
+   "rounds": 1,
+   "tuneMae": 11.7614,
+   "testMae": 9.6201,
+   "removed": 45
+  },
+  {
+   "eta": 0.5,
+   "rounds": 3,
+   "tuneMae": 11.7111,
+   "testMae": 9.5557,
+   "removed": 75
+  },
+  {
+   "eta": 0.5,
+   "rounds": 5,
+   "tuneMae": 11.7102,
+   "testMae": 9.5521,
+   "removed": 84
+  },
+  {
+   "eta": 0.5,
+   "rounds": 10,
+   "tuneMae": 11.7082,
+   "testMae": 9.5501,
+   "removed": 95
+  }
+ ],
+ "tally": {
+  "fitLEEqual": 20,
+  "fitLEBest": 9,
+  "iter01LEBest": 5,
+  "medianLEBest": 6,
+  "equalLEBest": 0
+ },
+ "noise": {
+  "single": 9.663,
+  "avgVariant": 16.7067,
+  "ensemble": 10.6134,
+  "devRatio": 0.2649,
+  "sigma0Diff": 0.0,
+  "seedSame": true
+ },
+ "stocks": [
+  {
+   "code": "sh600118",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 7.3634,
+   "best": 7.3198,
+   "oracle": 7.3082,
+   "median": 7.3491,
+   "fit": 7.2987,
+   "iter01": 7.3255,
+   "iter05": 7.3151,
+   "noiseSingle": 7.3082,
+   "noiseEns": 7.5225,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh600015",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 0.2712,
+   "best": 0.2651,
+   "oracle": 0.2651,
+   "median": 0.2653,
+   "fit": 0.2659,
+   "iter01": 0.2679,
+   "iter05": 0.266,
+   "noiseSingle": 0.2659,
+   "noiseEns": 0.268,
+   "bestName": "naive"
+  },
+  {
+   "code": "sz002028",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 13.6212,
+   "best": 13.438,
+   "oracle": 13.438,
+   "median": 13.5863,
+   "fit": 13.484,
+   "iter01": 13.5901,
+   "iter05": 13.4981,
+   "noiseSingle": 13.5766,
+   "noiseEns": 14.05,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh601688",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 0.2695,
+   "best": 0.2577,
+   "oracle": 0.2577,
+   "median": 0.2594,
+   "fit": 0.2593,
+   "iter01": 0.2636,
+   "iter05": 0.2594,
+   "noiseSingle": 0.2607,
+   "noiseEns": 0.2645,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh600085",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 6.0122,
+   "best": 5.6972,
+   "oracle": 5.6972,
+   "median": 5.8153,
+   "fit": 5.8396,
+   "iter01": 5.7422,
+   "iter05": 5.6972,
+   "noiseSingle": 5.9053,
+   "noiseEns": 5.8831,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh600111",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 4.7016,
+   "best": 4.5046,
+   "oracle": 4.5046,
+   "median": 4.5642,
+   "fit": 4.554,
+   "iter01": 4.5416,
+   "iter05": 4.5124,
+   "noiseSingle": 4.5779,
+   "noiseEns": 4.9649,
+   "bestName": "drift30"
+  },
+  {
+   "code": "sh600066",
+   "bars": 2430,
+   "train": 1701,
+   "tune": 364,
+   "test": 365,
+   "equal": 17.8314,
+   "best": 17.0397,
+   "oracle": 17.0397,
+   "median": 17.1918,
+   "fit": 17.025,
+   "iter01": 17.18,
+   "iter05": 17.0551,
+   "noiseSingle": 17.3861,
+   "noiseEns": 17.5253,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh600519",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 123.4687,
+   "best": 114.3118,
+   "oracle": 114.3118,
+   "median": 115.9392,
+   "fit": 115.742,
+   "iter01": 114.3651,
+   "iter05": 114.3118,
+   "noiseSingle": 115.8023,
+   "noiseEns": 130.2419,
+   "bestName": "naive"
+  },
+  {
+   "code": "sz002493",
+   "bars": 2427,
+   "train": 1698,
+   "tune": 364,
+   "test": 365,
+   "equal": 2.0212,
+   "best": 1.8566,
+   "oracle": 1.8499,
+   "median": 1.8694,
+   "fit": 1.8673,
+   "iter01": 1.8556,
+   "iter05": 1.8538,
+   "noiseSingle": 1.8645,
+   "noiseEns": 2.1869,
+   "bestName": "sar5"
+  },
+  {
+   "code": "sz000768",
+   "bars": 2426,
+   "train": 1698,
+   "tune": 364,
+   "test": 364,
+   "equal": 2.5208,
+   "best": 2.4622,
+   "oracle": 2.4622,
+   "median": 2.4663,
+   "fit": 2.4653,
+   "iter01": 2.474,
+   "iter05": 2.4692,
+   "noiseSingle": 2.4629,
+   "noiseEns": 2.5714,
+   "bestName": "sar12"
+  },
+  {
+   "code": "sh600011",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 0.466,
+   "best": 0.4391,
+   "oracle": 0.4384,
+   "median": 0.4407,
+   "fit": 0.4389,
+   "iter01": 0.4409,
+   "iter05": 0.4384,
+   "noiseSingle": 0.4384,
+   "noiseEns": 0.4482,
+   "bestName": "sar12"
+  },
+  {
+   "code": "sh601186",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 0.1611,
+   "best": 0.1562,
+   "oracle": 0.1562,
+   "median": 0.1571,
+   "fit": 0.1562,
+   "iter01": 0.1584,
+   "iter05": 0.1568,
+   "noiseSingle": 0.1564,
+   "noiseEns": 0.1632,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh600031",
+   "bars": 2430,
+   "train": 1701,
+   "tune": 364,
+   "test": 365,
+   "equal": 7.7419,
+   "best": 7.3603,
+   "oracle": 7.3603,
+   "median": 7.3577,
+   "fit": 7.3714,
+   "iter01": 7.3672,
+   "iter05": 7.3682,
+   "noiseSingle": 7.3753,
+   "noiseEns": 8.44,
+   "bestName": "naive"
+  },
+  {
+   "code": "sh600029",
+   "bars": 2428,
+   "train": 1699,
+   "tune": 364,
+   "test": 365,
+   "equal": 0.1297,
+   "best": 0.1274,
+   "oracle": 0.125,
+   "median": 0.1269,
+   "fit": 0.1261,
+   "iter01": 0.1276,
+   "iter05": 0.1264,
+   "noiseSingle": 0.1274,
+   "noiseEns": 0.1303,
+   "bestName": "ar1"
+  },
+  {
+   "code": "sh600588",
+   "bars": 2425,
+   "train": 1697,
+   "tune": 364,
+   "test": 364,
+   "equal": 10.4097,
+   "best": 9.8555,
+   "oracle": 9.7555,
+   "median": 9.8569,
+   "fit": 9.849,
+   "iter01": 9.8263,
+   "iter05": 9.8257,
+   "noiseSingle": 9.84,
+   "noiseEns": 11.4397,
+   "bestName": "sar5"
+  },
+  {
+   "code": "sh600489",
+   "bars": 2412,
+   "train": 1688,
+   "tune": 362,
+   "test": 362,
+   "equal": 2.0921,
+   "best": 1.9741,
+   "oracle": 1.9473,
+   "median": 1.9603,
+   "fit": 1.9705,
+   "iter01": 1.9613,
+   "iter05": 1.9619,
+   "noiseSingle": 1.9738,
+   "noiseEns": 2.0208,
+   "bestName": "sar12"
+  },
+  {
+   "code": "sz002202",
+   "bars": 2425,
+   "train": 1697,
+   "tune": 364,
+   "test": 364,
+   "equal": 1.0469,
+   "best": 1.0451,
+   "oracle": 0.9976,
+   "median": 1.0336,
+   "fit": 1.0454,
+   "iter01": 1.0125,
+   "iter05": 1.0331,
+   "noiseSingle": 1.0469,
+   "noiseEns": 1.0841,
+   "bestName": "sar5"
+  },
+  {
+   "code": "sh600018",
+   "bars": 2428,
+   "train": 1699,
+   "tune": 364,
+   "test": 365,
+   "equal": 0.8431,
+   "best": 0.8403,
+   "oracle": 0.835,
+   "median": 0.8386,
+   "fit": 0.8394,
+   "iter01": 0.8358,
+   "iter05": 0.8429,
+   "noiseSingle": 0.8427,
+   "noiseEns": 0.8644,
+   "bestName": "sar12"
+  },
+  {
+   "code": "sh601225",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 0.5019,
+   "best": 0.4771,
+   "oracle": 0.4771,
+   "median": 0.4801,
+   "fit": 0.4787,
+   "iter01": 0.4803,
+   "iter05": 0.4792,
+   "noiseSingle": 0.4807,
+   "noiseEns": 0.5139,
+   "bestName": "drift30"
+  },
+  {
+   "code": "sh601318",
+   "bars": 2431,
+   "train": 1701,
+   "tune": 365,
+   "test": 365,
+   "equal": 1.6579,
+   "best": 1.568,
+   "oracle": 1.567,
+   "median": 1.5663,
+   "fit": 1.5679,
+   "iter01": 1.571,
+   "iter05": 1.5707,
+   "noiseSingle": 1.5681,
+   "noiseEns": 1.6846,
+   "bestName": "drift30"
+  }
+ ],
+ "checks": [
+  {
+   "group": "data",
+   "name": "20 只股票 × 10 个候选；验证段恒为后 30%，并与调参/检验各半（差 ≤1 天）",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "每只股票至少 2400 根日线、训练段至少 1600 根",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "10 个候选的全段平均 MAE 互不相同（没有两个候选完全等价）",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "每只股票的验证段都不少于 300 个交易日（调参和检验各 ≥150）",
+   "ok": true
+  },
+  {
+   "group": "ensemble",
+   "name": "式 (6.5) 黄金值：0.5×1 + 0.3×2 + 0.2×3 = 1.7",
+   "ok": true
+  },
+  {
+   "group": "ensemble",
+   "name": "中位数集成：{1,2,100} → 2.0（离群值不影响中位）",
+   "ok": true
+  },
+  {
+   "group": "ensemble",
+   "name": "等权集成同一个模型三次，逐点恢复原预测",
+   "ok": true
+  },
+  {
+   "group": "ensemble",
+   "name": "岭权重非负且和为 1（20 只股票全部满足）",
+   "ok": true
+  },
+  {
+   "group": "ensemble",
+   "name": "拟合权重是候选预测的凸组合：每个点都落在 10 个候选的 min/max 之间",
+   "ok": true
+  },
+  {
+   "group": "ensemble",
+   "name": "岭权重不退化：有效权重数 (1/Σw²) 平均 ≥ 2（不是只押一个模型）",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "计划要求等权比最优单模型低 3%–8%：实测高 6.35%，方向相反",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "计划假设 20 只里至少 11 只等权不差于最优单模型：实测 0/20，全输",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "等权平均低于十个候选的平均单模型：省下 9.37%（降方差成立，但赢不过最强的那个）",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "最强单模型几乎就是 oracle：naive 与 oracle 只差 0.04%（按调参段选最优是很强的基线）",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "全池 oracle 是下界：每只股票的等权 MAE 都不低于其最优候选",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "计划假设岭权重在样本外自伤：实测 20/20 只都不差于等权，平均低 5.16%",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "中位数集成与等权平均相当（平均 MAE 差 < 5%）",
+   "ok": true
+  },
+  {
+   "group": "iter",
+   "name": "调参段：η=0.1 五轮后 MAE 低于等权（≥15/20 只股票）",
+   "ok": true
+  },
+  {
+   "group": "iter",
+   "name": "计划假设 η=0.1 五轮后检验段变差：实测 20/20 只都不高于等权，平均低 5.78%",
+   "ok": true
+  },
+  {
+   "group": "iter",
+   "name": "计划假设 η=0.5 比 η=0.1 更自伤：实测 η=0.5 还略低 0.017（步长更大没有更糟）",
+   "ok": true
+  },
+  {
+   "group": "iter",
+   "name": "计划假设检验段随轮数不降：实测 1→10 轮单调下降 9.6296 → 9.5588",
+   "ok": true
+  },
+  {
+   "group": "iter",
+   "name": "迭代权重恒非负、和为 1（所有股票 × 两个 η × 四个轮数）",
+   "ok": true
+  },
+  {
+   "group": "iter",
+   "name": "收敛后确有模型被剔除（至少 1 只股票出现零权）",
+   "ok": true
+  },
+  {
+   "group": "noise",
+   "name": "σ=0 的 5 个变体与原文逐元素相同，集成预测与单模型逐位相同（<1e-12）",
+   "ok": true
+  },
+  {
+   "group": "noise",
+   "name": "同一 seed 两次生成完全一致（可复现）",
+   "ok": true
+  },
+  {
+   "group": "noise",
+   "name": "不同 seed 生成不同变体",
+   "ok": true
+  },
+  {
+   "group": "noise",
+   "name": "K=10 集成相对干净模型的平均偏离低于单变体的 0.5 倍（方差按 1/√K 收缩）",
+   "ok": true
+  },
+  {
+   "group": "noise",
+   "name": "噪声集成的检验段 MAE 不劣于单变体平均 MAE 的 1.02 倍",
+   "ok": true
+  }
+ ],
+ "seconds": 8.8612
+}
