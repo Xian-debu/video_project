@@ -1,0 +1,2966 @@
+{
+ "meta": {
+  "episode": 52,
+  "slug": "meta-learning-task-library",
+  "group": "ch6-meta",
+  "title": "把 300 只股票当成 300 个任务：元学习选模型",
+  "chapter": "ch06",
+  "chapterName": "自动化模型设计",
+  "runtimeTarget": 24,
+  "next": {
+   "id": 53,
+   "title": "集成：平均就能赢，但别乱调权",
+   "minutes": 22
+  },
+  "commits": {
+   "tsBase": "77f9362",
+   "tsAdmin": "1318010"
+  }
+ },
+ "data": {
+  "stocks": 300,
+  "codes": [
+   "sh600000",
+   "sh600006",
+   "sh600011",
+   "sh600081",
+   "sh600106",
+   "sh600111",
+   "sh600115",
+   "sh600155",
+   "sh600185",
+   "sh600203",
+   "sh600237",
+   "sh600246",
+   "sh600281",
+   "sh600282",
+   "sh600305",
+   "sh600322",
+   "sh600331",
+   "sh600350",
+   "sh600352",
+   "sh600354",
+   "sh600359",
+   "sh600369",
+   "sh600372",
+   "sh600396",
+   "sh600418",
+   "sh600429",
+   "sh600458",
+   "sh600461",
+   "sh600462",
+   "sh600482",
+   "sh600498",
+   "sh600516",
+   "sh600525",
+   "sh600526",
+   "sh600550",
+   "sh600551",
+   "sh600576",
+   "sh600584",
+   "sh600626",
+   "sh600628",
+   "sh600648",
+   "sh600653",
+   "sh600654",
+   "sh600655",
+   "sh600667",
+   "sh600679",
+   "sh600684",
+   "sh600691",
+   "sh600698",
+   "sh600707",
+   "sh600713",
+   "sh600715",
+   "sh600721",
+   "sh600741",
+   "sh600763",
+   "sh600789",
+   "sh600791",
+   "sh600792",
+   "sh600845",
+   "sh600846",
+   "sh600860",
+   "sh600962",
+   "sh600987",
+   "sh600990",
+   "sh600992",
+   "sh601006",
+   "sh601007",
+   "sh601016",
+   "sh601101",
+   "sh601116",
+   "sh601166",
+   "sh601179",
+   "sh601186",
+   "sh601212",
+   "sh601222",
+   "sh601229",
+   "sh601339",
+   "sh601611",
+   "sh601677",
+   "sh601717",
+   "sh601788",
+   "sh601808",
+   "sh601811",
+   "sh601818",
+   "sh601989",
+   "sh603019",
+   "sh603043",
+   "sh603067",
+   "sh603078",
+   "sh603088",
+   "sh603108",
+   "sh603116",
+   "sh603138",
+   "sh603166",
+   "sh603186",
+   "sh603299",
+   "sh603301",
+   "sh603316",
+   "sh603336",
+   "sh603368",
+   "sh603380",
+   "sh603383",
+   "sh603496",
+   "sh603567",
+   "sh603588",
+   "sh603616",
+   "sh603680",
+   "sh603688",
+   "sh603757",
+   "sh603776",
+   "sh603778",
+   "sh603798",
+   "sh603878",
+   "sh603880",
+   "sh603906",
+   "sh603919",
+   "sh603933",
+   "sz000008",
+   "sz000030",
+   "sz000036",
+   "sz000096",
+   "sz000338",
+   "sz000404",
+   "sz000408",
+   "sz000426",
+   "sz000503",
+   "sz000516",
+   "sz000521",
+   "sz000533",
+   "sz000546",
+   "sz000572",
+   "sz000581",
+   "sz000626",
+   "sz000652",
+   "sz000656",
+   "sz000659",
+   "sz000665",
+   "sz000679",
+   "sz000680",
+   "sz000682",
+   "sz000703",
+   "sz000716",
+   "sz000717",
+   "sz000751",
+   "sz000755",
+   "sz000766",
+   "sz000767",
+   "sz000789",
+   "sz000815",
+   "sz000889",
+   "sz000905",
+   "sz000906",
+   "sz000938",
+   "sz000948",
+   "sz000953",
+   "sz000963",
+   "sz000999",
+   "sz002026",
+   "sz002027",
+   "sz002039",
+   "sz002043",
+   "sz002045",
+   "sz002073",
+   "sz002125",
+   "sz002132",
+   "sz002138",
+   "sz002140",
+   "sz002146",
+   "sz002162",
+   "sz002165",
+   "sz002170",
+   "sz002176",
+   "sz002180",
+   "sz002183",
+   "sz002203",
+   "sz002204",
+   "sz002209",
+   "sz002214",
+   "sz002224",
+   "sz002230",
+   "sz002240",
+   "sz002253",
+   "sz002255",
+   "sz002259",
+   "sz002267",
+   "sz002289",
+   "sz002298",
+   "sz002304",
+   "sz002377",
+   "sz002379",
+   "sz002382",
+   "sz002394",
+   "sz002403",
+   "sz002412",
+   "sz002415",
+   "sz002416",
+   "sz002418",
+   "sz002452",
+   "sz002453",
+   "sz002460",
+   "sz002470",
+   "sz002487",
+   "sz002488",
+   "sz002508",
+   "sz002527",
+   "sz002708",
+   "sz002728",
+   "sz002731",
+   "sz002741",
+   "sz002753",
+   "sz002762",
+   "sz002765",
+   "sz002773",
+   "sz002780",
+   "sz002786",
+   "sz002787",
+   "sz002788",
+   "sz002808",
+   "sz002809",
+   "sz002815",
+   "sz002824",
+   "sz002828",
+   "sz002837",
+   "sz002839",
+   "sz002846",
+   "sz002850",
+   "sz002852",
+   "sz002861",
+   "sz002865",
+   "sz002895",
+   "sz002896",
+   "sz002935",
+   "sz300012",
+   "sz300018",
+   "sz300031",
+   "sz300036",
+   "sz300041",
+   "sz300042",
+   "sz300051",
+   "sz300055",
+   "sz300058",
+   "sz300069",
+   "sz300074",
+   "sz300084",
+   "sz300096",
+   "sz300118",
+   "sz300127",
+   "sz300140",
+   "sz300166",
+   "sz300177",
+   "sz300180",
+   "sz300188",
+   "sz300190",
+   "sz300193",
+   "sz300207",
+   "sz300217",
+   "sz300248",
+   "sz300250",
+   "sz300285",
+   "sz300298",
+   "sz300302",
+   "sz300322",
+   "sz300334",
+   "sz300349",
+   "sz300357",
+   "sz300365",
+   "sz300380",
+   "sz300386",
+   "sz300402",
+   "sz300409",
+   "sz300441",
+   "sz300443",
+   "sz300459",
+   "sz300464",
+   "sz300467",
+   "sz300479",
+   "sz300480",
+   "sz300489",
+   "sz300550",
+   "sz300571",
+   "sz300576",
+   "sz300580",
+   "sz300598",
+   "sz300604",
+   "sz300606",
+   "sz300609",
+   "sz300620",
+   "sz300626",
+   "sz300648",
+   "sz300649",
+   "sz300650",
+   "sz300651",
+   "sz300669",
+   "sz300676",
+   "sz300691",
+   "sz300708",
+   "sz300713",
+   "sz300730",
+   "sz300737",
+   "sz300750"
+  ],
+  "bars": [
+   1535,
+   2431
+  ],
+  "split": {
+   "train": [
+    809,
+    1705
+   ],
+   "valid": [
+    466,
+    484
+   ],
+   "test": [
+    232,
+    242
+   ]
+  },
+  "cut": {
+   "trainEnd": "2022-01-01",
+   "validEnd": "2024-01-01",
+   "snapshot": "2024-12-31"
+  },
+  "industries": 53,
+  "candidates": 10,
+  "universe": 5413,
+  "eligible": 2911,
+  "seed": 20261103
+ },
+ "hits": {
+  "stats": 0.2733,
+  "classMean": 0.3867,
+  "naive": 0.4333,
+  "ts2vec": 0.2667,
+  "gain": -0.1133,
+  "holdStats": 0.2667,
+  "holdClass": 0.4,
+  "holdN": 30,
+  "avgRank": 2.5167
+ },
+ "folds": {
+  "stats": [
+   0.2,
+   0.2333,
+   0.4,
+   0.25,
+   0.2833
+  ],
+  "ts2vec": [
+   0.3333,
+   0.2667,
+   0.2667,
+   0.25,
+   0.2167
+  ]
+ },
+ "regret": {
+  "mean": 0.0263,
+  "max": 3.2029,
+  "wrong": 218
+ },
+ "testMae": {
+  "meta": 3.5044,
+  "truth": 3.5002,
+  "delta": 0.0042
+ },
+ "corr": 0.9983,
+ "ts2vec": {
+  "dim": 64,
+  "cosPeriod": 0.6194,
+  "gap": -0.0067
+ },
+ "candidates": [
+  {
+   "name": "naive",
+   "wins": 130,
+   "validMae": 2.7879
+  },
+  {
+   "name": "drift30",
+   "wins": 19,
+   "validMae": 2.8743
+  },
+  {
+   "name": "exp0.2",
+   "wins": 0,
+   "validMae": 4.5149
+  },
+  {
+   "name": "exp0.5",
+   "wins": 0,
+   "validMae": 3.2183
+  },
+  {
+   "name": "ar1",
+   "wins": 48,
+   "validMae": 2.7999
+  },
+  {
+   "name": "ridge5-l1e-3",
+   "wins": 6,
+   "validMae": 2.8345
+  },
+  {
+   "name": "ridge5-l1",
+   "wins": 11,
+   "validMae": 2.8339
+  },
+  {
+   "name": "sar12",
+   "wins": 59,
+   "validMae": 2.7964
+  },
+  {
+   "name": "sar5",
+   "wins": 27,
+   "validMae": 2.8067
+  },
+  {
+   "name": "hmean5",
+   "wins": 0,
+   "validMae": 4.1156
+  }
+ ],
+ "tasks": [
+  {
+   "code": "sh600000",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0,
+   "cls": 0
+  },
+  {
+   "code": "sh600006",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0013,
+   "cls": 1
+  },
+  {
+   "code": "sh600011",
+   "truth": 4,
+   "pick": 6,
+   "regret": 0.0001,
+   "cls": 2
+  },
+  {
+   "code": "sh600081",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0647,
+   "cls": 1
+  },
+  {
+   "code": "sh600106",
+   "truth": 8,
+   "pick": 1,
+   "regret": 0.066,
+   "cls": 3
+  },
+  {
+   "code": "sh600111",
+   "truth": 1,
+   "pick": 6,
+   "regret": 0.0736,
+   "cls": 4
+  },
+  {
+   "code": "sh600115",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 5
+  },
+  {
+   "code": "sh600155",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0262,
+   "cls": 6
+  },
+  {
+   "code": "sh600185",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0012,
+   "cls": 7
+  },
+  {
+   "code": "sh600203",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0015,
+   "cls": 8
+  },
+  {
+   "code": "sh600237",
+   "truth": 7,
+   "pick": 8,
+   "regret": 0.0,
+   "cls": 8
+  },
+  {
+   "code": "sh600246",
+   "truth": 1,
+   "pick": 1,
+   "regret": 0.006,
+   "cls": 9
+  },
+  {
+   "code": "sh600281",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 4
+  },
+  {
+   "code": "sh600282",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0004,
+   "cls": 10
+  },
+  {
+   "code": "sh600305",
+   "truth": 1,
+   "pick": 8,
+   "regret": 0.0176,
+   "cls": 11
+  },
+  {
+   "code": "sh600322",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0005,
+   "cls": 9
+  },
+  {
+   "code": "sh600331",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0047,
+   "cls": 12
+  },
+  {
+   "code": "sh600350",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 3
+  },
+  {
+   "code": "sh600352",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 12
+  },
+  {
+   "code": "sh600354",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0004,
+   "cls": 13
+  },
+  {
+   "code": "sh600359",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0,
+   "cls": 13
+  },
+  {
+   "code": "sh600369",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0095,
+   "cls": 6
+  },
+  {
+   "code": "sh600372",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 14
+  },
+  {
+   "code": "sh600396",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0083,
+   "cls": 2
+  },
+  {
+   "code": "sh600418",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0074,
+   "cls": 1
+  },
+  {
+   "code": "sh600429",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 11
+  },
+  {
+   "code": "sh600458",
+   "truth": 4,
+   "pick": 1,
+   "regret": 0.1487,
+   "cls": 15
+  },
+  {
+   "code": "sh600461",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0114,
+   "cls": 16
+  },
+  {
+   "code": "sh600462",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0025,
+   "cls": 17
+  },
+  {
+   "code": "sh600482",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0,
+   "cls": 14
+  },
+  {
+   "code": "sh600498",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0006,
+   "cls": 8
+  },
+  {
+   "code": "sh600516",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 18
+  },
+  {
+   "code": "sh600525",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0022,
+   "cls": 19
+  },
+  {
+   "code": "sh600526",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 20
+  },
+  {
+   "code": "sh600550",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0254,
+   "cls": 19
+  },
+  {
+   "code": "sh600551",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0034,
+   "cls": 21
+  },
+  {
+   "code": "sh600576",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0057,
+   "cls": 22
+  },
+  {
+   "code": "sh600584",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0108,
+   "cls": 8
+  },
+  {
+   "code": "sh600626",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0007,
+   "cls": 23
+  },
+  {
+   "code": "sh600628",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0,
+   "cls": 24
+  },
+  {
+   "code": "sh600648",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0423,
+   "cls": 25
+  },
+  {
+   "code": "sh600653",
+   "truth": 7,
+   "pick": 1,
+   "regret": 3.2029,
+   "cls": 24
+  },
+  {
+   "code": "sh600654",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.8962,
+   "cls": 7
+  },
+  {
+   "code": "sh600655",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 24
+  },
+  {
+   "code": "sh600667",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 26
+  },
+  {
+   "code": "sh600679",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0083,
+   "cls": 14
+  },
+  {
+   "code": "sh600684",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0051,
+   "cls": 9
+  },
+  {
+   "code": "sh600691",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 12
+  },
+  {
+   "code": "sh600698",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0012,
+   "cls": 1
+  },
+  {
+   "code": "sh600707",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0012,
+   "cls": 8
+  },
+  {
+   "code": "sh600713",
+   "truth": 7,
+   "pick": 8,
+   "regret": 0.002,
+   "cls": 25
+  },
+  {
+   "code": "sh600715",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 27
+  },
+  {
+   "code": "sh600721",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0013,
+   "cls": 28
+  },
+  {
+   "code": "sh600741",
+   "truth": 5,
+   "pick": 0,
+   "regret": 0.0111,
+   "cls": 1
+  },
+  {
+   "code": "sh600763",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0317,
+   "cls": 29
+  },
+  {
+   "code": "sh600789",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0051,
+   "cls": 30
+  },
+  {
+   "code": "sh600791",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0037,
+   "cls": 9
+  },
+  {
+   "code": "sh600792",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0048,
+   "cls": 31
+  },
+  {
+   "code": "sh600845",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sh600846",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0015,
+   "cls": 26
+  },
+  {
+   "code": "sh600860",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0018,
+   "cls": 20
+  },
+  {
+   "code": "sh600962",
+   "truth": 4,
+   "pick": 1,
+   "regret": 0.0033,
+   "cls": 33
+  },
+  {
+   "code": "sh600987",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0693,
+   "cls": 23
+  },
+  {
+   "code": "sh600990",
+   "truth": 6,
+   "pick": 8,
+   "regret": 0.0015,
+   "cls": 8
+  },
+  {
+   "code": "sh600992",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0195,
+   "cls": 34
+  },
+  {
+   "code": "sh601006",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 35
+  },
+  {
+   "code": "sh601007",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0008,
+   "cls": 36
+  },
+  {
+   "code": "sh601016",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0036,
+   "cls": 2
+  },
+  {
+   "code": "sh601101",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0057,
+   "cls": 37
+  },
+  {
+   "code": "sh601116",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 24
+  },
+  {
+   "code": "sh601166",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0037,
+   "cls": 0
+  },
+  {
+   "code": "sh601179",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0004,
+   "cls": 19
+  },
+  {
+   "code": "sh601186",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.006,
+   "cls": 26
+  },
+  {
+   "code": "sh601212",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0007,
+   "cls": 4
+  },
+  {
+   "code": "sh601222",
+   "truth": 8,
+   "pick": 6,
+   "regret": 0.0027,
+   "cls": 19
+  },
+  {
+   "code": "sh601229",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0023,
+   "cls": 0
+  },
+  {
+   "code": "sh601339",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.005,
+   "cls": 23
+  },
+  {
+   "code": "sh601611",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.003,
+   "cls": 26
+  },
+  {
+   "code": "sh601677",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0078,
+   "cls": 4
+  },
+  {
+   "code": "sh601717",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0029,
+   "cls": 20
+  },
+  {
+   "code": "sh601788",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0013,
+   "cls": 6
+  },
+  {
+   "code": "sh601808",
+   "truth": 8,
+   "pick": 8,
+   "regret": 0.0009,
+   "cls": 38
+  },
+  {
+   "code": "sh601811",
+   "truth": 4,
+   "pick": 5,
+   "regret": 0.0076,
+   "cls": 21
+  },
+  {
+   "code": "sh601818",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0022,
+   "cls": 0
+  },
+  {
+   "code": "sh601989",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0001,
+   "cls": 17
+  },
+  {
+   "code": "sh603019",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0522,
+   "cls": 8
+  },
+  {
+   "code": "sh603043",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 11
+  },
+  {
+   "code": "sh603067",
+   "truth": 4,
+   "pick": 8,
+   "regret": 0.0011,
+   "cls": 12
+  },
+  {
+   "code": "sh603078",
+   "truth": 8,
+   "pick": 8,
+   "regret": 0.0082,
+   "cls": 12
+  },
+  {
+   "code": "sh603088",
+   "truth": 8,
+   "pick": 5,
+   "regret": 0.0135,
+   "cls": 39
+  },
+  {
+   "code": "sh603108",
+   "truth": 8,
+   "pick": 6,
+   "regret": 0.0151,
+   "cls": 25
+  },
+  {
+   "code": "sh603116",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0004,
+   "cls": 40
+  },
+  {
+   "code": "sh603138",
+   "truth": 4,
+   "pick": 8,
+   "regret": 0.018,
+   "cls": 32
+  },
+  {
+   "code": "sh603166",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 1
+  },
+  {
+   "code": "sh603186",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0023,
+   "cls": 8
+  },
+  {
+   "code": "sh603299",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0062,
+   "cls": 12
+  },
+  {
+   "code": "sh603301",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 30
+  },
+  {
+   "code": "sh603316",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0002,
+   "cls": 8
+  },
+  {
+   "code": "sh603336",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 41
+  },
+  {
+   "code": "sh603368",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0196,
+   "cls": 25
+  },
+  {
+   "code": "sh603380",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0005,
+   "cls": 8
+  },
+  {
+   "code": "sh603383",
+   "truth": 4,
+   "pick": 8,
+   "regret": 0.013,
+   "cls": 32
+  },
+  {
+   "code": "sh603496",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.001,
+   "cls": 8
+  },
+  {
+   "code": "sh603567",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0092,
+   "cls": 30
+  },
+  {
+   "code": "sh603588",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.1038,
+   "cls": 42
+  },
+  {
+   "code": "sh603616",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0029,
+   "cls": 18
+  },
+  {
+   "code": "sh603680",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 14
+  },
+  {
+   "code": "sh603688",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 18
+  },
+  {
+   "code": "sh603757",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0022,
+   "cls": 39
+  },
+  {
+   "code": "sh603776",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sh603778",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 19
+  },
+  {
+   "code": "sh603798",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0049,
+   "cls": 31
+  },
+  {
+   "code": "sh603878",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0015,
+   "cls": 10
+  },
+  {
+   "code": "sh603880",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 30
+  },
+  {
+   "code": "sh603906",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 8
+  },
+  {
+   "code": "sh603919",
+   "truth": 4,
+   "pick": 8,
+   "regret": 0.0021,
+   "cls": 33
+  },
+  {
+   "code": "sh603933",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0019,
+   "cls": 8
+  },
+  {
+   "code": "sz000008",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0001,
+   "cls": 14
+  },
+  {
+   "code": "sz000030",
+   "truth": 4,
+   "pick": 8,
+   "regret": 0.0005,
+   "cls": 1
+  },
+  {
+   "code": "sz000036",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 9
+  },
+  {
+   "code": "sz000096",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0026,
+   "cls": 25
+  },
+  {
+   "code": "sz000338",
+   "truth": 5,
+   "pick": 0,
+   "regret": 0.0766,
+   "cls": 1
+  },
+  {
+   "code": "sz000404",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0023,
+   "cls": 39
+  },
+  {
+   "code": "sz000408",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 12
+  },
+  {
+   "code": "sz000426",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 43
+  },
+  {
+   "code": "sz000503",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0054,
+   "cls": 44
+  },
+  {
+   "code": "sz000516",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 29
+  },
+  {
+   "code": "sz000521",
+   "truth": 6,
+   "pick": 0,
+   "regret": 0.0003,
+   "cls": 19
+  },
+  {
+   "code": "sz000533",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 19
+  },
+  {
+   "code": "sz000546",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 42
+  },
+  {
+   "code": "sz000572",
+   "truth": 4,
+   "pick": 5,
+   "regret": 0.0024,
+   "cls": 1
+  },
+  {
+   "code": "sz000581",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0022,
+   "cls": 1
+  },
+  {
+   "code": "sz000626",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 25
+  },
+  {
+   "code": "sz000652",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0475,
+   "cls": 25
+  },
+  {
+   "code": "sz000656",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 9
+  },
+  {
+   "code": "sz000659",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0034,
+   "cls": 15
+  },
+  {
+   "code": "sz000665",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 45
+  },
+  {
+   "code": "sz000679",
+   "truth": 6,
+   "pick": 0,
+   "regret": 0.0002,
+   "cls": 24
+  },
+  {
+   "code": "sz000680",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 20
+  },
+  {
+   "code": "sz000682",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0699,
+   "cls": 32
+  },
+  {
+   "code": "sz000703",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 46
+  },
+  {
+   "code": "sz000716",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 11
+  },
+  {
+   "code": "sz000717",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 10
+  },
+  {
+   "code": "sz000751",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 4
+  },
+  {
+   "code": "sz000755",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0071,
+   "cls": 3
+  },
+  {
+   "code": "sz000766",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0359,
+   "cls": 30
+  },
+  {
+   "code": "sz000767",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 2
+  },
+  {
+   "code": "sz000789",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 18
+  },
+  {
+   "code": "sz000815",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sz000889",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0006,
+   "cls": 32
+  },
+  {
+   "code": "sz000905",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.001,
+   "cls": 25
+  },
+  {
+   "code": "sz000906",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0048,
+   "cls": 7
+  },
+  {
+   "code": "sz000938",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0046,
+   "cls": 8
+  },
+  {
+   "code": "sz000948",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sz000953",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0046,
+   "cls": 30
+  },
+  {
+   "code": "sz000963",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0097,
+   "cls": 24
+  },
+  {
+   "code": "sz000999",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 30
+  },
+  {
+   "code": "sz002026",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0016,
+   "cls": 19
+  },
+  {
+   "code": "sz002027",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0007,
+   "cls": 7
+  },
+  {
+   "code": "sz002039",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 2
+  },
+  {
+   "code": "sz002043",
+   "truth": 5,
+   "pick": 0,
+   "regret": 0.0035,
+   "cls": 47
+  },
+  {
+   "code": "sz002045",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0039,
+   "cls": 8
+  },
+  {
+   "code": "sz002073",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0026,
+   "cls": 20
+  },
+  {
+   "code": "sz002125",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0109,
+   "cls": 12
+  },
+  {
+   "code": "sz002132",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 34
+  },
+  {
+   "code": "sz002138",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0055,
+   "cls": 8
+  },
+  {
+   "code": "sz002140",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0067,
+   "cls": 26
+  },
+  {
+   "code": "sz002146",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 9
+  },
+  {
+   "code": "sz002162",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0007,
+   "cls": 18
+  },
+  {
+   "code": "sz002165",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 12
+  },
+  {
+   "code": "sz002170",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0024,
+   "cls": 12
+  },
+  {
+   "code": "sz002176",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.015,
+   "cls": 4
+  },
+  {
+   "code": "sz002180",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 8
+  },
+  {
+   "code": "sz002183",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 7
+  },
+  {
+   "code": "sz002203",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0051,
+   "cls": 4
+  },
+  {
+   "code": "sz002204",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 39
+  },
+  {
+   "code": "sz002209",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0012,
+   "cls": 20
+  },
+  {
+   "code": "sz002214",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0038,
+   "cls": 8
+  },
+  {
+   "code": "sz002224",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 15
+  },
+  {
+   "code": "sz002230",
+   "truth": 5,
+   "pick": 1,
+   "regret": 0.1389,
+   "cls": 32
+  },
+  {
+   "code": "sz002240",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 4
+  },
+  {
+   "code": "sz002253",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0377,
+   "cls": 32
+  },
+  {
+   "code": "sz002255",
+   "truth": 4,
+   "pick": 1,
+   "regret": 0.0043,
+   "cls": 39
+  },
+  {
+   "code": "sz002259",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0023,
+   "cls": 48
+  },
+  {
+   "code": "sz002267",
+   "truth": 8,
+   "pick": 5,
+   "regret": 0.0143,
+   "cls": 48
+  },
+  {
+   "code": "sz002289",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0163,
+   "cls": 8
+  },
+  {
+   "code": "sz002298",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0118,
+   "cls": 19
+  },
+  {
+   "code": "sz002304",
+   "truth": 1,
+   "pick": 8,
+   "regret": 0.1054,
+   "cls": 33
+  },
+  {
+   "code": "sz002377",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0018,
+   "cls": 31
+  },
+  {
+   "code": "sz002379",
+   "truth": 8,
+   "pick": 5,
+   "regret": 0.0152,
+   "cls": 4
+  },
+  {
+   "code": "sz002382",
+   "truth": 0,
+   "pick": 7,
+   "regret": 0.406,
+   "cls": 15
+  },
+  {
+   "code": "sz002394",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 23
+  },
+  {
+   "code": "sz002403",
+   "truth": 6,
+   "pick": 8,
+   "regret": 0.0137,
+   "cls": 34
+  },
+  {
+   "code": "sz002412",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0135,
+   "cls": 30
+  },
+  {
+   "code": "sz002415",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.046,
+   "cls": 8
+  },
+  {
+   "code": "sz002416",
+   "truth": 4,
+   "pick": 6,
+   "regret": 0.0001,
+   "cls": 25
+  },
+  {
+   "code": "sz002418",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 39
+  },
+  {
+   "code": "sz002452",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0119,
+   "cls": 19
+  },
+  {
+   "code": "sz002453",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.026,
+   "cls": 12
+  },
+  {
+   "code": "sz002460",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 4
+  },
+  {
+   "code": "sz002470",
+   "truth": 4,
+   "pick": 5,
+   "regret": 0.0,
+   "cls": 12
+  },
+  {
+   "code": "sz002487",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0307,
+   "cls": 34
+  },
+  {
+   "code": "sz002488",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.0,
+   "cls": 1
+  },
+  {
+   "code": "sz002508",
+   "truth": 0,
+   "pick": 1,
+   "regret": 0.136,
+   "cls": 19
+  },
+  {
+   "code": "sz002527",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0043,
+   "cls": 39
+  },
+  {
+   "code": "sz002708",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0042,
+   "cls": 1
+  },
+  {
+   "code": "sz002728",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0047,
+   "cls": 30
+  },
+  {
+   "code": "sz002731",
+   "truth": 6,
+   "pick": 6,
+   "regret": 0.0157,
+   "cls": 49
+  },
+  {
+   "code": "sz002741",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0196,
+   "cls": 8
+  },
+  {
+   "code": "sz002753",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0544,
+   "cls": 12
+  },
+  {
+   "code": "sz002762",
+   "truth": 4,
+   "pick": 6,
+   "regret": 0.0,
+   "cls": 50
+  },
+  {
+   "code": "sz002765",
+   "truth": 6,
+   "pick": 0,
+   "regret": 0.0097,
+   "cls": 1
+  },
+  {
+   "code": "sz002773",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 30
+  },
+  {
+   "code": "sz002780",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0185,
+   "cls": 24
+  },
+  {
+   "code": "sz002786",
+   "truth": 6,
+   "pick": 0,
+   "regret": 0.0096,
+   "cls": 20
+  },
+  {
+   "code": "sz002787",
+   "truth": 8,
+   "pick": 8,
+   "regret": 0.0012,
+   "cls": 34
+  },
+  {
+   "code": "sz002788",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0022,
+   "cls": 25
+  },
+  {
+   "code": "sz002808",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0144,
+   "cls": 17
+  },
+  {
+   "code": "sz002809",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0095,
+   "cls": 12
+  },
+  {
+   "code": "sz002815",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 8
+  },
+  {
+   "code": "sz002824",
+   "truth": 7,
+   "pick": 7,
+   "regret": 0.0012,
+   "cls": 1
+  },
+  {
+   "code": "sz002828",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0032,
+   "cls": 38
+  },
+  {
+   "code": "sz002837",
+   "truth": 8,
+   "pick": 8,
+   "regret": 0.0,
+   "cls": 20
+  },
+  {
+   "code": "sz002839",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0084,
+   "cls": 0
+  },
+  {
+   "code": "sz002846",
+   "truth": 4,
+   "pick": 1,
+   "regret": 0.0056,
+   "cls": 34
+  },
+  {
+   "code": "sz002850",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0229,
+   "cls": 34
+  },
+  {
+   "code": "sz002852",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 41
+  },
+  {
+   "code": "sz002861",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0042,
+   "cls": 8
+  },
+  {
+   "code": "sz002865",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 19
+  },
+  {
+   "code": "sz002895",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0007,
+   "cls": 12
+  },
+  {
+   "code": "sz002896",
+   "truth": 6,
+   "pick": 6,
+   "regret": 0.0461,
+   "cls": 39
+  },
+  {
+   "code": "sz002935",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0016,
+   "cls": 8
+  },
+  {
+   "code": "sz300012",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 51
+  },
+  {
+   "code": "sz300018",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0235,
+   "cls": 19
+  },
+  {
+   "code": "sz300031",
+   "truth": 6,
+   "pick": 1,
+   "regret": 0.023,
+   "cls": 44
+  },
+  {
+   "code": "sz300036",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0016,
+   "cls": 32
+  },
+  {
+   "code": "sz300041",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0139,
+   "cls": 12
+  },
+  {
+   "code": "sz300042",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.029,
+   "cls": 8
+  },
+  {
+   "code": "sz300051",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.02,
+   "cls": 32
+  },
+  {
+   "code": "sz300055",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0527,
+   "cls": 12
+  },
+  {
+   "code": "sz300058",
+   "truth": 7,
+   "pick": 5,
+   "regret": 0.0347,
+   "cls": 7
+  },
+  {
+   "code": "sz300069",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0402,
+   "cls": 19
+  },
+  {
+   "code": "sz300074",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0019,
+   "cls": 32
+  },
+  {
+   "code": "sz300084",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0116,
+   "cls": 38
+  },
+  {
+   "code": "sz300096",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sz300118",
+   "truth": 1,
+   "pick": 8,
+   "regret": 0.0153,
+   "cls": 19
+  },
+  {
+   "code": "sz300127",
+   "truth": 7,
+   "pick": 6,
+   "regret": 0.0001,
+   "cls": 8
+  },
+  {
+   "code": "sz300140",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 52
+  },
+  {
+   "code": "sz300166",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0002,
+   "cls": 32
+  },
+  {
+   "code": "sz300177",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0054,
+   "cls": 8
+  },
+  {
+   "code": "sz300180",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 15
+  },
+  {
+   "code": "sz300188",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sz300190",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0616,
+   "cls": 52
+  },
+  {
+   "code": "sz300193",
+   "truth": 8,
+   "pick": 6,
+   "regret": 0.0013,
+   "cls": 39
+  },
+  {
+   "code": "sz300207",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 19
+  },
+  {
+   "code": "sz300217",
+   "truth": 4,
+   "pick": 6,
+   "regret": 0.049,
+   "cls": 20
+  },
+  {
+   "code": "sz300248",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0725,
+   "cls": 32
+  },
+  {
+   "code": "sz300250",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0053,
+   "cls": 32
+  },
+  {
+   "code": "sz300285",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0488,
+   "cls": 12
+  },
+  {
+   "code": "sz300298",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0095,
+   "cls": 20
+  },
+  {
+   "code": "sz300302",
+   "truth": 0,
+   "pick": 8,
+   "regret": 0.0082,
+   "cls": 32
+  },
+  {
+   "code": "sz300322",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0081,
+   "cls": 8
+  },
+  {
+   "code": "sz300334",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0021,
+   "cls": 20
+  },
+  {
+   "code": "sz300349",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.01,
+   "cls": 32
+  },
+  {
+   "code": "sz300357",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 30
+  },
+  {
+   "code": "sz300365",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.2498,
+   "cls": 32
+  },
+  {
+   "code": "sz300380",
+   "truth": 0,
+   "pick": 5,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sz300386",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 32
+  },
+  {
+   "code": "sz300402",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0013,
+   "cls": 20
+  },
+  {
+   "code": "sz300409",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0102,
+   "cls": 8
+  },
+  {
+   "code": "sz300441",
+   "truth": 0,
+   "pick": 6,
+   "regret": 0.0305,
+   "cls": 39
+  },
+  {
+   "code": "sz300443",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 20
+  },
+  {
+   "code": "sz300459",
+   "truth": 6,
+   "pick": 6,
+   "regret": 0.0052,
+   "cls": 44
+  },
+  {
+   "code": "sz300464",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 24
+  },
+  {
+   "code": "sz300467",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0052,
+   "cls": 44
+  },
+  {
+   "code": "sz300479",
+   "truth": 7,
+   "pick": 7,
+   "regret": 0.0004,
+   "cls": 32
+  },
+  {
+   "code": "sz300480",
+   "truth": 5,
+   "pick": 5,
+   "regret": 0.0071,
+   "cls": 20
+  },
+  {
+   "code": "sz300489",
+   "truth": 7,
+   "pick": 8,
+   "regret": 0.0002,
+   "cls": 8
+  },
+  {
+   "code": "sz300550",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0017,
+   "cls": 32
+  },
+  {
+   "code": "sz300571",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 8
+  },
+  {
+   "code": "sz300576",
+   "truth": 6,
+   "pick": 8,
+   "regret": 0.0248,
+   "cls": 8
+  },
+  {
+   "code": "sz300580",
+   "truth": 5,
+   "pick": 0,
+   "regret": 0.0047,
+   "cls": 1
+  },
+  {
+   "code": "sz300598",
+   "truth": 8,
+   "pick": 5,
+   "regret": 0.1001,
+   "cls": 32
+  },
+  {
+   "code": "sz300604",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 20
+  },
+  {
+   "code": "sz300606",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0151,
+   "cls": 18
+  },
+  {
+   "code": "sz300609",
+   "truth": 1,
+   "pick": 1,
+   "regret": 0.0005,
+   "cls": 32
+  },
+  {
+   "code": "sz300620",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0082,
+   "cls": 8
+  },
+  {
+   "code": "sz300626",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0049,
+   "cls": 19
+  },
+  {
+   "code": "sz300648",
+   "truth": 1,
+   "pick": 8,
+   "regret": 0.012,
+   "cls": 20
+  },
+  {
+   "code": "sz300649",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 51
+  },
+  {
+   "code": "sz300650",
+   "truth": 8,
+   "pick": 0,
+   "regret": 0.0138,
+   "cls": 25
+  },
+  {
+   "code": "sz300651",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0006,
+   "cls": 49
+  },
+  {
+   "code": "sz300669",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0021,
+   "cls": 39
+  },
+  {
+   "code": "sz300676",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0071,
+   "cls": 51
+  },
+  {
+   "code": "sz300691",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0076,
+   "cls": 8
+  },
+  {
+   "code": "sz300708",
+   "truth": 7,
+   "pick": 0,
+   "regret": 0.0005,
+   "cls": 8
+  },
+  {
+   "code": "sz300713",
+   "truth": 7,
+   "pick": 1,
+   "regret": 0.0244,
+   "cls": 19
+  },
+  {
+   "code": "sz300730",
+   "truth": 4,
+   "pick": 0,
+   "regret": 0.0008,
+   "cls": 32
+  },
+  {
+   "code": "sz300737",
+   "truth": 0,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 18
+  },
+  {
+   "code": "sz300750",
+   "truth": 1,
+   "pick": 0,
+   "regret": 0.0,
+   "cls": 19
+  }
+ ],
+ "classHit": [
+  {
+   "name": "C39计算机、通信和其他电子设备制造业",
+   "n": 35,
+   "hit": 0.2571
+  },
+  {
+   "name": "I65软件和信息技术服务业",
+   "n": 28,
+   "hit": 0.3571
+  },
+  {
+   "name": "C38电气机械和器材制造业",
+   "n": 19,
+   "hit": 0.2105
+  },
+  {
+   "name": "C26化学原料和化学制品制造业",
+   "n": 18,
+   "hit": 0.2222
+  },
+  {
+   "name": "C35专用设备制造业",
+   "n": 16,
+   "hit": 0.25
+  },
+  {
+   "name": "C36汽车制造业",
+   "n": 15,
+   "hit": 0.2
+  },
+  {
+   "name": "C27医药制造业",
+   "n": 11,
+   "hit": 0.5455
+  },
+  {
+   "name": "C34通用设备制造业",
+   "n": 11,
+   "hit": 0.1818
+  },
+  {
+   "name": "F51批发业",
+   "n": 11,
+   "hit": 0.1818
+  },
+  {
+   "name": "C32有色金属冶炼和压延加工业",
+   "n": 10,
+   "hit": 0.2
+  },
+  {
+   "name": "F52零售业",
+   "n": 8,
+   "hit": 0.25
+  },
+  {
+   "name": "C30非金属矿物制品业",
+   "n": 7,
+   "hit": 0.5714
+  },
+  {
+   "name": "C33金属制品业",
+   "n": 7,
+   "hit": 0.1429
+  },
+  {
+   "name": "K70房地产业",
+   "n": 7,
+   "hit": 0.7143
+  },
+  {
+   "name": "L72商务服务业",
+   "n": 6,
+   "hit": 0.3333
+  },
+  {
+   "name": "C29橡胶和塑料制品业",
+   "n": 5,
+   "hit": 0.4
+  },
+  {
+   "name": "C37铁路、船舶、航空航天和其他运输设备制造业",
+   "n": 5,
+   "hit": 0.8
+  },
+  {
+   "name": "D44电力、热力生产和供应业",
+   "n": 5,
+   "hit": 0.4
+  },
+  {
+   "name": "E48土木工程建筑业",
+   "n": 5,
+   "hit": 0.2
+  },
+  {
+   "name": "J66货币金融服务",
+   "n": 5,
+   "hit": 0.0
+  },
+  {
+   "name": "C14食品制造业",
+   "n": 4,
+   "hit": 0.25
+  },
+  {
+   "name": "C17纺织业",
+   "n": 4,
+   "hit": 0.5
+  },
+  {
+   "name": "I64互联网和相关服务",
+   "n": 4,
+   "hit": 0.25
+  },
+  {
+   "name": "B11开采专业及辅助性活动",
+   "n": 3,
+   "hit": 0.3333
+  },
+  {
+   "name": "C15酒、饮料和精制茶制造业",
+   "n": 3,
+   "hit": 0.0
+  },
+  {
+   "name": "C25石油、煤炭及其他燃料加工业",
+   "n": 3,
+   "hit": 0.0
+  },
+  {
+   "name": "C31黑色金属冶炼和压延加工业",
+   "n": 3,
+   "hit": 0.3333
+  },
+  {
+   "name": "G54道路运输业",
+   "n": 3,
+   "hit": 0.3333
+  },
+  {
+   "name": "J67资本市场服务",
+   "n": 3,
+   "hit": 0.0
+  },
+  {
+   "name": "M74专业技术服务业",
+   "n": 3,
+   "hit": 0.3333
+  },
+  {
+   "name": "unknown",
+   "n": 3,
+   "hit": 0.6667
+  },
+  {
+   "name": "A05农、林、牧、渔专业及辅助性活动",
+   "n": 2,
+   "hit": 0.0
+  },
+  {
+   "name": "C13农副食品加工业",
+   "n": 2,
+   "hit": 1.0
+  },
+  {
+   "name": "C24文教、工美、体育和娱乐用品制造业",
+   "n": 2,
+   "hit": 0.5
+  },
+  {
+   "name": "C42废弃资源综合利用业",
+   "n": 2,
+   "hit": 0.0
+  },
+  {
+   "name": "D45燃气生产和供应业",
+   "n": 2,
+   "hit": 0.0
+  },
+  {
+   "name": "N77生态保护和环境治理业",
+   "n": 2,
+   "hit": 0.0
+  },
+  {
+   "name": "Q84卫生",
+   "n": 2,
+   "hit": 0.0
+  },
+  {
+   "name": "R86新闻和出版业",
+   "n": 2,
+   "hit": 0.0
+  },
+  {
+   "name": "B06煤炭开采和洗选业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "B09有色金属矿采选业",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "name": "C18纺织服装、服饰业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "C19皮革、毛皮、羽毛及其制品和制鞋业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "C20木材加工和木、竹、藤、棕、草制品业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "C28化学纤维制造业",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "name": "D46水的生产和供应业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "G53铁路运输业",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "name": "G56航空运输业",
+   "n": 1,
+   "hit": 1.0
+  },
+  {
+   "name": "H61住宿业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "I63电信、广播电视和卫星传输服务",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "M73研究和试验发展",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "N78公共设施管理业",
+   "n": 1,
+   "hit": 0.0
+  },
+  {
+   "name": "R87广播、电视、电影和录音制作业",
+   "n": 1,
+   "hit": 1.0
+  }
+ ],
+ "checks": [
+  {
+   "group": "data",
+   "name": "300 个任务 = 300 只 A 股，每只 1,500 根以上日线",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "按时间三段切分：train 800+ / valid 200+ / test 100+",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "53 个行业，classes.csv 覆盖全部 300 只",
+   "ok": true
+  },
+  {
+   "group": "data",
+   "name": "csv 行数 = 每只股票根数之和，日期无重复",
+   "ok": true
+  },
+  {
+   "group": "meta",
+   "name": "元学习黄金值：[[0.1,0.2],[0.3,0.1],[0.2,0.25]] 的 argmin = [0,1,0]，恒选 0 的 Hit@1 = 0.6667",
+   "ok": true
+  },
+  {
+   "group": "meta",
+   "name": "任务内中心化不改变 argmin",
+   "ok": true
+  },
+  {
+   "group": "meta",
+   "name": "岭回归在 40 条合成样本上全部选对（Hit@1 = 1）",
+   "ok": true
+  },
+  {
+   "group": "meta",
+   "name": "taskFolds：5 折不重叠、并集是全集；任务少于折数返回 Nothing",
+   "ok": true
+  },
+  {
+   "group": "meta",
+   "name": "4 维统计元特征：acf1 在 [-1,1]、季节强度在 [0,1]、标准差非负",
+   "ok": true
+  },
+  {
+   "group": "meta",
+   "name": "类均值基线：类 0 选候选 0、类 1 选候选 1、没见过的类返回 Nothing",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "5 折交叉验证：300 个任务每个恰好被预测一次",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "统计元特征的 5 折 Hit@1 低于行业类均值基线（计划 +0.10 未成立）",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "朴素基线（恒选候选 0）的命中率",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "恒选 naive 的命中率高于元学习与类均值",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "元学习选出的候选平均名次",
+   "ok": true
+  },
+  {
+   "group": "cv",
+   "name": "每折命中率：5 折都给出预测",
+   "ok": true
+  },
+  {
+   "group": "ts2vec",
+   "name": "64 维、L2 范数 1",
+   "ok": true
+  },
+  {
+   "group": "ts2vec",
+   "name": "确定性：同参数同种子两次编码逐位相等",
+   "ok": true
+  },
+  {
+   "group": "ts2vec",
+   "name": "周期 8 与周期 12 的余弦相似度 < 0.9",
+   "ok": true
+  },
+  {
+   "group": "ts2vec",
+   "name": "训练确定性：同输入两次训练得到同一编码",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "留出 30 只股票：元学习 vs 行业类均值",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "换 64 维 TS2Vec 表征后 Hit@1 没有改善（|差| < 0.03）",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "预测误差与真实误差高度相关（Pearson > 0.95）",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "元学习选中的候选在测试段上的平均 MAE 与真值最优的差距",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "每只股票 10 个候选各拟合 3 段：训练 3000 次 + 验证/测试打分",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "元学习器的候选分布不塌缩：300 次预测里至少选出 3 个不同候选",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "十个候选里当冠军次数最多的就是 naive：恒选它就是最强的常数策略",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "选错的代价：300 个任务的平均后悔值不到 0.05 MAE",
+   "ok": true
+  },
+  {
+   "group": "demo",
+   "name": "全流程（3,000 次拟合 + 300 次编码）在 120 秒内跑完",
+   "ok": true
+  }
+ ],
+ "fits": 3000,
+ "seconds": 30.9916
+}
