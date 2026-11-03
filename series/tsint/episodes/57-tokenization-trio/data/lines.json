@@ -1,0 +1,2507 @@
+{
+ "entry": "src/tsint-57-tokenization-trio/script.ts",
+ "fps": 30,
+ "totalSec": 1075.7,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 128.17
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 128.17,
+   "dur": 160.16
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 288.33,
+   "dur": 159.66
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 447.99,
+   "dur": 128.68
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 576.67,
+   "dur": 152.55
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 729.22,
+   "dur": 112.14
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 841.36,
+   "dur": 115.62
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 956.98,
+   "dur": 118.72
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.16,
+   "speech": "上一集，模型集成收尾。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.54,
+   "dur": 2.39,
+   "speech": "这一集换一个问题。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.11,
+   "dur": 2.63,
+   "speech": "序列怎么切成 token。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 9.92,
+   "dur": 2.97,
+   "speech": "一根日线，五百一十二个点。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.06,
+   "dur": 2.92,
+   "speech": "直接喂给模型，太长。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.16,
+   "dur": 2.46,
+   "speech": "先切块，再投影。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 18.8,
+   "dur": 2.61,
+   "speech": "这一集看三种切法。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 21.59,
+   "dur": 3.35,
+   "speech": "patch、周期、分辨率前缀。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 25.12,
+   "dur": 3.06,
+   "speech": "都不训练模型，只是变换。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 28.36,
+   "dur": 2.63,
+   "speech": "先看一棵最小的例子。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 31.17,
+   "dur": 3.09,
+   "speech": "取一段九十六点的合成序列。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 34.44,
+   "dur": 2.87,
+   "speech": "正弦波，周期二十四。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 37.49,
+   "dur": 2.49,
+   "speech": "第一种切法，patch。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 40.15,
+   "dur": 3.3,
+   "speech": "每八点一个 token，十二个。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 43.64,
+   "dur": 2.34,
+   "speech": "每十六点，六个。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 46.16,
+   "dur": 2.58,
+   "speech": "每三十二点，三个。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 48.92,
+   "dur": 2.65,
+   "speech": "第二种，按周期切。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 51.75,
+   "dur": 2.99,
+   "speech": "周期二十四，切成四个。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 54.92,
+   "dur": 2.92,
+   "speech": "第三种，按分辨率切。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 58.02,
+   "dur": 2.97,
+   "speech": "四档分辨率，各切各的。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 61.17,
+   "dur": 2.63,
+   "speech": "token 数为什么重要？"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 63.98,
+   "dur": 3.78,
+   "speech": "模型算注意力，按 token 对 token。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 67.94,
+   "dur": 3.49,
+   "speech": "token 越少，能装下的周期越短。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 71.61,
+   "dur": 3.73,
+   "speech": "token 越多，位置越多，算得越慢。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 75.53,
+   "dur": 2.58,
+   "speech": "切法决定 token 数。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 78.29,
+   "dur": 2.53,
+   "speech": "token 数决定容量。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 81,
+   "dur": 3.23,
+   "speech": "容量决定能看多长的周期。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 84.41,
+   "dur": 2.94,
+   "speech": "这是三种切法的共同账。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 87.54,
+   "dur": 2.08,
+   "speech": "没有一种免费。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 89.79,
+   "dur": 2.46,
+   "speech": "先看这笔账怎么算。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 92.44,
+   "dur": 2.39,
+   "speech": "三个数先摆出来。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 95.01,
+   "dur": 3.76,
+   "speech": "九十六个点，十二、六、三。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 98.94,
+   "dur": 2.92,
+   "speech": "重叠切分，十一个 token。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 102.04,
+   "dur": 3.13,
+   "speech": "自相关主峰，周期二十四。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 105.36,
+   "dur": 3.76,
+   "speech": "四档分辨率，五百一十二到六十四。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 109.29,
+   "dur": 2.97,
+   "speech": "证据二十二项，四组。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 112.44,
+   "dur": 3.21,
+   "speech": "三个模块，四百三十三行。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 115.83,
+   "dur": 2.99,
+   "speech": "五十条单测，全部通过。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 119,
+   "dur": 4.33,
+   "speech": "四段路线：问题、定义、读数、验收。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 123.51,
+   "dur": 2.46,
+   "speech": "从最小例子开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 129.37,
+   "dur": 2.32,
+   "speech": "先看原始序列。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 131.87,
+   "dur": 2.37,
+   "speech": "五百一十二个交易日。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 134.41,
+   "dur": 3.93,
+   "speech": "从二零二四年九月，到二零二六年十月。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 138.52,
+   "dur": 4.57,
+   "speech": "价格从一千零八十四，涨到一千四百四十三。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 143.27,
+   "dur": 2.51,
+   "speech": "最高一千五百六十。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 145.96,
+   "dur": 2.82,
+   "speech": "直接喂，每个点一个位置。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 148.97,
+   "dur": 3.04,
+   "speech": "五百一十二个位置，太长。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 152.18,
+   "dur": 2.51,
+   "speech": "先把它切成窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 154.87,
+   "dur": 2.92,
+   "speech": "这一集，窗口九十六点。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 157.97,
+   "dur": 2.61,
+   "speech": "九十六点，就是一页。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 160.76,
+   "dur": 2.49,
+   "speech": "九十六点，怎么切？"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 163.42,
+   "dur": 3.78,
+   "speech": "patch 大小取八、十六、三十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 167.39,
+   "dur": 2.87,
+   "speech": "九十六除以八，十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 170.44,
+   "dur": 2.73,
+   "speech": "九十六除以十六，六。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 173.34,
+   "dur": 3.13,
+   "speech": "九十六除以三十二，三。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 176.66,
+   "dur": 2.97,
+   "speech": "三种切法，正好整除。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 179.8,
+   "dur": 3.83,
+   "speech": "token 数分别是十二、六、三。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 183.81,
+   "dur": 2.89,
+   "speech": "token 越少，每块越长。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 186.89,
+   "dur": 3.4,
+   "speech": "每块越长，能装的周期越长。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 190.46,
+   "dur": 2.32,
+   "speech": "这是一笔反比账。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 192.96,
+   "dur": 2.97,
+   "speech": "但切法不一定要不重叠。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 196.11,
+   "dur": 2.87,
+   "speech": "取 patch 十六，步长八。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 199.16,
+   "dur": 3.01,
+   "speech": "相邻两块重叠八个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 202.35,
+   "dur": 3.3,
+   "speech": "九十六点，能放下十一个窗口。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 205.83,
+   "dur": 3.35,
+   "speech": "十一个 token，比不重叠多五个。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 209.36,
+   "dur": 3.52,
+   "speech": "重叠让边界点被两个 token 看到。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 213.06,
+   "dur": 2.65,
+   "speech": "代价是 token 变多。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 215.9,
+   "dur": 2.49,
+   "speech": "收益是边界不丢。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 218.56,
+   "dur": 3.37,
+   "speech": "重叠切分，是 patch 的一个变体。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 222.12,
+   "dur": 3.21,
+   "speech": "十一个，是这一集的第二个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 225.5,
+   "dur": 2.97,
+   "speech": "第二种切法，按周期切。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 228.65,
+   "dur": 2.1,
+   "speech": "周期从哪来？"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 230.93,
+   "dur": 2.15,
+   "speech": "先算自相关。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 233.26,
+   "dur": 3.49,
+   "speech": "自相关在 lag 二十四，等于一。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 236.93,
+   "dur": 2.32,
+   "speech": "二十四就是周期。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 239.43,
+   "dur": 3.57,
+   "speech": "九十六除以二十四，四个 token。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 243.18,
+   "dur": 3.04,
+   "speech": "每个 token，正好一个周期。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 246.4,
+   "dur": 2.65,
+   "speech": "这一集，四个 token。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 249.23,
+   "dur": 2.49,
+   "speech": "不会多，也不会少。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 251.9,
+   "dur": 3.83,
+   "speech": "周期切，token 数和周期成反比。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 255.91,
+   "dur": 2.97,
+   "speech": "第三种切法，换分辨率。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 259.05,
+   "dur": 3.23,
+   "speech": "同一段序列，降采样四次。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 262.46,
+   "dur": 2.8,
+   "speech": "五百一十二，二百五十六。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 265.44,
+   "dur": 2.68,
+   "speech": "一百二十八，六十四。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 268.3,
+   "dur": 3.09,
+   "speech": "每一档，配一个前缀向量。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 271.56,
+   "dur": 3.18,
+   "speech": "前缀告诉模型，这是哪一档。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 274.93,
+   "dur": 2.34,
+   "speech": "前缀维度三十二。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 277.45,
+   "dur": 3.13,
+   "speech": "拼接时放在 token 最前面。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 280.76,
+   "dur": 2.15,
+   "speech": "总长度加一。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 283.09,
+   "dur": 3.04,
+   "speech": "位置编码，整体偏移一位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 289.53,
+   "dur": 2.05,
+   "speech": "先定义 patch。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 291.76,
+   "dur": 2.94,
+   "speech": "把序列按长度 p 切开。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 294.89,
+   "dur": 2.92,
+   "speech": "每块是一个 p 维向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 297.98,
+   "dur": 2.7,
+   "speech": "乘一个 p 乘 d 的矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 300.87,
+   "dur": 2.15,
+   "speech": "得到 d 维 token。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 303.2,
+   "dur": 2.68,
+   "speech": "这一步叫 patch embedding。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 306.05,
+   "dur": 2.75,
+   "speech": "这一集，d 取三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 308.98,
+   "dur": 2.63,
+   "speech": "矩阵用 DCT 构造。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 311.79,
+   "dur": 3.16,
+   "speech": "正交矩阵，逆就是转置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 315.13,
+   "dur": 2.25,
+   "speech": "投影不丢信息。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 317.56,
+   "dur": 2.49,
+   "speech": "为什么用 DCT？"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 320.22,
+   "dur": 4.41,
+   "speech": "它正交：W 乘 W 转置，是单位阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 324.81,
+   "dur": 3.28,
+   "speech": "正交的意思是，没有信息损失。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 328.27,
+   "dur": 2.92,
+   "speech": "切出去，能原样拼回来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 331.37,
+   "dur": 3.69,
+   "speech": "重构误差，三乘十的负十五次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 335.23,
+   "dur": 3.61,
+   "speech": "正交误差，二乘十的负十五次方。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 339.03,
+   "dur": 2.46,
+   "speech": "都在浮点精度以内。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 341.67,
+   "dur": 2.63,
+   "speech": "token 覆盖整段序列。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 344.48,
+   "dur": 3.9,
+   "speech": "不重叠时，每个点只属于一个 token。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 348.56,
+   "dur": 2.46,
+   "speech": "这是最好的自验证。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 351.2,
+   "dur": 2.03,
+   "speech": "再定义周期。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 353.41,
+   "dur": 4.41,
+   "speech": "自相关函数，量的是自己和自己像不像。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 358,
+   "dur": 2.63,
+   "speech": "lag 为零，等于一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 360.81,
+   "dur": 3.59,
+   "speech": "lag 为 k，是错开 k 点的相关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 364.58,
+   "dur": 3.85,
+   "speech": "有周期 P，lag P 处会出现峰。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 368.61,
+   "dur": 2.89,
+   "speech": "这一集，找第一个显著峰。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 371.69,
+   "dur": 2.27,
+   "speech": "阈值取零点三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 374.14,
+   "dur": 2.63,
+   "speech": "还要求是局部极大。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 376.95,
+   "dur": 3.04,
+   "speech": "正弦序列，峰在二十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 380.16,
+   "dur": 3.01,
+   "speech": "真实序列，峰不一定有。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 383.36,
+   "dur": 2.94,
+   "speech": "周期切，按整周期切。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 386.48,
+   "dur": 4.21,
+   "speech": "第 j 个 token，取 j 到 j 加一周期。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 390.87,
+   "dur": 3.47,
+   "speech": "token 数，九十六除以二十四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 394.52,
+   "dur": 2.58,
+   "speech": "整数除法，四个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 397.29,
+   "dur": 2.92,
+   "speech": "余下的点，不足一周期。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 400.38,
+   "dur": 2.32,
+   "speech": "丢掉，不补零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 402.88,
+   "dur": 2.44,
+   "speech": "补零会污染注意力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 405.5,
+   "dur": 2.39,
+   "speech": "找不到周期怎么办？"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 408.07,
+   "dur": 2.51,
+   "speech": "退化成固定 patch。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 410.76,
+   "dur": 2.87,
+   "speech": "这是兜底，也是诚实。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 413.81,
+   "dur": 3.25,
+   "speech": "分辨率前缀，是一个向量表。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 417.24,
+   "dur": 2.97,
+   "speech": "每一档分辨率，一个向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 420.39,
+   "dur": 3.37,
+   "speech": "e 的下标 r，是分辨率档位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 423.94,
+   "dur": 4.09,
+   "speech": "这一集四档：一、二、四、八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 428.22,
+   "dur": 2.34,
+   "speech": "前缀维度三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 430.74,
+   "dur": 2.49,
+   "speech": "拼接时放在最前。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 433.41,
+   "dur": 2.89,
+   "speech": "位置编码要从一位开始。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 436.48,
+   "dur": 2.49,
+   "speech": "新分辨率来了怎么办？"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 439.15,
+   "dur": 3.18,
+   "speech": "查表；没有就取最近一档。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 442.51,
+   "dur": 3.28,
+   "speech": "这一集，没有第三档，取二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 449.19,
+   "dur": 2.17,
+   "speech": "先算第一组数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 451.54,
+   "dur": 2.82,
+   "speech": "patch 八，十二个 token。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 454.55,
+   "dur": 2.51,
+   "speech": "patch 十六，六个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 457.24,
+   "dur": 2.77,
+   "speech": "patch 三十二，三个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 460.19,
+   "dur": 2.68,
+   "speech": "合计二十一个 token。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 463.05,
+   "dur": 3.54,
+   "speech": "每个 token 的长度，就是 patch 长度。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 466.77,
+   "dur": 2.82,
+   "speech": "八、十六、三十二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 469.77,
+   "dur": 2.87,
+   "speech": "token 越长，个数越少。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 472.82,
+   "dur": 2.77,
+   "speech": "这是反比，不是巧合。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 475.78,
+   "dur": 3.01,
+   "speech": "九十六除以 p，就是个数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 478.97,
+   "dur": 2.77,
+   "speech": "第二组数，重叠切分。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 481.92,
+   "dur": 2.63,
+   "speech": "patch 十六，步长八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 484.73,
+   "dur": 2.99,
+   "speech": "九十六减十六，除以八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 487.9,
+   "dur": 2.37,
+   "speech": "再加一，十一个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 490.45,
+   "dur": 3.33,
+   "speech": "重叠八个点，换来边界可见。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 493.96,
+   "dur": 2.49,
+   "speech": "第三组数，周期。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 496.62,
+   "dur": 3.64,
+   "speech": "正弦序列，lag 二十四等于一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 500.44,
+   "dur": 4.12,
+   "speech": "真实序列，lag 二十四等于零点四二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 504.74,
+   "dur": 3.21,
+   "speech": "但没过阈值，也没有局部峰。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 508.12,
+   "dur": 3.4,
+   "speech": "真实数据，退化成固定 patch。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 511.7,
+   "dur": 2.63,
+   "speech": "第四组数，分辨率。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 514.51,
+   "dur": 2.82,
+   "speech": "四档长度：五百一十二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 517.51,
+   "dur": 3.69,
+   "speech": "二百五十六，一百二十八，六十四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 521.38,
+   "dur": 2.73,
+   "speech": "每降一档，点数减半。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 524.29,
+   "dur": 2.34,
+   "speech": "前缀维度三十二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 526.81,
+   "dur": 2.44,
+   "speech": "总长度，加一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 529.43,
+   "dur": 3.69,
+   "speech": "重构误差，三乘十的负十五次方。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 533.29,
+   "dur": 3.61,
+   "speech": "正交误差，二乘十的负十五次方。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 537.09,
+   "dur": 3.45,
+   "speech": "数字很小，说明变换无损。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 540.71,
+   "dur": 3.21,
+   "speech": "最近档：三取二，六取四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 544.1,
+   "dur": 2.63,
+   "speech": "四组数，四个结论。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 546.91,
+   "dur": 3.16,
+   "speech": "patch 数，反比于 patch 长度。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 550.25,
+   "dur": 3.06,
+   "speech": "重叠，用 token 换边界。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 553.49,
+   "dur": 3.01,
+   "speech": "周期切，用周期换容量。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 556.68,
+   "dur": 3.4,
+   "speech": "分辨率前缀，用一维换多档。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 560.26,
+   "dur": 2.82,
+   "speech": "四种变换，都不训练。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 563.26,
+   "dur": 2.97,
+   "speech": "DCT 固定，前缀固定。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 566.41,
+   "dur": 2.39,
+   "speech": "所以全部可复现。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 568.98,
+   "dur": 2.63,
+   "speech": "token 数，都能手算。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 571.79,
+   "dur": 2.68,
+   "speech": "这就是这一集的读数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 577.87,
+   "dur": 2.37,
+   "speech": "实现分三个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 580.42,
+   "dur": 2.41,
+   "speech": "第一个，PatchEmbed。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 583.01,
+   "dur": 2.89,
+   "speech": "数据结构只有两个字段。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 586.08,
+   "dur": 2.75,
+   "speech": "patch 长度，和步长。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 589.01,
+   "dur": 2.87,
+   "speech": "切开，投影，重构。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 592.06,
+   "dur": 2.99,
+   "speech": "投影矩阵，DCT 生成。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 595.23,
+   "dur": 2.68,
+   "speech": "不存参数，每次现算。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 598.09,
+   "dur": 2.85,
+   "speech": "九十六点，十二个 token。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 601.12,
+   "dur": 2.65,
+   "speech": "模块小，函数纯。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 603.95,
+   "dur": 2.2,
+   "speech": "先看三个接口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 606.33,
+   "dur": 2.58,
+   "speech": "第二个，PeriodToken。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 609.09,
+   "dur": 2.56,
+   "speech": "自相关，无偏估计。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 611.83,
+   "dur": 2.85,
+   "speech": "减去均值，除以方差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 614.86,
+   "dur": 3.18,
+   "speech": "除以 n 减 k，修正样本数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 618.22,
+   "dur": 2.97,
+   "speech": "不做无偏，峰会被压低。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 621.36,
+   "dur": 4.21,
+   "speech": "正弦序列，lag 二十四只剩零点七五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 625.76,
+   "dur": 3.33,
+   "speech": "找了第一个局部峰，还要过阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 629.26,
+   "dur": 2.37,
+   "speech": "找不到，返回空。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 631.81,
+   "dur": 3.01,
+   "speech": "调用方退化到固定 patch。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 635,
+   "dur": 2.44,
+   "speech": "接口只有三个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 637.62,
+   "dur": 2.58,
+   "speech": "第三个，ResPrefix。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 640.38,
+   "dur": 2.63,
+   "speech": "降采样，块均值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 643.19,
+   "dur": 3.04,
+   "speech": "五百一十二，变二百五十六。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 646.41,
+   "dur": 2.63,
+   "speech": "除不尽，丢掉尾巴。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 649.22,
+   "dur": 3.04,
+   "speech": "前缀表，四行三十二列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 652.44,
+   "dur": 3.16,
+   "speech": "正弦编码，固定，不训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 655.78,
+   "dur": 2.8,
+   "speech": "最近档，按绝对差找。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 658.76,
+   "dur": 2.08,
+   "speech": "平手取小的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 661.01,
+   "dur": 2.85,
+   "speech": "拼接，前缀加 token。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 664.04,
+   "dur": 2.75,
+   "speech": "长度加一，位置偏移。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 666.97,
+   "dur": 3.06,
+   "speech": "证据程序，二百二十二行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 670.21,
+   "dur": 2.63,
+   "speech": "读 CSV，两列。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 673.02,
+   "dur": 2.27,
+   "speech": "取最后九十六点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 675.47,
+   "dur": 3.04,
+   "speech": "先跑 patch，三种长度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 678.69,
+   "dur": 2.73,
+   "speech": "再跑重叠，十一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 681.6,
+   "dur": 2.56,
+   "speech": "再跑周期，找峰。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 684.33,
+   "dur": 2.92,
+   "speech": "最后跑分辨率，四档。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 687.43,
+   "dur": 3.28,
+   "speech": "每组读数，写进 JSON。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 690.89,
+   "dur": 3.16,
+   "speech": "二十二项检查，逐项对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 694.23,
+   "dur": 2.22,
+   "speech": "跑完不到一秒。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 696.63,
+   "dur": 2.1,
+   "speech": "单测五十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 698.91,
+   "dur": 2.89,
+   "speech": "patch 十七，周期十五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 701.99,
+   "dur": 2.44,
+   "speech": "分辨率前缀十八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 704.6,
+   "dur": 3.54,
+   "speech": "测计数，十二、六、三。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 708.33,
+   "dur": 2.46,
+   "speech": "测重叠，十一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 710.97,
+   "dur": 3.52,
+   "speech": "测正交，误差小于十的负十二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 714.67,
+   "dur": 3.35,
+   "speech": "测重构，误差小于十的负十。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 718.2,
+   "dur": 2.87,
+   "speech": "测周期，峰在二十四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 48,
+   "start": 721.25,
+   "dur": 2.75,
+   "speech": "测最近档，三取二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 49,
+   "start": 724.18,
+   "dur": 2.85,
+   "speech": "五十条全绿，才提交。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 730.42,
+   "dur": 2.22,
+   "speech": "验收二十二项。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 732.82,
+   "dur": 3.11,
+   "speech": "数据四项，patch 七项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 736.11,
+   "dur": 2.94,
+   "speech": "周期五项，前缀六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 739.23,
+   "dur": 2.2,
+   "speech": "一条命令跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 741.61,
+   "dur": 2.22,
+   "speech": "跑完不到一秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 744.01,
+   "dur": 3.01,
+   "speech": "没有跳过，也没有大概通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 747.21,
+   "dur": 2.37,
+   "speech": "每项都带读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 749.75,
+   "dur": 2.89,
+   "speech": "读数写进 JSON。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 752.83,
+   "dur": 2.34,
+   "speech": "证据在仓库里。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 755.35,
+   "dur": 1.93,
+   "speech": "这是第一层。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 757.46,
+   "dur": 2.2,
+   "speech": "第一组，patch。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 759.84,
+   "dur": 3.81,
+   "speech": "三种长度，十二、六、三。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 763.83,
+   "dur": 2.05,
+   "speech": "合计二十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 766.06,
+   "dur": 2.53,
+   "speech": "重叠切分，十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 768.78,
+   "dur": 3.69,
+   "speech": "重构误差，三乘十的负十五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 772.64,
+   "dur": 3.61,
+   "speech": "正交误差，二乘十的负十五次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 776.44,
+   "dur": 2.03,
+   "speech": "都小于阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 778.65,
+   "dur": 2.68,
+   "speech": "token 覆盖九十六点。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 781.5,
+   "dur": 2.13,
+   "speech": "没有点被漏掉。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 783.81,
+   "dur": 1.98,
+   "speech": "这一组全绿。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 785.97,
+   "dur": 2.29,
+   "speech": "第二组，周期。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 788.45,
+   "dur": 2.49,
+   "speech": "lag 零，等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 791.11,
+   "dur": 2.75,
+   "speech": "lag 二十四，等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 794.04,
+   "dur": 2.29,
+   "speech": "主峰，二十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 796.52,
+   "dur": 3.76,
+   "speech": "真实序列，lag 二十四零点四二。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 800.45,
+   "dur": 2.46,
+   "speech": "过了零点三的阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 803.1,
+   "dur": 2.15,
+   "speech": "但没有局部峰。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 805.43,
+   "dur": 2.08,
+   "speech": "所以返回空。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 807.68,
+   "dur": 2.61,
+   "speech": "退化路径也被测到。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 810.47,
+   "dur": 1.98,
+   "speech": "这一组全绿。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 812.63,
+   "dur": 2.7,
+   "speech": "第三组，分辨率前缀。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 815.51,
+   "dur": 3.61,
+   "speech": "四档长度，五百一十二到六十四。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 819.31,
+   "dur": 2.34,
+   "speech": "前缀维度三十二。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 821.83,
+   "dur": 2.27,
+   "speech": "前缀放在最前。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 824.28,
+   "dur": 2.15,
+   "speech": "总长度加一。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 826.61,
+   "dur": 2.46,
+   "speech": "最近档，三取二。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 829.25,
+   "dur": 2.46,
+   "speech": "最近档，六取四。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 831.89,
+   "dur": 2.22,
+   "speech": "四档都在表里。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 834.3,
+   "dur": 2.56,
+   "speech": "拼接后位置偏移。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 837.03,
+   "dur": 2.13,
+   "speech": "这六项全绿。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 842.56,
+   "dur": 2.32,
+   "speech": "边界先说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 845.06,
+   "dur": 2.37,
+   "speech": "这一集只讲切法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 847.6,
+   "dur": 2.25,
+   "speech": "不讲模型结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 850.03,
+   "dur": 2.25,
+   "speech": "不讲训练目标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 852.46,
+   "dur": 2.22,
+   "speech": "不讲下游效果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 854.86,
+   "dur": 2.82,
+   "speech": "十八分钟，三个变换。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 857.86,
+   "dur": 3.16,
+   "speech": "输入一段序列，输出 token。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 861.2,
+   "dur": 2.2,
+   "speech": "变量只有切法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 863.58,
+   "dur": 2.22,
+   "speech": "其余全部固定。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 865.98,
+   "dur": 2.1,
+   "speech": "这样才能比较。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 868.26,
+   "dur": 2.68,
+   "speech": "真实数据，只有一段。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 871.12,
+   "dur": 2.37,
+   "speech": "五百一十二个交易日。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 873.66,
+   "dur": 2.13,
+   "speech": "只有一只股票。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 875.97,
+   "dur": 2.08,
+   "speech": "周期不明显。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 878.23,
+   "dur": 3.37,
+   "speech": "自相关在二十四只有零点四二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 881.78,
+   "dur": 2.61,
+   "speech": "没有局部峰，退化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 884.57,
+   "dur": 2.94,
+   "speech": "这不是失败，是现实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 887.69,
+   "dur": 3.16,
+   "speech": "合成序列，周期二十四。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 891.03,
+   "dur": 2.2,
+   "speech": "用来验证公式。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 893.41,
+   "dur": 2.32,
+   "speech": "两者不能混着说。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 895.9,
+   "dur": 2.03,
+   "speech": "书里给了什么？"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 898.11,
+   "dur": 3.01,
+   "speech": "三种切法的名字和动机。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 901.31,
+   "dur": 2.73,
+   "speech": "具体算子，书里没给。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 904.21,
+   "dur": 2.85,
+   "speech": "DCT 投影，是我们选的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 907.24,
+   "dur": 2.75,
+   "speech": "阈值零点三，是我们定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 910.17,
+   "dur": 2.89,
+   "speech": "四档分辨率，是我们选的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 913.24,
+   "dur": 3.11,
+   "speech": "前缀维度三十二，是我们定的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 916.53,
+   "dur": 2.53,
+   "speech": "这些写进偏差表。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 919.25,
+   "dur": 2.63,
+   "speech": "不是书里的，是我们的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 922.06,
+   "dur": 2.75,
+   "speech": "可复现，但不唯一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 924.99,
+   "dur": 2.1,
+   "speech": "四个不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 927.27,
+   "dur": 2.97,
+   "speech": "不能推：换模型也有效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 930.42,
+   "dur": 3.11,
+   "speech": "不能推：换数据集也有效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 933.71,
+   "dur": 2.87,
+   "speech": "不能推：下游一定更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 936.76,
+   "dur": 2.92,
+   "speech": "不能推：这是最优切法。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 939.85,
+   "dur": 3.3,
+   "speech": "能说的是：三种切法都成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 943.34,
+   "dur": 2.46,
+   "speech": "token 数都能手算。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 945.98,
+   "dur": 3.13,
+   "speech": "变换都无损或近无损。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 949.29,
+   "dur": 3.11,
+   "speech": "真实序列的退化路径成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 952.58,
+   "dur": 2.2,
+   "speech": "能说的只有这些。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 958.18,
+   "dur": 2.13,
+   "speech": "三句话收尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 960.49,
+   "dur": 3.06,
+   "speech": "第一，三种切法都成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 963.73,
+   "dur": 3.35,
+   "speech": "patch，周期，分辨率前缀。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 967.26,
+   "dur": 3.45,
+   "speech": "第二，token 数和块长成反比。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 970.88,
+   "dur": 3.64,
+   "speech": "九十六点，十二、六、三。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 974.7,
+   "dur": 2.99,
+   "speech": "第三，真实序列周期弱。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 977.87,
+   "dur": 2.65,
+   "speech": "找不到峰，就退化。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 980.71,
+   "dur": 2.56,
+   "speech": "三句话，都有读数。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 983.44,
+   "dur": 2.46,
+   "speech": "都能一条命令复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 986.09,
+   "dur": 2.1,
+   "speech": "这就是这一集。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 988.37,
+   "dur": 2.32,
+   "speech": "先看交付清单。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 990.87,
+   "dur": 3.21,
+   "speech": "三个模块，四百三十三行。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 994.25,
+   "dur": 2.01,
+   "speech": "五十条单测。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 996.44,
+   "dur": 2.22,
+   "speech": "二十二项检查。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 998.84,
+   "dur": 2.1,
+   "speech": "五百一十二个点。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1001.12,
+   "dur": 2.15,
+   "speech": "九十六点窗口。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1003.45,
+   "dur": 2.08,
+   "speech": "四档分辨率。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1005.71,
+   "dur": 2.01,
+   "speech": "全部可复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1007.9,
+   "dur": 2.17,
+   "speech": "不需要 GPU。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1010.25,
+   "dur": 1.91,
+   "speech": "不需要联网。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1012.34,
+   "dur": 2.46,
+   "speech": "复现命令，一条。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1014.98,
+   "dur": 3.73,
+   "speech": "tsbase evidence-ch07-token。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1018.9,
+   "dur": 3.76,
+   "speech": "加数据目录、输出目录、证据路径。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1022.83,
+   "dur": 3.35,
+   "speech": "不到一秒，写出 JSON。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1026.36,
+   "dur": 2.61,
+   "speech": "检查清单也在里面。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1029.15,
+   "dur": 2.73,
+   "speech": "单测用 cabal test。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1032.06,
+   "dur": 2.13,
+   "speech": "五十项全绿。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1034.36,
+   "dur": 2.15,
+   "speech": "证据二十二项全绿。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1036.69,
+   "dur": 2.46,
+   "speech": "时间是零点零秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1039.33,
+   "dur": 2.15,
+   "speech": "读数都对得上。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1041.66,
+   "dur": 2.68,
+   "speech": "下一集，换一个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1044.52,
+   "dur": 3.04,
+   "speech": "token 切好了，怎么处理通道？"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1047.74,
+   "dur": 3.88,
+   "speech": "多变量序列，通道独立还是混合？"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1051.8,
+   "dur": 3.4,
+   "speech": "通道独立，每个变量一套参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1055.38,
+   "dur": 3.35,
+   "speech": "通道混合，所有变量一起看。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1058.91,
+   "dur": 2.77,
+   "speech": "两种策略，各有代价。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1061.86,
+   "dur": 2.63,
+   "speech": "下一集，二十分钟。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1064.67,
+   "dur": 3.06,
+   "speech": "从切序列，走到选通道。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1067.91,
+   "dur": 3.4,
+   "speech": "底层还是同一件事：预算有限。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1071.49,
+   "dur": 2.01,
+   "speech": "下一集再见。"
+  }
+ ]
+}
