@@ -4,7 +4,7 @@
 - **slug**：darts-differentiable-search
 - **成片**：1920×1080，8 场 40 页，400 行字幕，26:39
 - **证据**：ts-base `evidence-ch06-darts`，28 项，3.8 s
-- **状态**：draft
+- **状态**：ready
 
 ## Thesis
 
@@ -66,4 +66,19 @@
 
 ## Delivery
 
-（make 之后填）
+- **成片**：`delivery/Tsint54DartsDifferentiableSearch.mp4`，1,598.77 s（26:38.8），47,963 帧，78,875,205 B；tree `6eabd93324d71b26`。
+- **音量**：mix 48 kHz / 1,599.98 s，峰值 −1.21 dBFS（前限制器同值），RMS −26.68 dBFS；loudnorm 输出 I = −15 LUFS、TP = −2 dBTP（ffmpeg 实测 −15.8 LUFS / −2.0 dBTP / LRA 2.7，Dynamic +0.8 dB）；配乐 `out/e04-score-loop-48k.wav`（1,560 s，musicGain −4.5 dB）。
+- **混音闸门**：语音 −23.64、整段间隙 −30.45、可听带间隙 −33.33、床贡献 36.7 dB；duck 58.1%（4.5 dB），底线通过。
+- **字幕**：`delivery/tsint-54.srt`，400 条 cue（0 条换行，最长 33 字），跨度 00:00:01,200 → 00:26:36,590，语音 1,501.0 s。
+- **章节**：`delivery/tsint-54.chapters.txt`（374 B）+ `.chapters.ffmeta.txt`（757 B），8 章合计 1,598.78 s，首 00:00:00，末 00:23:43。
+- **闪烁闸门**：frames 47,963，mean 20.80 / min 14.58 / max 24.63，mean|Δ| 0.0131，p99 0.1116，max 6.50，7 个场景硬切（6581, 12802, 18719, 24512, 30461, 36959, 42717）——PASS。
+- **静帧**：4 帧（45 / 4,796 / 21,583 / 38,370），still lint PASS（无出框、无压边、无溢出、无重叠）。
+- **封面**：`delivery/cover.png`，frame 180（6.00 s），212,762 B；film.json `publish.coverFrame = 180`。
+- **复现**：
+  ```bash
+  cd /root/video-pipeline-blueprint
+  node scripts/films.mjs sync
+  node scripts/make.mjs --film tsint-54-darts-differentiable-search \
+    --score=out/e04-score-loop-48k.wav
+  ```
+- **报告**：`delivery/report.json`（23 stage 全 ok，pass true，content commit b4e0f01）。

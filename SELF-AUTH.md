@@ -694,3 +694,17 @@
 - **依据**：evidence JSON（`inventory/evidence/53-ensemble-average-iter.ch6-ens.json`，**28/28、8.9 s**；data 4 / ensemble 6 / cv 7 / iter 6 / noise 5）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree `121eb49bb0d8980b` / mix peak −1.23 dBFS、RMS −26.71 dBFS / ducked 55.3%）、luma_blink（34,079 帧 mean 20.30 / min 14.57 / max 22.44 / mean|d| 0.0132 / p99 0.1061 / max 6.81 / 7 切点）、32 页静帧（6 帧人工复核：CheckGrid 4/6/7/6/5、LevelBars、CandidateBars、WinTally、CodeBlock、outro 数字卡）、`still_lint` 3 帧 PASS、cabal test **2,138 条断言**（原 2,111 + 27 新）、make PASS 日志。
 - **可逆性**：高（三个模块 + 证据 + pack 可整段回退；三条负结果在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；ts-base / video_project 两仓各自 commit 可回退）。
 - **返工成本**：证据程序 3 处编译错误（iterReweight 要 Vector 而非列表、convex 用了 evalStock 局部变量 tr/mid、w 是列表却按下标取）修一遍；checks 首版按计划写「自伤」措辞，跑出来全反向，**逐条改写成实测 PASS 陈述**（含把「计划 3–8%」改成「方向相反 +6.35%」）；迭代黄金值首版用两点向量得 [0.55,0.45]，改单点后才 1.7/0.6；typecheck 一处 Row 只认 `value`（`v=` 报 TS2322）；definitions 页两个 KV 挤行改成两个 Chip；implementation.tsx 首次写入被模板字符串里的反引号打断（Expected unicode escape），改用数组 join；**make 首轮又被 content check 拦**（content 提交后没 sync），sync 后重跑 PASS —— 这是第三次踩同一个坑（E52 已写进 HANDOFF，这次 E53 又犯，HANDOFF-E53 第 2.5 节加粗）；TTS 首跑被 run_code 默认 120 s deadline 杀掉（必须显式 timeoutMs 600000）；配音两轮 dump（估 1,114.91 s → 实测 1,135.96 s）。
+
+
+## A51 E54 交付：机制成立，收益不成立——可微搜索跑通，但没搜出收益（2026-11-03 夜）
+
+- **决定（主结论按实测写成两句，不救收益）**：计划写「α 在 20 步内塌缩、切分后保住 top-2、搜索有效」，实测 20 步只从 0.3334 挪到 0.3338（塌缩边 0）、top-2 与 top-1 差 **4.26%** 且两者都低于随机 230.2738 与零基线 221.8159、top-1 比随机还差 **16.04%**。全片标题页、验证页、边界页与 Outro 都写「机制成立、收益不成立」，没有换指标、没有放宽阈值、没有为过检改断言方向。
+- **决定（重训口径 150 步 / lr 0.05，不追 2000 步）**：2000 步会过拟合到超网 288.4740（比零基线差 30%），400 步 top-1 仍 275.3；150 步读数 top-1 267.2185 / top-2 256.3004 / 随机 230.2738 / 同批 236.8403，既保留「离散化后重训」流程又不过度训练。plan D4 记下。
+- **决定（塌缩 ≠ 选对，写成边界）**：唯一塌缩的档是 lr=500（第 12 步 6/8 边、仅 2 种算子），但塌缩后的架构重训仍是随机水平；这一条进 boundary P2，避免把「塌缩」读成「搜索成功」。
+- **决定（数据复用 E52 的 300 只快照，抽 30 只）**：不新导出数据；30 节点相关性图仅 1 条边过 0.5（平均 |corr| 0.2567），切分 42,067 / 9,003 / 9,045；数据类屏幕数字全部由 `build/make_dist_data.py` 从 daily30.csv 重算（rows 60,865、sha 一致），与 summary.json 不符就 EVIDENCE MISMATCH 退出。
+- **决定（成片 26:38.8，命中 26 分钟）**：400 行讲稿 TTS 实测语音 1,361.0 s，成片 **1,598.77 s / 47,963 帧 / 40 页 / 400 cue**；不压稿也不扩稿（500 行会到 31 分钟，超出历史区间）。
+- **决定（封面帧 180，与 E52/E53 一致）**：标题页 0–26 s 都在，180 帧（6.00 s）落在标题稳定期；film.json `publish.coverFrame=180`。
+- **决定（一阶近似与 |O|=3 是玩具规模，明写不能推）**：内层只走 1 步、无 Hessian、48 个决策，约为 AutoCTS 的 1/20000；plan D5、boundary P3 与 HANDOFF 都记，避免读成论文复现。
+- **依据**：evidence JSON（`inventory/evidence/54-darts-differentiable-search.ch6-darts.json`，**28/28、3.7898 s**；data 4 / darts 6 / search 6 / stg 6 / demo 6）、report.json（23 stage 全 ok / 8 段 reused 8 / tree `6eabd93324d71b26` / mix peak −1.21 dBFS、RMS −26.68 dBFS / ducked 58.1%）、luma_blink（47,963 帧 mean 20.80 / min 14.58 / max 24.63 / mean|d| 0.0131 / p99 0.1116 / max 6.50 / 7 切点）、40 页静帧复核（metrics P2、metrics P4、implementation P4、verification P2/P4、outro P5 等关键页实看）、`still lint` 4 帧 PASS、cabal test **2,158 条断言**（新增 20 条）、make PASS 日志；ts-base `60ea125` + `77084ac` + `dc741db`，video_project `b4e0f01` + `6adc9ca` + `1d6f1f6` + 本次 docs。
+- **可逆性**：高（两模块 + 证据 + pack 可整段回退；负结果在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；ts-base / video_project 两仓各自 commit 可回退）。
+- **返工成本**：证据 28 项一轮过（首版 2 条恒真断言改成实测断言）；版式 5 处（metrics P2 EdgeStrip、SweepBars labelW、Row valueW、TraceChart y 轴、Foot）；typecheck 2 轮（入口 import 路径、Line.speech）；TTS 首跑被 120 s deadline 杀掉后补跑；make 两次被 content check 拦（cover 提前生成、HANDOFF 草稿未提交）+ 一次暂停 kill，恢复后复用 8 段场景 PASS；配音两轮 dump（估 1,615.99 s → 实测 1,598.78 s）。

@@ -69,7 +69,7 @@
 | tsint-51-ga-search-incremental | 省算力的两把刀：遗传算法与学习曲线外推 | ready | - | yes | ok | 11 | - |
 | tsint-52-meta-learning-task-library | 把 300 只股票当成 300 个任务：元学习选模型 | ready | - | yes | ok | 11 | - |
 | tsint-53-ensemble-average-iter | 平均能赢平均，赢不过最强 | ready | 1136 | yes | ok | 11 | - |
-| tsint-54-darts-differentiable-search | 把架构搜索变成可微：DARTS 与三层搜索空间 | draft | 1560 | silent | ok | 1 | - |
+| tsint-54-darts-differentiable-search | 把架构搜索变成可微：DARTS 与三层搜索空间 | ready | 1599 | yes | ok | 11 | - |
 | tsint-55-generalizable-search | 省算力的三种剪枝：子空间、比较器与组合预测器 | draft | 1440 | silent | ok | 1 | - |
 | tsint-56-ensemble-ga-krr | 先筛模型再调权：遗传算法筛选 + 核岭回归融合 | draft | 1320 | silent | ok | 1 | - |
 | tsint-57-tokenization-trio | 把序列切成块：Patch、周期、分辨率前缀 | draft | 960 | silent | ok | 1 | - |
