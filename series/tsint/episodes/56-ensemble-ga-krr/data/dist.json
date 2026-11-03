@@ -1,0 +1,335 @@
+{
+ "meta": {
+  "episode": 56,
+  "slug": "ensemble-ga-krr",
+  "title": "先筛模型再调权：遗传算法筛选 + 核岭回归融合",
+  "chapter": "ch06",
+  "generatedBy": "build/make_dist_data.py（读 inventory/evidence/56-ensemble-ga-krr.ch6-ga-krr.json）",
+  "tsBase": "4d40253",
+  "evidence": "inventory/evidence/56-ensemble-ga-krr.ch6-ga-krr.json"
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "20 只股票全部读入",
+   "ok": true,
+   "detail": "20 只，最少 2412 个交易日"
+  },
+  {
+   "group": "data",
+   "name": "每只至少 500 个交易日",
+   "ok": true,
+   "detail": "2412 个交易日"
+  },
+  {
+   "group": "data",
+   "name": "切分从左到右：训练 < 调参 < 检验",
+   "ok": true,
+   "detail": "n 均值 2428.6000"
+  },
+  {
+   "group": "data",
+   "name": "候选池 10 个（5 模型 × 2 档）",
+   "ok": true,
+   "detail": "10 个候选"
+  },
+  {
+   "group": "ga",
+   "name": "每只股票都选出一个子集",
+   "ok": true,
+   "detail": "20 只都选出"
+  },
+  {
+   "group": "ga",
+   "name": "子集至少含 2 个模型",
+   "ok": true,
+   "detail": "子集大小均值 3.8500"
+  },
+  {
+   "group": "ga",
+   "name": "Pareto 前沿非空且不超过候选数",
+   "ok": true,
+   "detail": "前沿规模均值 2.8500"
+  },
+  {
+   "group": "ga",
+   "name": "前沿点两两互不支配",
+   "ok": true,
+   "detail": "10 个候选的前沿"
+  },
+  {
+   "group": "ga",
+   "name": "选出的点在 Pareto 前沿上",
+   "ok": true,
+   "detail": "偏差/方差与前沿某点一致"
+  },
+  {
+   "group": "ga",
+   "name": "只看精度的 GA 偏差不高于双目标",
+   "ok": true,
+   "detail": "偏差 11.7145 vs 11.7322，代价是方差 2119.5927 vs 2115.0028"
+  },
+  {
+   "group": "ga",
+   "name": "同 seed 前沿逐代一致",
+   "ok": true,
+   "detail": "两次调用前沿完全相同"
+  },
+  {
+   "group": "krr",
+   "name": "黄金值 0.875",
+   "ok": true,
+   "detail": "krrFitWith 0.5 ℓ=1/√(2ln2)：预测 0.8750"
+  },
+  {
+   "group": "krr",
+   "name": "λ=0 时训练点精确插值",
+   "ok": true,
+   "detail": "最大误差 0.00e0"
+  },
+  {
+   "group": "krr",
+   "name": "λ=1e6 时预测收缩到 0",
+   "ok": true,
+   "detail": "预测绝对值 2.21e-6"
+  },
+  {
+   "group": "krr",
+   "name": "λ 从网格取，CV 读数有限",
+   "ok": true,
+   "detail": "λ 计数 0/2/18；CV MAE 均值 12.0467"
+  },
+  {
+   "group": "krr",
+   "name": "KRR 调参段误差低于等权",
+   "ok": true,
+   "detail": "11.5177 vs 13.4317"
+  },
+  {
+   "group": "krr",
+   "name": "KRR 的核宽为正",
+   "ok": true,
+   "detail": "ℓ 由训练集两两距离中位数归一化"
+  },
+  {
+   "group": "fusion",
+   "name": "KRR 检验段低于等权平均",
+   "ok": true,
+   "detail": "10.0322 vs 10.1566（改进 1.2241%）；子集等权 9.5721，核修正没有额外收益"
+  },
+  {
+   "group": "fusion",
+   "name": "KRR 低于全池 KRR",
+   "ok": true,
+   "detail": "10.0322 vs 10.2115，胜 12/20"
+  },
+  {
+   "group": "fusion",
+   "name": "子集等权低于全池等权",
+   "ok": true,
+   "detail": "9.5721 vs 10.1566"
+  },
+  {
+   "group": "fusion",
+   "name": "Top-3 平均低于全池等权",
+   "ok": true,
+   "detail": "9.6050 vs 10.1566"
+  },
+  {
+   "group": "fusion",
+   "name": "最好单模型低于全池等权",
+   "ok": true,
+   "detail": "9.5397 vs 10.1566（单模型是下界，不能算融合收益）"
+  },
+  {
+   "group": "pareto",
+   "name": "前沿规模在 1 到 8 之间",
+   "ok": true,
+   "detail": "均值 2.8500；多数股票收敛到 1–3 点"
+  },
+  {
+   "group": "pareto",
+   "name": "只看精度与双目标选出不同子集",
+   "ok": true,
+   "detail": "13/20 只不同"
+  }
+ ],
+ "data": {
+  "stocks": 20,
+  "candidates": 10,
+  "models": 5,
+  "tiers": 2,
+  "meanDays": 2428.6,
+  "tune": 365,
+  "test": 365,
+  "subsets": 1024
+ },
+ "ga": {
+  "pop": 20,
+  "gens": 10,
+  "seed": 20261103,
+  "minModels": 2,
+  "tournament": 3,
+  "mutation": 0.08,
+  "evaluations": 200,
+  "selKMean": 3.85,
+  "frontMean": 2.85,
+  "biasOnlyDiffer": 13,
+  "pBiasMean": 11.7322,
+  "pVarMean": 2115.0028,
+  "bBiasMean": 11.7145,
+  "bVarMean": 2119.5927
+ },
+ "krr": {
+  "lambdas": [
+   0.01,
+   0.1,
+   1.0
+  ],
+  "lamCounts": [
+   0,
+   2,
+   18
+  ],
+  "cvMaeMean": 12.0467,
+  "golden": 0.875,
+  "goldenMatrix": [
+   [
+    1.0,
+    0.5
+   ],
+   [
+    0.5,
+    1.0
+   ]
+  ],
+  "goldenY": [
+   1.0,
+   2.0
+  ],
+  "goldenAlpha": [
+   0.25,
+   1.25
+  ],
+  "goldenLambda": 0.5,
+  "goldenPred": 0.875,
+  "shrinkPred": 2.21e-06
+ },
+ "fusion": {
+  "equal": 10.1566,
+  "krr": 10.0322,
+  "krrAll": 10.2115,
+  "pEq": 9.5721,
+  "bEq": 9.5847,
+  "top3": 9.605,
+  "best": 9.5397,
+  "relImprovePct": 1.2241,
+  "krrWinsEqual": 6,
+  "krrWinsAll": 12,
+  "perCandTune": [
+   11.7125,
+   13.0216,
+   19.3723,
+   13.4902,
+   11.7991,
+   11.8351,
+   11.8334,
+   11.8333,
+   11.8181,
+   17.6019
+  ],
+  "perCandTest": [
+   9.5433,
+   11.3371,
+   16.2997,
+   11.4157,
+   9.663,
+   9.7193,
+   9.7178,
+   9.6605,
+   9.6575,
+   15.0564
+  ],
+  "candidates": [
+   {
+    "key": "naive",
+    "label": "naive"
+   },
+   {
+    "key": "drift30",
+    "label": "drift"
+   },
+   {
+    "key": "exp0.2",
+    "label": "exp .2"
+   },
+   {
+    "key": "exp0.5",
+    "label": "exp .5"
+   },
+   {
+    "key": "ar1",
+    "label": "ar1"
+   },
+   {
+    "key": "ridge5-l1e-3",
+    "label": "ridge 1e-3"
+   },
+   {
+    "key": "ridge5-l1",
+    "label": "ridge 1"
+   },
+   {
+    "key": "sar12",
+    "label": "sar12"
+   },
+   {
+    "key": "sar5",
+    "label": "sar5"
+   },
+   {
+    "key": "hmean5",
+    "label": "hmean5"
+   }
+  ]
+ },
+ "demo": {
+  "points": [
+   [
+    1.0,
+    0.1
+   ],
+   [
+    0.9,
+    0.9
+   ],
+   [
+    0.2,
+    1.5
+   ],
+   [
+    1.1,
+    0.1
+   ]
+  ],
+  "kept": [
+   [
+    1.0,
+    0.1
+   ],
+   [
+    0.9,
+    0.9
+   ],
+   [
+    0.2,
+    1.5
+   ]
+  ],
+  "dominated": [
+   1.1,
+   0.1
+  ],
+  "note": "四点 (偏差, 方差) 来自单测黄金值；(1.1, 0.1) 被 (1.0, 0.1) 支配"
+ }
+}
