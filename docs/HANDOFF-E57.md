@@ -1,3 +1,5 @@
+> **历史文档**：E57 已于 2026-11-04 交付；上手请先读 `docs/HANDOFF-SESSION-2026-11-04.md`（当前 active 交接），本文只作该集记录。
+
 # HANDOFF — E57《把序列切成块》交付与 E58 开工
 
 > 交接时点：2026-11-04 凌晨（E57 成片 PASS、delivery/ready/docs 已提交）

@@ -24,8 +24,11 @@
 
 ## Delivery
 
-- 成片 **1,235.33 s（20:35.3）/ 37,060 帧 / 8 场 43 页 / 430 条旁白 / 430 cue**；mp4 与 cover 读数见 make 报告。
-- 音量、字幕、章节、闪烁与 still_lint 读数见 delivery/report.json 与 HANDOFF。
+- 成片 **1,235.33 s（20:35.3）/ 37,060 帧 / 8 场 43 页 / 430 条旁白 / 430 cue**；mp4 **61,063,007 B**，sha256 e8528fb76542a8395910bf28e71aa33b4edc9bec479074054cbb2d39f0ded0d8；cover.png **190,375 B**（frame 180 = 6.00 s）。
+- 音量：mix 48 kHz / 1,236.53 s、peak **−1.10 dBFS**、RMS **−26.90 dBFS**、ducked **47.4%**（4.5 dB）、musicGain **−4.5 dB**、fade 1.5 / 2.5；loudnorm in I −23.4 / TP −1.2 / LRA 3.4 → out **−15.9 LUFS / TP −2.0 / LRA 2.3**（Dynamic，+0.9），ebur128 复核 **I −16.0 / TP −1.5 / LRA 2.3**。
+- 字幕与章节：430 cue、**0 条换行**、最长 20 字符；字幕跨度 **00:00:01,200 → 00:20:33,130**，发声 1,132.3 s；8 章合计 1,235.33 s（首 00:00:00、末 00:18:17）。
+- 闪烁：37,060 帧 mean **21.08** / min 14.56 / max 24.32 / mean|d| 0.0135 / p99 0.1306 / max 7.61；7 切点 4,648 / 9,913 / 15,277 / 19,564 / 24,674 / 28,792 / 32,927；still_lint 4 帧 PASS。
+- 流水线：23 stage 全 ok；tree **fd5ab5b8e017de86**；第二次 make 复用 8 段（rendered 0）；stem full_median −25.1 / audible −27.88 / audible_share 0.631 / sub_share 0.068；music gate speech −23.27 / gap_full −30.64 / gap_audible −33.31 / bed 36.7。
 - 讲稿：8 场 43 页 430 行；TTS 430 clips、实测语音 **981.7 s**、均值 2.28 s；narration.wav 1,235.33 s / 118,591,724 B（不入库）。
 - 证据与测试：证据 **24/24**（data 4 / corr 6 / spectrum 9 / decision 3 / token 2，0.02 s）、单测 **29** 条；模块 269 行、18 个导出、证据程序 212 行。
 - 复现：`node scripts/make.mjs --film tsint-58-channel-strategies --score=out/e04-score-loop-48k.wav`；证据 `tsbase evidence-ch07-channel --data data/episodes/58-channel-strategies --out data/episodes/58-channel-strategies --evidence inventory/evidence/58-channel-strategies.ch7-channel.json`。
