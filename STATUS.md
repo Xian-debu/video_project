@@ -67,7 +67,7 @@
 | tsint-49-gaf-mtf-cote-multidomain | 换一种表示：图像化编码与多域集成 | ready | - | yes | ok | 11 | - |
 | tsint-50-model-selection-skeleton | 自动选模型：池子比策略更重要 | ready | - | yes | ok | 11 | - |
 | tsint-51-ga-search-incremental | 省算力的两把刀：遗传算法与学习曲线外推 | ready | - | yes | ok | 11 | - |
-| tsint-52-meta-learning-task-library | 把 300 只股票当成 300 个任务：元学习选模型 | draft | 1440 | silent | ok | 1 | - |
+| tsint-52-meta-learning-task-library | 把 300 只股票当成 300 个任务：元学习选模型 | ready | - | yes | ok | 11 | - |
 | tsint-53-ensemble-average-iter | 集成：平均就能赢，但别乱调权 | draft | 1320 | silent | ok | 1 | - |
 | tsint-54-darts-differentiable-search | 把架构搜索变成可微：DARTS 与三层搜索空间 | draft | 1560 | silent | ok | 1 | - |
 | tsint-55-generalizable-search | 省算力的三种剪枝：子空间、比较器与组合预测器 | draft | 1440 | silent | ok | 1 | - |
