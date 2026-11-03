@@ -722,3 +722,22 @@
 - **依据**：evidence JSON（inventory/evidence/55-generalizable-search.ch6-generalizable.json，**33/33、4.8335 s**；data 4 / synth 9 / cherry 6 / cmp 5 / comb 4 / transfer 5）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree 17a94804a347deea / mix peak −1.00 dBFS、RMS −26.18 dBFS / ducked 53.6%）、loudnorm 输出 **−15.0 LUFS / TP −2.0 dBFS / LRA 1.7**（ebur128 复核 −15.4 / −1.3）、luma（36,970 帧 mean 21.17 / min 14.57 / max 24.92 / mean|d| 0.0138 / p99 0.1058 / max 7.83 / 7 切点）、36 页静帧复核（八场关键页人工看，修窄卡 Row 竖排等 6 处）、still_lint 4 帧 PASS、cabal test **2,185 条断言 / 168 套**（新增 27 条）、make PASS 日志；ts-base 17a3c44 + a34b635 + 4e35cf4，video_project 30ecad8 + 6a49dda + 84cf174 + 本次 docs。
 - **可逆性**：高（三模块 + 证据 + pack 可整段回退；负结果在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；ts-base / video_project 两仓各自 commit 可回退）。
 - **返工成本**：证据首跑 13 分钟无输出后定位 O(i) 随机源并重写采样（1 轮）；common_days 首版用并集得 2,430，交集改对得 1,495（1 轮）；两条检查阈值按实测调整（盒宽 0.2、全距 1.5%）；版式 6 处（definitions P2/P3 窄卡 Row 改 KV、verification P1 六组列表、implementation 名称列、SynthBars 值列宽、verification P4 Foot 重叠）；typecheck 2 处（anchor 字面量类型、JSX 花括号列表被当逗号运算符）；TTS 首跑被 run_code 120 s deadline 杀掉后补 23 条；配音两轮 dump（估 1,202.12 s → 实测 1,232.34 s）。
+
+## A53 E56 交付：筛选成立，调权不成立（2026-11-03 夜）
+
+- **决定（主结论拆成两句，负结果不藏在「融合」后面）**：计划说 GA 筛选 + 核岭回归融合能把验证 MAE 压低 2%–6%。实测筛选把检验段误差从 **10.1566** 压到 **9.5721**（相对 **5.75%**），再用 KR 调权反而升到 **10.0322**——相对全池等权仍好 **1.22%**，相对子集等权**差 4.8%**。全片主线写成「筛选成立、调权不成立」：第 4 场把六个误差按序排（子集等权 9.5721 / KR 10.0322 / 全池等权 10.1566 / 全池 KR 10.2115 / Top-3 9.6050 / 最好单模型 9.5397 作 oracle 下界），第 6 场把「核修正没有额外收益」写进 detail，第 8 场三句收尾。
+- **决定（第二目标改中心化方差，不用均方）**：均方约等于偏差平方，两项共线会让双目标退化成单目标；改成 `variance = mean (r − mean r)^2`，两项才真的冲突。ts-base 在模块提交 271990d 内完成 `subDiversity → subVariance` 的语义修正、支配关系与锦标赛 key、17 条单测同步。
+- **决定（GA 预算 200，算子全部固定）**：种群 20 × 十代 = **200** 个体，锦标赛 3、均匀交叉、变异率 0.08、修复后至少 2 个成员、seed 20261103；同 seed 逐代确定，两次调用前沿完全相同。相对穷举 1,024 个子集，省 5.1 倍，但每一代都重算双目标。
+- **决定（Pareto 选点用归一化分数，加权法只作对照）**：两个目标不能简单加权，前沿三个点互不支配。选点规则 `s = bias / b_ref + variance / v_ref`，基线取全池等权（偏差 **11.7322**、方差 **2115.0028**），两项都越小越好；加权法只是其中一种偏好，换权重会选到别的点，收益也跟着变——这句写进 metrics P3。
+- **决定（KR 拟合子集残差堆叠，不做 10 列直接回归）**：先用 GA 选出的子集做等权预测，再把残差交给核岭回归修正；这样调权是「在好子集上加一个小修正」，而不是重新学 10 个候选的权重。λ 用 5 折 CV 在 365 个调参点上选。
+- **决定（KR 数值口径：λ 三档、核宽中位数、Cholesky）**：λ ∈ {0.01, 0.1, 1.0}，20 只股票里 **0 / 2 / 18** 选了三个档（多数选最大 1.0，等于说「别改了」）；核宽取训练集两两距离的中位数，特征先标准化、标签减均值；解方程用 Cholesky，失败加 1e-9 抖动。全池 KR 反而 **10.2115**（比全池等权差），作为负对照保留。
+- **决定（黄金值 0.875 用可复现构造）**：取 K=[[1,0.5],[0.5,1]]、λ=0.5、y=[1,2] → α=[0.25,1.25]，第一个训练点 k=[1,0.5] → **0.875**；ℓ=1/√(2 ln 2) 让 RBF 在两点间距离 1 处正好给 0.5。两个极限也钉住：λ=0 精确插值（误差 0.00e0）、λ=1e6 收缩到 **2.21e-6**。
+- **决定（数据复用 E53 面板，不重新导出）**：20 只 A 股、10 年日线、调参段 365 / 检验段 365，全部来自 `data/episodes/53-ensemble-average-iter/daily.csv`（1,486,348 B）；manifest 的 deviations 记 6 条，包括「KR 用残差堆叠」「候选池 5 模型 × 2 超参档」。
+- **决定（百分比统一 5.75，旁白重录）**：(10.1566−9.5721)/10.1566 = **5.7549%**，屏上原写 5.76 与 5.75 混用，全部统一成 **5.75%**；`build/script_spec.json` 两行旁白同步改，删 `metrics-46.mp3`、`outro-2.mp3` 用 `--only` 重录，再重跑 make_script / make_narration（时间轴不变）。
+- **决定（成片 21:21，不扩到 22 分钟）**：400 行讲稿实测语音 1,043.4 s，成片 **1,281.13 s / 38,434 帧 / 8 场 40 页 / 400 cue**；五个误差与三句结论在第 4、6、8 场讲完，不再加场。
+- **决定（封面帧 180，与 E52–E55 一致）**：标题页 0–20 s 稳定，180 帧（6.00 s）；film.json publish.coverFrame=180，cover.png 188,421 B。
+- **决定（版式三修 + 沿用窄卡教训）**：Pareto 图两点过近，标签按「拥挤」判断避让（近邻非支配点标签放左侧、被支配点标签放右上）；核矩阵 K 与 K+λI 在 300 px 值列换行，加 `valueW={520}`；verification P5 的「最好单模型 < 全池」label 缩成「最好单模型」；outro P4 的「检验段 子集等权」缩成「检验段 等权」。窄卡（<600）不用 Row、宽矩阵必须给 valueW，这条从 E55 沿用。
+- **依据**：evidence JSON（inventory/evidence/56-ensemble-ga-krr.ch6-ga-krr.json，**24/24、48.2 s**；data 4 / ga 7 / krr 6 / pareto 2 / fusion 5）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree b44f31b463ef6368 / mix peak −1.11 dBFS、RMS −26.88 dBFS / ducked 51.4%）、loudnorm 输出 **−15.9 LUFS / TP −2.0 dBFS / LRA 2.4**（目标 −15 / −2，linear）、luma（38,434 帧 mean 21.08 / min 14.66 / max 23.90 / mean|d| 0.0137 / p99 0.1064 / max 7.84 / 7 切点）、40 页静帧复核（八场关键页人工看，修 Pareto 标签、矩阵换行、5.75 口径、两处 label）、still_lint 4 帧 PASS、cabal test **2,185 条断言 / 168 套**（新增 17 条）、make PASS 日志；ts-base 271990d + 4d40253 + 3a68c49，video_project 8d0cf0a + d9f0dc7 + ed42c1a + 6fc8cf6 + 本次 docs。
+- **可逆性**：高（模块与证据可整段回退；负结果在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；两仓各自 commit 可回退）。
+- **返工成本**：语义修正 1 轮（diversity → centered variance，17 条单测同步）；Cholesky 性能修复 1 轮（列表索引 O(n⁴) → STArray O(n³)）；静帧 3 轮（Pareto 标签两次、矩阵换行、百分比口径、两处 label）；TTS 首跑被 run_code 120 s deadline 杀掉后补 23 条，另因 5.75 重录 2 条；make 首轮被 content check 拦 1 轮；plan 草稿与 docs 分两次提交。
+

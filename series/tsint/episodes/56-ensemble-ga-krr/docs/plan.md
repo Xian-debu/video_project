@@ -1,6 +1,6 @@
 # 56-ensemble-ga-krr - 先筛模型再调权：遗传算法筛选 + 核岭回归融合
 
-> status: draft | 成片待 make | 21:21.13（1,281.13 s）
+> status: ready (produced) | 成片 1,281.13 s（21:21.1）/ 38,434 帧
 > chapter: ch06 | runtime target: 22 min | algorithms: 1（GA 筛选 + 核岭回归融合）
 
 ## Thesis
@@ -21,8 +21,13 @@
 
 ## Delivery
 
-- 待 make 后回填：成片秒数 / 帧数 / cue 数 / 章数、mp4 大小与 sha256、loudnorm 三读数、luma 统计、cover frame 与字节。
+- 成片 **1,281.13 s（21:21.1）/ 38,434 帧 / 8 场 40 页 / 400 条旁白 / 400 cue**；mp4 **64,776,967 B**，sha256 `14e7f77fc1c5a7152546ad138f9a08f263d121fed5fb4cdecd3b56a8217b2ae2`；cover.png 188,421 B（frame 180 = 6.00 s）。
+- 音量：mix 48 kHz / 1,282.33 s、peak −1.11 dBFS、RMS −26.88 dBFS、ducked 51.4%（4.5 dB）、musicGain −4.5 dB、fade 1.5 / 2.5；loudnorm in I −23.26 / TP −1.20 → 目标 **−15 LUFS / TP −2.0**，ebur128 复核 I −15.9 / TP −2.0 / LRA 2.4。music gate：speech −23.44 / gap_full −30.73 / gap_audible −33.34 / bed 36.7。
+- 字幕与章节：400 cue、0 条换行、最长 27 字符；字幕跨度 00:00:01,200 → 00:21:18,930，发声 1,183.3 s；8 章合计 1,281.13 s（首 00:00:00、末 00:18:47）。
+- 闪烁：38,434 帧 mean 21.08 / min 14.66 / max 23.90 / mean|d| 0.0137 / p99 0.1064 / max 7.84；7 个切点 4,885 / 9,905 / 14,923 / 19,606 / 24,389 / 29,003 / 33,813。
+- 流水线：23 stage 全 ok，8 段 rendered 8（reused 0），tree `b44f31b463ef6368`；score 复用 `out/e04-score-loop-48k.wav`（scoreReused false）；stem full_median −25.1 dB / audible −27.88 dB / audible_share 0.631 / sub_share 0.068。
 - 讲稿：8 场 40 页 400 行；TTS 400 clips、实测语音 1,043.4 s、均值 2.61 s；narration.wav 1,281.13 s / 122,988,524 B。
+- 复现：`node scripts/make.mjs --film tsint-56-ensemble-ga-krr --score=out/e04-score-loop-48k.wav`；证据 `tsbase evidence-ch06-ga-krr`（24/24、48.2 s）。
 
 ## Deviations
 
