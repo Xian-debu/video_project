@@ -1,7 +1,7 @@
 # 51-ga-search-incremental — 省算力的两把刀：遗传算法与学习曲线外推
 
-> status: draft (produced, not yet rendered)
-> chapter: ch06 | runtime target: 18 min (actual 20:59.6) | algorithms: 2 (GA search, incremental curve extrapolation)
+> status: ready (rendered 2026-11-03)
+> chapter: ch06 | runtime target: 18 min (actual 20:59.7) | algorithms: 2 (GA search, incremental curve extrapolation)
 
 ## Thesis
 
@@ -53,4 +53,11 @@ ts-admin 的 `inventory/scripts/export_ch06_modelsel.py`（a8135a4）从 Lake �
 
 ## Delivery
 
-（待 make 完成后补齐：成片时长/音量/字幕章节/静帧复核/复现命令。）
+（待 make 完成后补齐：成片时长/音量/字幕章节/静帧复核/复现命令。## Delivery
+
+- 成片 `delivery/Tsint51GaSearchIncremental.mp4`：**1,259.67 s（20:59.7）/ 37,790 帧 / 64,349,351 B**，h264 + aac，8 场 32 页；ffprobe 容器时长 1,259.700 s。
+- 音量：loudnorm 线性**两遍**，in I −23.06 / TP −1.17 → **out I −15 LUFS / TP −2 dBFS**；mix 48 kHz / 1,260.85 s，peak −1.21 dBFS、RMS −26.6 dBFS，ducked 57.9%、musicGain −4.5 dB（分数床复用 E04 的 1,560 s 循环），淡入 1.5 s / 淡出 2.5 s。
+- 字幕与章节：**320 cue / 8 章**，跨度 00:00:01,200 → 00:20:57,450，说话 1,176.3 s；`0 of 320 cues wrapped to 2 lines, longest line 29`（上限 34 字/行）；章首 00:00:00 / 末章 00:19:09，8 章合计 1,259.65 s。
+- 闪烁门：37,790 帧 mean 21.45 / min 14.61 / max 26.27，mean|d| 0.0142、p99 0.1111、max 10.55（阈值 12.0），7 个硬切点（3,827 / 8,800 / 14,547 / 19,573 / 24,274 / 31,228 / 34,497）。
+- 静帧复核：32 页全渲（`--scale=0.34`，四张联系表），改 2 页后重渲并复看——实现页护栏算例改成「4 × 30 = 120 / 4 × 852 = 3,408」，判据尺按实测最大值定标（原来线性误差 4.7613 的横条 2,262 px 出画）。`still_lint` 覆盖 make 抽的 4 帧：`PASS — 4 frames, no off-frame box, no edge text, no spill, no text overlap`。
+- 复现：`node scripts/make.mjs --film tsint-51-ga-search-incremental --score=out/e04-score-loop-48k.wav`（23 stage 全 ok、8 段 rendered 8 / reused 0、tree `2125be3b75aa8fce`）；证据 `docker exec haskell-ts /work/dist-newstyle/.../tsbase evidence-ch06-ga --data /work/data/episodes/51-ga-search-incremental --out <同> --evidence /work/inventory/evidence/51-ga-search-incremental.ch6-ga.json`（26/26、26.4 s）。
