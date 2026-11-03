@@ -1,0 +1,641 @@
+{
+ "meta": {
+  "episode": 54,
+  "slug": "darts-differentiable-search",
+  "group": "ch6-darts",
+  "title": "把架构搜索变成可微：DARTS 与三层搜索空间",
+  "chapter": "ch06",
+  "chapterName": "自动化模型设计",
+  "runtimeTarget": 26,
+  "next": {
+   "id": 55,
+   "title": "省算力的三种剪枝：子空间、比较器与组合预测器",
+   "minutes": 24
+  },
+  "commits": {
+   "tsBase": "dc741db",
+   "tsAdmin": "1318010"
+  },
+  "total": 28,
+  "passed": 28,
+  "failed": 0
+ },
+ "data": {
+  "stocks": 30,
+  "codes": [
+   "sh600000",
+   "sh600237",
+   "sh600359",
+   "sh600498",
+   "sh600648",
+   "sh600713",
+   "sh600860",
+   "sh601166",
+   "sh601788",
+   "sh603108",
+   "sh603380",
+   "sh603778",
+   "sz000096",
+   "sz000572",
+   "sz000703",
+   "sz000905",
+   "sz002043",
+   "sz002170",
+   "sz002240",
+   "sz002382",
+   "sz002470",
+   "sz002762",
+   "sz002824",
+   "sz002896",
+   "sz300058",
+   "sz300180",
+   "sz300302",
+   "sz300441",
+   "sz300576",
+   "sz300650"
+  ],
+  "rows": 60865,
+  "bars": [
+   1544,
+   2431
+  ],
+  "commonDays": 1495,
+  "h": 24,
+  "windows": {
+   "total": 60115,
+   "min": 1519,
+   "max": 2406
+  },
+  "split": {
+   "train": 42067,
+   "valid": 9003,
+   "test": 9045,
+   "batches": {
+    "train": 150,
+    "valid": 80,
+    "test": 300
+   },
+   "fractions": [
+    0.7,
+    0.15,
+    0.15
+   ]
+  },
+  "graph": {
+   "edges05": 1,
+   "meanAbsCorr": 0.2567,
+   "maxAbsCorr": 0.6962
+  },
+  "ySd": 288.437
+ },
+ "darts": {
+  "softmax": {
+   "zero": [
+    0.5,
+    0.5
+   ],
+   "wide": [
+    4.54e-05,
+    0.99995
+   ]
+  },
+  "multiply": {
+   "weights": [
+    0.5,
+    0.5
+   ],
+   "ops": [
+    "identity",
+    "zero"
+   ],
+   "input": [
+    1.0,
+    2.0
+   ],
+   "out": [
+    0.5,
+    1.0
+   ]
+  },
+  "identity": {
+   "op": "identity",
+   "input": [
+    1.0,
+    2.0
+   ],
+   "out": [
+    1.0,
+    2.0
+   ]
+  },
+  "loss": {
+   "start": 0.3763,
+   "end": 0.2798,
+   "steps": 20
+  },
+  "step": {
+   "steps": 1,
+   "alphaShift": 0.0029
+  }
+ },
+ "search": {
+  "space": {
+   "ops": 3,
+   "edges": 8,
+   "cells": 6561,
+   "autocts": 1000000,
+   "ratio": 152.4158
+  },
+  "decisions": 48,
+  "trace": [
+   {
+    "step": 1,
+    "meanMax": 0.3334,
+    "collapsed": 0
+   },
+   {
+    "step": 2,
+    "meanMax": 0.3334,
+    "collapsed": 0
+   },
+   {
+    "step": 3,
+    "meanMax": 0.3334,
+    "collapsed": 0
+   },
+   {
+    "step": 4,
+    "meanMax": 0.3334,
+    "collapsed": 0
+   },
+   {
+    "step": 5,
+    "meanMax": 0.3335,
+    "collapsed": 0
+   },
+   {
+    "step": 6,
+    "meanMax": 0.3335,
+    "collapsed": 0
+   },
+   {
+    "step": 7,
+    "meanMax": 0.3335,
+    "collapsed": 0
+   },
+   {
+    "step": 8,
+    "meanMax": 0.3335,
+    "collapsed": 0
+   },
+   {
+    "step": 9,
+    "meanMax": 0.3336,
+    "collapsed": 0
+   },
+   {
+    "step": 10,
+    "meanMax": 0.3336,
+    "collapsed": 0
+   },
+   {
+    "step": 11,
+    "meanMax": 0.3336,
+    "collapsed": 0
+   },
+   {
+    "step": 12,
+    "meanMax": 0.3336,
+    "collapsed": 0
+   },
+   {
+    "step": 13,
+    "meanMax": 0.3337,
+    "collapsed": 0
+   },
+   {
+    "step": 14,
+    "meanMax": 0.3337,
+    "collapsed": 0
+   },
+   {
+    "step": 15,
+    "meanMax": 0.3337,
+    "collapsed": 0
+   },
+   {
+    "step": 16,
+    "meanMax": 0.3337,
+    "collapsed": 0
+   },
+   {
+    "step": 17,
+    "meanMax": 0.3338,
+    "collapsed": 0
+   },
+   {
+    "step": 18,
+    "meanMax": 0.3338,
+    "collapsed": 0
+   },
+   {
+    "step": 19,
+    "meanMax": 0.3338,
+    "collapsed": 0
+   },
+   {
+    "step": 20,
+    "meanMax": 0.3338,
+    "collapsed": 0
+   }
+  ],
+  "startMeanMax": 0.3334,
+  "default": {
+   "lr": 0.05,
+   "meanMax": 0.3338,
+   "collapsedEdges": 0
+  },
+  "sweep": [
+   {
+    "lr": 0.05,
+    "meanMax": 0.3338,
+    "collapseStep": 0,
+    "collapsedEdges": 0,
+    "distinctOps": 2,
+    "top1": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "lr": 0.5,
+    "meanMax": 0.3382,
+    "collapseStep": 0,
+    "collapsedEdges": 0,
+    "distinctOps": 2,
+    "top1": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "lr": 5.0,
+    "meanMax": 0.3806,
+    "collapseStep": 0,
+    "collapsedEdges": 0,
+    "distinctOps": 2,
+    "top1": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "lr": 50.0,
+    "meanMax": 0.6585,
+    "collapseStep": 0,
+    "collapsedEdges": 0,
+    "distinctOps": 2,
+    "top1": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "lr": 500.0,
+    "meanMax": 0.9424,
+    "collapseStep": 12,
+    "collapsedEdges": 6,
+    "distinctOps": 2,
+    "top1": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   }
+  ],
+  "top1": [
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1
+  ],
+  "top2": [
+   [
+    1,
+    0
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    1,
+    0
+   ]
+  ],
+  "sameBatchTop1": [
+   1,
+   1,
+   2,
+   1,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "stg": {
+  "macro": {
+   "beta": [
+    0.9,
+    0.1
+   ],
+   "blocks": [
+    1.0,
+    3.0
+   ],
+   "out": 1.2
+  },
+  "micro": {
+   "gamma": [
+    0.5,
+    0.5
+   ],
+   "exprs": [
+    2.0,
+    4.0
+   ],
+   "out": 3.0
+  },
+  "three": {
+   "macro": 0.5,
+   "micro": 0.5,
+   "block": 10.0,
+   "out": 6.5
+  },
+  "hull": {
+   "weights": [
+    0.2,
+    0.3,
+    0.5
+   ],
+   "lo": 1.0,
+   "hi": 4.0
+  },
+  "perm": {
+   "weights": [
+    0.4,
+    0.6
+   ],
+   "outs": [
+    1.0,
+    3.0
+   ],
+   "out": 2.2
+  },
+  "choices": 12
+ },
+ "demo": {
+  "mae": {
+   "zero": 221.8159,
+   "init": 270.5292,
+   "supernet": 288.474,
+   "top1": 267.2185,
+   "top2": 256.3004,
+   "random": 230.2738,
+   "sameBatch": 236.8403
+  },
+  "gains": {
+   "top1VsRandom": 0.1604,
+   "top2VsTop1": -0.0409,
+   "supernetVsTop1": 0.0795,
+   "zeroVsTop1": -0.1699
+  },
+  "sameDiff": 7,
+  "seedSame": true
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "30 只股票、每只至少 1,500 根日线（收益率序列 1,500+ 点）",
+   "ok": true,
+   "detail": "stocks=30，bars 1544-2431"
+  },
+  {
+   "group": "data",
+   "name": "日收益率对齐后共同交易日不少于 1,490 天（相关性矩阵用同一批日期）",
+   "ok": true,
+   "detail": "共同交易日 1495"
+  },
+  {
+   "group": "data",
+   "name": "窗口总数不少于 45,000 个（每只股票 H=24 的滑窗，步长 1）",
+   "ok": true,
+   "detail": "窗口 60115，每只 1519-2406"
+  },
+  {
+   "group": "data",
+   "name": "切分按时间先后：训练 70%、验证 15%、检验 15%，三段不重叠",
+   "ok": true,
+   "detail": "train 42067，valid 9003，test 9045"
+  },
+  {
+   "group": "darts",
+   "name": "式 (6.11) 黄金值：alpha=[0,0] 的 softmax 是 [0.5,0.5]",
+   "ok": true,
+   "detail": "softmax = 0.5000,0.5000"
+  },
+  {
+   "group": "darts",
+   "name": "alpha=[0,10] 的 softmax 是 [4.54e-5, 0.99995]（one-hot 极限）",
+   "ok": true,
+   "detail": "softmax = [0.000045,0.999955]"
+  },
+  {
+   "group": "darts",
+   "name": "式 (6.11) 黄金值：[0.5,0.5] 混合 {identity, zero}，1 与 2 得 [0.5,1.0]",
+   "ok": true,
+   "detail": "mixed = 0.5000,1.0000"
+  },
+  {
+   "group": "darts",
+   "name": "one-hot 到 identity 时混合输出复现输入",
+   "ok": true,
+   "detail": "mixed = 1.0000,2.0000"
+  },
+  {
+   "group": "darts",
+   "name": "20 步 weightStep 让训练损失下降",
+   "ok": true,
+   "detail": "loss 0.3763 -> 0.2798"
+  },
+  {
+   "group": "darts",
+   "name": "dartsStep 走一步外层：步数 +1 且 alpha 真的移动",
+   "ok": true,
+   "detail": "steps 1，alpha 位移 0.0029"
+  },
+  {
+   "group": "search",
+   "name": "离散空间：8 条边各 3 个算子 = 6,561 个 cell 架构；按 3×8×2 计 48 个离散选择（AutoCTS 约 10^6，约 1/20000）",
+   "ok": true,
+   "detail": "3^8 = 6561，3×8×2 = 48，10^6/48 = 20833.3333"
+  },
+  {
+   "group": "search",
+   "name": "alpha 学习率决定塌缩：0.05 走 20 步平均最大权重只到 0.3338，放大到 500 才在第 12 步塌到 6/8 边",
+   "ok": true,
+   "detail": "lr 0.05：末步 0.3338，塌缩步 0；lr 500：第 12 步到 6/8 边；阶梯 0.3338 < 0.3382 < 0.3806 < 0.6585 < 0.9424"
+  },
+  {
+   "group": "search",
+   "name": "lr=500 时 20 步末 6 条边塌缩（最大 softmax 权重 >= 0.9 的边数 = 6），平均最大权重到 0.9424",
+   "ok": true,
+   "detail": "塌缩边数 6/8，平均最大权重 0.9424"
+  },
+  {
+   "group": "search",
+   "name": "lr=500 塌缩后只剩 identity 与 conv 两种算子、且不是全押一种：塌缩不等于选对",
+   "ok": true,
+   "detail": "选中算子 1,0,1,0,0,0,0,1，不同 2 种"
+  },
+  {
+   "group": "search",
+   "name": "论文尺度（lr 0.05）下 20 步平均最大权重只从 0.3333 挪到 0.3338：默认跑分没有塌缩，这是本机复现的负结果",
+   "ok": true,
+   "detail": "默认跑分选中算子 1,0,0,0,0,0,0,1，平均最大权重 0.3338（初值 0.3333）"
+  },
+  {
+   "group": "search",
+   "name": "全流程（5 个 alpha lr 的搜索 + 4 个架构各 150 步重训 + 对照）在 120 秒内跑完",
+   "ok": true,
+   "detail": "总耗时 3.7898 s"
+  },
+  {
+   "group": "stg",
+   "name": "宏观黄金值：beta=[0.9,0.1]、block 输出 [1],[3] -> 1.2",
+   "ok": true,
+   "detail": "macroMix = 1.2000"
+  },
+  {
+   "group": "stg",
+   "name": "微观黄金值：gamma=[0.5,0.5]、隐藏表达式输出 [2],[4] -> 3.0",
+   "ok": true,
+   "detail": "microMix = 3.0000"
+  },
+  {
+   "group": "stg",
+   "name": "三层组合：0.5*(0.5*2+0.5*4) + 0.5*10 = 6.5",
+   "ok": true,
+   "detail": "stBlock = 6.5000"
+  },
+  {
+   "group": "stg",
+   "name": "宏观混合落在 block 输出的凸包内（权重和为 1）",
+   "ok": true,
+   "detail": "三个权重 0.2/0.3/0.5，输出落在 1 与 4 之间"
+  },
+  {
+   "group": "stg",
+   "name": "置换等变：权重与输出一起换序，结果不变",
+   "ok": true,
+   "detail": "0.4*1+0.6*3 = 0.6*3+0.4*1 = 2.2"
+  },
+  {
+   "group": "stg",
+   "name": "三层搜索空间：3 算子 × 2 隐藏表达式 × 2 block = 12 个离散选择（本机玩具规模）",
+   "ok": true,
+   "detail": "离散选择数 12"
+  },
+  {
+   "group": "demo",
+   "name": "超网不能直接用：混合算子的 supernet 检验 MAE 高于所有离散化重训架构",
+   "ok": true,
+   "detail": "supernet 288.4740 bps，top-1 267.2185，top-2 256.3004，random 230.2738"
+  },
+  {
+   "group": "demo",
+   "name": "按验证集选出的 top-1 在检验集上比随机架构差 16%：选择没有泛化，这是本机复现的负结果",
+   "ok": true,
+   "detail": "top-1 267.2185 vs random 230.2738，差 16.0438%"
+  },
+  {
+   "group": "demo",
+   "name": "所有重训架构都输给常数零预测基线：30 只股票的次日收益里没有可学的信号",
+   "ok": true,
+   "detail": "零基线 221.8159 bps，top-1 267.2185，top-2 256.3004，随机 230.2738，same-batch 236.8403"
+  },
+  {
+   "group": "demo",
+   "name": "不切验证集时 top-1 的算子与切分版至少有 3 条边不同：验证集换了，选择就换",
+   "ok": true,
+   "detail": "不同边数 7/8，same-batch 算子 1,1,2,1,2,2,2,2"
+  },
+  {
+   "group": "demo",
+   "name": "top-2 与 top-1 的检验 MAE 相差不到 5%：多留一条路径也没换来精度",
+   "ok": true,
+   "detail": "top-2 256.3004 vs top-1 267.2185"
+  },
+  {
+   "group": "demo",
+   "name": "同一 seed 下搜索可复现：两次跑分的 8 条边选择、MAE 完全一致",
+   "ok": true,
+   "detail": "重复跑分 top-1 1,0,0,0,0,0,0,1"
+  }
+ ],
+ "seconds": 3.7898
+}

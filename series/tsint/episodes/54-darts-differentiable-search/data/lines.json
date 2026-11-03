@@ -1,0 +1,2857 @@
+{
+ "entry": "src/tsint-54-darts-differentiable-search/script.ts",
+ "fps": 30,
+ "totalSec": 1598.78,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch06",
+   "start": 0,
+   "dur": 219.37
+  },
+  {
+   "id": "problem",
+   "chapter": "ch06",
+   "start": 219.37,
+   "dur": 207.37
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch06",
+   "start": 426.74,
+   "dur": 197.22
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch06",
+   "start": 623.96,
+   "dur": 193.11
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch06",
+   "start": 817.07,
+   "dur": 198.3
+  },
+  {
+   "id": "verification",
+   "chapter": "ch06",
+   "start": 1015.37,
+   "dur": 216.58
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch06",
+   "start": 1231.95,
+   "dur": 191.96
+  },
+  {
+   "id": "outro",
+   "chapter": "ch06",
+   "start": 1423.91,
+   "dur": 174.87
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.26,
+   "speech": "这一集，我们把选架构这件事变成可微的。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.64,
+   "dur": 3.69,
+   "speech": "先给结论：机制成立，收益不成立。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.51,
+   "dur": 5.58,
+   "speech": "四十八个离散选择，二十步搜索，最后只保住两条路径。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 15.27,
+   "dur": 5.7,
+   "speech": "上一集讲平均：把十个模型平均起来，赢不过最强的那一个。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 21.15,
+   "dur": 5.13,
+   "speech": "这一集问的是另一个问题：架构本身能不能被搜索出来。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 26.46,
+   "dur": 3.78,
+   "speech": "一个神经网络有很多可以选的结构。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 30.42,
+   "dur": 4.17,
+   "speech": "用哪种算子，连几条边，堆几个模块。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 34.77,
+   "dur": 3.97,
+   "speech": "手工设计靠经验，自动搜索靠算力。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 38.92,
+   "dur": 3.47,
+   "speech": "算力有限的时候，搜索必须便宜。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 42.57,
+   "dur": 4.24,
+   "speech": "便宜的办法之一，是让选择变成连续变量。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 46.99,
+   "dur": 3.59,
+   "speech": "我们先把问题缩小到一个玩具格子。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 50.76,
+   "dur": 3.54,
+   "speech": "八条边，每条边三个候选算子。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 54.48,
+   "dur": 4.31,
+   "speech": "三个算子是恒等、一维卷积、置零。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 58.97,
+   "dur": 3.83,
+   "speech": "一个格子有八个块，每个块一次选择。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 62.98,
+   "dur": 4.57,
+   "speech": "两个块共享同一套选择，所以是四十八个决策。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 67.73,
+   "dur": 4.43,
+   "speech": "六千五百六十一种组合，这是单个块的架构数。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 72.34,
+   "dur": 4.17,
+   "speech": "原论文的搜索空间大约是一百万个架构。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 76.69,
+   "dur": 4.45,
+   "speech": "四十八个决策，差不多是它的两万分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 81.32,
+   "dur": 3.16,
+   "speech": "空间小，不代表问题简单。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 84.66,
+   "dur": 2.99,
+   "speech": "因为离散空间没法求导。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 87.83,
+   "dur": 4.14,
+   "speech": "你想知道换一个算子，损失会降多少。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 92.15,
+   "dur": 3.23,
+   "speech": "离散的选择给不出这个导数。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 95.56,
+   "dur": 4.02,
+   "speech": "于是有了松弛：不要选一个，先全都要。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 99.77,
+   "dur": 4.17,
+   "speech": "每个算子给一个权重，权重由参数决定。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 104.11,
+   "dur": 4.33,
+   "speech": "权重过 softmax，非负，加起来等于一。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 108.63,
+   "dur": 3.78,
+   "speech": "这样混合算子的输出对权重可导。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 112.59,
+   "dur": 4.29,
+   "speech": "权重对参数可导，参数就能用梯度更新。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 117.05,
+   "dur": 4.5,
+   "speech": "搜索就变成了训练，训练就能用反向传播。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 121.74,
+   "dur": 3.81,
+   "speech": "剩下的问题是：权重在哪个数据上学。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 125.72,
+   "dur": 4.17,
+   "speech": "在训练集上学权重，会过拟合训练集。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 130.07,
+   "dur": 5.53,
+   "speech": "所以权重在验证集上更新，参数在训练集上更新。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 135.78,
+   "dur": 3.66,
+   "speech": "这就是双层优化，两层交替走。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 139.62,
+   "dur": 4.21,
+   "speech": "精确的二阶梯度要算海森矩阵，太贵。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 144.02,
+   "dur": 4.77,
+   "speech": "本机用一阶近似：只走一步内层，再更新权重。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 148.96,
+   "dur": 3.9,
+   "speech": "搜索结束，权重会给出每条边的偏好。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 153.05,
+   "dur": 4.86,
+   "speech": "但混合算子不能直接上线，它太贵也太糊。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 158.09,
+   "dur": 4.48,
+   "speech": "所以要离散化：每条边取权重最大的算子。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 162.75,
+   "dur": 4.21,
+   "speech": "取一个叫 top-1，取两个叫 top-2。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 167.14,
+   "dur": 4.55,
+   "speech": "冻结选择，重新训练权重，再上检验集。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 171.87,
+   "dur": 4.07,
+   "speech": "这一集就用这套流程，跑一遍真实数据。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 176.12,
+   "dur": 3.93,
+   "speech": "数据是三十只沪深三百股票的日线。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 180.23,
+   "dur": 4.69,
+   "speech": "代理任务只有一个：用过去二十四天预测下一天。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 185.1,
+   "dur": 3.78,
+   "speech": "三十只股票，六万多个滑动窗口。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 189.06,
+   "dur": 3.95,
+   "speech": "训练、验证、检验按时间切分。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 193.19,
+   "dur": 3.52,
+   "speech": "搜索二十步，重训一百五十步。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 196.89,
+   "dur": 4.38,
+   "speech": "先看三个数：四十八、二十、两条路径。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 201.45,
+   "dur": 3.9,
+   "speech": "再看一条曲线：平均最大权重怎么走。"
+  },
+  {
+   "scene": "open",
+   "index": 47,
+   "start": 205.53,
+   "dur": 4.14,
+   "speech": "最后看一组误差：所有架构都输给零基线。"
+  },
+  {
+   "scene": "open",
+   "index": 48,
+   "start": 209.86,
+   "dur": 4.74,
+   "speech": "这不是一次成功的搜索，但它是一次完整的搜索。"
+  },
+  {
+   "scene": "open",
+   "index": 49,
+   "start": 214.78,
+   "dur": 2.39,
+   "speech": "下面从问题开始。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 220.57,
+   "dur": 3.09,
+   "speech": "先说清楚：为什么非要可微。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 223.84,
+   "dur": 4.12,
+   "speech": "一个格子，八条边，每条边三个算子。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 228.13,
+   "dur": 3.4,
+   "speech": "每个块的架构数是三的八次方。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 231.71,
+   "dur": 3.64,
+   "speech": "三的八次方等于六千五百六十一。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 235.53,
+   "dur": 3.59,
+   "speech": "两个块独立选，组合数还要平方。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 239.3,
+   "dur": 4,
+   "speech": "如果再加上隐藏表达式的选择，更大。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 243.48,
+   "dur": 3.9,
+   "speech": "网格搜索要把每个架构都训练一遍。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 247.56,
+   "dur": 3.81,
+   "speech": "一个架构训一百五十步，乘六千多。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 251.55,
+   "dur": 3.64,
+   "speech": "时间不是线性的，显存也扛不住。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 255.36,
+   "dur": 3.85,
+   "speech": "所以搜索方法的第一要务是省算力。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 259.4,
+   "dur": 4.55,
+   "speech": "省算力的路子有几条：剪枝、代理、可微。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 264.13,
+   "dur": 2.77,
+   "speech": "这一集走可微这条路。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 267.08,
+   "dur": 4.84,
+   "speech": "可微的核心，是把离散选择换成加权平均。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 272.1,
+   "dur": 3.52,
+   "speech": "原来是从三个算子里挑一个。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 275.8,
+   "dur": 4.5,
+   "speech": "现在是三个算子各出一份力，按权重相加。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 280.48,
+   "dur": 3.59,
+   "speech": "权重不是常数，是待学的参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 284.25,
+   "dur": 3.3,
+   "speech": "参数一变，混合比例就变。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 287.73,
+   "dur": 3.23,
+   "speech": "混合比例一变，输出就变。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 291.14,
+   "dur": 3.81,
+   "speech": "输出变，损失变，梯度就能传回去。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 295.13,
+   "dur": 4.45,
+   "speech": "这就是松弛，把组合优化变成连续优化。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 299.76,
+   "dur": 3.01,
+   "speech": "但松弛会带来一个新问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 302.96,
+   "dur": 4.65,
+   "speech": "混合算子训练出来的网络，和离散网络不一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 307.78,
+   "dur": 3.95,
+   "speech": "混合网络里有三条路径同时存在。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 311.91,
+   "dur": 2.85,
+   "speech": "离散网络里只有一条。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 314.94,
+   "dur": 4.21,
+   "speech": "所以搜索结束必须离散化，再重训。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 319.33,
+   "dur": 4.55,
+   "speech": "离散化之后，混合网络的经验可能全部失效。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 324.06,
+   "dur": 4.69,
+   "speech": "这一步不能省，省了就只是训练了一个混合网络。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 328.94,
+   "dur": 3.85,
+   "speech": "第二个问题是：权重在哪个数据上更新。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 332.97,
+   "dur": 5.97,
+   "speech": "如果在训练集上更新权重，它会和参数一起拟合训练集。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 339.12,
+   "dur": 3.59,
+   "speech": "这样选出来的架构只对训练集好。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 342.89,
+   "dur": 3.35,
+   "speech": "标准做法是把数据分成两份。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 346.42,
+   "dur": 3.45,
+   "speech": "一份训练参数，一份更新权重。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 350.04,
+   "dur": 3.9,
+   "speech": "两份数据交替使用，形成双层优化。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 354.12,
+   "dur": 3.23,
+   "speech": "上层目标：验证损失最小。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 357.53,
+   "dur": 3.16,
+   "speech": "下层目标：训练损失最小。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 360.87,
+   "dur": 5.75,
+   "speech": "下层的解是参数的函数，对权重求导要穿过下层训练。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 366.8,
+   "dur": 4.21,
+   "speech": "精确求导要算海森矩阵，代价太高。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 371.2,
+   "dur": 5.29,
+   "speech": "一阶近似只走一步下层，把这一步的梯度当成全部。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 376.67,
+   "dur": 4.24,
+   "speech": "这一步近似误差多大，本集不做理论分析。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 381.09,
+   "dur": 3.97,
+   "speech": "本集只做事后检查：跑出来的结果对不对。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 385.24,
+   "dur": 3.52,
+   "speech": "第三个问题：搜索空间怎么定义。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 388.94,
+   "dur": 3.37,
+   "speech": "原论文的空间很大，算子也多。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 392.49,
+   "dur": 4.45,
+   "speech": "本机把它压到三个算子、八条边、两个块。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 397.13,
+   "dur": 3.95,
+   "speech": "这是一个玩具格子，不是原论文的复现。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 401.26,
+   "dur": 3.85,
+   "speech": "玩具格子的好处是每一步都能手算。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 405.29,
+   "dur": 4.17,
+   "speech": "坏处是结论不能直接外推到原论文。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 409.64,
+   "dur": 3.06,
+   "speech": "这一集的目标不是复现论文。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 412.88,
+   "dur": 3.59,
+   "speech": "是把机制拆开，一步一步看清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 416.65,
+   "dur": 5.08,
+   "speech": "机制成立不成立，和收益成立不成立，是两件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 421.91,
+   "dur": 2.63,
+   "speech": "定义之后，先看机制。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 427.94,
+   "dur": 5.05,
+   "speech": "定义三个东西：混合算子、双层目标、三层空间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 433.17,
+   "dur": 2.89,
+   "speech": "第一条式子，混合算子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 436.25,
+   "dur": 2.85,
+   "speech": "每个算子先算一个输出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 439.27,
+   "dur": 2.65,
+   "speech": "每个算子有一个权重。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 442.11,
+   "dur": 3.16,
+   "speech": "权重是参数的 softmax。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 445.45,
+   "dur": 4.14,
+   "speech": "混合输出等于权重乘输出再求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 449.77,
+   "dur": 2.08,
+   "speech": "式六点一一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 452.03,
+   "dur": 3.69,
+   "speech": "参数全零的时候，三个权重相等。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 455.89,
+   "dur": 4.5,
+   "speech": "两个算子全零，权重就是零点五和零点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 460.57,
+   "dur": 7.09,
+   "speech": "参数是零和十，权重变成四点五四乘十的负五次方和零点九九九九五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 467.85,
+   "dur": 3.52,
+   "speech": "这两个是黄金值，单测里写死。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 471.55,
+   "dur": 3.54,
+   "speech": "混合两个算子，恒等和置零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 475.27,
+   "dur": 3.23,
+   "speech": "输入是一和二，权重各一半。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 478.68,
+   "dur": 3.18,
+   "speech": "输出是零点五和一点零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 482.04,
+   "dur": 4.17,
+   "speech": "置零算子输出零，恒等算子输出原值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 486.39,
+   "dur": 3.88,
+   "speech": "权重全给恒等，输出就复现输入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 490.44,
+   "dur": 2.56,
+   "speech": "这是第二条黄金值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 493.18,
+   "dur": 2.92,
+   "speech": "第二条式子，双层目标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 496.28,
+   "dur": 4,
+   "speech": "下层是训练损失，对参数求最小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 500.46,
+   "dur": 3.88,
+   "speech": "上层是验证损失，对权重求最小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 504.52,
+   "dur": 3.16,
+   "speech": "上层更新用验证集的梯度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 507.85,
+   "dur": 3.18,
+   "speech": "下层更新用训练集的梯度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 511.22,
+   "dur": 2.51,
+   "speech": "两个学习率分开设。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 513.91,
+   "dur": 4.84,
+   "speech": "权重学习率通常比参数学习率小两三个数量级。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 518.92,
+   "dur": 5.05,
+   "speech": "原论文用三乘十的负四次方，本机放大到零点零五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 524.16,
+   "dur": 4.38,
+   "speech": "放大是因为步数太少，不放大看不到塌缩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 528.72,
+   "dur": 3.54,
+   "speech": "第三条式子，三层搜索空间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 532.44,
+   "dur": 3.09,
+   "speech": "第一层是宏观：选哪些块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 535.71,
+   "dur": 4.57,
+   "speech": "第二层是微观：每个块里用哪些隐藏表达式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 540.46,
+   "dur": 3.81,
+   "speech": "第三层是算子：每条边用哪个算子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 544.45,
+   "dur": 3.76,
+   "speech": "三层各自做 softmax，各自归一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 548.39,
+   "dur": 3.95,
+   "speech": "宏观权重乘以块输出，再求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 552.52,
+   "dur": 4,
+   "speech": "微观权重乘以表达式输出，再求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 556.69,
+   "dur": 4.19,
+   "speech": "算子权重乘以算子输出，再求和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 561.06,
+   "dur": 3.57,
+   "speech": "三层套在一起，就是 ST 块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 564.81,
+   "dur": 5.46,
+   "speech": "黄金值：宏观权重零点九和零点一，块输出一和三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 570.45,
+   "dur": 2.61,
+   "speech": "加权结果是一点二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 573.24,
+   "dur": 4.07,
+   "speech": "微观权重各一半，表达式输出二和四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 577.49,
+   "dur": 2.29,
+   "speech": "加权结果是三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 579.96,
+   "dur": 4.77,
+   "speech": "再看一层：宏观一半、微观一半、块输出十。"
+  },
+  {
+   "scene": "definitions",
+   "index": 40,
+   "start": 584.91,
+   "dur": 2.61,
+   "speech": "组合结果是六点五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 41,
+   "start": 587.69,
+   "dur": 3.33,
+   "speech": "三个黄金值分别写进单测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 42,
+   "start": 591.2,
+   "dur": 3.49,
+   "speech": "三层空间的离散选择数是十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 43,
+   "start": 594.87,
+   "dur": 4.17,
+   "speech": "三个算子乘两个表达式乘两个块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 44,
+   "start": 599.22,
+   "dur": 3.69,
+   "speech": "这个数字很小，但结构是完整的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 45,
+   "start": 603.09,
+   "dur": 2.2,
+   "speech": "还需要两个性质。"
+  },
+  {
+   "scene": "definitions",
+   "index": 46,
+   "start": 605.46,
+   "dur": 3.81,
+   "speech": "第一，混合输出落在输入的凸包内。"
+  },
+  {
+   "scene": "definitions",
+   "index": 47,
+   "start": 609.45,
+   "dur": 4.33,
+   "speech": "第二，权重和输出一起换序，结果不变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 48,
+   "start": 613.96,
+   "dur": 5.08,
+   "speech": "凸包保证不会外插，置换等变保证与顺序无关。"
+  },
+  {
+   "scene": "definitions",
+   "index": 49,
+   "start": 619.22,
+   "dur": 2.53,
+   "speech": "定义齐了，看读数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 625.16,
+   "dur": 3.85,
+   "speech": "二十八项检查，五组，三点八秒。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 629.19,
+   "dur": 3.01,
+   "speech": "先看搜索本身有没有发生。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 632.39,
+   "dur": 3.64,
+   "speech": "权重轨迹从第一步到第二十步。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 636.21,
+   "dur": 5.37,
+   "speech": "平均最大权重从零点三三三四走到零点三三三八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 641.75,
+   "dur": 2.44,
+   "speech": "塌缩的边数是零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 644.37,
+   "dur": 4.12,
+   "speech": "也就是说，二十步里权重几乎没有动。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 648.67,
+   "dur": 4.43,
+   "speech": "默认学习率零点零五，这是论文尺度的学习率。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 653.28,
+   "dur": 2.73,
+   "speech": "权重只挪了万分之四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 656.18,
+   "dur": 4.26,
+   "speech": "这是第一个负结果：本机二十步搜不出架构。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 660.63,
+   "dur": 3.01,
+   "speech": "换一个角度：把学习率放大。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 663.82,
+   "dur": 5.25,
+   "speech": "零点零五、零点五、五、五十、五百，五档。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 669.25,
+   "dur": 2.56,
+   "speech": "前四档都没有塌缩。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 671.98,
+   "dur": 4.29,
+   "speech": "只有五百这一档，在第十二步塌到六条边。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 676.45,
+   "dur": 3.69,
+   "speech": "平均最大权重到零点九四二四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 680.32,
+   "dur": 3.85,
+   "speech": "塌缩了，但选中的算子只有两种。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 684.35,
+   "dur": 4,
+   "speech": "一条边一个选择，八条边里两种算子。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 688.53,
+   "dur": 2.29,
+   "speech": "塌缩不等于选对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 691,
+   "dur": 2.41,
+   "speech": "这是第二个负结果。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 693.6,
+   "dur": 2.75,
+   "speech": "再看离散化之后的误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 696.53,
+   "dur": 2.97,
+   "speech": "单位是基点，越小越好。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 699.67,
+   "dur": 5.1,
+   "speech": "零基线，也就是永远预测零，是二二一点八一五九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 704.95,
+   "dur": 4.29,
+   "speech": "初始化权重的网络是二七零点五二九二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 709.42,
+   "dur": 5.03,
+   "speech": "超网，也就是混合算子网络，是二八八点四七四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 714.63,
+   "dur": 5.03,
+   "speech": "top-1 架构重训一百五十步，是二六七点二一八五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 719.84,
+   "dur": 4.33,
+   "speech": "top-2 架构重训，是二五六点三零零四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 724.35,
+   "dur": 4.14,
+   "speech": "随机架构重训，是二三零点二七三八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 728.68,
+   "dur": 4.79,
+   "speech": "不切验证集的同批架构，是二三六点八四零三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 733.65,
+   "dur": 3.64,
+   "speech": "七个数字放在一起，顺序很清楚。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 737.46,
+   "dur": 3.37,
+   "speech": "从零基线开始，一路往上看。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 741.02,
+   "dur": 2.15,
+   "speech": "零基线最低。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 743.35,
+   "dur": 2.39,
+   "speech": "随机架构第二低。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 745.92,
+   "dur": 2.25,
+   "speech": "同批架构第三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 748.34,
+   "dur": 2.13,
+   "speech": "top-2 第四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 750.65,
+   "dur": 2.13,
+   "speech": "top-1 第五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 752.96,
+   "dur": 1.98,
+   "speech": "初始化第六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 755.12,
+   "dur": 2.73,
+   "speech": "超网最高，排第七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 758.02,
+   "dur": 3.57,
+   "speech": "所有训练过的网络都输给零基线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 761.77,
+   "dur": 4.41,
+   "speech": "这不是架构搜索的问题，是任务本身没有信号。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 766.36,
+   "dur": 4.19,
+   "speech": "三十只股票的次日收益，预测不出方向。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 770.73,
+   "dur": 3.33,
+   "speech": "但搜索的机制还是被检验了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 774.23,
+   "dur": 3.3,
+   "speech": "top-1 比随机差百分之十六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 777.71,
+   "dur": 3.9,
+   "speech": "top-2 比 top-1 低百分之四点零九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 781.8,
+   "dur": 4.19,
+   "speech": "不切验证集时，八条边里有七条不同。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 786.17,
+   "dur": 3.78,
+   "speech": "同一个种子跑两次，结果逐位一致。"
+  },
+  {
+   "scene": "metrics",
+   "index": 44,
+   "start": 790.13,
+   "dur": 4.48,
+   "speech": "四条读数，两条关于机制，两条关于收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 45,
+   "start": 794.79,
+   "dur": 3.66,
+   "speech": "机制：离散化能跑，搜索可复现。"
+  },
+  {
+   "scene": "metrics",
+   "index": 46,
+   "start": 798.63,
+   "dur": 4.45,
+   "speech": "收益：top-1 不如随机，top-2 也没赢。"
+  },
+  {
+   "scene": "metrics",
+   "index": 47,
+   "start": 803.26,
+   "dur": 3.9,
+   "speech": "还有一个数：搜索空间六千五百六十一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 48,
+   "start": 807.34,
+   "dur": 4.74,
+   "speech": "四十八个离散决策，约是原论文的两万分之一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 49,
+   "start": 812.27,
+   "dur": 2.61,
+   "speech": "读数够了，看实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 818.27,
+   "dur": 3.16,
+   "speech": "两个模块，三百一十一行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 821.61,
+   "dur": 4,
+   "speech": "一个管可微搜索，一个管三层空间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 825.79,
+   "dur": 4.41,
+   "speech": "都是纯函数，没有随机数，没有外部数值库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 830.37,
+   "dur": 2.41,
+   "speech": "第一个模块，DARTS。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 832.97,
+   "dur": 5.46,
+   "speech": "导出三个函数：混合算子、softmax 权重、搜索一步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 838.61,
+   "dur": 4.21,
+   "speech": "softmax 权重接收一个温度和一组参数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 843,
+   "dur": 3.64,
+   "speech": "先减去最大值，防止指数溢出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 846.82,
+   "dur": 2.65,
+   "speech": "再取指数、归一化。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 849.65,
+   "dur": 3.49,
+   "speech": "温度用来控制锐度，默认是一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 853.33,
+   "dur": 4.21,
+   "speech": "混合算子接收权重、算子列表和输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 857.72,
+   "dur": 4.43,
+   "speech": "每个算子先算输出，再按权重加权求和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 862.33,
+   "dur": 4.81,
+   "speech": "搜索一步接收参数、训练批、验证批和状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 867.33,
+   "dur": 3.11,
+   "speech": "先在内层走一步参数更新。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 870.62,
+   "dur": 2.97,
+   "speech": "再用验证批算上层梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 873.76,
+   "dur": 3.18,
+   "speech": "最后更新权重，步数加一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 877.12,
+   "dur": 3.81,
+   "speech": "权重更新完，把选择冻结成整数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 881.11,
+   "dur": 4.45,
+   "speech": "冻结的做法：选中的算子给十，其余给负十。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 885.74,
+   "dur": 4.19,
+   "speech": "这样 softmax 之后权重接近一和零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 890.11,
+   "dur": 2.89,
+   "speech": "第二个模块，三层空间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 893.19,
+   "dur": 3.76,
+   "speech": "宏观混合：权重乘块输出求和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 897.13,
+   "dur": 4.19,
+   "speech": "微观混合：权重乘表达式输出求和。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 901.5,
+   "dur": 4.45,
+   "speech": "三层组合：外层乘宏观，内层乘微观。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 906.13,
+   "dur": 3.95,
+   "speech": "三个函数都是加权求和，没有别的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 910.26,
+   "dur": 2.13,
+   "speech": "单测二十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 912.57,
+   "dur": 3.76,
+   "speech": "十二条给 DARTS，八条给三层空间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 916.5,
+   "dur": 4,
+   "speech": "黄金值全部写绝对值，浮点用容差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 920.68,
+   "dur": 3.13,
+   "speech": "混合算子的两条黄金值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 924,
+   "dur": 3.25,
+   "speech": "权重极端的第三条黄金值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 927.43,
+   "dur": 2.63,
+   "speech": "损失下降的第四条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 930.24,
+   "dur": 2.56,
+   "speech": "步数加一的第五条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 932.98,
+   "dur": 5.25,
+   "speech": "三层空间的六个黄金值：一点二、三点零、六点五。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 938.4,
+   "dur": 3.37,
+   "speech": "凸包、置换、离散选择数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 941.96,
+   "dur": 3.64,
+   "speech": "全仓断言现在是二千一百五十八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 945.78,
+   "dur": 2.63,
+   "speech": "加上这一集的二十条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 948.59,
+   "dur": 2.99,
+   "speech": "证据程序五百一十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 951.76,
+   "dur": 3.66,
+   "speech": "第一段读数据：CSV 逐行解析。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 955.6,
+   "dur": 3.37,
+   "speech": "每只股票算收益率，再滑窗。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 959.15,
+   "dur": 4,
+   "speech": "窗口长度二十四，标签是下一天收益。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 963.33,
+   "dur": 3.69,
+   "speech": "第二段切分：每只股票前七成训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 967.2,
+   "dur": 3.93,
+   "speech": "中间一成半验证，最后一成半检验。"
+  },
+  {
+   "scene": "implementation",
+   "index": 40,
+   "start": 971.3,
+   "dur": 5.05,
+   "speech": "第三段批处理：等距抽样，训练批最多一百五十个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 41,
+   "start": 976.54,
+   "dur": 3.54,
+   "speech": "验证批八十个，检验批三百个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 42,
+   "start": 980.26,
+   "dur": 4.6,
+   "speech": "为什么不整批算：整批太慢，二十步要跑很久。"
+  },
+  {
+   "scene": "implementation",
+   "index": 43,
+   "start": 985.04,
+   "dur": 4.43,
+   "speech": "第三段标准化：特征按训练段均值方差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 44,
+   "start": 989.65,
+   "dur": 3.28,
+   "speech": "标签也用训练段均值方差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 45,
+   "start": 993.1,
+   "dur": 4.29,
+   "speech": "误差换回基点，乘标准差再乘一万。"
+  },
+  {
+   "scene": "implementation",
+   "index": 46,
+   "start": 997.57,
+   "dur": 3.13,
+   "speech": "第四段搜索：二十个外层步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 47,
+   "start": 1000.88,
+   "dur": 4.14,
+   "speech": "第五段重训：四个架构，每个一百五十步。"
+  },
+  {
+   "scene": "implementation",
+   "index": 48,
+   "start": 1005.21,
+   "dur": 4.79,
+   "speech": "第六段写读数：JSON、检查清单、汇总。"
+  },
+  {
+   "scene": "implementation",
+   "index": 49,
+   "start": 1010.18,
+   "dur": 2.99,
+   "speech": "一条命令，四秒内跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 1016.57,
+   "dur": 2.75,
+   "speech": "现在看二十八项怎么过。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 1019.5,
+   "dur": 3.76,
+   "speech": "一条命令，五组检查，三点八秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 1023.44,
+   "dur": 2.1,
+   "speech": "数据组四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 1025.72,
+   "dur": 4.12,
+   "speech": "三十只股票，每只至少一千五百根日线。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 1030.02,
+   "dur": 3.45,
+   "speech": "共同交易日一千四百九十五天。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 1033.64,
+   "dur": 3.45,
+   "speech": "滑动窗口六万零一百一十五个。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 1037.27,
+   "dur": 4.55,
+   "speech": "每只最少一千五百一十九，最多两千四百零六。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 1042,
+   "dur": 5.22,
+   "speech": "切分四万二千零六十七、九千零三、九千零四十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 1047.4,
+   "dur": 4.53,
+   "speech": "三段加起来正好六万零一百一十五，不重叠。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 1052.11,
+   "dur": 2.03,
+   "speech": "DARTS 组六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 1054.32,
+   "dur": 4.09,
+   "speech": "参数零和零，权重零点五和零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 1058.59,
+   "dur": 6.78,
+   "speech": "参数零和十，权重四点五四乘十的负五次方和零点九九九九五。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 1065.55,
+   "dur": 5.41,
+   "speech": "恒等与置零各一半，输入一二，输出零点五和一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 1071.15,
+   "dur": 3.57,
+   "speech": "权重全给恒等，输出复现输入。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 1074.89,
+   "dur": 5.94,
+   "speech": "二十步参数更新，损失从零点三七六三降到零点二七九八。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 1081.02,
+   "dur": 5.08,
+   "speech": "搜索走一步，步数加一，权重位移零点零零二九。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 1086.27,
+   "dur": 2.15,
+   "speech": "搜索组六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 1088.6,
+   "dur": 4.91,
+   "speech": "空间：三个算子、八条边、六千五百六十一个架构。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 1093.69,
+   "dur": 5.05,
+   "speech": "离散决策四十八个，原论文一百万个，两万分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 1098.93,
+   "dur": 5.58,
+   "speech": "学习率阶梯：零点零五、零点五、五、五十、五百。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 1104.69,
+   "dur": 4.89,
+   "speech": "末步权重从零点三三三八升到零点九四二四。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 1109.76,
+   "dur": 5.89,
+   "speech": "中间三档是零点三三八二、零点三八零六、零点六五八五。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 1115.83,
+   "dur": 3.76,
+   "speech": "五百这一档，第十二步塌到六条边。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 1119.77,
+   "dur": 4.14,
+   "speech": "塌缩后只剩两种算子，不是全押一种。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1124.09,
+   "dur": 4.26,
+   "speech": "默认跑分没有塌缩，末步零点三三三八。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1128.53,
+   "dur": 4.21,
+   "speech": "全流程三点八秒，低于一百二十秒上限。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1132.93,
+   "dur": 2.53,
+   "speech": "三层空间组六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1135.64,
+   "dur": 3.18,
+   "speech": "宏观一点二，微观三点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1139,
+   "dur": 2.53,
+   "speech": "三层组合六点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1141.72,
+   "dur": 6.54,
+   "speech": "凸包：三个权重零点二、零点三、零点五，输出落在一到四之间。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1148.44,
+   "dur": 5.92,
+   "speech": "置换：零点四乘一加零点六乘三，等于二点二，换序不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1154.54,
+   "dur": 2.29,
+   "speech": "离散选择十二个。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1157.01,
+   "dur": 2.05,
+   "speech": "演示组六项。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1159.24,
+   "dur": 4.91,
+   "speech": "超网误差二八八点四七四，高于所有离散架构。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1164.33,
+   "dur": 6.3,
+   "speech": "top-1 二六七点二一八五，随机二三零点二七三八，差百分之十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1170.82,
+   "dur": 4.84,
+   "speech": "所有重训架构都输给零基线二二一点八一五九。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1175.83,
+   "dur": 3.47,
+   "speech": "不切验证集时，七条边不同。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1179.48,
+   "dur": 5.05,
+   "speech": "top-2 和二六七点二一八五相差百分之四点零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1184.72,
+   "dur": 3.61,
+   "speech": "同一个种子，两次跑分逐位一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1188.51,
+   "dur": 3.28,
+   "speech": "二十八项全过，没有改阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 40,
+   "start": 1191.97,
+   "dur": 3.37,
+   "speech": "负结果也写成断言，不是注释。"
+  },
+  {
+   "scene": "verification",
+   "index": 41,
+   "start": 1195.52,
+   "dur": 3.59,
+   "speech": "这是这一集最想让你看到的做法。"
+  },
+  {
+   "scene": "verification",
+   "index": 42,
+   "start": 1199.29,
+   "dur": 3.61,
+   "speech": "计划里猜的三个结论，两个不成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 43,
+   "start": 1203.09,
+   "dur": 3.47,
+   "speech": "后面引用这一集，只能用这些数。"
+  },
+  {
+   "scene": "verification",
+   "index": 44,
+   "start": 1206.74,
+   "dur": 3.37,
+   "speech": "别把机制成立说成收益成立。"
+  },
+  {
+   "scene": "verification",
+   "index": 45,
+   "start": 1210.29,
+   "dur": 3.54,
+   "speech": "也别把本机复现说成论文复现。"
+  },
+  {
+   "scene": "verification",
+   "index": 46,
+   "start": 1214.01,
+   "dur": 3.52,
+   "speech": "三点八秒能跑完，是因为规模小。"
+  },
+  {
+   "scene": "verification",
+   "index": 47,
+   "start": 1217.71,
+   "dur": 4.05,
+   "speech": "换成原论文的规模，时间要按小时算。"
+  },
+  {
+   "scene": "verification",
+   "index": 48,
+   "start": 1221.94,
+   "dur": 5.32,
+   "speech": "但检查的结构是一样的：先数据，再机制，再收益。"
+  },
+  {
+   "scene": "verification",
+   "index": 49,
+   "start": 1227.44,
+   "dur": 2.32,
+   "speech": "下一段讲边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1233.15,
+   "dur": 2.1,
+   "speech": "先说什么成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1235.43,
+   "dur": 4.5,
+   "speech": "式六点一一到六点一三的黄金值全部成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1240.11,
+   "dur": 5.87,
+   "speech": "softmax 归一、混合输出、凸包、置换等变，逐条验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1246.16,
+   "dur": 5.05,
+   "speech": "离散化流程能跑通：冻结、重训、上检验集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1251.4,
+   "dur": 2.27,
+   "speech": "同种子可复现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1253.85,
+   "dur": 3.33,
+   "speech": "三层空间能组合出六点五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1257.35,
+   "dur": 2.8,
+   "speech": "这些是机制层面的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1260.33,
+   "dur": 2.53,
+   "speech": "再说收益这一面。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1263.05,
+   "dur": 2.85,
+   "speech": "二十步搜索没有塌缩。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1266.07,
+   "dur": 5.41,
+   "speech": "放大到五百步学习率才塌缩，但选中的算子只有两种。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1271.67,
+   "dur": 3.3,
+   "speech": "top-1 比随机差百分之十六。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1275.15,
+   "dur": 3.16,
+   "speech": "所有训练架构输给零基线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1278.49,
+   "dur": 3.64,
+   "speech": "所以这一集不能声称搜索有效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1282.3,
+   "dur": 3.18,
+   "speech": "为什么没塌缩，有三个可能。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1285.67,
+   "dur": 6.18,
+   "speech": "第一，步数太少。论文是五十轮乘六百步，本机二十步。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1292.03,
+   "dur": 6.47,
+   "speech": "第二，学习率不匹配。论文三乘十的负四次方，本机零点零五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1298.68,
+   "dur": 4.69,
+   "speech": "第三，任务太弱。次日收益没有可学信号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1303.55,
+   "dur": 3.95,
+   "speech": "三个可能都写进边界，不选一个当答案。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1307.68,
+   "dur": 3.45,
+   "speech": "还有一个近似：下层只走一步。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1311.31,
+   "dur": 3.23,
+   "speech": "一阶近似忽略了海森矩阵。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1314.72,
+   "dur": 3.37,
+   "speech": "步数越少，这个忽略越明显。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1318.27,
+   "dur": 3.3,
+   "speech": "论文用二阶近似，本机没有。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1321.75,
+   "dur": 4.84,
+   "speech": "所以本机的搜索结果和论文的搜索结果不可比。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1326.77,
+   "dur": 2.87,
+   "speech": "第三个边界：空间规模。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1329.82,
+   "dur": 3.52,
+   "speech": "本机三个算子，论文十个左右。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1333.52,
+   "dur": 3.45,
+   "speech": "本机八条边，论文的格子更大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1337.15,
+   "dur": 3.4,
+   "speech": "本机两个块，论文的层数更多。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1340.72,
+   "dur": 3.88,
+   "speech": "本机四十八个决策，论文约一百万个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1344.78,
+   "dur": 3.01,
+   "speech": "两万倍的差距，不能外推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1347.98,
+   "dur": 2.49,
+   "speech": "第四个边界：数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1350.64,
+   "dur": 3.71,
+   "speech": "三十只股票，一个市场，七年多。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1354.53,
+   "dur": 3.61,
+   "speech": "单步预测，单变量，线性头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1358.33,
+   "dur": 3.81,
+   "speech": "没有协变量，没有图结构，没有多任务。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1362.31,
+   "dur": 2.77,
+   "speech": "这些都不是论文的设置。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1365.27,
+   "dur": 3.28,
+   "speech": "第五个边界：结论的适用范围。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1368.72,
+   "dur": 3.33,
+   "speech": "机制成立，指的是实现正确。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1372.23,
+   "dur": 3.88,
+   "speech": "收益不成立，指的是这个任务上没用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1376.29,
+   "dur": 2.41,
+   "speech": "两句话不能互换。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1378.88,
+   "dur": 3.85,
+   "speech": "也不能因为收益不成立，就说机制错了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1382.92,
+   "dur": 3.73,
+   "speech": "更不能因为机制成立，就说方法有用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 40,
+   "start": 1386.83,
+   "dur": 3.95,
+   "speech": "这一集的价值，在于把两件事分开。"
+  },
+  {
+   "scene": "boundary",
+   "index": 41,
+   "start": 1390.96,
+   "dur": 2.49,
+   "speech": "下一集继续省算力。"
+  },
+  {
+   "scene": "boundary",
+   "index": 42,
+   "start": 1393.63,
+   "dur": 4.5,
+   "speech": "三种剪枝：子空间、比较器、组合预测器。"
+  },
+  {
+   "scene": "boundary",
+   "index": 43,
+   "start": 1398.31,
+   "dur": 3.83,
+   "speech": "它们都回答同一个问题：怎么少试几次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 44,
+   "start": 1402.32,
+   "dur": 2.15,
+   "speech": "这一集是把选择变连续。"
+  },
+  {
+   "scene": "boundary",
+   "index": 45,
+   "start": 1404.65,
+   "dur": 2.85,
+   "speech": "下一集是把空间变小。"
+  },
+  {
+   "scene": "boundary",
+   "index": 46,
+   "start": 1407.67,
+   "dur": 2.73,
+   "speech": "两种思路，一个目标。"
+  },
+  {
+   "scene": "boundary",
+   "index": 47,
+   "start": 1410.58,
+   "dur": 4.33,
+   "speech": "记住三个数：四十八、二十、两条路径。"
+  },
+  {
+   "scene": "boundary",
+   "index": 48,
+   "start": 1415.09,
+   "dur": 3.69,
+   "speech": "再记一句：机制成立，收益不成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 49,
+   "start": 1418.96,
+   "dur": 2.75,
+   "speech": "讲完边界，开始收尾。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1425.11,
+   "dur": 3.83,
+   "speech": "回到开头的问题：架构能不能被搜索。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1429.12,
+   "dur": 4.45,
+   "speech": "这一集的答案是：能被连续化，但没搜出收益。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1433.75,
+   "dur": 2.05,
+   "speech": "先说三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1435.99,
+   "dur": 2.58,
+   "speech": "四十八个离散选择。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1438.75,
+   "dur": 2.03,
+   "speech": "二十步搜索。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1440.96,
+   "dur": 3.54,
+   "speech": "两条路径：top-1 和 top-2。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1444.68,
+   "dur": 2.17,
+   "speech": "再说三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1447.04,
+   "dur": 5.1,
+   "speech": "第一，混合算子是可微的，公式和黄金值都成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1452.32,
+   "dur": 6.73,
+   "speech": "第二，搜索在本机没有塌缩，放大学习率才塌缩，塌缩也不等于选对。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1459.23,
+   "dur": 5.53,
+   "speech": "第三，所有重训架构都输给零基线，任务本身没有信号。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1464.95,
+   "dur": 2.61,
+   "speech": "三个数，三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1467.73,
+   "dur": 2.29,
+   "speech": "再看一眼证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1470.21,
+   "dur": 2.92,
+   "speech": "二十八项检查，五组。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1473.3,
+   "dur": 3.97,
+   "speech": "数据四项，DARTS 六项，搜索六项。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1477.46,
+   "dur": 3.21,
+   "speech": "三层空间六项，演示六项。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1480.84,
+   "dur": 2.44,
+   "speech": "总耗时三点八秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1483.46,
+   "dur": 3.18,
+   "speech": "全仓断言二千一百五十八。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1486.82,
+   "dur": 2.63,
+   "speech": "这一集新增二十条。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1489.63,
+   "dur": 2.8,
+   "speech": "两个模块三百一十一行。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1492.61,
+   "dur": 2.99,
+   "speech": "证据程序五百一十九行。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1495.78,
+   "dur": 2.56,
+   "speech": "这些数字都能复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1498.52,
+   "dur": 2.51,
+   "speech": "复现命令在 plan 里。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1501.21,
+   "dur": 3.09,
+   "speech": "一行命令，一条数据路径。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1504.48,
+   "dur": 3.13,
+   "speech": "不需要 GPU，不需要联网。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1507.79,
+   "dur": 2.65,
+   "speech": "这就是可验证的意思。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1510.62,
+   "dur": 4.29,
+   "speech": "不是跑通一次，是每次都能跑出同一组数。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1515.09,
+   "dur": 2.34,
+   "speech": "下一集讲剪枝。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1517.61,
+   "dur": 2.56,
+   "speech": "三种省算力的办法。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1520.35,
+   "dur": 3.16,
+   "speech": "子空间：把搜索空间缩小。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1523.69,
+   "dur": 3.45,
+   "speech": "比较器：用便宜的代理比较架构。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1527.31,
+   "dur": 3.28,
+   "speech": "组合预测器：预测组合的效果。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1530.77,
+   "dur": 3.23,
+   "speech": "三件事，一个目标：少试。"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1534.18,
+   "dur": 3.76,
+   "speech": "这一集的可微搜索，也是少试的一种。"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1538.12,
+   "dur": 2.92,
+   "speech": "只是它把试变成了训练。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1541.22,
+   "dur": 3.61,
+   "speech": "下一集把训练再变回试更少。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1545.01,
+   "dur": 3.69,
+   "speech": "系列做到这里，已经交付六十四集。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1548.88,
+   "dur": 2.53,
+   "speech": "第六章还剩十集。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1551.59,
+   "dur": 4.17,
+   "speech": "从搜索到集成，从剪枝到基础模型。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1555.94,
+   "dur": 3.64,
+   "speech": "每一集都有一个可复现的证据程序。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1559.76,
+   "dur": 4.12,
+   "speech": "每一集都有一个明确的负结果或正结果。"
+  },
+  {
+   "scene": "outro",
+   "index": 40,
+   "start": 1564.05,
+   "dur": 2.46,
+   "speech": "这是这个系列的做法。"
+  },
+  {
+   "scene": "outro",
+   "index": 41,
+   "start": 1566.7,
+   "dur": 2.73,
+   "speech": "最后再看一眼三个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 42,
+   "start": 1569.6,
+   "dur": 3.37,
+   "speech": "四十八、二十、两条路径。"
+  },
+  {
+   "scene": "outro",
+   "index": 43,
+   "start": 1573.16,
+   "dur": 2.85,
+   "speech": "机制成立，收益不成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 44,
+   "start": 1576.18,
+   "dur": 3.25,
+   "speech": "如果你只记一句话，记这句。"
+  },
+  {
+   "scene": "outro",
+   "index": 45,
+   "start": 1579.62,
+   "dur": 2.44,
+   "speech": "下一集，我们再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 46,
+   "start": 1582.23,
+   "dur": 3.21,
+   "speech": "到时候我们从少试几次开始。"
+  },
+  {
+   "scene": "outro",
+   "index": 47,
+   "start": 1585.62,
+   "dur": 4.43,
+   "speech": "先看子空间，再看比较器，再看组合预测。"
+  },
+  {
+   "scene": "outro",
+   "index": 48,
+   "start": 1590.23,
+   "dur": 2.85,
+   "speech": "三个办法，三种省法。"
+  },
+  {
+   "scene": "outro",
+   "index": 49,
+   "start": 1593.26,
+   "dur": 3.33,
+   "speech": "下一集：《省算力的三种剪枝》。"
+  }
+ ]
+}
