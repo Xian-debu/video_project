@@ -741,3 +741,19 @@
 - **可逆性**：高（模块与证据可整段回退；负结果在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；两仓各自 commit 可回退）。
 - **返工成本**：语义修正 1 轮（diversity → centered variance，17 条单测同步）；Cholesky 性能修复 1 轮（列表索引 O(n⁴) → STArray O(n³)）；静帧 3 轮（Pareto 标签两次、矩阵换行、百分比口径、两处 label）；TTS 首跑被 run_code 120 s deadline 杀掉后补 23 条，另因 5.75 重录 2 条；make 首轮被 content check 拦 1 轮；plan 草稿与 docs 分两次提交。
 
+
+## A54 E57 交付：三种切法都成立，真实序列退化（2026-11-04 凌晨）
+
+- **决定（主结论落在 token 数，不吹模型效果）**：同一条 96 点序列，patch=8/16/32 给出 **12/6/3** 个 token，合计 **21**；p=16、stride=8 的重叠切分 **11**；合成正弦周期 **24** 给 **4** 个周期 token；四档分辨率 512/256/128/64 各配 32 维前缀。全片不训练任何模型，只回答「怎么切、切出几个、为什么 token 数重要」。
+- **决定（真实序列的退化当正式结论讲）**：000001.SZ 最后 512 点，lag 24 自相关只有 **0.4243**、单调衰减、没有局部峰，`dominantPeriod` 返回 Nothing；周期切片退化为固定 patch。屏幕在第 4、7 场两次讲这条路径，合成正弦只用来验证公式，两者不混着说。
+- **决定（自相关用无偏估计）**：首版按除 n 归一化，正弦 lag 24 只有 **0.75**，峰高与 0.3 阈值都失真；改成 k/(n−k) 修正后再归一化，lag 24 = **1.0000**，lag 0 = 1，lag 24 与 48 同为峰取第一个 24。
+- **决定（投影选 DCT-II，正交可逆）**：W[i][j]=sqrt(2/p)cos(π(i+0.5)j/p)，第 0 列 sqrt(1/p)，WᵀW=I；重构误差 **3.11e-15**、正交误差 **2.02e-15**，覆盖 96/96，验证「这是换坐标，不是近似」。
+- **决定（前缀向量固定正弦，不训练）**：书里的 e_r 可学习；本集用固定 sin 编码保持「三种切法都不训练」的单变量设定，四档共用 32 维表，拼接长度 +1、位置编码整体偏移一位；最近档按绝对差、平手取小（3→2、6→4）。
+- **决定（周期切片只取完整周期）**：余数丢弃、不补零（本数据余数 0）；补零会污染注意力，边界页写明。
+- **决定（成片 17:55.7，标题改「十八分钟」）**：350 行讲稿实测语音 **864.4 s**，成片 **1,075.70 s / 32,271 帧 / 8 场 35 页 / 350 cue**；原计划 16 分钟、标题写「十六分钟」，实测超 1:55.7，改标题与 boundary#5 旁白为「十八分钟」，删除该 clip 重录一条再重建 narration，不压缩场次。
+- **决定（时间轴以运行时脚本为准）**：make_script 后先 dump 时引擎 voice.json 仍是上一版，dump 得 1,079.70 s；films sync 后同一 script 实为 **1,075.70 s**。重新 dump、重建 narration、重算 35 张静帧的页中点，消除 4 s 漂移与页映射错位；这条写进 HANDOFF 卡点。
+- **决定（封面帧 180，与 E52–E56 一致）**：标题页 0–20 s 稳定，180 帧（6.00 s）；film.json publish.coverFrame=180，cover.png **193,112 B**。
+- **决定（版式三修）**：open P4 的「78.1%」是 (96−21)/96 的废读数，改成「96 ÷ 8 = 12；三种长度合计 21」；verification P4 的 `512 / 256 / 128 / 64` 在 300 px 值列换行挤 note，改 `512 → 64` 并把四档写进 note；boundary 标题与 chip 随 18 分钟同步。
+- **依据**：evidence JSON（inventory/evidence/57-tokenization-trio.ch7-token.json，**22/22、<1 s**；data 4 / patch 7 / period 5 / prefix 6）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree 2836635f1706321e / mix peak −1.00 dBFS、RMS −27.25 dBFS / ducked 48.9%）、loudnorm 输出 **−15.9 LUFS / TP −2.0 dBFS / LRA 2.3**（目标 −15 / −2，Dynamic +0.9）、luma（32,271 帧 mean 21.04 / min 14.32 / max 22.71 / mean|d| 0.0138 / p99 0.1054 / max 7.45 / 7 切点）、35 页静帧全部人工看（八场关键页）、still_lint 4 帧 PASS、cabal test **2,235 条断言 / 171 套**（新增 50 条）、make PASS 日志；ts-base b214ad4 + 78343c3 + 3d69344，ts-admin 074e746，video_project 6e77d7f + 本次 delivery + 本次 docs。
+- **可逆性**：高（三模块 + 证据 + pack 可整段回退；真实序列退化在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；三仓各自 commit 可回退）。
+- **返工成本**：自相关有偏→无偏 1 轮（含 15 条单测）；TTS 首跑被 run_code 120 s deadline 杀掉后补测 1 轮；时间轴双版本 1 轮（重 dump + narration + 35 静帧）；成片标题 16→18 分钟 1 轮（重录 boundary#5）；静帧版式 3 处（open 废读数、verification 换行、boundary 标题）；make 一次 PASS。

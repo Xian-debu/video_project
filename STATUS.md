@@ -72,7 +72,7 @@
 | tsint-54-darts-differentiable-search | 把架构搜索变成可微：DARTS 与三层搜索空间 | ready | 1599 | yes | ok | 11 | - |
 | tsint-55-generalizable-search | 省算力的三种剪枝：子空间、比较器与组合预测器 | ready | 1233 | yes | ok | 11 | - |
 | tsint-56-ensemble-ga-krr | 先筛模型再调权：遗传算法筛选 + 核岭回归融合 | ready | 1281 | yes | ok | 11 | - |
-| tsint-57-tokenization-trio | 把序列切成块：Patch、周期、分辨率前缀 | draft | 960 | silent | ok | 1 | - |
+| tsint-57-tokenization-trio | 把序列切成块：Patch、周期、分辨率前缀 | ready | 1076 | yes | ok | 11 | - |
 | tsint-58-channel-strategies | 通道独立还是混合：一个由相关性决定的选择题 | draft | 1200 | silent | ok | 1 | - |
 | tsint-59-mini-foundation-loop | 一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | draft | 1440 | silent | ok | 1 | - |
 | tsint-60-ar-vs-nar-decoding | 一步一步还是一口气：自回归与非自回归解码 | draft | 960 | silent | ok | 1 | - |
