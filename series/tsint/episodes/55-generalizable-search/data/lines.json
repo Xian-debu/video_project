@@ -1,0 +1,2577 @@
+{
+ "entry": "src/tsint-55-generalizable-search/script.ts",
+ "fps": 30,
+ "totalSec": 1232.34,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch06",
+   "start": 0,
+   "dur": 176.36
+  },
+  {
+   "id": "problem",
+   "chapter": "ch06",
+   "start": 176.36,
+   "dur": 163.4
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch06",
+   "start": 339.76,
+   "dur": 138.11
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch06",
+   "start": 477.87,
+   "dur": 168.7
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch06",
+   "start": 646.57,
+   "dur": 137.41
+  },
+  {
+   "id": "verification",
+   "chapter": "ch06",
+   "start": 783.98,
+   "dur": 149.08
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch06",
+   "start": 933.06,
+   "dur": 138.47
+  },
+  {
+   "id": "outro",
+   "chapter": "ch06",
+   "start": 1071.53,
+   "dur": 160.81
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 4.12,
+   "speech": "上一集，我们把架构选择变成了权重。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 5.5,
+   "dur": 3.37,
+   "speech": "这一集换一个方向：不训练超网。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 9.05,
+   "dur": 3.93,
+   "speech": "问题很直接：搜索空间比算力大得多。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 13.16,
+   "dur": 3.59,
+   "speech": "真实的联合空间，十的二十次方。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.93,
+   "dur": 3.47,
+   "speech": "一个任务，只允许评估几百次。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.58,
+   "dur": 2.92,
+   "speech": "这是一集要解的算术题。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.68,
+   "dur": 3.37,
+   "speech": "合成空间小一点：一百万个点。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 27.23,
+   "dur": 3.54,
+   "speech": "只给一万次评估，也就是百分之一。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 30.95,
+   "dur": 4.02,
+   "speech": "三种省算力的做法，都在这百分之一里。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 35.15,
+   "dur": 2.63,
+   "speech": "先给结论，再给证据。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 37.96,
+   "dur": 2.73,
+   "speech": "第一种，子空间收缩。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 40.87,
+   "dur": 3.45,
+   "speech": "从一个大盒子里，先采一批点。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 44.5,
+   "dur": 2.61,
+   "speech": "保留表现好的那一半。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.28,
+   "dur": 3.54,
+   "speech": "用这批点的均值，画一个新盒子。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 51,
+   "dur": 2.92,
+   "speech": "盒子一轮比一轮小。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 54.1,
+   "dur": 2.68,
+   "speech": "第二种，成对比较器。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 56.96,
+   "dur": 3.57,
+   "speech": "先花两百次，学会比较两个架构。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 60.71,
+   "dur": 2.97,
+   "speech": "再用它给十万个候选排序。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 63.85,
+   "dur": 3.09,
+   "speech": "只真实评排序第一的那一个。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 67.12,
+   "dur": 3.23,
+   "speech": "两百零一次评估，也是一条路。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 70.53,
+   "dur": 2.85,
+   "speech": "第三种，组合预测器。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 73.55,
+   "dur": 2.53,
+   "speech": "把空间切成八块。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 76.27,
+   "dur": 2.61,
+   "speech": "每块先采二十个点。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 79.05,
+   "dur": 3.33,
+   "speech": "用块内平均分，留下四块。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 82.56,
+   "dur": 3.23,
+   "speech": "剩下的预算，只在四块里花。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 85.97,
+   "dur": 3.04,
+   "speech": "三种做法，有一个共同点。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 89.19,
+   "dur": 3.66,
+   "speech": "都把真实评估，当成最贵的资源。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 93.03,
+   "dur": 3.28,
+   "speech": "合成空间里，先验证机制。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 96.49,
+   "dur": 3.78,
+   "speech": "真实任务上，再看还剩下多少收益。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 100.45,
+   "dur": 2.94,
+   "speech": "机制和收益，要分开说。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 103.57,
+   "dur": 3.33,
+   "speech": "合成空间，一百万个四维点。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 107.08,
+   "dur": 2.92,
+   "speech": "质量就是四个坐标相加。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 110.18,
+   "dur": 3.54,
+   "speech": "百分之一的分位线，三点三零一四。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 113.9,
+   "dur": 4.29,
+   "speech": "随机一万个点，最好值三点七七五九。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 118.36,
+   "dur": 3.28,
+   "speech": "子空间策略，三点八七八。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 121.82,
+   "dur": 3.28,
+   "speech": "比较器策略，三点九零七二。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 125.28,
+   "dur": 3.4,
+   "speech": "组合预测器，三点九一八三。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 128.86,
+   "dur": 3.81,
+   "speech": "三种都过线，但只抬高百分之三。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 132.84,
+   "dur": 3.85,
+   "speech": "随机自己也能过线，所以要看抬升。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 136.88,
+   "dur": 3.21,
+   "speech": "第一条结论，必须说得小心。"
+  },
+  {
+   "scene": "open",
+   "index": 40,
+   "start": 140.26,
+   "dur": 2.65,
+   "speech": "换到真实的代理任务。"
+  },
+  {
+   "scene": "open",
+   "index": 41,
+   "start": 143.1,
+   "dur": 2.99,
+   "speech": "三十只股票，十二个架构。"
+  },
+  {
+   "scene": "open",
+   "index": 42,
+   "start": 146.27,
+   "dur": 3.16,
+   "speech": "六万个窗口，二十四步回看。"
+  },
+  {
+   "scene": "open",
+   "index": 43,
+   "start": 149.61,
+   "dur": 3.35,
+   "speech": "检验误差，最低六点一七八。"
+  },
+  {
+   "scene": "open",
+   "index": 44,
+   "start": 153.14,
+   "dur": 3.09,
+   "speech": "零基线，是六点一七八二。"
+  },
+  {
+   "scene": "open",
+   "index": 45,
+   "start": 156.4,
+   "dur": 2.7,
+   "speech": "两者只差万分之三。"
+  },
+  {
+   "scene": "open",
+   "index": 46,
+   "start": 159.28,
+   "dur": 3.78,
+   "speech": "十二个架构的全距，百分之零点九七。"
+  },
+  {
+   "scene": "open",
+   "index": 47,
+   "start": 163.25,
+   "dur": 3.95,
+   "speech": "计划以为长回看更稳，实际最差。"
+  },
+  {
+   "scene": "open",
+   "index": 48,
+   "start": 167.38,
+   "dur": 3.42,
+   "speech": "子空间策略的优势，在这里消失。"
+  },
+  {
+   "scene": "open",
+   "index": 49,
+   "start": 170.98,
+   "dur": 3.18,
+   "speech": "这一集讲的，就是这两张脸。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 177.56,
+   "dur": 2.87,
+   "speech": "先看搜索空间有多大。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 180.61,
+   "dur": 2.58,
+   "speech": "一个块里，三条边。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 183.37,
+   "dur": 2.65,
+   "speech": "每边可以选三个算子。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 186.21,
+   "dur": 3.16,
+   "speech": "一个块，就是三的八次方。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 189.54,
+   "dur": 3.59,
+   "speech": "六个块联合起来，十的二十次方。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 193.31,
+   "dur": 2.8,
+   "speech": "一个任务，能评估几次？"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 196.29,
+   "dur": 3.64,
+   "speech": "论文里的搜索，常常只有几百次。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 200.11,
+   "dur": 3.11,
+   "speech": "百分之一的预算，都算奢侈。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 203.4,
+   "dur": 3.47,
+   "speech": "这不是算力问题，是算术问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 207.05,
+   "dur": 2.77,
+   "speech": "预算必须花在刀刃上。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 210,
+   "dur": 3.13,
+   "speech": "最笨的办法，是随机采样。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 213.32,
+   "dur": 2.97,
+   "speech": "采一万个点，取最好的。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 216.46,
+   "dur": 3.01,
+   "speech": "这就是这一集的随机基线。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 219.66,
+   "dur": 2.34,
+   "speech": "它不学任何东西。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 222.18,
+   "dur": 2.41,
+   "speech": "也不会越采越准。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 224.77,
+   "dur": 3.01,
+   "speech": "第二种办法，是缩小区域。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 227.97,
+   "dur": 2.7,
+   "speech": "假设好的点聚在一起。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 230.85,
+   "dur": 3.54,
+   "speech": "先粗采，再在好点附近精采。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 234.57,
+   "dur": 3.13,
+   "speech": "这就是子空间收缩的假设。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 237.89,
+   "dur": 3.13,
+   "speech": "假设对不对，要拿数据说话。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 241.2,
+   "dur": 2.61,
+   "speech": "第三种，是比较器。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 243.99,
+   "dur": 2.32,
+   "speech": "不直接预测分数。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 246.48,
+   "dur": 3.01,
+   "speech": "只判断两个点谁更好。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 249.68,
+   "dur": 3.28,
+   "speech": "判断比打分容易，这是假设。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 253.14,
+   "dur": 3.45,
+   "speech": "学会比较之后，排序十万个候选。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 256.76,
+   "dur": 2.34,
+   "speech": "只真实评第一名。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 259.28,
+   "dur": 2.99,
+   "speech": "第四种，是组合预测器。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 262.45,
+   "dur": 2.68,
+   "speech": "把大空间切成小块。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 265.31,
+   "dur": 2.97,
+   "speech": "块内平均分高的，留下。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 268.46,
+   "dur": 2.92,
+   "speech": "用剩下的预算，继续挖。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 271.56,
+   "dur": 3.78,
+   "speech": "四个做法，三种策略加一个随机。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 275.52,
+   "dur": 2.53,
+   "speech": "都要回答同一个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 278.23,
+   "dur": 3.37,
+   "speech": "一万次评估，能换到多少质量？"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 281.79,
+   "dur": 3.16,
+   "speech": "合成空间，可以算出真值。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 285.12,
+   "dur": 3.18,
+   "speech": "真实任务，只能比检验误差。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 288.49,
+   "dur": 2.82,
+   "speech": "两个口径，不能混着说。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 291.49,
+   "dur": 2.77,
+   "speech": "合成上看机制对不对。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 294.44,
+   "dur": 2.82,
+   "speech": "真实上看收益有没有。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 297.44,
+   "dur": 3.18,
+   "speech": "机制成立，收益可能不成立。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 300.81,
+   "dur": 2.63,
+   "speech": "上一集刚讲过这句话。"
+  },
+  {
+   "scene": "problem",
+   "index": 40,
+   "start": 303.62,
+   "dur": 3.35,
+   "speech": "合成的质量函数，故意简单。"
+  },
+  {
+   "scene": "problem",
+   "index": 41,
+   "start": 307.15,
+   "dur": 3.06,
+   "speech": "四个坐标相加，没有交互。"
+  },
+  {
+   "scene": "problem",
+   "index": 42,
+   "start": 310.39,
+   "dur": 2.63,
+   "speech": "最优区域在四个角。"
+  },
+  {
+   "scene": "problem",
+   "index": 43,
+   "start": 313.2,
+   "dur": 3.3,
+   "speech": "随机采样的上限，可以算清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 44,
+   "start": 316.68,
+   "dur": 2.94,
+   "speech": "真实任务是股票次日收益。"
+  },
+  {
+   "scene": "problem",
+   "index": 45,
+   "start": 319.8,
+   "dur": 3.37,
+   "speech": "三十只股票，四个回看长度。"
+  },
+  {
+   "scene": "problem",
+   "index": 46,
+   "start": 323.36,
+   "dur": 3.23,
+   "speech": "三种聚合方式，十二个架构。"
+  },
+  {
+   "scene": "problem",
+   "index": 47,
+   "start": 326.77,
+   "dur": 4.19,
+   "speech": "回看三步、五步、十步、二十步。"
+  },
+  {
+   "scene": "problem",
+   "index": 48,
+   "start": 331.14,
+   "dur": 3.01,
+   "speech": "数据没有信号，这是关键。"
+  },
+  {
+   "scene": "problem",
+   "index": 49,
+   "start": 334.33,
+   "dur": 3.23,
+   "speech": "没有信号，架构再好也白搭。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 340.96,
+   "dur": 3.52,
+   "speech": "三条式子，分别对应三种策略。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 344.66,
+   "dur": 2.85,
+   "speech": "第一条，子空间怎么缩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 347.68,
+   "dur": 3.04,
+   "speech": "一批点的均值，先算出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 350.9,
+   "dur": 2.56,
+   "speech": "标准差，也一起算。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 353.64,
+   "dur": 3.88,
+   "speech": "新盒子的下界，均值减一倍标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 357.7,
+   "dur": 3.33,
+   "speech": "上界，均值加一倍标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 361.2,
+   "dur": 3.21,
+   "speech": "系数取一，就是一倍标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 364.59,
+   "dur": 2.75,
+   "speech": "一轮缩完，再采再缩。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 367.52,
+   "dur": 2.41,
+   "speech": "盒子会越来越小。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 370.11,
+   "dur": 2.53,
+   "speech": "这就是式 6.14。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 372.83,
+   "dur": 2.8,
+   "speech": "第二条，比较器怎么学。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 375.81,
+   "dur": 2.82,
+   "speech": "两个架构，各有一个分数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 378.81,
+   "dur": 3.16,
+   "speech": "我们不看分数，只看谁高。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 382.15,
+   "dur": 3.21,
+   "speech": "把两个架构的差，当成输入。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 385.53,
+   "dur": 2.77,
+   "speech": "把谁高，当成标签。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 388.49,
+   "dur": 3.33,
+   "speech": "用岭回归，学一个线性比较器。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 391.99,
+   "dur": 3.69,
+   "speech": "打分函数，就是参数的加权和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 395.86,
+   "dur": 3.76,
+   "speech": "排序用归并，比较器说谁在前。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 399.8,
+   "dur": 3.33,
+   "speech": "稳定排序，相同分数不乱序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 403.3,
+   "dur": 2.61,
+   "speech": "这就是式 6.15。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 406.09,
+   "dur": 3.42,
+   "speech": "第三条，组合预测器怎么剪。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 409.69,
+   "dur": 3.37,
+   "speech": "每个子空间，有若干已评点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 413.24,
+   "dur": 3.21,
+   "speech": "取平均分，作为这块的预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 416.63,
+   "dur": 2.8,
+   "speech": "按预测从高到低排。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 419.61,
+   "dur": 2.65,
+   "speech": "留下前面的一个比例。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 422.44,
+   "dur": 2.97,
+   "speech": "比例零点五，就是留一半。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 425.59,
+   "dur": 2.15,
+   "speech": "八块留四块。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 427.92,
+   "dur": 3.16,
+   "speech": "留下之后，参数还可以继承。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 431.26,
+   "dur": 4.24,
+   "speech": "老参数乘系数，新参数乘一减系数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 435.67,
+   "dur": 2.63,
+   "speech": "这就是式 6.16。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 438.48,
+   "dur": 2.82,
+   "speech": "三个黄金值，先记住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 441.49,
+   "dur": 2.75,
+   "speech": "子空间：样本零二四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 444.42,
+   "dur": 3.37,
+   "speech": "均值二，标准差一点六三三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 447.97,
+   "dur": 4.24,
+   "speech": "下界零点三六七，上界三点六三三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 452.39,
+   "dur": 4.77,
+   "speech": "排序零点九、零点五、零点七、零点三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 457.33,
+   "dur": 4.05,
+   "speech": "按分数从高到低，编号是一三二四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 461.56,
+   "dur": 2.97,
+   "speech": "剪枝：八块分数一到八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 464.71,
+   "dur": 2.94,
+   "speech": "留一半，就是五六七八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 467.83,
+   "dur": 3.69,
+   "speech": "继承：老参数一二，新参数三四。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 471.69,
+   "dur": 3.97,
+   "speech": "系数零点七，得到一点六和二点六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 479.07,
+   "dur": 4,
+   "speech": "六组，三十三项，四点八三秒。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 483.25,
+   "dur": 3.11,
+   "speech": "先看合成空间的四个读数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 486.54,
+   "dur": 3.33,
+   "speech": "随机基线，三点七七五九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 490.04,
+   "dur": 2.92,
+   "speech": "子空间，三点八七八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 493.14,
+   "dur": 3.01,
+   "speech": "比较器，三点九零七二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 496.34,
+   "dur": 3.4,
+   "speech": "组合预测器，三点九一八三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 499.91,
+   "dur": 3.45,
+   "speech": "阈值三点三零一四，全部越线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 503.54,
+   "dur": 2.25,
+   "speech": "但随机也越线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 505.97,
+   "dur": 3.73,
+   "speech": "所以真正的差别，是抬升了多少。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 509.88,
+   "dur": 2.92,
+   "speech": "子空间抬了零点一零二一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 512.98,
+   "dur": 3.04,
+   "speech": "比较器抬了零点一三一三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 516.2,
+   "dur": 3.42,
+   "speech": "组合预测器抬了零点一四二四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 519.8,
+   "dur": 3.21,
+   "speech": "换成百分比，大约百分之三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 523.18,
+   "dur": 3.28,
+   "speech": "预算呢？随机一万次。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 526.64,
+   "dur": 2.53,
+   "speech": "子空间也是一万次。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 529.36,
+   "dur": 3.13,
+   "speech": "比较器只用了两百零一次。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 532.67,
+   "dur": 3.66,
+   "speech": "组合预测器一万次，但只用四块。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 536.51,
+   "dur": 2.7,
+   "speech": "比较器的性价比最高。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 539.39,
+   "dur": 2.61,
+   "speech": "但它抬得不是最多。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 542.18,
+   "dur": 2.99,
+   "speech": "三种策略，各有各的账。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 545.35,
+   "dur": 3.09,
+   "speech": "子空间的盒子，缩得很快。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 548.62,
+   "dur": 2.8,
+   "speech": "第一轮体积零点零七七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 551.59,
+   "dur": 2.7,
+   "speech": "第二轮零点零零五九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 554.48,
+   "dur": 2.7,
+   "speech": "第三轮零点零零零五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 557.36,
+   "dur": 2.41,
+   "speech": "缩小了一百五十倍。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 559.95,
+   "dur": 3.54,
+   "speech": "但盒子的中心，在零点七附近。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 563.67,
+   "dur": 3.54,
+   "speech": "四个维度的上界，都不到零点八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 567.4,
+   "dur": 3.52,
+   "speech": "而真正的最优区域，在四个角。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 571.09,
+   "dur": 3.3,
+   "speech": "盒子收缩，离开了最优区域。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 574.58,
+   "dur": 2.99,
+   "speech": "这是子空间策略的隐患。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 577.75,
+   "dur": 2.17,
+   "speech": "再看真实任务。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 580.1,
+   "dur": 5.13,
+   "speech": "十二个架构，检验误差从六点一七八到六点二三八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 585.41,
+   "dur": 2.8,
+   "speech": "全距百分之零点九七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 588.38,
+   "dur": 2.73,
+   "speech": "零基线六点一七八二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 591.29,
+   "dur": 3.25,
+   "speech": "最好的架构，六点一七八零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 594.72,
+   "dur": 2.27,
+   "speech": "只好了万分之三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 597.17,
+   "dur": 3.28,
+   "speech": "也就是说，架构之间没有差别。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 600.63,
+   "dur": 2.97,
+   "speech": "计划以为长回看更稳。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 603.78,
+   "dur": 4.12,
+   "speech": "实际长回看家族最差，六点二零七四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 608.08,
+   "dur": 2.75,
+   "speech": "长回看没有带来稳定。"
+  },
+  {
+   "scene": "metrics",
+   "index": 40,
+   "start": 611.01,
+   "dur": 3.42,
+   "speech": "子空间策略的优势，在这里消失。"
+  },
+  {
+   "scene": "metrics",
+   "index": 41,
+   "start": 614.61,
+   "dur": 3.25,
+   "speech": "合成上它抬了百分之二点七。"
+  },
+  {
+   "scene": "metrics",
+   "index": 42,
+   "start": 618.04,
+   "dur": 3.06,
+   "speech": "真实上它没有赢过零基线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 43,
+   "start": 621.28,
+   "dur": 3.59,
+   "speech": "比较器和组合预测器，也一样。"
+  },
+  {
+   "scene": "metrics",
+   "index": 44,
+   "start": 625.05,
+   "dur": 3.76,
+   "speech": "三种策略都没有跨过百分之零点五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 45,
+   "start": 628.99,
+   "dur": 2.41,
+   "speech": "这不是实现错了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 46,
+   "start": 631.59,
+   "dur": 2.63,
+   "speech": "是任务本身没有信号。"
+  },
+  {
+   "scene": "metrics",
+   "index": 47,
+   "start": 634.4,
+   "dur": 3.01,
+   "speech": "次日收益，预测不出方向。"
+  },
+  {
+   "scene": "metrics",
+   "index": 48,
+   "start": 637.59,
+   "dur": 3.64,
+   "speech": "换一个有信号的任务，结论可能不同。"
+  },
+  {
+   "scene": "metrics",
+   "index": 49,
+   "start": 641.41,
+   "dur": 2.97,
+   "speech": "但这一集只能报告这个任务。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 647.77,
+   "dur": 3.13,
+   "speech": "三个模块，三百八十五行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 651.08,
+   "dur": 3.01,
+   "speech": "都是纯函数，固定种子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 654.28,
+   "dur": 3.28,
+   "speech": "没有随机数生成器之外的状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 657.74,
+   "dur": 2.65,
+   "speech": "第一个模块，子空间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 660.57,
+   "dur": 3.01,
+   "speech": "盒子的类型，是一对向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 663.76,
+   "dur": 3.18,
+   "speech": "下界和上界，各一个向量。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 667.13,
+   "dur": 4.12,
+   "speech": "收缩，就是逐维算均值和标准差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 671.42,
+   "dur": 3.59,
+   "speech": "采样，就是在盒子里均匀取点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 675.19,
+   "dur": 3.85,
+   "speech": "搜索，就是采样、评估、收缩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 679.23,
+   "dur": 3.4,
+   "speech": "循环三轮，返回最后的盒子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 682.81,
+   "dur": 2.56,
+   "speech": "第二个模块，比较器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 685.54,
+   "dur": 3.04,
+   "speech": "样本是一对，架构和分数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 688.76,
+   "dur": 2.68,
+   "speech": "训练时，两两做差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 691.62,
+   "dur": 3.16,
+   "speech": "差向量乘参数，拟合谁高。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 694.96,
+   "dur": 3.95,
+   "speech": "正规方程加岭项，解一个线性系统。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 699.09,
+   "dur": 3.16,
+   "speech": "排序，是手写的归并排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 702.43,
+   "dur": 3.4,
+   "speech": "比较器说谁高，谁就排前面。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 706,
+   "dur": 3.33,
+   "speech": "分数相同，保持原来的顺序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 709.51,
+   "dur": 3.16,
+   "speech": "位置准确率，就是逐位对比。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 712.85,
+   "dur": 3.13,
+   "speech": "这个指标，比损失更好懂。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 716.16,
+   "dur": 3.06,
+   "speech": "第三个模块，组合预测器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 719.4,
+   "dur": 4.12,
+   "speech": "每个子空间，存一个索引和一批分数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 723.7,
+   "dur": 3.37,
+   "speech": "预测值，就是这批分数的平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 727.26,
+   "dur": 2.99,
+   "speech": "剪枝，就是按预测排序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 730.43,
+   "dur": 3.35,
+   "speech": "留下前一个比例，至少留一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 733.96,
+   "dur": 3.59,
+   "speech": "返回时按索引升序，方便复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 737.73,
+   "dur": 3.37,
+   "speech": "参数继承，是一个线性插值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 741.28,
+   "dur": 4.12,
+   "speech": "老参数权重系数，新参数一减系数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 745.58,
+   "dur": 2.97,
+   "speech": "系数等于一，完全继承。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 748.72,
+   "dur": 3.09,
+   "speech": "系数等于零，完全换新。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 751.99,
+   "dur": 3.06,
+   "speech": "三个模块，没有共享状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 755.23,
+   "dur": 2.75,
+   "speech": "输入一样，输出就一样。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 758.16,
+   "dur": 2.68,
+   "speech": "没有网络，没有 GPU。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 761.02,
+   "dur": 3.42,
+   "speech": "一台普通机器，几秒钟跑完。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 764.62,
+   "dur": 3.64,
+   "speech": "这就是为什么，证据能写成断言。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 768.44,
+   "dur": 3.23,
+   "speech": "断言不需要解释，只需要通过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 771.85,
+   "dur": 2.29,
+   "speech": "黄金值抓公式。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 774.32,
+   "dur": 2.17,
+   "speech": "预算抓流程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 776.68,
+   "dur": 2.05,
+   "speech": "迁移抓结论。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 778.91,
+   "dur": 2.87,
+   "speech": "三样都抓住，才敢讲。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 785.18,
+   "dur": 3.45,
+   "speech": "三十三项，六组，一条命令。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 788.81,
+   "dur": 4.84,
+   "speech": "数据组四项：池子、窗口、切分、覆盖。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 793.82,
+   "dur": 5.49,
+   "speech": "合成组九项：空间、阈值、预算、四种最好值。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 799.49,
+   "dur": 5.17,
+   "speech": "子空间组六项：收缩、采样、体积、二次曲面。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 804.84,
+   "dur": 4.96,
+   "speech": "比较器组五项：排序、准确率、噪声、稳定性。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 809.98,
+   "dur": 4.74,
+   "speech": "组合组四项：预测、剪枝、预算、继承。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 814.9,
+   "dur": 6.16,
+   "speech": "迁移组五项：十二个架构、零基线、全距、长回看、时限。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 821.24,
+   "dur": 2.89,
+   "speech": "每组都全绿，才算过。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 824.32,
+   "dur": 2.03,
+   "speech": "没有跳过的项。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 826.53,
+   "dur": 2.53,
+   "speech": "也没有只跑一次的项。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 829.24,
+   "dur": 2.2,
+   "speech": "先看黄金值。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 831.62,
+   "dur": 4.07,
+   "speech": "子空间样本零二四，下界零点三六七。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 835.87,
+   "dur": 3.49,
+   "speech": "上界三点六三三，公式对上了。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 839.54,
+   "dur": 4.19,
+   "speech": "二次曲面上搜三轮，最好值接近零。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 843.91,
+   "dur": 6.04,
+   "speech": "排序零点九、零点五、零点七、零点三，得到一三二四。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 850.13,
+   "dur": 3.18,
+   "speech": "剪枝八块，留下五六七八。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 853.49,
+   "dur": 3.93,
+   "speech": "继承零点七，得到一点六和二点六。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 857.6,
+   "dur": 2.94,
+   "speech": "这些值，手算就能核对。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 860.72,
+   "dur": 3.3,
+   "speech": "公式错了，黄金值当场抓。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 864.2,
+   "dur": 2.68,
+   "speech": "这就是黄金值的作用。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 867.06,
+   "dur": 2.37,
+   "speech": "再看预算这笔账。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 869.61,
+   "dur": 3.37,
+   "speech": "随机一万次，子空间一万次。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 873.16,
+   "dur": 2.61,
+   "speech": "比较器两百零一次。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 875.95,
+   "dur": 3.97,
+   "speech": "组合预测器一万次，但只在四块里花。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 880.1,
+   "dur": 2.44,
+   "speech": "预算账要算清楚。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 882.72,
+   "dur": 2.37,
+   "speech": "不然比较不公平。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 885.26,
+   "dur": 3.47,
+   "speech": "三种策略的预算，都写进读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 888.91,
+   "dur": 3.64,
+   "speech": "谁便宜，谁贵，一眼能看出来。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 892.73,
+   "dur": 2.17,
+   "speech": "比较器最便宜。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 895.09,
+   "dur": 3.3,
+   "speech": "子空间和组合，都是满预算。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 898.57,
+   "dur": 2.1,
+   "speech": "最后看迁移。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 900.85,
+   "dur": 2.85,
+   "speech": "十二个架构，全部跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 903.88,
+   "dur": 2.94,
+   "speech": "零基线，六点一七八二。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 907,
+   "dur": 3.25,
+   "speech": "最好的架构，六点一七八零。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 910.43,
+   "dur": 3.76,
+   "speech": "差距万分之三，小于百分之零点五。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 914.37,
+   "dur": 3.88,
+   "speech": "这条检查，是这一集的核心负结果。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 918.43,
+   "dur": 2.94,
+   "speech": "它还检查了长回看家族。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 921.55,
+   "dur": 3.13,
+   "speech": "长回看最好六点二零七四。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 924.86,
+   "dur": 3.47,
+   "speech": "和全局最优差百分之零点四八。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 928.51,
+   "dur": 2.34,
+   "speech": "长回看没有优势。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 934.26,
+   "dur": 3.13,
+   "speech": "三条边界，四个不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 937.57,
+   "dur": 2.99,
+   "speech": "第一，合成空间是玩具。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 940.74,
+   "dur": 3.06,
+   "speech": "四个坐标相加，没有交互。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 943.99,
+   "dur": 3.3,
+   "speech": "真实搜索空间，不是这个形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 947.47,
+   "dur": 3.78,
+   "speech": "所以合成上的抬升，不能直接搬。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 951.43,
+   "dur": 2.85,
+   "speech": "第二，真实任务没有信号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 954.46,
+   "dur": 3.18,
+   "speech": "没有信号，什么架构都差不多。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 957.82,
+   "dur": 2.99,
+   "speech": "这一集不能证明策略无效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 960.99,
+   "dur": 3.76,
+   "speech": "只能证明，在这个任务上没有收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 964.93,
+   "dur": 2.61,
+   "speech": "两句话，不能互换。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 967.71,
+   "dur": 3.3,
+   "speech": "第三，子空间不能跨数据集。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 971.19,
+   "dur": 3.81,
+   "speech": "书里第一百六十七页，作者自己承认。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 975.18,
+   "dur": 3.88,
+   "speech": "在一个数据集上找到的最优子空间。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 979.24,
+   "dur": 3.25,
+   "speech": "换一个数据集，不一定还最优。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 982.67,
+   "dur": 3.42,
+   "speech": "这一集的数据，也印证了这一点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 986.27,
+   "dur": 2.77,
+   "speech": "盒子缩到零点七附近。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 989.23,
+   "dur": 3.09,
+   "speech": "但真正的最优区域在角上。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 992.49,
+   "dur": 3.45,
+   "speech": "收缩方向，可能一开始就偏了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 996.12,
+   "dur": 2.41,
+   "speech": "这不是实现问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 998.71,
+   "dur": 2.56,
+   "speech": "是假设本身的问题。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1001.45,
+   "dur": 2.1,
+   "speech": "四个不能推。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1003.73,
+   "dur": 3.33,
+   "speech": "不能推三种策略都比随机好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1007.24,
+   "dur": 2.65,
+   "speech": "随机也越过了分位线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1010.07,
+   "dur": 4.19,
+   "speech": "只能推三种策略把最好值抬高了一点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1014.44,
+   "dur": 3.66,
+   "speech": "不能推子空间总能找到最优区域。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1018.29,
+   "dur": 3.16,
+   "speech": "盒子可能收缩到错误的局部。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1021.62,
+   "dur": 3.76,
+   "speech": "不能推比较器省预算就等于更好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1025.56,
+   "dur": 3.28,
+   "speech": "它最便宜，但抬升不是最多。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1029.02,
+   "dur": 3.47,
+   "speech": "不能推真实任务上架构搜索没用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1032.67,
+   "dur": 2.94,
+   "speech": "只能说这个任务没有信号。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 1035.79,
+   "dur": 2.63,
+   "speech": "还有一个边界：规模。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 1038.6,
+   "dur": 4.38,
+   "speech": "合成空间一百万，真实空间十的二十次方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 1043.16,
+   "dur": 2.85,
+   "speech": "这一集只跑了玩具规模。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 1046.19,
+   "dur": 3.23,
+   "speech": "三种策略的常数，没有调优。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 1049.6,
+   "dur": 3.23,
+   "speech": "三个关键系数，都是手选的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 1053.01,
+   "dur": 2.99,
+   "speech": "换一组常数，读数会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 1056.18,
+   "dur": 3.04,
+   "speech": "但结论的方向，不太会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 1059.4,
+   "dur": 3.71,
+   "speech": "因为没有信号这件事，和常数无关。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 1063.29,
+   "dur": 2.68,
+   "speech": "这一点，必须说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 1066.15,
+   "dur": 3.18,
+   "speech": "下一集，换一个角度省算力。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1072.73,
+   "dur": 2.61,
+   "speech": "三个数，三句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1075.52,
+   "dur": 2.32,
+   "speech": "百分之一：预算。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1078.01,
+   "dur": 3.59,
+   "speech": "两百零一：比较器的真实评估次数。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1081.78,
+   "dur": 3.78,
+   "speech": "零点九七：真实架构的全距百分比。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1085.75,
+   "dur": 3.57,
+   "speech": "第一句，三种剪枝都能省算力。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1089.49,
+   "dur": 3.54,
+   "speech": "第二句，合成上只抬了百分之三。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1093.21,
+   "dur": 3.49,
+   "speech": "第三句，真实任务上优势消失。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1096.89,
+   "dur": 2.92,
+   "speech": "三句话，各有各的证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1099.99,
+   "dur": 2.25,
+   "speech": "不挑一个当答案。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1102.41,
+   "dur": 2.1,
+   "speech": "都写进边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1104.69,
+   "dur": 2.37,
+   "speech": "这一集交付了什么。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1107.24,
+   "dur": 3.13,
+   "speech": "三个模块，三百八十五行。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1110.55,
+   "dur": 2.77,
+   "speech": "二十七条单测，全绿。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1113.51,
+   "dur": 3.45,
+   "speech": "三十三项证据，四点八三秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1117.13,
+   "dur": 2.85,
+   "speech": "一集片子，三十六页。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1120.16,
+   "dur": 2.56,
+   "speech": "这些数字都能复现。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1122.9,
+   "dur": 2.7,
+   "speech": "一条命令，固定种子。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1125.78,
+   "dur": 3.13,
+   "speech": "不需要 GPU，不需要联网。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1129.09,
+   "dur": 2.65,
+   "speech": "这就是可验证的意思。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1131.93,
+   "dur": 2.56,
+   "speech": "每次都是同一组数。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1134.67,
+   "dur": 2.85,
+   "speech": "回头再看那三种策略。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1137.69,
+   "dur": 3.25,
+   "speech": "子空间：假设好点聚在一起。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1141.13,
+   "dur": 3.45,
+   "speech": "比较器：假设判断比打分容易。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1144.75,
+   "dur": 3.85,
+   "speech": "组合预测器：假设块内平均有意义。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1148.79,
+   "dur": 3.25,
+   "speech": "三个假设，合成上都成立。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1152.22,
+   "dur": 2.82,
+   "speech": "真实任务上，都没有兑现。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1155.22,
+   "dur": 2.15,
+   "speech": "不是假设错了。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1157.55,
+   "dur": 3.13,
+   "speech": "是任务没有给它们兑现的机会。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1160.87,
+   "dur": 3.18,
+   "speech": "这句话，比策略无效准确。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1164.23,
+   "dur": 2.1,
+   "speech": "也更难反驳。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1166.51,
+   "dur": 2.58,
+   "speech": "如果你只记一句话。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1169.27,
+   "dur": 4.09,
+   "speech": "省算力的方法，要先看任务有没有信号。"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1173.55,
+   "dur": 2.87,
+   "speech": "没有信号，省下来的算力。"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1176.6,
+   "dur": 2.97,
+   "speech": "只是更快地得到同一个答案。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1179.74,
+   "dur": 2.34,
+   "speech": "这一集的三张脸。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1182.26,
+   "dur": 4.21,
+   "speech": "合成上赢，真实上平，边界上诚实。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1186.66,
+   "dur": 3.57,
+   "speech": "下一集，继续在第六章里找问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1190.4,
+   "dur": 2.92,
+   "speech": "可能是数据，可能是架构。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1193.5,
+   "dur": 2.1,
+   "speech": "但方法不变。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1195.78,
+   "dur": 2.63,
+   "speech": "先给结论，再给证据。"
+  },
+  {
+   "scene": "outro",
+   "index": 40,
+   "start": 1198.59,
+   "dur": 2.8,
+   "speech": "最后一页，留三个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 41,
+   "start": 1201.57,
+   "dur": 3.25,
+   "speech": "子空间收缩，能不能不偏？"
+  },
+  {
+   "scene": "outro",
+   "index": 42,
+   "start": 1205.01,
+   "dur": 2.63,
+   "speech": "比较器，能不能更准？"
+  },
+  {
+   "scene": "outro",
+   "index": 43,
+   "start": 1207.82,
+   "dur": 3.45,
+   "speech": "组合预测器，能不能跨任务继承？"
+  },
+  {
+   "scene": "outro",
+   "index": 44,
+   "start": 1211.44,
+   "dur": 2.32,
+   "speech": "这一集没有回答。"
+  },
+  {
+   "scene": "outro",
+   "index": 45,
+   "start": 1213.94,
+   "dur": 2.49,
+   "speech": "只把问题摆在这里。"
+  },
+  {
+   "scene": "outro",
+   "index": 46,
+   "start": 1216.61,
+   "dur": 3.35,
+   "speech": "答案在下一集，或者在你手里。"
+  },
+  {
+   "scene": "outro",
+   "index": 47,
+   "start": 1220.14,
+   "dur": 4.14,
+   "speech": "百分之一、两百零一、百分之零点九七。"
+  },
+  {
+   "scene": "outro",
+   "index": 48,
+   "start": 1224.46,
+   "dur": 2.34,
+   "speech": "三个数，记住了。"
+  },
+  {
+   "scene": "outro",
+   "index": 49,
+   "start": 1226.98,
+   "dur": 3.16,
+   "speech": "这一集就到这里，下一集见。"
+  }
+ ]
+}

@@ -1,0 +1,397 @@
+{
+ "meta": {
+  "episode": 55,
+  "slug": "55-generalizable-search",
+  "title": "省算力的三种剪枝",
+  "chapter": "ch06",
+  "seconds": 4.8132,
+  "generatedBy": "inventory/scripts/export_ch06_generalizable.py",
+  "tsBase": "9cb8b9c",
+  "tsAdmin": "1318010"
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "30 只股票、每只至少 1,500 根日线",
+   "ok": true,
+   "detail": "stocks=30，bars 1544-2431"
+  },
+  {
+   "group": "data",
+   "name": "12 个架构 = 4 个回看长度 x 3 种特征变换",
+   "ok": true,
+   "detail": "架构 L3-raw,L3-clip,L3-mom,L5-raw,L5-clip,L5-mom,L10-raw,L10-clip,L10-mom,L20-raw,L20-clip,L20-mom"
+  },
+  {
+   "group": "data",
+   "name": "窗口总数不少于 45,000 个（H=24 滑窗，步长 1）",
+   "ok": true,
+   "detail": "窗口 60115，每只 1519-2406"
+  },
+  {
+   "group": "data",
+   "name": "真实代理按每只股票 70/15/15 时间切分，检验窗口 >= 2,500",
+   "ok": true,
+   "detail": "train 6000，test 3600"
+  },
+  {
+   "group": "synth",
+   "name": "合成空间 = 10^6 个 4 维点；top-1% = 10,000 个点（经验 99% 分位数）",
+   "ok": true,
+   "detail": "space 1000000，top 10000，threshold 3.3014"
+  },
+  {
+   "group": "synth",
+   "name": "随机策略用 10,000 次真实评估（空间的 1%）",
+   "ok": true,
+   "detail": "budget 10000，random best 3.7759"
+  },
+  {
+   "group": "synth",
+   "name": "子空间策略 3 轮 6,000+3,000+1,000 = 10,000 次评估，体积逐轮收缩",
+   "ok": true,
+   "detail": "volumes 0.0770 > 0.0059 > 0.0005"
+  },
+  {
+   "group": "synth",
+   "name": "比较器策略 200 个训练样本 + 只评估选中候选（201 次 <= 1%）",
+   "ok": true,
+   "detail": "train 200，evaluated 201，cmp best 3.9072"
+  },
+  {
+   "group": "synth",
+   "name": "组合预测器策略 8x20=160 训练 + 9,840 利用 = 10,000 次评估",
+   "ok": true,
+   "detail": "budget 10000，kept 子空间 4,5,6,7，comb best 3.9183"
+  },
+  {
+   "group": "synth",
+   "name": "四种做法的最大值都越过 99% 分位线（随机也越线，区分度在抬升幅度）",
+   "ok": true,
+   "detail": "threshold 3.3014，random 3.7759，cherry 3.8780，cmp 3.9072，comb 3.9183"
+  },
+  {
+   "group": "synth",
+   "name": "子空间收缩把最优值从随机基线抬高 >= 0.1（质量单位 0..4）",
+   "ok": true,
+   "detail": "cherry 3.8780 vs random 3.7759，gap 0.1021"
+  },
+  {
+   "group": "synth",
+   "name": "比较器排序把最优值抬高 >= 0.1",
+   "ok": true,
+   "detail": "cmp 3.9072 vs random 3.7759，gap 0.1313"
+  },
+  {
+   "group": "synth",
+   "name": "组合预测器（子空间筛选 + 剩余预算）抬高 >= 0.1",
+   "ok": true,
+   "detail": "comb 3.9183 vs random 3.7759，gap 0.1424"
+  },
+  {
+   "group": "cherry",
+   "name": "shrinkRegion 边界 = 均值 ± sigma（1 维 [0,2,4]、lambda=1）",
+   "ok": true,
+   "detail": "lo 0.3670，hi 3.6330"
+  },
+  {
+   "group": "cherry",
+   "name": "收缩不可逆：每轮体积严格小于上一轮",
+   "ok": true,
+   "detail": "volumes 0.0770 > 0.0059 > 0.0005"
+  },
+  {
+   "group": "cherry",
+   "name": "三轮后体积 < 初始的 1/100",
+   "ok": true,
+   "detail": "final volume 0.0005"
+  },
+  {
+   "group": "cherry",
+   "name": "最终盒每维宽度 < 0.2：三轮收缩把区域压到局部",
+   "ok": true,
+   "detail": "box widths 0.1424,0.1438,0.1497,0.1482"
+  },
+  {
+   "group": "cherry",
+   "name": "同种子重复跑，最终盒与最优值逐位一致",
+   "ok": true,
+   "detail": "best 3.8780"
+  },
+  {
+   "group": "cherry",
+   "name": "二次曲面黄金值：3 轮 x100 后最好点距最优值 <= 0.01",
+   "ok": true,
+   "detail": "best -0.0000"
+  },
+  {
+   "group": "cmp",
+   "name": "黄金值：[0.9,0.5,0.7,0.3] 的排序是 [1,3,2,4]",
+   "ok": true,
+   "detail": "order 1,3,2,4"
+  },
+  {
+   "group": "cmp",
+   "name": "完美比较器的排序位置准确率 = 1",
+   "ok": true,
+   "detail": "accuracy 1.0000"
+  },
+  {
+   "group": "cmp",
+   "name": "噪声 p=0.1 的比较器排序准确率 > 0.8",
+   "ok": true,
+   "detail": "accuracy 1.0000"
+  },
+  {
+   "group": "cmp",
+   "name": "线性比较器在留出集上排序准确率 = 1（合成数据是线性可分的）",
+   "ok": true,
+   "detail": "accuracy 1.0000"
+  },
+  {
+   "group": "cmp",
+   "name": "比较器训练样本数 = 200（少于预算的 2%）",
+   "ok": true,
+   "detail": "train 200"
+  },
+  {
+   "group": "comb",
+   "name": "黄金值：8 个子空间均值 [1..8]，保留 {5,6,7,8}",
+   "ok": true,
+   "detail": "keep 5,6,7,8"
+  },
+  {
+   "group": "comb",
+   "name": "参数继承：alpha=0.7 时 [1,2] 与 [3,4] 得 [1.6,2.6]",
+   "ok": true,
+   "detail": "mix 1.6000,2.6000"
+  },
+  {
+   "group": "comb",
+   "name": "参数继承一致性：新旧参数相同时返回原参数（任意 alpha）",
+   "ok": true,
+   "detail": "alpha=0.7，old==new"
+  },
+  {
+   "group": "comb",
+   "name": "预算逐档递减时保留子空间数不增：8 -> 4 -> 2 -> 1",
+   "ok": true,
+   "detail": "rho 1.0/0.5/0.25/0.125"
+  },
+  {
+   "group": "transfer",
+   "name": "真实代理 12 个架构的 MAE 全距 < 1.5%：任务本身没有可学的结构",
+   "ok": true,
+   "detail": "spread 0.9683%，min 6.1780，max 6.2379"
+  },
+  {
+   "group": "transfer",
+   "name": "所有架构都不比零基线好 0.5% 以上：次日收益没有信号",
+   "ok": true,
+   "detail": "zero 6.1782 bps，best 6.1780 bps"
+  },
+  {
+   "group": "transfer",
+   "name": "计划预期长回看（L=20）更稳，真实最优却不在 L=20 家族",
+   "ok": true,
+   "detail": "real best L5-mom，L20 best 6.2074，L5 best 6.1780"
+  },
+  {
+   "group": "transfer",
+   "name": "真实任务上 L=20 家族与全局最优的 MAE 差 < 0.5%：子空间优势消失",
+   "ok": true,
+   "detail": "L20 6.2074 vs best 6.1780"
+  },
+  {
+   "group": "transfer",
+   "name": "全流程（10^6 合成评分 + 三种策略 + 12 个真实架构）在 120 秒内跑完",
+   "ok": true,
+   "detail": "总耗时 4.8132 s"
+  }
+ ],
+ "data": {
+  "stocks": 30,
+  "barsMin": 1544,
+  "barsMax": 2431,
+  "rows": 60865,
+  "windows": 60115,
+  "windowsMin": 1519,
+  "windowsMax": 2406,
+  "commonDays": 1495,
+  "split": {
+   "train": 42067,
+   "valid": 9003,
+   "test": 9045
+  },
+  "pools": {
+   "train": 6000,
+   "valid": 3600
+  }
+ },
+ "synth": {
+  "size": 1000000,
+  "dim": 4,
+  "topFraction": 0.01,
+  "topCount": 10000,
+  "threshold": 3.3014,
+  "randomBest": 3.7759,
+  "cherryBest": 3.878,
+  "cmpBest": 3.9072,
+  "combBest": 3.9183,
+  "gaps": {
+   "cherry": 0.1021,
+   "cmp": 0.1313,
+   "comb": 0.1424
+  },
+  "budgets": {
+   "random": 10000,
+   "cherry": 10000,
+   "cmp": 201,
+   "comb": 10000
+  },
+  "cherryVolumes": [
+   0.077,
+   0.0059,
+   0.0005
+  ],
+  "cherryBox": {
+   "lo": [
+    0.6452,
+    0.6429,
+    0.6309,
+    0.6428
+   ],
+   "hi": [
+    0.7877,
+    0.7867,
+    0.7807,
+    0.7911
+   ],
+   "widths": [
+    0.1425,
+    0.1438,
+    0.1498,
+    0.1483
+   ]
+  }
+ },
+ "real": {
+  "archs": [
+   {
+    "name": "L3-raw",
+    "lookback": 3,
+    "agg": "raw",
+    "mae": 6.2007
+   },
+   {
+    "name": "L3-clip",
+    "lookback": 3,
+    "agg": "clip",
+    "mae": 6.1884
+   },
+   {
+    "name": "L3-mom",
+    "lookback": 3,
+    "agg": "mom",
+    "mae": 6.1813
+   },
+   {
+    "name": "L5-raw",
+    "lookback": 5,
+    "agg": "raw",
+    "mae": 6.1962
+   },
+   {
+    "name": "L5-clip",
+    "lookback": 5,
+    "agg": "clip",
+    "mae": 6.1841
+   },
+   {
+    "name": "L5-mom",
+    "lookback": 5,
+    "agg": "mom",
+    "mae": 6.178
+   },
+   {
+    "name": "L10-raw",
+    "lookback": 10,
+    "agg": "raw",
+    "mae": 6.2078
+   },
+   {
+    "name": "L10-clip",
+    "lookback": 10,
+    "agg": "clip",
+    "mae": 6.1928
+   },
+   {
+    "name": "L10-mom",
+    "lookback": 10,
+    "agg": "mom",
+    "mae": 6.193
+   },
+   {
+    "name": "L20-raw",
+    "lookback": 20,
+    "agg": "raw",
+    "mae": 6.2379
+   },
+   {
+    "name": "L20-clip",
+    "lookback": 20,
+    "agg": "clip",
+    "mae": 6.2226
+   },
+   {
+    "name": "L20-mom",
+    "lookback": 20,
+    "agg": "mom",
+    "mae": 6.2074
+   }
+  ],
+  "zeroMae": 6.1782,
+  "best": {
+   "name": "L5-mom",
+   "mae": 6.178
+  },
+  "worst": {
+   "name": "L20-raw",
+   "mae": 6.2379
+  },
+  "spreadPct": 0.9695694399482008,
+  "family20Best": 6.2074,
+  "family5Best": 6.178
+ },
+ "golden": {
+  "shrink": {
+   "samples": [
+    0,
+    2,
+    4
+   ],
+   "mean": 2.0,
+   "sd": 1.633,
+   "lo": 0.367,
+   "hi": 3.633
+  },
+  "sortOrder": [
+   1,
+   3,
+   2,
+   4
+  ],
+  "pruneKeep": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "inheritMix": [
+   1.6,
+   2.6
+  ],
+  "cmpAccuracy": 1.0,
+  "quadraticBest": -0.0
+ }
+}
