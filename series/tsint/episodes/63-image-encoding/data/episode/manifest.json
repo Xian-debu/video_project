@@ -1,0 +1,22 @@
+{
+  "code": "sz000001",
+  "unit": "pct_log_return",
+  "formula": "100 * ln(close_adj_t / close_adj_{t-1})",
+  "win_len": 128,
+  "window_128": {
+    "rows": 128,
+    "first_date": "2016-06-01",
+    "last_date": "2016-12-08",
+    "min": -2.3733584332094444,
+    "max": 2.99167610379926,
+    "sha256": "a5cc9508ddc1234f4719251103c0b3e3a00534986227b6ce7c7296ea4864c23b"
+  },
+  "series_1024": {
+    "rows": 1024,
+    "first_date": "2015-10-26",
+    "last_date": "2019-12-31",
+    "min": -8.028083126080286,
+    "max": 8.390140449783953,
+    "sha256": "6b87c5d3fdd113417031828a477daf50dab1b5f73e9fb68cb23ff5e08a78aa3a"
+  }
+}

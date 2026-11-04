@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "tsint-63-image-encoding",
   "kind": "series-episode",
-  "title": "把序列画成图：GAF 与 MTF 都是可逆的",
+  "title": "把序列画成图：GAF 与 MTF 的可逆性边界",
   "series": {
     "id": "tsint",
     "order": 63,
@@ -19,10 +19,11 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-63",
-  "status": "draft",
-  "narration": null,
+  "status": "ready",
+  "narration": "assets/audio/narration.wav",
   "audio": {
-    "music": null
+    "music": null,
+    "musicGainDb": -4.5
   },
   "derive": [],
   "derived": [],
@@ -36,5 +37,5 @@
   "docs": [
     "docs/plan.md"
   ],
-  "assetsStatus": "incomplete"
+  "assetsStatus": "complete"
 }

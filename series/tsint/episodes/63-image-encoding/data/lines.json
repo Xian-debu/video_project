@@ -1,0 +1,2297 @@
+{
+ "entry": "src/tsint-63-image-encoding/script.ts",
+ "fps": 30,
+ "totalSec": 1111.49,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 145.07
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 145.07,
+   "dur": 144.4
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 289.47,
+   "dur": 134.44
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 423.91,
+   "dur": 139.76
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 563.67,
+   "dur": 134.8
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 698.47,
+   "dur": 141.92
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 840.39,
+   "dur": 143.82
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 984.21,
+   "dur": 127.28
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.73,
+   "speech": "这一集先画一张图。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.11,
+   "dur": 3.73,
+   "speech": "一百二十八个数字，画成一张方阵。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 8.02,
+   "dur": 3.33,
+   "speech": "横着是时间，竖着也是时间。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.53,
+   "dur": 3.25,
+   "speech": "每个格子，是两个点的乘积。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 14.96,
+   "dur": 2.97,
+   "speech": "这种画法叫格拉姆角场。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 18.11,
+   "dur": 3.4,
+   "speech": "另一种画法叫马尔可夫转移场。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 21.68,
+   "dur": 3.61,
+   "speech": "它不画点与点，画状态与状态。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 25.48,
+   "dur": 3.3,
+   "speech": "两种画法，都被叫作图像化。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 28.96,
+   "dur": 3.85,
+   "speech": "问题是：画成图，丢了多少信息。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 32.99,
+   "dur": 2.41,
+   "speech": "先给答案，再解释。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 35.59,
+   "dur": 2.75,
+   "speech": "格拉姆角场几乎没丢。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 38.52,
+   "dur": 4.29,
+   "speech": "从对角线加第一行，可以反解回原序列。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 42.98,
+   "dur": 4.07,
+   "speech": "反解误差是一点三乘十的负十四次方。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 47.23,
+   "dur": 3.35,
+   "speech": "唯一的不确定，是整体翻个面。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 50.76,
+   "dur": 3.54,
+   "speech": "马尔可夫转移场保的是另一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 54.49,
+   "dur": 2.53,
+   "speech": "它保住了转移结构。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 57.2,
+   "dur": 3.69,
+   "speech": "八乘八的转移矩阵，每行和为一。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 61.07,
+   "dur": 4.98,
+   "speech": "但一百二十八乘一百二十八的图像，行和是十六。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 66.23,
+   "dur": 2.32,
+   "speech": "不是一，是十六。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 68.73,
+   "dur": 2.73,
+   "speech": "这是本集最重要的一句。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 71.63,
+   "dur": 3.93,
+   "speech": "还有第三件事：这样画图，值不值得。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 75.74,
+   "dur": 3.69,
+   "speech": "把图喂给卷积前端，预测下一天。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 79.6,
+   "dur": 3.21,
+   "speech": "测试误差是一点三九一三。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 82.99,
+   "dur": 3.95,
+   "speech": "只给三个尺度数字，是一点三九零八。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 87.12,
+   "dur": 2.1,
+   "speech": "图没有赢下来。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 89.4,
+   "dur": 3.71,
+   "speech": "差距在噪声里，偏向数字那一侧。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 93.29,
+   "dur": 3.97,
+   "speech": "两条都赢过朴素基线二点一五五二。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 97.45,
+   "dur": 3.73,
+   "speech": "但赢的理由是收缩，不是图的形状。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 101.36,
+   "dur": 2.25,
+   "speech": "这是一条负结果。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 103.79,
+   "dur": 1.93,
+   "speech": "我们照实讲。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 105.9,
+   "dur": 2.25,
+   "speech": "接下来分八场。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 108.33,
+   "dur": 3.93,
+   "speech": "第一场说问题：画成图到底丢了什么。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 112.43,
+   "dur": 5.01,
+   "speech": "第二场定义三件东西：缩放、极角、转移矩阵。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 117.62,
+   "dur": 2.8,
+   "speech": "第三场钉数据和口径。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 120.6,
+   "dur": 4.07,
+   "speech": "第四场量反解、量行和、量预测。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 124.85,
+   "dur": 3.04,
+   "speech": "第五场写实现：三个模块。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 128.06,
+   "dur": 3.61,
+   "speech": "第六场验证：十九项检查逐条过。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 131.86,
+   "dur": 3.73,
+   "speech": "第七场讲边界：什么条件下不成立。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 135.77,
+   "dur": 3.23,
+   "speech": "第八场收束，指向下一集。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 139.18,
+   "dur": 3.69,
+   "speech": "屏幕上的每个数都能一条命令跑出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 146.27,
+   "dur": 3.71,
+   "speech": "为什么要把一维序列画成二维图。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 150.16,
+   "dur": 3.13,
+   "speech": "一个现实理由：图像模型多。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 153.47,
+   "dur": 4.89,
+   "speech": "卷积、池化、预训练权重，都在二维上成熟。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 158.54,
+   "dur": 3.69,
+   "speech": "把序列变成图，就能借这些工具。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 162.41,
+   "dur": 2.75,
+   "speech": "但借工具是有代价的。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 165.34,
+   "dur": 3.95,
+   "speech": "代价可能是信息，也可能是归纳偏置。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 169.47,
+   "dur": 3.81,
+   "speech": "常见说法是：两种编码都是双射。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 173.45,
+   "dur": 3.35,
+   "speech": "也就是说，画成图不丢信息。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 176.98,
+   "dur": 2.46,
+   "speech": "这句话只对了一半。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 179.62,
+   "dur": 2.32,
+   "speech": "我们把它拆开看。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 182.12,
+   "dur": 3.01,
+   "speech": "第一问：格拉姆角场丢了什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 185.32,
+   "dur": 3.01,
+   "speech": "它把每个点压成一个角度。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 188.51,
+   "dur": 4.07,
+   "speech": "角度只由这个点在窗口里的相对位置决定。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 192.76,
+   "dur": 2.92,
+   "speech": "绝对水平被缩放吃掉了。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 195.86,
+   "dur": 3.52,
+   "speech": "所以反解要先知道缩放区间。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 199.56,
+   "dur": 2.97,
+   "speech": "反过来，符号也翻不回来。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 202.7,
+   "dur": 3.64,
+   "speech": "序列整体乘负一，图一模一样。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 206.52,
+   "dur": 3.45,
+   "speech": "这是唯一丢的东西：一个整体符号。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 210.15,
+   "dur": 3.13,
+   "speech": "除它之外，逐位都能还原。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 213.46,
+   "dur": 3.47,
+   "speech": "第二问：马尔可夫转移场丢了什么。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 217.11,
+   "dur": 2.97,
+   "speech": "它先把每个点换成状态。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 220.26,
+   "dur": 2.8,
+   "speech": "状态是分箱，八箱。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 223.23,
+   "dur": 3.9,
+   "speech": "然后数相邻状态对，得到转移矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 227.32,
+   "dur": 3.93,
+   "speech": "再把矩阵按状态序列铺回时间轴。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 231.42,
+   "dur": 4.69,
+   "speech": "图像里每个格子，是从状态甲到状态乙的概率。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 236.3,
+   "dur": 2.94,
+   "speech": "所以它保住了怎么转移。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 239.42,
+   "dur": 3.3,
+   "speech": "但丢掉了每个点具体是多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 242.9,
+   "dur": 3.64,
+   "speech": "同一张图像，可以来自很多条序列。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 246.72,
+   "dur": 2.56,
+   "speech": "这一半，不叫双射。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 249.46,
+   "dur": 2.1,
+   "speech": "叫结构保持。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 251.74,
+   "dur": 2.97,
+   "speech": "两问合起来，本集的立场是："
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 254.88,
+   "dur": 3.76,
+   "speech": "一维到二维，可以无损，也可以有损。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 258.82,
+   "dur": 3.97,
+   "speech": "无损的是格拉姆角场，差一个整体反射。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 262.98,
+   "dur": 3.16,
+   "speech": "有损的是转移场，只有结构。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 266.31,
+   "dur": 4.5,
+   "speech": "把两者混成一句图像化不丢信息，会讲错。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 271,
+   "dur": 3.52,
+   "speech": "第三件要问的是：无损值不值得。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 274.69,
+   "dur": 2.27,
+   "speech": "无损不等于有用。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 277.14,
+   "dur": 4.19,
+   "speech": "图进来，卷积前端能不能预测得更好。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 281.51,
+   "dur": 3.45,
+   "speech": "这是本集最后一场才回答的问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 285.14,
+   "dur": 2.13,
+   "speech": "先看两个定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 290.67,
+   "dur": 2.53,
+   "speech": "第一个坐标系：缩放。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 293.38,
+   "dur": 3.54,
+   "speech": "每个窗口单独做最小最大缩放。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 297.11,
+   "dur": 2.49,
+   "speech": "缩到负一到正一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 299.77,
+   "dur": 3.9,
+   "speech": "常数窗口给一个宽度为一的假区间。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 303.85,
+   "dur": 2.1,
+   "speech": "否则会除零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 306.14,
+   "dur": 3.33,
+   "speech": "缩放是单调的，所以顺序不变。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 309.64,
+   "dur": 2.65,
+   "speech": "但它吃掉绝对水平。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 312.48,
+   "dur": 3.42,
+   "speech": "这是后面反解要带回来的东西。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 316.08,
+   "dur": 2.68,
+   "speech": "第二个坐标系：极角。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 318.94,
+   "dur": 2.39,
+   "speech": "角度等于反余弦。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 321.51,
+   "dur": 3.88,
+   "speech": "反余弦把负一到正一映射到零到派。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 325.56,
+   "dur": 2.7,
+   "speech": "一个点变成一个角度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 328.45,
+   "dur": 2.97,
+   "speech": "两个角度相加，取余弦。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 331.59,
+   "dur": 2.46,
+   "speech": "得到格拉姆角和场。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 334.23,
+   "dur": 3.04,
+   "speech": "两个角度相减，取正弦。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 337.45,
+   "dur": 2.53,
+   "speech": "得到格拉姆角差场。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 340.17,
+   "dur": 3.13,
+   "speech": "和场对称，差场反对称。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 343.48,
+   "dur": 2.87,
+   "speech": "差场的对角线恒为零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 346.53,
+   "dur": 3.69,
+   "speech": "和场的对角线是两倍角的余弦。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 350.4,
+   "dur": 3.13,
+   "speech": "反解就从这条对角线开始。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 353.71,
+   "dur": 3.09,
+   "speech": "对角线给出每个点的绝对值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 356.98,
+   "dur": 2.7,
+   "speech": "因为余弦二倍角公式。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 359.86,
+   "dur": 4.36,
+   "speech": "绝对值等于根号下，一加对角值，除以二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 364.4,
+   "dur": 2.17,
+   "speech": "符号还缺一半。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 366.75,
+   "dur": 2.13,
+   "speech": "用第一行补上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 369.06,
+   "dur": 3.9,
+   "speech": "第一行给出第一个角与每个角的和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 373.14,
+   "dur": 4.07,
+   "speech": "逐列比较两个候选角，选更接近的那个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 377.39,
+   "dur": 2.51,
+   "speech": "这就是完整的反解。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 380.08,
+   "dur": 3.01,
+   "speech": "第三个坐标系：转移矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 383.27,
+   "dur": 2.77,
+   "speech": "把序列切成八个状态。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 386.23,
+   "dur": 3.25,
+   "speech": "怎么切，是这一集的一个决定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 389.66,
+   "dur": 3.33,
+   "speech": "按值切，会被相等值卡住。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 393.17,
+   "dur": 3.37,
+   "speech": "收益里零很多，一卡一整箱。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 396.72,
+   "dur": 3.73,
+   "speech": "所以按秩切：排序后每箱个数一样。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 400.63,
+   "dur": 3.88,
+   "speech": "一百二十八个点，八箱，每箱十六个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 404.69,
+   "dur": 3.66,
+   "speech": "数相邻状态对，得到八乘八矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 408.53,
+   "dur": 2.77,
+   "speech": "每行除以这一行的总和。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 411.49,
+   "dur": 2.8,
+   "speech": "空行退化成均匀分布。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 414.47,
+   "dur": 4.26,
+   "speech": "然后把矩阵按状态序列铺回时间轴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 418.91,
+   "dur": 2.8,
+   "speech": "这就是马尔可夫转移场。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 425.11,
+   "dur": 2.44,
+   "speech": "第三场，钉口径。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 427.73,
+   "dur": 3.18,
+   "speech": "两段数据，来自同一只股票。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 431.09,
+   "dur": 2.7,
+   "speech": "第一段一百二十八个点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 433.97,
+   "dur": 3.64,
+   "speech": "从二零一六年六月一日到十二月八日。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 437.79,
+   "dur": 2.87,
+   "speech": "第二段一千零二十四个点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 440.84,
+   "dur": 3.57,
+   "speech": "从二零一五年十月到二零一九年底。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 444.59,
+   "dur": 3.01,
+   "speech": "单位是百分比对数收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 447.78,
+   "dur": 3.37,
+   "speech": "一百乘以前后收盘价比的对数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 451.33,
+   "dur": 3.21,
+   "speech": "第一段画图，第二段做预测。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 454.72,
+   "dur": 3.25,
+   "speech": "为什么不混着用，后面会讲。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 458.15,
+   "dur": 2.27,
+   "speech": "预测实验的口径。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 460.6,
+   "dur": 3.06,
+   "speech": "窗口三十二个点，步长八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 463.85,
+   "dur": 4.17,
+   "speech": "一千零二十四个点，切出一百二十四个窗口。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 468.19,
+   "dur": 4.33,
+   "speech": "训练六十，验证二十九，测试三十五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 472.71,
+   "dur": 3.09,
+   "speech": "窗口重叠，样本不独立。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 475.97,
+   "dur": 2.65,
+   "speech": "这一点写进边界页。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 478.81,
+   "dur": 2.37,
+   "speech": "特征一共两种。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 481.35,
+   "dur": 3.37,
+   "speech": "一种是一百九十二维的图特征。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 484.91,
+   "dur": 4.67,
+   "speech": "一种只有三个数字：末值、均值、标准差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 489.76,
+   "dur": 2.56,
+   "speech": "两条都加一个截距。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 492.49,
+   "dur": 3.01,
+   "speech": "线性头用闭式岭回归。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 495.69,
+   "dur": 3.18,
+   "speech": "正则强度在验证段上选。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 499.05,
+   "dur": 4.96,
+   "speech": "网格五档：一、十、一百、一千、一万。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 504.19,
+   "dur": 2.49,
+   "speech": "图像侧选中一万。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 506.85,
+   "dur": 2.56,
+   "speech": "数字侧选中一百。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 509.59,
+   "dur": 2.99,
+   "speech": "测试段完全不参与选择。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 512.76,
+   "dur": 2.87,
+   "speech": "评价用平均绝对误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 515.81,
+   "dur": 2.08,
+   "speech": "对照三条基线："
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 518.07,
+   "dur": 3.64,
+   "speech": "图特征、三个数字、朴素基线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 521.89,
+   "dur": 3.69,
+   "speech": "朴素基线是把下一天当零收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 525.75,
+   "dur": 2.99,
+   "speech": "反解误差的口径也要钉。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 528.92,
+   "dur": 3.93,
+   "speech": "反解出来的序列，和原序列逐位比。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 533.03,
+   "dur": 4.53,
+   "speech": "允许整体反射：取两种符号里误差小的那个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 537.74,
+   "dur": 3.3,
+   "speech": "报告最大值，不报告平均值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 541.22,
+   "dur": 2.03,
+   "speech": "行和的口径。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 543.43,
+   "dur": 3.04,
+   "speech": "八乘八矩阵每行求和。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 546.65,
+   "dur": 4.24,
+   "speech": "一百二十八乘一百二十八图像每行求和。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 551.06,
+   "dur": 3.78,
+   "speech": "前者应该是一，后者应该是十六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 555.03,
+   "dur": 4,
+   "speech": "这些数都由证据程序一条命令跑出来。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 559.2,
+   "dur": 2.27,
+   "speech": "先看它跑了什么。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 564.87,
+   "dur": 2.44,
+   "speech": "第五场，写实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 567.49,
+   "dur": 3.18,
+   "speech": "三个模块，三百三十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 570.85,
+   "dur": 2.58,
+   "speech": "格拉姆角场一百行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 573.61,
+   "dur": 2.37,
+   "speech": "转移场九十二行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 576.16,
+   "dur": 2.94,
+   "speech": "卷积前端一百四十七行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 579.28,
+   "dur": 3.59,
+   "speech": "加二十四条单测，一个证据程序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 583.05,
+   "dur": 3.01,
+   "speech": "证据程序二百六十七行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 586.24,
+   "dur": 3.16,
+   "speech": "全部纯函数，没有输入输出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 589.58,
+   "dur": 2.97,
+   "speech": "没有随机数，种子用不到。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 592.73,
+   "dur": 3.25,
+   "speech": "所以每个数都能逐位复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 596.16,
+   "dur": 2.99,
+   "speech": "格拉姆角场只有几个函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 599.33,
+   "dur": 2.99,
+   "speech": "缩放，夹紧，取极角。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 602.5,
+   "dur": 3.23,
+   "speech": "和场，差场，取对角线。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 605.91,
+   "dur": 3.76,
+   "speech": "反解分两支：整体正，或整体负。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 609.85,
+   "dur": 3.18,
+   "speech": "一支里逐列比两个候选角。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 613.21,
+   "dur": 2.8,
+   "speech": "写成代码不到三十行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 616.19,
+   "dur": 2.46,
+   "speech": "转移场稍长一点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 618.83,
+   "dur": 3.11,
+   "speech": "分箱按秩，用排序后的秩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 622.12,
+   "dur": 3.06,
+   "speech": "数相邻对，逐行归一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 625.36,
+   "dur": 2.73,
+   "speech": "再按状态序列铺开。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 628.27,
+   "dur": 2.82,
+   "speech": "卷积前端最容易写错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 631.27,
+   "dur": 3.66,
+   "speech": "三乘三卷积，步长一，不加边。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 635.11,
+   "dur": 4.93,
+   "speech": "三个固定核：横向梯度、纵向梯度、拉普拉斯。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 640.23,
+   "dur": 3.97,
+   "speech": "过修正线性单元，再池化到八乘八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 644.38,
+   "dur": 3.18,
+   "speech": "三个核拼成一百九十二维。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 647.74,
+   "dur": 3.09,
+   "speech": "池化要按行列同时分组。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 651.01,
+   "dur": 4.12,
+   "speech": "第一版按行分组，四乘四池出四乘二。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 655.31,
+   "dur": 3.35,
+   "speech": "维度对不上，测试当场抓到。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 658.84,
+   "dur": 3.81,
+   "speech": "线性头解方程，用列主元消元。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 662.82,
+   "dur": 2.85,
+   "speech": "主元要取绝对值最大的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 665.85,
+   "dur": 3.28,
+   "speech": "第一版取了最小的，还忘了除。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 669.31,
+   "dur": 2.61,
+   "speech": "两元方程就解错了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 672.09,
+   "dur": 3.06,
+   "speech": "这些错误都不会让程序崩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 675.34,
+   "dur": 2.92,
+   "speech": "只会让数字悄悄错掉。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 678.43,
+   "dur": 3.09,
+   "speech": "所以单测要小、要硬。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 681.7,
+   "dur": 2.94,
+   "speech": "二十四条，逐条对定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 684.82,
+   "dur": 3.28,
+   "speech": "证据程序再跑十九项检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 688.28,
+   "dur": 2.61,
+   "speech": "一条命令，四秒半。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 691.07,
+   "dur": 2.97,
+   "speech": "生成摘要和逐行清单。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 694.21,
+   "dur": 2.05,
+   "speech": "现在看验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 699.67,
+   "dur": 2.25,
+   "speech": "第六场，验证。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 702.1,
+   "dur": 3.01,
+   "speech": "十九项检查，四个分组。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 705.29,
+   "dur": 3.28,
+   "speech": "数据三项，格拉姆角场五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 708.75,
+   "dur": 3.59,
+   "speech": "转移场六项，卷积前端五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 712.52,
+   "dur": 3.49,
+   "speech": "全部通过，用时四点四五秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 716.19,
+   "dur": 2.39,
+   "speech": "先看格拉姆角场。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 718.76,
+   "dur": 2.34,
+   "speech": "手算两点的例子。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 721.28,
+   "dur": 2.29,
+   "speech": "输入负一和零。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 723.76,
+   "dur": 3.64,
+   "speech": "和场是左上角一，右下角负一。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 727.58,
+   "dur": 3.45,
+   "speech": "差场是反对称的，对角为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 731.2,
+   "dur": 3.37,
+   "speech": "一百二十八乘一百二十八的图。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 734.76,
+   "dur": 4.14,
+   "speech": "对称偏差为零，反对称偏差为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 739.08,
+   "dur": 2.41,
+   "speech": "对角偏差也为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 741.67,
+   "dur": 4.21,
+   "speech": "反解最大误差一点三乘十的负十四次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 746.07,
+   "dur": 2.85,
+   "speech": "门槛是十的负十二次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 749.09,
+   "dur": 2.97,
+   "speech": "差了两个数量级，稳过。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 752.24,
+   "dur": 2.61,
+   "speech": "手算样例逐位一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 755.02,
+   "dur": 3.3,
+   "speech": "反解这一组，没有可争的地方。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 758.51,
+   "dur": 2.03,
+   "speech": "再看转移场。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 760.72,
+   "dur": 3.45,
+   "speech": "八乘八矩阵，八行和都为一。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 764.34,
+   "dur": 2.87,
+   "speech": "图像每行和是十六。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 767.39,
+   "dur": 5.08,
+   "speech": "和箱计数乘矩阵行的偏差是二乘十的负十四次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 772.65,
+   "dur": 3.61,
+   "speech": "也就是说，十六这个数不是巧合。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 776.44,
+   "dur": 3.01,
+   "speech": "它是每箱十六个点乘出来的。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 779.64,
+   "dur": 4.19,
+   "speech": "给定矩阵和状态序列，重放误差为零。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 784.01,
+   "dur": 3.18,
+   "speech": "这说明铺开这一步没写错。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 787.37,
+   "dur": 3.3,
+   "speech": "按秩分箱，每箱正好十六个。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 790.85,
+   "dur": 4.21,
+   "speech": "手算五点序列，图像行取对应矩阵行。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 795.25,
+   "dur": 3.09,
+   "speech": "转移场这一组，六项都硬。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 798.51,
+   "dur": 2.75,
+   "speech": "最后看卷积前端。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 801.44,
+   "dur": 4,
+   "speech": "特征一百九十二加三，共一百九十五维。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 805.62,
+   "dur": 3.11,
+   "speech": "加截距，一百九十六个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 808.91,
+   "dur": 5.13,
+   "speech": "滑窗一百二十四个，切分六十、二十九、三十五。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 814.22,
+   "dur": 3.28,
+   "speech": "测试误差：图一点三九一三。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 817.67,
+   "dur": 3.13,
+   "speech": "三个数字一点三九零八。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 820.99,
+   "dur": 3.06,
+   "speech": "朴素基线二点一五五二。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 824.23,
+   "dur": 3.4,
+   "speech": "图没有赢，差距只有万分之四。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 827.81,
+   "dur": 3.45,
+   "speech": "但两条都明显赢过朴素基线。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 831.43,
+   "dur": 4.09,
+   "speech": "参数一百九十六个，算两遍逐位一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 835.71,
+   "dur": 2.49,
+   "speech": "十九项，逐条过。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 841.59,
+   "dur": 2.51,
+   "speech": "第七场，讲边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 844.28,
+   "dur": 3.37,
+   "speech": "第一件能说的：格拉姆角场可逆。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 847.83,
+   "dur": 3.52,
+   "speech": "除整体反射之外，逐位可还原。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 851.53,
+   "dur": 3.66,
+   "speech": "这条是数学事实，不是实验结果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 855.37,
+   "dur": 3.9,
+   "speech": "第二件能说的：转移场保留转移结构。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 859.46,
+   "dur": 3.23,
+   "speech": "八乘八矩阵每行和为一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 862.87,
+   "dur": 4.45,
+   "speech": "给定矩阵和状态序列，图像可以逐位重放。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 867.5,
+   "dur": 4.38,
+   "speech": "第三件能说的：图像特征不输三个数字。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 872.06,
+   "dur": 2.75,
+   "speech": "在噪声范围内打平。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 874.99,
+   "dur": 3.83,
+   "speech": "第四件能说的：两者都赢朴素基线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 879,
+   "dur": 3.73,
+   "speech": "第一件不能说的：图像化都不丢信息。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 882.92,
+   "dur": 2.29,
+   "speech": "转移场就丢。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 885.39,
+   "dur": 3.64,
+   "speech": "状态序列本身没被图像记住。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 889.21,
+   "dur": 3.49,
+   "speech": "同一张图，可能来自不同的序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 892.88,
+   "dur": 3.76,
+   "speech": "第二件不能说的：图像特征更强。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 896.82,
+   "dur": 2.1,
+   "speech": "它没有赢下来。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 899.1,
+   "dur": 3.9,
+   "speech": "赢朴素基线靠的是收缩，不是形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 903.18,
+   "dur": 3.59,
+   "speech": "第三件不能说的：这些数可以搬走。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 906.95,
+   "dur": 4.26,
+   "speech": "换股票、换市场、换窗口，都会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 911.4,
+   "dur": 3.97,
+   "speech": "第四件不能说的：一百二十四个样本够。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 915.55,
+   "dur": 2.77,
+   "speech": "样本只有一百二十四个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 918.5,
+   "dur": 2.92,
+   "speech": "单一切分，没有交叉验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 921.6,
+   "dur": 3.01,
+   "speech": "正则强度只有五档网格。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 924.8,
+   "dur": 3.52,
+   "speech": "误差只差万分之四，在噪声里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 928.49,
+   "dur": 3.59,
+   "speech": "所以这一集不给图更好的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 932.26,
+   "dur": 2.65,
+   "speech": "只给图不更差的结论。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 935.1,
+   "dur": 3.33,
+   "speech": "还有一个结构性的限制：窗口。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 938.6,
+   "dur": 4.62,
+   "speech": "窗口三十二个点，图就是三十二乘三十二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 943.41,
+   "dur": 3.83,
+   "speech": "池化到八乘八，只剩六十四个格子。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 947.42,
+   "dur": 2.89,
+   "speech": "信息在池化里被压掉。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 950.49,
+   "dur": 2.65,
+   "speech": "最后一条边界：数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 953.32,
+   "dur": 2.8,
+   "speech": "一只股票，两段时期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 956.3,
+   "dur": 2.87,
+   "speech": "百分比对数收益，日频。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 959.35,
+   "dur": 3.21,
+   "speech": "没有隔夜跳空之外的机制变化。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 962.74,
+   "dur": 2.87,
+   "speech": "这些条件下，结论成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 965.79,
+   "dur": 3.37,
+   "speech": "出了这些条件，结论待验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 969.34,
+   "dur": 2.94,
+   "speech": "这比图像化有用更诚实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 972.46,
+   "dur": 3.47,
+   "speech": "也更接近工程上真正要问的问题："
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 976.11,
+   "dur": 3.73,
+   "speech": "这套表示，在我的数据上值不值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 980.03,
+   "dur": 1.98,
+   "speech": "这一场收束。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 985.41,
+   "dur": 2.22,
+   "speech": "第八场，收束。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 987.81,
+   "dur": 2.51,
+   "speech": "回到开头那张图。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 990.5,
+   "dur": 4.55,
+   "speech": "一百二十八个数字，一万六千三百八十四个格子。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 995.23,
+   "dur": 3.16,
+   "speech": "每个格子是两个角度的余弦。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 998.57,
+   "dur": 3.21,
+   "speech": "对角线能反解出原序列。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1001.96,
+   "dur": 2.37,
+   "speech": "差一个整体反射。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1004.5,
+   "dur": 2.89,
+   "speech": "这就是无损的全部含义。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1007.58,
+   "dur": 2.7,
+   "speech": "转移场是另一种故事。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1010.46,
+   "dur": 2.8,
+   "speech": "它画的是状态与状态。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1013.44,
+   "dur": 2.49,
+   "speech": "保结构，不保位置。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1016.1,
+   "dur": 2.34,
+   "speech": "最后复盘四个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1018.62,
+   "dur": 3.88,
+   "speech": "反解误差一点三乘十的负十四次方。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1022.68,
+   "dur": 3.16,
+   "speech": "图像行和是十六，不是一。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1026.02,
+   "dur": 4.55,
+   "speech": "图特征一点三九一三，数字一点三九零八。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1030.75,
+   "dur": 3.06,
+   "speech": "朴素基线二点一五五二。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1033.99,
+   "dur": 3.18,
+   "speech": "三个模块，三百三十九行。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1037.35,
+   "dur": 3.33,
+   "speech": "二十四条单测，十九项检查。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1040.86,
+   "dur": 2.61,
+   "speech": "一条命令，四秒半。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1043.65,
+   "dur": 3.45,
+   "speech": "屏幕上的每个数都能自己跑出来。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1047.27,
+   "dur": 2.41,
+   "speech": "下一集换个方向。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1049.87,
+   "dur": 2.61,
+   "speech": "下一集不问怎么表示。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1052.65,
+   "dur": 1.96,
+   "speech": "问怎么适配。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1054.79,
+   "dur": 3.85,
+   "speech": "冻结一个大模型，只训练很少的参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1058.82,
+   "dur": 3.21,
+   "speech": "线性探测，一千三百个参数。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1062.21,
+   "dur": 3.25,
+   "speech": "低秩重参数化，每层几百个。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1065.64,
+   "dur": 2.65,
+   "speech": "语义锚点，选前缀。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1068.48,
+   "dur": 3.37,
+   "speech": "三个办法，都只动很小的一块。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1072.03,
+   "dur": 2.63,
+   "speech": "代价可以精确算出来。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1074.84,
+   "dur": 2.85,
+   "speech": "这比微调更接近工程。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1077.87,
+   "dur": 2.01,
+   "speech": "下一集再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1080.05,
+   "dur": 1.98,
+   "speech": "最后留一句。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1082.22,
+   "dur": 3.16,
+   "speech": "表示的价值不在像不像图。"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1085.55,
+   "dur": 2.97,
+   "speech": "在于它让你能问出新的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1088.7,
+   "dur": 2.85,
+   "speech": "二维卷积是新的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1091.73,
+   "dur": 2.61,
+   "speech": "可逆性也是新的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1094.51,
+   "dur": 2.89,
+   "speech": "但新问题不保证好答案。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1097.59,
+   "dur": 3.18,
+   "speech": "这一集量到的，是一条边界。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1100.95,
+   "dur": 2.85,
+   "speech": "边界之内，图可以无损。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1103.97,
+   "dur": 2.85,
+   "speech": "边界之外，图只是图。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1107,
+   "dur": 2.29,
+   "speech": "感谢观看本集。"
+  }
+ ]
+}
