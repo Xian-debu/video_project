@@ -1,6 +1,6 @@
 # 61-probabilistic-heads - 不止一个数：分位损失、分位线交叉与分布头
 
-> status: produced (pack ready; delivery pending render)
+> status: delivered (2026-11-04)
 > chapter: ch07 | runtime target: 18 min | algorithms: 3
 
 ## Thesis

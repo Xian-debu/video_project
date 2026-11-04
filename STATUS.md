@@ -77,7 +77,7 @@
 | tsint-59-mini-foundation-loop | 一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | ready | 1619 | yes | ok | 11 | - |
 | tsint-60-ar-vs-nar-decoding | 一步一步还是一口气：自回归与非自回归解码 | ready | 1310 | yes | ok | 11 | - |
 | tsint-61-probabilistic-heads | 不止一个数：分位损失、分位线交叉与分布头 | ready | 1195 | yes | ok | 11 | - |
-| tsint-62-anomaly-two-ways | 两种异常检测：预测残差看得见尖峰，重构误差看得见整段漂移 | draft | 1080 | silent | ok | 1 | - |
+| tsint-62-anomaly-two-ways | 两种异常检测：预测残差看得见尖峰，重构误差看得见整段漂移 | ready | 1156 | yes | ok | 1 | - |
 | tsint-63-image-encoding | 把序列画成图：GAF 与 MTF 都是可逆的 | draft | 1200 | silent | ok | 1 | - |
 | tsint-64-llm-side-adapters | 只训练 0.1% 的参数：线性探测、LoRA 与语义锚点 | draft | 960 | silent | ok | 1 | - |
 | tsint-65-error-metrics-trio | 误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动 | ready | - | yes | ok | 11 | - |
