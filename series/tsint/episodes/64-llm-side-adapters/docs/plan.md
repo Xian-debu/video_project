@@ -1,6 +1,6 @@
 # 64-llm-side-adapters - 只训练 0.1% 的参数：线性探测、LoRA 与语义锚点
 
-> status: draft
+> status: delivered
 > chapter: ch07 | runtime target: 16 min | algorithms: 3
 
 ## Thesis
@@ -40,7 +40,14 @@
 
 ## Delivery
 
-（渲染后回填：成片秒数/帧数、旁白与字幕条数、音量 LUFS、mp4 大小与 sha256、still_lint 结论、复现三条。）
+- 成片 **1,053.47 s（17:33.47）/ 31,604 帧 / 8 场 32 页 / 320 条旁白**；语音 858.1 s、均值 2.68 s；字幕 320 条、跨度 00:00:01,200 → 00:17:31,290、0 条换行、最长 27 字；章节 8 段合计 1,053.48 s（00:00:00 / 00:02:08 / 00:04:18 / 00:06:27 / 00:08:40 / 00:10:55 / 00:13:13 / 00:15:28）。
+- 音量 **−15 LUFS / TP −2 dBFS**；mix 48 kHz / 1,054.68 s、peak −1.00 dBFS、RMS −26.83 dBFS、ducked **53.3%**（4.5 dB）、musicGain −4.5 dB、preGain 0.9997、fade 1.5 / 2.5；stem full −25.1 / audible −27.88 / share 0.631 / sub 0.068（PASS）；mix gate speech −23.53 / gap_full −29.95 / gap_audible −32.70 / bed 37.3（PASS）。
+- 文件：mp4 **53,734,999 B**、sha256 `cc2acad944beb5c0f916bc8a1a21a300ac7d01caacf44eec6e68fb60c41fc172`；cover.png 158,940 B、sha256 `99142b42be2028bef4b5cd1e5119f9968d29b6575e4bd307949e4405ef81f207`（frame 180 = 6.00 s）；srt 21,532 B。
+- 流水线：23 个 stage 全 ok、8 段 rendered 8（reused 0）、tree `f929bf091db33348`；闪烁 31,604 帧 mean|d| **0.0132** / p99 0.1064 / max 8.19 / 7 切点（3847 / 7762 / 11637 / 15620 / 19666 / 23816 / 27853）；still_lint 32 页 PASS（make 内部 4 帧也 PASS）。
+- 复现三条（与成片屏幕一致）：
+  1. `cabal run tsbase -- evidence-ch07-adapters --data data/episodes/64-llm-side-adapters --out out/evidence-64 --evidence inventory/evidence/64-llm-side-adapters.ch7-adapters.json`
+  2. `cabal test`
+  3. `node scripts/make.mjs --film tsint-64-llm-side-adapters`
 
 ## Deviations
 
