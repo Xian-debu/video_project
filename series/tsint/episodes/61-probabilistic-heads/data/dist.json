@@ -1,0 +1,503 @@
+{
+ "meta": {
+  "episode": 61,
+  "slug": "probabilistic-heads",
+  "chapter": "ch07",
+  "title": "不止一个数：分位损失、分位线交叉与分布头",
+  "runtimeTarget": 18
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "收益序列 6,599 行",
+   "ok": true,
+   "detail": "6599 行，1998-11-26 起"
+  },
+  {
+   "group": "data",
+   "name": "训练池（目标日 2015–2019）与少样本拟合子集",
+   "ok": true,
+   "detail": "1219 个候选，取 400 个拟合"
+  },
+  {
+   "group": "data",
+   "name": "测试样本（目标日 2020–2022）",
+   "ok": true,
+   "detail": "728 个样本"
+  },
+  {
+   "group": "data",
+   "name": "覆盖率取测试段最后 500 天",
+   "ok": true,
+   "detail": "2020-12-11 → 2022-12-30"
+  },
+  {
+   "group": "pinball",
+   "name": "黄金四值 0.9 / 0.1 / 0.1 / 0.9",
+   "ok": true,
+   "detail": "0.9000 / 0.1000 / 0.1000 / 0.9000"
+  },
+  {
+   "group": "pinball",
+   "name": "tau=0.5 退化为半绝对值（y=3, q=1 时 1.0）",
+   "ok": true,
+   "detail": "1.0000"
+  },
+  {
+   "group": "pinball",
+   "name": "样本中位数最小化平均绝对误差",
+   "ok": true,
+   "detail": "1.666557 <= 1.724896"
+  },
+  {
+   "group": "pinball",
+   "name": "平均 pinball 损失与逐样本手算一致",
+   "ok": true,
+   "detail": "0.726731"
+  },
+  {
+   "group": "crossing",
+   "name": "手工样例：3 条线、2 个样本、3 个逆序对",
+   "ok": true,
+   "detail": "3"
+  },
+  {
+   "group": "crossing",
+   "name": "独立拟合的分位线在测试段出现交叉",
+   "ok": true,
+   "detail": "881 个逆序对 / 26208 个对子"
+  },
+  {
+   "group": "crossing",
+   "name": "交叉率在 1%–10%（书里量级 3–5%）",
+   "ok": true,
+   "detail": "3.3616%（9 条线）"
+  },
+  {
+   "group": "crossing",
+   "name": "重排后交叉率归零",
+   "ok": true,
+   "detail": "0 个逆序对，rate = 0.0000"
+  },
+  {
+   "group": "crossing",
+   "name": "重排保持逐样本多重集",
+   "ok": true,
+   "detail": "每样本 9 个值不变，只换位置"
+  },
+  {
+   "group": "crossing",
+   "name": "重排后 pinball 损失几乎不变（< 2%）",
+   "ok": true,
+   "detail": "0.726731 → 0.724864，相对 -0.2568%"
+  },
+  {
+   "group": "dist",
+   "name": "高斯 NLL 锚点 0.9189（mu=y、sigma=1）",
+   "ok": true,
+   "detail": "0.918939"
+  },
+  {
+   "group": "dist",
+   "name": "拟合高斯的测试段 NLL 与手算一致",
+   "ok": true,
+   "detail": "2.274503"
+  },
+  {
+   "group": "dist",
+   "name": "95% 名义区间实测覆盖率低于 0.95（厚尾）",
+   "ok": true,
+   "detail": "0.9240 · 500 天"
+  },
+  {
+   "group": "dist",
+   "name": "解析梯度 = 数值梯度（mu 与 raw）",
+   "ok": true,
+   "detail": "-2.136647 / -0.860855"
+  }
+ ],
+ "summary": {
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "ok": true
+ },
+ "data": {
+  "returnsRows": 6599,
+  "trainRows": 1219,
+  "fitRows": 400,
+  "testRows": 728,
+  "coverageRows": 500,
+  "coverageStart": "2020-12-11",
+  "coverageEnd": "2022-12-30",
+  "winLen": 32,
+  "winBuckets": 33,
+  "taus": [
+   0.1,
+   0.2,
+   0.3,
+   0.4,
+   0.5,
+   0.6,
+   0.7,
+   0.8,
+   0.9
+  ],
+  "tauCount": 9,
+  "firstDate": "1998-11-26",
+  "lastDate": "2026-10-28"
+ },
+ "crossing": {
+  "rate": 0.033616,
+  "rateAfter": 0.0,
+  "pairs": 881,
+  "pairsAfter": 0,
+  "pairTotal": 26208,
+  "samples": 728
+ },
+ "pinball": {
+  "before": 0.726731,
+  "after": 0.724864,
+  "relDelta": -0.002568,
+  "golden": [
+   0.9,
+   0.1,
+   0.1,
+   0.9
+  ],
+  "medianMae": 1.666557,
+  "medianBaseline": 1.724896
+ },
+ "dist": {
+  "mu": -0.026562,
+  "sigma": 2.168555,
+  "nll": 2.274503,
+  "nllAnchor": 0.918939,
+  "z95": 1.959964,
+  "coverage": 0.924,
+  "coverageTarget": 0.95,
+  "gradMu": -2.136647,
+  "gradRaw": -0.860855
+ },
+ "fan": [
+  {
+   "tau": 0.1,
+   "empirical": -2.5631,
+   "gaussian": -2.8057
+  },
+  {
+   "tau": 0.2,
+   "empirical": -1.7006,
+   "gaussian": -1.8517
+  },
+  {
+   "tau": 0.3,
+   "empirical": -1.1327,
+   "gaussian": -1.1638
+  },
+  {
+   "tau": 0.4,
+   "empirical": -0.6734,
+   "gaussian": -0.576
+  },
+  {
+   "tau": 0.5,
+   "empirical": -0.2516,
+   "gaussian": -0.0266
+  },
+  {
+   "tau": 0.6,
+   "empirical": 0.1781,
+   "gaussian": 0.5228
+  },
+  {
+   "tau": 0.7,
+   "empirical": 0.7267,
+   "gaussian": 1.1106
+  },
+  {
+   "tau": 0.8,
+   "empirical": 1.4305,
+   "gaussian": 1.7985
+  },
+  {
+   "tau": 0.9,
+   "empirical": 2.6277,
+   "gaussian": 2.7526
+  }
+ ],
+ "tailsCurve": [
+  {
+   "tau": 0.01,
+   "empirical": -6.3617,
+   "gaussian": -5.0714
+  },
+  {
+   "tau": 0.03,
+   "empirical": -4.3305,
+   "gaussian": -4.1052
+  },
+  {
+   "tau": 0.05,
+   "empirical": -3.4432,
+   "gaussian": -3.5935
+  },
+  {
+   "tau": 0.07,
+   "empirical": -3.0881,
+   "gaussian": -3.2269
+  },
+  {
+   "tau": 0.09,
+   "empirical": -2.8249,
+   "gaussian": -2.9341
+  },
+  {
+   "tau": 0.11,
+   "empirical": -2.3879,
+   "gaussian": -2.6864
+  },
+  {
+   "tau": 0.13,
+   "empirical": -2.1706,
+   "gaussian": -2.4692
+  },
+  {
+   "tau": 0.15,
+   "empirical": -2.0563,
+   "gaussian": -2.2741
+  },
+  {
+   "tau": 0.17,
+   "empirical": -1.8938,
+   "gaussian": -2.0957
+  },
+  {
+   "tau": 0.19,
+   "empirical": -1.726,
+   "gaussian": -1.9303
+  },
+  {
+   "tau": 0.21,
+   "empirical": -1.5947,
+   "gaussian": -1.7753
+  },
+  {
+   "tau": 0.23,
+   "empirical": -1.4579,
+   "gaussian": -1.6288
+  },
+  {
+   "tau": 0.25,
+   "empirical": -1.3672,
+   "gaussian": -1.4892
+  },
+  {
+   "tau": 0.27,
+   "empirical": -1.255,
+   "gaussian": -1.3555
+  },
+  {
+   "tau": 0.29,
+   "empirical": -1.1767,
+   "gaussian": -1.2266
+  },
+  {
+   "tau": 0.31,
+   "empirical": -1.1041,
+   "gaussian": -1.1018
+  },
+  {
+   "tau": 0.33,
+   "empirical": -0.9771,
+   "gaussian": -0.9805
+  },
+  {
+   "tau": 0.35,
+   "empirical": -0.8716,
+   "gaussian": -0.8622
+  },
+  {
+   "tau": 0.37,
+   "empirical": -0.7932,
+   "gaussian": -0.7462
+  },
+  {
+   "tau": 0.39,
+   "empirical": -0.7308,
+   "gaussian": -0.6323
+  },
+  {
+   "tau": 0.41,
+   "empirical": -0.6198,
+   "gaussian": -0.52
+  },
+  {
+   "tau": 0.43,
+   "empirical": -0.5517,
+   "gaussian": -0.409
+  },
+  {
+   "tau": 0.45,
+   "empirical": -0.4369,
+   "gaussian": -0.2991
+  },
+  {
+   "tau": 0.47,
+   "empirical": -0.3756,
+   "gaussian": -0.1898
+  },
+  {
+   "tau": 0.49,
+   "empirical": -0.277,
+   "gaussian": -0.0809
+  },
+  {
+   "tau": 0.51,
+   "empirical": -0.1892,
+   "gaussian": 0.0278
+  },
+  {
+   "tau": 0.53,
+   "empirical": -0.1177,
+   "gaussian": 0.1367
+  },
+  {
+   "tau": 0.55,
+   "empirical": -0.0559,
+   "gaussian": 0.2459
+  },
+  {
+   "tau": 0.57,
+   "empirical": 0.0,
+   "gaussian": 0.3559
+  },
+  {
+   "tau": 0.59,
+   "empirical": 0.1153,
+   "gaussian": 0.4669
+  },
+  {
+   "tau": 0.61,
+   "empirical": 0.211,
+   "gaussian": 0.5792
+  },
+  {
+   "tau": 0.63,
+   "empirical": 0.2745,
+   "gaussian": 0.6931
+  },
+  {
+   "tau": 0.65,
+   "empirical": 0.3857,
+   "gaussian": 0.809
+  },
+  {
+   "tau": 0.67,
+   "empirical": 0.4785,
+   "gaussian": 0.9274
+  },
+  {
+   "tau": 0.69,
+   "empirical": 0.5802,
+   "gaussian": 1.0487
+  },
+  {
+   "tau": 0.71,
+   "empirical": 0.7954,
+   "gaussian": 1.1735
+  },
+  {
+   "tau": 0.73,
+   "empirical": 0.964,
+   "gaussian": 1.3024
+  },
+  {
+   "tau": 0.75,
+   "empirical": 1.0433,
+   "gaussian": 1.4361
+  },
+  {
+   "tau": 0.77,
+   "empirical": 1.1816,
+   "gaussian": 1.5757
+  },
+  {
+   "tau": 0.79,
+   "empirical": 1.2717,
+   "gaussian": 1.7222
+  },
+  {
+   "tau": 0.81,
+   "empirical": 1.5648,
+   "gaussian": 1.8772
+  },
+  {
+   "tau": 0.83,
+   "empirical": 1.7586,
+   "gaussian": 2.0426
+  },
+  {
+   "tau": 0.85,
+   "empirical": 1.9472,
+   "gaussian": 2.221
+  },
+  {
+   "tau": 0.87,
+   "empirical": 2.2397,
+   "gaussian": 2.4161
+  },
+  {
+   "tau": 0.89,
+   "empirical": 2.5131,
+   "gaussian": 2.6332
+  },
+  {
+   "tau": 0.91,
+   "empirical": 2.871,
+   "gaussian": 2.8809
+  },
+  {
+   "tau": 0.93,
+   "empirical": 3.4765,
+   "gaussian": 3.1738
+  },
+  {
+   "tau": 0.95,
+   "empirical": 4.0591,
+   "gaussian": 3.5404
+  },
+  {
+   "tau": 0.97,
+   "empirical": 4.7682,
+   "gaussian": 4.052
+  },
+  {
+   "tau": 0.99,
+   "empirical": 6.5028,
+   "gaussian": 5.0183
+  }
+ ],
+ "tails": {
+  "q05": -3.4432,
+  "q95": 4.0591,
+  "g05": -3.5935,
+  "g95": 3.5404
+ },
+ "timing": {
+  "seconds": 2.1782
+ },
+ "code": {
+  "modules": 3,
+  "pinballLines": 87,
+  "rearrangeLines": 52,
+  "distLines": 120,
+  "totalLines": 259,
+  "tests": 28,
+  "pinballTests": 11,
+  "rearrangeTests": 8,
+  "distTests": 9,
+  "evidenceLines": 282,
+  "checks": 18
+ }
+}

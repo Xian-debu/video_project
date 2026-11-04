@@ -1,0 +1,2157 @@
+{
+ "entry": "src/tsint-61-probabilistic-heads/script.ts",
+ "fps": 30,
+ "totalSec": 1194.87,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 164.05
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 164.05,
+   "dur": 156.85
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 320.9,
+   "dur": 161.94
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 482.84,
+   "dur": 153.54
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 636.38,
+   "dur": 162.97
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 799.35,
+   "dur": 167.27
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 966.62,
+   "dur": 121.43
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 1088.05,
+   "dur": 106.82
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.39,
+   "speech": "这一集换一个问法。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 3.77,
+   "dur": 3.54,
+   "speech": "不问明天涨多少，问它会落在哪。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.49,
+   "dur": 3.97,
+   "speech": "点预测给一个数，分布预测给一条线。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.65,
+   "dur": 5.1,
+   "speech": "一条线上有很多分位点：一成、五成、九成。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 16.93,
+   "dur": 3.88,
+   "speech": "每个分位点回答：低于它的概率有多大。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 20.99,
+   "dur": 4.45,
+   "speech": "听起来只是把输出从一个数变成几个数。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 25.62,
+   "dur": 4.31,
+   "speech": "但麻烦马上出现：这几条线会互相穿过。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 30.11,
+   "dur": 4.53,
+   "speech": "一条说要跌，另一条说要涨，顺序却反了。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 34.82,
+   "dur": 4.19,
+   "speech": "这一集就量一件事：这种交叉有多严重。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 39.19,
+   "dur": 3.73,
+   "speech": "以及，把它修好要付多少代价。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 43.1,
+   "dur": 3.97,
+   "speech": "先说清楚为什么值得单独讲一集。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 47.25,
+   "dur": 3.54,
+   "speech": "因为分位数之间有一个天然的次序。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 50.98,
+   "dur": 4.48,
+   "speech": "九成线必须在一成线上面，这是定义的一部分。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 55.63,
+   "dur": 4.74,
+   "speech": "可如果九条线各自独立训练，它们并不知道彼此。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 60.56,
+   "dur": 4.38,
+   "speech": "于是区间可能翻过来：上线掉到下线下面。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 65.12,
+   "dur": 2.68,
+   "speech": "书里叫分位线交叉。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 67.98,
+   "dur": 4.86,
+   "speech": "它不是为了好看才要修，交叉会让区间失去意义。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 73.02,
+   "dur": 3.95,
+   "speech": "一个会说谎的区间，比没有区间更糟。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 77.15,
+   "dur": 4.02,
+   "speech": "第二件事是代价：修它要不要牺牲精度。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 81.35,
+   "dur": 4.14,
+   "speech": "如果代价接近零，那就没有理由不修。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 85.67,
+   "dur": 4.19,
+   "speech": "先看四个数，后面每一场都会回到它们。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 90.04,
+   "dur": 3.4,
+   "speech": "第一，交叉率百分之三点三六。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 93.62,
+   "dur": 3.69,
+   "speech": "在七百二十八个测试样本上量出来。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 97.49,
+   "dur": 3.3,
+   "speech": "第二，排序之后交叉率归零。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 100.97,
+   "dur": 4.38,
+   "speech": "第三，pinball 损失只变了百分之零点二六。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 105.53,
+   "dur": 4.05,
+   "speech": "零点七二六七，变成零点七二四九。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 109.76,
+   "dur": 4.45,
+   "speech": "第四，整个证据程序跑完只要二点一八秒。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 114.39,
+   "dur": 2.87,
+   "speech": "十八项检查全部通过。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 117.44,
+   "dur": 3.01,
+   "speech": "这四个数合起来说一件事。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 120.63,
+   "dur": 3.76,
+   "speech": "顺序可以免费加上，精度几乎不掉。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 124.57,
+   "dur": 2.25,
+   "speech": "接下来分八场。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 127,
+   "dur": 3.28,
+   "speech": "第一场说问题：为什么一个数不够。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 130.46,
+   "dur": 4.74,
+   "speech": "第二场定义三件东西：损失、次序、分布。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 135.38,
+   "dur": 3.47,
+   "speech": "第三场把数据与口径钉死。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 139.03,
+   "dur": 3.04,
+   "speech": "第四场量交叉率与代价。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 142.25,
+   "dur": 4.26,
+   "speech": "第五场写实现：三个模块、二百五十九行。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 146.69,
+   "dur": 3.64,
+   "speech": "第六场验证：十八项检查逐条过。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 150.51,
+   "dur": 4.09,
+   "speech": "第七场讲边界：结论在什么条件下成立。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 154.78,
+   "dur": 3.23,
+   "speech": "第八场收束，指向下一集。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 158.19,
+   "dur": 3.66,
+   "speech": "每一页的数字都能用一条命令复现。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 165.25,
+   "dur": 2.58,
+   "speech": "先从这个困境说起。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 168.01,
+   "dur": 3.45,
+   "speech": "你训练一个模型预测明天收益。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 171.64,
+   "dur": 3.06,
+   "speech": "它给你一个数，比如零点三。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 174.88,
+   "dur": 3.28,
+   "speech": "这个数没有告诉你它有多确定。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 178.34,
+   "dur": 3.16,
+   "speech": "也没有告诉你最坏会到哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 181.68,
+   "dur": 3.59,
+   "speech": "风控要的不是一个数，是一个区间。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 185.45,
+   "dur": 4.05,
+   "speech": "区间要能说：九成情况下不会超出这里。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 189.67,
+   "dur": 3.33,
+   "speech": "这就是分位数回归要回答的事。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 193.18,
+   "dur": 3.28,
+   "speech": "把输出从一个数扩成一条线。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 196.64,
+   "dur": 3.04,
+   "speech": "线由若干个分位点钉出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 199.85,
+   "dur": 3.16,
+   "speech": "问题出在怎么训练这条线。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 203.19,
+   "dur": 4.33,
+   "speech": "最直接的做法：每个分位点单独训一个模型。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 207.71,
+   "dur": 3.37,
+   "speech": "九条线就是九个独立的回归。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 211.26,
+   "dur": 4,
+   "speech": "每个只看自己的损失，不知道别的线在哪。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 215.44,
+   "dur": 4.09,
+   "speech": "样本一少、特征一多，估计误差就大。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 219.71,
+   "dur": 4.38,
+   "speech": "于是某一天，一成线的预测比九成线还高。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 224.27,
+   "dur": 4.21,
+   "speech": "这不是代码错了，是九个模型各说各话。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 228.67,
+   "dur": 3.76,
+   "speech": "书里量到的交叉率在百分之三到五。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 232.61,
+   "dur": 4.07,
+   "speech": "本集在自己的数据上是百分之三点三六。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 236.86,
+   "dur": 3.83,
+   "speech": "量级对上了，说明这不是偶发现象。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 240.87,
+   "dur": 4.02,
+   "speech": "为什么交叉是个真问题，而不只是不好看。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 245.07,
+   "dur": 3.16,
+   "speech": "区间是拿两条线夹出来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 248.41,
+   "dur": 4.33,
+   "speech": "如果上线掉到下线下面，宽度变成负数。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 252.92,
+   "dur": 3.52,
+   "speech": "你没法解释一个宽度为负的区间。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 256.62,
+   "dur": 3.4,
+   "speech": "下游的覆盖率统计也会跟着崩。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 260.2,
+   "dur": 4,
+   "speech": "更麻烦的是，它只在少数样本上发生。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 264.37,
+   "dur": 4.17,
+   "speech": "少数样本会把整体指标悄悄拖偏。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 268.72,
+   "dur": 4.43,
+   "speech": "所以要么训练时加约束，要么输出后修。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 273.33,
+   "dur": 3.57,
+   "speech": "本集走第二条：输出之后排个序。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 277.08,
+   "dur": 3.49,
+   "speech": "先量清楚代价，再决定值不值。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 280.75,
+   "dur": 2.61,
+   "speech": "具体要回答三个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 283.54,
+   "dur": 3.47,
+   "speech": "第一，独立训练到底交叉多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 287.19,
+   "dur": 3.71,
+   "speech": "第二，排序修好之后损失变多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 291.08,
+   "dur": 4.24,
+   "speech": "第三，高斯头的覆盖率配不配得上名义值。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 295.49,
+   "dur": 3.23,
+   "speech": "三个问题各对应一组检查。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 298.9,
+   "dur": 4.53,
+   "speech": "验收线先写下来：交叉率落在百分之一到十。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 303.61,
+   "dur": 4.72,
+   "speech": "这是书里的量级，太干净反而说明设定不对。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 308.51,
+   "dur": 2.8,
+   "speech": "排序后交叉必须归零。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 311.49,
+   "dur": 3.21,
+   "speech": "损失变化必须小于百分之二。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 314.87,
+   "dur": 3.83,
+   "speech": "覆盖率与名义九十五差多少，照实说。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 322.1,
+   "dur": 2.05,
+   "speech": "先定义损失。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 324.33,
+   "dur": 3.13,
+   "speech": "pinball 损失也叫分位数损失。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 327.65,
+   "dur": 4.41,
+   "speech": "给定分位 tau 和预测 q，还有真实值 y。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 332.23,
+   "dur": 3.73,
+   "speech": "如果 y 在 q 上面，罚 tau 乘距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 336.15,
+   "dur": 4.12,
+   "speech": "如果 y 在 q 下面，罚一减 tau 乘距离。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 340.45,
+   "dur": 3.66,
+   "speech": "tau 等于零点九时，低估罚九成。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 344.29,
+   "dur": 3.81,
+   "speech": "高估只罚一成，它宁可往高里猜。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 348.27,
+   "dur": 3.09,
+   "speech": "tau 等于零点一时反过来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 351.54,
+   "dur": 5.44,
+   "speech": "四个黄金值：零点九、零点一、零点一、零点九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 357.16,
+   "dur": 3.73,
+   "speech": "这个不对称，就是分位数的全部秘密。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 361.07,
+   "dur": 3.45,
+   "speech": "单点损失要聚合成一个标量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 364.7,
+   "dur": 3.52,
+   "speech": "对所有样本、所有分位取平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 368.4,
+   "dur": 4.12,
+   "speech": "分母是分位个数乘样本数，不是样本数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 372.69,
+   "dur": 4.5,
+   "speech": "我第一次写就漏了这个除法，数值大了九倍。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 377.38,
+   "dur": 3.88,
+   "speech": "检查立刻抓到，因为手算的锚点对不上。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 381.43,
+   "dur": 3.06,
+   "speech": "另一件工具是经验分位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 384.68,
+   "dur": 4.02,
+   "speech": "把样本排序，取第 ceil(tau 乘 n) 个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 388.88,
+   "dur": 3.16,
+   "speech": "这就是最朴素的分位数定义。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 392.22,
+   "dur": 3.61,
+   "speech": "它不做插值，和 numpy 的 lower 一致。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 396.01,
+   "dur": 3.73,
+   "speech": "后面用它构造对照，不参与训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 399.92,
+   "dur": 2.22,
+   "speech": "现在定义交叉。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 402.33,
+   "dur": 3.78,
+   "speech": "对每一个样本，九条线给出九个值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 406.29,
+   "dur": 4,
+   "speech": "任取两条线，tau 小的那条应该更低。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 410.47,
+   "dur": 3.78,
+   "speech": "如果它反而更高，就记一个逆序对。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 414.43,
+   "dur": 4.41,
+   "speech": "交叉率等于逆序对数除以对子数乘样本数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 419.01,
+   "dur": 3.47,
+   "speech": "对子数是九选二，三十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 422.66,
+   "dur": 4.65,
+   "speech": "样本七百二十八，总共有两万六千二百零八对。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 427.49,
+   "dur": 3.85,
+   "speech": "少于两条线时直接报错，不返回零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 431.52,
+   "dur": 3.45,
+   "speech": "这个口径比书里更严格一点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 435.15,
+   "dur": 2.94,
+   "speech": "好处是可以逐对审计。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 438.27,
+   "dur": 4.09,
+   "speech": "修法只有一句：每个样本的九个值排个序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 442.55,
+   "dur": 4.36,
+   "speech": "排序不改变这九个数的集合，只改变顺序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 447.08,
+   "dur": 4.55,
+   "speech": "所以它叫零成本：没有新参数，没有新训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 451.81,
+   "dur": 4.14,
+   "speech": "它也不改变任何一条线在单点上的能力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 456.14,
+   "dur": 4.45,
+   "speech": "代价只可能来自损失函数如何看待组合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 460.77,
+   "dur": 2.49,
+   "speech": "下一件事是分布头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 463.44,
+   "dur": 4.45,
+   "speech": "不再给分位，直接给高斯：均值与标准差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 468.07,
+   "dur": 4.57,
+   "speech": "sigma 由原始参数经 softplus 保证为正。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 472.82,
+   "dur": 4.14,
+   "speech": "训练用负对数似然，也就是 NLL。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 477.15,
+   "dur": 3.49,
+   "speech": "它同时惩罚均值偏和方差错。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 484.04,
+   "dur": 3.49,
+   "speech": "数据是 000001 的日收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 487.71,
+   "dur": 3.57,
+   "speech": "取百分比对数收益：一百乘对数比。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 491.46,
+   "dur": 3.09,
+   "speech": "全序列六千五百九十九行。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 494.73,
+   "dur": 4.05,
+   "speech": "从一九九八年十一月到二零二六年十月。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 498.95,
+   "dur": 5.01,
+   "speech": "训练池取目标日在一五到一九年的一千二百一十九个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 504.14,
+   "dur": 4,
+   "speech": "少样本协议：只取四百个拟合九条线。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 508.32,
+   "dur": 4.29,
+   "speech": "测试段取二零二零到二二年的七百二十八个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 512.78,
+   "dur": 3.57,
+   "speech": "覆盖率另外取测试段最后五百天。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 516.53,
+   "dur": 3.64,
+   "speech": "窗口三十二个点，特征三十三维。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 520.35,
+   "dur": 3.76,
+   "speech": "分位网格九条：零点一到零点九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 524.28,
+   "dur": 2.08,
+   "speech": "先看交叉率。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 526.54,
+   "dur": 4.74,
+   "speech": "测试段七百二十八样本，两万六千二百零八对。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 531.46,
+   "dur": 2.41,
+   "speech": "逆序对八百八十一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 534.06,
+   "dur": 3.28,
+   "speech": "交叉率百分之三点三六一六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 537.52,
+   "dur": 3.42,
+   "speech": "落在书里百分之三到五的量级里。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 541.12,
+   "dur": 2.75,
+   "speech": "排序之后逆序对是零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 544.05,
+   "dur": 3.28,
+   "speech": "交叉率百分之零，精确的零。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 547.51,
+   "dur": 3.71,
+   "speech": "而且每个样本的九个值一个不少。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 551.4,
+   "dur": 2.99,
+   "speech": "只换了位置，没有丢预测。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 554.57,
+   "dur": 2.92,
+   "speech": "这是零成本最硬的证据。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 557.66,
+   "dur": 2.37,
+   "speech": "再看排序的代价。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 560.21,
+   "dur": 4.12,
+   "speech": "排序前 pinball 损失零点七二六七三一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 564.51,
+   "dur": 3.28,
+   "speech": "排序后零点七二四八六四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 567.97,
+   "dur": 3.97,
+   "speech": "相对变化是负的百分之零点二五六八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 572.12,
+   "dur": 3.88,
+   "speech": "也就是说几乎没变，还略降了一点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 576.18,
+   "dur": 3.66,
+   "speech": "不能把这个下降包装成精度提升。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 580.02,
+   "dur": 4.26,
+   "speech": "排序不产生新信息，只让组合更整齐。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 584.46,
+   "dur": 4.24,
+   "speech": "检查的容差是百分之二，实际差零点二六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 588.88,
+   "dur": 3.59,
+   "speech": "结论：加顺序约束不牺牲精度。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 592.65,
+   "dur": 3.18,
+   "speech": "这是本集最想让人记住的一句。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 596.01,
+   "dur": 2.63,
+   "speech": "第三个问题是分布头。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 598.82,
+   "dur": 3.59,
+   "speech": "拟合高斯：均值负零点零二六六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 602.59,
+   "dur": 2.7,
+   "speech": "标准差二点一六九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 605.47,
+   "dur": 3.69,
+   "speech": "测试段 NLL 是二点二七四五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 609.34,
+   "dur": 4.19,
+   "speech": "锚点检查：mu 等于 y、sigma 等于一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 613.71,
+   "dur": 4.48,
+   "speech": "这时 NLL 零点九一八九，手算能对上。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 618.37,
+   "dur": 4.45,
+   "speech": "半乘 ln 二 pi 加半，就是零点九一八九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 623,
+   "dur": 3.97,
+   "speech": "覆盖率：名义九十五，实测九十二点四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 627.16,
+   "dur": 3.45,
+   "speech": "五百天里三十八天落在区间外。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 630.78,
+   "dur": 3.4,
+   "speech": "尾部比高斯厚，这条线照实报。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 637.58,
+   "dur": 3.73,
+   "speech": "实现只有三个模块，二百五十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 641.49,
+   "dur": 5.01,
+   "speech": "Pinball 八十七行，管损失、经验分位、交叉计数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 646.68,
+   "dur": 3.97,
+   "speech": "QuantileRearrange 五十二行，管排序回填。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 650.83,
+   "dur": 4.81,
+   "speech": "DistHead 一百二十行，管高斯似然与覆盖率。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 655.83,
+   "dur": 3.97,
+   "speech": "测试二十八条：十一、八、九。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 659.98,
+   "dur": 5.08,
+   "speech": "证据程序二百八十二行，把读数写进 JSON。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 665.24,
+   "dur": 3.81,
+   "speech": "三个模块互不引用，可以单独拷走。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 669.23,
+   "dur": 4.65,
+   "speech": "没有 IO，没有外部库，只依赖核心线性代数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 674.05,
+   "dur": 2.68,
+   "speech": "这是仓库的硬规矩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 676.91,
+   "dur": 3.11,
+   "speech": "下面挑四处关键实现讲。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 680.2,
+   "dur": 2.25,
+   "speech": "先看损失函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 682.63,
+   "dur": 4.09,
+   "speech": "参数是 tau、真实值 y、预测 q。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 686.9,
+   "dur": 4.26,
+   "speech": "tau 不在零到一之间直接报错，不静默夹断。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 691.34,
+   "dur": 4.14,
+   "speech": "y 大于等于 q 时罚 tau 乘 y 减 q。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 695.66,
+   "dur": 3.59,
+   "speech": "否则罚一减 tau 乘 q 减 y。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 699.43,
+   "dur": 3.06,
+   "speech": "三个分支，没有隐藏状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 702.68,
+   "dur": 4.19,
+   "speech": "平均损失按分位个数乘样本数归一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 707.05,
+   "dur": 3.16,
+   "speech": "分母写错是最容易犯的错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 710.38,
+   "dur": 3.73,
+   "speech": "所以检查里专门有一条手算对照。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 714.3,
+   "dur": 3.83,
+   "speech": "代码短，但每一行都要能对上定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 718.31,
+   "dur": 2.77,
+   "speech": "排序回填也只有几行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 721.26,
+   "dur": 4.79,
+   "speech": "对每个样本取九个值，排序，按 tau 顺序写回。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 726.23,
+   "dur": 4.33,
+   "speech": "行宽不一致直接报错，说明上游漏了分位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 730.75,
+   "dur": 2.99,
+   "speech": "单调检查一开始写反了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 733.92,
+   "dur": 4.96,
+   "speech": "我按分位线逐行查，而每一行本来就几乎单调。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 739.05,
+   "dur": 4.21,
+   "speech": "正确做法是按样本取九个 tau 的值再查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 743.45,
+   "dur": 3.04,
+   "speech": "这个错误被单元测试抓到。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 746.67,
+   "dur": 4.36,
+   "speech": "交叉计数也一样：先数逆序对，再归一。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 751.2,
+   "dur": 2.87,
+   "speech": "两条线以下直接报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 754.25,
+   "dur": 3.45,
+   "speech": "边界条件不留给调用方去猜。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 757.88,
+   "dur": 2.58,
+   "speech": "分布头有三个部件。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 760.64,
+   "dur": 4.43,
+   "speech": "NLL：负对数似然，sigma 必须为正。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 765.25,
+   "dur": 4.07,
+   "speech": "解析梯度：对 mu 和对原始参数各一个。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 769.5,
+   "dur": 4.69,
+   "speech": "sigma 由 softplus 加一个小常数保证为正。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 774.38,
+   "dur": 4.19,
+   "speech": "softplus 的导数是 sigmoid，链式接上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 778.75,
+   "dur": 4.12,
+   "speech": "还有标准正态分位数，用 Acklam 近似。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 783.04,
+   "dur": 2.51,
+   "speech": "第一版梯度漏了负号。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 785.73,
+   "dur": 4.14,
+   "speech": "dMu 应该是负的残差除以 sigma 平方。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 790.06,
+   "dur": 2.94,
+   "speech": "数值梯度检查立刻报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 793.18,
+   "dur": 3.97,
+   "speech": "补上负号后两个梯度对上，测试转绿。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 800.55,
+   "dur": 3.11,
+   "speech": "证据程序跑十八项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 803.84,
+   "dur": 4.72,
+   "speech": "分组是数据四、pinball 四、交叉六、分布四。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 808.74,
+   "dur": 3.37,
+   "speech": "全部通过，用时二点一八秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 812.29,
+   "dur": 5.13,
+   "speech": "数据组确认行数、训练池、测试段、覆盖率窗口。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 817.6,
+   "dur": 5.01,
+   "speech": "pinball 组确认四个黄金值、中位数对照、手算一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 822.78,
+   "dur": 4.79,
+   "speech": "交叉组确认手工样例、实测交叉、修后归零。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 827.75,
+   "dur": 4.02,
+   "speech": "还确认多重集不变、损失几乎不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 831.96,
+   "dur": 5.41,
+   "speech": "分布组确认锚点、手算 NLL、覆盖率、解析梯度。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 837.55,
+   "dur": 3.09,
+   "speech": "十八项都来自同一条命令。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 840.82,
+   "dur": 4.86,
+   "speech": "结果是 JSON 加一份逐行 checks.txt。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 845.86,
+   "dur": 2.8,
+   "speech": "交叉这一组值得展开。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 848.84,
+   "dur": 4.53,
+   "speech": "手工样例：三条线、两个样本、三个逆序对。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 853.54,
+   "dur": 2.58,
+   "speech": "程序数出来也是三。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 856.3,
+   "dur": 3.35,
+   "speech": "真实数据：八百八十一个逆序对。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 859.83,
+   "dur": 4.36,
+   "speech": "摊在两万六千二百零八对上，是三点三六。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 864.37,
+   "dur": 2.05,
+   "speech": "排序后是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 866.61,
+   "dur": 3.73,
+   "speech": "注意，这个零不是把线画平了换来的。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 870.52,
+   "dur": 3.35,
+   "speech": "每个样本的九个值原样保留。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 874.05,
+   "dur": 3.04,
+   "speech": "只是把它们按大小排了队。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 877.27,
+   "dur": 4.14,
+   "speech": "所以交叉是被消除了，不是被掩盖了。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 881.59,
+   "dur": 2.46,
+   "speech": "pinball 的四项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 884.23,
+   "dur": 5.44,
+   "speech": "四个黄金值：零点九、零点一、零点一、零点九。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 889.85,
+   "dur": 4.67,
+   "speech": "tau 等于零点五时，损失退化成半个绝对误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 894.7,
+   "dur": 4.41,
+   "speech": "y 等于三、q 等于一，损失是一点零。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 899.29,
+   "dur": 4.33,
+   "speech": "中位数那条线应该最小化平均绝对误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 903.8,
+   "dur": 4.45,
+   "speech": "实测一点六六六七，基线一点七二四九。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 908.43,
+   "dur": 2.51,
+   "speech": "中位数确实更小。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 911.12,
+   "dur": 3.69,
+   "speech": "再加上损失变化小于百分之二这一条。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 914.99,
+   "dur": 3.59,
+   "speech": "四件事合起来证明实现没走样。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 918.76,
+   "dur": 3.76,
+   "speech": "然后才敢说排序的代价是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 922.7,
+   "dur": 2.13,
+   "speech": "分布头四项。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 925,
+   "dur": 5.77,
+   "speech": "锚点：mu 等于 y、sigma 等于一，NLL 零点九一八九。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 930.96,
+   "dur": 4.07,
+   "speech": "手算：半乘 ln 二 pi 加半，对上了。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 935.21,
+   "dur": 5.37,
+   "speech": "拟合高斯的测试段 NLL 二点二七四五，手算一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 940.75,
+   "dur": 5.65,
+   "speech": "解析梯度与数值梯度：负二点一三六六、负零点八六零九。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 946.59,
+   "dur": 3.52,
+   "speech": "覆盖率零点九二四，五百天。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 950.29,
+   "dur": 4.05,
+   "speech": "低于名义百分之九十五，检查如实记录。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 954.51,
+   "dur": 4.41,
+   "speech": "这一项不是通过就算了，它同时是一条边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 959.1,
+   "dur": 2.75,
+   "speech": "高斯头会在尾部失准。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 962.03,
+   "dur": 2.39,
+   "speech": "下一场讲这件事。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 967.82,
+   "dur": 2.53,
+   "speech": "先说交叉率这个数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 970.53,
+   "dur": 3.37,
+   "speech": "百分之三点三六不是普适常数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 974.09,
+   "dur": 4.74,
+   "speech": "同一份数据换窗口：六十四点时交叉率到十四。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 979.01,
+   "dur": 4.31,
+   "speech": "特征很少、样本很多时，掉到万分之三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 983.5,
+   "dur": 4.07,
+   "speech": "交叉率是设定的函数，不是市场的属性。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 987.75,
+   "dur": 3.83,
+   "speech": "本集选三十二点窗口与四百个拟合。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 991.76,
+   "dur": 3.76,
+   "speech": "理由是它落在书里三到五的量级。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 995.7,
+   "dur": 3.21,
+   "speech": "换设定，屏幕上的数就会变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 999.08,
+   "dur": 4.24,
+   "speech": "所以这个数只能和这套口径一起引用。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1003.5,
+   "dur": 3.42,
+   "speech": "脱离口径引用它，就是耍流氓。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1007.1,
+   "dur": 2.61,
+   "speech": "第二个边界是覆盖率。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1009.89,
+   "dur": 3.4,
+   "speech": "名义九十五，实测九十二点四。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1013.47,
+   "dur": 4,
+   "speech": "差的二点六个百分点全部来自尾部。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1017.65,
+   "dur": 3.81,
+   "speech": "五百天里最极端的一天跌了十七点七。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1021.63,
+   "dur": 4.12,
+   "speech": "高斯分布下，这种值几乎不可能出现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1025.93,
+   "dur": 3.76,
+   "speech": "经验分位在中间反而比高斯窄。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1029.87,
+   "dur": 4.05,
+   "speech": "所以只看扇形图，会以为拟合很好。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1034.09,
+   "dur": 3.83,
+   "speech": "真正决定覆盖率的是尾部那几个点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1038.1,
+   "dur": 3.35,
+   "speech": "用 NLL 训练不等于校准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1041.63,
+   "dur": 3.18,
+   "speech": "要校准，得另做一步后处理。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1045,
+   "dur": 3.35,
+   "speech": "最后把能说与不能说分开。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1048.53,
+   "dur": 4.84,
+   "speech": "能说：独立训练的分位线会交叉，量级三到五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1053.54,
+   "dur": 4.57,
+   "speech": "能说：按样本排序消掉交叉，不需要新参数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1058.3,
+   "dur": 4.29,
+   "speech": "能说：排序后 pinball 损失变化小于零点三。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1062.76,
+   "dur": 4.57,
+   "speech": "能说：高斯头覆盖率低于名义值，尾部偏厚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1067.52,
+   "dur": 3.45,
+   "speech": "不能说：排序提升了预测精度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1071.14,
+   "dur": 3.64,
+   "speech": "不能说：交叉率对所有资产都成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1074.96,
+   "dur": 4.07,
+   "speech": "不能说：这套方法在小样本之外也成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1079.21,
+   "dur": 3.09,
+   "speech": "不能说：高斯头已经校准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1082.48,
+   "dur": 3.37,
+   "speech": "边界写清楚，结论才站得住。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1089.25,
+   "dur": 2.49,
+   "speech": "回到开头那个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1091.92,
+   "dur": 3.97,
+   "speech": "点预测给一个数，分布预测给一条线。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1096.07,
+   "dur": 3.23,
+   "speech": "线的麻烦是它们会互相穿过。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1099.48,
+   "dur": 3.33,
+   "speech": "修法便宜得让人意外：排个序。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1102.99,
+   "dur": 3.71,
+   "speech": "代价是百分之零点二六的损失变化。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1106.88,
+   "dur": 3.49,
+   "speech": "精度没掉，区间重新有了意义。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1110.55,
+   "dur": 2.65,
+   "speech": "这一集真正想说的是。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1113.38,
+   "dur": 2.75,
+   "speech": "结构约束不一定昂贵。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1116.31,
+   "dur": 3.16,
+   "speech": "有些约束只是把输出摆正。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1119.65,
+   "dur": 3.33,
+   "speech": "而摆正本身，就值一集。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1123.16,
+   "dur": 2.73,
+   "speech": "下一步走向异常检测。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1126.06,
+   "dur": 3.64,
+   "speech": "有了分布，就能问：这个点有多异常。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1129.88,
+   "dur": 3.54,
+   "speech": "两种做法：看概率，或者看距离。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1133.6,
+   "dur": 3.33,
+   "speech": "概率做法直接用拟合好的高斯。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1137.11,
+   "dur": 3.95,
+   "speech": "距离做法用重建误差或马氏距离。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1141.24,
+   "dur": 3.33,
+   "speech": "两者在厚尾数据上会有分歧。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1144.75,
+   "dur": 3.04,
+   "speech": "下一集把这个分歧量出来。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1147.96,
+   "dur": 3.83,
+   "speech": "从分布到异常，是一步自然的延伸。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1151.97,
+   "dur": 3.76,
+   "speech": "也是这套管线第一次真正派上用场。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1155.91,
+   "dur": 2.85,
+   "speech": "先记住这一集的四件事。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1158.94,
+   "dur": 2.34,
+   "speech": "最后复盘四个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1161.46,
+   "dur": 2.99,
+   "speech": "交叉率三点三六到零。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1164.63,
+   "dur": 4.69,
+   "speech": "pinball 损失零点七二六七到零点七二四九。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1169.5,
+   "dur": 3.93,
+   "speech": "覆盖率零点九二四，名义零点九五。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1173.61,
+   "dur": 3.13,
+   "speech": "证据十八项，二点一八秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1176.92,
+   "dur": 2.41,
+   "speech": "复现有三条命令。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1179.52,
+   "dur": 3.59,
+   "speech": "第一条跑证据，第二条跑单元测试。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1183.29,
+   "dur": 2.65,
+   "speech": "第三条重渲这一集。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1186.12,
+   "dur": 3.73,
+   "speech": "仓库是公开的，数字都能对上。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1190.04,
+   "dur": 2.63,
+   "speech": "下一集，异常检测。"
+  }
+ ]
+}
