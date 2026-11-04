@@ -37,7 +37,11 @@
 
 ## Delivery
 
-- 待 TTS 与渲染后回填：成片时长/帧数、文件大小与 sha256、音量（loudnorm / music gate）、字幕 cue 数、flicker、make.mjs 各 stage 状态。
+- 成片：**1,310.27 s（21:50.27）/ 39,308 帧 / 8 场 30 页 / 300 条旁白 / 300 cue**；mp4 70,833,385 B（70.8 MB）/ sha256 `b57a01e…b611e`；cover.png 191,527 B / sha256 `3cf095c…08a1d`（frame 180 = 6.00 s）。
+- 音量：mix peak −1.20 dBFS、RMS −26.66 dBFS、ducked 60.4%、preGain 1.0000、1,311.45 s；loudnorm I=−15 LUFS / TP=−2 dBFS；music gate stem full-band −25.1 dBFS、audible share 63.1%、sub 6.8%、PASS；mix gate speech −23.73 / gap_full −30.51 / gap_audible −33.24 / bed 36.8 dB、PASS。
+- 字幕与章节：300 cue、00:00:01,200 → 00:21:48,050、**0 条换行**、最长 29 字符；章节合计 1,310.25 s，首 00:00:00、末 00:19:56，共 8 章。
+- 闪烁：mean|d| **0.0150**、p99 0.1157、max 10.16、7 个切点；still_lint 4 帧 PASS；30 页静帧逐页人工看（返工 8 页版式）。
+- 流水线：**23 stage 全 ok**；tree `88fafef16c80fa5f`；8 段全渲染、39,308 帧、复用 0；score 复用 `out/e04-score-loop-48k.wav`（1,560 s）。
 - 复现三条（与成片屏幕上一致）：
   1. docker exec haskell-ts bash -lc 'export PATH=/opt/ghc/9.14.1/bin:$PATH; cd /work && cabal run tsbase -- evidence-ch07-decode --data data/episodes/60-ar-vs-nar-decoding --out out/evidence-60 --evidence inventory/evidence/60-ar-vs-nar-decoding.ch7-decode.json'
   2. docker exec haskell-ts bash -lc 'export PATH=/opt/ghc/9.14.1/bin:$PATH; cd /work && cabal test'
