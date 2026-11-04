@@ -1,11 +1,11 @@
-# SESSION HANDOFF — 2026-11-04（E61 之后）— 下一任 agent 从这里开始
+# SESSION HANDOFF — 2026-11-04（E63 之后）— 下一任 agent 从这里开始
 
 > **这是当前唯一 active 的交接文档。** 旧文件（`HANDOFF-E41.md` … `HANDOFF-E58.md`、`HANDOFF-EVENING.md`）都是历史记录；按集开工时读对应集那份，**上手先读本文**。
-> 交接时状态：E61 已交付（系列 71/74），四仓干净、没有正在运行的 job。E62 后端已完成（19/19），内容包未开始。本文件与 E61 docs 提交完成即为干净状态。
+> 交接时状态：E63 已交付（系列 73/74），四仓干净、没有正在运行的 job。E64 后端未开始。本文件与 E63 docs 提交完成即为干净状态。
 
 ## 1. 一句话现状
 
-tsint 系列 74 集，已按生产顺序交付 **E1–E61（71 集）**。最后一集是 **E61《不止一个数：分位损失、分位线交叉与分布头》**（`series/tsint/episodes/61-probabilistic-heads`）：8 场 30 页、300 条旁白、成片 **1,194.87 s（19:54.87）/ 35,846 帧**、mp4 63,742,098 B、18/18 证据、28 单测。E62《两种异常检测》后端已完成（19/19，尖峰 F1 0.706/0.071、漂移 0.091/0.620），内容包未开始。之后 E63 GAF/MTF、E64 0.1% 参数微调。
+tsint 系列 74 集，已按生产顺序交付 **E1–E63（73 集）**。最后一集是 **E63《把序列画成图：GAF 与 MTF 的可逆性边界》**（`series/tsint/episodes/63-image-encoding`）：8 场 **32 页**、320 条旁白、成片 **1,111.50 s（18:31.50）/ 33,345 帧**、mp4 59,894,069 B、19/19 证据（GAF 反解 1.3e−14 / MTF 图像行和 16 / 图 1.3913 没赢数字 1.3908）、24 单测。E62《两种异常检测》同批交付（1,155.80 s / 8 场 30 页 / 300 条旁白；尖峰 F1 0.706/0.071、漂移 0.091/0.620）。之后只剩 E64 0.1% 参数微调。
 
 ## 2. 读什么（顺序）
 
@@ -55,12 +55,12 @@ tsint 系列 74 集，已按生产顺序交付 **E1–E61（71 集）**。最后
 8. 提交 delivery（cover / srt / chapters 两件）与 docs（plan Delivery、SELF-AUTH 一条、HANDOFF-E<NN>、production-log、STATUS、本 session handoff 视情况更新）。
 9. `git status` 三仓确认干净。
 
-## 5. 当前进度与 E62
+## 5. 当前进度与 E64
 
-- 已完成：E1–E61（71/74）。E59 提交：ts-base `95a1193` / `116b3ff`；E60：ts-base `19efa1a` / `5e8f810` / `42b05f6`、ts-admin `a6ad270`、video_project `d19f9f1` / `ac3fbc0`；E61：ts-base `673ca34`、ts-admin `2c10fa3`、video_project `ae82538` / `453ab60`。E62 后端：ts-base `10b3d90` / `ed20c13`、ts-admin `379ea56`。引擎 `a667688` 未改。
-- E62 规格（`docs/series-tsint-episodes.md`）：`62-anomaly-two-ways`，18 分钟，两模块 `ch7-pred-anomaly`（PredAnomaly 约 110 行）/ `ch7-recon-anomaly`（ReconAnomaly 约 170 行）；验收画面：两类异常 F1 对照表、552 参数自编码器实测、阈值 q 敏感性曲线。后端 19/19 已完成，读数见 `docs/HANDOFF-E61.md` §7。
-- E62 内容包要做的：film.json（`tsint-62-anomaly-two-ways`、composition `Tsint62AnomalyTwoWays`、order 62、prefix `tsint-62`、`musicGainDb:-4.5`）；从 E61 拷 build/ 三个 py 与 src 骨架；新写 `build/make_dist_data.py`（读 evidence JSON + returns CSV → `data/dist.json`，分组 pred/recon/compare）；30 页左右讲稿（8 场）；TTS → 静帧 → make。
-- 后续：E63 `63-image-encoding`（GAF 与 MTF）→ E64 `64-llm-side-adapters`（0.1% 参数微调），交付即 74/74。
+- 已完成：E1–E63（73/74）。E59 提交：ts-base `95a1193` / `116b3ff`；E60：ts-base `19efa1a` / `5e8f810` / `42b05f6`、ts-admin `a6ad270`、video_project `d19f9f1` / `ac3fbc0`；E61：ts-base `673ca34`、ts-admin `2c10fa3`、video_project `ae82538` / `453ab60`。E62：ts-base `10b3d90` / `ed20c13` / `417f3ad`、ts-admin `379ea56`、video_project `23973e8` / `f775a04`。E63：ts-base `9122e4f`、ts-admin `3f065d7`、video_project `fb2b1e9` + 本次 delivery/docs。引擎 `a667688` 未改。
+- E63 规格（`docs/series-tsint-episodes.md`）：`63-image-encoding`，20 分钟，三模块 `ch7-gaf`（GAF 100 行）/ `ch7-mtf`（MTF 92 行）/ `ch7-vision-recon`（VisionForecast 147 行）；验收画面：GAF 手算矩阵、GASF 反解误差 <1e−12、MTF 行和断言。实测主张修正见 `docs/HANDOFF-E63.md` §6 D1。
+- E64 规格：`64-llm-side-adapters`，16 分钟，三模块 `ch7-linear-probe`（LinearProbe 约 80 行）/ `ch7-lora`（LoRA 约 70 行）/ `ch7-anchor-prefix`（AnchorPrefix 约 60 行）；验收画面：LoRA 512 参数手算、B=0 输出与冻结模型逐位相同、线性头复原 w_true 1e−10。数据用 E3 编码器日线嵌入 + 正交词向量表。
+- E64 内容包要做的：film.json（`tsint-64-llm-side-adapters`、composition `Tsint64LlmSideAdapters`、order 64、prefix `tsint-64`、`musicGainDb:-4.5`）；从 E63 拷 build/ 三个 py 与 src 骨架；新写 `build/make_dist_data.py`；16 分钟 → 约 260–280 行（8 场，每场 4 页 × 8–9 行）；TTS → 静帧（注意每场页数 = 场景文件的 AbsoluteFill 数）→ make。交付即 74/74。
 ## 6. 坑（按踩坑频率排序）
 
 1. **make 前 content 仓必须干净**：`films check --strict` 连未跟踪的 delivery 产出都算 dirty。提交 pack / 移走旧 delivery 后再 make；改混音参数重跑时，画面段会 reused（E58 第二次 make 8 段全复用，2 分钟出片）。
@@ -91,5 +91,5 @@ tsint 系列 74 集，已按生产顺序交付 **E1–E61（71 集）**。最后
 - goal：用户要求以防断流，本会话以 active goal 推进（objective = 交付 E59–E64 至 74/74），中断后按 STATUS/本文与 goal 续跑。
 - E59 参数账（先记，开工后按实测上屏）：计划写 **65,856** 个编码器参数；512→64→512 MLP 实算 **66,112**（512·64+64 + 64·512+512），加 1 个可学习掩码标量 = **66,113**。决定按实测数上屏、在 `docs/plan.md` 偏差表写清差值来源，不硬凑计划数；线性头 (64+1)×20 = **1,300** 与计划一致。
 - 执行顺序：E59 开工前先读 `docs/HANDOFF-E58.md` 与 `series/tsint/episodes/58-channel-strategies/` 模板，算法先单测+证据、后视频；每完成一集更新 `STATUS.md`、`docs/production-log.md` 与本文进度。
-- 2026-11-04 夜续跑：E59、E60、E61 三集已交付（系列 71/74），E62 后端 19/19 已提交。四仓基线：video_project 见本次 docs 提交 / ts-base `ed20c13` / ts-admin `379ea56` / 引擎 `a667688`。E61 起 score 改用本集 `delivery/score.wav`（scoreReused false）；交付摘要见 `docs/HANDOFF-E59.md`、`HANDOFF-E60.md`、`HANDOFF-E61.md`。
+- 2026-11-04 夜–11-05 凌晨续跑：E59、E60、E61、E62、E63 五集已交付（系列 73/74）。四仓基线：video_project 见本次 docs 提交 / ts-base `9122e4f` / ts-admin `3f065d7` / 引擎 `a667688`。E61 起 score 仍复用引擎 `out/e04-score-loop-48k.wav`（report scoreReused false）；交付摘要见 `docs/HANDOFF-E59.md` … `HANDOFF-E63.md`。
 
