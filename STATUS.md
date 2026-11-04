@@ -75,7 +75,7 @@
 | tsint-57-tokenization-trio | 把序列切成块：Patch、周期、分辨率前缀 | ready | 1076 | yes | ok | 11 | - |
 | tsint-58-channel-strategies | 通道独立还是混合：一个由相关性决定的选择题 | ready | 1235 | yes | ok | 11 | - |
 | tsint-59-mini-foundation-loop | 一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | ready | 1619 | yes | ok | 11 | - |
-| tsint-60-ar-vs-nar-decoding | 一步一步还是一口气：自回归与非自回归解码 | draft | 960 | silent | ok | 1 | - |
+| tsint-60-ar-vs-nar-decoding | 一步一步还是一口气：自回归与非自回归解码 | ready | 1310 | yes | ok | 11 | - |
 | tsint-61-probabilistic-heads | 不止一个数：分位损失、分位线交叉与分布头 | draft | 1080 | silent | ok | 1 | - |
 | tsint-62-anomaly-two-ways | 两种异常检测：预测残差看得见尖峰，重构误差看得见整段漂移 | draft | 1080 | silent | ok | 1 | - |
 | tsint-63-image-encoding | 把序列画成图：GAF 与 MTF 都是可逆的 | draft | 1200 | silent | ok | 1 | - |

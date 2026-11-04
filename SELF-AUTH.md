@@ -787,3 +787,17 @@
 - **可逆性**：高（三模块 + 证据 + pack 可整段回退；负结果与探测读数都在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；三仓各自 commit 可回退）。
 - **返工成本**：掩码检查口径 1 轮（合并 run → 按段统计）；对偶维度段错误定位 1 轮（含跑二进制看 139）；波动率副目标实验与删除 1 轮（未提交）；TTS 顺序错 1 轮（清 430 条 E58 clip 重跑）；证据性能修复 1 轮（ridgeOptimality O(n²p) → 预算中心化矩阵，7 分钟卡死 → 秒级）；静帧版式 13 页（含 boundary 重录 1 条）；make 一次 PASS。
 
+
+## A57 E60 交付：两条解码路都没打赢基线（2026-11-04 夜）
+
+- **决定（主结论按负结果讲）**：计划书的直觉是「短地平线 AR 有优势、长地平线 NAR 更稳、两条曲线在中间交叉」。实测 197 个测试窗口：F=1 两者同为 **1.1352**（同一个预测器），F=20 AR **1.5647** / NAR **1.2932**，**交叉点 F=8** 与书上 F≈8 一致；但两个相对误差**都大于 1**，都打不过 persistence（MAE 0.224299）。全片按「回灌会积累系统偏差，一次输出在原地更稳，但都没到能用」讲，第 7 场把「都 >1」放在第一屏，不硬凑「NAR 反超」。
+- **决定（讲成解码方式之争，不是模型结构之争）**：两条路共用同一个 66,113 参数编码器与同一个 64 维表示，只换最后一步——AR 20 次前向 + 每步复制 512 点窗口，NAR 一次 20×66 矩阵乘。实现页只给两个模块（83 / 60 行）、18 条单测、421 行证据程序，强调「模块之间互不引用、纯函数、无 IO」。
+- **决定（残差直连写进实现页，不藏起来）**：头部的输入是 64 维表示 + 窗口最后一点 z（残差直连）。不加直连时 AR 相对误差 **6.98**（连 persistence 都打不过），加了从 1.1352 起——这不是调参，是问题定义的一部分，「直连消融 6.98 → 1.1352」单独占一页。
+- **决定（√F 的 4.47× 没出现，边界页明说）**：书上说回灌误差按 √F 涨，F=20 时 4.47×；实测 AR/NAR 只差 21%，因为误差主要是系统性偏差而非独立噪声。SqrtAmplification 图画「书上 4.47× vs 实测 1.38× / 1.14×」，并写明「上界不是定理」。
+- **决定（计时三次取最小值，rotateBy 轮换工作集）**：首版单次测量 15.97×、重跑 16.86×，屏上数字不稳；改成对 k = 0,1,2 各算一遍轮换后的 rollout 再取最小值——工作量不变、每个 thunk 都依赖 k，避免 GHC 把三次调用合并成共享 thunk（否则第二次起测到已算好的值，AR 0.000010 s / 比值 1.11×，18 项掉到 17/18）。最终 **15.71×**（0.368249 / 0.023443 s）。
+- **决定（NAR 参数按实算上屏）**：计划按 (64+1)×20 写 1,300；实现把偏置并入最后一列，实算 (65+1+1)×20 = **1,320**。屏幕用 1,320，1,300 只以「计划书写的是」出现（D1）。
+- **决定（时长 21:50 不押 16 分钟）**：300 行讲稿实测语音 1,125.48 s，按 LEAD 1.2 / TAIL 2.2 展开成 **1,310.27 s（21:50.27）/ 39,308 帧**。用户口径「长度不限、讲清楚优先」，不删行，偏差登记 D8。
+- **决定（版式 8 页返工，窄卡不用三列 Row）**：open P2 两卡 note 被挤成竖排、P3 Stat label 换行；definitions P4 恒等测试卡溢出到字幕带（改一行 mono）；metrics P2 并排两卡 note 裁切 + 第三卡被切（改全宽一张 + 小卡一张）；implementation P4 TimingBars 数值单位换行、「修法」值过长；verification P4 ExposureSplit 柱与数值重叠；open P4「AR 递推 · NAR 一次」撞 note（改「递推 vs 一次」）。逐页重渲确认后才提交。
+- **依据**：evidence JSON（inventory/evidence/60-ar-vs-nar-decoding.ch7-decode.json，**18/18、121.90 s**；data 4 / ar 5 / nar 4 / timing 2 / curve 3）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree 88fafef16c80fa5f / mix peak −1.20 dBFS、RMS −26.66 dBFS、ducked 60.4%、musicGain −4.5、preGain 1.0000）、loudnorm **−15 LUFS / TP −2 dBFS**、music gate full-band −25.1 / audible share 63.1% / sub 6.8% PASS、mix gate speech −23.73 / gap_full −30.51 / gap_audible −33.24 / bed 36.8 PASS、luma（39,308 帧 mean|d| **0.0150** / p99 0.1157 / max 10.16 / 7 切点）、**300 cue 0 换行最长 29 字符**、8 章合计 1,310.25 s、still_lint 4 帧 PASS、30 页静帧逐页人工看、cabal test 18 条全绿（autoregressive 9 / nonautoregressive 9）、make PASS；ts-base 19efa1a + 5e8f810 + 42b05f6，ts-admin a6ad270，video_project d19f9f1 + ac3fbc0 + 本次 docs。
+- **可逆性**：高（两模块 + 证据 + pack 可整段回退；负结果与 √F 读数都在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；三仓各自 commit 可回退）。
+- **返工成本**：证据计时 3 轮（单次 → 三次取最小 → rotateBy；中间掉到 17/18）；证据头注释口径 1 轮（197 窗、训练/验证数）；静帧版式 8 页（含 2 页二次重渲）；TTS 卡 websocket 1 轮（改用 ffprobe 自量 300 clip）；TOTAL/FPS 导出、voice.json 位置、outro 反斜杠 3 处类型错误；make 一次 PASS。

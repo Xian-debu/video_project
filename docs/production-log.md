@@ -660,3 +660,15 @@
 - 偏差: (1) 参数账 65,856 → 66,113（差 257）、66,956 → 67,413（差 457），按实算上屏（D1）；(2) 主结论是负结果，0.9 未出现（D2）；(3) 成片 26:59 超过 24 分钟 target，不删行（D3）；(4) 目标定义与标签重叠 19/20 天，明写不修正（D4）；(5) 新增线性探测为 head 第 6 项，33,280 参数不计入总参数（D5）；(6) 合成 AR(1) 用 phi=0.99 才达 50%（D6）；(7) 证据分组按实现 4/5/4/5/6/4/3/3 = 34（D7）；(8) 154 = 9×16+10，无末段截断（D8）；(9) 波动率副目标因均值漂移否决、未上屏（D9）。
 - 备注: ch07 第三集（tsint 全系列第 69 部成片）；主读数 收盘 **6,600** / 窗口 **5,000（3,000/1,000/1,000）** / 掩码 **154** / 编码器 **66,113** / 线性头 **1,300** / 总参数 **67,413** / 训练 **20 轮 64 秒** / 最佳 **19** / 固定掩码损失比 **0.2067**（1.1069→0.2288）/ 梯度 **0.000000** / 探测 **0.1364（33,280 参数）** / 收益曲线 **1.0000 / 1.3164 / 1.0975 / 1.0643** / 跨股票 **1.0960**、重建 **0.2498** / 模块 3 个 822 行 / 单测 **39** / 证据 **34**；结论「重建学得会、表示有信息，但预测打不过 persistence」；下一步 E60 `60-ar-vs-nar-decoding`《一步一步还是一口气：自回归与非自回归解码》16 分钟，交接 `docs/HANDOFF-E59.md`。
 
+
+## E60 ar-vs-nar-decoding — 2026-11-04 夜
+
+- ts-base: 19efa1a（Ch07/Autoregressive.hs 83 行 + NonAutoregressive.hs 60 行 + 18 单测）+ 5e8f810（app/Ch07DecodeEvidence.hs 421 行 + Main/cabal + data/episodes/60-ar-vs-nar-decoding + inventory）+ 42b05f6（计时 rotateBy 三次取最小 + 口径修正，18/18、121.90 s）。工作区干净。
+- ts-admin: a6ad270（export_ch07_decode.py：000001.SZ 6,600 行后复权收盘 + 2020–2022 高波动段 728 点 + manifest）。
+- video_project: d19f9f1（pack 源 + 300 行讲稿 + 30 页 + dist + voice/clips + film.json ready / musicGain −4.5）+ ac3fbc0（delivery：cover / 300 条 srt / 8 章 / assetsStatus complete / plan Delivery）+ 本次 docs 提交（SELF-AUTH A57 / HANDOFF-E60 / 本节 / STATUS）。
+- 引擎: 未改（a667688）；score 复用 out/e04-score-loop-48k.wav（scoreReused false）；两个临时 stills 脚本已删。
+- 成片: 1,310.27 s（21:50.27）/ 39,308 帧 / 8 场 30 页 / −15 LUFS / TP −2 dBFS / 300 条旁白（语音 1,125.48 s，均值 3.75 s）/ 字幕跨度 00:00:01,200→00:21:48,050 / mp4 70,833,385 B / cover 191,527 B（frame 180 = 6.00 s）/ 0 of 300 cues wrapped、longest 29。
+- 流水线: 23 个 stage 全 ok、8 段 rendered 8（reused 0）/ tree 88fafef16c80fa5f；mix 48 kHz / 1,311.45 s、peak −1.20 dBFS、RMS −26.66 dBFS、ducked 60.4%（4.5 dB）、musicGain −4.5、preGain 1.0000；music gate full −25.1 / audible −27.88 / share 0.631 / sub 0.068 PASS；mix gate speech −23.73 / gap_full −30.51 / gap_audible −33.24 / bed 36.8 PASS；闪烁 mean|d| 0.0150 / p99 0.1157 / max 10.16 / 7 切点；章节 8 章合计 1,310.25 s；still_lint 4 帧 PASS。
+- 卡点: (1) 计时首版 NAR 比 AR 慢（0.91×），真因是 GC 记到下一段窗口，三段计时 + 预热修掉；(2) 改「三次取最小」后 GHC 合并共享 thunk，AR 测成 0.00001 s、17/18，rotateBy 轮换工作集修掉；(3) 头注释与 197 窗口文案过期，重写口径；(4) TTS 300 条卡在一个 websocket，改 ffprobe 自量 mp3 写 voice.json；(5) 类型错误三处：TOTAL/FPS 导出、voice.json 放错 data 子目录、CodeBlock 行尾反斜杠。
+- 偏差: (1) NAR 1,300 → 1,320（偏置并入最后一列，D1）；(2) 两个相对误差都 >1，主结论是负结果（D2）；(3) √F 的 4.47× 没出现，实测差 21%（D3）；(4) 残差直连是最大设计决定，不加时 6.98（D4）；(5) NAR 逐地平线选 λ，共用 λ 已否决（D5）；(6) 计时 ±7% 抖动，统一取最终 15.71×（D6）；(7) 检查分组 data 4 / ar 5 / nar 4 / timing 2 / curve 3（D7）；(8) 成片 21:50 超过 16 分钟 target，不删行（D8）。
+- 备注: ch07 第四集（tsint 全系列第 70 部成片）；主读数 窗口 197 / F=1 1.1352 / F=20 AR 1.5647 / NAR 1.2932 / 交叉 F=8 / persistence 0.224299 / teacher 0.076236 / free 0.350959 / 速度 15.71×（0.368249 / 0.023443 s）/ 编码器 66,113（val 0.230266、epoch 20）/ NAR 参数 1,320 / 模块 143 行 / 单测 18 / 证据 18；结论「两条解码路都没打赢基线」；下一步 E61 61-probabilistic-heads《不止一个数：分位损失、分位线交叉与分布头》18 分钟，后端已完成 18/18（交叉率 3.36%→0），内容包未开始，交接 docs/HANDOFF-E60.md。
