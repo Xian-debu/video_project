@@ -83,3 +83,12 @@ tsint 系列 74 集，已按生产顺序交付 **E1–E58（68 集）**。最后
 - 证据：`/root/ts-base/inventory/evidence/<id>.<group>.json` 与 `data/episodes/<id>/`
 - 引擎运行脚本：`/root/video-pipeline-blueprint/src/tsint-<id>/script.ts`（由 films sync 从 pack 生成）
 - 交接模板：`docs/HANDOFF-E58.md`（本集）、本文（会话级）
+
+## 8. 承接记录（2026-11-04 晚，session 承接 session-39f2d02d）
+
+- 四仓基线：video_project `ef095bd` / ts-base `2b608c5` / ts-admin `d2857a8` / 引擎 `a667688`，承接时四仓 clean；容器 haskell-ts 在跑（GHC 9.14.1，/work 剩余 449G）。
+- 承接决定：剩余 **E59–E64**（生产序 69–74）按本文 14 步逐集生产，每集四段提交（ts-base 模块+测试 / 数据+证据 / video pack+timeline / delivery+docs），每集在 video_project `SELF-AUTH.md` 追加一条（A56 起）；`film.json` 停在 `ready`，不发布 B 站。
+- goal：用户要求以防断流，本会话以 active goal 推进（objective = 交付 E59–E64 至 74/74），中断后按 STATUS/本文与 goal 续跑。
+- E59 参数账（先记，开工后按实测上屏）：计划写 **65,856** 个编码器参数；512→64→512 MLP 实算 **66,112**（512·64+64 + 64·512+512），加 1 个可学习掩码标量 = **66,113**。决定按实测数上屏、在 `docs/plan.md` 偏差表写清差值来源，不硬凑计划数；线性头 (64+1)×20 = **1,300** 与计划一致。
+- 执行顺序：E59 开工前先读 `docs/HANDOFF-E58.md` 与 `series/tsint/episodes/58-channel-strategies/` 模板，算法先单测+证据、后视频；每完成一集更新 `STATUS.md`、`docs/production-log.md` 与本文进度。
+
