@@ -1,11 +1,11 @@
-# SESSION HANDOFF — 2026-11-04（E58 之后）— 下一任 agent 从这里开始
+# SESSION HANDOFF — 2026-11-04（E61 之后）— 下一任 agent 从这里开始
 
 > **这是当前唯一 active 的交接文档。** 旧文件（`HANDOFF-E41.md` … `HANDOFF-E58.md`、`HANDOFF-EVENING.md`）都是历史记录；按集开工时读对应集那份，**上手先读本文**。
-> 交接时状态：E58 已交付（系列 68/74），**goal 已由用户暂停**，没有正在运行的 job、没有未提交的改动（本文件与 E58 docs 提交完成即为干净状态）。下一步 E59 尚未开工。
+> 交接时状态：E61 已交付（系列 71/74），四仓干净、没有正在运行的 job。E62 后端已完成（19/19），内容包未开始。本文件与 E61 docs 提交完成即为干净状态。
 
 ## 1. 一句话现状
 
-tsint 系列 74 集，已按生产顺序交付 **E1–E58（68 集）**。最后一集是 **E58《通道独立还是混合：一个由相关性决定的选择题》**（`series/tsint/episodes/58-channel-strategies`）：8 场 43 页、430 条旁白、成片 **1,235.33 s（20:35.3）/ 37,060 帧**、mp4 61,063,007 B、24/24 证据、29 单测。下一集是 **E59《一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本》**（`59-mini-foundation-loop`，24 分钟，ch07 第三集），未动。
+tsint 系列 74 集，已按生产顺序交付 **E1–E61（71 集）**。最后一集是 **E61《不止一个数：分位损失、分位线交叉与分布头》**（`series/tsint/episodes/61-probabilistic-heads`）：8 场 30 页、300 条旁白、成片 **1,194.87 s（19:54.87）/ 35,846 帧**、mp4 63,742,098 B、18/18 证据、28 单测。E62《两种异常检测》后端已完成（19/19，尖峰 F1 0.706/0.071、漂移 0.091/0.620），内容包未开始。之后 E63 GAF/MTF、E64 0.1% 参数微调。
 
 ## 2. 读什么（顺序）
 
@@ -55,12 +55,12 @@ tsint 系列 74 集，已按生产顺序交付 **E1–E58（68 集）**。最后
 8. 提交 delivery（cover / srt / chapters 两件）与 docs（plan Delivery、SELF-AUTH 一条、HANDOFF-E<NN>、production-log、STATUS、本 session handoff 视情况更新）。
 9. `git status` 三仓确认干净。
 
-## 5. 当前进度与 E59
+## 5. 当前进度与 E62
 
-- 已完成：E1–E58（68/74）。E58 提交：ts-base `31359a1` / `45c1715` / `2b608c5`；ts-admin `d2857a8`；video_project `f028d44`（pack）/ `816bf80`（plan+gain）/ `d6388a0`（delivery）/ docs 一笔；引擎 `a667688` 未改。
-- E59 规格（`docs/series-tsint-episodes.md`）：`59-mini-foundation-loop`，24 分钟，三模块 `ch7-mask-recon`（MaskRecon ~200 行）/ `ch7-flatten-head`（FlattenHead ~80 行）/ `ch7-shot-protocol`（ShotProtocol ~90 行）；验收画面：154 个掩码位置、65,856 参数与 1,300 线性头参数、k=0/5/10/100 四档 MAE；数据 000001.SZ 5000 个 512 点窗口（3000/1000/1000）+ 20 只股票少样本。
-- 用户已暂停 goal：开始工作后如用户要求「继续」，用 `update_goal action=resume` 重新武装；否则按普通任务做。
-
+- 已完成：E1–E61（71/74）。E59 提交：ts-base `95a1193` / `116b3ff`；E60：ts-base `19efa1a` / `5e8f810` / `42b05f6`、ts-admin `a6ad270`、video_project `d19f9f1` / `ac3fbc0`；E61：ts-base `673ca34`、ts-admin `2c10fa3`、video_project `ae82538` / `453ab60`。E62 后端：ts-base `10b3d90` / `ed20c13`、ts-admin `379ea56`。引擎 `a667688` 未改。
+- E62 规格（`docs/series-tsint-episodes.md`）：`62-anomaly-two-ways`，18 分钟，两模块 `ch7-pred-anomaly`（PredAnomaly 约 110 行）/ `ch7-recon-anomaly`（ReconAnomaly 约 170 行）；验收画面：两类异常 F1 对照表、552 参数自编码器实测、阈值 q 敏感性曲线。后端 19/19 已完成，读数见 `docs/HANDOFF-E61.md` §7。
+- E62 内容包要做的：film.json（`tsint-62-anomaly-two-ways`、composition `Tsint62AnomalyTwoWays`、order 62、prefix `tsint-62`、`musicGainDb:-4.5`）；从 E61 拷 build/ 三个 py 与 src 骨架；新写 `build/make_dist_data.py`（读 evidence JSON + returns CSV → `data/dist.json`，分组 pred/recon/compare）；30 页左右讲稿（8 场）；TTS → 静帧 → make。
+- 后续：E63 `63-image-encoding`（GAF 与 MTF）→ E64 `64-llm-side-adapters`（0.1% 参数微调），交付即 74/74。
 ## 6. 坑（按踩坑频率排序）
 
 1. **make 前 content 仓必须干净**：`films check --strict` 连未跟踪的 delivery 产出都算 dirty。提交 pack / 移走旧 delivery 后再 make；改混音参数重跑时，画面段会 reused（E58 第二次 make 8 段全复用，2 分钟出片）。
@@ -91,4 +91,5 @@ tsint 系列 74 集，已按生产顺序交付 **E1–E58（68 集）**。最后
 - goal：用户要求以防断流，本会话以 active goal 推进（objective = 交付 E59–E64 至 74/74），中断后按 STATUS/本文与 goal 续跑。
 - E59 参数账（先记，开工后按实测上屏）：计划写 **65,856** 个编码器参数；512→64→512 MLP 实算 **66,112**（512·64+64 + 64·512+512），加 1 个可学习掩码标量 = **66,113**。决定按实测数上屏、在 `docs/plan.md` 偏差表写清差值来源，不硬凑计划数；线性头 (64+1)×20 = **1,300** 与计划一致。
 - 执行顺序：E59 开工前先读 `docs/HANDOFF-E58.md` 与 `series/tsint/episodes/58-channel-strategies/` 模板，算法先单测+证据、后视频；每完成一集更新 `STATUS.md`、`docs/production-log.md` 与本文进度。
+- 2026-11-04 夜续跑：E59、E60、E61 三集已交付（系列 71/74），E62 后端 19/19 已提交。四仓基线：video_project 见本次 docs 提交 / ts-base `ed20c13` / ts-admin `379ea56` / 引擎 `a667688`。E61 起 score 改用本集 `delivery/score.wav`（scoreReused false）；交付摘要见 `docs/HANDOFF-E59.md`、`HANDOFF-E60.md`、`HANDOFF-E61.md`。
 
