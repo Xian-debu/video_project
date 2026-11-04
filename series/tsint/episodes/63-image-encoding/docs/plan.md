@@ -1,6 +1,6 @@
 # 63-image-encoding - 把序列画成图：GAF 与 MTF
 
-> status: draft
+> status: delivered
 > chapter: ch07 | runtime target: 20 min | algorithms: 3
 
 ## Thesis
@@ -38,7 +38,10 @@
 
 ## Delivery
 
-- 成片：渲染后回填（时长 / 帧数 / cue / 音量 / sha256）。
+- 成片 **1,111.50 s（18:31.50）/ 33,345 帧 / 8 场 32 页 / 320 条旁白**；语音 1,111.14 s、均值 3.47 s；字幕 320 条、跨度 00:00:01,200 → 00:18:29,290、0 条换行、最长 22 字；章节 8 段合计 1,111.49 s。
+- 音量 **−15 LUFS / TP −2 dBFS**（loudnorm linear，in −23.4 / −1.0，+0.9 offset）；mix 48 kHz / 1,112.34 s、peak −1.07 dBFS、RMS −26.84 dBFS、ducked 54.1%（4.5 dB）、musicGain −4.5 dB、preGain 1.0；stem full −25.1 / audible −27.88 / share 0.631 / sub 0.068；mix gate speech −23.78 / gap_full −30.58 / gap_audible −33.29 / bed 36.7（PASS）。
+- 文件：mp4 **59,894,069 B**、sha256 `8dc2caa5ae2f12a1e32aaad39a4e198b3e5ba78a0046bdd557161ee0234da9cb`；cover.png 233,968 B、sha256 `2ac6bfa4702e436dfd07010b610aeb9d4d3aafb144d636c1e7782701190ff030`（frame 180 = 6.00 s）。
+- 流水线：23 个 stage 全 ok、8 段 rendered 8（reused 0）、tree `cede2c4e965fc0ce`；闪烁 33,345 帧 mean|d| 0.0152 / p99 0.1111 / max 10.24 / 7 切点（PASS）；still_lint 32 页 PASS（修 MaeBars 值列 2px 溢出后）。
 - 复现三条（与成片屏幕一致）：
   1. `cabal run tsbase -- evidence-ch07-image --data data/episodes/63-image-encoding --out out/evidence-63 --evidence inventory/evidence/63-image-encoding.ch7-image.json`
   2. `cabal test`
