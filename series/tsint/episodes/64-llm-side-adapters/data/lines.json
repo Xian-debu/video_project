@@ -1,0 +1,2297 @@
+{
+ "entry": "src/tsint-64-llm-side-adapters/script.ts",
+ "fps": 30,
+ "totalSec": 1053.48,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 128.22
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 128.22,
+   "dur": 130.5
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 258.72,
+   "dur": 129.18
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 387.9,
+   "dur": 132.78
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 520.68,
+   "dur": 134.84
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 655.52,
+   "dur": 138.35
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 793.87,
+   "dur": 134.56
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 928.43,
+   "dur": 125.05
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.13,
+   "speech": "上一集把序列画成图。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.51,
+   "dur": 2.32,
+   "speech": "这一集换个问法。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.01,
+   "dur": 3.09,
+   "speech": "不问怎么表示，问怎么适配。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 10.28,
+   "dur": 3.06,
+   "speech": "一个大模型，冻结住不动。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 13.52,
+   "dur": 2.44,
+   "speech": "只训练很小的一块。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 16.14,
+   "dur": 2.05,
+   "speech": "小到什么程度？"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 18.37,
+   "dur": 2.65,
+   "speech": "屏幕上有三个数字。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 21.21,
+   "dur": 4.79,
+   "speech": "一个是 1,300，一个是 512，一个是 0。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 26.18,
+   "dur": 2.99,
+   "speech": "这是三个适配器的参数账。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 29.35,
+   "dur": 2.63,
+   "speech": "先说答案，再讲过程。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 32.16,
+   "dur": 3.21,
+   "speech": "线性探测，1,300 个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 35.54,
+   "dur": 3.25,
+   "speech": "低秩旁路，512 个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 38.98,
+   "dur": 2.75,
+   "speech": "语义锚点，0 个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 41.91,
+   "dur": 3.35,
+   "speech": "三个都比主干的百分之一还小。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 45.44,
+   "dur": 3.4,
+   "speech": "主干有 70,209 个参数。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 49.01,
+   "dur": 3.57,
+   "speech": "1,300 是它的 1.85%。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 52.76,
+   "dur": 3.57,
+   "speech": "512 是它的 0.73%。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 56.51,
+   "dur": 1.93,
+   "speech": "0 就是零。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 58.62,
+   "dur": 3.4,
+   "speech": "这些数能一眼算出来，不是估的。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 62.2,
+   "dur": 2.8,
+   "speech": "这一集就把账算清楚。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 65.18,
+   "dur": 2.46,
+   "speech": "但便宜不等于有用。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 67.82,
+   "dur": 3.18,
+   "speech": "三个适配器，一个都没赢。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 71.18,
+   "dur": 4.05,
+   "speech": "线性探测的相对误差是一点零五四。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 75.41,
+   "dur": 2.65,
+   "speech": "「预测均值」是一点零。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 78.24,
+   "dur": 4.17,
+   "speech": "低秩旁路只把损失挪了 0.03%。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 82.59,
+   "dur": 3.23,
+   "speech": "锚点的准确率是 0.09。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 86,
+   "dur": 3.95,
+   "speech": "同样数据上，线性头是 0.365。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 90.13,
+   "dur": 2.63,
+   "speech": "三笔账都是负结果。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 92.94,
+   "dur": 2.2,
+   "speech": "这一集照实讲。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 95.31,
+   "dur": 2.97,
+   "speech": "先说清楚为什么要适配。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 98.46,
+   "dur": 2.73,
+   "speech": "接下来七场，一条线。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 101.37,
+   "dur": 2.44,
+   "speech": "先问为什么要适配。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 103.98,
+   "dur": 2.29,
+   "speech": "再给三个坐标系。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 106.46,
+   "dur": 2.94,
+   "speech": "然后钉口径、写实现。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 109.58,
+   "dur": 2.44,
+   "speech": "接着看检查结果。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 112.2,
+   "dur": 2.7,
+   "speech": "再讲边界和样本量。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 115.08,
+   "dur": 2.44,
+   "speech": "最后用一场收束。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 117.7,
+   "dur": 3.52,
+   "speech": "屏幕上的每个数，都能自己跑出来。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 121.4,
+   "dur": 2.44,
+   "speech": "先从一个问题开始。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 124.01,
+   "dur": 2.01,
+   "speech": "为什么要适配？"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 129.42,
+   "dur": 3.45,
+   "speech": "微调一个模型，要改全部参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 133.05,
+   "dur": 3.54,
+   "speech": "70,209 个参数，一个不落。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 136.77,
+   "dur": 2.32,
+   "speech": "代价是三件事。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 139.27,
+   "dur": 3.71,
+   "speech": "一是显存，二是时间，三是数据。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 143.16,
+   "dur": 3.97,
+   "speech": "更麻烦的是，改完之后原模型就没了。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 147.31,
+   "dur": 3.35,
+   "speech": "想留一份干净的底座，做不到。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 150.84,
+   "dur": 3.01,
+   "speech": "所以工程上换一个做法。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 154.03,
+   "dur": 3.23,
+   "speech": "冻结主干，只训练一小块。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 157.44,
+   "dur": 2.87,
+   "speech": "这一小块，就是适配器。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 160.49,
+   "dur": 2.77,
+   "speech": "问题是，小到什么程度。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 163.45,
+   "dur": 2.63,
+   "speech": "第一种叫线性探测。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 166.26,
+   "dur": 3.35,
+   "speech": "主干冻结，只加一个线性头。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 169.79,
+   "dur": 3.66,
+   "speech": "输入是主干吐出来的 64 维表示。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 173.63,
+   "dur": 2.39,
+   "speech": "输出是 20 个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 176.2,
+   "dur": 3.18,
+   "speech": "参数就是 65 乘 20。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 179.56,
+   "dur": 1.98,
+   "speech": "1,300 个。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 181.72,
+   "dur": 2.63,
+   "speech": "第二种叫低秩旁路。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 184.53,
+   "dur": 3.21,
+   "speech": "在权重旁边加一对小矩阵。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 187.92,
+   "dur": 3.9,
+   "speech": "一个 4 乘 64，一个 64 乘 4。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 192,
+   "dur": 2.85,
+   "speech": "合起来 512 个参数。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 195.03,
+   "dur": 2.85,
+   "speech": "第三种叫语义锚点。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 198.05,
+   "dur": 2.61,
+   "speech": "它一个权重都不学。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 200.84,
+   "dur": 3.61,
+   "speech": "从词表里挑几个词，拼成前缀。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 204.63,
+   "dur": 3.04,
+   "speech": "参数是零，一个都不学。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 207.85,
+   "dur": 2.82,
+   "speech": "三种做法，三种「小」。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 210.85,
+   "dur": 2.25,
+   "speech": "但「小」不是目的。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 213.28,
+   "dur": 3.9,
+   "speech": "目的是：用很小的代价，换到效果。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 217.36,
+   "dur": 3.13,
+   "speech": "所以有两笔账要分开算。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 220.68,
+   "dur": 2.34,
+   "speech": "一笔是参数账。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 223.2,
+   "dur": 2.27,
+   "speech": "一笔是效果账。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 225.65,
+   "dur": 2.05,
+   "speech": "参数账好算。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 227.88,
+   "dur": 3.28,
+   "speech": "加减乘除，一眼就能看出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 231.34,
+   "dur": 2.17,
+   "speech": "效果账不好算。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 233.69,
+   "dur": 3.73,
+   "speech": "要定目标，要切数据，要选口径。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 237.61,
+   "dur": 2.58,
+   "speech": "这一集两笔账都算。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 240.37,
+   "dur": 4.38,
+   "speech": "参数账是 1,300、512、0。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 244.93,
+   "dur": 2.68,
+   "speech": "效果账：一个都没赢。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 247.79,
+   "dur": 2.65,
+   "speech": "先说参数账怎么来的。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 250.62,
+   "dur": 3.18,
+   "speech": "得先把三个坐标系摆出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 253.99,
+   "dur": 2.53,
+   "speech": "下一场看参数账。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 259.92,
+   "dur": 2.8,
+   "speech": "第一个坐标系：线性头。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 262.9,
+   "dur": 3.73,
+   "speech": "它是从 64 维到 20 维的一个矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 266.81,
+   "dur": 2.25,
+   "speech": "再加一列截距。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 269.24,
+   "dur": 3.54,
+   "speech": "所以是 65 行输入，20 列输出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 272.96,
+   "dur": 3.54,
+   "speech": "写成参数，就是 65 乘 20。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 276.68,
+   "dur": 1.84,
+   "speech": "1,300。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 278.7,
+   "dur": 2.15,
+   "speech": "拟合用闭式解。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 281.03,
+   "dur": 3.06,
+   "speech": "正规方程，加一个岭项。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 284.27,
+   "dur": 2.7,
+   "speech": "一次解出来，不用迭代。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 287.15,
+   "dur": 3.23,
+   "speech": "岭项只罚权重，不罚截距。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 290.56,
+   "dur": 2.85,
+   "speech": "第二个坐标系：低秩旁路。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 293.59,
+   "dur": 4.48,
+   "speech": "记底座是 W 零，形状 64 乘 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 298.25,
+   "dur": 2.61,
+   "speech": "旁边加两个小矩阵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 301.03,
+   "dur": 4.14,
+   "speech": "A 是 4 乘 64，B 是 64 乘 4。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 305.36,
+   "dur": 4.38,
+   "speech": "合起来 B 乘 A，形状还是 64 乘 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 309.92,
+   "dur": 3.33,
+   "speech": "参数是 2 乘 4 乘 64。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 313.42,
+   "dur": 2.29,
+   "speech": "512 个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 315.9,
+   "dur": 2.29,
+   "speech": "关键在初始化。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 318.37,
+   "dur": 3.4,
+   "speech": "A 取很小的随机数，B 全零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 321.95,
+   "dur": 4.38,
+   "speech": "B 是零，输出就和冻结模型逐位相同。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 326.51,
+   "dur": 2.99,
+   "speech": "第三个坐标系：语义锚点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 329.68,
+   "dur": 2.87,
+   "speech": "有一个 64 个词的词表。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 332.73,
+   "dur": 3.18,
+   "speech": "每个词是一个 64 维向量。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 336.09,
+   "dur": 2.29,
+   "speech": "它们两两正交。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 338.57,
+   "dur": 3.09,
+   "speech": "有 20 个类，每类一个原型。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 341.83,
+   "dur": 2.58,
+   "speech": "原型也是 64 维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 344.6,
+   "dur": 3.01,
+   "speech": "每类挑一个余弦最近的词。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 347.79,
+   "dur": 2.51,
+   "speech": "锚点就是这个下标。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 350.48,
+   "dur": 2.8,
+   "speech": "没有权重，参数是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 353.46,
+   "dur": 3.88,
+   "speech": "前缀是八个锚词加一个查询，九个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 357.52,
+   "dur": 2.89,
+   "speech": "三个坐标系，三笔账。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 360.59,
+   "dur": 3.47,
+   "speech": "1,300，512，零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 364.24,
+   "dur": 2.29,
+   "speech": "和主干比一下。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 366.71,
+   "dur": 3.09,
+   "speech": "主干是 70,209。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 369.98,
+   "dur": 2.25,
+   "speech": "百分之一点八五。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 372.41,
+   "dur": 2.32,
+   "speech": "百分之零点七三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 374.9,
+   "dur": 2.61,
+   "speech": "百分之零，也是零。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 377.69,
+   "dur": 3.59,
+   "speech": "这就是「只训练一小块」的字面意思。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 381.46,
+   "dur": 2.13,
+   "speech": "参数账算完了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 383.77,
+   "dur": 1.93,
+   "speech": "该定口径了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 389.1,
+   "dur": 3.35,
+   "speech": "主干是这一集预训练的编码器。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 392.63,
+   "dur": 3.3,
+   "speech": "512 点进，64 维出。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 396.11,
+   "dur": 3.06,
+   "speech": "参数 66,113。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 399.35,
+   "dur": 3.97,
+   "speech": "再加一个冻结的投影，4,096。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 403.51,
+   "dur": 3.16,
+   "speech": "合起来 70,209。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 406.85,
+   "dur": 3.85,
+   "speech": "它只用 1998 到 2014 的数据训练。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 410.88,
+   "dur": 2.68,
+   "speech": "3,218 个窗口。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 413.74,
+   "dur": 2.87,
+   "speech": "最好的一轮是第 8 轮。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 416.79,
+   "dur": 2.97,
+   "speech": "验证误差 1.0246。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 419.93,
+   "dur": 2.39,
+   "speech": "之后就不再动了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 422.5,
+   "dur": 3.13,
+   "speech": "下游数据从 2015 年开始。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 425.82,
+   "dur": 3.04,
+   "speech": "一共 1,219 个窗口。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 429.04,
+   "dur": 2.73,
+   "speech": "2015 到 2019 用掉。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 431.94,
+   "dur": 3.4,
+   "speech": "2020 年以后留着，不动。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 435.52,
+   "dur": 2.51,
+   "speech": "再按时间切三段。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 438.21,
+   "dur": 5.32,
+   "speech": "训练 732，验证 243，测试 224。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 443.71,
+   "dur": 2.39,
+   "speech": "不打乱，顺序切。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 446.28,
+   "dur": 3.16,
+   "speech": "因为时间序列不能随机打乱。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 449.62,
+   "dur": 3.23,
+   "speech": "测试段一次都不参与选择。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 453.03,
+   "dur": 3.09,
+   "speech": "这是「先钉口径」的全部含义。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 456.29,
+   "dur": 1.91,
+   "speech": "目标是什么？"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 458.38,
+   "dur": 2.15,
+   "speech": "不是预测收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 460.71,
+   "dur": 3.04,
+   "speech": "预测收益这件事，先试过。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 463.93,
+   "dur": 4.19,
+   "speech": "线性头一点零三，随机特征一点零五。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 468.3,
+   "dur": 2.37,
+   "speech": "都赢不了「预测零」。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 470.85,
+   "dur": 2.32,
+   "speech": "所以换一个目标。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 473.34,
+   "dur": 2.13,
+   "speech": "换成波动率。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 475.65,
+   "dur": 2.87,
+   "speech": "未来第 1 天到第 20 天。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 478.7,
+   "dur": 3.13,
+   "speech": "每天算累计平均绝对收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 482.01,
+   "dur": 2.85,
+   "speech": "取对数，得到 20 个数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 485.04,
+   "dur": 3.23,
+   "speech": "20 个数，就是 20 维输出。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 488.45,
+   "dur": 3.85,
+   "speech": "每维用训练段的均值标准差标准化。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 492.48,
+   "dur": 2.7,
+   "speech": "相对误差的分母是什么？"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 495.37,
+   "dur": 2.56,
+   "speech": "是「预测全零」的误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 498.1,
+   "dur": 4.53,
+   "speech": "这个基线在标准化空间里，就是预测均值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 502.81,
+   "dur": 2.82,
+   "speech": "所以一点零五四的意思是："
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 505.81,
+   "dur": 3.23,
+   "speech": "比预测均值差百分之五点四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 509.22,
+   "dur": 3.11,
+   "speech": "口径钉死，数才有意义。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 512.51,
+   "dur": 3.59,
+   "speech": "参数账、目标、切分都定了。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 516.28,
+   "dur": 2.2,
+   "speech": "下一场写实现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 521.88,
+   "dur": 3.4,
+   "speech": "三个模块，一共 321 行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 525.46,
+   "dur": 5.56,
+   "speech": "线性头 106 行，旁路 126 行，锚点 89 行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 531.2,
+   "dur": 2.65,
+   "speech": "加 26 条单元测试。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 534.03,
+   "dur": 3.49,
+   "speech": "加一个 443 行的证据程序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 537.7,
+   "dur": 3.47,
+   "speech": "和前面几集一样，全是纯函数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 541.35,
+   "dur": 2.99,
+   "speech": "没有输入输出，没有随机数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 544.52,
+   "dur": 3.42,
+   "speech": "所以屏幕上每个数都能复现。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 548.13,
+   "dur": 3.3,
+   "speech": "线性头的核心是解方程。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 551.61,
+   "dur": 5.03,
+   "speech": "正规方程，左边是 X 转置乘 X 加岭项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 556.82,
+   "dur": 3.09,
+   "speech": "右边是 X 转置乘 Y。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 560.08,
+   "dur": 2.85,
+   "speech": "解方程用高斯消元。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 563.11,
+   "dur": 2.99,
+   "speech": "列主元，选绝对值最大的。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 566.28,
+   "dur": 3.33,
+   "speech": "选错了，方程会悄悄解错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 569.79,
+   "dur": 2.75,
+   "speech": "这一条在上一集踩过。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 572.72,
+   "dur": 2.73,
+   "speech": "岭项只加到权重上。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 575.62,
+   "dur": 2.08,
+   "speech": "截距列不动。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 577.88,
+   "dur": 3.01,
+   "speech": "不然截距会被压向零。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 581.07,
+   "dur": 2.73,
+   "speech": "特征就少了水平信息。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 583.98,
+   "dur": 2.73,
+   "speech": "这是本集的一个小决定。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 586.89,
+   "dur": 2.97,
+   "speech": "也是一个容易忽略的细节。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 590.03,
+   "dur": 3.3,
+   "speech": "低秩旁路的关键在合并顺序。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 593.51,
+   "dur": 3.69,
+   "speech": "每个 epoch 只在训练前合并一次。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 597.38,
+   "dur": 2.29,
+   "speech": "不每一步都合并。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 599.85,
+   "dur": 2.34,
+   "speech": "梯度的两条式子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 602.38,
+   "dur": 3.83,
+   "speech": "对 B 的梯度，是误差乘 A 乘输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 606.39,
+   "dur": 4.43,
+   "speech": "对 A 的梯度，是 B 转置乘误差乘输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 611,
+   "dur": 3.57,
+   "speech": "都是 2 除以样本数，再平均。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 614.74,
+   "dur": 2.34,
+   "speech": "更新只做减法。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 617.26,
+   "dur": 2.37,
+   "speech": "学得太快会发散。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 619.81,
+   "dur": 3.18,
+   "speech": "学习率最后定在 0.001。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 623.17,
+   "dur": 2.77,
+   "speech": "这一集最贵的 bug 在这。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 626.13,
+   "dur": 2.44,
+   "speech": "秩和维度写反了。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 628.74,
+   "dur": 3.9,
+   "speech": "一个 4 乘 64，一个 64 乘 4。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 632.83,
+   "dur": 2.61,
+   "speech": "写反之后形状不对。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 635.61,
+   "dur": 2.22,
+   "speech": "但代码不报错。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 638.01,
+   "dur": 3.4,
+   "speech": "因为逐元素相加会静默截断。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 641.59,
+   "dur": 2.99,
+   "speech": "只更新了左上角 4 乘 4。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 644.76,
+   "dur": 3.4,
+   "speech": "训练照跑，损失照降一点点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 648.34,
+   "dur": 2.08,
+   "speech": "没有任何提示。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 650.6,
+   "dur": 2.73,
+   "speech": "所以单测要盯形状。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 656.72,
+   "dur": 3.01,
+   "speech": "十九条检查，四个分组。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 659.91,
+   "dur": 3.11,
+   "speech": "数据三项，线性头五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 663.2,
+   "dur": 2.82,
+   "speech": "旁路六项，锚点五项。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 666.21,
+   "dur": 4.02,
+   "speech": "全部通过，用时 107.10 秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 670.41,
+   "dur": 2.61,
+   "speech": "一条命令全部跑完。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 673.19,
+   "dur": 4.21,
+   "speech": "结果是 JSON，加一份逐行清单。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 677.59,
+   "dur": 2.1,
+   "speech": "先看线性头。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 679.87,
+   "dur": 4.36,
+   "speech": "参数 1,300，占主干 1.85%。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 684.41,
+   "dur": 3.9,
+   "speech": "岭参数为零时，能精确复原真值。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 688.49,
+   "dur": 3.97,
+   "speech": "误差 8.882 乘十的负十六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 692.64,
+   "dur": 2.99,
+   "speech": "相对误差 1.0543。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 695.81,
+   "dur": 3.54,
+   "speech": "平均绝对误差 0.5887。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 699.54,
+   "dur": 3.42,
+   "speech": "预测均值的误差 0.5584。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 703.14,
+   "dur": 2.85,
+   "speech": "差一点，但方向是输。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 706.16,
+   "dur": 4.36,
+   "speech": "同参数的随机特征头，是 1.0847。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 710.7,
+   "dur": 1.86,
+   "speech": "这一项赢了。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 712.74,
+   "dur": 2.39,
+   "speech": "说明表示里有信息。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 715.31,
+   "dur": 2.17,
+   "speech": "但信息不够多。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 717.67,
+   "dur": 3.33,
+   "speech": "岭参数在验证段选中 100。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 721.17,
+   "dur": 2.58,
+   "speech": "测试段一次没参与。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 723.94,
+   "dur": 2.22,
+   "speech": "再看低秩旁路。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 726.34,
+   "dur": 3.97,
+   "speech": "参数 512，占 0.73%。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 730.49,
+   "dur": 3.37,
+   "speech": "B 全零时，输出差 0.0。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 734.05,
+   "dur": 2.68,
+   "speech": "逐位相同，不是近似。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 736.9,
+   "dur": 2.99,
+   "speech": "把旁路减掉，底座复原。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 740.07,
+   "dur": 4.24,
+   "speech": "最大差 6.939 乘十的负十八次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 744.49,
+   "dur": 3.33,
+   "speech": "训练损失 36.4925。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 748,
+   "dur": 3.52,
+   "speech": "八十轮以后，36.4807。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 751.7,
+   "dur": 2.77,
+   "speech": "只降了百分之零点零三。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 754.65,
+   "dur": 2.63,
+   "speech": "秩四改不动这块表示。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 757.46,
+   "dur": 3.33,
+   "speech": "测试误差 36.5813。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 760.97,
+   "dur": 3.73,
+   "speech": "冻结模型是 36.5847。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 764.88,
+   "dur": 2.51,
+   "speech": "变化不到百分之一。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 767.57,
+   "dur": 2.1,
+   "speech": "最后看锚点。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 769.85,
+   "dur": 5.61,
+   "speech": "六十四词两两正交，偏差一点四八四乘十的负六次方。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 775.64,
+   "dur": 2.89,
+   "speech": "top 八跟暴力排序一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 778.71,
+   "dur": 3.01,
+   "speech": "锚点准确率 0.09。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 781.91,
+   "dur": 2.68,
+   "speech": "线性头 0.365。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 784.76,
+   "dur": 2.58,
+   "speech": "机会水平 0.05。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 787.53,
+   "dur": 4.14,
+   "speech": "零参数的锚点，打不过 1,300 参数的头。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 795.07,
+   "dur": 2.85,
+   "speech": "三笔账，三个负结果。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 798.1,
+   "dur": 3.73,
+   "speech": "第一笔：线性头没赢过预测均值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 802.01,
+   "dur": 2.92,
+   "speech": "1.0543 对 1.0。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 805.11,
+   "dur": 4.24,
+   "speech": "第二笔：低秩旁路只挪了 0.03%。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 809.53,
+   "dur": 3.93,
+   "speech": "第三笔：锚点只有线性头的四分之一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 813.63,
+   "dur": 2.49,
+   "speech": "这三句话都不好听。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 816.3,
+   "dur": 3.16,
+   "speech": "但它们是这一集量到的东西。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 819.64,
+   "dur": 2.22,
+   "speech": "能确认的是什么？"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 822.04,
+   "dur": 2.27,
+   "speech": "参数账是准的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 824.49,
+   "dur": 4.96,
+   "speech": "闭式解、逐位相同、正交词表，都是硬事实。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 829.63,
+   "dur": 2.63,
+   "speech": "还有一个过程要交代。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 832.44,
+   "dur": 2.15,
+   "speech": "目标换过一次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 834.77,
+   "dur": 3.21,
+   "speech": "最早想预测 20 个未来收益。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 838.15,
+   "dur": 4.19,
+   "speech": "线性头一点零三，随机特征一点零五。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 842.52,
+   "dur": 2.37,
+   "speech": "都赢不了预测零。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 845.07,
+   "dur": 2.92,
+   "speech": "判定：这个目标不可预测。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 848.17,
+   "dur": 3.33,
+   "speech": "换到波动率，才有了现在的数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 851.67,
+   "dur": 2.29,
+   "speech": "换目标不是作弊。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 854.15,
+   "dur": 3.57,
+   "speech": "是发现原目标根本不在信号里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 857.89,
+   "dur": 2.89,
+   "speech": "但换过之后，要说明白。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 860.97,
+   "dur": 3.16,
+   "speech": "合成分类任务也换过一次。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 864.3,
+   "dur": 3.18,
+   "speech": "最早用 20 类自回归序列。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 867.67,
+   "dur": 3.18,
+   "speech": "过编码器，再做线性分类。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 871.03,
+   "dur": 2.58,
+   "speech": "准确率 0.045。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 873.79,
+   "dur": 2.27,
+   "speech": "就是机会水平。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 876.24,
+   "dur": 3.93,
+   "speech": "说明冻结编码器对这类序列不分层。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 880.35,
+   "dur": 3.33,
+   "speech": "后来改成表示空间的合成类。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 883.85,
+   "dur": 2.73,
+   "speech": "随机原型，加噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 886.76,
+   "dur": 2.03,
+   "speech": "这才分得开。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 888.97,
+   "dur": 3.76,
+   "speech": "这个失败路径留在代码里，没删。"
+  },
+  {
+   "scene": "boundary",
+   "index": 30,
+   "start": 892.91,
+   "dur": 2.75,
+   "speech": "数据边界也要说清楚。"
+  },
+  {
+   "scene": "boundary",
+   "index": 31,
+   "start": 895.84,
+   "dur": 2.8,
+   "speech": "一只股票，两段时期。"
+  },
+  {
+   "scene": "boundary",
+   "index": 32,
+   "start": 898.81,
+   "dur": 2.94,
+   "speech": "一个切分，没有交叉验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 33,
+   "start": 901.94,
+   "dur": 3.49,
+   "speech": "旁路只用 92 对样本，八十轮。"
+  },
+  {
+   "scene": "boundary",
+   "index": 34,
+   "start": 905.61,
+   "dur": 3.78,
+   "speech": "锚点任务在表示空间，不是原始数据。"
+  },
+  {
+   "scene": "boundary",
+   "index": 35,
+   "start": 909.57,
+   "dur": 2.87,
+   "speech": "这些条件下，结论成立。"
+  },
+  {
+   "scene": "boundary",
+   "index": 36,
+   "start": 912.62,
+   "dur": 2.92,
+   "speech": "出了这些条件，待验证。"
+  },
+  {
+   "scene": "boundary",
+   "index": 37,
+   "start": 915.72,
+   "dur": 3.4,
+   "speech": "所以这一集给的不是「适配有效」。"
+  },
+  {
+   "scene": "boundary",
+   "index": 38,
+   "start": 919.3,
+   "dur": 3.76,
+   "speech": "是「适配的代价可以被精确算出来」。"
+  },
+  {
+   "scene": "boundary",
+   "index": 39,
+   "start": 923.24,
+   "dur": 2.99,
+   "speech": "说得清边界，才算讲完。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 929.63,
+   "dur": 2.77,
+   "speech": "回到开头那张参数表。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 932.58,
+   "dur": 4.93,
+   "speech": "70,209，1,300，512，零。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 937.7,
+   "dur": 2.77,
+   "speech": "三笔账，都能自己算。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 940.65,
+   "dur": 2.8,
+   "speech": "线性头是一次解方程。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 943.63,
+   "dur": 2.58,
+   "speech": "旁路是一对小矩阵。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 946.39,
+   "dur": 2.89,
+   "speech": "锚点是从词表里选词。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 949.47,
+   "dur": 2.39,
+   "speech": "三个都不改主干。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 952.04,
+   "dur": 2.05,
+   "speech": "三个都便宜。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 954.27,
+   "dur": 2.99,
+   "speech": "三个都没换来预测提升。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 957.44,
+   "dur": 2.87,
+   "speech": "这就是这一集量到的东西。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 960.49,
+   "dur": 2.34,
+   "speech": "最后复盘四个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 963.01,
+   "dur": 3.54,
+   "speech": "1,300 个参数，百分之一点八五。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 966.73,
+   "dur": 3.66,
+   "speech": "512 个参数，百分之零点七三。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 970.58,
+   "dur": 2.58,
+   "speech": "零个参数，也是零。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 973.34,
+   "dur": 4.5,
+   "speech": "三个适配器，321 行，26 条单测。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 978.02,
+   "dur": 3.69,
+   "speech": "19 项检查，107.10 秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 981.89,
+   "dur": 3.45,
+   "speech": "屏幕上的每个数都能自己跑出来。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 985.51,
+   "dur": 2.87,
+   "speech": "三条命令，一行一条。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 988.56,
+   "dur": 4.09,
+   "speech": "一条跑证据，一条跑测试，一条渲染。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 992.84,
+   "dur": 2.05,
+   "speech": "都在文档里。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 995.07,
+   "dur": 2.39,
+   "speech": "这一章到这里收束。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 997.64,
+   "dur": 2.49,
+   "speech": "从表示讲到适配。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1000.31,
+   "dur": 2.56,
+   "speech": "一个问题一直没变。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1003.04,
+   "dur": 2.87,
+   "speech": "冻结的东西，能借来多少。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1006.09,
+   "dur": 2.08,
+   "speech": "答案不是「更多」。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1008.35,
+   "dur": 2.1,
+   "speech": "是「可以算清楚」。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1010.63,
+   "dur": 3.66,
+   "speech": "参数能算，误差能算，边界能算。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1014.48,
+   "dur": 3.18,
+   "speech": "算清楚，才知道值不值。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1017.84,
+   "dur": 2.49,
+   "speech": "下一章换一个方向。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1020.5,
+   "dur": 3.21,
+   "speech": "不讲怎么建模，讲怎么评。"
+  },
+  {
+   "scene": "outro",
+   "index": 30,
+   "start": 1023.89,
+   "dur": 2.15,
+   "speech": "误差三件套。"
+  },
+  {
+   "scene": "outro",
+   "index": 31,
+   "start": 1026.22,
+   "dur": 3.45,
+   "speech": "同一组预测，MSE 涨四倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 32,
+   "start": 1029.85,
+   "dur": 2.1,
+   "speech": "MAE 一动不动。"
+  },
+  {
+   "scene": "outro",
+   "index": 33,
+   "start": 1032.13,
+   "dur": 3.04,
+   "speech": "三个指标给出三种结论。"
+  },
+  {
+   "scene": "outro",
+   "index": 34,
+   "start": 1035.35,
+   "dur": 2.41,
+   "speech": "这是下一集的问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 35,
+   "start": 1037.94,
+   "dur": 2.29,
+   "speech": "感谢观看本集。"
+  },
+  {
+   "scene": "outro",
+   "index": 36,
+   "start": 1040.41,
+   "dur": 2.27,
+   "speech": "参数账算清了。"
+  },
+  {
+   "scene": "outro",
+   "index": 37,
+   "start": 1042.86,
+   "dur": 2.27,
+   "speech": "效果账还欠着。"
+  },
+  {
+   "scene": "outro",
+   "index": 38,
+   "start": 1045.31,
+   "dur": 2.94,
+   "speech": "下一集，换一把尺子。"
+  },
+  {
+   "scene": "outro",
+   "index": 39,
+   "start": 1048.44,
+   "dur": 2.85,
+   "speech": "再量一次，换个尺子。"
+  }
+ ]
+}

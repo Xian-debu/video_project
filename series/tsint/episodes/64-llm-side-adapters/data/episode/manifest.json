@@ -1,0 +1,22 @@
+{
+ "episode": "64-llm-side-adapters",
+ "generated_by": "inventory/scripts/export_ch07_adapters.py",
+ "source": "ts-admin lake bars_daily; close * adj_factor (后复权); non-suspended",
+ "series": {
+  "code": "sz000001",
+  "file": "series_000001.csv",
+  "rows": 6600,
+  "range": [
+   "1998-11-25",
+   "2026-10-28"
+  ],
+  "sha256": "463422fe5c88c149de089ed027b2956183d64f3042ccd1fb35c7218efebcf2d5"
+ },
+ "word_vectors": {
+  "file": "word_vectors.csv",
+  "vocab": 64,
+  "dim": 64,
+  "seed": 20261105,
+  "sha256": "5fa4206c3305af8b407867e31c4c2db05ccf82dbb80b843c0132e6ace46cc3eb"
+ }
+}
