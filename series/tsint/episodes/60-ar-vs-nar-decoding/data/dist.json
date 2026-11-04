@@ -1,0 +1,438 @@
+{
+ "meta": {
+  "episode": 60,
+  "slug": "ar-vs-nar-decoding",
+  "chapter": "ch07",
+  "title": "一步一步还是一口气：自回归与非自回归解码",
+  "runtimeTarget": 16
+ },
+ "checks": [
+  {
+   "group": "data",
+   "name": "series_000001.csv 共 6600 行、两列",
+   "ok": true,
+   "detail": "6600 行"
+  },
+  {
+   "group": "data",
+   "name": "高波动段 728 行：2020-01-02 → 2022-12-30",
+   "ok": true,
+   "detail": "728 行，2020-01-02 → 2022-12-30"
+  },
+  {
+   "group": "data",
+   "name": "728 点可切 197 个 512+20 窗口，测试段起点在全集第 4949 行",
+   "ok": true,
+   "detail": "197 个，testStart 4949"
+  },
+  {
+   "group": "data",
+   "name": "切分 3,418 / 1,000 / 197：训练验证截至 2019-12-31，测试段逐值对齐全集切片",
+   "ok": true,
+   "detail": "3418 / 1000 / 197，contiguous True"
+  },
+  {
+   "group": "ar",
+   "name": "复制函数 f=last：20 步 rollout 全等于最后一点",
+   "ok": true,
+   "detail": "20 步逐位相同"
+  },
+  {
+   "group": "ar",
+   "name": "F=1 时 rollout 与单步预测逐位相同",
+   "ok": true,
+   "detail": "copy 函数下成立"
+  },
+  {
+   "group": "ar",
+   "name": "确定性：同一窗口两次 rollout 逐位相同",
+   "ok": true,
+   "detail": "两次一致"
+  },
+  {
+   "group": "ar",
+   "name": "AR 绝对误差随 F 增长（F=20 > F=1）",
+   "ok": true,
+   "detail": "F=1 0.0770 → F=20 0.3510"
+  },
+  {
+   "group": "ar",
+   "name": "暴露偏差：自由 rollout 误差大于 teacher forcing",
+   "ok": true,
+   "detail": "自由 0.350959 / 教师强制 0.076236，差 0.2747"
+  },
+  {
+   "group": "nar",
+   "name": "参数账：64 维表示 + 最后一点直连 → (65+1)×20 = 1,320",
+   "ok": true,
+   "detail": "1320"
+  },
+  {
+   "group": "nar",
+   "name": "确定性：同一输入两次前向逐位相同",
+   "ok": true,
+   "detail": "两次一致"
+  },
+  {
+   "group": "nar",
+   "name": "恒等任务拟合：100 样本、8 维、3 输出，MSE < 1e-6",
+   "ok": true,
+   "detail": "MSE 0.000000"
+  },
+  {
+   "group": "nar",
+   "name": "一次前向输出 F=20 维",
+   "ok": true,
+   "detail": "输出 20 维"
+  },
+  {
+   "group": "timing",
+   "name": "197 个测试窗口上，AR F=20 与 NAR 单次前向的耗时比 >= 5",
+   "ok": true,
+   "detail": "15.7080×（AR 0.368249 s / NAR 0.023443 s，197 个窗口）"
+  },
+  {
+   "group": "timing",
+   "name": "两次测量都为正且 NAR 更快",
+   "ok": true,
+   "detail": "0.023443 < 0.368249"
+  },
+  {
+   "group": "curve",
+   "name": "20 个点全为有限数，persistence 基线非零",
+   "ok": true,
+   "detail": "persistence MAE 0.224299"
+  },
+  {
+   "group": "curve",
+   "name": "交叉点：NAR 相对误差首次低于 AR 的 98%（2% 阈值，无交叉记为 -1）",
+   "ok": true,
+   "detail": "F=8"
+  },
+  {
+   "group": "curve",
+   "name": "NAR 相对误差增长慢于 AR（F=20 vs F=1）",
+   "ok": true,
+   "detail": "AR 1.1352→1.5647；NAR 1.1352→1.2932"
+  }
+ ],
+ "summary": {
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "ok": true
+ },
+ "data": {
+  "seriesRows": 6600,
+  "segmentRows": 728,
+  "segmentStart": "2020-01-02",
+  "segmentEnd": "2022-12-30",
+  "testStart": 4949,
+  "preWindows": 4418,
+  "windows": 197,
+  "trainN": 3418,
+  "valN": 1000,
+  "testN": 197,
+  "winLen": 512,
+  "horizon": 20,
+  "firstDate": "1998-11-25",
+  "lastDate": "2026-10-28"
+ },
+ "params": {
+  "enc": 66113,
+  "arHead": 66,
+  "narHead": 1320,
+  "planNar": 1300
+ },
+ "ar": {
+  "lambda": 0.01,
+  "mae1": 0.077016,
+  "mae20": 0.350959,
+  "rel1": 1.1352,
+  "rel20": 1.5647,
+  "teacher": 0.076236,
+  "free": 0.350959,
+  "gap": 0.2747,
+  "copyOk": true
+ },
+ "nar": {
+  "lambda20": 100.0,
+  "mae1": 0.077016,
+  "mae20": 0.290063,
+  "rel1": 1.1352,
+  "rel20": 1.2932
+ },
+ "timing": {
+  "arSeconds": 0.368249,
+  "narSeconds": 0.023443,
+  "ratio": 15.708,
+  "windows": 197
+ },
+ "crossing": 8,
+ "persistMae20": 0.224299,
+ "idMse": 0.0,
+ "exposure": {
+  "teacher": 0.076236,
+  "free": 0.350959,
+  "gap": 0.2747
+ },
+ "curve": [
+  {
+   "f": 1,
+   "arMae": 0.077016,
+   "narMae": 0.077016,
+   "persistMae": 0.067844,
+   "arRel": 1.1352,
+   "narRel": 1.1352,
+   "lambda": 0.01
+  },
+  {
+   "f": 2,
+   "arMae": 0.09567,
+   "narMae": 0.096373,
+   "persistMae": 0.082389,
+   "arRel": 1.1612,
+   "narRel": 1.1697,
+   "lambda": 0.01
+  },
+  {
+   "f": 3,
+   "arMae": 0.113549,
+   "narMae": 0.113545,
+   "persistMae": 0.094104,
+   "arRel": 1.2066,
+   "narRel": 1.2066,
+   "lambda": 0.01
+  },
+  {
+   "f": 4,
+   "arMae": 0.128731,
+   "narMae": 0.128463,
+   "persistMae": 0.102963,
+   "arRel": 1.2503,
+   "narRel": 1.2477,
+   "lambda": 0.01
+  },
+  {
+   "f": 5,
+   "arMae": 0.144545,
+   "narMae": 0.146147,
+   "persistMae": 0.111791,
+   "arRel": 1.293,
+   "narRel": 1.3073,
+   "lambda": 10.0
+  },
+  {
+   "f": 6,
+   "arMae": 0.159877,
+   "narMae": 0.159864,
+   "persistMae": 0.120058,
+   "arRel": 1.3317,
+   "narRel": 1.3316,
+   "lambda": 10.0
+  },
+  {
+   "f": 7,
+   "arMae": 0.174903,
+   "narMae": 0.172652,
+   "persistMae": 0.128395,
+   "arRel": 1.3622,
+   "narRel": 1.3447,
+   "lambda": 10.0
+  },
+  {
+   "f": 8,
+   "arMae": 0.189548,
+   "narMae": 0.184082,
+   "persistMae": 0.136824,
+   "arRel": 1.3853,
+   "narRel": 1.3454,
+   "lambda": 10.0
+  },
+  {
+   "f": 9,
+   "arMae": 0.204243,
+   "narMae": 0.195252,
+   "persistMae": 0.145381,
+   "arRel": 1.4049,
+   "narRel": 1.343,
+   "lambda": 10.0
+  },
+  {
+   "f": 10,
+   "arMae": 0.218569,
+   "narMae": 0.216254,
+   "persistMae": 0.153753,
+   "arRel": 1.4216,
+   "narRel": 1.4065,
+   "lambda": 100.0
+  },
+  {
+   "f": 11,
+   "arMae": 0.232893,
+   "narMae": 0.224634,
+   "persistMae": 0.161891,
+   "arRel": 1.4386,
+   "narRel": 1.3876,
+   "lambda": 100.0
+  },
+  {
+   "f": 12,
+   "arMae": 0.247087,
+   "narMae": 0.232953,
+   "persistMae": 0.169963,
+   "arRel": 1.4538,
+   "narRel": 1.3706,
+   "lambda": 100.0
+  },
+  {
+   "f": 13,
+   "arMae": 0.261214,
+   "narMae": 0.241501,
+   "persistMae": 0.177977,
+   "arRel": 1.4677,
+   "narRel": 1.3569,
+   "lambda": 100.0
+  },
+  {
+   "f": 14,
+   "arMae": 0.275017,
+   "narMae": 0.249612,
+   "persistMae": 0.185671,
+   "arRel": 1.4812,
+   "narRel": 1.3444,
+   "lambda": 100.0
+  },
+  {
+   "f": 15,
+   "arMae": 0.288587,
+   "narMae": 0.257415,
+   "persistMae": 0.193006,
+   "arRel": 1.4952,
+   "narRel": 1.3337,
+   "lambda": 100.0
+  },
+  {
+   "f": 16,
+   "arMae": 0.301771,
+   "narMae": 0.264872,
+   "persistMae": 0.199878,
+   "arRel": 1.5098,
+   "narRel": 1.3252,
+   "lambda": 100.0
+  },
+  {
+   "f": 17,
+   "arMae": 0.3145,
+   "narMae": 0.271641,
+   "persistMae": 0.206356,
+   "arRel": 1.5241,
+   "narRel": 1.3164,
+   "lambda": 100.0
+  },
+  {
+   "f": 18,
+   "arMae": 0.326881,
+   "narMae": 0.278042,
+   "persistMae": 0.212541,
+   "arRel": 1.538,
+   "narRel": 1.3082,
+   "lambda": 100.0
+  },
+  {
+   "f": 19,
+   "arMae": 0.339054,
+   "narMae": 0.284226,
+   "persistMae": 0.218513,
+   "arRel": 1.5516,
+   "narRel": 1.3007,
+   "lambda": 100.0
+  },
+  {
+   "f": 20,
+   "arMae": 0.350959,
+   "narMae": 0.290063,
+   "persistMae": 0.224299,
+   "arRel": 1.5647,
+   "narRel": 1.2932,
+   "lambda": 100.0
+  }
+ ],
+ "example": {
+  "truth20": [
+   -1.035875,
+   -1.032139,
+   -0.901357,
+   -0.998509,
+   -1.103134,
+   -1.11808,
+   -1.222705,
+   -1.226442,
+   -1.282491,
+   -1.218969,
+   -1.308647,
+   -1.297437,
+   -1.439428,
+   -1.667361,
+   -1.820562,
+   -1.996182,
+   -1.72341,
+   -1.600102,
+   -1.753303,
+   -2.055968
+  ],
+  "ar20": [
+   -1.059734,
+   -1.038078,
+   -1.024868,
+   -1.001073,
+   -0.974796,
+   -0.959376,
+   -0.954791,
+   -0.950704,
+   -0.953758,
+   -0.953184,
+   -0.944092,
+   -0.934543,
+   -0.920213,
+   -0.899544,
+   -0.883773,
+   -0.861231,
+   -0.847847,
+   -0.841143,
+   -0.841048,
+   -0.842723
+  ],
+  "nar20": [
+   -0.954761,
+   -0.930278,
+   -0.913589,
+   -0.89273,
+   -0.880078,
+   -0.872134,
+   -0.881442,
+   -0.896407,
+   -0.910445,
+   -0.931038,
+   -0.948885,
+   -0.96655,
+   -0.984904,
+   -1.003381,
+   -1.014274,
+   -1.02937,
+   -1.048789,
+   -1.067721,
+   -1.080071,
+   -1.090778
+  ]
+ },
+ "code": {
+  "modules": 2,
+  "arLines": 83,
+  "narLines": 60,
+  "moduleLines": 143,
+  "tests": 18,
+  "evidenceLines": 421,
+  "checks": 18
+ }
+}

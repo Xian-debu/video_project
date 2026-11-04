@@ -1,0 +1,2157 @@
+{
+ "entry": "src/tsint-60-ar-vs-nar-decoding/script.ts",
+ "fps": 30,
+ "totalSec": 1310.25,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 188.15
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 188.15,
+   "dur": 179.44
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 367.59,
+   "dur": 179.77
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 547.36,
+   "dur": 183.06
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 730.42,
+   "dur": 172.07
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 902.49,
+   "dur": 168.35
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 1070.84,
+   "dur": 125.18
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 1196.02,
+   "dur": 114.23
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 3.21,
+   "speech": "这一集问一个很具体的问题。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.59,
+   "dur": 5.44,
+   "speech": "预测未来二十天，应该一步一步走，还是一口气吐出来。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 10.2,
+   "dur": 5.29,
+   "speech": "两种做法都有名字：自回归解码，和非自回归解码。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 15.68,
+   "dur": 4.07,
+   "speech": "不是模型结构之争，是解码方式之争。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 19.93,
+   "dur": 4.45,
+   "speech": "同一个编码器，同一个窗口，同一批测试数据。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 24.56,
+   "dur": 4.12,
+   "speech": "只换最后那一步：把表示变成预测的方式。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 28.86,
+   "dur": 4.53,
+   "speech": "一步一步，每一步都把自己的输出塞回输入。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 33.57,
+   "dur": 4.45,
+   "speech": "一口气，一次矩阵乘法直接给出二十个点。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 38.2,
+   "dur": 5.27,
+   "speech": "前者慢、误差会累积；后者快、但会把尖峰抹平。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 43.65,
+   "dur": 4,
+   "speech": "这一集把这两句话拆开，一项一项量。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 47.83,
+   "dur": 3.97,
+   "speech": "先说清楚为什么值得单独讲一集。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 51.98,
+   "dur": 5.1,
+   "speech": "因为解码方式决定两件事：误差怎么长，算力怎么花。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 57.26,
+   "dur": 5.08,
+   "speech": "自回归要跑二十次前向，每一次都依赖上一次的结果。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 62.52,
+   "dur": 4.17,
+   "speech": "非自回归只跑一次，二十个点同时出来。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 66.87,
+   "dur": 4.02,
+   "speech": "代价是二十个点之间不再有条件依赖。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 71.07,
+   "dur": 5.15,
+   "speech": "在收益率这种信噪比很低的数据上，代价往往看得见。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 76.4,
+   "dur": 5.65,
+   "speech": "所以问题不是哪个更先进，而是各自在哪一段地平线上赢。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 82.23,
+   "dur": 5.68,
+   "speech": "书里给了一个直觉：两条误差曲线会在某个地平线附近交叉。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 88.09,
+   "dur": 4.05,
+   "speech": "这一集的任务，就是把那个交叉点量出来。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 92.32,
+   "dur": 3.23,
+   "speech": "量不出来也算结果，照实写。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 95.73,
+   "dur": 4.19,
+   "speech": "先看四个数，后面每一场都会回到它们。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 100.1,
+   "dur": 4.84,
+   "speech": "测试窗口一百九十七个，地平线从一走到二十。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 105.12,
+   "dur": 4.89,
+   "speech": "二十步处，自回归的相对误差是一点五六四七。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 110.18,
+   "dur": 4.41,
+   "speech": "同样二十步，非自回归是一点二九三二。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 114.77,
+   "dur": 5.27,
+   "speech": "两条曲线在第八步交叉，之后非自回归一直领先。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 120.22,
+   "dur": 4.67,
+   "speech": "推理耗时比是十五点七倍，非自回归更快。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 125.07,
+   "dur": 4.96,
+   "speech": "这几组数都来自同一条命令，十八条检查全过。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 130.21,
+   "dur": 3.45,
+   "speech": "注意，两个相对误差都大于一。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 133.83,
+   "dur": 3.95,
+   "speech": "意思是，它们都还没打过最简单的基线。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 137.96,
+   "dur": 3.45,
+   "speech": "这句话会一直留到边界那一场。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 141.59,
+   "dur": 2.25,
+   "speech": "接下来分八场。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 144.01,
+   "dur": 4.53,
+   "speech": "第一场把问题摆出来：误差为什么会随步数长。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 148.72,
+   "dur": 4.81,
+   "speech": "第二场给定义：回灌、教师强制、一次输出。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 153.71,
+   "dur": 5.17,
+   "speech": "第三场定度量：相对误差、持久化基线、窗口口径。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 159.07,
+   "dur": 4.84,
+   "speech": "第四场写实现：两个纯函数模块和它们的测试。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 164.09,
+   "dur": 5.56,
+   "speech": "第五场把证据摊开：曲线、参数、耗时、曝光偏差。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 169.82,
+   "dur": 4.53,
+   "speech": "第六场讲边界：哪里没做到，哪里不能下结论。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 174.53,
+   "dur": 3.52,
+   "speech": "最后一场收束，并指向下一集。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 178.23,
+   "dur": 4.55,
+   "speech": "每一屏上的数字都能由仓库里的一条命令复现。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 182.96,
+   "dur": 2.99,
+   "speech": "先从一个具体的困境说起。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 189.35,
+   "dur": 3.4,
+   "speech": "假设你要预测未来二十天的走势。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 192.93,
+   "dur": 4.84,
+   "speech": "你手上有一个能压缩窗口的编码器，输出六十四维。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 197.95,
+   "dur": 4.38,
+   "speech": "还有一个线性头，把六十四维映射成一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 202.51,
+   "dur": 4.45,
+   "speech": "自回归的做法很直接：先用头预测第一天。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 207.14,
+   "dur": 4.41,
+   "speech": "把预测值接到窗口末尾，丢掉最老的一点。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 211.73,
+   "dur": 3.25,
+   "speech": "再用这个新窗口预测第二天。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 215.16,
+   "dur": 3.33,
+   "speech": "重复二十次，得到二十个预测。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 218.67,
+   "dur": 5.34,
+   "speech": "非自回归换一条路：一次训练一个头，直接输出二十维。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 224.19,
+   "dur": 4.84,
+   "speech": "推理时只做一次矩阵乘法，二十个点同时落地。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 229.21,
+   "dur": 4.86,
+   "speech": "两条路用的是同一个编码器，差别只在头的形状。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 234.25,
+   "dur": 3.73,
+   "speech": "自回归的第一个隐患是误差回灌。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 238.16,
+   "dur": 4.48,
+   "speech": "第一步的预测有误差，它会被当成第二步的输入。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 242.82,
+   "dur": 3.95,
+   "speech": "第二步的误差又进第三步，像滚雪球。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 246.95,
+   "dur": 4.57,
+   "speech": "如果每一步的误差相互独立，方差会线性相加。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 251.71,
+   "dur": 4.55,
+   "speech": "二十步之后，标准差大约是一步的四点四七倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 256.44,
+   "dur": 4.65,
+   "speech": "这就是根号 F 的来源，F 是地平线长度。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 261.26,
+   "dur": 3.64,
+   "speech": "它是一个上界式的直觉，不是定理。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 265.08,
+   "dur": 3.93,
+   "speech": "真实模型里，误差往往有系统性成分。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 269.19,
+   "dur": 5.17,
+   "speech": "系统性偏差每一步都往同一个方向推，不会相互抵消。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 274.54,
+   "dur": 4.98,
+   "speech": "所以实测曲线可能比根号 F 陡，也可能更平。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 279.7,
+   "dur": 3.4,
+   "speech": "我们先把预期写下来，再去测。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 283.28,
+   "dur": 4.45,
+   "speech": "预期一：自回归的误差随步数单调增长。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 287.91,
+   "dur": 4.17,
+   "speech": "预期二：非自回归长得更慢，最终反超。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 292.26,
+   "dur": 3.71,
+   "speech": "预期三：两步之间误差不是独立噪声。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 296.15,
+   "dur": 4.45,
+   "speech": "所以根号 F 的曲线大概率不会贴住实测。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 300.78,
+   "dur": 4.12,
+   "speech": "如果贴住了，说明误差确实接近白噪声。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 305.08,
+   "dur": 4.36,
+   "speech": "如果差很远，说明模型有系统性的偏差。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 309.62,
+   "dur": 3.21,
+   "speech": "这两种结果都值得讲清楚。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 313.01,
+   "dur": 4.09,
+   "speech": "更重要的，是别把一次巧合当成规律。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 317.28,
+   "dur": 4.69,
+   "speech": "所以要固定窗口、固定编码器、固定切分。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 322.15,
+   "dur": 2.61,
+   "speech": "具体要回答三个问题。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 324.94,
+   "dur": 3.45,
+   "speech": "第一，回灌式 rollout 写得对不对。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 328.57,
+   "dur": 5.05,
+   "speech": "检验办法是复制函数：每一步都返回窗口最后一点。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 333.8,
+   "dur": 4.07,
+   "speech": "那么二十步之后，每个输出都该等于那个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 338.05,
+   "dur": 3.45,
+   "speech": "这是纯定义检查，不涉及训练。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 341.68,
+   "dur": 5.58,
+   "speech": "第二，误差随地平线怎么长，什么时候被非自回归反超。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 347.44,
+   "dur": 5.53,
+   "speech": "第三，非自回归一次前向，能比自回归二十次快多少。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 353.15,
+   "dur": 3.21,
+   "speech": "计划的验收线是五倍以上。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 356.54,
+   "dur": 5.13,
+   "speech": "三个问题分别对应三组检查：ar、curve、timing。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 361.84,
+   "dur": 3.54,
+   "speech": "答案在第五场，先把定义写清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 368.79,
+   "dur": 3.33,
+   "speech": "自回归解码的定义只有一行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 372.3,
+   "dur": 3.88,
+   "speech": "下一时刻的预测，是当前窗口的函数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 376.35,
+   "dur": 3.76,
+   "speech": "拿到预测之后，把它接到窗口末尾。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 380.29,
+   "dur": 4.05,
+   "speech": "窗口长度固定，所以丢掉最老的一点。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 384.52,
+   "dur": 4.57,
+   "speech": "这就是一次推进，重复 F 次就是 F 步解码。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 389.27,
+   "dur": 3.93,
+   "speech": "F 等于一，退化成普通的单步预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 393.38,
+   "dur": 3.73,
+   "speech": "F 等于二十，就是这一集的主设定。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 397.29,
+   "dur": 4.41,
+   "speech": "注意，推理时窗口里混进了模型自己的预测。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 401.88,
+   "dur": 5.46,
+   "speech": "训练时窗口里全是真实值，这个不对称叫曝光偏差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 407.52,
+   "dur": 3.59,
+   "speech": "它会在验证那一段被单独量出来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 411.29,
+   "dur": 3.01,
+   "speech": "接口定义成三个纯函数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 414.48,
+   "dur": 4.43,
+   "speech": "第一个是预测器类型：给一个窗口，返回一个数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 419.09,
+   "dur": 4.96,
+   "speech": "第二个是 rollout：给初始窗口和步数，返回路径。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 424.23,
+   "dur": 4.79,
+   "speech": "第三个是教师强制版本：每一步都用真实历史。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 429.2,
+   "dur": 5.46,
+   "speech": "教师强制里，第 j 个预测只看真实窗口的第 j 段。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 434.84,
+   "dur": 3.88,
+   "speech": "它从不吃自己的预测，所以适合训练。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 438.9,
+   "dur": 4.55,
+   "speech": "rollout 每一步都要复制窗口，这是它的主要成本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 443.63,
+   "dur": 4.96,
+   "speech": "五百一十二个点乘二十步，复制比矩阵乘法还贵。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 448.77,
+   "dur": 5.05,
+   "speech": "更快的写法是环形缓冲，本集没有做，写进注释。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 454,
+   "dur": 4.33,
+   "speech": "边界都做了硬断言：步数为负直接报错。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 458.52,
+   "dur": 3.57,
+   "speech": "非自回归解码的定义也是一行。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 462.26,
+   "dur": 4.29,
+   "speech": "二十个预测点，一次线性映射同时给出。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 466.73,
+   "dur": 4.67,
+   "speech": "映射的权重是一个矩阵，行数是地平线长度。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 471.58,
+   "dur": 3.85,
+   "speech": "每一行负责一个未来时刻，互不依赖。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 475.61,
+   "dur": 4.77,
+   "speech": "输入是六十四维表示，再拼一个常数一作为偏置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 480.56,
+   "dur": 4.55,
+   "speech": "所以每个输出点有六十五个权重加一个偏置。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 485.29,
+   "dur": 4.84,
+   "speech": "二十个点就是六十六乘二十，一千三百二十个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 490.31,
+   "dur": 4.12,
+   "speech": "计划书写一千三百，差在偏置怎么记。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 494.61,
+   "dur": 4.81,
+   "speech": "偏置单独一列也是参数，所以实测多出二十个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 499.6,
+   "dur": 2.87,
+   "speech": "屏幕上永远用实算值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 502.65,
+   "dur": 2.32,
+   "speech": "接口同样极简。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 505.15,
+   "dur": 5.17,
+   "speech": "矩阵按行主序存，行数等于 F，列数等于六十六。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 510.5,
+   "dur": 4.6,
+   "speech": "参数个数公式是输入维加一，再乘地平线。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 515.28,
+   "dur": 4.36,
+   "speech": "narDecode 只做一件事：一次矩阵向量乘。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 519.82,
+   "dur": 3.97,
+   "speech": "行宽不对就直接报错，不做静默截断。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 523.97,
+   "dur": 3.59,
+   "speech": "augmentFeat 在表示末尾补一个一。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 527.74,
+   "dur": 3.78,
+   "speech": "测试里用恒等任务验证表达力。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 531.7,
+   "dur": 5.08,
+   "speech": "一百个样本、八维输入、三维输出，闭式解拟合。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 536.96,
+   "dur": 5.1,
+   "speech": "均方误差是零，说明这个头能精确表达线性映射。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 542.24,
+   "dur": 2.92,
+   "speech": "定义讲完，下一场定度量。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 548.56,
+   "dur": 4.57,
+   "speech": "这一集预测的不是收益，是标准化后的价格路径。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 553.31,
+   "dur": 3.54,
+   "speech": "具体说，取未来二十天的收盘价。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 557.04,
+   "dur": 4.41,
+   "speech": "每个点减去窗口均值，再除以窗口标准差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 561.62,
+   "dur": 4.09,
+   "speech": "这样二十个点的量纲和窗口内部一致。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 565.9,
+   "dur": 4.84,
+   "speech": "持久化基线：把窗口最后一点原样重复二十次。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 570.91,
+   "dur": 4.41,
+   "speech": "它回答一个问题：如果什么都不变，误差多大。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 575.5,
+   "dur": 3.73,
+   "speech": "所有模型误差都除以这个基线误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 579.41,
+   "dur": 4.36,
+   "speech": "得到的数叫相对误差，基线正好是一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 583.95,
+   "dur": 3.83,
+   "speech": "小于一比基线好，大于一比基线差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 587.96,
+   "dur": 4,
+   "speech": "用相对误差，不同股票之间也能比较。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 592.14,
+   "dur": 3.93,
+   "speech": "为什么用平均绝对误差，不用均方误差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 596.25,
+   "dur": 4.96,
+   "speech": "均方误差被大波动主导，一个极端点能左右结论。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 601.38,
+   "dur": 5.13,
+   "speech": "平均绝对误差每个点同权，和基线对照更直白。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 606.69,
+   "dur": 4.17,
+   "speech": "代价是它对系统性偏差的惩罚更线性。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 611.04,
+   "dur": 4.89,
+   "speech": "所以我们会同时看两端：第一步和第二十步。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 616.1,
+   "dur": 4.07,
+   "speech": "第一步接近一时，说明模型几乎没有信息。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 620.35,
+   "dur": 4.33,
+   "speech": "第二十步的变化，才说明它有没有积累优势。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 624.87,
+   "dur": 4.29,
+   "speech": "两个模型用同一批窗口、同一批测试点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 629.33,
+   "dur": 4.36,
+   "speech": "连随机种子都不需要，这里全是闭式解。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 633.87,
+   "dur": 3.61,
+   "speech": "没有随机性，就没有选种子的空间。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 637.66,
+   "dur": 2.51,
+   "speech": "数据口径分三段。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 640.35,
+   "dur": 3.54,
+   "speech": "全集是六千六百个后复权收盘。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 644.08,
+   "dur": 4.09,
+   "speech": "从一九九八年十一月，到二零二六年十月。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 648.35,
+   "dur": 5.22,
+   "speech": "测试段取二零二零到二零二二这三年，共七百二十八点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 653.75,
+   "dur": 3.95,
+   "speech": "这一段波动大，模型的问题更容易露出来。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 657.88,
+   "dur": 5.2,
+   "speech": "七百二十八点能切一百九十七个窗口，每个五百一十二点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 663.26,
+   "dur": 4.67,
+   "speech": "每个窗口后面留二十个点做目标，不参与输入。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 668.11,
+   "dur": 5.08,
+   "speech": "训练和验证取二零二零年以前的四千九百四十九点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 673.37,
+   "dur": 4.55,
+   "speech": "能切四千四百一十八个窗口，最后一千个留给验证。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 678.1,
+   "dur": 5.46,
+   "speech": "所以是三千四百一十八训练、一千验证、一百九十七测试。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 683.74,
+   "dur": 4.24,
+   "speech": "编码器不沿用上一集的权重，重新训练。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 688.16,
+   "dur": 4.86,
+   "speech": "结构一样：五百一十二到六十四，再回到五百一十二。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 693.2,
+   "dur": 3.93,
+   "speech": "六万六千一百一十三个参数，二十轮。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 697.31,
+   "dur": 4.86,
+   "speech": "验证损失零点二三零三，最佳轮次是第二十轮。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 702.35,
+   "dur": 4.91,
+   "speech": "用二零二零年前的窗口训练，测试段完全没碰过。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 707.44,
+   "dur": 3.4,
+   "speech": "线性头也是闭式解：岭回归。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 711.02,
+   "dur": 4.45,
+   "speech": "自回归单步头只有一个输出，六十六个参数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 715.65,
+   "dur": 3.69,
+   "speech": "非自回归每个地平线各训一个头。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 719.52,
+   "dur": 5.37,
+   "speech": "二十个地平线各选一次惩罚系数，按验证误差选。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 725.06,
+   "dur": 3.16,
+   "speech": "度量讲完，下一场看代码。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 731.62,
+   "dur": 4.26,
+   "speech": "实现只有两个模块，加起来一百四十三行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 736.06,
+   "dur": 4.09,
+   "speech": "自回归八十三行，非自回归六十行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 740.34,
+   "dur": 4.67,
+   "speech": "没有 IO，没有外部库，唯一依赖是随机数核心。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 745.19,
+   "dur": 3.23,
+   "speech": "十八个单测，每个模块九条。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 748.6,
+   "dur": 5.03,
+   "speech": "证据程序四百二十一行，把读数写进 JSON。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 753.81,
+   "dur": 4.24,
+   "speech": "算法之间互不引用，这是仓库的硬规矩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 758.22,
+   "dur": 3.66,
+   "speech": "所以这两个模块可以单独拷走用。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 762.07,
+   "dur": 2.63,
+   "speech": "先看自回归的推进。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 764.88,
+   "dur": 3.21,
+   "speech": "再看非自回归的一次性输出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 768.26,
+   "dur": 2.99,
+   "speech": "最后看怎么把耗时量准。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 771.43,
+   "dur": 3.4,
+   "speech": "rollout 的骨架是一个严格累加。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 775.01,
+   "dur": 4.89,
+   "speech": "每一步：用当前窗口预测一个点，接到结果末尾。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 780.08,
+   "dur": 3.25,
+   "speech": "然后把窗口往前推一格。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 783.51,
+   "dur": 4.43,
+   "speech": "推进用 pushWindow：丢掉最老的点，追加新点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 788.12,
+   "dur": 4.19,
+   "speech": "窗口是定长向量，复制是必要开销。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 792.49,
+   "dur": 4.24,
+   "speech": "F 等于二十时，这个复制占了主要时间。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 796.91,
+   "dur": 4.33,
+   "speech": "注释里写了改进方向：换成环形缓冲。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 801.42,
+   "dur": 3.81,
+   "speech": "这一步本集没做，因为优先要正确性。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 805.41,
+   "dur": 4.96,
+   "speech": "边界检查包括步数小于零、初始窗口为空。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 810.55,
+   "dur": 3.64,
+   "speech": "两个都直接报错，不返回空结果。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 814.36,
+   "dur": 3.64,
+   "speech": "头用岭回归闭式解，没有梯度下降。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 818.18,
+   "dur": 4.43,
+   "speech": "原因是样本只有几千，特征只有六十五维。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 822.79,
+   "dur": 4,
+   "speech": "闭式解一遍就够，还能精确报告残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 826.97,
+   "dur": 4.19,
+   "speech": "输入是六十四维表示，再拼窗口最后一点。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 831.34,
+   "dur": 4,
+   "speech": "这条直连是关键设计，必须单独说。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 835.52,
+   "dur": 3.97,
+   "speech": "没有它，头的误差被重建损失盖住。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 839.67,
+   "dur": 4.05,
+   "speech": "实测单步相对误差会涨到六点九八。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 843.9,
+   "dur": 4.67,
+   "speech": "连持久化基线都打不过，回灌就没法观察。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 848.75,
+   "dur": 4.53,
+   "speech": "加上最后一点之后，第一步误差回到一点一四。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 853.45,
+   "dur": 4.72,
+   "speech": "自回归和非自回归在第一步是同一个预测器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 858.35,
+   "dur": 2.58,
+   "speech": "计时比想象中难。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 861.11,
+   "dur": 4,
+   "speech": "第一次测出来，非自回归反而更慢。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 865.29,
+   "dur": 3.61,
+   "speech": "比值零点九一倍，和常识相反。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 869.09,
+   "dur": 3.28,
+   "speech": "查了很久，问题在垃圾回收。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 872.54,
+   "dur": 4.93,
+   "speech": "第一次强制求值产生大量垃圾，下一段才回收。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 877.66,
+   "dur": 3.93,
+   "speech": "回收的开销被记到了下一个计时窗口。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 881.76,
+   "dur": 5.15,
+   "speech": "修法是三段：先回收、再读时钟、再强制求值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 887.09,
+   "dur": 4.41,
+   "speech": "并且在计时前，把三条路径都预热一遍。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 891.68,
+   "dur": 4.74,
+   "speech": "单次测量还会抖，所以重复三次取最小值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 896.6,
+   "dur": 3.69,
+   "speech": "修完是十五点七倍，稳定可复现。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 903.69,
+   "dur": 4.24,
+   "speech": "证据程序跑完十八项检查，全部通过。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 908.11,
+   "dur": 4.38,
+   "speech": "一共一百二十二秒，主要花在编码器训练上。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 912.67,
+   "dur": 4.6,
+   "speech": "分组是数据四、自回归五、非自回归四。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 917.45,
+   "dur": 4.33,
+   "speech": "计时两项，曲线三项，合起来十八项。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 921.96,
+   "dur": 2.77,
+   "speech": "数据组先确认四件事。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 924.92,
+   "dur": 4.12,
+   "speech": "六千六百行全集、七百二十八行测试段。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 929.21,
+   "dur": 5.34,
+   "speech": "一百九十七个窗口，起点在全集第四千九百四十九行。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 934.74,
+   "dur": 4.36,
+   "speech": "测试段和全集切片逐值对齐，没有错位。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 939.27,
+   "dur": 4.81,
+   "speech": "切分是三千四百一十八、一千、一百九十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 944.27,
+   "dur": 2.2,
+   "speech": "下面看主结果。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 946.65,
+   "dur": 3.04,
+   "speech": "这是误差随地平线的曲线。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 949.86,
+   "dur": 4.81,
+   "speech": "横轴是 F，从一到二十；纵轴是相对误差。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 954.86,
+   "dur": 3.73,
+   "speech": "红线是持久化基线，恒等于一。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 958.77,
+   "dur": 3.9,
+   "speech": "青色是自回归，紫色是非自回归。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 962.85,
+   "dur": 4.33,
+   "speech": "F 小于等于六时，两条曲线几乎重合。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 967.37,
+   "dur": 3.66,
+   "speech": "差距不到百分之二，肉眼分不出来。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 971.21,
+   "dur": 3.78,
+   "speech": "第八步开始，非自回归稳定领先。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 975.17,
+   "dur": 4.21,
+   "speech": "到第二十步，自回归是一点五六四七。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 979.57,
+   "dur": 4.53,
+   "speech": "非自回归是一点二九三二，差百分之二十一。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 984.27,
+   "dur": 4.09,
+   "speech": "交叉点定在第八步，用百分之二的阈值。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 988.55,
+   "dur": 3.85,
+   "speech": "非自回归的头是一千三百二十个参数。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 992.58,
+   "dur": 3.57,
+   "speech": "六十六乘二十，每列一个输出点。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 996.33,
+   "dur": 4.86,
+   "speech": "第一步时，两个模型的相对误差都是一点一三五二。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 1001.37,
+   "dur": 3.59,
+   "speech": "因为它们共享同一个六十五维输入。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 1005.14,
+   "dur": 3.76,
+   "speech": "复制函数检查：二十步 rollout 全等。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 1009.08,
+   "dur": 3.85,
+   "speech": "这是纯定义检查，证明回灌写对了。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 1013.11,
+   "dur": 4.57,
+   "speech": "确定性：同一窗口两次 rollout 逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 1017.86,
+   "dur": 3.78,
+   "speech": "非自回归两次前向也逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 1021.83,
+   "dur": 3.78,
+   "speech": "恒等任务上，闭式解的均方误差是零。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 1025.79,
+   "dur": 3.95,
+   "speech": "说明这个头能精确表达任意线性映射。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 1029.92,
+   "dur": 4.45,
+   "speech": "耗时对比在同一台机器、同一批窗口上做。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 1034.55,
+   "dur": 3.33,
+   "speech": "自回归二十步，零点三八秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 1038.06,
+   "dur": 3.42,
+   "speech": "非自回归一次，零点零二三秒。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 1041.66,
+   "dur": 4.09,
+   "speech": "比值十五点七倍，超过验收线的五倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 1045.93,
+   "dur": 3.83,
+   "speech": "这个差距主要来自二十次窗口复制。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 1049.94,
+   "dur": 2.73,
+   "speech": "还有一件事：曝光偏差。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 1052.85,
+   "dur": 3.57,
+   "speech": "教师强制误差零点零七六二。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 1056.6,
+   "dur": 3.4,
+   "speech": "自由回灌误差零点三五一零。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 1060.17,
+   "dur": 3.59,
+   "speech": "差了零点二七四七，接近五倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 1063.94,
+   "dur": 4.69,
+   "speech": "训练时看真值，推理时看自己，这就是代价。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 1072.04,
+   "dur": 2.7,
+   "speech": "现在讲没做到的地方。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 1074.92,
+   "dur": 3.97,
+   "speech": "第一件：两个模型都打不过持久化基线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 1079.08,
+   "dur": 4.5,
+   "speech": "相对误差大于一，意思是还不如什么都不变。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 1083.76,
+   "dur": 3.66,
+   "speech": "这不是实验失败，是数据在说话。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 1087.6,
+   "dur": 3.59,
+   "speech": "第二十步的价格路径，信噪比很低。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 1091.37,
+   "dur": 3.61,
+   "speech": "第二件：根号 F 的放大没有出现。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 1095.16,
+   "dur": 4.91,
+   "speech": "如果误差是独立噪声，二十步该放大约四点四七倍。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 1100.25,
+   "dur": 4.48,
+   "speech": "实测自回归只比非自回归差百分之二十一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 1104.91,
+   "dur": 4.14,
+   "speech": "说明误差主要是系统性偏差，不是白噪声。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 1109.23,
+   "dur": 2.7,
+   "speech": "这一条写进了偏差表。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 1112.12,
+   "dur": 2.63,
+   "speech": "偏差清单还有四条。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 1114.93,
+   "dur": 5.49,
+   "speech": "第一，非自回归参数是一千三百二十，不是一千三百。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 1120.59,
+   "dur": 4.07,
+   "speech": "原因在偏置并入最后一列，多出二十个。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 1124.84,
+   "dur": 3.61,
+   "speech": "第二，头输入多了窗口最后一点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 1128.64,
+   "dur": 4.29,
+   "speech": "没有这条直连，第一步误差被重建损失支配。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 1133.1,
+   "dur": 3.9,
+   "speech": "第三，每个地平线单独选惩罚系数。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 1137.18,
+   "dur": 4.67,
+   "speech": "共用系数会让第一步被过度收缩，比较不公平。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 1142.03,
+   "dur": 3.71,
+   "speech": "第四，验证集从五百提到一千。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 1145.92,
+   "dur": 4.77,
+   "speech": "五百时相邻地平线的选参会跳变，曲线不单调。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 1150.87,
+   "dur": 3.47,
+   "speech": "这些都在计划文档的偏差表里。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1154.52,
+   "dur": 2.85,
+   "speech": "所以这一集能说什么。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1157.55,
+   "dur": 5.73,
+   "speech": "能说：同一个编码器下，非自回归在长地平线上更稳。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1163.45,
+   "dur": 4.14,
+   "speech": "能说：一次前向比二十次快十六倍左右。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1167.77,
+   "dur": 6.11,
+   "speech": "能说：自回归的误差确实随步数增长，而且回灌是原因之一。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1174.06,
+   "dur": 3.04,
+   "speech": "不能说：非自回归更准。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1177.28,
+   "dur": 3.25,
+   "speech": "两者都没打过最简单的基线。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1180.72,
+   "dur": 3.01,
+   "speech": "不能说：自回归一定差。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1183.91,
+   "dur": 3.42,
+   "speech": "短地平线上，两者没有区别。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1187.51,
+   "dur": 3.18,
+   "speech": "也不能说：根号 F 是规律。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1190.87,
+   "dur": 2.94,
+   "speech": "它只是一个上界式的直觉。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1197.22,
+   "dur": 2.05,
+   "speech": "一句话收束。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1199.45,
+   "dur": 3.95,
+   "speech": "一步一步还是一口气，不只是速度问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1203.58,
+   "dur": 4.45,
+   "speech": "它决定了误差的结构：累积，还是一次成形。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1208.22,
+   "dur": 3.95,
+   "speech": "自回归把每一步的误差带回输入。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1212.35,
+   "dur": 3.66,
+   "speech": "非自回归把误差一次性摊平。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1216.19,
+   "dur": 4.6,
+   "speech": "代价是它抹掉了二十个点之间的条件结构。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1220.97,
+   "dur": 3.78,
+   "speech": "在我们的数据上，平摊的代价更小。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1224.93,
+   "dur": 3.59,
+   "speech": "但这只是一只股票、一个时间段。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1228.7,
+   "dur": 3.76,
+   "speech": "结论的范围，和数据的范围一样大。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1232.64,
+   "dur": 2.44,
+   "speech": "下一集换一个问题。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1235.26,
+   "dur": 3.06,
+   "speech": "如果预测不该只有一个数呢。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1238.5,
+   "dur": 3.81,
+   "speech": "未来不是一条确定的路，而是一个分布。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1242.48,
+   "dur": 4.26,
+   "speech": "下一集讲概率头：分位损失与分位线交叉。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1246.93,
+   "dur": 4.33,
+   "speech": "不再问会是多少，而是问有多少概率低于它。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1251.44,
+   "dur": 4.33,
+   "speech": "那需要新的损失函数，也需要新的检查方式。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1255.95,
+   "dur": 3.93,
+   "speech": "一集比一集更接近真实的不确定性。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1260.06,
+   "dur": 3.57,
+   "speech": "这一集的路，是从解码器到分布。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1263.81,
+   "dur": 2.85,
+   "speech": "先把这一集的数字钉住。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1266.83,
+   "dur": 2.01,
+   "speech": "下一集再见。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1269.02,
+   "dur": 2.8,
+   "speech": "感谢观看，下一集见。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1272,
+   "dur": 2.94,
+   "speech": "最后把数字再念一遍。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1275.12,
+   "dur": 4.33,
+   "speech": "测试窗口一百九十七个，地平线一到二十。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1279.63,
+   "dur": 5.58,
+   "speech": "自回归相对误差一点五六四七，非自回归一点二九三二。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1285.39,
+   "dur": 3.83,
+   "speech": "交叉点第八步，耗时比十五点七倍。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1289.4,
+   "dur": 3.61,
+   "speech": "十八项检查全过，一百二十二秒。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1293.2,
+   "dur": 2.56,
+   "speech": "复现命令在屏幕上。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1295.94,
+   "dur": 2.49,
+   "speech": "第一条跑证据程序。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1298.6,
+   "dur": 2.65,
+   "speech": "第二条跑全部单测。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1301.44,
+   "dur": 2.7,
+   "speech": "第三条跑成片渲染。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1304.32,
+   "dur": 3.73,
+   "speech": "仓库是公开的，数字都能对上。"
+  }
+ ]
+}
