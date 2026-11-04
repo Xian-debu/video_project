@@ -1,0 +1,2157 @@
+{
+ "entry": "src/tsint-62-anomaly-two-ways/script.ts",
+ "fps": 30,
+ "totalSec": 1155.81,
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "ch07",
+   "start": 0,
+   "dur": 153.06
+  },
+  {
+   "id": "problem",
+   "chapter": "ch07",
+   "start": 153.06,
+   "dur": 153.83
+  },
+  {
+   "id": "definitions",
+   "chapter": "ch07",
+   "start": 306.89,
+   "dur": 152.17
+  },
+  {
+   "id": "metrics",
+   "chapter": "ch07",
+   "start": 459.06,
+   "dur": 168.52
+  },
+  {
+   "id": "implementation",
+   "chapter": "ch07",
+   "start": 627.58,
+   "dur": 152.8
+  },
+  {
+   "id": "verification",
+   "chapter": "ch07",
+   "start": 780.38,
+   "dur": 148.19
+  },
+  {
+   "id": "boundary",
+   "chapter": "ch07",
+   "start": 928.57,
+   "dur": 115.74
+  },
+  {
+   "id": "outro",
+   "chapter": "ch07",
+   "start": 1044.31,
+   "dur": 111.5
+  }
+ ],
+ "lines": [
+  {
+   "scene": "open",
+   "index": 0,
+   "start": 1.2,
+   "dur": 2.97,
+   "speech": "这一集先看两条曲线。"
+  },
+  {
+   "scene": "open",
+   "index": 1,
+   "start": 4.35,
+   "dur": 2.89,
+   "speech": "一条是正常的收益序列。"
+  },
+  {
+   "scene": "open",
+   "index": 2,
+   "start": 7.42,
+   "dur": 4.02,
+   "speech": "另一条，同一段序列，被动了两个地方。"
+  },
+  {
+   "scene": "open",
+   "index": 3,
+   "start": 11.62,
+   "dur": 3.49,
+   "speech": "第一个地方：某一天突然跳了一下。"
+  },
+  {
+   "scene": "open",
+   "index": 4,
+   "start": 15.3,
+   "dur": 3.81,
+   "speech": "幅度是六倍标准差，第二天就回去了。"
+  },
+  {
+   "scene": "open",
+   "index": 5,
+   "start": 19.28,
+   "dur": 3.85,
+   "speech": "第二个地方：连续六十天缓慢漂移。"
+  },
+  {
+   "scene": "open",
+   "index": 6,
+   "start": 23.32,
+   "dur": 3.49,
+   "speech": "每天只偏两个标准差，不吓人。"
+  },
+  {
+   "scene": "open",
+   "index": 7,
+   "start": 26.99,
+   "dur": 3.9,
+   "speech": "但整段都不像训练时见过的样子。"
+  },
+  {
+   "scene": "open",
+   "index": 8,
+   "start": 31.07,
+   "dur": 3.73,
+   "speech": "这两种错，书里叫尖峰与漂移。"
+  },
+  {
+   "scene": "open",
+   "index": 9,
+   "start": 34.99,
+   "dur": 4.09,
+   "speech": "本集要问：一个检测器能同时看见它们吗。"
+  },
+  {
+   "scene": "open",
+   "index": 10,
+   "start": 39.26,
+   "dur": 2.85,
+   "speech": "先给答案，再解释为什么。"
+  },
+  {
+   "scene": "open",
+   "index": 11,
+   "start": 42.29,
+   "dur": 3.9,
+   "speech": "尖峰上的异常检测，预测残差赢了。"
+  },
+  {
+   "scene": "open",
+   "index": 12,
+   "start": 46.37,
+   "dur": 4.29,
+   "speech": "F1 是零点七零五九，对零点零七一四。"
+  },
+  {
+   "scene": "open",
+   "index": 13,
+   "start": 50.83,
+   "dur": 2.49,
+   "speech": "漂移上正好反过来。"
+  },
+  {
+   "scene": "open",
+   "index": 14,
+   "start": 53.5,
+   "dur": 3.61,
+   "speech": "预测残差只剩零点零九一四。"
+  },
+  {
+   "scene": "open",
+   "index": 15,
+   "start": 57.29,
+   "dur": 3.35,
+   "speech": "重构误差有零点六一九九。"
+  },
+  {
+   "scene": "open",
+   "index": 16,
+   "start": 60.82,
+   "dur": 4.41,
+   "speech": "这两个数不是误差，是两种方法的适用边界。"
+  },
+  {
+   "scene": "open",
+   "index": 17,
+   "start": 65.41,
+   "dur": 4.74,
+   "speech": "一条残差，一个自编码器，花掉二百五十一行。"
+  },
+  {
+   "scene": "open",
+   "index": 18,
+   "start": 70.33,
+   "dur": 3.88,
+   "speech": "十九项检查全部通过，一分钟上下。"
+  },
+  {
+   "scene": "open",
+   "index": 19,
+   "start": 74.39,
+   "dur": 3.16,
+   "speech": "这一集把这条边界量出来。"
+  },
+  {
+   "scene": "open",
+   "index": 20,
+   "start": 77.73,
+   "dur": 3.16,
+   "speech": "为什么值得单独讲一集。"
+  },
+  {
+   "scene": "open",
+   "index": 21,
+   "start": 81.07,
+   "dur": 3.3,
+   "speech": "因为大多数人只训一个检测器。"
+  },
+  {
+   "scene": "open",
+   "index": 22,
+   "start": 84.55,
+   "dur": 4.07,
+   "speech": "一个阈值，一把尺子，量所有异常。"
+  },
+  {
+   "scene": "open",
+   "index": 23,
+   "start": 88.8,
+   "dur": 3.54,
+   "speech": "尺子选错了，漏掉的不是一点。"
+  },
+  {
+   "scene": "open",
+   "index": 24,
+   "start": 92.52,
+   "dur": 3.81,
+   "speech": "尖峰在残差眼里是六倍标准差。"
+  },
+  {
+   "scene": "open",
+   "index": 25,
+   "start": 96.51,
+   "dur": 3.35,
+   "speech": "在重构眼里，它只错了一个点。"
+  },
+  {
+   "scene": "open",
+   "index": 26,
+   "start": 100.04,
+   "dur": 3.95,
+   "speech": "三十二个点里错一个，均方误差并不大。"
+  },
+  {
+   "scene": "open",
+   "index": 27,
+   "start": 104.17,
+   "dur": 3.37,
+   "speech": "漂移反过来：每天的残差都很小。"
+  },
+  {
+   "scene": "open",
+   "index": 28,
+   "start": 107.72,
+   "dur": 3.52,
+   "speech": "但三十二个点的整体形状全变了。"
+  },
+  {
+   "scene": "open",
+   "index": 29,
+   "start": 111.42,
+   "dur": 2.97,
+   "speech": "两种错，需要两种尺子。"
+  },
+  {
+   "scene": "open",
+   "index": 30,
+   "start": 114.56,
+   "dur": 2.25,
+   "speech": "接下来分八场。"
+  },
+  {
+   "scene": "open",
+   "index": 31,
+   "start": 116.99,
+   "dur": 3.54,
+   "speech": "第一场说问题：为什么一把尺子不够。"
+  },
+  {
+   "scene": "open",
+   "index": 32,
+   "start": 120.71,
+   "dur": 4.84,
+   "speech": "第二场定义三件东西：残差、窗口、重构。"
+  },
+  {
+   "scene": "open",
+   "index": 33,
+   "start": 125.73,
+   "dur": 3.28,
+   "speech": "第三场钉数据与阈值口径。"
+  },
+  {
+   "scene": "open",
+   "index": 34,
+   "start": 129.19,
+   "dur": 3.37,
+   "speech": "第四场量两边各自的 F1。"
+  },
+  {
+   "scene": "open",
+   "index": 35,
+   "start": 132.74,
+   "dur": 3.13,
+   "speech": "第五场写实现：两个模块。"
+  },
+  {
+   "scene": "open",
+   "index": 36,
+   "start": 136.06,
+   "dur": 3.61,
+   "speech": "第六场验证：十九项检查逐条过。"
+  },
+  {
+   "scene": "open",
+   "index": 37,
+   "start": 139.85,
+   "dur": 3.73,
+   "speech": "第七场讲边界：什么条件下不成立。"
+  },
+  {
+   "scene": "open",
+   "index": 38,
+   "start": 143.76,
+   "dur": 3.23,
+   "speech": "第八场收束，指向下一集。"
+  },
+  {
+   "scene": "open",
+   "index": 39,
+   "start": 147.17,
+   "dur": 3.69,
+   "speech": "屏幕上的每个数都能一条命令跑出来。"
+  },
+  {
+   "scene": "problem",
+   "index": 0,
+   "start": 154.26,
+   "dur": 2.97,
+   "speech": "先从这个具体的错法说起。"
+  },
+  {
+   "scene": "problem",
+   "index": 1,
+   "start": 157.41,
+   "dur": 2.92,
+   "speech": "尖峰异常只占一天。"
+  },
+  {
+   "scene": "problem",
+   "index": 2,
+   "start": 160.5,
+   "dur": 3.25,
+   "speech": "今天的收益突然是平时的六倍。"
+  },
+  {
+   "scene": "problem",
+   "index": 3,
+   "start": 163.94,
+   "dur": 4.02,
+   "speech": "明天就回到正常，前后没有任何预告。"
+  },
+  {
+   "scene": "problem",
+   "index": 4,
+   "start": 168.14,
+   "dur": 3.37,
+   "speech": "预测模型看的是前三十二天。"
+  },
+  {
+   "scene": "problem",
+   "index": 5,
+   "start": 171.69,
+   "dur": 4.5,
+   "speech": "前三十二天都很正常，它给出一个平稳的预测。"
+  },
+  {
+   "scene": "problem",
+   "index": 6,
+   "start": 176.38,
+   "dur": 3.06,
+   "speech": "今天的实际值远远偏离。"
+  },
+  {
+   "scene": "problem",
+   "index": 7,
+   "start": 179.62,
+   "dur": 4.74,
+   "speech": "残差——实际减预测——一下被顶到六倍标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 8,
+   "start": 184.54,
+   "dur": 4.96,
+   "speech": "阈值是标定段百分之九十九分位，三点四四六七。"
+  },
+  {
+   "scene": "problem",
+   "index": 9,
+   "start": 189.68,
+   "dur": 2.34,
+   "speech": "这一下轻松越过。"
+  },
+  {
+   "scene": "problem",
+   "index": 10,
+   "start": 192.2,
+   "dur": 2.8,
+   "speech": "为什么残差在这里好用。"
+  },
+  {
+   "scene": "problem",
+   "index": 11,
+   "start": 195.18,
+   "dur": 3.28,
+   "speech": "因为它逐点比较，一天一个数。"
+  },
+  {
+   "scene": "problem",
+   "index": 12,
+   "start": 198.64,
+   "dur": 3.9,
+   "speech": "尖峰的那一天，误差只在这一天变大。"
+  },
+  {
+   "scene": "problem",
+   "index": 13,
+   "start": 202.72,
+   "dur": 2.51,
+   "speech": "前后的点不受影响。"
+  },
+  {
+   "scene": "problem",
+   "index": 14,
+   "start": 205.41,
+   "dur": 2.73,
+   "speech": "所以召回高，误报少。"
+  },
+  {
+   "scene": "problem",
+   "index": 15,
+   "start": 208.31,
+   "dur": 4.21,
+   "speech": "本集十二个尖峰，预测残差抓到大部分。"
+  },
+  {
+   "scene": "problem",
+   "index": 16,
+   "start": 212.71,
+   "dur": 2.77,
+   "speech": "F1 零点七零五九。"
+  },
+  {
+   "scene": "problem",
+   "index": 17,
+   "start": 215.66,
+   "dur": 3.13,
+   "speech": "代价是它只认点上的错。"
+  },
+  {
+   "scene": "problem",
+   "index": 18,
+   "start": 218.98,
+   "dur": 4.17,
+   "speech": "一段整体偏移，逐点误差可能都很小。"
+  },
+  {
+   "scene": "problem",
+   "index": 19,
+   "start": 223.32,
+   "dur": 2.99,
+   "speech": "这就是下一页要说的盲区。"
+  },
+  {
+   "scene": "problem",
+   "index": 20,
+   "start": 226.49,
+   "dur": 2.01,
+   "speech": "换一种错法。"
+  },
+  {
+   "scene": "problem",
+   "index": 21,
+   "start": 228.68,
+   "dur": 4.84,
+   "speech": "从第一百二十天开始，序列整体抬高两个标准差。"
+  },
+  {
+   "scene": "problem",
+   "index": 22,
+   "start": 233.7,
+   "dur": 4.36,
+   "speech": "二十天爬上去，二十天持平，二十天落回。"
+  },
+  {
+   "scene": "problem",
+   "index": 23,
+   "start": 238.23,
+   "dur": 4.05,
+   "speech": "一共六十天，一百八十个点里有三段。"
+  },
+  {
+   "scene": "problem",
+   "index": 24,
+   "start": 242.46,
+   "dur": 3.95,
+   "speech": "每一天的残差，不过两倍标准差左右。"
+  },
+  {
+   "scene": "problem",
+   "index": 25,
+   "start": 246.59,
+   "dur": 3.33,
+   "speech": "阈值三点四四六七，够不着。"
+  },
+  {
+   "scene": "problem",
+   "index": 26,
+   "start": 250.1,
+   "dur": 2.89,
+   "speech": "预测残差几乎不报警。"
+  },
+  {
+   "scene": "problem",
+   "index": 27,
+   "start": 253.17,
+   "dur": 3.69,
+   "speech": "漂移上的 F1 只有零点零九一四。"
+  },
+  {
+   "scene": "problem",
+   "index": 28,
+   "start": 257.04,
+   "dur": 3.61,
+   "speech": "不是模型坏了，是这把尺子量不到。"
+  },
+  {
+   "scene": "problem",
+   "index": 29,
+   "start": 260.83,
+   "dur": 3.69,
+   "speech": "它量的是点偏离，不是形状变了。"
+  },
+  {
+   "scene": "problem",
+   "index": 30,
+   "start": 264.7,
+   "dur": 2.1,
+   "speech": "换一把尺子。"
+  },
+  {
+   "scene": "problem",
+   "index": 31,
+   "start": 266.98,
+   "dur": 3.85,
+   "speech": "把过去三十二个点压成八个数的编码。"
+  },
+  {
+   "scene": "problem",
+   "index": 32,
+   "start": 271.01,
+   "dur": 3.59,
+   "speech": "再从八个数重建这三十二个点。"
+  },
+  {
+   "scene": "problem",
+   "index": 33,
+   "start": 274.78,
+   "dur": 5.17,
+   "speech": "训练时只见过正常段，它学会的是正常长什么样。"
+  },
+  {
+   "scene": "problem",
+   "index": 34,
+   "start": 280.14,
+   "dur": 3.21,
+   "speech": "正常窗口，重建误差小。"
+  },
+  {
+   "scene": "problem",
+   "index": 35,
+   "start": 283.52,
+   "dur": 5.03,
+   "speech": "漂移窗口整段形状不在训练分布里，重建误差大。"
+  },
+  {
+   "scene": "problem",
+   "index": 36,
+   "start": 288.73,
+   "dur": 4.67,
+   "speech": "本集实测：正常窗口平均一点零一三九五一。"
+  },
+  {
+   "scene": "problem",
+   "index": 37,
+   "start": 293.58,
+   "dur": 3.76,
+   "speech": "漂移窗口平均二点七五零二零三。"
+  },
+  {
+   "scene": "problem",
+   "index": 38,
+   "start": 297.52,
+   "dur": 2.37,
+   "speech": "差了一倍半还多。"
+  },
+  {
+   "scene": "problem",
+   "index": 39,
+   "start": 300.07,
+   "dur": 4.62,
+   "speech": "同一段漂移，重构误差 F1 零点六一九九。"
+  },
+  {
+   "scene": "definitions",
+   "index": 0,
+   "start": 308.09,
+   "dur": 3.01,
+   "speech": "先把三件东西定义清楚。"
+  },
+  {
+   "scene": "definitions",
+   "index": 1,
+   "start": 311.28,
+   "dur": 2.15,
+   "speech": "第一件是残差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 2,
+   "start": 313.61,
+   "dur": 4.12,
+   "speech": "残差等于实际值减预测值，取绝对值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 3,
+   "start": 317.91,
+   "dur": 3.54,
+   "speech": "预测器是三十三个系数的岭回归。"
+  },
+  {
+   "scene": "definitions",
+   "index": 4,
+   "start": 321.63,
+   "dur": 3.33,
+   "speech": "三十二个历史点，加一个截距。"
+  },
+  {
+   "scene": "definitions",
+   "index": 5,
+   "start": 325.14,
+   "dur": 2.25,
+   "speech": "第二件是阈值。"
+  },
+  {
+   "scene": "definitions",
+   "index": 6,
+   "start": 327.57,
+   "dur": 4.21,
+   "speech": "在标定段上取残差的百分之九十九分位。"
+  },
+  {
+   "scene": "definitions",
+   "index": 7,
+   "start": 331.96,
+   "dur": 4.93,
+   "speech": "标定段是二零一八到二零一九，四百八十七个窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 8,
+   "start": 337.07,
+   "dur": 5.01,
+   "speech": "分位数用第一类经验分位：排序后取第 ceil(qn) 个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 9,
+   "start": 342.26,
+   "dur": 3.37,
+   "speech": "阈值定在三点四四六七三三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 10,
+   "start": 345.81,
+   "dur": 2.27,
+   "speech": "第三件是窗口。"
+  },
+  {
+   "scene": "definitions",
+   "index": 11,
+   "start": 348.26,
+   "dur": 3.78,
+   "speech": "三十二个点，只看过去，不看未来。"
+  },
+  {
+   "scene": "definitions",
+   "index": 12,
+   "start": 352.23,
+   "dur": 4.84,
+   "speech": "窗口右端对齐当前点，左端往前数三十二天。"
+  },
+  {
+   "scene": "definitions",
+   "index": 13,
+   "start": 357.24,
+   "dur": 3.35,
+   "speech": "这样每一帧的判定都能实时做。"
+  },
+  {
+   "scene": "definitions",
+   "index": 14,
+   "start": 360.77,
+   "dur": 4.53,
+   "speech": "窗口在拟合段上滑动，得到七百三十二个样本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 15,
+   "start": 365.48,
+   "dur": 3.93,
+   "speech": "在标定段上滑动，得到四百八十七个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 16,
+   "start": 369.59,
+   "dur": 4.05,
+   "speech": "在测试段上滑动，得到七百二十八个。"
+  },
+  {
+   "scene": "definitions",
+   "index": 17,
+   "start": 373.81,
+   "dur": 4.53,
+   "speech": "三个数字加起来，就是全部训练与评估样本。"
+  },
+  {
+   "scene": "definitions",
+   "index": 18,
+   "start": 378.52,
+   "dur": 3.35,
+   "speech": "没有重叠采样，没有打乱顺序。"
+  },
+  {
+   "scene": "definitions",
+   "index": 19,
+   "start": 382.05,
+   "dur": 3.01,
+   "speech": "这是时序任务的最低要求。"
+  },
+  {
+   "scene": "definitions",
+   "index": 20,
+   "start": 385.24,
+   "dur": 3.52,
+   "speech": "重构侧是一个很小的自编码器。"
+  },
+  {
+   "scene": "definitions",
+   "index": 21,
+   "start": 388.94,
+   "dur": 4.38,
+   "speech": "输入三十二维，隐层八维，输出三十二维。"
+  },
+  {
+   "scene": "definitions",
+   "index": 22,
+   "start": 393.5,
+   "dur": 3.83,
+   "speech": "参数分两层：三十二乘八，加八。"
+  },
+  {
+   "scene": "definitions",
+   "index": 23,
+   "start": 397.51,
+   "dur": 3.21,
+   "speech": "再八乘三十二，加三十二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 24,
+   "start": 400.9,
+   "dur": 2.63,
+   "speech": "一共五百五十二个参数。"
+  },
+  {
+   "scene": "definitions",
+   "index": 25,
+   "start": 403.71,
+   "dur": 3.95,
+   "speech": "激活函数用 tanh，输出层是线性的。"
+  },
+  {
+   "scene": "definitions",
+   "index": 26,
+   "start": 407.84,
+   "dur": 2.87,
+   "speech": "损失是逐维均方误差。"
+  },
+  {
+   "scene": "definitions",
+   "index": 27,
+   "start": 410.89,
+   "dur": 3.4,
+   "speech": "训练两百轮，学习率零点零二。"
+  },
+  {
+   "scene": "definitions",
+   "index": 28,
+   "start": 414.47,
+   "dur": 5.92,
+   "speech": "第一次损失零点九三一八九零，最后一次零点六五零四四三。"
+  },
+  {
+   "scene": "definitions",
+   "index": 29,
+   "start": 420.56,
+   "dur": 3.57,
+   "speech": "参数少，是为了让它只学形状。"
+  },
+  {
+   "scene": "definitions",
+   "index": 30,
+   "start": 424.31,
+   "dur": 2.34,
+   "speech": "评价用 F1。"
+  },
+  {
+   "scene": "definitions",
+   "index": 31,
+   "start": 426.83,
+   "dur": 3.01,
+   "speech": "先把判定摊成四个格子。"
+  },
+  {
+   "scene": "definitions",
+   "index": 32,
+   "start": 430.03,
+   "dur": 2.68,
+   "speech": "真阳：该报警也报了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 33,
+   "start": 432.88,
+   "dur": 2.65,
+   "speech": "假阳：不该报却报了。"
+  },
+  {
+   "scene": "definitions",
+   "index": 34,
+   "start": 435.72,
+   "dur": 2.41,
+   "speech": "假阴：该报没报。"
+  },
+  {
+   "scene": "definitions",
+   "index": 35,
+   "start": 438.31,
+   "dur": 2.58,
+   "speech": "真阴：不该报也没报。"
+  },
+  {
+   "scene": "definitions",
+   "index": 36,
+   "start": 441.07,
+   "dur": 4.12,
+   "speech": "精确率等于真阳除以真阳加假阳。"
+  },
+  {
+   "scene": "definitions",
+   "index": 37,
+   "start": 445.37,
+   "dur": 4,
+   "speech": "召回率等于真阳除以真阳加假阴。"
+  },
+  {
+   "scene": "definitions",
+   "index": 38,
+   "start": 449.55,
+   "dur": 3.28,
+   "speech": "F1 是这两个数的调和平均。"
+  },
+  {
+   "scene": "definitions",
+   "index": 39,
+   "start": 453.01,
+   "dur": 3.85,
+   "speech": "分母为零时记零，这是检查里的一条。"
+  },
+  {
+   "scene": "metrics",
+   "index": 0,
+   "start": 460.26,
+   "dur": 3.49,
+   "speech": "数据是 000001 的日收益。"
+  },
+  {
+   "scene": "metrics",
+   "index": 1,
+   "start": 463.93,
+   "dur": 3.81,
+   "speech": "百分比对数收益，六千五百九十九行。"
+  },
+  {
+   "scene": "metrics",
+   "index": 2,
+   "start": 467.92,
+   "dur": 4.05,
+   "speech": "从一九九八年十一月到二零二六年十月。"
+  },
+  {
+   "scene": "metrics",
+   "index": 3,
+   "start": 472.15,
+   "dur": 4.5,
+   "speech": "训练段二零一五到二零一九，一千二百一十九行。"
+  },
+  {
+   "scene": "metrics",
+   "index": 4,
+   "start": 476.83,
+   "dur": 4.36,
+   "speech": "测试段二零二零到二零二二，七百二十八行。"
+  },
+  {
+   "scene": "metrics",
+   "index": 5,
+   "start": 481.37,
+   "dur": 3.85,
+   "speech": "标准化只用训练段的均值和标准差。"
+  },
+  {
+   "scene": "metrics",
+   "index": 6,
+   "start": 485.4,
+   "dur": 5.44,
+   "speech": "均值零点零三八三三一，标准差二点零三八一六六。"
+  },
+  {
+   "scene": "metrics",
+   "index": 7,
+   "start": 491.02,
+   "dur": 3.83,
+   "speech": "测试段的数一律用这组参数换算。"
+  },
+  {
+   "scene": "metrics",
+   "index": 8,
+   "start": 495.03,
+   "dur": 4.38,
+   "speech": "这一点很重要：不能用测试段自己的统计量。"
+  },
+  {
+   "scene": "metrics",
+   "index": 9,
+   "start": 499.59,
+   "dur": 3.49,
+   "speech": "否则异常会被标准化悄悄抹平。"
+  },
+  {
+   "scene": "metrics",
+   "index": 10,
+   "start": 503.26,
+   "dur": 3.04,
+   "speech": "窗口把行数变成样本数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 11,
+   "start": 506.48,
+   "dur": 4.55,
+   "speech": "拟合段二零一五到二零一七，七百三十二个窗口。"
+  },
+  {
+   "scene": "metrics",
+   "index": 12,
+   "start": 511.21,
+   "dur": 4.38,
+   "speech": "标定段二零一八到二零一九，四百八十七个。"
+  },
+  {
+   "scene": "metrics",
+   "index": 13,
+   "start": 515.77,
+   "dur": 4.48,
+   "speech": "测试段二零二零到二零二二，七百二十八个点。"
+  },
+  {
+   "scene": "metrics",
+   "index": 14,
+   "start": 520.43,
+   "dur": 4.43,
+   "speech": "拟合、标定、测试，三段互不重叠。"
+  },
+  {
+   "scene": "metrics",
+   "index": 15,
+   "start": 525.04,
+   "dur": 2.77,
+   "speech": "阈值只在标定段上定。"
+  },
+  {
+   "scene": "metrics",
+   "index": 16,
+   "start": 528,
+   "dur": 3.93,
+   "speech": "测试段一次都不参与训练和定阈值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 17,
+   "start": 532.1,
+   "dur": 3.54,
+   "speech": "这是防止信息泄漏的最低要求。"
+  },
+  {
+   "scene": "metrics",
+   "index": 18,
+   "start": 535.82,
+   "dur": 4.26,
+   "speech": "七百三十二加四百八十七加七百二十八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 19,
+   "start": 540.27,
+   "dur": 3.37,
+   "speech": "后面所有读数都从这三段来。"
+  },
+  {
+   "scene": "metrics",
+   "index": 20,
+   "start": 543.82,
+   "dur": 2.53,
+   "speech": "两边各有一个阈值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 21,
+   "start": 546.53,
+   "dur": 4.17,
+   "speech": "预测残差的阈值三点四四六七三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 22,
+   "start": 550.88,
+   "dur": 4.07,
+   "speech": "重构误差的阈值一点六二四四六一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 23,
+   "start": 555.13,
+   "dur": 3.81,
+   "speech": "都取标定段残差的百分之九十九分位。"
+  },
+  {
+   "scene": "metrics",
+   "index": 24,
+   "start": 559.12,
+   "dur": 2.73,
+   "speech": "为什么是百分之九十九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 25,
+   "start": 562.02,
+   "dur": 3.28,
+   "speech": "因为要的是大约百分之一的误报。"
+  },
+  {
+   "scene": "metrics",
+   "index": 26,
+   "start": 565.48,
+   "dur": 4.17,
+   "speech": "实测标定段报警率百分之零点八二一四。"
+  },
+  {
+   "scene": "metrics",
+   "index": 27,
+   "start": 569.83,
+   "dur": 4.45,
+   "speech": "比百分之一还低一点，因为分位数是经验值。"
+  },
+  {
+   "scene": "metrics",
+   "index": 28,
+   "start": 574.46,
+   "dur": 4.29,
+   "speech": "阈值不是调参调出来的，是分位数算出来的。"
+  },
+  {
+   "scene": "metrics",
+   "index": 29,
+   "start": 578.93,
+   "dur": 3.69,
+   "speech": "换数据就要重新标定，这是纪律。"
+  },
+  {
+   "scene": "metrics",
+   "index": 30,
+   "start": 582.79,
+   "dur": 3.21,
+   "speech": "百分之九十九不是唯一选择。"
+  },
+  {
+   "scene": "metrics",
+   "index": 31,
+   "start": 586.18,
+   "dur": 5.2,
+   "speech": "换成百分之九十，尖峰预测 F1 掉到零点一八九。"
+  },
+  {
+   "scene": "metrics",
+   "index": 32,
+   "start": 591.56,
+   "dur": 4.48,
+   "speech": "换成百分之九十九点九，升到零点八五七一。"
+  },
+  {
+   "scene": "metrics",
+   "index": 33,
+   "start": 596.21,
+   "dur": 5.1,
+   "speech": "但漂移预测从零点四二九四掉到零点零四二八。"
+  },
+  {
+   "scene": "metrics",
+   "index": 34,
+   "start": 601.5,
+   "dur": 4.48,
+   "speech": "尺子越严，尖峰越准，漂移越看不见。"
+  },
+  {
+   "scene": "metrics",
+   "index": 35,
+   "start": 606.15,
+   "dur": 5.46,
+   "speech": "重构侧相反：漂移从零点五六四二升到零点六二三三。"
+  },
+  {
+   "scene": "metrics",
+   "index": 36,
+   "start": 611.8,
+   "dur": 4.12,
+   "speech": "尖峰始终在零点零五到零点零七之间。"
+  },
+  {
+   "scene": "metrics",
+   "index": 37,
+   "start": 616.09,
+   "dur": 3.18,
+   "speech": "六档扫描全部在检查里。"
+  },
+  {
+   "scene": "metrics",
+   "index": 38,
+   "start": 619.46,
+   "dur": 2.97,
+   "speech": "屏幕上的表就是这六个数。"
+  },
+  {
+   "scene": "metrics",
+   "index": 39,
+   "start": 622.6,
+   "dur": 2.77,
+   "speech": "结论不依赖某一个阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 0,
+   "start": 628.78,
+   "dur": 2.51,
+   "speech": "实现只有两个模块。"
+  },
+  {
+   "scene": "implementation",
+   "index": 1,
+   "start": 631.47,
+   "dur": 4.41,
+   "speech": "PredAnomaly 一百零四行，管残差与 F1。"
+  },
+  {
+   "scene": "implementation",
+   "index": 2,
+   "start": 636.06,
+   "dur": 4.45,
+   "speech": "ReconAnomaly 一百四十七行，管自编码器。"
+  },
+  {
+   "scene": "implementation",
+   "index": 3,
+   "start": 640.69,
+   "dur": 2.53,
+   "speech": "合计二百五十一行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 4,
+   "start": 643.4,
+   "dur": 3.93,
+   "speech": "都是纯函数，没有 IO，没有外部库。"
+  },
+  {
+   "scene": "implementation",
+   "index": 5,
+   "start": 647.51,
+   "dur": 4.74,
+   "speech": "预测侧：残差、分位数、阈值、混淆矩阵。"
+  },
+  {
+   "scene": "implementation",
+   "index": 6,
+   "start": 652.43,
+   "dur": 4.67,
+   "speech": "重构侧：初始化、前向、解析梯度、训练。"
+  },
+  {
+   "scene": "implementation",
+   "index": 7,
+   "start": 657.28,
+   "dur": 3.23,
+   "speech": "两边共用同一个 F1 定义。"
+  },
+  {
+   "scene": "implementation",
+   "index": 8,
+   "start": 660.69,
+   "dur": 3.3,
+   "speech": "二十四条单测，十一加十三。"
+  },
+  {
+   "scene": "implementation",
+   "index": 9,
+   "start": 664.17,
+   "dur": 3.88,
+   "speech": "没有一条测试依赖随机种子之外的状态。"
+  },
+  {
+   "scene": "implementation",
+   "index": 10,
+   "start": 668.23,
+   "dur": 2.46,
+   "speech": "预测侧的接口很小。"
+  },
+  {
+   "scene": "implementation",
+   "index": 11,
+   "start": 670.87,
+   "dur": 3.69,
+   "speech": "residualOf 算一个点的绝对残差。"
+  },
+  {
+   "scene": "implementation",
+   "index": 12,
+   "start": 674.74,
+   "dur": 3.06,
+   "speech": "quantileThreshold 算经验分位。"
+  },
+  {
+   "scene": "implementation",
+   "index": 13,
+   "start": 677.98,
+   "dur": 3.64,
+   "speech": "flagAbove 把分数变成布尔报警。"
+  },
+  {
+   "scene": "implementation",
+   "index": 14,
+   "start": 681.8,
+   "dur": 4.19,
+   "speech": "confusionOf 把两组布尔摊成四个格子。"
+  },
+  {
+   "scene": "implementation",
+   "index": 15,
+   "start": 686.17,
+   "dur": 4.38,
+   "speech": "precisionOf、recallOf、f1Of 三个数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 16,
+   "start": 690.73,
+   "dur": 3.33,
+   "speech": "分母为零返回零，不返回 NaN。"
+  },
+  {
+   "scene": "implementation",
+   "index": 17,
+   "start": 694.24,
+   "dur": 3.16,
+   "speech": "这是为了让扫描能连续跑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 18,
+   "start": 697.58,
+   "dur": 3.57,
+   "speech": "sweepThresholds 一次扫完所有阈值。"
+  },
+  {
+   "scene": "implementation",
+   "index": 19,
+   "start": 701.32,
+   "dur": 3.23,
+   "speech": "每一条都有一到两个手算样例。"
+  },
+  {
+   "scene": "implementation",
+   "index": 20,
+   "start": 704.73,
+   "dur": 2.75,
+   "speech": "重构侧要手写梯度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 21,
+   "start": 707.66,
+   "dur": 3.78,
+   "speech": "前向是矩阵乘加 tanh 加线性输出。"
+  },
+  {
+   "scene": "implementation",
+   "index": 22,
+   "start": 711.62,
+   "dur": 4.6,
+   "speech": "反向：输出层梯度是二乘误差除以维度。"
+  },
+  {
+   "scene": "implementation",
+   "index": 23,
+   "start": 716.4,
+   "dur": 3.85,
+   "speech": "隐层梯度再乘权重、乘 tanh 的导数。"
+  },
+  {
+   "scene": "implementation",
+   "index": 24,
+   "start": 720.44,
+   "dur": 3.52,
+   "speech": "权重梯度是隐层梯度乘输入。"
+  },
+  {
+   "scene": "implementation",
+   "index": 25,
+   "start": 724.13,
+   "dur": 3.66,
+   "speech": "写错一个下标，梯度检查就会失败。"
+  },
+  {
+   "scene": "implementation",
+   "index": 26,
+   "start": 727.98,
+   "dur": 3.78,
+   "speech": "实测参数五百五十二个，与公式一致。"
+  },
+  {
+   "scene": "implementation",
+   "index": 27,
+   "start": 731.94,
+   "dur": 3.13,
+   "speech": "训练用 foldl'，不能用 foldl。"
+  },
+  {
+   "scene": "implementation",
+   "index": 28,
+   "start": 735.25,
+   "dur": 3.04,
+   "speech": "惰性累积会把内存吃光。"
+  },
+  {
+   "scene": "implementation",
+   "index": 29,
+   "start": 738.47,
+   "dur": 3.16,
+   "speech": "这是本集踩得最深的一个坑。"
+  },
+  {
+   "scene": "implementation",
+   "index": 30,
+   "start": 741.81,
+   "dur": 3.06,
+   "speech": "证据程序三百四十九行。"
+  },
+  {
+   "scene": "implementation",
+   "index": 31,
+   "start": 745.05,
+   "dur": 3.18,
+   "speech": "一条命令跑完十九项检查。"
+  },
+  {
+   "scene": "implementation",
+   "index": 32,
+   "start": 748.41,
+   "dur": 4.96,
+   "speech": "数据四项、预测五项、重构五项、对照五项。"
+  },
+  {
+   "scene": "implementation",
+   "index": 33,
+   "start": 753.55,
+   "dur": 3.06,
+   "speech": "每项都打印读数与判定。"
+  },
+  {
+   "scene": "implementation",
+   "index": 34,
+   "start": 756.79,
+   "dur": 4.02,
+   "speech": "结果同时写 JSON 和逐行文本。"
+  },
+  {
+   "scene": "implementation",
+   "index": 35,
+   "start": 760.99,
+   "dur": 3.93,
+   "speech": "屏幕上的数全部来自这份 JSON。"
+  },
+  {
+   "scene": "implementation",
+   "index": 36,
+   "start": 765.1,
+   "dur": 3.11,
+   "speech": "检查不过，就不许说结论。"
+  },
+  {
+   "scene": "implementation",
+   "index": 37,
+   "start": 768.39,
+   "dur": 2.82,
+   "speech": "这是前几集定下的规矩。"
+  },
+  {
+   "scene": "implementation",
+   "index": 38,
+   "start": 771.39,
+   "dur": 4,
+   "speech": "本集十九项全过，用时一分钟上下。"
+  },
+  {
+   "scene": "implementation",
+   "index": 39,
+   "start": 775.57,
+   "dur": 2.61,
+   "speech": "下一页看具体读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 0,
+   "start": 781.58,
+   "dur": 3.28,
+   "speech": "证据程序跑完十九项检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 1,
+   "start": 785.04,
+   "dur": 2.87,
+   "speech": "十九项全过，零失败。"
+  },
+  {
+   "scene": "verification",
+   "index": 2,
+   "start": 788.09,
+   "dur": 3.85,
+   "speech": "用时一分钟上下，含训练两百轮。"
+  },
+  {
+   "scene": "verification",
+   "index": 3,
+   "start": 792.12,
+   "dur": 3.69,
+   "speech": "分组是四、五、五、五。"
+  },
+  {
+   "scene": "verification",
+   "index": 4,
+   "start": 795.99,
+   "dur": 3.52,
+   "speech": "数据四项锁定行数与窗口数。"
+  },
+  {
+   "scene": "verification",
+   "index": 5,
+   "start": 799.69,
+   "dur": 4.77,
+   "speech": "预测五项锁定参数量、阈值与两条 F1。"
+  },
+  {
+   "scene": "verification",
+   "index": 6,
+   "start": 804.63,
+   "dur": 4.41,
+   "speech": "重构五项锁定参数、损失、两条 F1。"
+  },
+  {
+   "scene": "verification",
+   "index": 7,
+   "start": 809.22,
+   "dur": 2.99,
+   "speech": "对照五项把两边并排。"
+  },
+  {
+   "scene": "verification",
+   "index": 8,
+   "start": 812.39,
+   "dur": 3.01,
+   "speech": "每一项都有可复算的读数。"
+  },
+  {
+   "scene": "verification",
+   "index": 9,
+   "start": 815.58,
+   "dur": 2.89,
+   "speech": "全过，才有资格说结论。"
+  },
+  {
+   "scene": "verification",
+   "index": 10,
+   "start": 818.66,
+   "dur": 2.37,
+   "speech": "先看尖峰这一列。"
+  },
+  {
+   "scene": "verification",
+   "index": 11,
+   "start": 821.2,
+   "dur": 4.14,
+   "speech": "十二个尖峰，注入幅度五到七倍标准差。"
+  },
+  {
+   "scene": "verification",
+   "index": 12,
+   "start": 825.52,
+   "dur": 3.59,
+   "speech": "预测残差 F1 零点七零五九。"
+  },
+  {
+   "scene": "verification",
+   "index": 13,
+   "start": 829.29,
+   "dur": 3.47,
+   "speech": "重构误差 F1 零点零七一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 14,
+   "start": 832.94,
+   "dur": 2.37,
+   "speech": "差了将近十倍。"
+  },
+  {
+   "scene": "verification",
+   "index": 15,
+   "start": 835.49,
+   "dur": 3.04,
+   "speech": "为什么重构看不见尖峰。"
+  },
+  {
+   "scene": "verification",
+   "index": 16,
+   "start": 838.71,
+   "dur": 3.04,
+   "speech": "三十二个点里只错了一个。"
+  },
+  {
+   "scene": "verification",
+   "index": 17,
+   "start": 841.93,
+   "dur": 3.57,
+   "speech": "均方误差被其余三十一个点摊平。"
+  },
+  {
+   "scene": "verification",
+   "index": 18,
+   "start": 845.67,
+   "dur": 4.09,
+   "speech": "本集的重构分是逐维平均，不是取最大。"
+  },
+  {
+   "scene": "verification",
+   "index": 19,
+   "start": 849.95,
+   "dur": 4.24,
+   "speech": "换成最大误差，结论会不同，这是边界。"
+  },
+  {
+   "scene": "verification",
+   "index": 20,
+   "start": 854.36,
+   "dur": 2.29,
+   "speech": "再看漂移这一列。"
+  },
+  {
+   "scene": "verification",
+   "index": 21,
+   "start": 856.84,
+   "dur": 3.61,
+   "speech": "三段各六十点，共一百八十个点。"
+  },
+  {
+   "scene": "verification",
+   "index": 22,
+   "start": 860.63,
+   "dur": 3.57,
+   "speech": "预测残差 F1 零点零九一四。"
+  },
+  {
+   "scene": "verification",
+   "index": 23,
+   "start": 864.38,
+   "dur": 3.52,
+   "speech": "重构误差 F1 零点六一九九。"
+  },
+  {
+   "scene": "verification",
+   "index": 24,
+   "start": 868.08,
+   "dur": 4,
+   "speech": "正常窗口平均分一点零一三九五一。"
+  },
+  {
+   "scene": "verification",
+   "index": 25,
+   "start": 872.25,
+   "dur": 3.83,
+   "speech": "漂移窗口平均分二点七五零二零三。"
+  },
+  {
+   "scene": "verification",
+   "index": 26,
+   "start": 876.26,
+   "dur": 3.33,
+   "speech": "前者只有后者的百分之三十七。"
+  },
+  {
+   "scene": "verification",
+   "index": 27,
+   "start": 879.77,
+   "dur": 3.4,
+   "speech": "分开得很干净，不是勉强过线。"
+  },
+  {
+   "scene": "verification",
+   "index": 28,
+   "start": 883.35,
+   "dur": 4.19,
+   "speech": "预测侧低于零点一，这是设计好的检验。"
+  },
+  {
+   "scene": "verification",
+   "index": 29,
+   "start": 887.72,
+   "dur": 2.89,
+   "speech": "两支检测器各赢一场。"
+  },
+  {
+   "scene": "verification",
+   "index": 30,
+   "start": 890.79,
+   "dur": 3.23,
+   "speech": "还有两项容易被忽略的检查。"
+  },
+  {
+   "scene": "verification",
+   "index": 31,
+   "start": 894.2,
+   "dur": 3.85,
+   "speech": "同一初始化训两步，参数逐位相同。"
+  },
+  {
+   "scene": "verification",
+   "index": 32,
+   "start": 898.24,
+   "dur": 3.61,
+   "speech": "说明训练里没有隐藏的随机状态。"
+  },
+  {
+   "scene": "verification",
+   "index": 33,
+   "start": 902.03,
+   "dur": 3.42,
+   "speech": "重算 F1 与先前完全一致。"
+  },
+  {
+   "scene": "verification",
+   "index": 34,
+   "start": 905.63,
+   "dur": 3.69,
+   "speech": "说明分数没有缓存，没有残留。"
+  },
+  {
+   "scene": "verification",
+   "index": 35,
+   "start": 909.5,
+   "dur": 3.33,
+   "speech": "这两条让可复现不是一句口号。"
+  },
+  {
+   "scene": "verification",
+   "index": 36,
+   "start": 913,
+   "dur": 3.59,
+   "speech": "换机器、换时间，读数不变。"
+  },
+  {
+   "scene": "verification",
+   "index": 37,
+   "start": 916.77,
+   "dur": 3.64,
+   "speech": "变的只有计时，所以计时单独报。"
+  },
+  {
+   "scene": "verification",
+   "index": 38,
+   "start": 920.59,
+   "dur": 3.3,
+   "speech": "本集所有结论都在这一页之后。"
+  },
+  {
+   "scene": "verification",
+   "index": 39,
+   "start": 924.07,
+   "dur": 2.29,
+   "speech": "接下来讲边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 0,
+   "start": 929.77,
+   "dur": 3.18,
+   "speech": "先说预测残差在哪里失效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 1,
+   "start": 933.13,
+   "dur": 2.37,
+   "speech": "它只在点上有效。"
+  },
+  {
+   "scene": "boundary",
+   "index": 2,
+   "start": 935.68,
+   "dur": 3.73,
+   "speech": "如果尖峰持续三天，而不是一天。"
+  },
+  {
+   "scene": "boundary",
+   "index": 3,
+   "start": 939.59,
+   "dur": 2.94,
+   "speech": "预测器会开始跟着抬高。"
+  },
+  {
+   "scene": "boundary",
+   "index": 4,
+   "start": 942.71,
+   "dur": 3.33,
+   "speech": "第二天、第三天的残差就小了。"
+  },
+  {
+   "scene": "boundary",
+   "index": 5,
+   "start": 946.22,
+   "dur": 2.97,
+   "speech": "本集只注入了单点尖峰。"
+  },
+  {
+   "scene": "boundary",
+   "index": 6,
+   "start": 949.37,
+   "dur": 3.59,
+   "speech": "连续尖峰没有测，这是第一个边界。"
+  },
+  {
+   "scene": "boundary",
+   "index": 7,
+   "start": 953.14,
+   "dur": 2.49,
+   "speech": "第二个边界是幅度。"
+  },
+  {
+   "scene": "boundary",
+   "index": 8,
+   "start": 955.8,
+   "dur": 4.14,
+   "speech": "三倍标准差的尖峰，可能正好在阈值下。"
+  },
+  {
+   "scene": "boundary",
+   "index": 9,
+   "start": 960.12,
+   "dur": 2.56,
+   "speech": "六倍才稳稳抓住。"
+  },
+  {
+   "scene": "boundary",
+   "index": 10,
+   "start": 962.86,
+   "dur": 4.6,
+   "speech": "所以它抓的是孤立、突然、幅度大的点。"
+  },
+  {
+   "scene": "boundary",
+   "index": 11,
+   "start": 967.64,
+   "dur": 2.53,
+   "speech": "重构侧也有盲区。"
+  },
+  {
+   "scene": "boundary",
+   "index": 12,
+   "start": 970.35,
+   "dur": 3.13,
+   "speech": "漂移要够长，窗才装得下。"
+  },
+  {
+   "scene": "boundary",
+   "index": 13,
+   "start": 973.67,
+   "dur": 3.52,
+   "speech": "本集用六十点一段，窗长三十二。"
+  },
+  {
+   "scene": "boundary",
+   "index": 14,
+   "start": 977.37,
+   "dur": 4.21,
+   "speech": "如果漂移只有十点，重建误差不一定大。"
+  },
+  {
+   "scene": "boundary",
+   "index": 15,
+   "start": 981.76,
+   "dur": 3.49,
+   "speech": "还要够大：两倍标准差才明显。"
+  },
+  {
+   "scene": "boundary",
+   "index": 16,
+   "start": 985.43,
+   "dur": 3.76,
+   "speech": "一倍的漂移，和正常波动分不开。"
+  },
+  {
+   "scene": "boundary",
+   "index": 17,
+   "start": 989.37,
+   "dur": 2.61,
+   "speech": "第三个边界是阈值。"
+  },
+  {
+   "scene": "boundary",
+   "index": 18,
+   "start": 992.16,
+   "dur": 4.38,
+   "speech": "三点四四六七这个数很高，因为收益是厚尾。"
+  },
+  {
+   "scene": "boundary",
+   "index": 19,
+   "start": 996.72,
+   "dur": 4.36,
+   "speech": "尾部厚，阈值被顶高，小额异常被吞掉。"
+  },
+  {
+   "scene": "boundary",
+   "index": 20,
+   "start": 1001.26,
+   "dur": 3.25,
+   "speech": "这不是 bug，是分布的形状。"
+  },
+  {
+   "scene": "boundary",
+   "index": 21,
+   "start": 1004.69,
+   "dur": 3.28,
+   "speech": "最后把能说与不能说明白。"
+  },
+  {
+   "scene": "boundary",
+   "index": 22,
+   "start": 1008.15,
+   "dur": 4.81,
+   "speech": "能说：尖峰上预测残差 F1 零点七零五九。"
+  },
+  {
+   "scene": "boundary",
+   "index": 23,
+   "start": 1013.14,
+   "dur": 4.67,
+   "speech": "能说：漂移上重构误差 F1 零点六一九九。"
+  },
+  {
+   "scene": "boundary",
+   "index": 24,
+   "start": 1017.99,
+   "dur": 3.95,
+   "speech": "能说：两种方法覆盖的异常形态不同。"
+  },
+  {
+   "scene": "boundary",
+   "index": 25,
+   "start": 1022.12,
+   "dur": 4.36,
+   "speech": "能说：二十四条单测、十九项检查全过。"
+  },
+  {
+   "scene": "boundary",
+   "index": 26,
+   "start": 1026.66,
+   "dur": 3.76,
+   "speech": "不能说：这套组合能检出所有异常。"
+  },
+  {
+   "scene": "boundary",
+   "index": 27,
+   "start": 1030.6,
+   "dur": 4.02,
+   "speech": "不能说：换一个市场、换一个频率也一样。"
+  },
+  {
+   "scene": "boundary",
+   "index": 28,
+   "start": 1034.8,
+   "dur": 3.76,
+   "speech": "不能说：五百五十二个参数是必须的。"
+  },
+  {
+   "scene": "boundary",
+   "index": 29,
+   "start": 1038.74,
+   "dur": 3.37,
+   "speech": "边界写清楚，结论才站得住。"
+  },
+  {
+   "scene": "outro",
+   "index": 0,
+   "start": 1045.51,
+   "dur": 2.85,
+   "speech": "回到开头那两条曲线。"
+  },
+  {
+   "scene": "outro",
+   "index": 1,
+   "start": 1048.54,
+   "dur": 3.49,
+   "speech": "尖峰那一天，残差越过阈值。"
+  },
+  {
+   "scene": "outro",
+   "index": 2,
+   "start": 1052.21,
+   "dur": 3.88,
+   "speech": "漂移那六十天，重构分越过阈值。"
+  },
+  {
+   "scene": "outro",
+   "index": 3,
+   "start": 1056.27,
+   "dur": 4.07,
+   "speech": "一个检测器只看一边，就会漏掉另一边。"
+  },
+  {
+   "scene": "outro",
+   "index": 4,
+   "start": 1060.52,
+   "dur": 3.47,
+   "speech": "本集不是要造一个更强的检测器。"
+  },
+  {
+   "scene": "outro",
+   "index": 5,
+   "start": 1064.17,
+   "dur": 3.88,
+   "speech": "是要说清楚两把尺子各自量什么。"
+  },
+  {
+   "scene": "outro",
+   "index": 6,
+   "start": 1068.23,
+   "dur": 3.25,
+   "speech": "量点的，别指望它看形状。"
+  },
+  {
+   "scene": "outro",
+   "index": 7,
+   "start": 1071.66,
+   "dur": 3.35,
+   "speech": "量形状的，别指望它抓单点。"
+  },
+  {
+   "scene": "outro",
+   "index": 8,
+   "start": 1075.19,
+   "dur": 3.54,
+   "speech": "这句话比任何一个 F1 都通用。"
+  },
+  {
+   "scene": "outro",
+   "index": 9,
+   "start": 1078.91,
+   "dur": 3.13,
+   "speech": "下一集，从检测走到表示。"
+  },
+  {
+   "scene": "outro",
+   "index": 10,
+   "start": 1082.23,
+   "dur": 3.06,
+   "speech": "自编码器这一集只是工具。"
+  },
+  {
+   "scene": "outro",
+   "index": 11,
+   "start": 1085.47,
+   "dur": 3.23,
+   "speech": "它把三十二个点压成八个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 12,
+   "start": 1088.88,
+   "dur": 2.44,
+   "speech": "这八个数就是表示。"
+  },
+  {
+   "scene": "outro",
+   "index": 13,
+   "start": 1091.5,
+   "dur": 4.19,
+   "speech": "如果换成能保留结构的表示，会发生什么。"
+  },
+  {
+   "scene": "outro",
+   "index": 14,
+   "start": 1095.87,
+   "dur": 3.69,
+   "speech": "正常段学到的表示，异常段对不上。"
+  },
+  {
+   "scene": "outro",
+   "index": 15,
+   "start": 1099.73,
+   "dur": 3.4,
+   "speech": "检测可以变成表示空间里的距离。"
+  },
+  {
+   "scene": "outro",
+   "index": 16,
+   "start": 1103.31,
+   "dur": 2.58,
+   "speech": "也可以变成重建概率。"
+  },
+  {
+   "scene": "outro",
+   "index": 17,
+   "start": 1106.07,
+   "dur": 3.61,
+   "speech": "下一集从异常检测走到序列表示。"
+  },
+  {
+   "scene": "outro",
+   "index": 18,
+   "start": 1109.87,
+   "dur": 2.97,
+   "speech": "那是这一章往后走的方向。"
+  },
+  {
+   "scene": "outro",
+   "index": 19,
+   "start": 1113.01,
+   "dur": 2.97,
+   "speech": "本集先把这条边界钉住。"
+  },
+  {
+   "scene": "outro",
+   "index": 20,
+   "start": 1116.16,
+   "dur": 2.34,
+   "speech": "最后复盘四个数。"
+  },
+  {
+   "scene": "outro",
+   "index": 21,
+   "start": 1118.68,
+   "dur": 4.12,
+   "speech": "尖峰：零点七零五九对零点零七一四。"
+  },
+  {
+   "scene": "outro",
+   "index": 22,
+   "start": 1122.98,
+   "dur": 4.21,
+   "speech": "漂移：零点零九一四对零点六一九九。"
+  },
+  {
+   "scene": "outro",
+   "index": 23,
+   "start": 1127.37,
+   "dur": 4.69,
+   "speech": "阈值：三点四四六七与一点六二四四六一。"
+  },
+  {
+   "scene": "outro",
+   "index": 24,
+   "start": 1132.25,
+   "dur": 4.91,
+   "speech": "窗口：七百三十二加四百八十七加七百二十八。"
+  },
+  {
+   "scene": "outro",
+   "index": 25,
+   "start": 1137.34,
+   "dur": 3.16,
+   "speech": "十九项检查，一分钟上下。"
+  },
+  {
+   "scene": "outro",
+   "index": 26,
+   "start": 1140.67,
+   "dur": 3.01,
+   "speech": "两个模块，二百五十一行。"
+  },
+  {
+   "scene": "outro",
+   "index": 27,
+   "start": 1143.87,
+   "dur": 2.58,
+   "speech": "复现只要三条命令。"
+  },
+  {
+   "scene": "outro",
+   "index": 28,
+   "start": 1146.63,
+   "dur": 4,
+   "speech": "证据程序、单元测试、渲染流水线。"
+  },
+  {
+   "scene": "outro",
+   "index": 29,
+   "start": 1150.81,
+   "dur": 2.8,
+   "speech": "感谢观看，下一集见。"
+  }
+ ]
+}

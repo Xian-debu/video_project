@@ -1,0 +1,38 @@
+{
+ "episode": "62-anomaly-two-ways",
+ "generated_by": "inventory/scripts/export_ch07_anom.py",
+ "source": "ts-admin lake bars_daily; close * adj_factor (后复权); non-suspended",
+ "returns": {
+  "code": "sz000001",
+  "file": "returns_000001.csv",
+  "unit": "percent log return: 100 * ln(c_t / c_{t-1})",
+  "rows": 6599,
+  "range": [
+   "1998-11-26",
+   "2026-10-28"
+  ],
+  "sha256": "d9e5dad0f561378d7706f546a55ea027576e53dfe2f59a9df92b653efff1308c"
+ },
+ "train": {
+  "range": [
+   "2015-01-01",
+   "2019-12-31"
+  ],
+  "rows": 1219
+ },
+ "test": {
+  "range": [
+   "2020-01-01",
+   "2022-12-31"
+  ],
+  "rows": 728
+ },
+ "coverage": {
+  "file": "returns_000001.csv",
+  "days": 500,
+  "range": [
+   "2020-12-11",
+   "2022-12-30"
+  ]
+ }
+}
