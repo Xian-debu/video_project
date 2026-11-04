@@ -32,7 +32,16 @@
 
 ## Delivery
 
-（渲染后回填：成片时长与帧数、mp4 大小与 sha256、cover、mix/loudnorm/music gate 读数、srt 与章节、flicker 与 tree。）
+- 成片：**1,194.87 s（19:54.87）/ 35,846 帧 / 8 场 30 页 / 300 条旁白 / 300 cue**；mp4 63,742,098 B（63.7 MB）/ sha256 `1d06c00…6e609`；cover.png 218,621 B / sha256 `3f2d387…bc0510`（frame 180 = 6.00 s）。
+- 音量：mix 48 kHz / 1,196.07 s、peak −1.00 dBFS（限幅前 −0.97）、RMS −26.61 dBFS、ducked **58.3%**（4.5 dB）、musicGain −4.5 dB、preGain 0.9963、fade 1.5 / 2.5；loudnorm out I **−15 LUFS** / TP **−2 dBFS**；music gate stem full-band −25.1 dBFS、audible share 63.1%、sub 6.8%、PASS；mix gate speech −23.57 / gap_full −30.58 / gap_audible −33.36 / bed 36.6 dB、PASS。
+- 字幕与章节：300 cue、00:00:01,200 → 00:19:52,670、**0 条换行**、最长 32 字符；章节合计 1,194.87 s，首 00:00:00、末 00:18:08，共 8 章。
+- 闪烁：35,846 帧 mean|d| **0.0141** / p99 0.1084 / max 7.89 / 7 个切点；still_lint 4 帧 PASS；30 页静帧逐页人工看（返工 5 页版式）。
+- 流水线：**23 stage 全 ok**；tree `bfc9602f1479596d`；8 段全渲染、35,846 帧、复用 0；score 用本集 `delivery/score.wav`（1,560 s，scoreReused false）。
+- TTS：300 clips、实测语音 **1,010.11 s**、均值 **3.367 s**（min 1.704 / max 5.424）；narration.wav 1,194.87 s / 114,707,564 B（不入库）。
+- 复现三条（与成片屏幕上一致）：
+  1. docker exec haskell-ts bash -lc 'export PATH=/opt/ghc/9.14.1/bin:$PATH; cd /work && cabal run tsbase -- evidence-ch07-prob --data data/episodes/61-probabilistic-heads --out out/evidence-61 --evidence inventory/evidence'
+  2. docker exec haskell-ts bash -lc 'export PATH=/opt/ghc/9.14.1/bin:$PATH; cd /work && cabal test'
+  3. cd /root/video-pipeline-blueprint && node scripts/make.mjs --film tsint-61-probabilistic-heads
 
 ## Deviations
 
