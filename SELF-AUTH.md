@@ -769,3 +769,21 @@
 - **依据**：evidence JSON（inventory/evidence/58-channel-strategies.ch7-channel.json，**24/24、0.02 s**；data 4 / corr 6 / spectrum 9 / decision 3 / token 2）、report.json（23 stage 全 ok / 8 段 reused 8 / tree fd5ab5b8e017de86 / mix peak −1.10 dBFS、RMS −26.90 dBFS / ducked 47.4% / musicGain −4.5）、loudnorm 输出 **−15.9 LUFS / TP −2.0 / LRA 2.3**（Dynamic +0.9）、ebur128 复核 **−16.0 / −1.5 / LRA 2.3**、luma（37,060 帧 mean 21.08 / min 14.56 / max 24.32 / mean|d| 0.0135 / p99 0.1306 / max 7.61 / 7 切点）、43 页静帧全部人工看、still_lint 4 帧 PASS、cabal test 全绿（新增 29 条）、make PASS；ts-base 31359a1 + 45c1715 + 2b608c5，ts-admin d2857a8，video_project f028d44 + 816bf80 + d6388a0 + 本次 docs。
 - **可逆性**：高（模块 + 证据 + pack 可整段回退；混合决策是读数，撤回只删对应页；成片可整集重渲；四仓各自 commit 可回退）。
 - **返工成本**：证据分组错配 1 轮（讲稿 6 条重录 + 5 页重渲）；musicGain 缺失 1 轮（第二次 make，2 分钟）；ChannelStack 竖排 1 轮（open/problem 两页重渲）；open 判据换行、implementation 迭代符号、outro p5 值溢出各 1 轮；make 首轮被 content check 拦（delivery 未跟踪算 dirty）1 轮；TTS 一次通过 430 clips。
+
+## A56 E59 交付：重建学得会，预测打不过基线（2026-11-04 晚）
+
+- **决定（主结论按负结果讲，不改证据迁就计划）**：计划书写「冻结表示 + 线性头把相对 MAE 从 1.00 降到 0.9 以下」。实测 k=100 为 **1.0643**，换 20 只没见过的股票复现 **1.0960**，方向与计划相反。全片按负结果讲，第 7 场把「计划 0.9 / 实测 1.0643 / 跨股票 1.0960」并排；0.9 只作为「计划未实现」出现，不硬凑、不删检查、不改阈值。
+- **决定（用线性探测补正面结论，把「有信息」与「能预测」拆开）**：64 维冻结表示接**整窗 512 点**线性头（33,280 参数 = 64×512 + 512，只拟合不反传），相对 MSE **0.1364**，即表示里装着 **86%** 的方差；同一份表示做未来 20 天收益头却打不过 persistence。全片主线因此是「遮住三成只学形状；形状能还原窗口，却不能替我们预测未来」，探测是诊断、不计入 67,413。
+- **决定（参数账按实算上屏，差值写进画面与证据）**：512→64→512 + 偏置 + 1 个可学习 mask 标量 = **66,113**（w1 32,768 / b1 64 / w2 32,768 / b2 512 / token 1），计划写 65,856，差 **257**；线性头 (64+1)×20 = **1,300**，总参数 **67,413**，计划 66,956，差 **457**。第 2、3、6 场三次给出两本账，不硬凑计划数。
+- **决定（标签重叠必须明写）**：目标取未来 20 天相对最后一点的变化 ÷ 窗口标准差；相邻窗口的未来 20 天有 **19 天**重合，5,000 个窗口的有效样本远少于 5,000，验证集因此偏乐观。这条放在第 7 场「为什么打不过」的第一个原因里，而不是藏在脚注。
+- **决定（非平稳副目标整段删除）**：曾试「未来 20 天对数波动率」作副目标，曲线看似改善（k=100 → 0.9539），但切分均值从 train **−0.1202** 漂到 test **−0.3675**，常数预测（train 均值）在测试集就有 **0.5579**，所谓技能由水平漂移主导、不可解释；该目标与全部读数从未提交，最终证据不含任何波动率数字。
+- **决定（掩码检查按 16 点段逐段统计）**：首版把连续被遮位置合并成 run，512 里得 6 段、最长 42，误判失败；正确口径是 32 段里 **9 段整遮（144）+ 1 段前 10 点（10）+ 22 段 0** = **154**，512/16 整除、不存在末段截断。修正的是检查，不是掩码实现。
+- **决定（对偶路径返回维度必须查）**：fitRidge 的 N<p 对偶首版返回 n 维 X·α，调用方按 p 维 V.unsafeIndex 取值，越界读直接 core dump：**退出码 139、无 Haskell 异常、spec.log 只有 RUNNING/FAIL**。修复为先乘 Xᵀ 回 p 维（cross xc (cholSolve l yc)），并删掉 crossRow；教训写成「CI 不能只看框架 FAIL 字样，要跑二进制看退出码」。
+- **决定（合成 AR(1) 用 phi=0.99 才达 50%）**：16 点整段掩码下，phi=0.9 二十轮只降 25%（0.745），phi=0.99、n=64、d=16、lr=3e-3、batch=16 降到 **0.3097**（降 69%）。该口径只验证训练实现，真实数据另有口径，写进 D6。
+- **决定（TTS 前先确认引擎里的 script.ts 是本集新生成的）**：首次顺序错误（先 sync 后 make_script），dump 读到引擎里 E58 的旧脚本，白跑 **430 条** E58 文本 clip；清空 clips、重做 make_script → sync → dump 后得 500 行 / 1,464.30 s 估算，再 TTS 实测 1,328.3 s。
+- **决定（成片 26:59，不删行压语速）**：500 行讲稿实测语音 1,328.3 s，按 LEAD 1.2 / TAIL 2.2 / 行距节奏展开成 **1,619.03 s（26:59.03）/ 48,571 帧**；用户明确「视频长度不限，必须讲清楚」，不删行，偏差登记 D3。
+- **决定（版式 13 页返工，窄卡不用 Row）**：ParamSplit 图例跟段宽排布导致 mask token 标签竖排 → 图例独立 flex；definitions P1/P2/P6 三处 KV 换行与标题挤压；implementation P0 ShotProtocol 名称列溢出、P5 修复值过长（valueW 300→480）；verification P3 惩罚单调值溢出（300→400）；boundary 标题「−结果」上屏像减号 → 改「负结果」并重录；boundary P2/P4 两处值换行（valueW 340/420）。
+- **依据**：evidence JSON（inventory/evidence/59-mini-foundation-loop.ch7-mini.json，**34/34、102.15 s**；data 4 / mask 5 / param 4 / train 5 / head 6 / shot 4 / curve 3 / cross 3）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree `85e25d717f5309a1` / mix peak −1.00 dBFS、RMS −27.16 dBFS / ducked 53.4% / musicGain −4.5 / preGain 0.9585）、loudnorm in I −23.66 / TP −1.12 → out **−15 LUFS / TP −2 dBFS**（linear，+0.8）、music gate speech −23.87 / gap_full −30.64 / gap_audible −33.55 / bed 36.5 PASS、luma（48,571 帧 mean|d| **0.0142** / p99 0.1187 / max 10.20 / 7 切点）、50 页静帧全部人工看（八场逐页）、still_lint 4 帧 PASS、cabal test 39 条全绿（maskrecon 14 / flattenhead 12 / shotprotocol 13）、make PASS；ts-base `95a1193` + `116b3ff`，ts-admin `862b9ed`，video_project `adb837a` + 本次 delivery + 本次 docs。
+- **可逆性**：高（三模块 + 证据 + pack 可整段回退；负结果与探测读数都在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；三仓各自 commit 可回退）。
+- **返工成本**：掩码检查口径 1 轮（合并 run → 按段统计）；对偶维度段错误定位 1 轮（含跑二进制看 139）；波动率副目标实验与删除 1 轮（未提交）；TTS 顺序错 1 轮（清 430 条 E58 clip 重跑）；证据性能修复 1 轮（ridgeOptimality O(n²p) → 预算中心化矩阵，7 分钟卡死 → 秒级）；静帧版式 13 页（含 boundary 重录 1 条）；make 一次 PASS。
+

@@ -1,6 +1,6 @@
 # 59-mini-foundation-loop - 一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本
 
-> status: draft (in production) | runtime target: 24 min | chapter: ch07 | algorithms: 3 个模块（掩码与编码器 / 岭回归线性头 / 少样本协议）
+> status: delivered (2026-11-04) | runtime: 26:59.03 | runtime target: 24 min | chapter: ch07 | algorithms: 3 个模块（掩码与编码器 / 岭回归线性头 / 少样本协议）
 
 ## Thesis
 
@@ -29,7 +29,18 @@
 
 ## Delivery
 
-- 待补（make 完成后回填成片时长、音量、字幕、闪烁、流水线、讲稿、证据测试与复现命令）。
+- 成片：**1,619.03 s（26:59.03）/ 48,571 帧 @30fps**，8 场 50 页、500 条旁白、500 cue；`delivery/Tsint59MiniFoundationLoop.mp4` 88,640,252 B，sha256 `d3b362613933db50324ec8df225d0e7de2ad73ae79e6b3ed3841f47b56b9ab06`；封面 `delivery/cover.png` 221,449 B（frame 180 = 6.00 s）。
+- 音量：mix peak −1.00 dBFS、RMS −27.16 dBFS；loudnorm in I=−23.66 LUFS / TP=−1.12 dBTP → out I=−15 LUFS / TP=−2 dBFS（linear，+0.8 LU target offset）；ducked 53.4%、preGain 0.9585；music gate speech −23.87、gap_full −30.64、gap_audible −33.55 dBFS、bed contribution 36.5 dB，PASS。
+- 字幕：`delivery/tsint-59.srt` 500 cue，00:00:01,200 → 00:26:56,820，speaking 1,503.3 s；0 条换行、最长 20 字符；8 章（`tsint-59.chapters.txt` / `.ffmeta`）合计 1,619.03 s。
+- 闪烁：flicker mean|d| 0.0142、p99 0.1187、max 10.20、7 个切点；still_lint 4 帧 PASS。
+- 流水线：`make.mjs` **23 stage 全 ok**（content check / film coverage / derived check / design contract / type ratchet / film isolation / typecheck / docs check / probe composition / music gate / render_scenes ×8 / assemble / mix / loudnorm / export / cover / srt / chapters / still lint / report），tree `85e25d717f5309a1`；8 段全部渲染、复用 0。
+- 讲稿：8 场 50 页 500 行；TTS 500 clips（edge-tts zh-CN-YunyangNeural，concurrency 6）实测语音 **1,328.3 s**、均值 2.66 s；行跨度 1.20 → 1,616.82 s；`assets/audio/narration.wav` 155,426,924 B / 1,619.03 s（不入库）。
+- 证据与测试：`evidence-ch07-minifoundation` **34/34 checks，102.15 s**（其中训练 64 s）；`cabal test` 39 条全绿（maskrecon 14 / flattenhead 12 / shotprotocol 13）。
+- 复现（三条）：
+  1. `docker exec haskell-ts bash -lc 'export PATH=/opt/ghc/9.14.1/bin:$PATH; cd /work && cabal run tsbase -- evidence-ch07-minifoundation --data data/episodes/59-mini-foundation-loop --out out/evidence-59 --evidence inventory/evidence/59-mini-foundation-loop.ch7-mini.json'`
+  2. `docker exec haskell-ts bash -lc 'export PATH=/opt/ghc/9.14.1/bin:$PATH; cd /work && cabal test'`
+  3. `cd /root/video-pipeline-blueprint && node scripts/make.mjs --film tsint-59-mini-foundation-loop --score=out/e04-score-loop-48k.wav`
+- 交付物：`delivery/` 内 mp4 / programme_unnorm.mp4 / raw_video.mp4 / mix.wav / score.wav / score.meta.json / report.json / scenes/ / stills/ 均不入 git（gitignore）；cover.png、tsint-59.srt、chapters 入 git。
 
 ## Deviations
 
