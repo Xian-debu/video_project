@@ -1,6 +1,6 @@
 # 62-anomaly-two-ways - 两种异常，两条路：预测残差与重构误差
 
-> status: produced (pack ready; delivery pending render)
+> status: delivered (2026-11-04)
 > chapter: ch07 | runtime target: 18 min | algorithms: 2
 
 ## Thesis
@@ -37,7 +37,16 @@
 
 ## Delivery
 
-（渲染完成后回填：总时长 / 帧数 / 码率 / 响度 / 字幕 cue / 章节 / 闪烁检测 / 流水线 stage。）
+- 成片：**1,155.80 s（19:15.80）/ 34,674 帧 / 8 场 30 页 / 300 条旁白 / 300 cue**；mp4 58,271,859 B（58.3 MB）/ sha256 `a698ee3b97d25bb2d2add0bbe8f22c91bdc7917adb5a4ac7bde3103cb18b1d9c`；cover.png 212,412 B / sha256 `71613a499fdcb9d6d280d7625dc4f1bbf5e3a71cfe8cae594b8930eab78fb343`（frame 180 = 6.00 s）。
+- 音量：mix 48 kHz / 1,156.27 s、peak −1.45 dBFS（限幅前 −1.45）、RMS −26.67 dBFS、ducked **57.7%**（4.5 dB）、musicGain −4.5 dB、preGain 1.0000、fade 1.5 / 2.5；loudnorm out I **−15 LUFS** / TP **−2 dBFS**；music gate stem full_median −25.1 / audible −27.88 / share 0.631 / sub 0.068、PASS；mix gate speech −23.53 / gap_full −30.51 / gap_audible −33.28 / bed 36.7、PASS。
+- 字幕与章节：300 cue、00:00:01,200 → 00:19:13,610、**0 条换行**、最长 30 字符；8 章合计 1,155.81 s，首 00:00:00、末 00:17:24。
+- 闪烁：34,674 帧 mean|d| **0.0141** / p99 0.1089 / max 8.93 / 7 个切点；still_lint **30 帧 PASS**；30 页静帧逐页人工看（返工 12 处：图注口径、AeDiagram 溢出、SplitBar 行数、calibRate 小数、复现命令路径等）。
+- 流水线：**23 stage 全 ok**；tree `43abaa09a5bcc0ad`；8 段全渲染、34,674 帧、复用 0；score 复用 `out/e04-score-loop-48k.wav`（1,560 s / 84 BPM / seed 11，拷入 delivery/score.wav，scoreReused false）。
+- 讲稿：8 场 30 页 300 行；TTS 300 clips、实测语音 **971.04 s**、均值 **3.237 s**（min 1.656 / max 5.568）；narration.wav 1,155.07 s / 110,886,764 B（不入库）。
+- 复现三条（与成片屏幕一致）：
+  1. `cabal run tsbase -- evidence-ch07-anom --data data/episodes/62-anomaly-two-ways --out out/evidence-62 --evidence inventory/evidence/62-anomaly-two-ways.ch7-anom.json`
+  2. `cabal test`
+  3. `node scripts/make.mjs --film tsint-62-anomaly-two-ways`
 
 ## Deviations
 
