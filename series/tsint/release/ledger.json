@@ -12,6 +12,21 @@
       "lastError": null,
       "via": "manager",
       "attempts": 1
+    },
+    "2": {
+      "order": 2,
+      "title": "时序智能 · 第02集｜缺失值三法：谁在偷偷改变你的方差",
+      "status": "submitted",
+      "lastError": null,
+      "errorCode": null,
+      "screenshot": null,
+      "failedAt": null,
+      "attempts": 2,
+      "bvid": "BV1TXxZ6VEy1",
+      "aid": null,
+      "url": "https://www.bilibili.com/video/BV1TXxZ6VEy1/",
+      "submittedAt": "2026-11-05T02:13:23.533Z",
+      "via": "manager"
     }
   }
 }
