@@ -767,11 +767,11 @@
       "order": 52,
       "title": "时序智能 · 第52集｜把 300 只股票当成 300 个任务：元学习选模型",
       "status": "failed",
-      "lastError": "[submit-readback] 点提交后读不回 bvid：稿件管理页 120000ms 内找不到标题「时序智能 · 第52集｜把 300 只股票当成 300 个任务：元学习选模型」的稿件（不按成功处理）",
-      "errorCode": "SUBMIT_FAILED",
+      "lastError": "[rate-limit] 平台限流，投稿没有真正提交：平台限流：投稿过于频繁，请稍后再试",
+      "errorCode": "RATE_LIMITED",
       "screenshot": "/tmp/bili-batch-52-fail.png",
-      "failedAt": "2026-11-05T05:21:33.288Z",
-      "attempts": 3
+      "failedAt": "2026-11-05T07:18:21.350Z",
+      "attempts": 4
     }
   }
 }
