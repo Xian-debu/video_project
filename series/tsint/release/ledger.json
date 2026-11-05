@@ -27,6 +27,21 @@
       "url": "https://www.bilibili.com/video/BV1TXxZ6VEy1/",
       "submittedAt": "2026-11-05T02:13:23.533Z",
       "via": "manager"
+    },
+    "3": {
+      "order": 3,
+      "title": "时序智能 · 第03集｜滑动平均与一次指数平滑：N 和 α 是同一把尺子的两种刻度",
+      "status": "submitted",
+      "bvid": "BV1bDxZ6yEsT",
+      "aid": null,
+      "url": "https://www.bilibili.com/video/BV1bDxZ6yEsT/",
+      "submittedAt": "2026-11-05T02:18:28.511Z",
+      "lastError": null,
+      "errorCode": null,
+      "failedAt": null,
+      "screenshot": null,
+      "via": "manager",
+      "attempts": 1
     }
   }
 }
