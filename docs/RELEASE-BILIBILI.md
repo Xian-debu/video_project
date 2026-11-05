@@ -4,7 +4,7 @@
 [`series/tsint/release/`](../series/tsint/release/README.md)，本文件只讲**人怎么按流程走、按什么验收**。
 
 - 系列：74 集，总时长 22.07 h，总体积 3.56 GB，单集 10–27 分钟。
-- 工具：`/root/cdp-admin/bilibili-tool`（CDP，「bili」CLI）；它只落**草稿**，「立即投稿」永远由人点。
+- 工具：`/root/cdp-admin/bilibili-tool`（CDP，「bili」CLI）：`draft` 落草稿，`submit` / `batch` 自动投稿
 - 清单：`series/tsint/release/manifest.json`；台账：`series/tsint/release/ledger.json`。
 
 ## 0. 前置检查（缺一项就别开投）
@@ -35,12 +35,12 @@ grep -c '^| tsint-' /root/video_project/STATUS.md  # 必须 74
 3. **dry-run**：`node bin/bili.mjs draft --spec /tmp/spec-NN.json --dry-run --json`
    判据：`fieldReport` 每步 `ok:true`；`form` 读回的标题/简介/分区/声明/标签/水印/可见范围与清单一致。
 4. **落草稿**：同命令去掉 `--dry-run`、加 `--yes`。
-5. **人眼复核**（必须，不复核不许提交）：
+5. **字段复核**（自动 fail-closed + 人工抽检）：`submit` / `batch` 提交前逐个读回标题/简介/分区/标签集合/声明/封面/水印/可见范围，任一不符即不点提交并报错；人工抽检重点看：
    - 封面是否 16:9 安全区（1920×1080 → 平台双预览里标题不被裁）；
    - 合集是否选对、集号是否连续；
    - 字幕是否随视频上传（本流程不自动传字幕，需要时在「更多设置 → 字幕」手工传 `.srt` 并**重选语言「中文」再点确认**）；
    - 创作声明 = 含AI生成内容；水印已关；可见范围 = 公开。
-6. **提交**：点「立即投稿」→ 出现「稿件投递成功」→ 点「查看进度」→
+6. **提交**：`submit` / `batch` 点「立即投稿」后必须三路读回 bvid；手工操作时点「立即投稿」→「查看进度」→
    URL 形如 `…/archive-process?bvid=BV1xxxxxxxxx`，**BV 就在 URL 里**。
 7. **记台账**：`ledger.json` 里 `episodes[dir] = {status:"published", bvid, publishedAt, videoSha256, attempts}`；
    同时在 STATUS.md 的 BV 列回填（由发布者或 Lead 统一改，投稿脚本不碰 STATUS.md）。
@@ -76,16 +76,21 @@ grep -c '^| tsint-' /root/video_project/STATUS.md  # 必须 74
 AI 配音（Edge TTS）+ 程序化渲染（Remotion）必须声明，这既是平台合规要求，也是这个系列「可复算」可信度的一部分。
 简介里已经写明「本片为自制：AI 配音 + 程序化渲染」，**发布时不要删这段，也不要删源码仓地址那一段**。
 
-## 5. 限额与风控（本项目做法）
+## 5. 限额、风控与实测（2026-11-05）
 
-平台不给公开的每日投稿上限，风控按账号、体积、频率浮动。本项目按下面这套走，宁可慢不可停号：
+平台不给公开的每日投稿上限，风控按账号、体积、频率浮动。**以下为实测记录**，不是推测：
 
-- **每批 3–5 集**，批间 ≥ 30 分钟；单日先按 5 集试探，稳定后再加。
-- 单集 33–63 MB、10–27 分钟，转码通常几分钟；**同一账号不要并发**（一次只跑一个 `bili draft`）。
-- 每批前跑 `verify_manifest.py --quick`，每批后 `bili list --json` 核对草稿箱与台账。
-- **红线**：出现验证码、`429`、稿件反复驳回、上传卡在 0% 超过 10 分钟 → 立刻停，当天不再投，
-  记录现象到台账 `lastError`。不要换 IP、不要并发硬刷。
-- 暂停期间已完成投稿的集不受影响；恢复后从台账第一个非 `published` 继续（§6 断点续跑）。
+- 连续投稿 51 集（当天 02:00–04:45 UTC，每集 1.5–3 分钟）后，第 52 集起平台返回
+  `{code:137022, message:"投稿过于频繁，请稍后再试"}`。前端只把它 `console.error`，**页面不弹任何提示**，
+  表现为「点立即投稿毫无反应」——旧流程会白等 120 秒读回超时。按钮本身没有 disabled，真实点击与 `el.click()` 都无效。
+- 工具已内置 console 探针：点击前 arm、点击后读回；命中 137022 立即抛 `RATE_LIMITED` 快速失败。
+  单集收到 `RATE_LIMITED` 时按 `--rate-wait-ms`（默认 15 分钟）冷却后重做本集，`--rate-retries` 限次数（默认 3）；
+  长批次用 `--gap-ms 90000` 压节奏：
+  `node bin/bili.mjs batch … --gap-ms 90000 --rate-wait-ms 900000 --rate-retries 4 --yes`
+- 实测冷却：距上一集成功（04:45 UTC）67 分钟时的提交（05:52 UTC）仍 137022；限流持续超过数小时则按**日配额**处置——
+  等次日 00:00（CST）后从台账断点续跑，不丢进度、不重复投稿。
+- **红线**：出现验证码、`429`、稿件反复驳回、上传卡 0% > 10 分钟 → 立即停投并记录台账；不要换 IP、不要并发硬刷。
+- 单账号串行：一次只跑一个 `bili batch`；`submit`/`batch` 会自己 stage 到 `C:\Users\Public\cdp-admin\media\tsint\`，跑完清理。
 
 ## 6. 失败处理
 
@@ -119,14 +124,16 @@ AI 配音（Edge TTS）+ 程序化渲染（Remotion）必须声明，这既是�
 全部满足才算这一轮发布完成：
 
 1. `python3 release/verify_manifest.py` exit 0（清单 74 条全部合格）。
-2. `ledger.json` 里 74 条 `status=="published"`，每条 `bvid` 匹配 `^BV1[0-9A-Za-z]{9}$`，且 `videoSha256` 与清单一致。
+2. `ledger.json` 里 74 条 `status=="submitted"`（工具侧的「已投稿」状态），每条 `bvid` 匹配 `^BV1[0-9A-Za-z]{9}$`，且 `videoSha256` 与清单一致。
 3. STATUS.md 的 BV 列 74 个都不是 `-`（与台账逐条对得上）。
-4. 合集页显示 74 集、顺序与 `order` 一致。
+4. 合集：账号未开通合集功能，本轮不挂合集（原因与补挂步骤见 §2），不阻塞本轮验收。
 5. 抽检 ≥ 5 集（含第 1、74 集与任意 3 集），逐项核对：标题含「时序智能 · 第NN集」、简介含源码仓
    `github.com/Xian-debu/ts-base` 与系列说明、标签 5–6 个、分区科技数码、声明含AI生成内容、水印关、
    封面为自带 1920×1080。
 6. 审核通过的集在 `bilibili.com/video/<BV>` 可播，合集里能连着播（播放器自动下一集）。
-7. 台账另有 `batch` 与 `publishedAt`，能回答「哪批、什么时候、哪版片子」。
+7. 台账另有 `batch` 与 `submittedAt`，能回答「哪批、什么时候、哪版片子」。
+8. `python3 release/audit_published.py --from 1 --to 74` 全绿（标题/标签/简介含源码仓行/时长 ±2 s），
+   并用 `python3 release/make_report.py --audit /tmp/audit.json` 生成 `docs/RELEASE-REPORT.md`。
 
 ## 8. 收尾
 
