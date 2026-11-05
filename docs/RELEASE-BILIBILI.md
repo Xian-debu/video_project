@@ -21,7 +21,7 @@ grep -c '^| tsint-' /root/video_project/STATUS.md  # 必须 74
 | 成片状态 | STATUS.md 74 行全 `ready`、BV 列全 `-` | 有 BV 说明已投过，先核对再动 |
 | CDP | `node bin/bili.mjs doctor --json` 退出码 0 | `cdpctl ensure --name bili --url https://www.bilibili.com/ --port 9222` |
 | 登录态 | `node bin/bili.mjs login --check --json` 退出码 0 | `login --open` 扫码；**用受管 profile，绝不指向真实用户 profile** |
-| 合集权益 | 投稿页「加入合集」可选到目标合集 | 没有权益就先建合集或攒等级，不要用标题硬凑「第 N 集」 |
+| 合集权益 | 投稿页「加入合集」可选到目标合集 | **当前未开通（Lv2 门槛）**：按 §2 降级为无合集发布，升级后补挂；不要用标题硬凑「第 N 集」 |
 | 暂存盘 | `/mnt/c` 空闲 ≥ 10 GB | 清 `/mnt/c/Users/Public/cdp-admin/media/tsint/` 里上一批的残留 |
 | 时点 | 避开整点高峰与平台维护窗口 | 转码排队会更久，见 §5 |
 
@@ -49,12 +49,13 @@ grep -c '^| tsint-' /root/video_project/STATUS.md  # 必须 74
 > 审核期直接打开 `bilibili.com/video/<BV>` 会显示「视频不见了」——这是正常的审核态，不是投稿失败。
 > 判断成功只看三处：投递成功页、进度页 URL 有 BV、稿件管理页该条状态为「审核中/转码完成」。
 
-## 2. 合集
+## 2. 合集（当前不可用，降级为「先发布、后补合集」）
 
-- 合集名统一为 `《时序智能》Haskell 算法实现`（清单 `collection.title`），74 集全部归入同一个合集。
-- 建合集：投稿页「加入合集」→ 新建（或用已有合集）→ 逐集加入；顺序按集号，别乱序（观众按合集顺序看）。
-- 已投出的稿件也能补加合集：稿件管理 → 编辑 → 加入合集 → 保存（会重新走审核）。
-- 合集页要能看到 74 集且顺序与 `order` 一致，这是验收项之一（§7）。
+- **2026-11-05 实测：本账号合集功能未开通**（权益中心 Lv2 门槛），投稿页没有「加入合集」控件；`bili submit/batch --collection` 会 fail-closed 报 `COLLECTION_UNAVAILABLE`，不会静默跳过。
+- 因此本批发布**不带合集**：`bili batch` 默认不传 collection（合集必须显式 `--collection` 开启）。
+- 合集名保留为 `《时序智能》Haskell 算法实现`（清单 `collection.title`），作为**升级后补挂**的目标。
+- 账号达到 Lv2 后：先建合集，再按 §2 的「稿件管理 → 编辑 → 加入合集 → 保存」逐集补挂（会重新走审核），顺序按 `order`。
+- 合集页 74 集且顺序正确，验收项顺延为「升级后补挂完成」，不阻塞本批 74/74 发布。
 
 ## 3. 分区
 
