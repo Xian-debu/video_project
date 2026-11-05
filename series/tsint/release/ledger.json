@@ -1,4 +1,17 @@
 {
-    "series": "tsint",
-    "episodes": {}
+  "series": "tsint",
+  "episodes": {
+    "1": {
+      "order": 1,
+      "title": "时序智能 · 第01集｜一条序列，五个问题：从任务定义到可复算的管线",
+      "status": "submitted",
+      "bvid": "BV11oxZ66E2f",
+      "aid": null,
+      "url": "https://www.bilibili.com/video/BV11oxZ66E2f/",
+      "submittedAt": "2026-11-05T02:01:27.874Z",
+      "lastError": null,
+      "via": "manager",
+      "attempts": 1
+    }
+  }
 }
