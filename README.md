@@ -1,5 +1,19 @@
 # video_project — 视频内容仓
 
+74 集《时序智能》讲解视频与若干单集的**内容源**：每集的讲稿、画面数据、组件与交付件。
+视频里的每个数字都能追到 `data/` 下的一个文件，再追到算法仓 ts-base 的一次证据运行。
+
+- 系列总览：[`series/tsint/`](series/tsint/)（74 集，22.07 小时）
+- 发布清单与台账：[`series/tsint/release/`](series/tsint/release/)，B 站发布 SOP 见 [`docs/RELEASE-BILIBILI.md`](docs/RELEASE-BILIBILI.md)
+- 算法与证据：[ts-base](https://github.com/Xian-debu/ts-base)（Haskell）
+- 原始数据：[ts-admin](https://github.com/Xian-debu/ts-admin)（A 股日频/分钟频湖仓）
+- 渲染引擎：[video-pipeline-blueprint](https://github.com/Xian-debu/video-pipeline-blueprint)（Remotion + FFmpeg 管线）
+
+> **本仓不含成片**：`delivery/*.mp4` 与 `assets/audio/{clips,narration.wav}` 被 `.gitignore` 排除（体积大）。
+> 要看成片请到 B 站；要重新渲染，需要引擎仓与 Node 22 + Remotion + FFmpeg（见文末「部署难度」）。
+
+## 这个仓和引擎怎么分工
+
 这里是**内容**的唯一真源。引擎（Remotion 组件、设计系统、渲染/混音/发布管线）在
 `video-pipeline-blueprint`；本仓只放“这部片子是什么”。
 
@@ -79,3 +93,35 @@ npm run make -- --composition Arc    # 具体参数见引擎 docs
 6. **发布可追溯**：`film.json.bili.bv` 记录已发布视频；`delivery/` 保留交付件（mp4 不入库）。
 
 详细规则见 [CONVENTIONS.md](CONVENTIONS.md)；引擎侧验收见 `gen24-admin/docs/52`。
+## 依赖与许可
+
+| 项 | 说明 | 许可 |
+| --- | --- | --- |
+| Remotion | 程序化视频渲染（引擎仓依赖） | Remotion License（公司规模阈值内免费） |
+| FFmpeg | 混音/转码 | LGPL/GPL（按构建） |
+| Edge TTS | 旁白合成（离线调用） | 生成音频随片发布 |
+| 中文字体 | 画面字体（引擎仓 `public/fonts`） | 随字体自带许可，见引擎仓 NOTICES |
+| 图表/数据 | 全部由本仓脚本生成，数据来自 ts-admin | 数据版权归数据源，见 ts-base NOTICES |
+
+本仓的讲稿、组件与数据以与 ts-base 相同的 BSD-3-Clause 发布（见 [LICENSE](LICENSE)）；
+成片按 B 站协议发布，片中引用的教材内容仅作讲解与引用。
+
+## 已知问题与局限
+
+1. **不能单独渲染**：本仓是内容源，渲染必须配合引擎仓；引擎未随仓分发组件库与字体。
+2. **成片不在仓里**：mp4 / wav 被忽略；`delivery/` 只保留 cover、srt、chapters、report。
+3. **重渲染成本高**：74 集约 22 小时成片，单集渲染 10–30 分钟；需要中文字体与 FFmpeg 滤镜链。
+4. **数据依赖上游**：`data/episode/*.csv` 由 ts-admin 导出；上游数据变则数字变（sha256 记录在 manifest）。
+5. **平台相关**：`bilibili-tool` 走 CDP，视频路径必须是 Windows 可读路径（发布时先 stage 到 `C:\Users\Public\cdp-admin\media\tsint\`）。
+6. **无 CI**：校验器 `tools/check.mjs` 需本地 Node 22 运行。
+
+## 部署与复现难度
+
+| 目标 | 步骤 | 难度 |
+| --- | --- | --- |
+| 读讲稿/看结构 | clone 即可，`node tools/status.mjs` | ★☆☆☆☆ |
+| 校验内容一致性 | `node tools/check.mjs` | ★☆☆☆☆ |
+| 重新渲染一集 | 引擎仓 + Node 22 + Remotion + FFmpeg + 字体，`films sync` 后 `make` | ★★★☆☆ |
+| 重渲染全 74 集 | 同上，另需 ≥ 100 GB 磁盘与数十小时 CPU | ★★★★☆ |
+| 复现屏幕数字 | 需 ts-base 证据命令 + ts-admin 切片 | ★★☆☆☆ |
+
