@@ -95,14 +95,18 @@ python3 release/verify_manifest.py --quick   # 只查结构与长度约束，不
 
 ## 与 bilibili-tool 的对接
 
-工具：`/root/cdp-admin/bilibili-tool`（Node ≥ 22，CDP 驱动，**只落草稿、不自动提交**）。
+工具：`/root/cdp-admin/bilibili-tool`（Node ≥ 22，CDP 驱动；`draft` 落草稿，`submit`/`batch` 自动点「立即投稿」并在提交后读回 bvid）。
 
 ```bash
 cd /root/cdp-admin/bilibili-tool
 cdpctl ensure --name bili --url https://www.bilibili.com/ --port 9222
 node bin/bili.mjs doctor --json            # CDP + 页面 + 登录态
 node bin/bili.mjs draft --spec <spec.json> --dry-run --json   # 填表 + 读回，不保存
-node bin/bili.mjs draft --spec <spec.json> --yes              # 落草稿
+node bin/bili.mjs draft --spec <spec.json> --yes              # 落草稿（不提交）
+node bin/bili.mjs submit --spec <spec.json> --yes             # 单集自动投稿 + 读回 bvid
+node bin/bili.mjs batch --manifest release/manifest.json \
+  --ledger release/ledger.json --from 52 --to 74 \
+  --gap-ms 90000 --rate-wait-ms 900000 --rate-retries 4 --yes # 分批自动投稿（失败即停、台账续跑）
 node bin/bili.mjs list --json                                  # 草稿箱 + 本工具台账
 ```
 
@@ -120,7 +124,7 @@ node bin/bili.mjs list --json                                  # 草稿箱 + 本
 | `defaults.watermark` | `watermark` | `false` |
 | `defaults.visibility` | `visibility` | `public` → 公开可见 |
 | `defaults.copyright` | — | 工具无此字段，自制 = 不选「内容为转载」 |
-| — | `draftOnly` | 恒为 `true`：本流程从不自动点「立即投稿」 |
+| — | `draftOnly` | 只对 `draft` 子命令生效（落草稿不提交）；`submit`/`batch` 走自动投稿流程 |
 
 ### 路径硬约束（最容易踩的坑）
 
@@ -161,19 +165,24 @@ PY
 node /root/cdp-admin/bilibili-tool/bin/bili.mjs draft --spec /tmp/spec-01.json --dry-run --json
 ```
 
-## 发布流程（dry-run → 单集试发 → 分批 → 断点续跑）
+## 发布流程（dry-run → 单集自动投稿 → 分批 → 断点续跑）
 
 0. **前置**：`verify_manifest.py` 全绿；`STATUS.md` 74 行全 `ready`；BV 列全 `-`（没有重复投稿）。
 1. **dry-run 单集**（第 1 集）：`draft --dry-run --json`，看 `fieldReport` 每步 `ok:true`、`form` 读回标题/简介/分区/声明/标签/水印全对。
    dry-run 也会真上传视频（只是不保存），所以它同时验证了路径与体积。
-2. **单集试发**：`draft --yes` 落草稿 → 人工在网页复核封面（16:9 安全区）、合集、字幕 → 点「立即投稿」→
-   从进度页 URL 取 BV（`…archive-process?bvid=BV…`）→ 写进 `ledger.json`。
-3. **分批**：3–5 集/批，批间 ≥ 30 分钟（转码 + 审核 + 风控）。每批前重跑 `verify_manifest.py --quick`，
-   批后核对草稿箱与台账一致（`bili list --json`）。
-4. **断点续跑**：驱动脚本只信台账——`episodes[dir].status == "published" 且 bvid 非空`才跳过；
-   其余（含 `draft`/`failed`/缺省）按 order 升序重试。已 `draft` 的先 `bili list` 核对是否还在草稿箱，
-   在就复用，不在就重落。
-5. **回滚**：
+2. **单集自动投稿**：`submit --spec <spec.json> --yes`——上传 → 填表 → 提交前三路读回
+   （标题/简介/标签，任一不符抛 `FillError`/标签铁闸）→ 点「立即投稿」→ 从投稿进度页 + 稿件管理页读回 bvid →
+   写台账（`status:"submitted"`）。读不回 bvid 一律按失败处理，绝不臆测成功。
+3. **分批**：`batch --from N --to M --yes`（`--keep-going` 才跳过失败继续，默认失败即停）。
+   每集上传约 1.5–3 分钟；批间可留 `--gap-ms` 间隔。批后跑 `audit_published.py --from N --to M` 用公开 API
+   核对标签/标题/简介/时长，再 git 提交台账。
+4. **限流（137022）**：连续投稿 ~11 集后会触发「投稿过于频繁，请稍后再试」，前端只 `console.error`，
+   按钮可点但毫无反应。工具已装探针：点提交后几秒内识别并 `rate-limited wait Ns then retry`；
+   `--rate-wait-ms`（默认 900000）/ `--rate-retries`（默认 4）。**每次尝试 submit 都可能刷新冷却**，
+   自动探测间隔建议 ≥1 小时；若常见日配额（一天有效），等次日 0 点（CST）再续。
+5. **断点续跑**：batch 只信台账——条目 `status ∈ {submitted,published,done,success}` 且有 `bvid` 才跳过；
+   failed/缺省按 order 重试。`--from` 是集号不是「下一条未发」，漏跑要显式补。
+6. **回滚**：
    - 草稿阶段：`node bin/bili.mjs purge --title "<标题>"`（不带 `--yes` 只报目标）→ 加 `--yes` 真删；只删本工具台账里的稿件。
    - 已投稿未过审：稿件管理 → 编辑（改文案）或删除（BV 作废，需重新投稿）。
    - 片子内容要换但不换 BV：编辑 → 「更换视频」（BV 不变，重新转码 + 重新审核）。
@@ -188,22 +197,25 @@ node /root/cdp-admin/bilibili-tool/bin/bili.mjs draft --spec /tmp/spec-01.json -
       "order": 1,
       "id": "tsint-01-intro-why-time-series",
       "title": "时序智能 · 第01集｜…",
-      "status": "published",
+      "status": "submitted",
       "bvid": "BV1xxxxxxxxx",
-      "draftUrl": "https://member.bilibili.com/platform/upload-manager/archive-process?bvid=BV…",
-      "publishedAt": "2026-11-06T10:00:00+08:00",
-      "videoSha256": "…",
+      "aid": 123456789,
+      "url": "https://www.bilibili.com/video/BV1xxxxxxxxx",
+      "submittedAt": "2026-11-05T02:35:33.751Z",
+      "via": "manager",
       "attempts": 1,
       "lastError": null,
-      "batch": "2026-11-06-A"
+      "errorCode": null,
+      "failedAt": null
     }
   }
 }
 ```
 
-状态机：缺省 `pending` → `draft`（已落草稿、待人工提交）→ `published`（有 BV）；失败记 `failed` + `lastError` + `attempts`。
+状态机：缺省 `pending` → `submitted`（平台已收稿、有 BV）→（人工维护）`published` 过审/发布；
+失败记 `failed` + `errorCode` + `lastError` + `failedAt` + `attempts`。`bvid` 由提交后三路读回（进度页 URL、管理页行、公开 API）交叉确认，任何一路读不回都不写成功。
 `videoSha256` 是发出去那份的指纹，用来回答「这个 BV 对应哪版片子」（重渲染后对不上就要走「更换视频」）。
-本文件由投稿工具写；骨架由人建（当前为空）。
+本文件由 submit/batch 原子写入（先写临时文件再 rename）；每批审计后 git 提交，便于回退与迁移。
 
 ## 校验器查什么
 
