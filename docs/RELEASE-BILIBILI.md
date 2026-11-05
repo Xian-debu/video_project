@@ -89,6 +89,11 @@ AI 配音（Edge TTS）+ 程序化渲染（Remotion）必须声明，这既是�
   `node bin/bili.mjs batch … --gap-ms 90000 --rate-wait-ms 900000 --rate-retries 4 --yes`
 - 实测冷却：距上一集成功（04:45 UTC）67 分钟时的提交（05:52 UTC）仍 137022；限流持续超过数小时则按**日配额**处置——
   等次日 00:00（CST）后从台账断点续跑，不丢进度、不重复投稿。
+- **真实鼠标对照实验（2026-11-06 01:20 CST，排除自动化检测）**：用 win-admin 在真实 Edge 窗口里经 UIA 定位
+  「立即投稿」（class `submit-add`，屏幕 rect 761,941,180x61），注入系统级鼠标点击（`winput click --click-text`，
+  point 851,971，`injected:true`）。结果与 CDP 点击完全相同：30 秒内 URL 不变、无任何 UI 提示，console 回到
+  `{code:137022}`。结论：限流是**平台侧账号频控**，与点击来源（CDP 注入 vs 系统鼠标）无关；混合流程（CDP 填表 +
+  真实点击提交）不会绕过，只能等窗口滚动。
 - **红线**：出现验证码、`429`、稿件反复驳回、上传卡 0% > 10 分钟 → 立即停投并记录台账；不要换 IP、不要并发硬刷。
 - 单账号串行：一次只跑一个 `bili batch`；`submit`/`batch` 会自己 stage 到 `C:\Users\Public\cdp-admin\media\tsint\`，跑完清理。
 
