@@ -297,6 +297,21 @@
       "screenshot": null,
       "via": "manager",
       "attempts": 1
+    },
+    "21": {
+      "order": 21,
+      "title": "时序智能 · 第21集｜注意力三件套：多头自注意力、Transformer 块、因果掩码",
+      "status": "submitted",
+      "lastError": null,
+      "errorCode": null,
+      "screenshot": null,
+      "failedAt": null,
+      "attempts": 2,
+      "bvid": "BV1ivxZ6REpG",
+      "aid": null,
+      "url": "https://www.bilibili.com/video/BV1ivxZ6REpG/",
+      "submittedAt": "2026-11-05T03:54:45.265Z",
+      "via": "manager"
     }
   }
 }
