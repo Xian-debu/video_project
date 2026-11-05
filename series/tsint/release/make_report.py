@@ -47,7 +47,7 @@ def main():
     if args.audit and os.path.exists(args.audit):
         with open(args.audit, encoding='utf-8') as f:
             audit = json.load(f)
-        items = audit.get('results') if isinstance(audit, dict) else audit
+        items = (audit.get('rows') or audit.get('results')) if isinstance(audit, dict) else audit
         for item in items or []:
             if isinstance(item, dict):
                 audit_map[str(item.get('order'))] = item
