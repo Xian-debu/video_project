@@ -1,12 +1,12 @@
 # 《时序智能》B 站发布报告
 
-生成时间：2026-11-05 14:16:48 +0800（由 series/tsint/release/make_report.py 从 manifest + ledger 生成，不要手改）。
+生成时间：2026-11-06 14:03:19 +0800（由 series/tsint/release/make_report.py 从 manifest + ledger 生成，不要手改）。
 
 ## 一、结论
 
 - 目标：把 74 集《时序智能》全部以公开可见投稿到 B 站，逐批验证后提交台账。
-- 进度：**51/74 集已投稿**，失败 1 集，未开始 22 集。
-- 规模：已投稿时长 915:16（54915 秒）、2.45 GB；全系列 1324:08、3.56 GB。
+- 进度：**74/74 集已投稿**，失败 0 集，未开始 0 集。
+- 规模：已投稿时长 1324:08（79447 秒）、3.56 GB；全系列 1324:08、3.56 GB。
 - 每集简介含固定行「源码与实验证据（Haskell）：https://github.com/Xian-debu/ts-base」，由 audit_published.py 逐集校验。
 
 ## 二、涉及仓库
@@ -72,29 +72,29 @@
 | 49 | 时序智能 · 第49集｜换一种表示：图像化编码与多域集成 | 24:04 | 65.69 MB | submitted | [BV1b14t68EM9](https://www.bilibili.com/video/BV1b14t68EM9/) | OK |
 | 50 | 时序智能 · 第50集｜自动选模型：池子比策略更重要 | 18:20 | 50.18 MB | submitted | [BV1My4t6cEfm](https://www.bilibili.com/video/BV1My4t6cEfm/) | OK |
 | 51 | 时序智能 · 第51集｜省算力的两把刀：遗传算法与学习曲线外推 | 21:00 | 61.37 MB | submitted | [BV1uy4t6cEgu](https://www.bilibili.com/video/BV1uy4t6cEgu/) | OK |
-| 52 | 时序智能 · 第52集｜把 300 只股票当成 300 个任务：元学习选模型 | 20:06 | 55.25 MB | failed | 失败：[submit-readback] 点提交后读不回 bvid：稿件管理页 120000ms 内找不到标题「时序智能 ·… |  |
-| 53 | 时序智能 · 第53集｜平均能赢平均，赢不过最强 | 18:56 | 51.55 MB | pending | 未开始 |  |
-| 54 | 时序智能 · 第54集｜把架构搜索变成可微：DARTS 与三层搜索空间 | 26:39 | 75.22 MB | pending | 未开始 |  |
-| 55 | 时序智能 · 第55集｜省算力的三种剪枝：子空间、比较器与组合预测器 | 20:32 | 58.26 MB | pending | 未开始 |  |
-| 56 | 时序智能 · 第56集｜先筛模型再调权：遗传算法筛选 + 核岭回归融合 | 21:21 | 61.78 MB | pending | 未开始 |  |
-| 57 | 时序智能 · 第57集｜把序列切成块：Patch、周期、分辨率前缀 | 17:56 | 49.35 MB | pending | 未开始 |  |
-| 58 | 时序智能 · 第58集｜通道独立还是混合：一个由相关性决定的选择题 | 20:35 | 58.23 MB | pending | 未开始 |  |
-| 59 | 时序智能 · 第59集｜一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | 26:59 | 84.53 MB | pending | 未开始 |  |
-| 60 | 时序智能 · 第60集｜一步一步还是一口气：自回归与非自回归解码 | 21:50 | 67.55 MB | pending | 未开始 |  |
-| 61 | 时序智能 · 第61集｜不止一个数：分位损失、分位线交叉与分布头 | 19:55 | 60.79 MB | pending | 未开始 |  |
-| 62 | 时序智能 · 第62集｜两种异常，两条路：预测残差与重构误差 | 19:16 | 55.57 MB | pending | 未开始 |  |
-| 63 | 时序智能 · 第63集｜把序列画成图：GAF 与 MTF 的可逆性边界 | 18:32 | 57.12 MB | pending | 未开始 |  |
-| 64 | 时序智能 · 第64集｜只训练 0.1% 的参数：线性探测、LoRA 与语义锚点 | 17:34 | 51.25 MB | pending | 未开始 |  |
-| 65 | 时序智能 · 第65集｜误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动 | 12:37 | 30.53 MB | pending | 未开始 |  |
-| 66 | 时序智能 · 第66集｜不平衡数据上的三门考卷：Acc 0.99 的模型其实什么都没学到 | 11:39 | 29.35 MB | pending | 未开始 |  |
-| 67 | 时序智能 · 第67集｜切数据的三条规矩：一次 shuffle 就让你的 MSE 好两个数量级 | 22:45 | 54.93 MB | pending | 未开始 |  |
-| 68 | 时序智能 · 第68集｜5% 的样本怎么选：Few-shot 采样器与它的成本账 | 18:44 | 46.18 MB | pending | 未开始 |  |
-| 69 | 时序智能 · 第69集｜你的基准数据集均衡吗：PCA 投影 + Hexbin 密度图 | 16:01 | 41.30 MB | pending | 未开始 |  |
-| 70 | 时序智能 · 第70集｜欧拉法把弹簧算成了永动机 | 11:17 | 29.57 MB | pending | 未开始 |  |
-| 71 | 时序智能 · 第71集｜把 k 换成一张表：参数辨识与 Neural ODE 前向 | 10:15 | 27.99 MB | pending | 未开始 |  |
-| 72 | 时序智能 · 第72集｜两种反向传播：把 200 步求解器摊开，还是在时间里倒着积分 | 10:25 | 28.54 MB | pending | 未开始 |  |
-| 73 | 时序智能 · 第73集｜不求解器也能算：CfC 的闭式解与灰色 GM-ODE | 12:14 | 32.07 MB | pending | 未开始 |  |
-| 74 | 时序智能 · 第74集｜别只看 MSE：总变差正则与 DTW 保真度 | 12:44 | 31.87 MB | pending | 未开始 |  |
+| 52 | 时序智能 · 第52集｜把 300 只股票当成 300 个任务：元学习选模型 | 20:06 | 55.25 MB | submitted | [BV1sx4i6LEfU](https://www.bilibili.com/video/BV1sx4i6LEfU/) | OK |
+| 53 | 时序智能 · 第53集｜平均能赢平均，赢不过最强 | 18:56 | 51.55 MB | submitted | [BV1xW4i62E1A](https://www.bilibili.com/video/BV1xW4i62E1A/) | OK |
+| 54 | 时序智能 · 第54集｜把架构搜索变成可微：DARTS 与三层搜索空间 | 26:39 | 75.22 MB | submitted | [BV1xW4i62EpX](https://www.bilibili.com/video/BV1xW4i62EpX/) | OK |
+| 55 | 时序智能 · 第55集｜省算力的三种剪枝：子空间、比较器与组合预测器 | 20:32 | 58.26 MB | submitted | [BV1Wb4i6VEKu](https://www.bilibili.com/video/BV1Wb4i6VEKu/) | OK |
+| 56 | 时序智能 · 第56集｜先筛模型再调权：遗传算法筛选 + 核岭回归融合 | 21:21 | 61.78 MB | submitted | [BV1N44i61EJz](https://www.bilibili.com/video/BV1N44i61EJz/) | OK |
+| 57 | 时序智能 · 第57集｜把序列切成块：Patch、周期、分辨率前缀 | 17:56 | 49.35 MB | submitted | [BV16R4v6iEED](https://www.bilibili.com/video/BV16R4v6iEED/) | OK |
+| 58 | 时序智能 · 第58集｜通道独立还是混合：一个由相关性决定的选择题 | 20:35 | 58.23 MB | submitted | [BV16R4v6iEwJ](https://www.bilibili.com/video/BV16R4v6iEwJ/) | OK |
+| 59 | 时序智能 · 第59集｜一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | 26:59 | 84.53 MB | submitted | [BV1694v6TE2K](https://www.bilibili.com/video/BV1694v6TE2K/) | OK |
+| 60 | 时序智能 · 第60集｜一步一步还是一口气：自回归与非自回归解码 | 21:50 | 67.55 MB | submitted | [BV1BZ4v6eEbG](https://www.bilibili.com/video/BV1BZ4v6eEbG/) | OK |
+| 61 | 时序智能 · 第61集｜不止一个数：分位损失、分位线交叉与分布头 | 19:55 | 60.79 MB | submitted | [BV1fo4v6NEoM](https://www.bilibili.com/video/BV1fo4v6NEoM/) | OK |
+| 62 | 时序智能 · 第62集｜两种异常，两条路：预测残差与重构误差 | 19:16 | 55.57 MB | submitted | [BV1zo4v6NEWR](https://www.bilibili.com/video/BV1zo4v6NEWR/) | OK |
+| 63 | 时序智能 · 第63集｜把序列画成图：GAF 与 MTF 的可逆性边界 | 18:32 | 57.12 MB | submitted | [BV1pU4v6rECf](https://www.bilibili.com/video/BV1pU4v6rECf/) | OK |
+| 64 | 时序智能 · 第64集｜只训练 0.1% 的参数：线性探测、LoRA 与语义锚点 | 17:34 | 51.25 MB | submitted | [BV1Pm4v6GEVN](https://www.bilibili.com/video/BV1Pm4v6GEVN/) | OK |
+| 65 | 时序智能 · 第65集｜误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动 | 12:37 | 30.53 MB | submitted | [BV1cQ4v6zEQT](https://www.bilibili.com/video/BV1cQ4v6zEQT/) | OK |
+| 66 | 时序智能 · 第66集｜不平衡数据上的三门考卷：Acc 0.99 的模型其实什么都没学到 | 11:39 | 29.35 MB | submitted | [BV1wQ4v6zEsL](https://www.bilibili.com/video/BV1wQ4v6zEsL/) | OK |
+| 67 | 时序智能 · 第67集｜切数据的三条规矩：一次 shuffle 就让你的 MSE 好两个数量级 | 22:45 | 54.93 MB | submitted | [BV1kD4v6uExy](https://www.bilibili.com/video/BV1kD4v6uExy/) | OK |
+| 68 | 时序智能 · 第68集｜5% 的样本怎么选：Few-shot 采样器与它的成本账 | 18:44 | 46.18 MB | submitted | [BV1eT4i6tEBj](https://www.bilibili.com/video/BV1eT4i6tEBj/) | OK |
+| 69 | 时序智能 · 第69集｜你的基准数据集均衡吗：PCA 投影 + Hexbin 密度图 | 16:01 | 41.30 MB | submitted | [BV1vN4i6fEiV](https://www.bilibili.com/video/BV1vN4i6fEiV/) | OK |
+| 70 | 时序智能 · 第70集｜欧拉法把弹簧算成了永动机 | 11:17 | 29.57 MB | submitted | [BV1vK4i6FEk7](https://www.bilibili.com/video/BV1vK4i6FEk7/) | OK |
+| 71 | 时序智能 · 第71集｜把 k 换成一张表：参数辨识与 Neural ODE 前向 | 10:15 | 27.99 MB | submitted | [BV1Yg4i6xEHG](https://www.bilibili.com/video/BV1Yg4i6xEHG/) | OK |
+| 72 | 时序智能 · 第72集｜两种反向传播：把 200 步求解器摊开，还是在时间里倒着积分 | 10:25 | 28.54 MB | submitted | [BV1YM4i6oEoj](https://www.bilibili.com/video/BV1YM4i6oEoj/) | OK |
+| 73 | 时序智能 · 第73集｜不求解器也能算：CfC 的闭式解与灰色 GM-ODE | 12:14 | 32.07 MB | submitted | [BV19M4i6oExn](https://www.bilibili.com/video/BV19M4i6oExn/) | OK |
+| 74 | 时序智能 · 第74集｜别只看 MSE：总变差正则与 DTW 保真度 | 12:44 | 31.87 MB | submitted | [BV1qc4i6aEww](https://www.bilibili.com/video/BV1qc4i6aEww/) | OK |
 
 ## 四、发布流程与验证
 
