@@ -801,3 +801,13 @@
 - **依据**：evidence JSON（inventory/evidence/60-ar-vs-nar-decoding.ch7-decode.json，**18/18、121.90 s**；data 4 / ar 5 / nar 4 / timing 2 / curve 3）、report.json（23 stage 全 ok / 8 段 rendered 8（reused 0）/ tree 88fafef16c80fa5f / mix peak −1.20 dBFS、RMS −26.66 dBFS、ducked 60.4%、musicGain −4.5、preGain 1.0000）、loudnorm **−15 LUFS / TP −2 dBFS**、music gate full-band −25.1 / audible share 63.1% / sub 6.8% PASS、mix gate speech −23.73 / gap_full −30.51 / gap_audible −33.24 / bed 36.8 PASS、luma（39,308 帧 mean|d| **0.0150** / p99 0.1157 / max 10.16 / 7 切点）、**300 cue 0 换行最长 29 字符**、8 章合计 1,310.25 s、still_lint 4 帧 PASS、30 页静帧逐页人工看、cabal test 18 条全绿（autoregressive 9 / nonautoregressive 9）、make PASS；ts-base 19efa1a + 5e8f810 + 42b05f6，ts-admin a6ad270，video_project d19f9f1 + ac3fbc0 + 本次 docs。
 - **可逆性**：高（两模块 + 证据 + pack 可整段回退；负结果与 √F 读数都在 evidence JSON 与 summary.json，撤回只删对应页；成片可整集重渲；三仓各自 commit 可回退）。
 - **返工成本**：证据计时 3 轮（单次 → 三次取最小 → rotateBy；中间掉到 17/18）；证据头注释口径 1 轮（197 窗、训练/验证数）；静帧版式 8 页（含 2 页二次重渲）；TTS 卡 websocket 1 轮（改用 ffprobe 自量 300 clip）；TOTAL/FPS 导出、voice.json 位置、outro 反斜杠 3 处类型错误；make 一次 PASS。
+## A58 收尾：清理被生成物 + 状态单一真源 + 干净克隆可过门禁（2026-11-15 夜）
+
+- **决定一（清理被生成物，保留生成方法）**：删除 74 集的 `delivery/*.mp4`（3.56GB）、`score.wav/mix.wav/narration.wav`（39.5GB）、`assets/audio/clips/*.mp3`（0.36GB）、`delivery/{scenes,stills,report.json,score.meta.json,raw_video.mp4,programme_unnorm.mp4}`（≈1.1GB），以及引擎 `out/`（4.4GB）。保留**方法**：`film.json.derive[].command`、`build/*.py`、`data/{lines,voice,clips}.json`、`src/**`、`delivery/{cover,srt,chapters}`、`release/manifest.json`（videoSha256/videoBytes/durationSec = 成品凭据）。
+- **决定二（`narration.wav` 统一为派生，撤销 11 个 tracked）**：根 `.gitignore` 早已把 `**/assets/audio/narration.wav` 判为派生，但历史上有 11 个被 tracked（合计 578MB）；README 第 33 行「narration.wav 入库」与 .gitignore 冲突，74 集共 13GB 也不可能入库。→ `git rm --cached` + 删盘，README/CONVENTIONS 改口径。
+- **决定三（发布事实回写 pack = 状态单一真源）**：`release/ledger.json` 是发布事实的唯一真源；`film.json.status/bili` 与 `STATUS.md` 都是它的**投影**，由脚本生成。修 D1–D4：74 个 film.json 补 `status:"published"`+`bili:{bv,url}`；`tools/status.mjs` 的 sec 改由 `release/manifest.json.durationSec` 提供、delivery 列只数 tracked、BV 读 `film.bili`；新增 `--check` 断言 `STATUS.md` 与生成结果逐字节一致。
+- **决定四（门禁分两种模式，修干净克隆 73 error）**：`node tools/check.mjs` 是**源码检查**——干净克隆必须 0 error，故不再要求派生资产（`narration.wav`）存在；`node tools/check.mjs --assets` 是**交付检查**——出片/投稿前要求派生资产齐全。原因是 D5：`narration.wav` 被 gitignore 却被无条件要求存在，导致**任何人克隆本仓库第一道门禁就红 73 条**。
+- **依据**：用户 2026-11-15 收尾任务书「清理垃圾……要保留生成它们的方法步骤，被生成物可清理」「以前出现过项目状态不正确的情况，请务必认真整理」；实测证据见 `docs/CLOSEOUT-PLAN-2026-11-15.md` §2（D1–D6 逐条带命令与输出）。
+- **可逆性**：清理中（删除物全部可由 `manifest.json`+证据 JSON+pack 源码重生成，唯一例外是配音需要联网 edge-tts）；状态修正中（`git revert` 单提交；只补不覆盖人工字段）；门禁语义变更中（`--assets` 保留严格模式）。
+- **返工成本**：单集重出片 ≈ 20–40 min（含 TTS 重跑则需联网）；全系列重渲 ≈ 30 h（不打算做）。
+
