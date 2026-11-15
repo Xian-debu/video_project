@@ -6,7 +6,7 @@
 | gears | 啮合：齿轮如何把速度换成力 | ready | - | silent | ok | 1 | - |
 | hawk | Hawk：看不见的用电怎么被看见 | ready | - | yes | ok | 5 | - |
 | lecture | 快，是可以解释的：快速排序的一堂课 | ready | - | silent | ok | 1 | - |
-| mult | 逐位乘法：一条用加法换乘法的路 | ready | - | silent | 1 missing | 1 | - |
+| mult | 逐位乘法：一条用加法换乘法的路 | ready | - | silent | 1 no-method | 1 | - |
 | quickselect | 快速选择：只找第 k 小 | published | - | silent | ok | 6 | BV1JvHA6aE4B |
 | convcode | 卷积码：GSM 如何在噪声里听清你 | ready | - | yes | ok | 6 | BV1J1x36aELC |
 | godson1 | 龙芯1号：先证明能跑 | published | - | yes | ok | 6 | BV1Afno6QEP2 |
@@ -16,77 +16,77 @@
 | loongisa | LoongISA：先融合，再自主 | published | - | yes | ok | 6 | BV1HJno6EEWu |
 | loongarch | LoongArch：自己定规则 | published | - | yes | ok | 6 | BV1Rvno6MEwG |
 | overview | 二十年五条线：龙芯做对了什么 | published | - | yes | ok | 6 | BV1Exno65ERw |
-| tsint-01-intro-why-time-series | 一条序列，五个问题：从任务定义到可复算的管线 | published | - | yes | ok | 11 | BV11oxZ66E2f |
-| tsint-02-missing-values-three-ways | 缺失值三法：谁在偷偷改变你的方差 | published | - | yes | ok | 11 | BV1TXxZ6VEy1 |
-| tsint-03-sma-wma-ses | 滑动平均与一次指数平滑：N 和 α 是同一把尺子的两种刻度 | published | - | yes | ok | 11 | BV1bDxZ6yEsT |
-| tsint-04-holt-and-holt-winters | Holt 家族：三行递推把趋势和季节塞进指数平滑 | published | - | yes | ok | 11 | BV1Juxf6aEgR |
-| tsint-05-stationarize-three-ways | 三种平稳化：差分、对数、Z-score 各治什么病 | published | - | yes | ok | 11 | BV1PFxf6BEK7 |
-| tsint-06-decomposition-and-strength | 经典分解与两个强度指标：趋势有多强，季节有多强 | published | - | yes | ok | 11 | BV1rNxf6NEmz |
-| tsint-07-fft-basis-patch | 频域与分块：FFT、基展开、Patch 三种「换坐标系」的方式 | published | - | yes | ok | 11 | BV1EhxZ6tEuD |
-| tsint-08-adf-shifting-transition | 冷门三指标：ADF 检验、漂移性、转移性 | published | - | yes | ok | 11 | BV1wAxf6iERQ |
-| tsint-09-mlp-and-tcn | MLP 与 TCN：从一行仿射变换到因果膨胀卷积 | published | - | yes | ok | 11 | BV1BhxZ6tEVM |
-| tsint-10-attention-block | 注意力：一次 softmax 加权，把「对齐」变成可看的矩阵 | published | - | yes | ok | 11 | BV1JbxZ6fEcT |
-| tsint-11-rnn-lstm-gru | 循环三兄弟：一条梯度路径的三种走法 | published | - | yes | ok | 11 | BV1zbxZ6fEb7 |
-| tsint-12-conv-and-gcn | 卷积与图卷积：同一件事的两种定义域 | published | - | yes | ok | 11 | BV1jexZ6xEkq |
-| tsint-13-normalization-trio | 归一化三兄弟：差别只在「用谁的统计量」 | published | - | yes | ok | 11 | BV1HWxZ6AEDQ |
-| tsint-14-nonstationary-attention | 非平稳注意力：一个标量 τ 与一个向量 Δ 能改什么 | published | - | yes | ok | 11 | BV1HWxZ6AEeU |
-| tsint-15-imputation-dtw-lowrank-mf | 缺失值三法：邻域、低秩、因子 | published | - | yes | ok | 11 | BV1JtxZ68EaU |
-| tsint-16-correlation-and-stl | 相关性与 STL：一个数说面板，一条分解说序列 | published | - | yes | ok | 11 | BV1JtxZ68EaM |
-| tsint-17-win-metrics-valselect | 滑窗、指标与选模：先把「分数」这件事做对 | published | - | yes | ok | 11 | BV1ztxZ68EX2 |
-| tsint-18-norm-revin-now-mean | 归一化三兄弟：RevIN、NowNorm、MeanNorm | published | - | yes | ok | 11 | BV1n4xZ6cEwY |
-| tsint-19-linear-revival-dlinear-fits | 线性复兴：DLinear 与 FITS | published | - | yes | ok | 11 | BV1n4xZ6cEpy |
-| tsint-20-conv-dilated-fft-2d | 卷积看时序：因果空洞卷积、FFT 周期、二维聚合 | published | - | yes | ok | 11 | BV1XCxZ6JEYs |
-| tsint-21-attn-mhsa-block-masked | 注意力三件套：多头自注意力、Transformer 块、因果掩码 | published | - | yes | ok | 11 | BV1ivxZ6REpG |
-| tsint-22-prob-nll-quantile-eval | 概率预测入门：高斯 NLL、分位数损失、分位数指标 | published | - | yes | ok | 11 | BV196xZ6HEaa |
-| tsint-23-prob-crps-picp-vae | 概率预测进阶：CRPS、区间覆盖率、VAE 的 ELBO | published | - | yes | ok | 11 | BV196xZ6HEQS |
-| tsint-24-chan-mix-itrans-graph | 通道关系三法：混合 MLP、iTransformer、图通道 | published | - | yes | ok | 11 | BV1e6xZ6HEFE |
-| tsint-25-rnn-recurrence-vs-segments | 递归与分段：RNN 的两条生成路 | published | - | yes | ok | 11 | BV15BxZ6XEwt |
-| tsint-26-seq-compress-three-ways | 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩 | published | - | yes | ok | 11 | BV1LBxZ69Eun |
-| tsint-27-patch-embed-and-two-attn | 块嵌入与两种注意力架构：PatchTST 与交叉注意力解码器 | published | - | yes | ok | 11 | BV1eY4t6BEss |
-| tsint-28-channel-three-complements | 通道三补集：混合 MLP、路由注意力、动态聚类 | published | - | yes | ok | 11 | BV15Y4t6BE7D |
-| tsint-29-prob-copula-ddpm-flow | 概率生成补集：Copula、扩散损失、连续流 | published | - | yes | ok | 11 | BV15Y4t6BEW9 |
-| tsint-30-ad-foundation-window-score | 地基：窗口·指标·评分——异常检测里 80% 的差别不在模型 | published | - | yes | ok | 11 | BV1La4t6uEwz |
-| tsint-31-ad-threshold-and-baselines | 分数怎么变成 0/1：阈值、分类器，与最笨的基线 | published | - | yes | ok | 11 | BV15a4t6uER4 |
-| tsint-32-ad-classic-unsupervised | 三种几何直觉：距离、密度、随机分割 | published | - | yes | ok | 11 | BV15a4t6uEiN |
-| tsint-33-ad-causal-dilated-conv | 卷积看见了未来：因果卷积、膨胀核与 TCN | published | - | yes | ok | 11 | BV1Yi4t6iEJ1 |
-| tsint-34-ad-gru-lstm-predictor | 预测未来，误差就是分数：GRU 单元与 LSTM 预测器 | published | - | yes | ok | 11 | BV1Xi4t6iEUG |
-| tsint-35-ad-attention-assoc-discrepancy | 注意力矩阵里的异常：关联差异、两阶段焦点与次邻域遮罩 | published | - | yes | ok | 11 | BV1Vv4t6TE4m |
-| tsint-36-ad-ae-and-vae-recon | 从重构到概率：AE 与 VAE 的潜空间 | published | - | yes | ok | 11 | BV1Vv4t6TEBP |
-| tsint-37-ad-gmm-vae-mixture-prior | 混合先验：GMM-VAE 与『多个正常模式』 | published | - | yes | ok | 11 | BV1Vv4t6TEYu |
-| tsint-38-ad-graph-contrastive | 图上的异常：增强、对比损失与 TopK 邻接 | published | - | yes | ok | 11 | BV1744t6kE57 |
-| tsint-39-ad-classic-arima-matrixprofile | 残差与邻居：ARIMA 残差检测与 Matrix Profile discord | published | - | yes | ok | 11 | BV1744t6kEVU |
-| tsint-40-ad-adversarial-dual-decoder | 两个解码器，一个说谎：USAD 对抗、DAGMM 能量与多 AE 中位数 | published | - | yes | ok | 11 | BV17x4t6VE9b |
-| tsint-41-ad-sparse-prior-dual-attention | 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力 | published | - | yes | ok | 11 | BV1Bx4t6VE3e |
-| tsint-42-metrics-distance-1nn-ee | 距离决定一切：从 1-NN+DTW 到弹性集成 | published | - | yes | ok | 11 | BV17x4t6VEkA |
-| tsint-43-shapelet-search-pips | Shapelet：从一条序列里挖出一小段判别力 | published | - | yes | ok | 11 | BV1L84t66EXt |
-| tsint-44-learnable-shapelet-softmin | 把 min 换成 SoftMin：Shapelet 终于可以求导 | published | - | yes | ok | 11 | BV1v84t66EUS |
-| tsint-45-cnn-resnet-gap-cam | 卷积、残差与 GAP：让分类器指出「哪几天在起作用」 | published | - | yes | ok | 11 | BV1Lb4t63Eon |
-| tsint-46-rnn-shallow-dilated | 感受野之争：RNN、Brick 并行与空洞卷积 | published | - | yes | ok | 11 | BV1jb4t63ExE |
-| tsint-47-gcn-gat-attention | 谁在影响谁：图卷积、图注意力与自注意力 | published | - | yes | ok | 11 | BV1jb4t63EnV |
-| tsint-48-ssl-augment-contrast-mask | 没有标签怎么办：增强、对比与掩码重构 | published | - | yes | ok | 11 | BV1t14t68Eyu |
-| tsint-49-gaf-mtf-cote-multidomain | 换一种表示：图像化编码与多域集成 | published | - | yes | ok | 11 | BV1b14t68EM9 |
-| tsint-50-model-selection-skeleton | 自动选模型：池子比策略更重要 | published | - | yes | ok | 11 | BV1My4t6cEfm |
-| tsint-51-ga-search-incremental | 省算力的两把刀：遗传算法与学习曲线外推 | published | - | yes | ok | 11 | BV1uy4t6cEgu |
-| tsint-52-meta-learning-task-library | 把 300 只股票当成 300 个任务：元学习选模型 | published | - | yes | ok | 11 | BV1sx4i6LEfU |
-| tsint-53-ensemble-average-iter | 平均能赢平均，赢不过最强 | published | 1136 | yes | ok | 11 | BV1xW4i62E1A |
-| tsint-54-darts-differentiable-search | 把架构搜索变成可微：DARTS 与三层搜索空间 | published | 1599 | yes | ok | 11 | BV1xW4i62EpX |
-| tsint-55-generalizable-search | 省算力的三种剪枝：子空间、比较器与组合预测器 | published | 1233 | yes | ok | 11 | BV1Wb4i6VEKu |
-| tsint-56-ensemble-ga-krr | 先筛模型再调权：遗传算法筛选 + 核岭回归融合 | published | 1281 | yes | ok | 11 | BV1N44i61EJz |
-| tsint-57-tokenization-trio | 把序列切成块：Patch、周期、分辨率前缀 | published | 1076 | yes | ok | 11 | BV16R4v6iEED |
-| tsint-58-channel-strategies | 通道独立还是混合：一个由相关性决定的选择题 | published | 1235 | yes | ok | 11 | BV16R4v6iEwJ |
-| tsint-59-mini-foundation-loop | 一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | published | 1619 | yes | ok | 11 | BV1694v6TE2K |
-| tsint-60-ar-vs-nar-decoding | 一步一步还是一口气：自回归与非自回归解码 | published | 1310 | yes | ok | 11 | BV1BZ4v6eEbG |
-| tsint-61-probabilistic-heads | 不止一个数：分位损失、分位线交叉与分布头 | published | 1195 | yes | ok | 11 | BV1fo4v6NEoM |
-| tsint-62-anomaly-two-ways | 两种异常检测：预测残差看得见尖峰，重构误差看得见整段漂移 | published | 1156 | yes | ok | 1 | BV1zo4v6NEWR |
-| tsint-63-image-encoding | 把序列画成图：GAF 与 MTF 的可逆性边界 | published | 1112 | yes | ok | 1 | BV1pU4v6rECf |
-| tsint-64-llm-side-adapters | 只训练 0.1% 的参数：线性探测、LoRA 与语义锚点 | published | 1053 | yes | ok | 1 | BV1Pm4v6GEVN |
-| tsint-65-error-metrics-trio | 误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动 | published | - | yes | ok | 11 | BV1cQ4v6zEQT |
-| tsint-66-anomaly-metrics-auc | 不平衡数据上的三门考卷：Acc 0.99 的模型其实什么都没学到 | published | - | yes | ok | 11 | BV1wQ4v6zEsL |
-| tsint-67-split-no-leakage | 切数据的三条规矩：一次 shuffle 就让你的 MSE 好两个数量级 | published | - | yes | ok | 11 | BV1kD4v6uExy |
-| tsint-68-fewshot-and-cost | 5% 的样本怎么选：Few-shot 采样器与它的成本账 | published | - | yes | ok | 11 | BV1eT4i6tEBj |
-| tsint-69-hexbin-balance-audit | 你的基准数据集均衡吗：PCA 投影 + Hexbin 密度图 | published | - | yes | ok | 11 | BV1vN4i6fEiV |
-| tsint-70-ode-solvers-from-scratch | 欧拉法把弹簧算成了永动机 | published | - | yes | ok | 11 | BV1vK4i6FEk7 |
-| tsint-71-learn-dynamics-from-data | 把 k 换成一张表：参数辨识与 Neural ODE 前向 | published | - | yes | ok | 11 | BV1Yg4i6xEHG |
-| tsint-72-backprop-through-solver | 两种反向传播：把 200 步求解器摊开，还是在时间里倒着积分 | published | - | yes | ok | 11 | BV1YM4i6oEoj |
-| tsint-73-variants-beyond-solver | 不求解器也能算：CfC 的闭式解与灰色 GM-ODE | published | - | yes | ok | 11 | BV19M4i6oExn |
-| tsint-74-fidelity-tv-and-dtw | 别只看 MSE：总变差正则与 DTW 保真度 | published | - | yes | ok | 11 | BV1qc4i6aEww |
+| tsint-01-intro-why-time-series | 一条序列，五个问题：从任务定义到可复算的管线 | published | 821.8 | yes | ok | 5 | BV11oxZ66E2f |
+| tsint-02-missing-values-three-ways | 缺失值三法：谁在偷偷改变你的方差 | published | 1105.0 | yes | ok | 5 | BV1TXxZ6VEy1 |
+| tsint-03-sma-wma-ses | 滑动平均与一次指数平滑：N 和 α 是同一把尺子的两种刻度 | published | 1300.0 | yes | ok | 5 | BV1bDxZ6yEsT |
+| tsint-04-holt-and-holt-winters | Holt 家族：三行递推把趋势和季节塞进指数平滑 | published | 1480.9 | yes | ok | 5 | BV1Juxf6aEgR |
+| tsint-05-stationarize-three-ways | 三种平稳化：差分、对数、Z-score 各治什么病 | published | 1209.1 | yes | ok | 5 | BV1PFxf6BEK7 |
+| tsint-06-decomposition-and-strength | 经典分解与两个强度指标：趋势有多强，季节有多强 | published | 1369.9 | yes | ok | 5 | BV1rNxf6NEmz |
+| tsint-07-fft-basis-patch | 频域与分块：FFT、基展开、Patch 三种「换坐标系」的方式 | published | 1298.8 | yes | ok | 5 | BV1EhxZ6tEuD |
+| tsint-08-adf-shifting-transition | 冷门三指标：ADF 检验、漂移性、转移性 | published | 1343.9 | yes | ok | 5 | BV1wAxf6iERQ |
+| tsint-09-mlp-and-tcn | MLP 与 TCN：从一行仿射变换到因果膨胀卷积 | published | 1506.4 | yes | ok | 5 | BV1BhxZ6tEVM |
+| tsint-10-attention-block | 注意力：一次 softmax 加权，把「对齐」变成可看的矩阵 | published | 1050.1 | yes | ok | 5 | BV1JbxZ6fEcT |
+| tsint-11-rnn-lstm-gru | 循环三兄弟：一条梯度路径的三种走法 | published | 1187.1 | yes | ok | 5 | BV1zbxZ6fEb7 |
+| tsint-12-conv-and-gcn | 卷积与图卷积：同一件事的两种定义域 | published | 1117.6 | yes | ok | 5 | BV1jexZ6xEkq |
+| tsint-13-normalization-trio | 归一化三兄弟：差别只在「用谁的统计量」 | published | 879.7 | yes | ok | 5 | BV1HWxZ6AEDQ |
+| tsint-14-nonstationary-attention | 非平稳注意力：一个标量 τ 与一个向量 Δ 能改什么 | published | 749.1 | yes | ok | 5 | BV1HWxZ6AEeU |
+| tsint-15-imputation-dtw-lowrank-mf | 缺失值三法：邻域、低秩、因子 | published | 827.5 | yes | ok | 5 | BV1JtxZ68EaU |
+| tsint-16-correlation-and-stl | 相关性与 STL：一个数说面板，一条分解说序列 | published | 804.8 | yes | ok | 5 | BV1JtxZ68EaM |
+| tsint-17-win-metrics-valselect | 滑窗、指标与选模：先把「分数」这件事做对 | published | 837.2 | yes | ok | 5 | BV1ztxZ68EX2 |
+| tsint-18-norm-revin-now-mean | 归一化三兄弟：RevIN、NowNorm、MeanNorm | published | 840.9 | yes | ok | 5 | BV1n4xZ6cEwY |
+| tsint-19-linear-revival-dlinear-fits | 线性复兴：DLinear 与 FITS | published | 1263.8 | yes | ok | 5 | BV1n4xZ6cEpy |
+| tsint-20-conv-dilated-fft-2d | 卷积看时序：因果空洞卷积、FFT 周期、二维聚合 | published | 995.3 | yes | ok | 5 | BV1XCxZ6JEYs |
+| tsint-21-attn-mhsa-block-masked | 注意力三件套：多头自注意力、Transformer 块、因果掩码 | published | 856.0 | yes | ok | 5 | BV1ivxZ6REpG |
+| tsint-22-prob-nll-quantile-eval | 概率预测入门：高斯 NLL、分位数损失、分位数指标 | published | 906.3 | yes | ok | 5 | BV196xZ6HEaa |
+| tsint-23-prob-crps-picp-vae | 概率预测进阶：CRPS、区间覆盖率、VAE 的 ELBO | published | 874.1 | yes | ok | 5 | BV196xZ6HEQS |
+| tsint-24-chan-mix-itrans-graph | 通道关系三法：混合 MLP、iTransformer、图通道 | published | 806.1 | yes | ok | 5 | BV1e6xZ6HEFE |
+| tsint-25-rnn-recurrence-vs-segments | 递归与分段：RNN 的两条生成路 | published | 773.1 | yes | ok | 5 | BV15BxZ6XEwt |
+| tsint-26-seq-compress-three-ways | 序列压缩三法：奇偶下采样、周期下采样、最后时刻压缩 | published | 695.0 | yes | ok | 5 | BV1LBxZ69Eun |
+| tsint-27-patch-embed-and-two-attn | 块嵌入与两种注意力架构：PatchTST 与交叉注意力解码器 | published | 708.3 | yes | ok | 5 | BV1eY4t6BEss |
+| tsint-28-channel-three-complements | 通道三补集：混合 MLP、路由注意力、动态聚类 | published | 841.9 | yes | ok | 5 | BV15Y4t6BE7D |
+| tsint-29-prob-copula-ddpm-flow | 概率生成补集：Copula、扩散损失、连续流 | published | 883.1 | yes | ok | 5 | BV15Y4t6BEW9 |
+| tsint-30-ad-foundation-window-score | 地基：窗口·指标·评分——异常检测里 80% 的差别不在模型 | published | 1062.2 | yes | ok | 5 | BV1La4t6uEwz |
+| tsint-31-ad-threshold-and-baselines | 分数怎么变成 0/1：阈值、分类器，与最笨的基线 | published | 995.7 | yes | ok | 5 | BV15a4t6uER4 |
+| tsint-32-ad-classic-unsupervised | 三种几何直觉：距离、密度、随机分割 | published | 971.0 | yes | ok | 5 | BV15a4t6uEiN |
+| tsint-33-ad-causal-dilated-conv | 卷积看见了未来：因果卷积、膨胀核与 TCN | published | 1009.7 | yes | ok | 5 | BV1Yi4t6iEJ1 |
+| tsint-34-ad-gru-lstm-predictor | 预测未来，误差就是分数：GRU 单元与 LSTM 预测器 | published | 1128.1 | yes | ok | 5 | BV1Xi4t6iEUG |
+| tsint-35-ad-attention-assoc-discrepancy | 注意力矩阵里的异常：关联差异、两阶段焦点与次邻域遮罩 | published | 1342.7 | yes | ok | 5 | BV1Vv4t6TE4m |
+| tsint-36-ad-ae-and-vae-recon | 从重构到概率：AE 与 VAE 的潜空间 | published | 1251.0 | yes | ok | 5 | BV1Vv4t6TEBP |
+| tsint-37-ad-gmm-vae-mixture-prior | 混合先验：GMM-VAE 与『多个正常模式』 | published | 1161.9 | yes | ok | 5 | BV1Vv4t6TEYu |
+| tsint-38-ad-graph-contrastive | 图上的异常：增强、对比损失与 TopK 邻接 | published | 1087.1 | yes | ok | 5 | BV1744t6kE57 |
+| tsint-39-ad-classic-arima-matrixprofile | 残差与邻居：ARIMA 残差检测与 Matrix Profile discord | published | 1149.9 | yes | ok | 5 | BV1744t6kEVU |
+| tsint-40-ad-adversarial-dual-decoder | 两个解码器，一个说谎：USAD 对抗、DAGMM 能量与多 AE 中位数 | published | 1013.0 | yes | ok | 5 | BV17x4t6VE9b |
+| tsint-41-ad-sparse-prior-dual-attention | 换掉一个假设：SBT 稀疏二值注意力、Student-t 重尾先验、DCdetector 双注意力 | published | 909.4 | yes | ok | 5 | BV1Bx4t6VE3e |
+| tsint-42-metrics-distance-1nn-ee | 距离决定一切：从 1-NN+DTW 到弹性集成 | published | 926.4 | yes | ok | 5 | BV17x4t6VEkA |
+| tsint-43-shapelet-search-pips | Shapelet：从一条序列里挖出一小段判别力 | published | 1127.2 | yes | ok | 5 | BV1L84t66EXt |
+| tsint-44-learnable-shapelet-softmin | 把 min 换成 SoftMin：Shapelet 终于可以求导 | published | 1291.6 | yes | ok | 5 | BV1v84t66EUS |
+| tsint-45-cnn-resnet-gap-cam | 卷积、残差与 GAP：让分类器指出「哪几天在起作用」 | published | 1288.8 | yes | ok | 5 | BV1Lb4t63Eon |
+| tsint-46-rnn-shallow-dilated | 感受野之争：RNN、Brick 并行与空洞卷积 | published | 1387.2 | yes | ok | 5 | BV1jb4t63ExE |
+| tsint-47-gcn-gat-attention | 谁在影响谁：图卷积、图注意力与自注意力 | published | 1230.6 | yes | ok | 5 | BV1jb4t63EnV |
+| tsint-48-ssl-augment-contrast-mask | 没有标签怎么办：增强、对比与掩码重构 | published | 1446.5 | yes | ok | 5 | BV1t14t68Eyu |
+| tsint-49-gaf-mtf-cote-multidomain | 换一种表示：图像化编码与多域集成 | published | 1443.8 | yes | ok | 5 | BV1b14t68EM9 |
+| tsint-50-model-selection-skeleton | 自动选模型：池子比策略更重要 | published | 1099.6 | yes | ok | 5 | BV1My4t6cEfm |
+| tsint-51-ga-search-incremental | 省算力的两把刀：遗传算法与学习曲线外推 | published | 1259.7 | yes | ok | 5 | BV1uy4t6cEgu |
+| tsint-52-meta-learning-task-library | 把 300 只股票当成 300 个任务：元学习选模型 | published | 1206.4 | yes | ok | 5 | BV1sx4i6LEfU |
+| tsint-53-ensemble-average-iter | 平均能赢平均，赢不过最强 | published | 1136.0 | yes | ok | 5 | BV1xW4i62E1A |
+| tsint-54-darts-differentiable-search | 把架构搜索变成可微：DARTS 与三层搜索空间 | published | 1598.8 | yes | ok | 5 | BV1xW4i62EpX |
+| tsint-55-generalizable-search | 省算力的三种剪枝：子空间、比较器与组合预测器 | published | 1232.4 | yes | ok | 5 | BV1Wb4i6VEKu |
+| tsint-56-ensemble-ga-krr | 先筛模型再调权：遗传算法筛选 + 核岭回归融合 | published | 1281.2 | yes | ok | 5 | BV1N44i61EJz |
+| tsint-57-tokenization-trio | 把序列切成块：Patch、周期、分辨率前缀 | published | 1075.7 | yes | ok | 5 | BV16R4v6iEED |
+| tsint-58-channel-strategies | 通道独立还是混合：一个由相关性决定的选择题 | published | 1235.4 | yes | ok | 5 | BV16R4v6iEwJ |
+| tsint-59-mini-foundation-loop | 一万个参数的「基础模型」：掩码重建 + 线性头 + 少样本 | published | 1619.1 | yes | ok | 5 | BV1694v6TE2K |
+| tsint-60-ar-vs-nar-decoding | 一步一步还是一口气：自回归与非自回归解码 | published | 1310.3 | yes | ok | 5 | BV1BZ4v6eEbG |
+| tsint-61-probabilistic-heads | 不止一个数：分位损失、分位线交叉与分布头 | published | 1194.9 | yes | ok | 5 | BV1fo4v6NEoM |
+| tsint-62-anomaly-two-ways | 两种异常，两条路：预测残差与重构误差 | published | 1155.8 | yes | ok | 5 | BV1zo4v6NEWR |
+| tsint-63-image-encoding | 把序列画成图：GAF 与 MTF 的可逆性边界 | published | 1111.5 | yes | ok | 5 | BV1pU4v6rECf |
+| tsint-64-llm-side-adapters | 只训练 0.1% 的参数：线性探测、LoRA 与语义锚点 | published | 1053.5 | yes | ok | 5 | BV1Pm4v6GEVN |
+| tsint-65-error-metrics-trio | 误差三件套：同一组预测，MSE 涨 4 倍而 MAE 一动不动 | published | 756.6 | yes | ok | 5 | BV1cQ4v6zEQT |
+| tsint-66-anomaly-metrics-auc | 不平衡数据上的三门考卷：Acc 0.99 的模型其实什么都没学到 | published | 699.0 | yes | ok | 5 | BV1wQ4v6zEsL |
+| tsint-67-split-no-leakage | 切数据的三条规矩：一次 shuffle 就让你的 MSE 好两个数量级 | published | 1365.0 | yes | ok | 5 | BV1kD4v6uExy |
+| tsint-68-fewshot-and-cost | 5% 的样本怎么选：Few-shot 采样器与它的成本账 | published | 1123.8 | yes | ok | 5 | BV1eT4i6tEBj |
+| tsint-69-hexbin-balance-audit | 你的基准数据集均衡吗：PCA 投影 + Hexbin 密度图 | published | 961.4 | yes | ok | 5 | BV1vN4i6fEiV |
+| tsint-70-ode-solvers-from-scratch | 欧拉法把弹簧算成了永动机 | published | 677.0 | yes | ok | 5 | BV1vK4i6FEk7 |
+| tsint-71-learn-dynamics-from-data | 把 k 换成一张表：参数辨识与 Neural ODE 前向 | published | 614.9 | yes | ok | 5 | BV1Yg4i6xEHG |
+| tsint-72-backprop-through-solver | 两种反向传播：把 200 步求解器摊开，还是在时间里倒着积分 | published | 625.3 | yes | ok | 5 | BV1YM4i6oEoj |
+| tsint-73-variants-beyond-solver | 不求解器也能算：CfC 的闭式解与灰色 GM-ODE | published | 734.1 | yes | ok | 5 | BV19M4i6oExn |
+| tsint-74-fidelity-tv-and-dtw | 别只看 MSE：总变差正则与 DTW 保真度 | published | 763.8 | yes | ok | 5 | BV1qc4i6aEww |

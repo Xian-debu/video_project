@@ -30,7 +30,7 @@ singles/<id>/                # 单集，一部一个目录
   src/                       # Remotion 组件与 script.ts（挂到引擎 src/<id>/）
   data/                      # 输入数据与生成的派生物（挂到引擎 data/<id>/）
   assets/public/             # staticFile 根（挂到引擎 public/<id>/）
-  assets/audio/              # narration.wav 入库；clips/ 是 TTS 中间产物，忽略
+  assets/audio/              # narration.wav 是派生资产（build/tts_narration.py 生成，不入库）；clips/ 是 TTS 中间产物，忽略
   build/                     # 数据生成、TTS、Blender 等脚本（cwd=pack 运行）
   docs/                      # 这部片子的制作笔记（plan.md 等）
   delivery/                  # 交付产物：mp4 / srt / chapters / cover / report（mp4 忽略）

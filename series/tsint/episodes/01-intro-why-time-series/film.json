@@ -19,7 +19,11 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-01",
-  "status": "ready",
+  "status": "published",
+  "bili": {
+    "bv": "BV11oxZ66E2f",
+    "url": "https://www.bilibili.com/video/BV11oxZ66E2f/"
+  },
   "narration": "assets/audio/narration.wav",
   "audio": {
     "music": null,

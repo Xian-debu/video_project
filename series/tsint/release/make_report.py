@@ -123,7 +123,10 @@ def main():
     L.append('       --ledger /root/video_project/series/tsint/release/ledger.json --from 1 --to 74 \\')
     L.append('       --gap-ms 90000 --rate-wait-ms 900000 --rate-retries 4 --yes')
     L.append('     python3 series/tsint/release/audit_published.py --from 1 --to 74 --json > /tmp/audit.json')
-    L.append('     python3 series/tsint/release/backfill_status.py')
+    L.append('     python3 series/tsint/release/backfill_status.py        # ledger.json -> film.json{status,bili}')
+    L.append('     node tools/status.mjs --md > STATUS.md                 # -> STATUS.md（投影，勿手改）')
+    L.append('     node tools/status.mjs --check                          # 投影一致性门禁')
+    L.append('     python3 series/tsint/release/verify_release_state.py   # ledger / film.json / manifest 交叉校验')
     L.append('     python3 series/tsint/release/make_report.py --audit /tmp/audit.json')
     L.append('')
     out = args.out

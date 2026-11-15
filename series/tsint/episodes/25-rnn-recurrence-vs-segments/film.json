@@ -19,7 +19,11 @@
   "height": 1080,
   "fps": 30,
   "prefix": "tsint-25-rnn-recurrence-vs-segments",
-  "status": "ready",
+  "status": "published",
+  "bili": {
+    "bv": "BV15BxZ6XEwt",
+    "url": "https://www.bilibili.com/video/BV15BxZ6XEwt/"
+  },
   "paper": null,
   "claims": null,
   "derive": [],
@@ -37,7 +41,6 @@
   "docs": [
     "docs/plan.md"
   ],
-  "bili": null,
   "assetsStatus": "complete",
   "notes": "units: ch3-rnn, ch3-segrnn",
   "paths": {

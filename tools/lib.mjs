@@ -281,6 +281,9 @@ export function validateFilm(film, ctx, errors, warnings) {
       err(`derived[${i}] must live under data/`);
     }
   });
+  if (Array.isArray(film.derived) && film.derived.length && Array.isArray(film.derive) && film.derive.length === 0) {
+    warn("derived outputs are declared but no derive command is given (method not in repo)");
+  }
   if (film.narration !== null && film.narration !== undefined) {
     if (relSafe(film.narration, "narration", errors) && !film.narration.startsWith("assets/audio/")) {
       err("narration must live under assets/audio/");
@@ -316,7 +319,9 @@ export function validateFilm(film, ctx, errors, warnings) {
 
 // ---------- physical checks ----------
 
-export function checkPack(filmEntry, root, errors, warnings) {
+export function checkPack(filmEntry, root, errors, warnings, opts = {}) {
+  const wantAssets = !!opts.assets;   // --assets: 交付机/出片前的资产检查（narration.wav、mp4 必须在）
+
   const { packAbs, packRel, film } = filmEntry;
   const err = (m) => errors.push(`${packRel}: ${m}`);
   const need = (p, label, optional = false) => {
@@ -343,7 +348,14 @@ export function checkPack(filmEntry, root, errors, warnings) {
   need("assets/public", "assets/public", true);
   need("delivery", "delivery");
   for (const d of film.docs || []) need(d, "docs file");
-  if (film.narration) need(film.narration, "narration");
+  // narration 与 delivery 成品是派生资产：默认（源码模式）只要求"方法在库"，
+  // 干净克隆也能过；--assets（交付模式）才要求文件真实存在。见 docs/CLOSEOUT-PLAN §2 D5/D6。
+  if (film.narration && wantAssets) need(film.narration, "narration");
+  if (wantAssets) {
+    const delivAbs = join(packAbs, film.delivery || "delivery");
+    const hasMp4 = existsSync(delivAbs) && readdirSync(delivAbs).some((n) => n.endsWith(".mp4"));
+    if (!hasMp4) err(`delivery has no .mp4 (run make/publish first): ${film.delivery}/`);
+  }
   if (film.claims) for (const k of ["ledger", "paper"]) need(film.claims[k], `claims.${k}`);
   for (const d of film.derive || []) {
     if (d.outputs) for (const o of d.outputs) relSafe(o, "derive.output", errors);
@@ -504,12 +516,12 @@ export function checkPlates(filmEntry, root, errors, warnings) {
   }
 }
 
-export function checkRepo(root = REPO_ROOT) {
+export function checkRepo(root = REPO_ROOT, opts = {}) {
   const catalogResult = loadCatalog(root);
   const errors = [...catalogResult.errors];
   const warnings = [...catalogResult.warnings];
   if (catalogResult.catalog) {
-    for (const f of catalogResult.films) { checkPack(f, root, errors, warnings); checkPlates(f, root, errors, warnings); }
+    for (const f of catalogResult.films) { checkPack(f, root, errors, warnings, opts); checkPlates(f, root, errors, warnings); }
     checkCatalogConsistency(catalogResult, root, errors);
   }
   // root files
@@ -517,6 +529,50 @@ export function checkRepo(root = REPO_ROOT) {
     if (!isFile(join(root, f))) errors.push(`root file missing: ${f}`);
   }
   return { ...catalogResult, errors, warnings };
+}
+
+// ---------- release facts (single source of truth for published state) ----------
+// ledger.json   = 发布事实（bvid / url / submittedAt），只由发布动作写
+// manifest.json = 成品度量（videoBytes / videoSha256 / durationSec），只由交付动作写
+// film.json / STATUS.md 都是投影：见 series/tsint/release/backfill_status.py 与 tools/status.mjs
+
+export function seriesDirs(root = REPO_ROOT) {
+  const dir = join(root, "series");
+  if (!isDir(dir)) return [];
+  return readdirSync(dir, { withFileTypes: true })
+    .filter((e) => e.isDirectory())
+    .map((e) => ({ id: e.name, abs: join(dir, e.name), rel: `series/${e.name}` }))
+    .sort((a, b) => a.id.localeCompare(b.id));
+}
+
+export function loadReleaseFacts(root = REPO_ROOT) {
+  const facts = { manifests: new Map(), ledgers: new Map(), epByOrder: new Map(), bvById: new Map(), errors: [] };
+  for (const s of seriesDirs(root)) {
+    const mFile = join(s.abs, "release/manifest.json");
+    const lFile = join(s.abs, "release/ledger.json");
+    if (isFile(mFile)) {
+      let m = null;
+      try { m = readJson(mFile); } catch (e) { facts.errors.push(`${s.rel}/release/manifest.json: ${e.message}`); }
+      if (m) {
+        facts.manifests.set(s.id, m);
+        for (const e of m.episodes || []) facts.epByOrder.set(`${s.id}:${e.order}`, e);
+      }
+    }
+    if (isFile(lFile)) {
+      let l = null;
+      try { l = readJson(lFile); } catch (e) { facts.errors.push(`${s.rel}/release/ledger.json: ${e.message}`); }
+      if (l) {
+        facts.ledgers.set(s.id, l);
+        const eps = (facts.manifests.get(s.id) || {}).episodes || [];
+        for (const [key, led] of Object.entries(l.episodes || {})) {
+          const order = led.order || Number(key);
+          const ep = eps.find((e) => e.order === order);
+          if (ep && led.bvid) facts.bvById.set(ep.id, led.bvid);
+        }
+      }
+    }
+  }
+  return facts;
 }
 
 export function formatErrors(errors) {

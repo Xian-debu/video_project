@@ -27,14 +27,33 @@
 - `paths` 固定为 `{"src":"src","data":"data","public":"assets/public"}`；不要自创第四种。
   pack 的 `data/` 挂载到引擎 `data/<id>/`，所以组件里仍写 `../../data/<id>/...`。
 - `derived`：可再生成的路径（pack 相对，如 `data/sim.json`），必须被 gitignore；提交前 `git ls-files` 必须为空。
-- `narration`：入股的 `assets/audio/narration.wav`，或 `null`（静音片）。TTS 中间件在
-  `assets/audio/clips/`，永不入库。
+- `narration`：`assets/audio/narration.wav`，或 `null`（静音片）。它是**派生资产**：由
+  `build/tts_narration.py` 从 `data/lines.json` + `voice.json` 生成，被 `.gitignore` 排除；
+  `assets/audio/clips/` 是 TTS 中间产物，同样永不入库。判断"这一集有没有配音"看 `narration`
+  字段与生成脚本，不看本机是否有 wav（干净克隆没有 wav 是正常的，`check.mjs` 源码模式不要求它）。
 - `delivery`：交付目录。`*.mp4` 不入库，`*.srt / *.chapters.txt / *.ffmeta.txt / cover.png /
   report.json` 入库（体积小、可审计）。**出片后必须把引擎 `out/<id>/` 里的全部产物搬回这里**：
   成片 mp4、`programme_unnorm.mp4`、`raw_video.mp4`、`mix.wav`、`score.wav`、`score.meta.json`、
   `report.json`、`scenes/`、`stills/`。引擎仓 `out/<id>/` 只是临时工作区，搬完即删，不得留存
   片名相关产物（§0：引擎不知道任何片名）。漏搬 = 该集未交付。
 - `status`：`draft → ready → published`（`retired` 为下架）。`published` 必须有 `bili.bv`。
+
+### 交付目录的保留策略（2026-11-15 收尾修订）
+
+上面"搬回 delivery/"是**生产期义务**（防止引擎 `out/` 被清时丢产物），不等于"永久保留"。
+成品凭据（交付过没有、能不能复核）由 `series/<sid>/release/manifest.json` 承担：
+`videoBytes`、`videoSha256`、`durationSec`、`coverSha256`，配合 `ledger.json` 的 `bvid`。因此：
+
+- **必须入库**：`src/`、`build/`、`data/`（输入）、`film.json`、`docs/`，以及 `delivery/` 里的
+  `*.srt / *.chapters.txt / *.ffmeta.txt / cover.png / report.json`。
+- **可再生、可不保留**：`delivery/*.mp4`、`programme_unnorm.mp4`、`raw_video.mp4`、`mix.wav`、
+  `score.wav`、`score.meta.json`、`scenes/`、`stills/`、`assets/audio/narration.wav`、
+  `assets/audio/clips/*.mp3`。清理需三条同时成立：①`manifest.json` 有该集 `videoSha256` +
+  `videoBytes` + `durationSec`；②`ledger.json` 有该集 `bvid`；③`build/`（或 `film.json` 的
+  `derive`）里留着重建它的命令。清理动作必须走脚本（`tools/archive.mjs`，默认 dry-run），
+  不允许手写 `rm`；每次清理前后记 `du`，并跑 `node tools/check.mjs` 复验。
+- **门禁双模式**：`node tools/check.mjs`（源码模式，任何克隆都应 0 error）与
+  `node tools/check.mjs --assets`（出片/交付机，要求 narration.wav 与 `delivery/*.mp4` 在场）。
 
 ## 2. 路径与命名空间
 
