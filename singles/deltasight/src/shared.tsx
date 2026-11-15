@@ -3,7 +3,7 @@ import { interpolate, useCurrentFrame } from "remotion";
 import { C, FONT, FT, FT_T, G } from "../design/tokens";
 import { ChapterBar, SceneShell } from "../design/Scene";
 import { SourcePlate } from "../design/SourcePlate";
-import { SCENES, LINES, FPS } from "./script";
+import { SCENES, LINES, FPS, PLATES } from "./script";
 import simJson from "../../data/deltasight/sim.json";
 import adcJson from "../../data/deltasight/adc.json";
 import evalJson from "../../data/deltasight/eval.json";
@@ -39,9 +39,12 @@ type PlateDoc = {
   plates: { id: string; file: string; doc: string; page: string; figure: string; attribution: string; license: string; width?: number; height?: number }[];
 };
 const FIG = figuresJson as unknown as PlateDoc;
+/** 场景里用 script.ts 的 PLATES 短键（fig1），这里解析成 data/source-figures.json 的 id。 */
 export const plate = (id: string) => {
-  const p = FIG.plates.find((x) => x.id === id);
-  if (!p) throw new Error("plate not in data/source-figures.json: " + id);
+  const mapped = (PLATES as Record<string, string>)[id] ?? id;
+  const key = mapped.split("/").pop() ?? mapped;
+  const p = FIG.plates.find((x) => x.id === key);
+  if (!p) throw new Error("plate not in data/source-figures.json: " + id + " -> " + key);
   return p;
 };
 
@@ -139,7 +142,7 @@ export const Plate: React.FC<{
       width={width}
       nativeW={p.width ?? 1000}
       nativeH={p.height ?? 400}
-      badge={p.figure.replace(/^§?\d+(\.\d+)?\s*/, "")}
+      badge={p.doc}
       caption={caption}
       attribution={p.attribution}
       highlight={highlight}
@@ -251,8 +254,8 @@ export const BitWeights: React.FC<{ code?: string; at?: number; cell?: number; s
 
 /** 水平条形：一组带标签的数值，同一条基线。 */
 export const Bars: React.FC<{
-  rows: { label: string; value: number; color?: string; note?: string }[]; max: number; w?: number; at?: number; unit?: string; rowH?: number;
-}> = ({ rows, max, w = 720, at = 0, unit = "", rowH = 44 }) => {
+  rows: { label: string; value: number; color?: string; note?: string }[]; max: number; w?: number; at?: number; unit?: string; rowH?: number; digits?: number;
+}> = ({ rows, max, w = 720, at = 0, unit = "", rowH = 44, digits = 2 }) => {
   const f = useCurrentFrame();
   return (
     <div style={{ width: w }}>
@@ -262,7 +265,7 @@ export const Bars: React.FC<{
           <div key={r.label} style={{ marginBottom: 14 }}>
             <div style={{ display: "flex", justifyContent: "space-between", fontFamily: FONT.sans, fontSize: FT.label, color: C.inkDim, marginBottom: 4 }}>
               <span>{r.label}</span>
-              <Mono size={FT.label} color={r.color ?? C.ink}>{(r.value * p).toFixed(2)}{unit}</Mono>
+              <Mono size={FT.label} color={r.color ?? C.ink}>{(r.value * p).toFixed(digits)}{unit}</Mono>
             </div>
             <div style={{ height: rowH * 0.42, background: C.panel, borderRadius: 4, overflow: "hidden" }}>
               <div style={{ width: (r.value / max) * 100 * p + "%", height: "100%", background: r.color ?? C.cyan, opacity: 0.85 }} />
