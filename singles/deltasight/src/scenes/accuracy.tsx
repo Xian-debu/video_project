@@ -45,10 +45,10 @@ const ReadRow: React.FC<{
   const f = useCurrentFrame();
   const show = (t: number, dur = 12) => pct(f, t, t + dur);
   return (
-    <div style={{ display: "flex", alignItems: "center", padding: "6px 0", borderBottom: "1px solid " + C.panelLine }}>
-      <div style={{ width: 150, fontFamily: FONT.sans, fontSize: FT.label, color: C.inkDim, opacity: show(at) }}>{model}</div>
-      <div style={{ width: 100, fontFamily: FONT.mono, fontSize: FT.mono, color: C.inkFaint, opacity: show(at) }}>{f2(base)}</div>
-      <div style={{ width: 40, fontFamily: FONT.mono, fontSize: FT.meta, color: C.inkFaint, opacity: show(at) }}>→</div>
+    <div style={{ display: "flex", alignItems: "center", padding: "6px 0", borderBottom: "1px solid " + C.panelLine, opacity: show(at) }}>
+      <div style={{ width: 150, fontFamily: FONT.sans, fontSize: FT.label, color: C.inkDim }}>{model}</div>
+      <div style={{ width: 100, fontFamily: FONT.mono, fontSize: FT.mono, color: C.inkFaint }}>{f2(base)}</div>
+      <div style={{ width: 40, fontFamily: FONT.mono, fontSize: FT.meta, color: C.inkFaint }}>→</div>
       <div
         style={{
           width: 104,
@@ -61,7 +61,7 @@ const ReadRow: React.FC<{
       >
         {f2(ds)}
       </div>
-      <div style={{ flex: 1, display: "flex", justifyContent: "flex-end", opacity: rightAt > 0 ? show(rightAt) : 1 }}>{right}</div>
+      <div style={{ flex: 1, display: "flex", justifyContent: "flex-end", opacity: rightAt > 0 ? show(rightAt, 12) : 1 }}>{right}</div>
     </div>
   );
 };

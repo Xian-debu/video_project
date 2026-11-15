@@ -71,22 +71,26 @@ export const SEnergy: React.FC = () => {
       {/* 右下：代价卡 —— 相似识别不是免费的，但账仍然划算 */}
       <div style={{ position: "absolute", left: 1016, top: 580, width: 832, opacity: show(at(6), 18) }}>
         <Card label="代价 · 相似识别本身不是免费的" accent={C.coral} pad={24}>
-          <div style={{ display: "flex", gap: 20 }}>
-            <div style={{ flex: 1, opacity: show(at(7), 14) }}>
-              <Num value={SI.vidPct} unit="%" size={FT.num} color={C.coral} label="VID 的传感器功耗占比" />
+          {show(at(7)) > 0 ? (
+            <div style={{ display: "flex", gap: 20 }}>
+              <div style={{ flex: 1, opacity: show(at(7), 14) }}>
+                <Num value={SI.vidPct} unit="%" size={FT.num} color={C.coral} label="VID 的传感器功耗占比" />
+              </div>
+              <div style={{ flex: 1, opacity: show(at(7) + 8, 14) }}>
+                <Num value={SI.nfsPct} unit="%" size={FT.num} color={C.coral} label="NFS 的传感器功耗占比" />
+              </div>
+              <div style={{ flex: 1, opacity: show(at(8), 14) }}>
+                <Num value={SI.baseFullPct} unit="%" size={FT.num} color={C.amber} label={BUDGET} />
+              </div>
             </div>
-            <div style={{ flex: 1, opacity: show(at(7) + 8, 14) }}>
-              <Num value={SI.nfsPct} unit="%" size={FT.num} color={C.coral} label="NFS 的传感器功耗占比" />
+          ) : null}
+          {show(at(9)) > 0 ? (
+            <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid " + C.panelLine, opacity: show(at(9), 16) }}>
+              <span style={{ fontFamily: FONT.serif, fontSize: FT.h2, color: C.ink }}>
+                花<span style={{ color: C.amber }}>一成多</span>的能量，省<span style={{ color: C.cyan }}>两倍多</span>的能耗——这笔账划算。
+              </span>
             </div>
-            <div style={{ flex: 1, opacity: show(at(8), 14) }}>
-              <Num value={SI.baseFullPct} unit="%" size={FT.num} color={C.amber} label={BUDGET} />
-            </div>
-          </div>
-          <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid " + C.panelLine, opacity: show(at(9), 16) }}>
-            <span style={{ fontFamily: FONT.serif, fontSize: FT.h2, color: C.ink }}>
-              花<span style={{ color: C.amber }}>一成多</span>的能量，省<span style={{ color: C.cyan }}>两倍多</span>的能耗——这笔账划算。
-            </span>
-          </div>
+          ) : null}
         </Card>
       </div>
     </Scene>
