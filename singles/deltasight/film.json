@@ -14,7 +14,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "deltasight",
-  "status": "draft",
+  "status": "ready",
   "paper": {
     "title": "DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination",
     "authors": [

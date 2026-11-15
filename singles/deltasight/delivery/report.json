@@ -1,0 +1,265 @@
+{
+  "generatedAt": "2026-11-15T15:46:26.262Z",
+  "composition": "Deltasight",
+  "film": {
+    "id": "deltasight",
+    "pack": "singles/deltasight",
+    "series": null
+  },
+  "out": "../video_project/singles/deltasight/delivery",
+  "stages": [
+    {
+      "name": "content check",
+      "command": "node scripts/films.mjs check --strict",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film coverage",
+      "command": "node scripts/qa/film_coverage.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derive data",
+      "command": "node scripts/qa/derive_data.mjs --film=deltasight",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "sync mounts",
+      "command": "node scripts/films.mjs sync",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "derived check",
+      "command": "node scripts/qa/derived_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "design contract",
+      "command": "python3 scripts/qa/design_check.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "type ratchet",
+      "command": "python3 scripts/qa/type_ratchet.py",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "film isolation",
+      "command": "node scripts/qa/film_isolation.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "typecheck",
+      "command": "npx tsc --noEmit",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "claims check",
+      "command": "node scripts/qa/claims_check.mjs --film=deltasight",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "docs check",
+      "command": "node scripts/qa/docs_check.mjs",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe composition",
+      "command": "npx remotion compositions src/index.ts",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (stem)",
+      "command": "python3 scripts/qa/music_gate.py --music /root/video_project/singles/deltasight/delivery/score.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "render (picture only, scene segments)",
+      "command": "node scripts/render_scenes.mjs --composition=Deltasight --script=src/deltasight/script.ts --out=/root/video_project/singles/deltasight/delivery/scenes --output=/root/video_project/singles/deltasight/delivery/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "probe duration",
+      "command": "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 /root/video_project/singles/deltasight/delivery/raw_video.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 45",
+      "command": "npx remotion still Deltasight /root/video_project/singles/deltasight/delivery/stills/frame_45.png --frame=45 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 2048",
+      "command": "npx remotion still Deltasight /root/video_project/singles/deltasight/delivery/stills/frame_2048.png --frame=2048 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 9216",
+      "command": "npx remotion still Deltasight /root/video_project/singles/deltasight/delivery/stills/frame_9216.png --frame=9216 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still frame 16383",
+      "command": "npx remotion still Deltasight /root/video_project/singles/deltasight/delivery/stills/frame_16383.png --frame=16383 --props={\"music\":null,\"narration\":null} --log=error",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "still lint",
+      "command": "node scripts/qa/still_lint.mjs --compositions=Deltasight --frames=45,2048,9216,16383",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mix",
+      "command": "node scripts/audio/mix.mjs --narration /root/video_project/singles/deltasight/assets/audio/narration.wav --music /root/video_project/singles/deltasight/delivery/score.wav --out /root/video_project/singles/deltasight/delivery/mix.wav --music-gain-db=0",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "music gate (mix)",
+      "command": "python3 scripts/qa/music_gate.py --mix /root/video_project/singles/deltasight/delivery/mix.wav --narration /root/video_project/singles/deltasight/assets/audio/narration.wav",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "mux",
+      "command": "ffmpeg -y -v error -i /root/video_project/singles/deltasight/delivery/raw_video.mp4 -i /root/video_project/singles/deltasight/delivery/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest /root/video_project/singles/deltasight/delivery/programme_unnorm.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "loudnorm",
+      "command": "bash scripts/audio/loudnorm.sh /root/video_project/singles/deltasight/delivery/programme_unnorm.mp4 /root/video_project/singles/deltasight/delivery/Deltasight.mp4",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "flicker gate",
+      "command": "python3 scripts/qa/luma_blink.py /root/video_project/singles/deltasight/delivery/Deltasight.mp4 --thresh 12 --region full --cut-frames 1152,2567,3981,5374,6950,8448,10385,11690,13425,14811,16604,18056,19485",
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "name": "publish",
+      "command": "node scripts/export/publish.mjs --composition=Deltasight --script=src/deltasight/script.ts --prefix=deltasight --cover-frame=180",
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "numbers": {
+    "tree": "0bb423e66d10c84b",
+    "seconds": 682.63,
+    "scoreReused": true,
+    "stem": {
+      "mode": "stem",
+      "path": "/root/video_project/singles/deltasight/delivery/score.wav",
+      "full_median_db": -25.08,
+      "audible_median_db": -27.86,
+      "audible_share": 0.631,
+      "sub_share": 0.068,
+      "pass": true
+    },
+    "segments": {
+      "reused": 0,
+      "rendered": 14,
+      "scenes": 14,
+      "frames": 20479
+    },
+    "renderedSeconds": 682.633,
+    "mix": {
+      "out": "/root/video_project/singles/deltasight/delivery/mix.wav",
+      "sampleRate": 48000,
+      "seconds": 684.83,
+      "narrationSeconds": 683.63,
+      "musicSeconds": 683,
+      "musicGainDb": 0,
+      "duckDb": 4.5,
+      "ducked": "61.1%",
+      "fadeIn": 1.5,
+      "fadeOut": 2.5,
+      "peakDbFS": -2.09,
+      "peakBeforeLimitDbFS": -2.09,
+      "rmsDbFS": -19.75,
+      "musicOnlyPeakDbFS": -10.18,
+      "preGain": 1
+    },
+    "mixGate": {
+      "mode": "mix",
+      "mix": "/root/video_project/singles/deltasight/delivery/mix.wav",
+      "narration": "/root/video_project/singles/deltasight/assets/audio/narration.wav",
+      "speech_db": -15.61,
+      "gap_full_db": -26.39,
+      "gap_audible_db": -29.17,
+      "bed_contribution_db": 40.8,
+      "pass": true
+    },
+    "I": -15,
+    "TP": -2,
+    "flicker": {
+      "meanAbsDelta": 0.0453,
+      "p99": 0.2389,
+      "max": 50.34,
+      "cutFrames": [
+        1152,
+        2567,
+        3981,
+        5374,
+        6950,
+        8448,
+        10385,
+        11690,
+        13425,
+        14811,
+        16604,
+        18056,
+        19485
+      ]
+    },
+    "exports": [
+      "deltasight.srt",
+      "deltasight.chapters.txt",
+      "deltasight.chapters.ffmeta.txt",
+      "cover.png"
+    ],
+    "content": {
+      "id": "deltasight",
+      "pack": "singles/deltasight",
+      "commit": "75b8e74a558f5e543a96cabc11be92b1696c07c1",
+      "dirty": 4
+    },
+    "inputs": {
+      "src": {
+        "files": 1031,
+        "sha256": "6d40613fe2a4a51a"
+      },
+      "data": {
+        "files": 569,
+        "sha256": "b183e801516856c7"
+      },
+      "scripts": {
+        "files": 47,
+        "sha256": "46f9d90af99ba82b"
+      }
+    }
+  },
+  "pass": true
+}
