@@ -13,9 +13,14 @@
 """
 import argparse, hashlib, json, os, sys
 
+from PIL import Image
+
 PAPER = "/root/tex_project/my_prof_12/jd1/01-source/3770743.3804070.pdf"
 DPI = 300
 LICENSE = "CC-BY-4.0"
+# 上下白边（占图片宽度的比例）：见 crop 之后那段注释
+PAD_TOP = 0.04
+PAD_BOTTOM = 0.055
 SOURCE = "Qinyu Wang, Cen Chen, Jingkai Huang, Yawen Qiu, Hongen Shao, Xiaofeng Zou, Ziqian Zeng. DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination. DAC '26, Long Beach, CA, USA. DOI 10.1145/3770743.3804070. CC-BY-4.0."
 
 # (id, page, x0, y0, x1, y1, doc, figure, note)
@@ -25,7 +30,7 @@ RECTS = [
     ("fig1-pipeline", 1, 322, 381, 600, 479, "§1 Fig.1",
      "Processing pipeline of a visual AIoT system",
      "sensing（像素阵列→ADC→ISP）→ transmission（MIPI）→ computing（模型）；右下角是 4-bit SAR ADC 的 0/1/3/4 bit 示例"),
-    ("fig2-pruning", 2, 316, 78, 565, 139, "§2.3 Fig.2",
+    ("fig2-pruning", 2, 316, 78, 565, 140.5, "§2.3 Fig.2",
      "(a) pruning-rate vs mAP; (b) noise injection in different regions",
      "M1 与 M2 的原始证据：(a) 剪掉 60% 以上精度几乎不变；(b) 目标区域加噪掉点、非目标区域加噪几乎不掉"),
     ("fig3-scenes", 3, 66, 255, 290, 367, "§3 Fig.3",
@@ -102,6 +107,18 @@ def main():
         name = "p%d-%s.png" % (pg, pid)
         path = os.path.join(args.plates_dir, name)
         pix.save(path)
+        # 白边：引擎的 SourcePlate 把「原文」徽标压在左上、把出处条压在图片底部约 26 渲染像素上，
+        # 贴底内容（fig2 的 x 轴标签、fig3 的采样精度图例）会被盖住。这里只加白、不动内容：
+        # 徽标与出处条落在白边上，缩放到任意渲染宽度都留出余量。
+        # pad_top = 0.028、pad_bottom = 0.05 都是按渲染宽度 780–980 px 反推的（26 px / 780 px ≈ 3.3%）。
+        _img = Image.open(path).convert("RGB")
+        _w, _h = _img.size
+        _pt = int(round(PAD_TOP * _w))
+        _pb = int(round(PAD_BOTTOM * _w))
+        _canvas = Image.new("RGB", (_w, _h + _pt + _pb), (255, 255, 255))
+        _canvas.paste(_img, (0, _pt))
+        _canvas.save(path)
+        pix_w, pix_h = _canvas.size
         # 黄像素自检：纸面本身没有高亮黄，超过 0.2% 说明批注被压平进了内容
         samples = pix.samples
         n = pix.width * pix.height
@@ -127,13 +144,13 @@ def main():
             "license": LICENSE,
             "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.%d, %s, CC-BY-4.0" % (pg, sec.split(" ")[1]),
             "note": note,
-            "width": pix.width,
-            "height": pix.height,
+            "width": pix_w,
+            "height": pix_h,
             "_sha256_16": sha,
             "_yellow_pct": round(frac * 100, 4),
             "_bytes": size,
         })
-        print("plate %-16s p%d %4dx%-4d %6.1f KB yellow=%.3f%% sha=%s" % (pid, pg, pix.width, pix.height, size / 1024.0, frac * 100, sha))
+        print("plate %-16s p%d %4dx%-4d %6.1f KB yellow=%.3f%% sha=%s" % (pid, pg, pix_w, pix_h, size / 1024.0, frac * 100, sha))
 
     manifest = {
         "schemaVersion": 1,

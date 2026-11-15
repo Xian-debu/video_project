@@ -13,10 +13,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.1, Fig.1, CC-BY-4.0",
       "note": "sensing（像素阵列→ADC→ISP）→ transmission（MIPI）→ computing（模型）；右下角是 4-bit SAR ADC 的 0/1/3/4 bit 示例",
       "width": 1159,
-      "height": 409,
-      "_sha256_16": "846021c457c992d2",
+      "height": 519,
+      "_sha256_16": "d0027094b4de9950",
       "_yellow_pct": 0.0283,
-      "_bytes": 80935
+      "_bytes": 95758
     },
     {
       "id": "fig2-pruning",
@@ -29,10 +29,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.2, Fig.2, CC-BY-4.0",
       "note": "M1 与 M2 的原始证据：(a) 剪掉 60% 以上精度几乎不变；(b) 目标区域加噪掉点、非目标区域加噪几乎不掉",
       "width": 1039,
-      "height": 255,
-      "_sha256_16": "f25f6f5aad9a364f",
+      "height": 360,
+      "_sha256_16": "abf6e5018c3400e2",
       "_yellow_pct": 0.0,
-      "_bytes": 34979
+      "_bytes": 42892
     },
     {
       "id": "fig3-scenes",
@@ -45,10 +45,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.3, Fig.3, CC-BY-4.0",
       "note": "① Appearing ② Moving ③ Disappearing 三列；第三行是 masking 结果，底部图例只有三种精度：high / low / skip",
       "width": 934,
-      "height": 468,
-      "_sha256_16": "f39aabbdd0fbf0bc",
+      "height": 556,
+      "_sha256_16": "26335a024bbda742",
       "_yellow_pct": 0.1716,
-      "_bytes": 267847
+      "_bytes": 202585
     },
     {
       "id": "fig5-arch",
@@ -61,10 +61,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.3, Fig.5, CC-BY-4.0",
       "note": "(a) 三层堆栈：Pixel Array / ADC-Readout / In-sensor NPU 经 μTSV 竖直相连、再经 MIPI CSI 到 Host Processor；(b) 标准 5T 像素；(c) 提出来的可重构 ADC（Cτ 用红线圈出）",
       "width": 963,
-      "height": 584,
-      "_sha256_16": "805f5d25a4c34221",
+      "height": 676,
+      "_sha256_16": "fe31b14a2b9f6cda",
       "_yellow_pct": 0.0894,
-      "_bytes": 99286
+      "_bytes": 117192
     },
     {
       "id": "fig6-cdac",
@@ -77,10 +77,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.4, Fig.6, CC-BY-4.0",
       "note": "三阶段：① current-frame sampling and holding ② previous-frame reconstruction（SRAM 码打回 CDAC）③ threshold comparison（Cτ 注入 ±τ）",
       "width": 1959,
-      "height": 414,
-      "_sha256_16": "17be2c575d208110",
+      "height": 600,
+      "_sha256_16": "832d571b8c6bea4a",
       "_yellow_pct": 0.0,
-      "_bytes": 125415
+      "_bytes": 155688
     },
     {
       "id": "fig7-block",
@@ -93,10 +93,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.5, Fig.7, CC-BY-4.0",
       "note": "16×32 读出域 = 两个相邻块组；每列组 16 列并行可重构 ADC；blk_sel 控制 2:1 MUX；col_en 逐列门控；右侧 switch box/connection box 做跨域路由",
       "width": 951,
-      "height": 526,
-      "_sha256_16": "28f9d28b56d7c84a",
+      "height": 616,
+      "_sha256_16": "0b4e0908a70c5000",
       "_yellow_pct": 0.0168,
-      "_bytes": 64344
+      "_bytes": 80006
     },
     {
       "id": "table1-accuracy",
@@ -109,10 +109,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.6, Table, CC-BY-4.0",
       "note": "六次实验的 mAP 与 skip；注意 NFS 的 ViTDeT-B/L 是下降的（−0.50 / −0.88）",
       "width": 1042,
-      "height": 409,
-      "_sha256_16": "70373152f5d840cb",
+      "height": 508,
+      "_sha256_16": "ad90dae1f81e1472",
       "_yellow_pct": 0.0,
-      "_bytes": 70359
+      "_bytes": 83266
     },
     {
       "id": "fig9-energy",
@@ -125,10 +125,10 @@
       "attribution": "Qinyu Wang et al., DeltaSight, DAC'26, p.6, Fig.9, CC-BY-4.0",
       "note": "两张子图 ImageNet-VID / NFS，四组柱：sensing / transmission / computation / E2E system；NFS 的节省更多（帧率更高、时序冗余更大）",
       "width": 1026,
-      "height": 234,
-      "_sha256_16": "c396d4d8ae077398",
+      "height": 331,
+      "_sha256_16": "1b3168792e366a55",
       "_yellow_pct": 0.0,
-      "_bytes": 24027
+      "_bytes": 28699
     }
   ]
 }
