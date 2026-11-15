@@ -55,6 +55,10 @@
   "bili": {
     "bv": null
   },
+  "publish": {
+    "coverFrame": 17220,
+    "coverNote": "能耗场（t=574.0 s）三张大数卡 2.4×/3.2×/1.7× 与原文 Fig.9 同框、且落在字幕间隙，作为投稿封面"
+  },
   "assetsStatus": "complete",
   "paths": {
     "src": "src",
