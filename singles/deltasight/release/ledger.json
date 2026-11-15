@@ -1,0 +1,22 @@
+{
+  "kind": "single",
+  "film": "deltasight",
+  "platform": "bilibili",
+  "title": "论文精读 | DeltaSight：跨级一致地消除冗余，让摄像头只算它该算的（DAC’26）",
+  "status": "submitted",
+  "bvid": "BV1G9sW6DEcY",
+  "aid": null,
+  "url": "https://www.bilibili.com/video/BV1G9sW6DEcY/",
+  "submittedAt": "2026-11-15T16:09:44.387Z",
+  "lastError": null,
+  "via": "manager",
+  "attempts": 1,
+  "audit": {
+    "state": "reviewing",
+    "observedAt": "2026-11-16T00:11:00+08:00",
+    "evidence": "member.bilibili.com 稿件管理：全部稿件 100 / 草稿 1 / 进行中 1 / 已发布 99 / 未通过 0；首行本稿「转码中 / 审核中」，投稿时间 2026年11月16日 00:08:41",
+    "note": "审核期内公开页返回占位页「视频去哪了呢？」属预期，不代表投稿失败；以稿件管理页为准"
+  },
+  "filmJson": "singles/deltasight/film.json（status=published，bili.bv 为同一 BV）",
+  "report": "gen24-admin/docs/60-deltasight-film-report.md §9"
+}
