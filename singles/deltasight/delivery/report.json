@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T15:46:26.262Z",
+  "generatedAt": "2026-11-15T15:59:02.648Z",
   "composition": "Deltasight",
   "film": {
     "id": "deltasight",
@@ -160,13 +160,13 @@
     },
     {
       "name": "publish",
-      "command": "node scripts/export/publish.mjs --composition=Deltasight --script=src/deltasight/script.ts --prefix=deltasight --cover-frame=180",
+      "command": "node scripts/export/publish.mjs --composition=Deltasight --script=src/deltasight/script.ts --prefix=deltasight --cover-frame=17220",
       "exitCode": 0,
       "ok": true
     }
   ],
   "numbers": {
-    "tree": "0bb423e66d10c84b",
+    "tree": "c521549a4c186214",
     "seconds": 682.63,
     "scoreReused": true,
     "stem": {
@@ -179,8 +179,8 @@
       "pass": true
     },
     "segments": {
-      "reused": 0,
-      "rendered": 14,
+      "reused": 14,
+      "rendered": 0,
       "scenes": 14,
       "frames": 20479
     },
@@ -243,8 +243,8 @@
     "content": {
       "id": "deltasight",
       "pack": "singles/deltasight",
-      "commit": "75b8e74a558f5e543a96cabc11be92b1696c07c1",
-      "dirty": 4
+      "commit": "8ffafa962a462b44ec630b15d23fcebebd09e50a",
+      "dirty": 1
     },
     "inputs": {
       "src": {
