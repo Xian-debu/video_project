@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "deltasight",
+  "kind": "single",
+  "title": "DeltaSight：让摄像头只算它该算的",
+  "composition": "Deltasight",
+  "entry": "src/Deltasight.tsx",
+  "exports": {
+    "component": "Deltasight",
+    "total": "DELTASIGHT_TOTAL",
+    "fps": "DELTASIGHT_FPS"
+  },
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "prefix": "deltasight",
+  "status": "draft",
+  "paper": {
+    "title": "DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination",
+    "authors": [
+      "Qinyu Wang",
+      "Cen Chen",
+      "Jingkai Huang",
+      "Yawen Qiu",
+      "Hongen Shao",
+      "Xiaofeng Zou",
+      "Ziqian Zeng"
+    ],
+    "venue": "ACM/IEEE Design Automation Conference (DAC) 2026",
+    "year": 2026,
+    "url": "https://doi.org/10.1145/3770743.3804070"
+  },
+  "claims": {
+    "ledger": "data/claims.json",
+    "paper": "data/paper.txt"
+  },
+  "derive": [
+    {
+      "command": "python3 build/deltasight_paper.py && python3 build/generate_deltasight_data.py"
+    }
+  ],
+  "derived": [
+    "data/sim.json",
+    "data/adc.json"
+  ],
+  "derivedNote": "sim.json（patch 判据与三场景路由的自测）与 adc.json（10-bit SAR 定点二分仿真）由 build/ 下两个脚本按固定种子生成，不入 git",
+  "narration": "assets/audio/narration.wav",
+  "audio": {
+    "music": null
+  },
+  "delivery": "delivery",
+  "docs": [
+    "docs/plan.md"
+  ],
+  "bili": {
+    "bv": null
+  },
+  "assetsStatus": "complete",
+  "paths": {
+    "src": "src",
+    "data": "data",
+    "public": "assets/public"
+  },
+  "material": "required"
+}

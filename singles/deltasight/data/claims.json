@@ -1,0 +1,410 @@
+{
+  "meta": {
+    "paper": "Qinyu Wang et al., DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination, DAC '26, DOI 10.1145/3770743.3804070, CC BY 4.0",
+    "source": "data/paper.txt（PyMuPDF 抽取，页码 = PDF 物理页）",
+    "generator": "build/make_claims.py——quote 由生成器从 paper.txt 切出，不手打；每行 quote 都是 paper.txt 里一整句（空白归一后逐字匹配）",
+    "ledgers": [
+      "eval.json",
+      "source-figures.json"
+    ],
+    "note": "note 以 DERIVED 开头 = 由表里的数算出来的差值，原文没有直接写；SENTENCE-SUPPORT = 这句只支持定性结论，数字另有出处"
+  },
+  "claims": [
+    {
+      "id": "open-fixed",
+      "scene": "open",
+      "onScreen": "固定帧率 · 全分辨率",
+      "value": "30",
+      "dataset": "ImageNet VID 评测帧率（Table 2 表头）",
+      "quote": "1, a typical end-to-end vision system generally comprises three stages: (i) sensing, where sampling is performed at a fixed frame rate and full resolution, followed by analog-to- digital conversion (ADC) and image signal processing (ISP); (ii) transmission, where the processed data are delivered to the host via a serial interface such as MIPI; and (iii) computation, where neural models (e.g., CNNs [5] or transformers [23]) execute inference tasks such as detection or other decision making in host side.",
+      "where": "§1 stage (i)",
+      "note": "SENTENCE-SUPPORT：这句只支持「固定帧率、全分辨率」这个设计前提；30 取自 Table 2 表头的评测帧率"
+    },
+    {
+      "id": "problem-share",
+      "scene": "problem",
+      "onScreen": "传感 + 传输 = 37%∼53% 系统能耗",
+      "value": "37%∼53%",
+      "dataset": "§1 引 [3,8] 的系统能耗调查",
+      "quote": "Worse still, recent surveys on advanced AIoT systems [3, 8] re- veal that the often-overlooked sensing and transmission stages ac- count for as much as 37%∼53% of total system energy consumption.",
+      "where": "§1 ¶3"
+    },
+    {
+      "id": "problem-stages",
+      "scene": "problem",
+      "onScreen": "三段：sensing / transmission / computing",
+      "value": "3",
+      "dataset": "§1 Fig.1",
+      "quote": "1, a typical end-to-end vision system generally comprises three stages: (i) sensing, where sampling is performed at a fixed frame rate and full resolution, followed by analog-to- digital conversion (ADC) and image signal processing (ISP); (ii) transmission, where the processed data are delivered to the host via a serial interface such as MIPI; and (iii) computation, where neural models (e.g., CNNs [5] or transformers [23]) execute inference tasks such as detection or other decision making in host side.",
+      "where": "§1 ¶2",
+      "note": "数字是「三段」这个结构本身；分段名称逐字来自原文"
+    },
+    {
+      "id": "mismatch-60",
+      "scene": "mismatch",
+      "onScreen": "扔掉 60% 以上的数据与相应计算",
+      "value": "60",
+      "dataset": "§2.3 Motivation 1 / Fig.2(a)",
+      "quote": "2, even eliminating over 60% of the data and their associated computations causes neg- ligible degradation in model accuracy.",
+      "where": "§2.3 M1 + §2 intro"
+    },
+    {
+      "id": "mismatch-noise",
+      "scene": "mismatch",
+      "onScreen": "同一噪声注入：前景 vs 背景",
+      "value": "0.3",
+      "dataset": "§2.3 Motivation 2 / Fig.2(b)",
+      "quote": "2(b), the results exhibit a asymmetry: corrupting foreground regions leads to a noticeable accuracy drop, while adding noise to background areas within a reasonable range produces minimal impact and can even leave accuracy unchanged.",
+      "where": "§2.3 M2",
+      "note": "SENTENCE-SUPPORT: 0.3 = Fig.2(b) 横轴噪声幅度上限；这句给的是「不对称」这个结论"
+    },
+    {
+      "id": "criterion-p16",
+      "scene": "criterion",
+      "onScreen": "P = 16（执行粒度）",
+      "value": "16",
+      "dataset": "§4.2.2",
+      "quote": "The pixel array op- erates at a minimum execution granularity of 𝑃× 𝑃(with 𝑃= 16 in this design).",
+      "where": "§4.2.2"
+    },
+    {
+      "id": "criterion-patch",
+      "scene": "criterion",
+      "onScreen": "ViT patch 16×16",
+      "value": "16",
+      "dataset": "§5.1 Benchmarks",
+      "quote": "All models adopt a 16×16 patch size and are im- plemented in PyTorch [16] for baseline comparison.",
+      "where": "§5.1"
+    },
+    {
+      "id": "algo-tau",
+      "scene": "algo",
+      "onScreen": "τ = 0.5% VREF",
+      "value": "0.5",
+      "dataset": "§3 Eq.(3)",
+      "quote": "The pixel-difference threshold 𝜏is fixed at 0.5%𝑉REF, and inter-patch similarity is deter- mined when the number of pixels with deviations below 𝜏exceeds 𝜅.",
+      "where": "§5.2 Algorithm Validation（阈值定义与 Table 1 同）"
+    },
+    {
+      "id": "algo-kappa",
+      "scene": "algo",
+      "onScreen": "κ = 60 / 80（按模型扫出来的计数阈值）",
+      "value": "60",
+      "dataset": "Table 1 的 (τ, κ) 列",
+      "quote": "Dataset Models 𝜏, 𝜅 mAP (%) Skip (%) Baseline DeltaSight ImageNet VID ViTDeT-S 0.5%, 60.0 40.94 41.06 64.0 ViTDeT-B 0.5%, 60.0 82.05 82.37 64.0 ViTDeT-L 0.5%, 80.0 83.18 83.51 66.3 Average - 0.5%, 66.7 68.67 69.98 64.8 NFS ViTDeT-S 0.5%, 80.0 53.58 55.99 73.2 ViTDeT-B 0.5%, 60.0 82.19 81.69 70.1 ViTDeT-L 0.5%, 80.0 82.35 81.47 73.2 Average - 0.5%, 73.3 72.71 73.05 72.2 Sensor-side Energy Consumption.",
+      "where": "Table 1",
+      "note": "κ 是「块内有多少像素差在 τ 内才判相似」的计数阈值，不是比例"
+    },
+    {
+      "id": "route-three",
+      "scene": "route",
+      "onScreen": "appearing / moving / disappearing-occluded",
+      "value": "3",
+      "dataset": "§3 图 3 的三个场景",
+      "quote": "3, we summarize the inter-frame variations into three typical scenarios: ①Appearing: the appearing scenario refers to the case where no object was detected in the previous frame, but the simi- larity mask m shows significant changes in the corresponding area, indicating the emergence of new objects; ②Moving: the moving scenario denotes that the existing object undergoes positional or contour shifts between adjacent frames, causing the changed region in the new frame to partially overlap with the detected region in the previous frame; ③Disappearing/Occlusion: the changes are almost entirely contained within the detected region of the previous frame, reflecting that the object has disappeared or become occluded.",
+      "where": "§3"
+    },
+    {
+      "id": "adc-vin",
+      "scene": "adc",
+      "onScreen": "V_IN = 0.751 V",
+      "value": "0.751",
+      "dataset": "§4.2.1 算例",
+      "quote": "6, we illustrate the similarity-identification mode of the Recon- figurable ADC using a case where 𝑉𝑡 IN = 0.751V under 𝑉REF = 1V.",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "adc-code",
+      "scene": "adc",
+      "onScreen": "上帧码 1100000000₂",
+      "value": "1100000000",
+      "dataset": "§4.2.1 算例",
+      "quote": "Given the previous-frame code 11000000002 (i.e., 𝑉𝑡−1 DAC = 0.750V), the inter-frame comparison proceeds in three stages: ❶Current frame sampling and holding: 𝐶𝜏is left floating, the sampling switch 𝑆𝐶is turned on, and the bottom plates of all CDAC capacitors are connected to 𝑉𝑡 IN, while the comparator input switch 𝑆𝐴is grounded.",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "adc-vdac",
+      "scene": "adc",
+      "onScreen": "V_DAC = 0.75 V",
+      "value": "0.75",
+      "dataset": "§4.2.1 算例",
+      "quote": "❷Previous-frame reconstruction: the SRAM- stored code 11000000002 is loaded into the CDAC array (two MSBs to𝑉REF, others to ground), producing𝑉𝑡−1 DAC = 0.75V.",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "adc-residual",
+      "scene": "adc",
+      "onScreen": "−1 mV（重建后的残差）",
+      "value": "-1mV",
+      "dataset": "§4.2.1 算例",
+      "quote": "The comparator negative-input voltage is then updated to −𝑉𝑡 IN + 𝑉𝑡−1 DAC = −1mV.",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "adc-tau",
+      "scene": "adc",
+      "onScreen": "τ ≈ 0.5% VREF = 5 mV（±τ 由 Cτ 注入）",
+      "value": "5mV",
+      "dataset": "§4.2.1 算例",
+      "quote": "❸Threshold comparison: during the threshold comparison stage, a small capacitor 𝐶𝜏is introduced to inject a differential bias of ±𝜏, where 𝜏≈0.5%𝑉REF = 5mV.",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "adc-plus",
+      "scene": "adc",
+      "onScreen": "+τ 支路 → +4 mV → 比较器输出 1",
+      "value": "+4mV",
+      "dataset": "§4.2.1 算例",
+      "quote": "Two successive comparisons are performed: in the first comparison, the other terminal of 𝐶𝜏is connected to𝑉REF to inject a +𝜏bias, yielding𝑉−= −𝑉𝑡 IN+𝑉𝑡−1 DAC+𝜏= +4mV (𝑉−> 0, COMPARATOR output 1); in the second comparison, 𝐶𝜏is grounded to apply a −𝜏bias, resulting in𝑉−= −𝑉𝑡 IN+𝑉𝑡−1 DAC−𝜏= −6mV (𝑉−< 0, COMPARATOR output 0).",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "adc-minus",
+      "scene": "adc",
+      "onScreen": "−τ 支路 → −6 mV → 比较器输出 0",
+      "value": "-6mV",
+      "dataset": "§4.2.1 算例",
+      "quote": "Two successive comparisons are performed: in the first comparison, the other terminal of 𝐶𝜏is connected to𝑉REF to inject a +𝜏bias, yielding𝑉−= −𝑉𝑡 IN+𝑉𝑡−1 DAC+𝜏= +4mV (𝑉−> 0, COMPARATOR output 1); in the second comparison, 𝐶𝜏is grounded to apply a −𝜏bias, resulting in𝑉−= −𝑉𝑡 IN+𝑉𝑡−1 DAC−𝜏= −6mV (𝑉−< 0, COMPARATOR output 0).",
+      "where": "§4.2.1"
+    },
+    {
+      "id": "block-domain",
+      "scene": "block",
+      "onScreen": "16× 32 读出域（16 行 × 32 列）",
+      "value": "16× 32",
+      "dataset": "§4.2.2",
+      "quote": "Every two adjacent blocks in the column direction form a 16× 32 readout domain, which corresponds to one group of recon- figurable ADC arrays.",
+      "where": "§4.2.2"
+    },
+    {
+      "id": "block-cols",
+      "scene": "block",
+      "onScreen": "每个 ADC 阵列 16 列并行",
+      "value": "16",
+      "dataset": "§4.2.2",
+      "quote": "Each ADC array contains 16 column-parallel channels, operating under a unified sampling clock.",
+      "where": "§4.2.2"
+    },
+    {
+      "id": "block-array",
+      "scene": "block",
+      "onScreen": "672×672 像素阵列",
+      "value": "672",
+      "dataset": "§5.2 Sensor Area",
+      "quote": "Our stacked design integrates a 672×672 5T pixel array whose cell ge- ometry follows the design [6] with a 2.9 𝜇m pixel pitch; together with the aligned block readout and reconfigurable ADCs, this region occupies 6.81 mm2.",
+      "where": "§5.2"
+    },
+    {
+      "id": "block-pitch",
+      "scene": "block",
+      "onScreen": "2.9 μm 像元间距",
+      "value": "2.9",
+      "dataset": "§5.2 Sensor Area",
+      "quote": "Our stacked design integrates a 672×672 5T pixel array whose cell ge- ometry follows the design [6] with a 2.9 𝜇m pixel pitch; together with the aligned block readout and reconfigurable ADCs, this region occupies 6.81 mm2.",
+      "where": "§5.2"
+    },
+    {
+      "id": "bit-zero-vid",
+      "scene": "pipeline",
+      "onScreen": "ImageNet VID：79.4% 像素 0-bit",
+      "value": "79.4",
+      "dataset": "Table 2",
+      "quote": "Over 79.4% of pixels are assigned 0-bit and thus skip conversion, while only 10.5%∼18.1% require full 10-bit conversion.",
+      "where": "§5.2 Table 2"
+    },
+    {
+      "id": "bit-ten-vid",
+      "scene": "pipeline",
+      "onScreen": "只有 18.1% 需要完整 10-bit",
+      "value": "18.1",
+      "dataset": "Table 2",
+      "quote": "Over 79.4% of pixels are assigned 0-bit and thus skip conversion, while only 10.5%∼18.1% require full 10-bit conversion.",
+      "where": "§5.2 Table 2"
+    },
+    {
+      "id": "bit-zero-nfs",
+      "scene": "pipeline",
+      "onScreen": "NFS：86.8% 像素 0-bit",
+      "value": "86.8",
+      "dataset": "Table 2",
+      "quote": "DAC ’26, July 26–29, 2026, Long Beach, CA, USA Qinyu Wang, Cen Chen, Jingkai Huang, Yawen Qiu, Hongen Shao, Xiaofeng Zou, and Ziqian Zeng 5.2 Overall Performance Algorithm Validation. We evaluate DeltaSight’s impact on host- side task accuracy using ImageNet VID and NFS. The pixel-difference threshold 𝜏is fixed at 0.5%𝑉REF, and inter-patch similarity is deter- mined when the number of pixels with deviations below 𝜏exceeds 𝜅. As shown in Table 1, DeltaSight skips 64.8% and 72.2% of regions on ImageNet VID and NFS, respectively, while achieving higher de- tection accuracy (mAP) than the baseline. These results confirm the effectiveness of performing sensor-side redundancy identification and coordinating its removal across stages. Table 1: Accuracy and Pruning Statistics. Skip: average rate of unprocessed image patches. Dataset Models 𝜏, 𝜅 mAP (%) Skip (%) Baseline DeltaSight ImageNet VID ViTDeT-S 0.5%, 60.0 40.94 41.06 64.0 ViTDeT-B 0.5%, 60.0 82.05 82.37 64.0 ViTDeT-L 0.5%, 80.0 83.18 83.51 66.3 Average - 0.5%, 66.7 68.67 69.98 64.8 NFS ViTDeT-S 0.5%, 80.0 53.58 55.99 73.2 ViTDeT-B 0.5%, 60.0 82.19 81.69 70.1 ViTDeT-L 0.5%, 80.0 82.35 81.47 73.2 Average - 0.5%, 73.3 72.71 73.05 72.2 Sensor-side Energy Consumption. Fig. 8 reports the per-frame sensor-side energy across the three designs. Although DeltaSight adds similarity identification at 11.9% of the Base-FULL budget, the overall sensor cost drops sharply. The key gains come from eliminating redundant front-end operations: skipping A/D conver- sion for similar pixels substantially reduces ADC switching energy, and block-gated demosaicing cuts the in-sensor NPU workload, as RGB reconstruction is triggered only for non-similar blocks. The semantic-aware controller adds negligible cost, relying solely on lightweight combinational logic. Although DeltaSight’s sensor-side gains over Pixel-E are modest, its block-level similarity information directly guides redundancy elimination in subsequent stages. D e l t a S i g h t ( 6 5 n m / 6 5 n m ) P i x e l - E ( 6 5 n m / 6 5 n m ) B a s e - F U L L ( 6 5 n m / 6 5 n m ) 0 E + 0 2 E + 6 4 E + 6 6 E + 6 8 E + 6 1 E + 7 E n e r g y C o s t p e r F r a m e @ 1 2 0 F P S ( p J ) E x p o s u r e R e a d o u t S i m i l a r i t y I d e n t . A D C S e m a t i c - a w a r e S R A M I n - s e n s o r N P U Figure 8: Energy breakdown across different sensor designs. System Energy Consumption. To evaluate the cross-stage energy efficiency of DeltaSight, we compare its sensing, transmission, and downstream processing efficiency against Base-FULL, and report the end-to-end (E2E) system improvement. As shown in Fig. 9, DeltaSight effectively suppresses redundant sampling and data movement: the sensing and transmission stages achieve average 2.4× and 3.2× efficiency improvement, respectively, yielding an overall 1.7× gain in E2E system efficiency. The gains are higher on NFS due to the increased temporal similarity at higher frame rates. V i T D e T - S V i T D e T - B V i T D e T - L 0 1 2 3 4 N o r m . E n e r g y S e n s i n g T r a n s m i s s i o n C o m p u t a t i o n E 2 E S y s t e m I m a g e N e t - V I D N F S V i T D e T - S V i T D e T - B V i T D e T - L 0 1 2 3 4 Figure 9: Energy savings across individual stages and the end- to-end system. Energy Analysis of Sensor-side Similarity Identification. The energy of similarity identification mainly comes from charging and discharging the binary-weighted CDAC capacitors, where brighter pixels activate more MSB capacitors. Fig. 10(a) and (b) present the switching activity across capacitor weights in two evaluation scenarios. As summarized in Fig. 10(c), this stage accounts for 25.98% and 30.97% of DeltaSight’s sensor power, corresponding to 11.86% of the Base-FULL sensor energy. Although it introduces additional cost, the stage yields substantial net savings by avoiding redundant sampling and A/D conversions. I m a g e N e t - V I D N F S M S B L S B M S B L S B 0 . 0 0 . 1 0 . 2 0 . 3 0 . 4 0 . 5 F r e q u e n c y ( % ) 0 . 0 0 . 1 0 . 2 0 . 3 0 . 4 0 . 5 ( c ) N F S ( a ) ( b ) I m a g e N e t V I D 1 0 1 5 2 0 2 5 3 0 3 5 4 0 P e r c e n t a g e o f E n e r g y ( % ) D e l t a S i g h t B a s e - F U L L Figure 10: CDAC Switching Characteristics and Energy Over- head of Similarity Identification. Effects of Mixed-Precision A/D Conversion. Table 2 reports the bit-width distribution under our mixed-precision scheme. Over 79.4% of pixels are assigned 0-bit and thus skip conversion, while only 10.5%∼18.1% require full 10-bit conversion. This skewed distri- bution lowers A/D conversion energy by 83.9% on NFS and 74.2% on VID, compared with conventional fixed-precision sampling. The gains stem from three factors: (i) similar blocks are fully exempt from conversion, (ii) within similar blocks, pixel-level similarity further suppresses conversions, and (iii) in low-importance regions, similar pixels undergo only partial conversion. Table 2: Breakdown of bit-width A/D conversion ratios. NFS @120FPS ImageNet VID @30FPS 0 Bit 4 Bit 10 Bit E. ↓ 0 Bit 4 Bit 10 Bit E. ↓ 86.8% 2.7% 10.5% 83.9% 79.4% 2.5% 18.1% 74.2% Sensor Area Analysis. While post-layout simulations provide accurate power and timing, the silicon area is estimated from the array footprint and the composition of bottom-tier circuits. Our stacked design integrates a 672×672 5T pixel array whose cell ge- ometry follows the design [6] with a 2.9 𝜇m pixel pitch; together with the aligned block readout and reconfigurable ADCs, this region occupies 6.81 mm2. The ADC arrays reside entirely beneath the array and therefore introduce no outline overhead. The remaining non-aligned blocks, including the SRAM (0.9 MB), global timing and control circuits, in-sensor NPU, and the peripheral I/O circuitry, are placed outside the active array and add roughly 0.6 mm2 in 65-nm CMOS. The total die area is therefore approximately 7.4 mm2. 6 Conclusion We presented DeltaSight, a video AIoT system that achieves consis- tent redundancy elimination across the processing pipeline. Through sensor-side similarity detection and importance-aware mixed-precision sensing, DeltaSight suppresses unnecessary sampling, computation, and data movement while imposing only minimal hardware over- head. To the best of our knowledge, DeltaSight is the first video AIoT system that unifies the granularities of sensing, transmis- sion, and computation, enabling a coherent execution paradigm for cross-stage redundancy handling.",
+      "where": "§5.2 Table 2"
+    },
+    {
+      "id": "bit-energy",
+      "scene": "pipeline",
+      "onScreen": "A/D 能耗降 83.9%（NFS）/ 74.2%（VID）",
+      "value": "83.9",
+      "dataset": "Table 2",
+      "quote": "This skewed distri- bution lowers A/D conversion energy by 83.9% on NFS and 74.2% on VID, compared with conventional fixed-precision sampling.",
+      "where": "§5.2"
+    },
+    {
+      "id": "bit-energy-vid",
+      "scene": "pipeline",
+      "onScreen": "同上，VID 侧 74.2%",
+      "value": "74.2",
+      "dataset": "Table 2",
+      "quote": "This skewed distri- bution lowers A/D conversion energy by 83.9% on NFS and 74.2% on VID, compared with conventional fixed-precision sampling.",
+      "where": "§5.2"
+    },
+    {
+      "id": "system-transmit",
+      "scene": "system",
+      "onScreen": "每帧真正传的比例：35.2% / 27.8%",
+      "value": "35.2",
+      "dataset": "由 Table 1 的 skip 列推得",
+      "quote": "The host retains the complete previous frame and reconstructs the current frame by directly replacing the corresponding regions according to these indices.",
+      "where": "§5.2 Multi-ROI coalesced frame",
+      "note": "DERIVED：= 100 − skip，两个数都由 Table 1 的 skip 列算出"
+    },
+    {
+      "id": "acc-skip",
+      "scene": "accuracy",
+      "onScreen": "跳过 64.8% / 72.2% 的区域",
+      "value": "64.8",
+      "dataset": "Table 1",
+      "quote": "As shown in Table 1, DeltaSight skips 64.8% and 72.2% of regions on ImageNet VID and NFS, respectively, while achieving higher de- tection accuracy (mAP) than the baseline.",
+      "where": "§5.2"
+    },
+    {
+      "id": "acc-vid-map",
+      "scene": "accuracy",
+      "onScreen": "VID：41.06 / 82.37 / 83.51",
+      "value": "41.06",
+      "dataset": "Table 1",
+      "quote": "Dataset Models 𝜏, 𝜅 mAP (%) Skip (%) Baseline DeltaSight ImageNet VID ViTDeT-S 0.5%, 60.0 40.94 41.06 64.0 ViTDeT-B 0.5%, 60.0 82.05 82.37 64.0 ViTDeT-L 0.5%, 80.0 83.18 83.51 66.3 Average - 0.5%, 66.7 68.67 69.98 64.8 NFS ViTDeT-S 0.5%, 80.0 53.58 55.99 73.2 ViTDeT-B 0.5%, 60.0 82.19 81.69 70.1 ViTDeT-L 0.5%, 80.0 82.35 81.47 73.2 Average - 0.5%, 73.3 72.71 73.05 72.2 Sensor-side Energy Consumption.",
+      "where": "Table 1"
+    },
+    {
+      "id": "acc-nfs-map",
+      "scene": "accuracy",
+      "onScreen": "NFS：55.99 / 81.69 / 81.47",
+      "value": "81.69",
+      "dataset": "Table 1",
+      "quote": "Dataset Models 𝜏, 𝜅 mAP (%) Skip (%) Baseline DeltaSight ImageNet VID ViTDeT-S 0.5%, 60.0 40.94 41.06 64.0 ViTDeT-B 0.5%, 60.0 82.05 82.37 64.0 ViTDeT-L 0.5%, 80.0 83.18 83.51 66.3 Average - 0.5%, 66.7 68.67 69.98 64.8 NFS ViTDeT-S 0.5%, 80.0 53.58 55.99 73.2 ViTDeT-B 0.5%, 60.0 82.19 81.69 70.1 ViTDeT-L 0.5%, 80.0 82.35 81.47 73.2 Average - 0.5%, 73.3 72.71 73.05 72.2 Sensor-side Energy Consumption.",
+      "where": "Table 1"
+    },
+    {
+      "id": "acc-drop",
+      "scene": "accuracy",
+      "onScreen": "NFS 上 B 掉 0.50、L 掉 0.88 mAP",
+      "value": "-0.50",
+      "dataset": "Table 1",
+      "quote": "Dataset Models 𝜏, 𝜅 mAP (%) Skip (%) Baseline DeltaSight ImageNet VID ViTDeT-S 0.5%, 60.0 40.94 41.06 64.0 ViTDeT-B 0.5%, 60.0 82.05 82.37 64.0 ViTDeT-L 0.5%, 80.0 83.18 83.51 66.3 Average - 0.5%, 66.7 68.67 69.98 64.8 NFS ViTDeT-S 0.5%, 80.0 53.58 55.99 73.2 ViTDeT-B 0.5%, 60.0 82.19 81.69 70.1 ViTDeT-L 0.5%, 80.0 82.35 81.47 73.2 Average - 0.5%, 73.3 72.71 73.05 72.2 Sensor-side Energy Consumption.",
+      "where": "Table 1",
+      "note": "DERIVED：82.19−81.69 = −0.50，82.35−81.47 = −0.88；表里没有直接写差值"
+    },
+    {
+      "id": "acc-avg",
+      "scene": "accuracy",
+      "onScreen": "平均 68.67→69.98（+1.31）/ 72.71→73.05（+0.34）",
+      "value": "69.98",
+      "dataset": "Table 1",
+      "quote": "Dataset Models 𝜏, 𝜅 mAP (%) Skip (%) Baseline DeltaSight ImageNet VID ViTDeT-S 0.5%, 60.0 40.94 41.06 64.0 ViTDeT-B 0.5%, 60.0 82.05 82.37 64.0 ViTDeT-L 0.5%, 80.0 83.18 83.51 66.3 Average - 0.5%, 66.7 68.67 69.98 64.8 NFS ViTDeT-S 0.5%, 80.0 53.58 55.99 73.2 ViTDeT-B 0.5%, 60.0 82.19 81.69 70.1 ViTDeT-L 0.5%, 80.0 82.35 81.47 73.2 Average - 0.5%, 73.3 72.71 73.05 72.2 Sensor-side Energy Consumption.",
+      "where": "Table 1"
+    },
+    {
+      "id": "energy-sensing",
+      "scene": "energy",
+      "onScreen": "sensing 2.4×",
+      "value": "2.4",
+      "dataset": "§5.2 / Fig.9",
+      "quote": "9, DeltaSight effectively suppresses redundant sampling and data movement: the sensing and transmission stages achieve average 2.4× and 3.2× efficiency improvement, respectively, yielding an overall 1.7× gain in E2E system efficiency.",
+      "where": "§5.2"
+    },
+    {
+      "id": "energy-transmission",
+      "scene": "energy",
+      "onScreen": "transmission 3.2×",
+      "value": "3.2",
+      "dataset": "§5.2 / Fig.9",
+      "quote": "9, DeltaSight effectively suppresses redundant sampling and data movement: the sensing and transmission stages achieve average 2.4× and 3.2× efficiency improvement, respectively, yielding an overall 1.7× gain in E2E system efficiency.",
+      "where": "§5.2"
+    },
+    {
+      "id": "energy-e2e",
+      "scene": "energy",
+      "onScreen": "E2E 1.7×",
+      "value": "1.7",
+      "dataset": "§5.2 / Fig.9",
+      "quote": "9, DeltaSight effectively suppresses redundant sampling and data movement: the sensing and transmission stages achieve average 2.4× and 3.2× efficiency improvement, respectively, yielding an overall 1.7× gain in E2E system efficiency.",
+      "where": "§5.2"
+    },
+    {
+      "id": "energy-simid",
+      "scene": "energy",
+      "onScreen": "相似识别自身吃掉传感功耗 25.98% ~ 30.97%",
+      "value": "25.98",
+      "dataset": "§5.2 Fig.10(c)",
+      "quote": "10(c), this stage accounts for 25.98% and 30.97% of DeltaSight’s sensor power, corresponding to 11.86% of the Base-FULL sensor energy.",
+      "where": "§5.2"
+    },
+    {
+      "id": "energy-simid-nfs",
+      "scene": "energy",
+      "onScreen": "NFS 侧 30.97%",
+      "value": "30.97",
+      "dataset": "§5.2 Fig.10(c)",
+      "quote": "10(c), this stage accounts for 25.98% and 30.97% of DeltaSight’s sensor power, corresponding to 11.86% of the Base-FULL sensor energy.",
+      "where": "§5.2",
+      "note": "同一句给了两个数据集的占比"
+    },
+    {
+      "id": "energy-simid-budget",
+      "scene": "energy",
+      "onScreen": "= Base-FULL 传感能量的 11.86%",
+      "value": "11.86",
+      "dataset": "§5.2",
+      "quote": "10(c), this stage accounts for 25.98% and 30.97% of DeltaSight’s sensor power, corresponding to 11.86% of the Base-FULL sensor energy.",
+      "where": "§5.2",
+      "note": "同一句给了两个数据集占比与相对 Base-FULL 的 11.86%"
+    },
+    {
+      "id": "energy-simid-119",
+      "scene": "energy",
+      "onScreen": "相似识别占 Base-FULL 预算 11.9%",
+      "value": "11.9",
+      "dataset": "§5.2",
+      "quote": "Although DeltaSight adds similarity identification at 11.9% of the Base-FULL budget, the overall sensor cost drops sharply.",
+      "where": "§5.2"
+    },
+    {
+      "id": "limits-array-area",
+      "scene": "limits",
+      "onScreen": "像素阵列 6.81 mm²",
+      "value": "6.81",
+      "dataset": "§5.2 Sensor Area",
+      "quote": "Our stacked design integrates a 672×672 5T pixel array whose cell ge- ometry follows the design [6] with a 2.9 𝜇m pixel pitch; together with the aligned block readout and reconfigurable ADCs, this region occupies 6.81 mm2.",
+      "where": "§5.2"
+    },
+    {
+      "id": "limits-die",
+      "scene": "limits",
+      "onScreen": "整个 die ≈ 7.4 mm²（版图估算，不是流片）",
+      "value": "7.4",
+      "dataset": "§5.2 Sensor Area",
+      "quote": "The total die area is therefore approximately 7.4 mm2.",
+      "where": "§5.2",
+      "note": "面积是 foot-print 估算；论文没有 silicon measurement"
+    },
+    {
+      "id": "limits-sram",
+      "scene": "limits",
+      "onScreen": "片内 SRAM 0.9 MB",
+      "value": "0.9",
+      "dataset": "§5.2 Sensor Area",
+      "quote": "The remaining non-aligned blocks, including the SRAM (0.9 MB), global timing and control circuits, in-sensor NPU, and the peripheral I/O circuitry, are placed outside the active array and add roughly 0.6 mm2 in 65-nm CMOS.",
+      "where": "§5.2"
+    },
+    {
+      "id": "outro-e2e",
+      "scene": "outro",
+      "onScreen": "跨级一致地消冗余 → 1.7× 端到端",
+      "value": "1.7",
+      "dataset": "§5.2",
+      "quote": "9, DeltaSight effectively suppresses redundant sampling and data movement: the sensing and transmission stages achieve average 2.4× and 3.2× efficiency improvement, respectively, yielding an overall 1.7× gain in E2E system efficiency.",
+      "where": "§5.2"
+    }
+  ]
+}

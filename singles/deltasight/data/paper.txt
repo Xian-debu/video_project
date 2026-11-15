@@ -1,0 +1,1080 @@
+DeltaSight: Architecting Efficient Video AIoT Systems via
+Cross-Stage Consistent Redundancy Elimination
+Qinyu Wang
+School of Future Technology,
+South China University of Technology
+Guangzhou, China
+Cen Chen∗
+School of Future Technology,
+South China University of Technology
+Guangzhou, China
+Jingkai Huang
+School of Future Technology,
+South China University of Technology
+Guangzhou, China
+Yawen Qiu
+Shenzhen International Graduate
+School, Tsinghua University
+Shenzhen, China
+Hongen Shao
+School of Future Technology,
+South China University of Technology
+Guangzhou, China
+Xiaofeng Zou
+School of Computer Science &
+Engineering,
+South China University of Technology
+Guangzhou, China
+Ziqian Zeng
+ShienMing Wu School of Intelligent
+Engineering, South China University
+of Technology
+Guangzhou, China
+Abstract
+The high energy cost of video AIoT systems stems from redun-
+dant operations across sensing, transmission, and computation.
+While prior work optimizes individual stages, the lack of cross-stage
+coordination forces each stage to re-detect redundancy, limiting
+overall efficiency. We present DeltaSight, an algorithm–hardware
+co-design architecture that establishes a sensor-side unified re-
+dundancy criterion serving as the common basis for redundancy
+elimination throughout the pipeline. Algorithmically, we gener-
+ate this criterion via sensor-side block-level redundancy detection
+whose output matches the granularity of downstream computation,
+complemented by a semantic-aware sampling strategy that adapts
+precision to task relevance. An architecture is designed to support
+this algorithm with minimal hardware additions. DeltaSight gains
+2.4× sensor-side and 1.7× end-to-end energy efficiency, with slight
+accuracy improvements.
+CCS Concepts
+• Hardware; • Computer systems organization →Neural net-
+works;
+1
+Introduction
+Video streams provide continuous and comprehensive observations
+of scene dynamics, offering a richer depiction of temporal context
+than static images. Such enhanced spatiotemporal representation
+∗Corresponding Author (chencen@scut.edu.cn).
+This work was supported by National Key R & D Project from Minister of Science and
+Technology (2024YFA1211500).
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+DAC ’26, Long Beach, CA, USA
+© 2026 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-2254-7/2026/07
+https://doi.org/10.1145/3770743.3804070
+significantly strengthens high-level perception and contextual un-
+derstanding, enabling AIoT systems to make more accurate deci-
+sions and interact more effectively [14, 15] with the physical world.
+However, these benefits often come at the cost of increased energy
+consumption.
+Pixel Array
+ADC
+ISP
+MIPI
+Trans.
+Results
+patch 
+embedding
+Encoder Decoder
+Memory
+ Controller
+Image
+ Signal
+Vision Transformer
+Computing
+Sensing
+VIN
+HOLD
++
+SAR Logic
+N-Bit Register
+DAC
+N
+Digital
+OUT
+COMPARATOR
+Analog IN
+-
+VREF
+VIN
+BIT 3 BIT 2
+BIT 1 BIT 0
+0
+Cycles
+1
+0
+1
+ 1/4 VREF
+ 1/2 VREF
+ 3/4 VREF
+ VREF
+SAR ADC Example (4-bit)
+Figure 1: Processing Pipeline of a Visual AIoT System.
+As shown in Fig. 1, a typical end-to-end vision system generally
+comprises three stages: (i) sensing, where sampling is performed
+at a fixed frame rate and full resolution, followed by analog-to-
+digital conversion (ADC) and image signal processing (ISP); (ii)
+transmission, where the processed data are delivered to the host via
+a serial interface such as MIPI; and (iii) computation, where neural
+models (e.g., CNNs [5] or transformers [23]) execute inference tasks
+such as detection or other decision making in host side.
+To reduce video AIoT system energy consumption, recent studies
+have leveraged the inherent temporal similarity in video streams
+to design redundancy-elimination algorithms [10, 17, 24] and cus-
+tomized accelerators [12, 19, 20], achieving substantial energy sav-
+ings at the host side. Building upon this observation, our experimen-
+tal results further verify that, as shown in Fig. 2, even eliminating
+over 60% of the data and their associated computations causes neg-
+ligible degradation in model accuracy. This observation suggests that
+a large fraction of sensing and transmission effort is also redundant.
+Worse still, recent surveys on advanced AIoT systems [3, 8] re-
+veal that the often-overlooked sensing and transmission stages ac-
+count for as much as 37%∼53% of total system energy consumption.
+
+DAC ’26, July 26–29, 2026, Long Beach, CA, USA
+Qinyu Wang, Cen Chen, Jingkai Huang, Yawen Qiu, Hongen Shao, Xiaofeng Zou, and Ziqian Zeng
+Although prior efforts have explored compressed acquisition [25]
+and adaptive sensing [7, 22] to lower sampling and ADC costs, or
+pushed lightweight pre-processing to the sensor side to alleviate
+transmission overhead [9], these methods remain detached from
+host-side demands. Their designs primarily target image fidelity
+rather than task efficiency, overlooking the fact that AIoT sensing
+ultimately serves intelligent computation rather than for human
+viewing. Due to the lack of systematic consideration, the potential
+for system-level energy reduction remains fundamentally limited.
+Therefore, we propose DeltaSight, a cross-stage co-optimized
+video AIoT design paradigm that unifies the granularities of sensing,
+transmission, and computation to achieve consistent redundancy
+elimination. DeltaSight adopts a hardware–algorithm co-design
+approach. Algorithmically, it introduces a block-level redundancy
+identification algorithm designed for sensor-side to localize tem-
+poral redundancy at the source, and leverages semantic priors to
+estimate regional importance and guide task-aware mixed-precision
+quantization. Architecturally, it extends a conventional SAR ADC
+with lightweight, reconfigurable support for inter-frame compari-
+son and A/D conversion, complemented by a block-parallel readout
+circuit that aligns sensing and computation granularities, and a
+neighborhood-aware dynamic ADC scheduling mechanism that
+mitigates load imbalance caused by redundancy.
+In summary, we have the following contributions:
+• We propose DeltaSight, a cross-stage co-optimized video
+AIoT system that unifies sensing, transmission, and compu-
+tation granularities for consistent redundancy elimination.
+• At the algorithm level, we introduce sensor-side patch-level
+similarity identification and region-importance awareness
+aligned with the host’s granularity, establishing a unified
+criterion for consistent cross-stage redundancy elimination.
+• We enable sensor-side similarity identification and mixed-
+precision A/D conversion with minimal hardware overhead
+by lightly extending the existing sensor architecture.
+• Extensive evaluations demonstrate 2.4× sensor-side and 1.7×
+video AIoT system efficiency gains, accompanied by modest
+accuracy improvements.
+2
+Background and Motivation
+2.1
+Preliminaries of CMOS Image Sensor
+As shown in Fig. 1, a typical CMOS Image Sensor (CIS) converts
+optical signals into digital pixel values through three primary stages:
+pixel array sensing, analog-to-digital conversion (ADC), and image
+signal processing (ISP). Among these stages, the ADC dominates
+the sensor’s energy consumption and thus serves as the primary
+focus of this work for further optimization.
+Analog-to-Digital Conversion. For an 𝑁-bit SAR ADC, the con-
+version process performs a bit-wise binary search to approximate
+the input voltage 𝑉IN using a reference voltage 𝑉REF. At each itera-
+tion k, the comparator updates the decision bit 𝑏𝑘:
+𝑏𝑘=
+(
+1,
+𝑉IN ≥𝑉REF
+0,
+𝑉IN < 𝑉REF
+, 𝐷=
+𝑁bit
+∑︁
+𝑘=1
+𝑏𝑘· 2𝑁bit−𝑘.
+(1)
+As shown in the bottom-right panel of Fig. 1, we provide a 4-bit
+SAR ADC quantization example to illustrate this process.
+8 2 . 2 4
+8 2 . 1 4
+8 1 . 9 1
+8 1 . 7 8
+8 1 . 6 6
+8 1 . 2 6
+8 0 . 5 8
+7 9 . 9 5
+7 8 . 9 1
+7 8 . 0 6
+6 0
+6 5
+7 0
+7 5
+8 0
+7 8
+8 0
+8 2
+8 4
+m A P  ( %
+)
+P r u n i n g  R a t e
+B a s e l i n e  =  8 2 . 1 9 %
+( a )
+( b )
+B a s e l i n e  =  8 2 . 1 9 %
+0 . 0 1
+0 . 0 5
+0 . 1
+0 . 2
+0 . 3
+6 0
+7 0
+8 0
+9 0
+m A P  ( %
+)
+N o i s e  A m p l i t u d e
+ T a r g e t  R e g i o n s  
+ N o n - t a r g e t  R e g i o n s
+Figure 2: (a) Impact of pruning rate on model accuracy; (b)
+Impact of noise injection in different regions on accuracy.
+2.2
+Preliminaries of Transformer
+Computation Granularity of Vision Transformers. Transform-
+ers [23] have recently emerged as a dominant paradigm in computer
+vision due to their strong capability in modeling long-range depen-
+dencies. In vision transformers (ViTs), an input image of size 𝐻×𝑊
+is partitioned into 𝑁= 𝐻𝑊/𝑃2 non-overlapping patches {𝐼𝑖}𝑁
+𝑖=1,
+where each patch 𝐼𝑖∈R𝑃×𝑃serves as the fundamental computation
+unit and corresponds to a token for subsequent processing.
+2.3
+Motivations
+Motivation 1: Computational Redundancy Revealing Unnec-
+essary Sensing and Transmission. Continuous video streams
+inherently exhibit strong temporal correlations, where a large pro-
+portion of pixels or regions remain unchanged between adjacent
+frames. As shown in Fig. 2(a), we eliminate redundant computations
+in the model by reusing intermediate features of similar regions
+across adjacent frames. Results indicate that even after removing
+over 60% of the data and corresponding computations, the inference
+accuracy remains nearly unchanged. This motivates us that most of
+the data sensing and transmission are unnecessary.
+Although several recent sensor designs [13, 22] exploit temporal
+similarity to reduce redundant sampling, they make decisions at
+the pixel level, while downstream models operate at the patch level.
+This granularity mismatch hinders full redundancy elimination and
+provides no patch-level guidance for sparse execution, requiring
+the host to re-identify redundant regions on its own.
+Motivation 2: Spatial Noise Sensitivity Revealing the Limita-
+tions of Fixed-Precision Sensing. Conventional sensing pipelines
+quantize all pixels with identical precision, assuming that all spatial
+regions contribute equally to downstream accuracy. To examine
+this assumption, we conduct a controlled perturbation study on the
+NFS dataset by injecting identical noise into target and non-target
+regions. As shown in Fig. 2(b), the results exhibit a asymmetry:
+corrupting foreground regions leads to a noticeable accuracy drop,
+while adding noise to background areas within a reasonable range
+produces minimal impact and can even leave accuracy unchanged.
+This motivates us to adopt dynamic sampling strategies based on
+semantic importance to further reduce sensor-side energy.
+3
+Algorithm
+At the algorithmic level, we construct sensor-side patch-level simi-
+larity identification and region-importance awareness algorithms
+that align with the host’s granularity, establishing a unified criterion
+for consistent cross-stage redundancy elimination.
+Patch-level similarity identification. ①We first define the simi-
+larity between two pixels using the Manhattan distance:
+𝐷𝑡(𝑥,𝑦) =
+𝐹𝑡(𝑥,𝑦) −𝐹𝑡−1(𝑥,𝑦)
+
+1,
+(2)
+
+DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination
+DAC ’26, July 26–29, 2026, Long Beach, CA, USA
+where (𝑥,𝑦) denotes pixel coordinates. ②From the pixel-wise dif-
+ferences, patch similarity is evaluated by counting pixels whose
+variations fall below a given threshold. Let 𝐼𝑡
+𝑖denote the pixel-index
+set of the 𝑖-th 𝑃× 𝑃patch, with 𝜏and 𝜅representing the pixel-level
+difference and patch-level count thresholds, respectively:
+𝑐𝑡
+𝑖=
+∑︁
+(𝑥,𝑦)∈𝐼𝑡
+𝑖
+1[𝐷𝑡(𝑥,𝑦) < 𝜏] ,
+𝑠𝑡
+𝑖= 1
+
+𝑐𝑡
+𝑖≥𝜅
+
+,
+(3)
+where 𝑠𝑡
+𝑖∈{0, 1} indicates patch similarity (1 for similar, 0 for
+dissimilar). ③Finally, the patch-level similarity results are recorded
+into two index sets, K𝑡
+𝑆= {𝑖|𝑠𝑡
+𝑖= 1} for similar and K𝑡
+𝑁= {𝑖|𝑠𝑡
+𝑖= 0}
+for non-similar patches.
+Image-Region Importance Awareness Guided by Semantic
+Priors. The core idea is to exploit high-level semantic priors from
+the previous frame to estimate the importance of different regions in
+the current frame, thereby guiding mixed-precision A/D conversion.
+High-precision sampling
+Low-precision sampling
+① Appearing
+② Moving
+③ Disappearing
+Skip sampling
+Figure 3: Three different scenarios in video streams.
+To analyze the importance of different spatial regions, as shown
+in Fig. 3, we summarize the inter-frame variations into three typical
+scenarios: ①Appearing: the appearing scenario refers to the case
+where no object was detected in the previous frame, but the simi-
+larity mask m shows significant changes in the corresponding area,
+indicating the emergence of new objects; ②Moving: the moving
+scenario denotes that the existing object undergoes positional or
+contour shifts between adjacent frames, causing the changed region
+in the new frame to partially overlap with the detected region in the
+previous frame; ③Disappearing/Occlusion: the changes are almost
+entirely contained within the detected region of the previous frame,
+reflecting that the object has disappeared or become occluded.
+We quantitatively characterize the above three scenarios by mea-
+suring the spatial correspondence between consecutive frames.
+Denote by 𝑚K𝑡
+𝑁the mask corresponding to the spatial regions of
+the non-similar patch set K𝑡
+𝑁, while 𝜓𝑡−1 denotes the detected re-
+gion in the previous frame. Their spatial relationship is described
+by two metrics: the intersection-over-union (IoU) and the internal
+change ratio 𝑟in:
+IoU(𝑚K𝑡
+𝑁,𝜓𝑡−1) =
+|𝑚K𝑡
+𝑁∩𝜓𝑡−1|
+|𝑚K𝑡
+𝑁∪𝜓𝑡−1|,
+𝑟in =
+|𝑚K𝑡
+𝑁∩𝜓𝑡−1|
+|𝑚K𝑡
+𝑁|
+.
+(4)
+Based on these metrics, we directly map the three scenarios
+to sensing strategies: patches in the Appearing or Moving cases
+are placed into H𝑡for high-precision sensing, while those in the
+Disappearing/Occlusion case receive low precision, and patches
+outside K𝑡
+𝑁are skipped. For reference, the Disappearing/Occlusion
+scenario corresponds to IoU(𝑚K𝑡
+𝑁,𝜓𝑡−1) ≥𝜃2 with 𝑟in > 𝜃3. In
+addition, regions whose spatial extent is clearly below the minimum
+object size are also routed to the low-precision path.
+4
+Architecture Design of DeltaSight
+The main contribution of DeltaSight is enabling simultaneous re-
+dundancy elimination across sensing, transmission, and compu-
+tation through sensor-side enhancements and host coordination,
+requiring only minimal additional hardware.
+Exposure
+MIPI
+CSI
+Host
+Inference
+Readout
+MIPI CSI
+Host
+Inference
+ISP
+LSB
+ADC
+Similarity
+Ident.
+MSB
+ADC
+Semantic
+ aware
+LSB
+ADC
+ISP
+Figure 4: System timing diagram of DeltaSight.
+4.1
+Architecture Overview
+System Overview. Fig. 5(a) illustrates the system architecture of
+DeltaSight, which consists of a sensor connected to the host pro-
+cessor via a MIPI CSI interface. Fig. 4 presents the system timing
+diagram of DeltaSight. Compared with conventional video process-
+ing systems, DeltaSight exhibits three key distinctions in its archi-
+tecture and operational mechanism: (i) It incorporates patch-level
+similarity identification and semantic awareness mechanisms, and
+divides the A/D conversion into high- and low-bit stages (shown
+in blue), enabling the filtering of most pixel-level conversions and
+supporting mixed-precision conversion to accommodate the vary-
+ing precision requirements of regions with different importance;
+(ii) An inter-frame dependency is introduced: the inference result
+of the previous frame 𝐹𝑡−1 is fed back to the sensor through the
+MIPI CSI interface to support the semantic awareness process of the
+current frame 𝐹𝑡; (iii) An intra-frame dependency also exists, where
+patch-level similarity information guides sparse transmission and
+computation between the sensor and the host.
+Pixel Array
+ADC/Readout
+In-sensor NPU
+Sensor
+MIPI CSI
+TOP
+Bottom
+(a) System architecture of DeltaSight
+(b) Standard 5T Pixel 
+(c) Proposed Reconfigurable ADC
+CDAC Array
+MSB
+LSB
+µTSV
+Figure 5: System Architecture.
+Sensor Architecture. The design philosophy of DeltaSight is to
+incur minimal hardware overhead by repurposing existing sen-
+sor circuitry, rather than adding separate hardware units for each
+functionality. Building on this principle, the sensor retains full
+standard-imaging functionality while integrating lightweight prim-
+itives for in-sensor redundancy identification and elimination. By
+matching the redundancy-handling granularity to that of the host-
+side transformer, the architecture enables consistent elimination of
+redundancy across sensing, transmission, and computation.
+As shown in Fig. 5, the sensor adopts a stacked dual-chip archi-
+tecture connected through direct bonding. The top chip contains
+the pixel array, responsible for photoelectric conversion, while the
+bottom chip integrates the readout circuits, reconfigurable ADC ar-
+rays, a global controller, a general-purpose neural processing unit
+
+DAC ’26, July 26–29, 2026, Long Beach, CA, USA
+Qinyu Wang, Cen Chen, Jingkai Huang, Yawen Qiu, Hongen Shao, Xiaofeng Zou, and Ziqian Zeng
+-
++
+COMPARATOR
++
++
+-
++
++
++
++
++
++
+-
++
++
++
+-
++
++
++
+COMPARATOR
+COMPARATOR
+COMPARATOR
+COMPARATOR
+11000000002
+-
+1
+1
+0
+...
+MSB
+LSB
+0
+1
+3
+1
+Current Frame Sampling and Holding
+Previous-frame Reconstruction
+2
+Threshold Comparison 
+Digital Code
+Figure 6: Similarity Identification Mode of the Reconfigurable ADC.
+(In-sensor NPU), and on-chip SRAM. The global controller manages
+end-to-end data scheduling and operation timing from exposure
+initiation to the final readout. Together with the readout circuits,
+it performs row/column scanning, block-level scheduling, and dy-
+namic allocation of ADC resources.
+The SRAM maintains and updates the latest quantized A/D codes
+for inter-frame comparison, and stores both the similarity informa-
+tion and the region-importance metadata. The reconfigurable ADC,
+as the fundamental unit of the ADC array, incorporates modest hard-
+ware extensions to support time-multiplexed operation, thereby
+enabling multiple functions including restoration of previous-frame
+pixel voltages, block-level similarity detection, and mixed-precision
+quantization within a single hardware unit. The In-sensor NPU
+executes on-chip semantic importance estimation (Sec. 3) and light-
+weight ISP (e.g., Bayer-to-RGB), where the semantic-awareness
+logic is mapped directly to bit-level AND/OR and popcount circuits
+without introducing any additional control or datapath modifica-
+tions. As such, we focus our discussion on the sensing pipeline and
+omit further elaboration on this auxiliary module.
+4.2
+Sensor Design
+4.2.1
+Design of Reconfigurable ADC. The design objective of the
+reconfigurable ADC is to ensure the fundamental A/D conversion
+functionality while maximizing the reuse of existing hardware
+resources to enable the proposed inter-frame similarity judgment
+algorithm. To compute the similarity between pixels in adjacent
+frames, two key issues must be addressed: (i) how to retain the
+analog pixel voltage of the previous frame, and (ii) how to compare
+the voltage difference between two corresponding pixels.
+For (i), prior works [3, 8] rely on nonvolatile or capacitive stor-
+age, which either increases hardware cost or introduces thermal
+noise and drift. Instead, we exploit the deterministic D/A mapping
+of the CDAC in a standard SAR ADC: previous-frame pixel values
+are kept as digital codes in on-chip SRAM, and their analog volt-
+ages are reconstructed during comparison, eliminating the need for
+dedicated holding circuits.
+For (ii), we introduce an extremely small capacitor 𝐶𝜏(high-
+lighted in red in Fig. 5(c)), which is added to the top-plate node of the
+existing CDAC within the SAR ADC. This modification leverages
+the original comparison path, including the built-in comparator and
+CDAC array, to realize symmetric ±𝜏voltage injection by switching
+among existing voltage nodes; if the two successive comparison re-
+sults differ, the inter-frame voltage difference at this pixel is within
+the threshold and thus judged similar, otherwise dissimilar.
+By comparing the two successive outcomes under the +𝜏and
+−𝜏injections, the inter-frame voltage difference can be inferred:
+identical results imply a difference beyond the threshold (dissimilar),
+while opposite results indicate it falls within the threshold (similar).
+Since𝐶𝜏is much smaller than the main CDAC array (approximately
+0.5% of the total capacitance in our design), the induced voltage
+disturbance remains far below the effective decision step of the
+current stage and thus does not affect threshold determination.
+Execution Pipeline of Similarity Identification. As shown in
+Fig. 6, we illustrate the similarity-identification mode of the Recon-
+figurable ADC using a case where 𝑉𝑡
+IN = 0.751V under 𝑉REF = 1V.
+Given the previous-frame code 11000000002 (i.e., 𝑉𝑡−1
+DAC = 0.750V),
+the inter-frame comparison proceeds in three stages:
+❶Current frame sampling and holding: 𝐶𝜏is left floating, the
+sampling switch 𝑆𝐶is turned on, and the bottom plates of all CDAC
+capacitors are connected to 𝑉𝑡
+IN, while the comparator input switch
+𝑆𝐴is grounded. After sampling, 𝑆𝐴is turned off and 𝑆𝐶is switched
+to the 𝑉REF node, resulting in a comparator negative-input voltage
+of −𝑉𝑡
+IN = −0.751V. ❷Previous-frame reconstruction: the SRAM-
+stored code 11000000002 is loaded into the CDAC array (two MSBs
+to𝑉REF, others to ground), producing𝑉𝑡−1
+DAC = 0.75V. The comparator
+negative-input voltage is then updated to −𝑉𝑡
+IN + 𝑉𝑡−1
+DAC = −1mV.
+❸Threshold comparison: during the threshold comparison stage,
+a small capacitor 𝐶𝜏is introduced to inject a differential bias of
+±𝜏, where 𝜏≈0.5%𝑉REF = 5mV. Two successive comparisons
+are performed: in the first comparison, the other terminal of 𝐶𝜏is
+connected to𝑉REF to inject a +𝜏bias, yielding𝑉−= −𝑉𝑡
+IN+𝑉𝑡−1
+DAC+𝜏=
++4mV (𝑉−> 0, COMPARATOR output 1); in the second comparison,
+𝐶𝜏is grounded to apply a −𝜏bias, resulting in𝑉−= −𝑉𝑡
+IN+𝑉𝑡−1
+DAC−𝜏=
+−6mV (𝑉−< 0, COMPARATOR output 0). The differing results
+indicate the voltage lies within the threshold, thus judged similar.
+4.2.2
+Design of Block-level Readout Circuit. We adopt a block-level
+execution mode that exposes block-level control to the A/D path.
+Under this execution model, the mixed-precision pipeline allocates
+0/4/10-bit quantization driven by similarity and semantics.
+Block-Level Readout Circuit. As shown in Fig. 7, we adopt a
+block-level readout scheme featuring row concurrency, column
+parallelism, and dual-block shared ADC arrays. The pixel array op-
+erates at a minimum execution granularity of 𝑃× 𝑃(with 𝑃= 16 in
+this design). Every two adjacent blocks in the column direction form
+a 16× 32 readout domain, which corresponds to one group of recon-
+figurable ADC arrays. Each ADC array contains 16 column-parallel
+channels, operating under a unified sampling clock. The controller
+uses the block-select (blk_sel) signal to control 16 2:1 MUXs within
+each domain to select the active block. The MUX outputs are then
+connected to the ADC inputs through their corresponding column
+enable switches (col_en). The controller issues col_en bitmasks at
+the pixel level to achieve column-wise gating and sparse sampling(1:
+
+DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination
+DAC ’26, July 26–29, 2026, Long Beach, CA, USA
+enable, 0: high-impedance), thereby suppressing sampling charge
+disturbance and reducing conversion power consumption.
+Flexible Reconfigurable Block-Level Load Balancing. To ad-
+dress cross-domain ADC load imbalance caused by uneven block-
+level sparsity distribution, we propose a neighborhood-configurable
+dynamic interconnection and block-level scheduling scheme. A
+single neighbor switch box is placed between adjacent readout
+domains within the same row to achieve half-bank (16-column) re-
+configurable routing at the physical layer. Meanwhile, a connection
+box is introduced at the control layer to perform block-level task
+remapping and result writeback redirection based on each domain’s
+instantaneous workload. When a domain remains heavily loaded
+while its neighbor is idle, the connection box performs routing
+decisions and issues control instructions, and the neighbor switch
+box switches the signal path accordingly to enable cross-domain
+collaborative processing.
+MUX
+blk_sel
+MUX
+MUX
+...
+...
+SEL
+16
+16
+16
+16
+16
+16
+SEL
+Pixel[2]
+SEL
+Pixel[17]
+Switch Box
+Pixel[1]
+Connection
+Box
+Routing Tracks
+Block 1
+Block 2
+...
+Column-parallel Reconfigurable ADCs
+SEL
+Pixel[673]
+col_en
+col_en
+col_en
+Figure 7: Block-level readout circuitry.
+Execution Pipeline of Mixed-Precision A/D Conversion. Built
+upon block-level readout and redundancy detection, the proposed
+mixed-precision A/D conversion adaptively allocates 10/4/0-bit
+quantization based on temporal similarity and semantic importance.
+The process consists of four stages:
+❶Block similarity detection: the voltage difference between cor-
+responding pixels of consecutive frames is compared pixel by pixel,
+and a one-bit similarity flag (1: similar, 0: dissimilar) is recorded for
+each pixel. The number of similar pixels per block is then counted
+to determine block-level similarity. Blocks identified as similar skip
+conversion (0-bit mode), and their similarity results are recorded in
+K𝑡
+𝑆/K𝑡
+𝑁; ❷High-bit MSB conversion: for non-similar blocks, only
+the 4 MSBs are converted to generate a coarse 4-bit quantization
+result, with the remaining bits zero-padded. The controller inverts
+the pixel similarity flags and sends them as enable signals to the
+ADCs to mask redundant conversions of similar pixels; ❸Semantic
+importance awareness: after all blocks complete 0/4-bit conversions,
+the in-sensor NPU combines the host-provided semantic priors from
+the previous frame with the current frame’s non-similarity mask
+to generate the semantically significant block set K𝑡
+ℎ; ❹Semantic
+refinement: for blocks in K𝑡
+ℎ, the controller reloads the previous
+4-bit digital codes into the CDAC and performs an additional 4-bit
+LSB conversion to restore full 10-bit precision, while other regions
+retain the coarse quantization. This mechanism enables dynamic,
+block-level precision adaptation, effectively reducing conversion
+energy while preserving accuracy in semantically critical regions.
+4.3
+Cooperation with Transmission and Host
+This section briefly introduces how redundancy-aware results are
+used to guide sparse transmission and enable sparse computation.
+Guide for Sparse Transmission. After sampling all blocks of
+the current frame, the in-sensor NPU performs local Bayer-to-RGB
+demosaicing only on image blocks within the non-similarity set.
+These blocks are then reorganized into a single logical frame using
+the Multi-ROI coalesced-frame mechanism, whose header records
+each updated block’s ID. The host retains the complete previous
+frame and reconstructs the current frame by directly replacing the
+corresponding regions according to these indices. The entire process
+remains fully compliant with the MIPI CSI-2 physical layer, while
+extending only the protocol layer to support block-level differential
+updates and semantic indexing, thereby enabling efficient and low-
+redundancy incremental image transmission.
+Guide for Sparse Computation. On the host side, we bypass any
+additional redundancy analysis and directly consume the sensor-
+provided region-level similarity map as the execution mask. Prior
+work [2, 17, 19, 24] has provided mechanisms that leverage tem-
+poral similarity for feature reuse and sparse transformer execu-
+tion. Following this paradigm, our system uses the change map
+to gate patch-level computation: updated regions are recomputed,
+while cached features for unchanged regions are fetched from on-
+chip memory and forwarded. This enables seamless temporal reuse
+across frames without introducing extra host-side logic.
+5
+Evaluation Results
+5.1
+Experimental Setup
+Hardware Implementation. The proposed system comprises a
+sensor and a host processor connected via a MIPI interface. The
+sensor modules are described in Verilog/Verilog-A and synthesized
+using Synopsys Design Compiler targeting the TSMC 65 nm pro-
+cess. Switching activities are annotated and analyzed in Synopsys
+PrimeTime PX to estimate both dynamic and leakage power, while
+on-chip memory energy is modeled using CACTI [21] and DRAM
+energy is derived from Ramulator command traces. The host proces-
+sor adopts the transformer accelerator CMC [19], which supports
+temporal feature reuse, with its similarity search unit removed; we
+claim no innovation in this part.
+Benchmarks and Software Implementation. We evaluate DeltaSight
+using three transformer models: ViTDeT-S (384-dim), ViTDeT-B
+(672-dim), and ViTDeT-L (1024-dim) [11]. Experiments are con-
+ducted on two standard video detection datasets, ImageNet VID
+[18] and NFS [4]. All models adopt a 16×16 patch size and are im-
+plemented in PyTorch [16] for baseline comparison. We use [1] to
+invert the RGB image back to its analog Bayer representation.
+AIoT System Variants. To quantify the contribution of each sub-
+system to the overall energy of a video AIoT pipeline, we evaluate
+three system variants:
+• Base-Full: Represents a conventional video AIoT pipeline
+that performs full sensing, transmission, and computation.
+• Pixel-E: Represents a variant that performs pixel-level re-
+dundancy elimination directly on the sensor side.
+
+DAC ’26, July 26–29, 2026, Long Beach, CA, USA
+Qinyu Wang, Cen Chen, Jingkai Huang, Yawen Qiu, Hongen Shao, Xiaofeng Zou, and Ziqian Zeng
+5.2
+Overall Performance
+Algorithm Validation. We evaluate DeltaSight’s impact on host-
+side task accuracy using ImageNet VID and NFS. The pixel-difference
+threshold 𝜏is fixed at 0.5%𝑉REF, and inter-patch similarity is deter-
+mined when the number of pixels with deviations below 𝜏exceeds
+𝜅. As shown in Table 1, DeltaSight skips 64.8% and 72.2% of regions
+on ImageNet VID and NFS, respectively, while achieving higher de-
+tection accuracy (mAP) than the baseline. These results confirm the
+effectiveness of performing sensor-side redundancy identification
+and coordinating its removal across stages.
+Table 1: Accuracy and Pruning Statistics. Skip: average rate
+of unprocessed image patches.
+Dataset
+Models
+𝜏, 𝜅
+mAP (%)
+Skip
+(%)
+Baseline
+DeltaSight
+ImageNet
+VID
+ViTDeT-S
+0.5%, 60.0
+40.94
+41.06
+64.0
+ViTDeT-B
+0.5%, 60.0
+82.05
+82.37
+64.0
+ViTDeT-L
+0.5%, 80.0
+83.18
+83.51
+66.3
+Average
+-
+0.5%, 66.7
+68.67
+69.98
+64.8
+NFS
+ViTDeT-S
+0.5%, 80.0
+53.58
+55.99
+73.2
+ViTDeT-B
+0.5%, 60.0
+82.19
+81.69
+70.1
+ViTDeT-L
+0.5%, 80.0
+82.35
+81.47
+73.2
+Average
+-
+0.5%, 73.3
+72.71
+73.05
+72.2
+Sensor-side Energy Consumption. Fig. 8 reports the per-frame
+sensor-side energy across the three designs. Although DeltaSight
+adds similarity identification at 11.9% of the Base-FULL budget,
+the overall sensor cost drops sharply. The key gains come from
+eliminating redundant front-end operations: skipping A/D conver-
+sion for similar pixels substantially reduces ADC switching energy,
+and block-gated demosaicing cuts the in-sensor NPU workload, as
+RGB reconstruction is triggered only for non-similar blocks. The
+semantic-aware controller adds negligible cost, relying solely on
+lightweight combinational logic. Although DeltaSight’s sensor-side
+gains over Pixel-E are modest, its block-level similarity information
+directly guides redundancy elimination in subsequent stages.
+D e l t a S i g h t  ( 6 5 n m / 6 5 n m )
+P i x e l - E  ( 6 5 n m / 6 5 n m )
+B a s e - F U L L  ( 6 5 n m / 6 5 n m )
+0 E + 0
+2 E + 6
+4 E + 6
+6 E + 6
+8 E + 6
+1 E + 7
+E n e r g y  C o s t  p e r  F r a m
+e  @
+ 1 2 0 F P S  ( p J )
+ E x p o s u r e       
+ R e a d o u t       
+ S i m i l a r i t y  I d e n t .       
+ A D C  
+ S e m a t i c - a w a r e       
+ S R A M
+      
+ I n - s e n s o r  N P U
+Figure 8: Energy breakdown across different sensor designs.
+System Energy Consumption. To evaluate the cross-stage energy
+efficiency of DeltaSight, we compare its sensing, transmission, and
+downstream processing efficiency against Base-FULL, and report
+the end-to-end (E2E) system improvement. As shown in Fig. 9,
+DeltaSight effectively suppresses redundant sampling and data
+movement: the sensing and transmission stages achieve average
+2.4× and 3.2× efficiency improvement, respectively, yielding an
+overall 1.7× gain in E2E system efficiency. The gains are higher on
+NFS due to the increased temporal similarity at higher frame rates.
+V i T D e T - S
+V i T D e T - B
+V i T D e T - L
+0
+1
+2
+3
+4
+N o r m .  E n e r g y  
+ S e n s i n g          
+ T r a n s m i s s i o n         
+ C o m p u t a t i o n         
+ E 2 E  S y s t e m
+I m a g e N e t - V I D
+N F S
+V i T D e T - S
+V i T D e T - B
+V i T D e T - L
+0
+1
+2
+3
+4
+Figure 9: Energy savings across individual stages and the end-
+to-end system.
+Energy Analysis of Sensor-side Similarity Identification. The
+energy of similarity identification mainly comes from charging and
+discharging the binary-weighted CDAC capacitors, where brighter
+pixels activate more MSB capacitors. Fig. 10(a) and (b) present
+the switching activity across capacitor weights in two evaluation
+scenarios. As summarized in Fig. 10(c), this stage accounts for 25.98%
+and 30.97% of DeltaSight’s sensor power, corresponding to 11.86%
+of the Base-FULL sensor energy. Although it introduces additional
+cost, the stage yields substantial net savings by avoiding redundant
+sampling and A/D conversions.
+I m a g e N e t - V I D
+N F S
+M
+S B
+L S B
+M
+S B
+L S B
+0 . 0
+0 . 1
+0 . 2
+0 . 3
+0 . 4
+0 . 5
+F r e q u e n c y  ( %
+)
+0 . 0
+0 . 1
+0 . 2
+0 . 3
+0 . 4
+0 . 5
+( c )
+N F S
+( a )
+( b )
+I m a g e N e t  V I D
+1 0
+1 5
+2 0
+2 5
+3 0
+3 5
+4 0
+P e r c e n t a g e  o f  E n e r g y  ( %
+)
+ D e l t a S i g h t  
+ B a s e - F U L L
+Figure 10: CDAC Switching Characteristics and Energy Over-
+head of Similarity Identification.
+Effects of Mixed-Precision A/D Conversion. Table 2 reports
+the bit-width distribution under our mixed-precision scheme. Over
+79.4% of pixels are assigned 0-bit and thus skip conversion, while
+only 10.5%∼18.1% require full 10-bit conversion. This skewed distri-
+bution lowers A/D conversion energy by 83.9% on NFS and 74.2%
+on VID, compared with conventional fixed-precision sampling. The
+gains stem from three factors: (i) similar blocks are fully exempt
+from conversion, (ii) within similar blocks, pixel-level similarity
+further suppresses conversions, and (iii) in low-importance regions,
+similar pixels undergo only partial conversion.
+Table 2: Breakdown of bit-width A/D conversion ratios.
+NFS @120FPS
+ImageNet VID @30FPS
+0 Bit
+4 Bit
+10 Bit
+E. ↓
+0 Bit
+4 Bit
+10 Bit
+E. ↓
+86.8%
+2.7%
+10.5%
+83.9%
+79.4%
+2.5%
+18.1%
+74.2%
+Sensor Area Analysis. While post-layout simulations provide
+accurate power and timing, the silicon area is estimated from the
+array footprint and the composition of bottom-tier circuits. Our
+stacked design integrates a 672×672 5T pixel array whose cell ge-
+ometry follows the design [6] with a 2.9 𝜇m pixel pitch; together
+with the aligned block readout and reconfigurable ADCs, this region
+occupies 6.81 mm2. The ADC arrays reside entirely beneath the
+array and therefore introduce no outline overhead. The remaining
+non-aligned blocks, including the SRAM (0.9 MB), global timing and
+control circuits, in-sensor NPU, and the peripheral I/O circuitry, are
+placed outside the active array and add roughly 0.6 mm2 in 65-nm
+CMOS. The total die area is therefore approximately 7.4 mm2.
+6
+Conclusion
+We presented DeltaSight, a video AIoT system that achieves consis-
+tent redundancy elimination across the processing pipeline. Through
+sensor-side similarity detection and importance-aware mixed-precision
+sensing, DeltaSight suppresses unnecessary sampling, computation,
+and data movement while imposing only minimal hardware over-
+head. To the best of our knowledge, DeltaSight is the first video
+AIoT system that unifies the granularities of sensing, transmis-
+sion, and computation, enabling a coherent execution paradigm for
+cross-stage redundancy handling.
+
+DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination
+DAC ’26, July 26–29, 2026, Long Beach, CA, USA
+References
+[1] Tim Brooks, Ben Mildenhall, Tianfan Xue, Jiawen Chen, Dillon Sharlet, and
+Jonathan T Barron. 2019. Unprocessing images for learned raw denoising. In
+Proceedings of the IEEE/CVF conference on computer vision and pattern recognition.
+11036–11045.
+[2] Matthew Dutson, Yin Li, and Mohit Gupta. 2023. Eventful transformers: Leverag-
+ing temporal redundancy in vision transformers. In Proceedings of the IEEE/CVF
+international conference on computer vision. 16911–16923.
+[3] Yu Feng, Tianrui Ma, Yuhao Zhu, and Xuan Zhang. 2025. BlissCam: Boosting Eye
+Tracking Efficiency with Learned In-Sensor Sparse Sampling (ISCA ’24). IEEE
+Press, 1262–1277. doi:10.1109/ISCA59077.2024.00094
+[4] Hamed Kiani Galoogahi, Ashton Fagg, Chen Huang, Deva Ramanan, and Simon
+Lucey. 2017. Need for Speed: A Benchmark for Higher Frame Rate Object Tracking.
+arXiv preprint arXiv:1703.05884 (2017).
+[5] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. 2016. Deep residual
+learning for image recognition. In Proceedings of the IEEE conference on computer
+vision and pattern recognition. 770–778.
+[6] Tomoki Hirata, Hironobu Murata, Hideaki Matsuda, Yojiro Tezuka, and Shiro
+Tsunai. 2021. 7.8 A 1-inch 17Mpixel 1000fps block-controlled coded-exposure
+back-illuminated stacked CMOS image sensor for computational imaging and
+adaptive dynamic range control. In 2021 IEEE International Solid-State Circuits
+Conference (ISSCC), Vol. 64. IEEE, 120–122.
+[7] Ryan Hou, Thomas Twomey, Vasileios Milionis, Evangelos Dikopoulos, Tianrui
+Ma, Yuhao Zhu, and Georgios Tzimpragos. 2025. SEAL: A Single-Event Ar-
+chitecture for In-Sensor Visual Localization. In Proceedings of the 52nd Annual
+International Symposium on Computer Architecture. 1659–1674.
+[8] Xiaofeng Hou, Jiacheng Liu, Xuehan Tang, Chao Li, Jia Chen, Luhong Liang,
+Kwang-Ting Cheng, and Minyi Guo. 2023. Architecting Efficient Multi-modal
+AIoT Systems. In Proceedings of the 50th Annual International Symposium on
+Computer Architecture (Orlando, FL, USA) (ISCA ’23). Association for Computing
+Machinery, New York, NY, USA, Article 31, 13 pages. doi:10.1145/3579371.3589066
+[9] Venkatesh Kodukula, Alexander Shearer, Van Nguyen, Srinivas Lingutla, Yifei
+Liu, and Robert LiKamWa. 2021. Rhythmic pixel regions: multi-resolution visual
+sensing system towards high-precision visual computing at low power. In Pro-
+ceedings of the 26th ACM International Conference on Architectural Support for
+Programming Languages and Operating Systems. 573–586.
+[10] Chuang Li, Heshi Wang, Yanhua Wen, Qingyu Shi, Qinyu Wang, Chunhua Hu,
+and Dongchen Wu. 2025. STVAI: Exploring spatio-temporal similarity for scalable
+and efficient intelligent video inference. J. Parallel and Distrib. Comput. 201 (2025),
+105079. doi:10.1016/j.jpdc.2025.105079
+[11] Yanghao Li, Hanzi Mao, Ross Girshick, and Kaiming He. 2022. Exploring plain
+vision transformer backbones for object detection. In European conference on
+computer vision. Springer, 280–296.
+[12] Liang Mi, Tingting Yuan, Weijun Wang, Haipeng Dai, Lin Sun, Jiaqi Zheng,
+Guihai Chen, and Xiaoming Fu. 2024. Accelerated neural enhancement for video
+analytics with video quality adaptation. IEEE/ACM Transactions on Networking
+32, 4 (2024), 3045–3060.
+[13] Mohammadreza Mohammadi, Mehrdad Morsali, Sepehr Tabrizchi, Brendan Reidy,
+Arman Roohi, Shaahin Angizi, and Ramtin Zand. 2025. Pixelprune: Optimizing
+aiot vision systems via in-sensor segmentation and adaptive data transfer. In
+Proceedings of the Great Lakes Symposium on VLSI 2025. 312–319.
+[14] Sathishkumar Moorthy, Sachin Sakthi KS, Sathiyamoorthi Arthanari, Jae Hoon
+Jeong, and Young Hoon Joo. 2025. Hybrid multi-attention transformer for robust
+video object detection. Engineering Applications of Artificial Intelligence 139
+(2025), 109606.
+[15] Divya Nimma, Omaia Al-Omari, Rahul Pradhan, Zoirov Ulmas, RVV Krishna,
+Ts Yousef A Baker El-Ebiary, and Vuda Sreenivasa Rao. 2025. Object detection in
+real-time video surveillance using attention based transformer-YOLOv8 model.
+Alexandria Engineering Journal 118 (2025), 482–495.
+[16] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
+Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, et al. 2019.
+Pytorch: An imperative style, high-performance deep learning library. In 2019
+Annual Conference on Neural Information Processing Systems (NeurIPS), Vol. 32.
+[17] Yawen Qiu, Qinyu Wang, Zhiheng Li, and Qiyuan Liu. 2025. EP-ViT: Leveraging
+Encoding Priors to Eliminate Spatio-Temporal Redundancy in Vision Transformer.
+doi:10.3233/FAIA250790
+[18] Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean
+Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, et al.
+2015. Imagenet large scale visual recognition challenge. International journal of
+computer vision 115 (2015), 211–252.
+[19] Zhuoran Song, Chunyu Qi, Fangxin Liu, Naifeng Jing, and Xiaoyao Liang. 2024.
+CMC: Video Transformer Acceleration via CODEC Assisted Matrix Condensing.
+In 2024 Proceedings of the 29th ACM International Conference on Architectural
+Support for Programming Languages and Operating Systems (ASPLOS), Volume 2.
+201–215.
+[20] Zhuoran Song, Chunyu Qi, Yuanzheng Yao, Peng Zhou, Yanyi Zi, Nan Wang, and
+Xiaoyao Liang. 2024. TSAcc: An Efficient T empo-S patial Similarity Aware Acc
+elerator for Attention Acceleration. In Proceedings of the 61st ACM/IEEE Design
+Automation Conference. 1–6.
+[21] Shyamkumar Thoziyoor, Naveen Muralimanohar, and Norman P. Jouppi. 2007.
+CACTI 5.0. https://api.semanticscholar.org/CorpusID:16451530
+[22] Wladimir Valenzuela, Antonio Saavedra, Payman Zarkesh-Ha, and Miguel
+Figueroa. 2022. Motion-based object location on a smart image sensor using
+on-pixel memory. Sensors 22, 17 (2022), 6538.
+[23] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all
+you need. Advances in neural information processing systems 30 (2017).
+[24] Qinyu Wang, Xiaofeng Zou, Chuang Li, Yujie Peng, Heshi Wang, Yanhua Wen,
+Minaer Yeerlan, and Cen Chen. 2025. CST-ViT: Cascaded Spatio–Temporal
+Redundancy Elimination for Efficient Vision Transformers on Edge IoT Devices.
+IEEE Internet of Things Journal 12, 18 (2025), 38857–38871. doi:10.1109/JIOT.2025.
+3587891
+[25] Milin Zhang and Amine Bermak. 2009. Compressive acquisition CMOS image
+sensor: from the algorithm to hardware implementation. IEEE Transactions on
+Very Large Scale Integration (VLSI) Systems 18, 3 (2009), 490–500.

@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "title": "DeltaSight — numbers shown on screen",
+    "source": "Qinyu Wang, Cen Chen, Jingkai Huang, Yawen Qiu, Hongen Shao, Xiaofeng Zou, Ziqian Zeng. DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination. DAC '26. DOI 10.1145/3770743.3804070",
+    "text": "data/paper.txt (PyMuPDF extraction, 1081 lines, page = physical page of the PDF)",
+    "retrieved": "2026-11-15",
+    "note": "Every value below is read off the paper body/table, not recomputed. Values under `derived` are arithmetic on the table (marked DERIVED in claims). Quotes are exact single-sentence slices of data/paper.txt; data/claims.json carries them, this file carries the numbers."
+  },
+  "values": {
+    "stages": 3,
+    "energyShare": "37%∼53%",
+    "pruningRemovedPct": "over 60%",
+    "patchSize": 16,
+    "patchCount": "N = HW/P 2",
+    "tau": "0.5%VREF",
+    "kappaPerModel": [
+      60,
+      80
+    ],
+    "fps": {
+      "vid": 30,
+      "nfs": 120
+    },
+    "noiseAmplitudes": [
+      0.01,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "scenarios": 3,
+    "adc": {
+      "vin": 0.751,
+      "vref": 1,
+      "previousCode": "1100000000",
+      "previousCodeBits": "two MSBs to VREF, others to ground",
+      "vdac": 0.75,
+      "residual": "-1mV",
+      "tauMv": "±5mV",
+      "ctauPct": 0.5,
+      "plusBranch": "+4mV",
+      "plusDecision": 1,
+      "minusBranch": "-6mV",
+      "minusDecision": 0
+    },
+    "block": {
+      "readoutDomain": "16× 32",
+      "columnParallelChannels": 16,
+      "pixelArray": "672×672",
+      "pixelPitchUm": 2.9,
+      "muxRatio": "2:1",
+      "sramMB": 0.9,
+      "arrayAreaMm2": 6.81,
+      "extraAreaMm2": 0.6,
+      "dieAreaMm2": 7.4,
+      "node": "65-nm"
+    },
+    "skipPct": {
+      "vid": 64.8,
+      "nfs": 72.2
+    },
+    "speedup": {
+      "sensing": 2.4,
+      "transmission": 3.2,
+      "e2e": 1.7
+    },
+    "similarityId": {
+      "vidPct": 25.98,
+      "nfsPct": 30.97,
+      "baseFullPct": 11.86,
+      "budgetPct": 11.9
+    },
+    "bitWidth": {
+      "nfs": {
+        "zero": 86.8,
+        "four": 2.7,
+        "ten": 10.5,
+        "energyDropPct": 83.9
+      },
+      "vid": {
+        "zero": 79.4,
+        "four": 2.5,
+        "ten": 18.1,
+        "energyDropPct": 74.2
+      }
+    },
+    "table1": [
+      {
+        "dataset": "ImageNet VID",
+        "model": "ViTDeT-S",
+        "kappa": 60,
+        "base": 40.94,
+        "ds": 41.06,
+        "skip": 64
+      },
+      {
+        "dataset": "ImageNet VID",
+        "model": "ViTDeT-B",
+        "kappa": 60,
+        "base": 82.05,
+        "ds": 82.37,
+        "skip": 64
+      },
+      {
+        "dataset": "ImageNet VID",
+        "model": "ViTDeT-L",
+        "kappa": 80,
+        "base": 83.18,
+        "ds": 83.51,
+        "skip": 66.3
+      },
+      {
+        "dataset": "ImageNet VID",
+        "model": "Average",
+        "kappa": 66.7,
+        "base": 68.67,
+        "ds": 69.98,
+        "skip": 64.8
+      },
+      {
+        "dataset": "NFS",
+        "model": "ViTDeT-S",
+        "kappa": 80,
+        "base": 53.58,
+        "ds": 55.99,
+        "skip": 73.2
+      },
+      {
+        "dataset": "NFS",
+        "model": "ViTDeT-B",
+        "kappa": 60,
+        "base": 82.19,
+        "ds": 81.69,
+        "skip": 70.1
+      },
+      {
+        "dataset": "NFS",
+        "model": "ViTDeT-L",
+        "kappa": 80,
+        "base": 82.35,
+        "ds": 81.47,
+        "skip": 73.2
+      },
+      {
+        "dataset": "NFS",
+        "model": "Average",
+        "kappa": 73.3,
+        "base": 72.71,
+        "ds": 73.05,
+        "skip": 72.2
+      }
+    ]
+  },
+  "derived": {
+    "note": "DERIVED — arithmetic on values above; no new measurement.",
+    "vidAvgGainMap": "+1.31",
+    "nfsAvgGainMap": "+0.34",
+    "vidAvgDelta": 1.31,
+    "nfsAvgDelta": 0.34,
+    "nfsB": -0.5,
+    "nfsL": -0.88,
+    "nfsBDelta": "-0.50",
+    "nfsLDelta": "-0.88",
+    "transmittedPct": {
+      "vid": 35.2,
+      "nfs": 27.8
+    },
+    "skippedRegionsPerFrame": {
+      "vid": "64.8%",
+      "nfs": "72.2%"
+    }
+  }
+}
