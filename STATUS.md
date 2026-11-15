@@ -9,7 +9,7 @@
 | mult | 逐位乘法：一条用加法换乘法的路 | ready | - | silent | 1 no-method | 1 | - |
 | quickselect | 快速选择：只找第 k 小 | published | - | silent | ok | 6 | BV1JvHA6aE4B |
 | convcode | 卷积码：GSM 如何在噪声里听清你 | ready | - | yes | ok | 6 | BV1J1x36aELC |
-| deltasight | DeltaSight：让摄像头只算它该算的 | ready | - | yes | ok | 6 | - |
+| deltasight | DeltaSight：让摄像头只算它该算的 | published | - | yes | ok | 6 | BV1G9sW6DEcY |
 | godson1 | 龙芯1号：先证明能跑 | published | - | yes | ok | 6 | BV1Afno6QEP2 |
 | godson2 | Godson-2：把乱序核做成模板 | published | - | yes | ok | 6 | BV1MUno6bE53 |
 | godson2sys | Godson-2 系统优化：把核用起来 | published | - | yes | ok | 6 | BV1NXno6dEiS |

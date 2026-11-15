@@ -14,7 +14,7 @@
   "height": 1080,
   "fps": 30,
   "prefix": "deltasight",
-  "status": "ready",
+  "status": "published",
   "paper": {
     "title": "DeltaSight: Architecting Efficient Video AIoT Systems via Cross-Stage Consistent Redundancy Elimination",
     "authors": [
@@ -53,7 +53,10 @@
     "docs/plan.md"
   ],
   "bili": {
-    "bv": null
+    "bv": "BV1G9sW6DEcY",
+    "url": "https://www.bilibili.com/video/BV1G9sW6DEcY/",
+    "submittedAt": "2026-11-16T00:09:44+08:00",
+    "via": "cdp-admin/bilibili-tool (CDP 真浏览器)"
   },
   "publish": {
     "coverFrame": 17220,
